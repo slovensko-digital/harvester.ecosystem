@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
+gem 'activerecord-postgis-adapter'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -13,6 +15,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv'
+gem 'faraday'
+
+gem 'clockwork'
+gem 'sidekiq'
+gem 'sidekiq-symbols'
+
+gem 'typhoeus'
+gem 'nokogiri'
+gem 'ox'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

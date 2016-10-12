@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <ns0:getChangesResponse xmlns:ns0="http://www.minv.sk/ra">
+  <return><corrId>RA-Core-TID-eac764c9-879b-4aab-9dec-4a3787233db3</corrId><resultCode>1</resultCode><changesId>1952939</changesId><changesGenerated>2016-05-02T02:20:45.349</changesGenerated><register><type>STREET_NAME</type><count>7</count><streetNameChange><changeId>19764348</changeId><changedAt>2016-04-14T11:35:51.872</changedAt><databaseOperation>UPDATE</databaseOperation><objectId>39693</objectId><versionId>3034621</versionId><createdReason>IMPORT</createdReason><validFrom>1981-01-26T00:00:00.0</validFrom><validTo>2016-04-14T11:35:51.821</validTo><effectiveDate>1981-01-26</effectiveDate><StreetName>Juraja Hronca</StreetName><municipalityIdentifier>3000</municipalityIdentifier>
+  </streetNameChange>
+  </register>
+  </return>
+  </ns0:getChangesResponse>
