@@ -172,6 +172,30 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       )
     end
 
+
+    it 'can parse district changes' do
+      expect(downloader).to receive(:download_file).with('abc').
+        and_return(fixture_filepath('jobs/ra/fixtures/DavkaInit_20151009-04.xml'))
+
+      subject.perform('abc', downloader: downloader)
+
+      district_change = Ra::DistrictChange.first
+      expect(district_change).to have_attributes(
+        district_id: 4764,
+        municipality_id: 92,
+        database_operation: 'INSERT',
+        version_id: 1,
+        created_reason: 'CREATE',
+        valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
+        unique_numbering: false
+      )
+
+      expect(district_change.district_code).to have_attributes(
+        code: '219755',
+        name: 'Nivy'
+      )
+    end
+
     pending 'it adds batch record last'
 
   end

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:register xmlns:ns0="http://www.minv.sk/ra">
+  <type>DISTRICT</type>
+  <count>2616</count>
+  <districtChange>
+    <databaseOperation>INSERT</databaseOperation>
+    <objectId>4764</objectId>
+    <versionId>1</versionId>
+    <createdReason>CREATE</createdReason>
+    <validTo>2004-04-30T23:59:59+02:00</validTo>
+    <District UniqueNumbering="false">
+      <Codelist>
+        <CodelistCode>CL010141</CodelistCode>
+        <CodelistItem>
+          <ItemCode>219755</ItemCode>
+          <ItemName>Nivy</ItemName>
+        </CodelistItem>
+      </Codelist>
+    </District>
+    <municipalityIdentifier>92</municipalityIdentifier>
+  </districtChange>
+</ns0:register>

@@ -33,6 +33,8 @@ module Ra
           build_county_change(tag)
         when :municipalityChange
           build_municipality_change(tag)
+        when :districtChange
+          build_district_change(tag)
         else
           fail "Don't know how to handle #{tag.name}"
       end
@@ -322,6 +324,43 @@ module Ra
       end
 
       Ra::MunicipalityChange.find_or_create_by!(payload)
+    end
+
+    def build_district_change(tag)
+      payload = {}
+      tag.children.each do |child|
+        case child.name
+          when :changeId
+            payload[:id] = Integer(child.children.first.value)
+          when :changedAt
+            payload[:changed_at] = Time.parse(child.children.first.value)
+          when :databaseOperation
+            payload[:database_operation] = child.children.first.value
+          when :objectId
+            payload[:district_id] = Integer(child.children.first.value)
+          when :versionId
+            payload[:version_id] = Integer(child.children.first.value)
+          when :createdReason
+            payload[:created_reason] = child.children.first.value
+          when :validFrom
+            payload[:valid_from] = Time.parse(child.children.first.value)
+          when :validTo
+            payload[:valid_to] = Time.parse(child.children.first.value)
+          when :effectiveDate
+            payload[:effective_on] = Date.parse(child.children.first.value)
+          when :municipalityIdentifier
+            payload[:municipality_id] = Integer(child.children.first.value)
+          when :District
+            payload[:unique_numbering] = child.attrs[:UniqueNumbering] == 'true'
+            codelist = parse_codelist(child.children.first)
+            fail unless codelist[:code] == 'CL010141'
+            payload[:district_code] = Ra::DistrictCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+          else
+            fail "Don't know how to handle #{child.name}"
+        end
+      end
+
+      Ra::DistrictChange.find_or_create_by!(payload)
     end
 
     def parse_codelist(tag)
