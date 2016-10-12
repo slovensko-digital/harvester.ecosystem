@@ -122,7 +122,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 -- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
 --
 
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA datahub;
 
 
 --
@@ -156,6 +156,19 @@ CREATE TYPE created_reason_type AS ENUM (
     'CANCEL',
     'CORRECT',
     'REVERT'
+);
+
+
+--
+-- Name: municipality_status; Type: TYPE; Schema: ra; Owner: -
+--
+
+CREATE TYPE municipality_status AS ENUM (
+    'MUNICIPALITY',
+    'CITY_DISTRICT',
+    'CITY',
+    'CITY_MANAGED_BY_SPECIAL_LAW',
+    'MILITARY_DISTRICT'
 );
 
 
@@ -1083,32 +1096,6 @@ ALTER SEQUENCE znizenie_imania_issues_id_seq OWNED BY znizenie_imania_issues.id;
 SET search_path = public, pg_catalog;
 
 --
--- Name: building_number_changes; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE building_number_changes (
-    id integer NOT NULL,
-    property_registration_number_id integer NOT NULL,
-    street_name_id integer,
-    changed_at timestamp without time zone NOT NULL,
-    database_operation ra.change_type,
-    building_number_id integer NOT NULL,
-    version_id integer NOT NULL,
-    created_reason ra.created_reason_type,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    effective_on date NOT NULL,
-    verified_at timestamp without time zone,
-    building_number character varying,
-    building_index character varying NOT NULL,
-    postal_code integer,
-    address_point geography(Point,4326),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1139,7 +1126,7 @@ CREATE TABLE building_number_changes (
     building_number character varying,
     building_index character varying NOT NULL,
     postal_code integer,
-    address_point public.geography(Point,4326),
+    address_point datahub.geography(Point,4326),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1155,6 +1142,13 @@ CREATE SEQUENCE building_number_changes_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: building_number_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE building_number_changes_id_seq OWNED BY building_number_changes.id;
 
 
 --
@@ -1366,6 +1360,78 @@ ALTER SEQUENCE county_codes_id_seq OWNED BY county_codes.id;
 
 
 --
+-- Name: municipality_changes; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE municipality_changes (
+    id integer NOT NULL,
+    municipality_id integer NOT NULL,
+    county_id integer NOT NULL,
+    database_operation change_type,
+    version_id integer NOT NULL,
+    created_reason created_reason_type,
+    changed_at timestamp without time zone,
+    valid_from timestamp without time zone,
+    valid_to timestamp without time zone,
+    municipality_code_id integer NOT NULL,
+    municipality_status municipality_status,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: municipality_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE municipality_changes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: municipality_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE municipality_changes_id_seq OWNED BY municipality_changes.id;
+
+
+--
+-- Name: municipality_codes; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE municipality_codes (
+    id integer NOT NULL,
+    code character varying,
+    name character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: municipality_codes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE municipality_codes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: municipality_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE municipality_codes_id_seq OWNED BY municipality_codes.id;
+
+
+--
 -- Name: property_registration_number_changes; Type: TABLE; Schema: ra; Owner: -
 --
 
@@ -1488,7 +1554,6 @@ CREATE TABLE street_name_changes (
     id integer NOT NULL,
     street_name_id integer NOT NULL,
     municipality_id integer NOT NULL,
-    district_id integer,
     changed_at timestamp without time zone NOT NULL,
     database_operation change_type,
     version_id integer NOT NULL,
@@ -3233,6 +3298,13 @@ SET search_path = ra, pg_catalog;
 -- Name: id; Type: DEFAULT; Schema: ra; Owner: -
 --
 
+ALTER TABLE ONLY building_number_changes ALTER COLUMN id SET DEFAULT nextval('building_number_changes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
 ALTER TABLE ONLY building_purposes ALTER COLUMN id SET DEFAULT nextval('building_purposes_id_seq'::regclass);
 
 
@@ -3269,6 +3341,20 @@ ALTER TABLE ONLY county_changes ALTER COLUMN id SET DEFAULT nextval('county_chan
 --
 
 ALTER TABLE ONLY county_codes ALTER COLUMN id SET DEFAULT nextval('county_codes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_changes ALTER COLUMN id SET DEFAULT nextval('municipality_changes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_codes ALTER COLUMN id SET DEFAULT nextval('municipality_codes_id_seq'::regclass);
 
 
 --
@@ -3827,6 +3913,14 @@ ALTER TABLE ONLY znizenie_imania_issues
 SET search_path = ra, pg_catalog;
 
 --
+-- Name: building_number_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_number_changes
+    ADD CONSTRAINT building_number_changes_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: building_purposes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
 --
 
@@ -3872,6 +3966,22 @@ ALTER TABLE ONLY county_changes
 
 ALTER TABLE ONLY county_codes
     ADD CONSTRAINT county_codes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: municipality_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_changes
+    ADD CONSTRAINT municipality_changes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: municipality_codes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_codes
+    ADD CONSTRAINT municipality_codes_pkey PRIMARY KEY (id);
 
 
 --
@@ -4579,6 +4689,13 @@ CREATE UNIQUE INDEX "index_ra.building_purposes_on_code" ON building_purposes US
 --
 
 CREATE UNIQUE INDEX "index_ra.county_codes_on_code" ON county_codes USING btree (code);
+
+
+--
+-- Name: index_ra.municipality_codes_on_code_and_name; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_ra.municipality_codes_on_code_and_name" ON municipality_codes USING btree (code, name);
 
 
 --
@@ -5501,6 +5618,6 @@ ALTER TABLE ONLY raw_notices
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160228204654'), ('20160304144454'), ('20160304151009'), ('20160304210816'), ('20160304211624'), ('20160304213306'), ('20160305001135'), ('20160305084653'), ('20160307215611'), ('20160308210325'), ('20160309115526'), ('20160309120612'), ('20160429141807'), ('20160506091443'), ('20160506115555'), ('20160506135302'), ('20160506141328'), ('20160506145648'), ('20160506201551'), ('20160506201735'), ('20160506204302'), ('20160509085025'), ('20160509091003'), ('20160509123118'), ('20160509133921'), ('20160509142808'), ('20160509144034'), ('20160509202636'), ('20160509210342'), ('20160509211550'), ('20160509213609'), ('20160510141343'), ('20160511143847'), ('20160511174234'), ('20160512140751'), ('20160512141004'), ('20160512142220'), ('20160512163333'), ('20160512205002'), ('20160512222238'), ('20160512223007'), ('20160513090321'), ('20160513093332'), ('20160513100718'), ('20160513102554'), ('20160513111743'), ('20160513115940'), ('20160513123028'), ('20160513144927'), ('20160515073133'), ('20160515073826'), ('20160515074954'), ('20160516152548'), ('20160516153747'), ('20160516194853'), ('20160517092857'), ('20160517101512'), ('20160517102123'), ('20160517103922'), ('20160517110722'), ('20160517111053'), ('20160517113734'), ('20160517115800'), ('20160517125158'), ('20160517211611'), ('20160519200530'), ('20160520141455'), ('20160520142114'), ('20160520151100'), ('20160523062919'), ('20160523111212'), ('20160523134144'), ('20160523144401'), ('20160523150519'), ('20160524145856'), ('20160524155401'), ('20160524192650'), ('20160524192805'), ('20160524192859'), ('20160524195216'), ('20160524210510'), ('20160524210952'), ('20160524213930'), ('20160524221026'), ('20160524223055'), ('20160525105622'), ('20160525122831'), ('20160525202154'), ('20160525202912'), ('20160525203905'), ('20160603134420'), ('20160603134547'), ('20160603134923'), ('20160603201156'), ('20160603201256'), ('20160603202143'), ('20160604214151'), ('20160604222116'), ('20160605101834'), ('20160605192328'), ('20160605192524'), ('20160605193318'), ('20160605211444'), ('20160605211612'), ('20160607183913'), ('20160609161856'), ('20160609175034'), ('20160609183417'), ('20160610124301'), ('20160613145120'), ('20160613161922'), ('20160614082527'), ('20160615165505'), ('20160622105806'), ('20160622112911'), ('20160622113449'), ('20160622113649'), ('20160622114653'), ('20160622115927'), ('20160622142531'), ('20160622143425'), ('20160622144845'), ('20160622202723'), ('20160622231145'), ('20160623135959'), ('20160623150755'), ('20160624113525'), ('20160629144830'), ('20160629151520'), ('20160629201243'), ('20160629221305'), ('20160629221424'), ('20160629221800'), ('20160706111638'), ('20160707212141'), ('20160708105151'), ('20160708121934'), ('20160708140307'), ('20160708155010'), ('20160708172910'), ('20160708173417'), ('20160711125108'), ('20160711151815'), ('20160718092226'), ('20160718092417'), ('20160718094712'), ('20160719123714'), ('20160720085630'), ('20160721091930'), ('20160721134515'), ('20160721144047'), ('20160721151057'), ('20160721153228'), ('20160721153817'), ('20160721160533'), ('20160721160901'), ('20160721162155'), ('20160722151335'), ('20160722151503'), ('20160727150803'), ('20160803124909'), ('20160803142910'), ('20160803205746'), ('20160808125148'), ('20160809092452'), ('20160809095256'), ('20160809115742'), ('20160809120030'), ('20160811100934'), ('20160811102028'), ('20160811103149'), ('20160811104830'), ('20160811111706'), ('20160811112312'), ('20160811121506'), ('20160811124755'), ('20160812133817'), ('20160812135204'), ('20160812135415'), ('20160812140655'), ('20160812142245'), ('20160812142416'), ('20160812202908'), ('20160812215714'), ('20160815130928'), ('20160818110211'), ('20160818110621'), ('20160818135739'), ('20160825110839'), ('20160825120623'), ('20160830120608'), ('20160830121920'), ('20160928120044'), ('20160928123138'), ('20160928213723'), ('20160929120951'), ('20160929121253'), ('20160929121400'), ('20160929124430'), ('20160929124817'), ('20160929125059'), ('20160929125508'), ('20160930085831'), ('20160930102048'), ('20161010145325'), ('20161010145425'), ('20161010205914'), ('20161010220918'), ('20161010221017'), ('20161010224003'), ('20161010224400'), ('20161010225250'), ('20161011210352'), ('20161011214757'), ('20161012110655'), ('20161012135758'), ('20161012150803'), ('20161012150927'), ('20161012195055'), ('20161012195151');
+INSERT INTO schema_migrations (version) VALUES ('20160228204654'), ('20160304144454'), ('20160304151009'), ('20160304210816'), ('20160304211624'), ('20160304213306'), ('20160305001135'), ('20160305084653'), ('20160307215611'), ('20160308210325'), ('20160309115526'), ('20160309120612'), ('20160429141807'), ('20160506091443'), ('20160506115555'), ('20160506135302'), ('20160506141328'), ('20160506145648'), ('20160506201551'), ('20160506201735'), ('20160506204302'), ('20160509085025'), ('20160509091003'), ('20160509123118'), ('20160509133921'), ('20160509142808'), ('20160509144034'), ('20160509202636'), ('20160509210342'), ('20160509211550'), ('20160509213609'), ('20160510141343'), ('20160511143847'), ('20160511174234'), ('20160512140751'), ('20160512141004'), ('20160512142220'), ('20160512163333'), ('20160512205002'), ('20160512222238'), ('20160512223007'), ('20160513090321'), ('20160513093332'), ('20160513100718'), ('20160513102554'), ('20160513111743'), ('20160513115940'), ('20160513123028'), ('20160513144927'), ('20160515073133'), ('20160515073826'), ('20160515074954'), ('20160516152548'), ('20160516153747'), ('20160516194853'), ('20160517092857'), ('20160517101512'), ('20160517102123'), ('20160517103922'), ('20160517110722'), ('20160517111053'), ('20160517113734'), ('20160517115800'), ('20160517125158'), ('20160517211611'), ('20160519200530'), ('20160520141455'), ('20160520142114'), ('20160520151100'), ('20160523062919'), ('20160523111212'), ('20160523134144'), ('20160523144401'), ('20160523150519'), ('20160524145856'), ('20160524155401'), ('20160524192650'), ('20160524192805'), ('20160524192859'), ('20160524195216'), ('20160524210510'), ('20160524210952'), ('20160524213930'), ('20160524221026'), ('20160524223055'), ('20160525105622'), ('20160525122831'), ('20160525202154'), ('20160525202912'), ('20160525203905'), ('20160603134420'), ('20160603134547'), ('20160603134923'), ('20160603201156'), ('20160603201256'), ('20160603202143'), ('20160604214151'), ('20160604222116'), ('20160605101834'), ('20160605192328'), ('20160605192524'), ('20160605193318'), ('20160605211444'), ('20160605211612'), ('20160607183913'), ('20160609161856'), ('20160609175034'), ('20160609183417'), ('20160610124301'), ('20160613145120'), ('20160613161922'), ('20160614082527'), ('20160615165505'), ('20160622105806'), ('20160622112911'), ('20160622113449'), ('20160622113649'), ('20160622114653'), ('20160622115927'), ('20160622142531'), ('20160622143425'), ('20160622144845'), ('20160622202723'), ('20160622231145'), ('20160623135959'), ('20160623150755'), ('20160624113525'), ('20160629144830'), ('20160629151520'), ('20160629201243'), ('20160629221305'), ('20160629221424'), ('20160629221800'), ('20160706111638'), ('20160707212141'), ('20160708105151'), ('20160708121934'), ('20160708140307'), ('20160708155010'), ('20160708172910'), ('20160708173417'), ('20160711125108'), ('20160711151815'), ('20160718092226'), ('20160718092417'), ('20160718094712'), ('20160719123714'), ('20160720085630'), ('20160721091930'), ('20160721134515'), ('20160721144047'), ('20160721151057'), ('20160721153228'), ('20160721153817'), ('20160721160533'), ('20160721160901'), ('20160721162155'), ('20160722151335'), ('20160722151503'), ('20160727150803'), ('20160803124909'), ('20160803142910'), ('20160803205746'), ('20160808125148'), ('20160809092452'), ('20160809095256'), ('20160809115742'), ('20160809120030'), ('20160811100934'), ('20160811102028'), ('20160811103149'), ('20160811104830'), ('20160811111706'), ('20160811112312'), ('20160811121506'), ('20160811124755'), ('20160812133817'), ('20160812135204'), ('20160812135415'), ('20160812140655'), ('20160812142245'), ('20160812142416'), ('20160812202908'), ('20160812215714'), ('20160815130928'), ('20160818110211'), ('20160818110621'), ('20160818135739'), ('20160825110839'), ('20160825120623'), ('20160830120608'), ('20160830121920'), ('20160928120044'), ('20160928123138'), ('20160928213723'), ('20160929120951'), ('20160929121253'), ('20160929121400'), ('20160929124430'), ('20160929124817'), ('20160929125059'), ('20160929125508'), ('20160930085831'), ('20160930102048'), ('20161010145325'), ('20161010145425'), ('20161010205914'), ('20161010220918'), ('20161010221017'), ('20161010224003'), ('20161010224400'), ('20161010225250'), ('20161011210352'), ('20161011214757'), ('20161012110655'), ('20161012135758'), ('20161012150803'), ('20161012150927'), ('20161012195055'), ('20161012195151'), ('20161012210141'), ('20161012210225');
 
 

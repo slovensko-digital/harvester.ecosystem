@@ -31,6 +31,8 @@ module Ra
           build_region_change(tag)
         when :countyChange
           build_county_change(tag)
+        when :municipalityChange
+          build_municipality_change(tag)
         else
           fail "Don't know how to handle #{tag.name}"
       end
@@ -284,6 +286,44 @@ module Ra
       Ra::CountyChange.find_or_create_by!(payload)
     end
 
+    def build_municipality_change(tag)
+      payload = {}
+      tag.children.each do |child|
+        case child.name
+          when :changeId
+            payload[:id] = Integer(child.children.first.value)
+          when :changedAt
+            payload[:changed_at] = Time.parse(child.children.first.value)
+          when :databaseOperation
+            payload[:database_operation] = child.children.first.value
+          when :objectId
+            payload[:municipality_id] = Integer(child.children.first.value)
+          when :versionId
+            payload[:version_id] = Integer(child.children.first.value)
+          when :createdReason
+            payload[:created_reason] = child.children.first.value
+          when :validFrom
+            payload[:valid_from] = Time.parse(child.children.first.value)
+          when :validTo
+            payload[:valid_to] = Time.parse(child.children.first.value)
+          when :effectiveDate
+            payload[:effective_on] = Date.parse(child.children.first.value)
+          when :countyIdentifier
+            payload[:county_id] = Integer(child.children.first.value)
+          when :status
+            payload[:municipality_status] = child.children.first.value
+          when :Municipality
+            codelist = parse_codelist(child.children.first)
+            fail unless codelist[:code] == 'CL000025'
+            payload[:municipality_code] = Ra::MunicipalityCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+          else
+            fail "Don't know how to handle #{child.name}"
+        end
+      end
+
+      Ra::MunicipalityChange.find_or_create_by!(payload)
+    end
+
     def parse_codelist(tag)
       codelist = {}
       tag.children.each do |child|
@@ -439,7 +479,7 @@ module Ra
         when :changesGenerated
           stack.push(ChangesGeneratedParser.new)
         when :propertyRegistrationNumberChange, :buildingNumberChange, :buildingUnitChange,
-          :districtChange, :streetNameChange, :regionChange, :countyChange
+          :districtChange, :streetNameChange, :regionChange, :municipalityChange, :countyChange
           stack.push(GenericParser.new(name))
         when :register
         when :type

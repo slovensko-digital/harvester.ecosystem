@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:register xmlns:ns0="http://www.minv.sk/ra">
+  <type>MUNICIPALITY</type>
+  <count>3011</count>
+  <municipalityChange>
+    <databaseOperation>INSERT</databaseOperation>
+    <objectId>92</objectId>
+    <versionId>1</versionId>
+    <createdReason>CREATE</createdReason>
+    <validTo>2004-04-30T23:59:59+02:00</validTo>
+    <Municipality>
+      <Codelist>
+        <CodelistCode>CL000025</CodelistCode>
+        <CodelistItem>
+          <ItemCode>100000</ItemCode>
+          <ItemName>Neznáma</ItemName>
+        </CodelistItem>
+      </Codelist>
+    </Municipality>
+    <countyIdentifier>11</countyIdentifier>
+    <status>MUNICIPALITY</status>
+  </municipalityChange>
+</ns0:register>

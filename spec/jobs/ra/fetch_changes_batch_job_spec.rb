@@ -149,6 +149,29 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       )
     end
 
+    it 'can parse municipality changes' do
+      expect(downloader).to receive(:download_file).with('abc').
+        and_return(fixture_filepath('jobs/ra/fixtures/DavkaInit_20151009-03.xml'))
+
+      subject.perform('abc', downloader: downloader)
+
+      municipality_change = Ra::MunicipalityChange.first
+      expect(municipality_change).to have_attributes(
+        municipality_id: 1,
+        county_id: 11,
+        database_operation: 'INSERT',
+        version_id: 1,
+        created_reason: 'CREATE',
+        valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
+        effective_on: Date.parse('1996-07-24+02:00'),
+        municipality_status: 'MUNICIPALITY'
+      )
+
+      expect(municipality_change.municipality_code).to have_attributes(
+        name: 'Neznáma'
+      )
+    end
+
     pending 'it adds batch record last'
 
   end
