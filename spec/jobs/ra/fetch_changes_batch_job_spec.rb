@@ -126,6 +126,29 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       )
     end
 
+    it 'can parse county changes' do
+      expect(downloader).to receive(:download_file).with('abc').
+        and_return(fixture_filepath('jobs/ra/fixtures/DavkaInit_20151009-02.xml'))
+
+      subject.perform('abc', downloader: downloader)
+
+      county_change = Ra::CountyChange.first
+      expect(county_change).to have_attributes(
+        county_id: 11,
+        region_id: 1,
+        database_operation: 'INSERT',
+        version_id: 1,
+        created_reason: 'CREATE',
+        valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
+        effective_on: Date.parse('1996-07-24+02:00'),
+      )
+
+      expect(county_change.county_code).to have_attributes(
+        code: '6000',
+        name: 'Neznámy'
+      )
+    end
+
     pending 'it adds batch record last'
 
   end

@@ -29,6 +29,8 @@ module Ra
           build_street_name_change(tag)
         when :regionChange
           build_region_change(tag)
+        when :countyChange
+          build_county_change(tag)
         else
           fail "Don't know how to handle #{tag.name}"
       end
@@ -234,12 +236,6 @@ module Ra
             payload[:valid_to] = Time.parse(child.children.first.value)
           when :effectiveDate
             payload[:effective_on] = Date.parse(child.children.first.value)
-          when :StreetName
-            payload[:street_name] = child.children.first.value
-          when :municipalityIdentifier
-            payload[:municipality_id] = Integer(child.children.first.value)
-          when :districtIdentifier
-            payload[:district_id] = Integer(child.children.first.value)
           when :Region
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000023'
@@ -250,6 +246,42 @@ module Ra
       end
 
       Ra::RegionChange.find_or_create_by!(payload)
+    end
+
+    def build_county_change(tag)
+      payload = {}
+      tag.children.each do |child|
+        case child.name
+          when :changeId
+            payload[:id] = Integer(child.children.first.value)
+          when :changedAt
+            payload[:changed_at] = Time.parse(child.children.first.value)
+          when :databaseOperation
+            payload[:database_operation] = child.children.first.value
+          when :objectId
+            payload[:county_id] = Integer(child.children.first.value)
+          when :versionId
+            payload[:version_id] = Integer(child.children.first.value)
+          when :createdReason
+            payload[:created_reason] = child.children.first.value
+          when :validFrom
+            payload[:valid_from] = Time.parse(child.children.first.value)
+          when :validTo
+            payload[:valid_to] = Time.parse(child.children.first.value)
+          when :effectiveDate
+            payload[:effective_on] = Date.parse(child.children.first.value)
+          when :regionIdentifier
+            payload[:region_id] = Integer(child.children.first.value)
+          when :County
+            codelist = parse_codelist(child.children.first)
+            fail unless codelist[:code] == 'CL000024'
+            payload[:county_code] = Ra::CountyCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+          else
+            fail "Don't know how to handle #{child.name}"
+        end
+      end
+
+      Ra::CountyChange.find_or_create_by!(payload)
     end
 
     def parse_codelist(tag)
@@ -406,7 +438,8 @@ module Ra
           stack.push(ChangesIdParser.new)
         when :changesGenerated
           stack.push(ChangesGeneratedParser.new)
-        when :propertyRegistrationNumberChange, :buildingNumberChange, :buildingUnitChange, :districtChange, :streetNameChange, :regionChange
+        when :propertyRegistrationNumberChange, :buildingNumberChange, :buildingUnitChange,
+          :districtChange, :streetNameChange, :regionChange, :countyChange
           stack.push(GenericParser.new(name))
         when :register
         when :type
