@@ -104,6 +104,28 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       )
     end
 
+    it 'can parse region changes' do
+      expect(downloader).to receive(:download_file).with('abc').
+        and_return(fixture_filepath('jobs/ra/fixtures/DavkaInit_20151009-01.xml'))
+
+      subject.perform('abc', downloader: downloader)
+
+      region_change = Ra::RegionChange.first
+      expect(region_change).to have_attributes(
+        region_id: 1,
+        database_operation: 'INSERT',
+        version_id: 1,
+        created_reason: 'CREATE',
+        valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
+        effective_on: Date.parse('1996-07-24+02:00'),
+      )
+
+      expect(region_change.region_code).to have_attributes(
+        code: '0',
+        name: 'Neznámy'
+      )
+    end
+
     pending 'it adds batch record last'
 
   end

@@ -27,13 +27,17 @@ module Ra
           build_building_unit_change(tag)
         when :streetNameChange
           build_street_name_change(tag)
+        when :regionChange
+          build_region_change(tag)
         else
           fail "Don't know how to handle #{tag.name}"
       end
     end
 
     def report_end
-      Ra::ChangesBatch.find_or_create_by!(id: @data[:changes_id], generated_at: Time.parse(@data[:generated_at]))
+      if @data[:changes_id]
+        Ra::ChangesBatch.find_or_create_by!(id: @data[:changes_id], generated_at: Time.parse(@data[:generated_at]))
+      end
     end
 
     private
@@ -208,6 +212,46 @@ module Ra
       Ra::StreetNameChange.find_or_create_by!(payload)
     end
 
+    def build_region_change(tag)
+      payload = {}
+      tag.children.each do |child|
+        case child.name
+          when :changeId
+            payload[:id] = Integer(child.children.first.value)
+          when :changedAt
+            payload[:changed_at] = Time.parse(child.children.first.value)
+          when :databaseOperation
+            payload[:database_operation] = child.children.first.value
+          when :objectId
+            payload[:region_id] = Integer(child.children.first.value)
+          when :versionId
+            payload[:version_id] = Integer(child.children.first.value)
+          when :createdReason
+            payload[:created_reason] = child.children.first.value
+          when :validFrom
+            payload[:valid_from] = Time.parse(child.children.first.value)
+          when :validTo
+            payload[:valid_to] = Time.parse(child.children.first.value)
+          when :effectiveDate
+            payload[:effective_on] = Date.parse(child.children.first.value)
+          when :StreetName
+            payload[:street_name] = child.children.first.value
+          when :municipalityIdentifier
+            payload[:municipality_id] = Integer(child.children.first.value)
+          when :districtIdentifier
+            payload[:district_id] = Integer(child.children.first.value)
+          when :Region
+            codelist = parse_codelist(child.children.first)
+            fail unless codelist[:code] == 'CL000023'
+            payload[:region_code] = Ra::RegionCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+          else
+            fail "Don't know how to handle #{child.name}"
+        end
+      end
+
+      Ra::RegionChange.find_or_create_by!(payload)
+    end
+
     def parse_codelist(tag)
       codelist = {}
       tag.children.each do |child|
@@ -362,7 +406,7 @@ module Ra
           stack.push(ChangesIdParser.new)
         when :changesGenerated
           stack.push(ChangesGeneratedParser.new)
-        when :propertyRegistrationNumberChange, :buildingNumberChange, :buildingUnitChange, :districtChange, :streetNameChange
+        when :propertyRegistrationNumberChange, :buildingNumberChange, :buildingUnitChange, :districtChange, :streetNameChange, :regionChange
           stack.push(GenericParser.new(name))
         when :register
         when :type
@@ -375,6 +419,7 @@ module Ra
     def end_element(name, stack, listener)
       case name
         when :'ns0:getChangesResponse'
+        when :'ns0:register'
           listener.report_end
         when :return
         when :corrId
@@ -463,7 +508,11 @@ class Ra::FetchChangesBatchJob
 
   def perform(url, downloader: ::Harvester::Utils)
     file = downloader.download_file(url)
+    perform_on_file(file)
+  end
+
+  def perform_on_file(path)
     handler = Sample.new(Ra::RecordBuilder.new)
-    Ox.sax_parse(handler, File.open(file, 'r'))
+    Ox.sax_parse(handler, File.open(path, 'r'))
   end
 end
