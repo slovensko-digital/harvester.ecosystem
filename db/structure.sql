@@ -122,7 +122,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 -- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
 --
 
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA datahub;
 
 
 --
@@ -1096,32 +1096,6 @@ ALTER SEQUENCE znizenie_imania_issues_id_seq OWNED BY znizenie_imania_issues.id;
 SET search_path = public, pg_catalog;
 
 --
--- Name: building_number_changes; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE building_number_changes (
-    id integer NOT NULL,
-    property_registration_number_id integer NOT NULL,
-    street_name_id integer,
-    changed_at timestamp without time zone NOT NULL,
-    database_operation ra.change_type,
-    building_number_id integer NOT NULL,
-    version_id integer NOT NULL,
-    created_reason ra.created_reason_type,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    effective_on date NOT NULL,
-    verified_at timestamp without time zone,
-    building_number character varying,
-    building_index character varying NOT NULL,
-    postal_code integer,
-    address_point geography(Point,4326),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1140,19 +1114,19 @@ CREATE TABLE building_number_changes (
     id integer NOT NULL,
     property_registration_number_id integer NOT NULL,
     street_name_id integer,
-    changed_at timestamp without time zone NOT NULL,
+    changed_at timestamp without time zone,
     database_operation change_type,
     building_number_id integer NOT NULL,
     version_id integer NOT NULL,
     created_reason created_reason_type,
     valid_from timestamp without time zone,
     valid_to timestamp without time zone,
-    effective_on date NOT NULL,
+    effective_on date,
     verified_at timestamp without time zone,
     building_number character varying,
     building_index character varying NOT NULL,
     postal_code integer,
-    address_point public.geography(Point,4326),
+    address_point datahub.geography(Point,4326),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1168,6 +1142,13 @@ CREATE SEQUENCE building_number_changes_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: building_number_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE building_number_changes_id_seq OWNED BY building_number_changes.id;
 
 
 --
@@ -1241,14 +1222,14 @@ CREATE TABLE building_unit_changes (
     id integer NOT NULL,
     building_unit_id integer NOT NULL,
     building_number_id integer NOT NULL,
-    changed_at timestamp without time zone NOT NULL,
+    changed_at timestamp without time zone,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
     valid_from timestamp without time zone NOT NULL,
-    valid_to timestamp without time zone NOT NULL,
-    effective_on date NOT NULL,
-    building_unit_floor character varying NOT NULL,
+    valid_to timestamp without time zone,
+    effective_on date,
+    building_unit_floor character varying,
     building_unit_number character varying NOT NULL,
     building_unit_label character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -1647,14 +1628,14 @@ CREATE TABLE street_name_changes (
     street_name_id integer NOT NULL,
     municipality_id integer NOT NULL,
     district_id integer,
-    changed_at timestamp without time zone NOT NULL,
+    changed_at timestamp without time zone,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
-    valid_from timestamp without time zone NOT NULL,
-    valid_to timestamp without time zone NOT NULL,
-    effective_on date NOT NULL,
-    street_name character varying NOT NULL,
+    valid_from timestamp without time zone,
+    valid_to timestamp without time zone,
+    effective_on date,
+    street_name character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -3391,6 +3372,13 @@ SET search_path = ra, pg_catalog;
 -- Name: id; Type: DEFAULT; Schema: ra; Owner: -
 --
 
+ALTER TABLE ONLY building_number_changes ALTER COLUMN id SET DEFAULT nextval('building_number_changes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
 ALTER TABLE ONLY building_purposes ALTER COLUMN id SET DEFAULT nextval('building_purposes_id_seq'::regclass);
 
 
@@ -4011,6 +3999,14 @@ ALTER TABLE ONLY znizenie_imania_issues
 
 
 SET search_path = ra, pg_catalog;
+
+--
+-- Name: building_number_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_number_changes
+    ADD CONSTRAINT building_number_changes_pkey PRIMARY KEY (id);
+
 
 --
 -- Name: building_purposes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -

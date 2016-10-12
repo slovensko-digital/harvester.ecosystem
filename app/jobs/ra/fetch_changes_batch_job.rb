@@ -170,7 +170,7 @@ module Ra
             payload[:effective_on] = Date.parse(child.children.first.value)
           when :BuildingUnit
             payload[:building_unit_label] = child.children.first.value
-            payload[:building_unit_floor] = child.attrs.fetch(:Floor)
+            payload[:building_unit_floor] = child.attrs[:Floor]
             payload[:building_unit_number] = child.attrs.fetch(:UnitNumber)
           when :buildingNumberIdentifier
             payload[:building_number_id] = Integer(child.children.first.value)
@@ -414,9 +414,9 @@ module Ra
       lon = nil
       tag.children.each do |ch|
         case ch.name
-          when :AxisB
+          when :AxisB, :axisB
             lat = ch.children.first.value
-          when :AxisL
+          when :AxisL, :axisL
             lon = ch.children.first.value
           else
             fail "Don't know how to handle #{ch.name}"

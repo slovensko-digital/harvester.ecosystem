@@ -172,7 +172,6 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       )
     end
 
-
     it 'can parse district changes' do
       expect(downloader).to receive(:download_file).with('abc').
         and_return(fixture_filepath('jobs/ra/fixtures/DavkaInit_20151009-04.xml'))
