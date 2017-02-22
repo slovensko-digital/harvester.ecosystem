@@ -13,6 +13,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv'
+gem 'typhoeus'
+gem 'clockwork'
+gem 'sidekiq'
+gem 'foreman'
+
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,0 +1,7 @@
+---
+staging:
+  :concurrency: 8
+production:
+  :concurrency: 8
+:queues:
+  - [upvs, 1]
