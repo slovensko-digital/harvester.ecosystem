@@ -157,13 +157,12 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       municipality_change = Ra::MunicipalityChange.first
       expect(municipality_change).to have_attributes(
-        municipality_id: 1,
+        municipality_id: 92,
         county_id: 11,
         database_operation: 'INSERT',
         version_id: 1,
         created_reason: 'CREATE',
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
-        effective_on: Date.parse('1996-07-24+02:00'),
         municipality_status: 'MUNICIPALITY'
       )
 

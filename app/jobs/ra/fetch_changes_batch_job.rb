@@ -308,8 +308,6 @@ module Ra
             payload[:valid_from] = Time.parse(child.children.first.value)
           when :validTo
             payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
           when :countyIdentifier
             payload[:county_id] = Integer(child.children.first.value)
           when :status
