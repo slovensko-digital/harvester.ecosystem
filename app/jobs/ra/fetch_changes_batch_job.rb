@@ -531,8 +531,8 @@ module Ra
     def end_element(name, stack, listener)
       case name
         when :'ns0:getChangesResponse'
-        when :'ns0:register'
           listener.report_end
+        when :'ns0:register'
         when :return
         when :corrId
         when :resultCode
