@@ -23,7 +23,7 @@ gem 'sidekiq-symbols'
 
 gem 'typhoeus'
 gem 'nokogiri'
-gem 'ox'
+gem 'ox', '2.4.12'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
