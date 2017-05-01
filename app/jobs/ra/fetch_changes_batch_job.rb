@@ -59,7 +59,9 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            payload[:property_registration_number_id] = child.children.first.value.to_i
+            object_id = Integer(child.children.first.value)
+            Ra::PropertyRegistrationNumber.find_or_create_by!(id: object_id)
+            payload[:property_registration_number_id] = object_id
           when :versionId
             payload[:version_id] = child.children.first.value.to_i
           when :createdReason
@@ -113,7 +115,9 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            payload[:building_number_id] = Integer(child.children.first.value)
+            object_id = Integer(child.children.first.value)
+            Ra::BuildingNumber.find_or_create_by!(id: object_id)
+            payload[:building_number_id] = object_id
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -157,7 +161,9 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            payload[:building_unit_id] = Integer(child.children.first.value)
+            object_id = Integer(child.children.first.value)
+            Ra::BuildingUnit.find_or_create_by!(id: object_id)
+            payload[:building_unit_id] = object_id
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -193,7 +199,9 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            payload[:street_name_id] = Integer(child.children.first.value)
+            object_id = Integer(child.children.first.value)
+            Ra::StreetName.find_or_create_by!(id: object_id)
+            payload[:street_name_id] = object_id
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -229,7 +237,9 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            payload[:region_id] = Integer(child.children.first.value)
+            object_id = Integer(child.children.first.value)
+            Ra::Region.find_or_create_by!(id: object_id)
+            payload[:region_id] = object_id
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -263,7 +273,9 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            payload[:county_id] = Integer(child.children.first.value)
+            object_id = Integer(child.children.first.value)
+            Ra::County.find_or_create_by!(id: object_id)
+            payload[:county_id] = object_id
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -299,7 +311,9 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            payload[:municipality_id] = Integer(child.children.first.value)
+            object_id = Integer(child.children.first.value)
+            Ra::Municipality.find_or_create_by!(id: object_id)
+            payload[:municipality_id] = object_id
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -335,7 +349,9 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            payload[:district_id] = Integer(child.children.first.value)
+            object_id = Integer(child.children.first.value)
+            Ra::District.find_or_create_by!(id: object_id)
+            payload[:district_id] = object_id
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason

@@ -28,6 +28,10 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         district_id: 4697
       )
 
+      expect(property_change.property_registration_number_object).to have_attributes(
+        id: 585020,
+      )
+
       expect(property_change.building_purpose).to have_attributes(
         code: 'residentialBuilding',
         name: 'Bytová budova',
@@ -52,6 +56,10 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         building_index: '1745974A',
         postal_code: 7214,
         property_registration_number_id: 585020,
+      )
+
+      expect(building_number_change.building_number_object).to have_attributes(
+        id: 2125309,
       )
 
       expect(building_number_change.address_point).to have_attributes(
@@ -89,7 +97,8 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       subject.perform('https://data.gov.sk/dataset/de3dd18f-9124-4acb-ae00-705555332256/resource/c0cf0bd9-f6e7-4fdd-8d3c-311fa504feab/download/zmenovadavka1952939.xml', downloader: downloader)
 
-      expect(Ra::StreetNameChange.first).to have_attributes(
+      street_name_change = Ra::StreetNameChange.first
+      expect(street_name_change).to have_attributes(
         id: 19764348,
         street_name_id: 39693,
         changed_at: Time.parse('2016-04-14T11:35:51.872'),
@@ -101,6 +110,10 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         effective_on: Date.parse('1981-01-26'),
         street_name: 'Juraja Hronca',
         municipality_id: 3000
+      )
+
+      expect(street_name_change.street_name_object).to have_attributes(
+        id: 39693,
       )
     end
 
@@ -118,6 +131,10 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         created_reason: 'CREATE',
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         effective_on: Date.parse('1996-07-24+02:00'),
+      )
+
+      expect(region_change.region_object).to have_attributes(
+        id: 1,
       )
 
       expect(region_change.region_code).to have_attributes(
@@ -143,6 +160,10 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         effective_on: Date.parse('1996-07-24+02:00'),
       )
 
+      expect(county_change.county_object).to have_attributes(
+        id: 11,
+      )
+
       expect(county_change.county_code).to have_attributes(
         code: '6000',
         name: 'Neznámy'
@@ -166,6 +187,10 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         municipality_status: 'MUNICIPALITY'
       )
 
+      expect(municipality_change.municipality_object).to have_attributes(
+        id: 92,
+      )
+
       expect(municipality_change.municipality_code).to have_attributes(
         name: 'Neznáma'
       )
@@ -186,6 +211,10 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         created_reason: 'CREATE',
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         unique_numbering: false
+      )
+
+      expect(district_change.district_object).to have_attributes(
+        id: 4764,
       )
 
       expect(district_change.district_code).to have_attributes(
