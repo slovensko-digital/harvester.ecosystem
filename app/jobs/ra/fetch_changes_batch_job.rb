@@ -53,7 +53,7 @@ module Ra
       tag.children.each do |child|
         case child.name
           when :changeId
-            payload[:id] = child.children.first.value.to_i
+            payload[:id] = Integer(child.children.first.value)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation
@@ -62,7 +62,7 @@ module Ra
             id = Integer(child.children.first.value)
             payload[:property_registration_number_object] = Ra::PropertyRegistrationNumber.find_or_create_by!(id: id)
           when :versionId
-            payload[:version_id] = child.children.first.value.to_i
+            payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
             payload[:created_reason] = child.children.first.value
           when :validFrom
@@ -72,7 +72,7 @@ module Ra
           when :effectiveDate
             payload[:effective_on] = Date.parse(child.children.first.value)
           when :PropertyRegistrationNumber
-            payload[:property_registration_number] = child.children.first.value.to_i
+            payload[:property_registration_number] = Integer(child.children.first.value)
           when :Building
             payload[:building_contains_flats] = child.attrs[:ContainsFlats] == 'true'
             child.children.each do |ch|
