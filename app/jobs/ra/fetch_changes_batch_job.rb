@@ -191,6 +191,8 @@ module Ra
 
     def build_street_name_change(tag)
       payload = {}
+      municipalities_payload = []
+      districts_payload = []
       tag.children.each do |child|
         case child.name
           when :changeId
@@ -215,15 +217,20 @@ module Ra
           when :StreetName
             payload[:street_name] = child.children.first.value
           when :municipalityIdentifier
-            payload[:municipality_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            municipalities_payload << Ra::Municipality.find_or_create_by!(id: id)
           when :districtIdentifier
-            payload[:district_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            districts_payload << Ra::District.find_or_create_by!(id: id)
           else
             fail "Don't know how to handle #{child.name}"
         end
       end
 
-      Ra::StreetNameChange.find_or_create_by!(payload)
+      street_name_change = Ra::StreetNameChange.find_or_initialize_by(payload)
+      street_name_change.municipalities = municipalities_payload
+      street_name_change.districts = districts_payload
+      street_name_change.save!
     end
 
     def build_region_change(tag)

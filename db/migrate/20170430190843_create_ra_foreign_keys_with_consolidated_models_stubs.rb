@@ -12,7 +12,6 @@ class CreateRaForeignKeysWithConsolidatedModelsStubs < ActiveRecord::Migration[5
     add_foreign_key 'ra.district_changes', 'ra.districts', column: 'district_id'
     add_foreign_key 'ra.district_changes', 'ra.municipalities', column: 'municipality_id'
 
-    #TODO use a join table or some kind of Postgres magic??
     add_foreign_key 'ra.street_name_changes', 'ra.street_names', column: 'street_name_id'
 
     add_foreign_key 'ra.property_registration_number_changes', 'ra.property_registration_numbers', column: 'property_registration_number_id'
