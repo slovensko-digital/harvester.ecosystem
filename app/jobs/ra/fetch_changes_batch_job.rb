@@ -59,9 +59,8 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            object_id = Integer(child.children.first.value)
-            Ra::PropertyRegistrationNumber.find_or_create_by!(id: object_id)
-            payload[:property_registration_number_id] = object_id
+            id = Integer(child.children.first.value)
+            payload[:property_registration_number_object] = Ra::PropertyRegistrationNumber.find_or_create_by!(id: id)
           when :versionId
             payload[:version_id] = child.children.first.value.to_i
           when :createdReason
@@ -93,9 +92,11 @@ module Ra
               end
             end
           when :municipalityIdentifier
-            payload[:municipality_id] = child.children.first.value.to_i
+            id = Integer(child.children.first.value)
+            payload[:municipality] = Ra::Municipality.find_or_create_by!(id: id)
           when :districtIdentifier
-            payload[:district_id] = child.children.first.value.to_i
+            id = Integer(child.children.first.value)
+            payload[:district] = Ra::District.find_or_create_by!(id: id)
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -115,9 +116,8 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            object_id = Integer(child.children.first.value)
-            Ra::BuildingNumber.find_or_create_by!(id: object_id)
-            payload[:building_number_id] = object_id
+            id = Integer(child.children.first.value)
+            payload[:building_number_object] = Ra::BuildingNumber.find_or_create_by!(id: id)
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -139,9 +139,11 @@ module Ra
           when :AddressPoint
             payload[:address_point] = parse_address_point(child)
           when :propertyRegistrationNumberIdentifier
-            payload[:property_registration_number_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:property_registration_number] = Ra::PropertyRegistrationNumber.find_or_create_by!(id: id)
           when :streetNameIdentifier
-            payload[:street_name_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:street_name] = Ra::StreetName.find_or_create_by!(id: id)
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -161,9 +163,8 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            object_id = Integer(child.children.first.value)
-            Ra::BuildingUnit.find_or_create_by!(id: object_id)
-            payload[:building_unit_id] = object_id
+            id = Integer(child.children.first.value)
+            payload[:building_unit_object] = Ra::BuildingUnit.find_or_create_by!(id: id)
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -199,9 +200,8 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            object_id = Integer(child.children.first.value)
-            Ra::StreetName.find_or_create_by!(id: object_id)
-            payload[:street_name_id] = object_id
+            id = Integer(child.children.first.value)
+            payload[:street_name_object] = Ra::StreetName.find_or_create_by!(id: id)
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -237,9 +237,8 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            object_id = Integer(child.children.first.value)
-            Ra::Region.find_or_create_by!(id: object_id)
-            payload[:region_id] = object_id
+            id = Integer(child.children.first.value)
+            payload[:region_object] = Ra::Region.find_or_create_by!(id: id)
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -273,9 +272,8 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            object_id = Integer(child.children.first.value)
-            Ra::County.find_or_create_by!(id: object_id)
-            payload[:county_id] = object_id
+            id = Integer(child.children.first.value)
+            payload[:county_object] = Ra::County.find_or_create_by!(id: id)
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -287,7 +285,8 @@ module Ra
           when :effectiveDate
             payload[:effective_on] = Date.parse(child.children.first.value)
           when :regionIdentifier
-            payload[:region_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:region] = Ra::Region.find_or_create_by!(id: id)
           when :County
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000024'
@@ -311,9 +310,8 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            object_id = Integer(child.children.first.value)
-            Ra::Municipality.find_or_create_by!(id: object_id)
-            payload[:municipality_id] = object_id
+            id = Integer(child.children.first.value)
+            payload[:municipality_object] = Ra::Municipality.find_or_create_by!(id: id)
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -323,7 +321,8 @@ module Ra
           when :validTo
             payload[:valid_to] = Time.parse(child.children.first.value)
           when :countyIdentifier
-            payload[:county_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:county] = Ra::County.find_or_create_by!(id: id)
           when :status
             payload[:municipality_status] = child.children.first.value
           when :Municipality
@@ -349,9 +348,8 @@ module Ra
           when :databaseOperation
             payload[:database_operation] = child.children.first.value
           when :objectId
-            object_id = Integer(child.children.first.value)
-            Ra::District.find_or_create_by!(id: object_id)
-            payload[:district_id] = object_id
+            id = Integer(child.children.first.value)
+            payload[:district_object] = Ra::District.find_or_create_by!(id: id)
           when :versionId
             payload[:version_id] = Integer(child.children.first.value)
           when :createdReason
@@ -363,7 +361,8 @@ module Ra
           when :effectiveDate
             payload[:effective_on] = Date.parse(child.children.first.value)
           when :municipalityIdentifier
-            payload[:municipality_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:municipality] = Ra::Municipality.find_or_create_by!(id: id)
           when :District
             payload[:unique_numbering] = child.attrs[:UniqueNumbering] == 'true'
             codelist = parse_codelist(child.children.first)

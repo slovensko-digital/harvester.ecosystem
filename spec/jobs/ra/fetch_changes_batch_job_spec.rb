@@ -25,11 +25,11 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         building_contains_flats: true,
         building_type_id: 10,
         municipality_id: 2889,
-        district_id: 4697
-      )
+        district_id: 4697,
 
-      expect(property_change.property_registration_number_object).to have_attributes(
-        id: 585020,
+        property_registration_number_object: Ra::PropertyRegistrationNumber.find(585020),
+        municipality: Ra::Municipality.find(2889),
+        district: Ra::District.find(4697),
       )
 
       expect(property_change.building_purpose).to have_attributes(
@@ -56,10 +56,9 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         building_index: '1745974A',
         postal_code: 7214,
         property_registration_number_id: 585020,
-      )
 
-      expect(building_number_change.building_number_object).to have_attributes(
-        id: 2125309,
+        building_number_object: Ra::BuildingNumber.find(2125309),
+        property_registration_number: Ra::PropertyRegistrationNumber.find(585020),
       )
 
       expect(building_number_change.address_point).to have_attributes(
@@ -91,6 +90,8 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       )
     end
 
+    pending 'parses building_name_change.street_name'
+
     it 'can parse street name changes' do
       expect(downloader).to receive(:download_file).with('https://data.gov.sk/dataset/de3dd18f-9124-4acb-ae00-705555332256/resource/c0cf0bd9-f6e7-4fdd-8d3c-311fa504feab/download/zmenovadavka1952939.xml').
         and_return(fixture_filepath('jobs/ra/fixtures/zmenovadavka1952939.xml'))
@@ -109,7 +110,9 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         valid_to: Time.parse('2016-04-14T11:35:51.821'),
         effective_on: Date.parse('1981-01-26'),
         street_name: 'Juraja Hronca',
-        municipality_id: 3000
+
+        municipalities: [Ra::Municipality.find(3000)],
+        districts: [],
       )
 
       expect(street_name_change.street_name_object).to have_attributes(
@@ -131,10 +134,8 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         created_reason: 'CREATE',
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         effective_on: Date.parse('1996-07-24+02:00'),
-      )
 
-      expect(region_change.region_object).to have_attributes(
-        id: 1,
+        region_object: Ra::Region.find(1),
       )
 
       expect(region_change.region_code).to have_attributes(
@@ -158,10 +159,9 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         created_reason: 'CREATE',
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         effective_on: Date.parse('1996-07-24+02:00'),
-      )
 
-      expect(county_change.county_object).to have_attributes(
-        id: 11,
+        county_object: Ra::County.find(11),
+        region: Ra::Region.find(1),
       )
 
       expect(county_change.county_code).to have_attributes(
@@ -184,17 +184,18 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         version_id: 1,
         created_reason: 'CREATE',
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
-        municipality_status: 'MUNICIPALITY'
-      )
+        municipality_status: 'MUNICIPALITY',
 
-      expect(municipality_change.municipality_object).to have_attributes(
-        id: 92,
+        municipality_object: Ra::Municipality.find(92),
+        county: Ra::County.find(11),
       )
 
       expect(municipality_change.municipality_code).to have_attributes(
         name: 'Neznáma'
       )
     end
+
+    pending 'it parses city_id for some municipality changes'
 
     it 'can parse district changes' do
       expect(downloader).to receive(:download_file).with('abc').
@@ -210,11 +211,10 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         version_id: 1,
         created_reason: 'CREATE',
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
-        unique_numbering: false
-      )
+        unique_numbering: false,
 
-      expect(district_change.district_object).to have_attributes(
-        id: 4764,
+        district_object: Ra::District.find(4764),
+        municipality: Ra::Municipality.find(92),
       )
 
       expect(district_change.district_code).to have_attributes(
