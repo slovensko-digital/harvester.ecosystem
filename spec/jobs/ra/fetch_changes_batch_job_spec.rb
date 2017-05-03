@@ -23,7 +23,6 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         effective_on: Date.parse('1000-01-01'),
         property_registration_number: 39,
         building_contains_flats: true,
-        building_type_id: 10,
         municipality_id: 2889,
         district_id: 4697,
 
@@ -33,13 +32,13 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         district: Ra::District.find(4697),
       )
 
-      expect(property_change.building_purpose).to have_attributes(
+      expect(property_change.building_purpose_code).to have_attributes(
         code: 'residentialBuilding',
         name: 'Bytová budova',
       )
 
-      expect(property_change.building_type).to have_attributes(
-        id: 10,
+      expect(property_change.building_type_code).to have_attributes(
+        code: '10',
         name: 'Rodinný dom',
       )
 
@@ -202,6 +201,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       )
 
       expect(municipality_change.municipality_code).to have_attributes(
+        code: '100000',
         name: 'Neznáma'
       )
     end

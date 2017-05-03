@@ -73,12 +73,12 @@ module Ra
                   codelist = parse_codelist(ch.children.first)
                   fail unless codelist[:code] == 'CL010142'
                   if codelist[:item]
-                    payload[:building_purpose] = Ra::BuildingPurpose.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+                    payload[:building_purpose_code] = Ra::BuildingPurposeCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
                   end
                 when :BuildingTypeCode
                   codelist = parse_codelist(ch.children.first)
                   fail unless codelist[:code] == 'CL010143'
-                  payload[:building_type] = Ra::BuildingType.find_or_create_by!(id: codelist[:item][:code], name: codelist[:item][:name])
+                  payload[:building_type_code] = Ra::BuildingTypeCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
                 else
                   fail "Don't know how to handle #{ch.name}"
               end

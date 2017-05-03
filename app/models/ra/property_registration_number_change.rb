@@ -6,6 +6,6 @@ class Ra::PropertyRegistrationNumberChange < ApplicationRecord
     :required => true
   belongs_to :municipality, class_name: 'Ra::Municipality', optional: true
   belongs_to :district, class_name: 'Ra::District', optional: true
-  belongs_to :building_purpose, class_name: 'Ra::BuildingPurpose', optional: true
-  belongs_to :building_type, class_name: 'Ra::BuildingType', optional: true
+  belongs_to :building_purpose_code, optional: true
+  belongs_to :building_type_code, optional: true
 end
