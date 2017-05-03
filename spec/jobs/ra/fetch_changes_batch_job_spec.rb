@@ -12,7 +12,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       property_change = Ra::PropertyRegistrationNumberChange.first
       expect(property_change).to have_attributes(
-        id: 60195291,
+        change_id: 60195291,
         changed_at: Time.parse('2016-06-03T14:17:33.723'),
         database_operation: 'INSERT',
         property_registration_number_id: 585020,
@@ -27,6 +27,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         municipality_id: 2889,
         district_id: 4697,
 
+        change: Ra::Change.find(60195291),
         property_registration_number_object: Ra::PropertyRegistrationNumber.find(585020),
         municipality: Ra::Municipality.find(2889),
         district: Ra::District.find(4697),
@@ -44,7 +45,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       building_number_change = Ra::BuildingNumberChange.first
       expect(building_number_change).to have_attributes(
-        id: 60195314,
+        change_id: 60195314,
         changed_at: Time.parse('2016-06-03T14:17:33.877'),
         database_operation: 'UPDATE',
         building_number_id: 2125309,
@@ -57,6 +58,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         postal_code: 7214,
         property_registration_number_id: 585020,
 
+        change: Ra::Change.find(60195314),
         building_number_object: Ra::BuildingNumber.find(2125309),
         property_registration_number: Ra::PropertyRegistrationNumber.find(585020),
       )
@@ -69,7 +71,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       building_unit_change = Ra::BuildingUnitChange.first
       expect(building_unit_change).to have_attributes(
-        id: 60196464,
+        change_id: 60196464,
         building_unit_id: 4005683,
         building_number_id: 2734787,
         changed_at: Time.parse('2016-06-03T14:18:13.279'),
@@ -82,6 +84,8 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         building_unit_floor: '1',
         building_unit_number: '17',
         building_unit_label: 'byt',
+
+        change: Ra::Change.find(60196464),
       )
 
       expect(Ra::ChangesBatch.first).to have_attributes(
@@ -100,7 +104,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       street_name_change = Ra::StreetNameChange.first
       expect(street_name_change).to have_attributes(
-        id: 19764348,
+        change_id: 19764348,
         street_name_id: 39693,
         changed_at: Time.parse('2016-04-14T11:35:51.872'),
         database_operation: 'UPDATE',
@@ -111,6 +115,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         effective_on: Date.parse('1981-01-26'),
         street_name: 'Juraja Hronca',
 
+        change: Ra::Change.find(19764348),
         municipalities: [Ra::Municipality.find(3000)],
         districts: [],
       )
@@ -128,6 +133,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       region_change = Ra::RegionChange.first
       expect(region_change).to have_attributes(
+        change_id: nil,
         region_id: 1,
         database_operation: 'INSERT',
         version_id: 1,
@@ -135,6 +141,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         effective_on: Date.parse('1996-07-24+02:00'),
 
+        change: nil,
         region_object: Ra::Region.find(1),
       )
 
@@ -152,6 +159,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       county_change = Ra::CountyChange.first
       expect(county_change).to have_attributes(
+        change_id: nil,
         county_id: 11,
         region_id: 1,
         database_operation: 'INSERT',
@@ -160,6 +168,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         effective_on: Date.parse('1996-07-24+02:00'),
 
+        change: nil,
         county_object: Ra::County.find(11),
         region: Ra::Region.find(1),
       )
@@ -178,6 +187,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       municipality_change = Ra::MunicipalityChange.first
       expect(municipality_change).to have_attributes(
+        change_id: nil,
         municipality_id: 92,
         county_id: 11,
         database_operation: 'INSERT',
@@ -186,6 +196,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         municipality_status: 'MUNICIPALITY',
 
+        change: nil,
         municipality_object: Ra::Municipality.find(92),
         county: Ra::County.find(11),
       )
@@ -205,6 +216,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       district_change = Ra::DistrictChange.first
       expect(district_change).to have_attributes(
+        change_id: nil,
         district_id: 4764,
         municipality_id: 92,
         database_operation: 'INSERT',
@@ -213,6 +225,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         unique_numbering: false,
 
+        change: nil,
         district_object: Ra::District.find(4764),
         municipality: Ra::Municipality.find(92),
       )

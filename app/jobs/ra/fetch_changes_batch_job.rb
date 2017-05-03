@@ -53,7 +53,8 @@ module Ra
       tag.children.each do |child|
         case child.name
           when :changeId
-            payload[:id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:change] = Ra::Change.find_or_create_by!(id: id)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation
@@ -110,7 +111,8 @@ module Ra
       tag.children.each do |child|
         case child.name
           when :changeId
-            payload[:id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:change] = Ra::Change.find_or_create_by!(id: id)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation
@@ -157,7 +159,8 @@ module Ra
       tag.children.each do |child|
         case child.name
           when :changeId
-            payload[:id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:change] = Ra::Change.find_or_create_by!(id: id)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation
@@ -196,7 +199,8 @@ module Ra
       tag.children.each do |child|
         case child.name
           when :changeId
-            payload[:id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:change] = Ra::Change.find_or_create_by!(id: id)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation
@@ -237,8 +241,9 @@ module Ra
       payload = {}
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = Integer(child.children.first.value)
+            when :changeId
+            id = Integer(child.children.first.value)
+            payload[:change] = Ra::Change.find_or_create_by!(id: id)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation
@@ -273,7 +278,8 @@ module Ra
       tag.children.each do |child|
         case child.name
           when :changeId
-            payload[:id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:change] = Ra::Change.find_or_create_by!(id: id)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation
@@ -311,7 +317,8 @@ module Ra
       tag.children.each do |child|
         case child.name
           when :changeId
-            payload[:id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:change] = Ra::Change.find_or_create_by!(id: id)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation
@@ -349,7 +356,8 @@ module Ra
       tag.children.each do |child|
         case child.name
           when :changeId
-            payload[:id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:change] = Ra::Change.find_or_create_by!(id: id)
           when :changedAt
             payload[:changed_at] = Time.parse(child.children.first.value)
           when :databaseOperation

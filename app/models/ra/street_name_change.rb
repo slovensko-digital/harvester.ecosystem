@@ -1,4 +1,5 @@
 class Ra::StreetNameChange < ApplicationRecord
+  belongs_to :change, optional: true
   belongs_to :street_name_object, class_name: 'Ra::StreetName', foreign_key: 'street_name_id'
   has_and_belongs_to_many :municipalities,
     class_name: 'Ra::Municipality',
