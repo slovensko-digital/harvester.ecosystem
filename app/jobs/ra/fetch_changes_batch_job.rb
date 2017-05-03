@@ -1,5 +1,10 @@
 module Ra
   class RecordBuilder
+    GENERIC_CHANGE_COLUMNS = [
+      :changeId, :changedAt, :databaseOperation, :versionId, :createdReason,
+      :validFrom, :validTo, :effectiveDate
+    ]
+
     def initialize
       @data = {}
     end
@@ -50,28 +55,14 @@ module Ra
 
     def build_property_registration_number_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            id = Integer(child.children.first.value)
-            payload[:change] = Ra::Change.find_or_create_by!(id: id)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
             id = Integer(child.children.first.value)
             payload[:property_registration_number_object] = Ra::PropertyRegistrationNumber.find_or_create_by!(id: id)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
           when :PropertyRegistrationNumber
             payload[:property_registration_number] = Integer(child.children.first.value)
           when :Building
@@ -108,28 +99,14 @@ module Ra
 
     def build_building_number_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            id = Integer(child.children.first.value)
-            payload[:change] = Ra::Change.find_or_create_by!(id: id)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
             id = Integer(child.children.first.value)
             payload[:building_number_object] = Ra::BuildingNumber.find_or_create_by!(id: id)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
           when :verifiedAt
             payload[:verified_at] = Time.parse(child.children.first.value)
           when :BuildingNumber
@@ -156,28 +133,14 @@ module Ra
 
     def build_building_unit_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            id = Integer(child.children.first.value)
-            payload[:change] = Ra::Change.find_or_create_by!(id: id)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
             id = Integer(child.children.first.value)
             payload[:building_unit_object] = Ra::BuildingUnit.find_or_create_by!(id: id)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
           when :BuildingUnit
             payload[:building_unit_label] = child.children.first.value
             payload[:building_unit_floor] = child.attrs[:Floor]
@@ -196,28 +159,14 @@ module Ra
       payload = {}
       municipalities_payload = []
       districts_payload = []
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            id = Integer(child.children.first.value)
-            payload[:change] = Ra::Change.find_or_create_by!(id: id)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
             id = Integer(child.children.first.value)
             payload[:street_name_object] = Ra::StreetName.find_or_create_by!(id: id)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
           when :StreetName
             payload[:street_name] = child.children.first.value
           when :municipalityIdentifier
@@ -239,28 +188,14 @@ module Ra
 
     def build_region_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-            when :changeId
-            id = Integer(child.children.first.value)
-            payload[:change] = Ra::Change.find_or_create_by!(id: id)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
             id = Integer(child.children.first.value)
             payload[:region_object] = Ra::Region.find_or_create_by!(id: id)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
           when :Region
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000023'
@@ -275,28 +210,14 @@ module Ra
 
     def build_county_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            id = Integer(child.children.first.value)
-            payload[:change] = Ra::Change.find_or_create_by!(id: id)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
             id = Integer(child.children.first.value)
             payload[:county_object] = Ra::County.find_or_create_by!(id: id)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
           when :regionIdentifier
             id = Integer(child.children.first.value)
             payload[:region] = Ra::Region.find_or_create_by!(id: id)
@@ -314,26 +235,14 @@ module Ra
 
     def build_municipality_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            id = Integer(child.children.first.value)
-            payload[:change] = Ra::Change.find_or_create_by!(id: id)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
             id = Integer(child.children.first.value)
             payload[:municipality_object] = Ra::Municipality.find_or_create_by!(id: id)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
           when :countyIdentifier
             id = Integer(child.children.first.value)
             payload[:county] = Ra::County.find_or_create_by!(id: id)
@@ -353,28 +262,14 @@ module Ra
 
     def build_district_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            id = Integer(child.children.first.value)
-            payload[:change] = Ra::Change.find_or_create_by!(id: id)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
             id = Integer(child.children.first.value)
             payload[:district_object] = Ra::District.find_or_create_by!(id: id)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
           when :municipalityIdentifier
             id = Integer(child.children.first.value)
             payload[:municipality] = Ra::Municipality.find_or_create_by!(id: id)
@@ -389,6 +284,32 @@ module Ra
       end
 
       Ra::DistrictChange.find_or_create_by!(payload)
+    end
+
+    def parse_generic_change_tag(tag)
+      payload = {}
+
+      case tag.name
+        when :changeId
+          id = Integer(tag.children.first.value)
+          payload[:change] = Ra::Change.find_or_create_by!(id: id)
+        when :changedAt
+          payload[:changed_at] = Time.parse(tag.children.first.value)
+        when :databaseOperation
+          payload[:database_operation] = tag.children.first.value
+        when :versionId
+          payload[:version_id] = Integer(tag.children.first.value)
+        when :createdReason
+          payload[:created_reason] = tag.children.first.value
+        when :validFrom
+          payload[:valid_from] = Time.parse(tag.children.first.value)
+        when :validTo
+          payload[:valid_to] = Time.parse(tag.children.first.value)
+        when :effectiveDate
+          payload[:effective_on] = Date.parse(tag.children.first.value)
+      end
+
+      payload
     end
 
     def parse_codelist(tag)
