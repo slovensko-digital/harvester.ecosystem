@@ -10,7 +10,9 @@ class Ra::SyncChangesBatchesJob
 
   CHANGES_BATCHES_URL = 'https://data.gov.sk/dataset/register-adries-zmenove-davky'
 
-  def perform(downloader: Faraday, job: ::Ra::FetchChangesBatchJob)
+  @@downloader = Faraday.new(request: { timeout: 5.minutes.to_i })
+
+  def perform(downloader: @@downloader, job: ::Ra::FetchChangesBatchJob)
     html = downloader.get(CHANGES_BATCHES_URL).body
     doc = Nokogiri::HTML(html)
     doc.css('#dataset-resources .resource-item').each do |item|
