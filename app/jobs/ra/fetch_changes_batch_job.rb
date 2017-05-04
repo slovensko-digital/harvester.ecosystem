@@ -22,7 +22,6 @@ module Ra
     end
 
     def report_generic(tag)
-      # puts tag.inspect
       case tag.name
         when :propertyRegistrationNumberChange
           build_property_registration_number_change(tag)
@@ -532,27 +531,22 @@ class Sample < ::Ox::Sax
   end
 
   def instruct(name)
-    # puts "instruct: #{name}"
     @stack.current.instruct(name, @stack, @listener)
   end
 
   def start_element(name)
-    # puts "start: #{name}"
     @stack.current.start_element(name, @stack, @listener)
   end
 
   def end_element(name)
-    # puts "end: #{name}"
     @stack.current.end_element(name, @stack, @listener)
   end
 
   def attr(name, value)
-    # puts "  #{name} => #{value}"
     @stack.current.attr(name, value, @stack, @listener)
   end
 
   def text(value)
-    # puts "text #{value}"
     @stack.current.text(value, @stack, @listener)
   end
 end
