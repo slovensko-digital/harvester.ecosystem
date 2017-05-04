@@ -46,7 +46,7 @@ module Ra
 
     def report_end
       if @data[:changes_id]
-        Ra::ChangesBatch.find_or_create_by!(id: @data[:changes_id], generated_at: Time.parse(@data[:generated_at]))
+        Ra::ChangesBatch.find_or_create_by!(id: @data[:changes_id], generated_at: Time.zone.parse(@data[:generated_at]))
       end
     end
 
@@ -107,7 +107,7 @@ module Ra
             id = Integer(child.children.first.value)
             payload[:building_number_object] = Ra::BuildingNumber.find_or_create_by!(id: id)
           when :verifiedAt
-            payload[:verified_at] = Time.parse(child.children.first.value)
+            payload[:verified_at] = Time.zone.parse(child.children.first.value)
           when :BuildingNumber
             payload[:building_number] = child.children.first.value
           when :BuildingIndex
@@ -293,7 +293,7 @@ module Ra
           id = Integer(tag.children.first.value)
           payload[:change] = Ra::Change.find_or_create_by!(id: id)
         when :changedAt
-          payload[:changed_at] = Time.parse(tag.children.first.value)
+          payload[:changed_at] = Time.zone.parse(tag.children.first.value)
         when :databaseOperation
           payload[:database_operation] = tag.children.first.value
         when :versionId
@@ -301,9 +301,9 @@ module Ra
         when :createdReason
           payload[:created_reason] = tag.children.first.value
         when :validFrom
-          payload[:valid_from] = Time.parse(tag.children.first.value)
+          payload[:valid_from] = Time.zone.parse(tag.children.first.value)
         when :validTo
-          payload[:valid_to] = Time.parse(tag.children.first.value)
+          payload[:valid_to] = Time.zone.parse(tag.children.first.value)
         when :effectiveDate
           payload[:effective_on] = Date.parse(tag.children.first.value)
       end

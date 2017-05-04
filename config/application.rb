@@ -23,5 +23,6 @@ module Harvester
     # -- all .rb files in that directory are automatically loaded.
 
     config.active_record.schema_format = :sql
+    config.time_zone = "Europe/Bratislava"
   end
 end
