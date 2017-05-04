@@ -56,10 +56,17 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         building_index: '1745974A',
         postal_code: 7214,
         property_registration_number_id: 585020,
+        street_name_id: nil,
 
         change: Ra::Change.find(60195314),
         building_number_object: Ra::BuildingNumber.find(2125309),
         property_registration_number: Ra::PropertyRegistrationNumber.find(585020),
+      )
+
+      building_number_change_with_street_name = Ra::BuildingNumberChange.find_by!(street_name_id: 59189)
+      expect(building_number_change_with_street_name).to have_attributes(
+        street_name_id: 59189,
+        street_name: Ra::StreetName.find(59189)
       )
 
       expect(building_number_change.address_point).to have_attributes(
@@ -96,8 +103,6 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         '2016-10-06T02:35:21.615'.in_time_zone('Europe/Bratislava').utc
       )
     end
-
-    pending 'parses building_name_change.street_name'
 
     it 'can parse street name changes' do
       expect(downloader).to receive(:download_file).with('https://data.gov.sk/dataset/de3dd18f-9124-4acb-ae00-705555332256/resource/c0cf0bd9-f6e7-4fdd-8d3c-311fa504feab/download/zmenovadavka1952939.xml').
