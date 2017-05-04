@@ -20,7 +20,12 @@ class Ra::SyncChangesBatchesJob
 
       download_link = item.at_css('a.resource-url-analytics')
       url = download_link[:href].gsub('https://MODMCASV222/', 'https://data.gov.sk/')
-      job.perform_async(url)
+      job.perform_async(url) if should_download_batch?(url)
     end
+  end
+
+  def should_download_batch?(batch_url)
+    batch_id = batch_url.match(/zmenovadavka(\d+)\.xml$/)[1]
+    !Ra::ChangesBatch.exists?(id: batch_id)
   end
 end
