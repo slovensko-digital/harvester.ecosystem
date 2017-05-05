@@ -129,7 +129,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 -- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
 --
 
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA ra;
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
 
 
 --
@@ -1120,7 +1120,6 @@ SET search_path = ra, pg_catalog;
 CREATE TABLE building_number_changes (
     id integer NOT NULL,
     property_registration_number_id integer NOT NULL,
-    change_id integer,
     street_name_id integer,
     changed_at timestamp without time zone,
     database_operation change_type,
@@ -1134,9 +1133,10 @@ CREATE TABLE building_number_changes (
     building_number character varying,
     building_index character varying NOT NULL,
     postal_code integer,
-    address_point geography(Point,4326),
+    address_point public.geography(Point,4326),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    change_id integer
 );
 
 
@@ -1195,7 +1195,7 @@ ALTER SEQUENCE building_numbers_id_seq OWNED BY building_numbers.id;
 
 CREATE TABLE building_purpose_codes (
     id integer NOT NULL,
-    code character varying NOT NULL,
+    code character varying,
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -1222,11 +1222,12 @@ ALTER SEQUENCE building_purpose_codes_id_seq OWNED BY building_purpose_codes.id;
 
 
 --
--- Name: building_types; Type: TABLE; Schema: ra; Owner: -
+-- Name: building_type_codes; Type: TABLE; Schema: ra; Owner: -
 --
 
-CREATE TABLE building_types (
+CREATE TABLE building_type_codes (
     id integer NOT NULL,
+    code character varying,
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -1234,10 +1235,10 @@ CREATE TABLE building_types (
 
 
 --
--- Name: building_types_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+-- Name: building_type_codes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
 --
 
-CREATE SEQUENCE building_types_id_seq
+CREATE SEQUENCE building_type_codes_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1246,10 +1247,10 @@ CREATE SEQUENCE building_types_id_seq
 
 
 --
--- Name: building_types_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+-- Name: building_type_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
 --
 
-ALTER SEQUENCE building_types_id_seq OWNED BY building_types.id;
+ALTER SEQUENCE building_type_codes_id_seq OWNED BY building_type_codes.id;
 
 
 --
@@ -1260,7 +1261,6 @@ CREATE TABLE building_unit_changes (
     id integer NOT NULL,
     building_unit_id integer NOT NULL,
     building_number_id integer NOT NULL,
-    change_id integer,
     changed_at timestamp without time zone,
     database_operation change_type,
     version_id integer NOT NULL,
@@ -1272,7 +1272,8 @@ CREATE TABLE building_unit_changes (
     building_unit_number character varying NOT NULL,
     building_unit_label character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    change_id integer
 );
 
 
@@ -1326,6 +1327,15 @@ ALTER SEQUENCE building_units_id_seq OWNED BY building_units.id;
 
 
 --
+-- Name: changes; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE changes (
+    id integer NOT NULL
+);
+
+
+--
 -- Name: changes_batches; Type: TABLE; Schema: ra; Owner: -
 --
 
@@ -1354,6 +1364,25 @@ CREATE SEQUENCE changes_batches_id_seq
 --
 
 ALTER SEQUENCE changes_batches_id_seq OWNED BY changes_batches.id;
+
+
+--
+-- Name: changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE changes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE changes_id_seq OWNED BY changes.id;
 
 
 --
@@ -1394,7 +1423,6 @@ CREATE TABLE county_changes (
     id integer NOT NULL,
     county_id integer NOT NULL,
     region_id integer NOT NULL,
-    change_id integer,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
@@ -1404,7 +1432,8 @@ CREATE TABLE county_changes (
     effective_on date NOT NULL,
     county_code_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    change_id integer
 );
 
 
@@ -1467,7 +1496,6 @@ CREATE TABLE district_changes (
     id integer NOT NULL,
     district_id integer NOT NULL,
     municipality_id integer NOT NULL,
-    change_id integer,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
@@ -1478,7 +1506,8 @@ CREATE TABLE district_changes (
     district_code_id integer NOT NULL,
     unique_numbering boolean NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    change_id integer
 );
 
 
@@ -1601,7 +1630,6 @@ CREATE TABLE municipality_changes (
     id integer NOT NULL,
     municipality_id integer NOT NULL,
     county_id integer NOT NULL,
-    change_id integer,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
@@ -1611,7 +1639,9 @@ CREATE TABLE municipality_changes (
     municipality_code_id integer NOT NULL,
     municipality_status municipality_status,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    city_id integer,
+    change_id integer
 );
 
 
@@ -1672,10 +1702,9 @@ ALTER SEQUENCE municipality_codes_id_seq OWNED BY municipality_codes.id;
 
 CREATE TABLE property_registration_number_changes (
     id integer NOT NULL,
-    property_registration_number_id integer NOT NULL,
-    change_id integer,
     changed_at timestamp without time zone,
     database_operation change_type,
+    property_registration_number_id integer NOT NULL,
     version_id integer NOT NULL,
     created_reason created_reason_type,
     valid_from timestamp without time zone,
@@ -1684,11 +1713,12 @@ CREATE TABLE property_registration_number_changes (
     property_registration_number integer,
     building_contains_flats boolean NOT NULL,
     building_purpose_code_id integer,
-    building_type_id integer,
+    building_type_code_id integer,
     municipality_id integer NOT NULL,
     district_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    change_id integer
 );
 
 
@@ -1712,13 +1742,42 @@ ALTER SEQUENCE property_registration_number_changes_id_seq OWNED BY property_reg
 
 
 --
+-- Name: property_registration_numbers; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE property_registration_numbers (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: property_registration_numbers_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE property_registration_numbers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: property_registration_numbers_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE property_registration_numbers_id_seq OWNED BY property_registration_numbers.id;
+
+
+--
 -- Name: region_changes; Type: TABLE; Schema: ra; Owner: -
 --
 
 CREATE TABLE region_changes (
     id integer NOT NULL,
     region_id integer NOT NULL,
-    change_id integer,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
@@ -1728,7 +1787,8 @@ CREATE TABLE region_changes (
     effective_on date NOT NULL,
     region_code_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    change_id integer
 );
 
 
@@ -1820,9 +1880,6 @@ ALTER SEQUENCE regions_id_seq OWNED BY regions.id;
 CREATE TABLE street_name_changes (
     id integer NOT NULL,
     street_name_id integer NOT NULL,
-    municipality_id integer NOT NULL,
-    district_id integer,
-    change_id integer,
     changed_at timestamp without time zone,
     database_operation change_type,
     version_id integer NOT NULL,
@@ -1832,7 +1889,18 @@ CREATE TABLE street_name_changes (
     effective_on date,
     street_name character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    change_id integer
+);
+
+
+--
+-- Name: street_name_changes_districts; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE street_name_changes_districts (
+    street_name_change_id integer NOT NULL,
+    district_id integer NOT NULL
 );
 
 
@@ -1853,6 +1921,16 @@ CREATE SEQUENCE street_name_changes_id_seq
 --
 
 ALTER SEQUENCE street_name_changes_id_seq OWNED BY street_name_changes.id;
+
+
+--
+-- Name: street_name_changes_municipalities; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE street_name_changes_municipalities (
+    street_name_change_id integer NOT NULL,
+    municipality_id integer NOT NULL
+);
 
 
 --
@@ -3657,7 +3735,7 @@ ALTER TABLE ONLY building_purpose_codes ALTER COLUMN id SET DEFAULT nextval('bui
 -- Name: id; Type: DEFAULT; Schema: ra; Owner: -
 --
 
-ALTER TABLE ONLY building_types ALTER COLUMN id SET DEFAULT nextval('building_types_id_seq'::regclass);
+ALTER TABLE ONLY building_type_codes ALTER COLUMN id SET DEFAULT nextval('building_type_codes_id_seq'::regclass);
 
 
 --
@@ -3672,6 +3750,13 @@ ALTER TABLE ONLY building_unit_changes ALTER COLUMN id SET DEFAULT nextval('buil
 --
 
 ALTER TABLE ONLY building_units ALTER COLUMN id SET DEFAULT nextval('building_units_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY changes ALTER COLUMN id SET DEFAULT nextval('changes_id_seq'::regclass);
 
 
 --
@@ -3749,6 +3834,13 @@ ALTER TABLE ONLY municipality_codes ALTER COLUMN id SET DEFAULT nextval('municip
 --
 
 ALTER TABLE ONLY property_registration_number_changes ALTER COLUMN id SET DEFAULT nextval('property_registration_number_changes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY property_registration_numbers ALTER COLUMN id SET DEFAULT nextval('property_registration_numbers_id_seq'::regclass);
 
 
 --
@@ -4347,11 +4439,11 @@ ALTER TABLE ONLY building_purpose_codes
 
 
 --
--- Name: building_types_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+-- Name: building_type_codes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
 --
 
-ALTER TABLE ONLY building_types
-    ADD CONSTRAINT building_types_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY building_type_codes
+    ADD CONSTRAINT building_type_codes_pkey PRIMARY KEY (id);
 
 
 --
@@ -4376,6 +4468,14 @@ ALTER TABLE ONLY building_units
 
 ALTER TABLE ONLY changes_batches
     ADD CONSTRAINT changes_batches_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY changes
+    ADD CONSTRAINT changes_pkey PRIMARY KEY (id);
 
 
 --
@@ -4456,6 +4556,14 @@ ALTER TABLE ONLY municipality_codes
 
 ALTER TABLE ONLY property_registration_number_changes
     ADD CONSTRAINT property_registration_number_changes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: property_registration_numbers_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY property_registration_numbers
+    ADD CONSTRAINT property_registration_numbers_pkey PRIMARY KEY (id);
 
 
 --
@@ -5170,10 +5278,17 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 SET search_path = ra, pg_catalog;
 
 --
--- Name: index_ra.building_number_changes_on_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.building_number_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.building_number_changes_on_id" ON building_number_changes USING btree (building_number_id, version_id);
+CREATE INDEX "index_ra.building_number_changes_on_change_id" ON building_number_changes USING btree (change_id);
+
+
+--
+-- Name: index_ra.building_number_changes_on_version_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.building_number_changes_on_version_id" ON building_number_changes USING btree (version_id);
 
 
 --
@@ -5184,17 +5299,24 @@ CREATE UNIQUE INDEX "index_ra.building_purpose_codes_on_code" ON building_purpos
 
 
 --
--- Name: index_ra.building_unit_changes_on_object_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.building_type_codes_on_code; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.building_unit_changes_on_object_id" ON building_unit_changes USING btree (building_unit_id, version_id);
+CREATE UNIQUE INDEX "index_ra.building_type_codes_on_code" ON building_type_codes USING btree (code);
 
 
 --
--- Name: index_ra.county_changes_on_county_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.building_unit_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.county_changes_on_county_id_and_version_id" ON county_changes USING btree (county_id, version_id);
+CREATE INDEX "index_ra.building_unit_changes_on_change_id" ON building_unit_changes USING btree (change_id);
+
+
+--
+-- Name: index_ra.county_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.county_changes_on_change_id" ON county_changes USING btree (change_id);
 
 
 --
@@ -5205,10 +5327,17 @@ CREATE UNIQUE INDEX "index_ra.county_codes_on_code" ON county_codes USING btree 
 
 
 --
--- Name: index_ra.district_changes_on_district_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.district_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.district_changes_on_district_id_and_version_id" ON district_changes USING btree (district_id, version_id);
+CREATE INDEX "index_ra.district_changes_on_change_id" ON district_changes USING btree (change_id);
+
+
+--
+-- Name: index_ra.district_codes_on_code; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_ra.district_codes_on_code" ON district_codes USING btree (code);
 
 
 --
@@ -5219,10 +5348,24 @@ CREATE UNIQUE INDEX "index_ra.district_codes_on_code_and_name" ON district_codes
 
 
 --
--- Name: index_ra.municipality_changes_on_municipality_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.municipality_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.municipality_changes_on_municipality_id_and_version_id" ON municipality_changes USING btree (municipality_id, version_id);
+CREATE INDEX "index_ra.municipality_changes_on_change_id" ON municipality_changes USING btree (change_id);
+
+
+--
+-- Name: index_ra.municipality_changes_on_city_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.municipality_changes_on_city_id" ON municipality_changes USING btree (city_id);
+
+
+--
+-- Name: index_ra.municipality_codes_on_code; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_ra.municipality_codes_on_code" ON municipality_codes USING btree (code);
 
 
 --
@@ -5233,17 +5376,24 @@ CREATE UNIQUE INDEX "index_ra.municipality_codes_on_code_and_name" ON municipali
 
 
 --
--- Name: index_ra.property_registration_number_changes_on_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.property_registration_number_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.property_registration_number_changes_on_id" ON property_registration_number_changes USING btree (property_registration_number_id, version_id);
+CREATE INDEX "index_ra.property_registration_number_changes_on_change_id" ON property_registration_number_changes USING btree (change_id);
 
 
 --
--- Name: index_ra.region_changes_on_region_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.property_registration_number_changes_on_version_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.region_changes_on_region_id_and_version_id" ON region_changes USING btree (region_id, version_id);
+CREATE INDEX "index_ra.property_registration_number_changes_on_version_id" ON property_registration_number_changes USING btree (version_id);
+
+
+--
+-- Name: index_ra.region_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.region_changes_on_change_id" ON region_changes USING btree (change_id);
 
 
 --
@@ -5254,10 +5404,10 @@ CREATE UNIQUE INDEX "index_ra.region_codes_on_code" ON region_codes USING btree 
 
 
 --
--- Name: index_ra.street_name_changes_on_street_name_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.street_name_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.street_name_changes_on_street_name_id_and_version_id" ON street_name_changes USING btree (street_name_id, version_id);
+CREATE INDEX "index_ra.street_name_changes_on_change_id" ON street_name_changes USING btree (change_id);
 
 
 SET search_path = rpo, pg_catalog;
@@ -5826,11 +5976,43 @@ ALTER TABLE ONLY konkurz_restrukturalizacia_issues
 SET search_path = ra, pg_catalog;
 
 --
+-- Name: fk_rails_0a2228fc64; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY property_registration_number_changes
+    ADD CONSTRAINT fk_rails_0a2228fc64 FOREIGN KEY (municipality_id) REFERENCES municipalities(id);
+
+
+--
 -- Name: fk_rails_0b4cfd5ea8; Type: FK CONSTRAINT; Schema: ra; Owner: -
 --
 
 ALTER TABLE ONLY municipality_changes
     ADD CONSTRAINT fk_rails_0b4cfd5ea8 FOREIGN KEY (municipality_id) REFERENCES municipalities(id);
+
+
+--
+-- Name: fk_rails_13afcc56a3; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY region_changes
+    ADD CONSTRAINT fk_rails_13afcc56a3 FOREIGN KEY (change_id) REFERENCES changes(id);
+
+
+--
+-- Name: fk_rails_1aa26b7b71; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_number_changes
+    ADD CONSTRAINT fk_rails_1aa26b7b71 FOREIGN KEY (building_number_id) REFERENCES building_numbers(id);
+
+
+--
+-- Name: fk_rails_1be03a56b7; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_changes
+    ADD CONSTRAINT fk_rails_1be03a56b7 FOREIGN KEY (municipality_code_id) REFERENCES municipality_codes(id);
 
 
 --
@@ -5850,11 +6032,139 @@ ALTER TABLE ONLY district_changes
 
 
 --
+-- Name: fk_rails_2e922593e0; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY property_registration_number_changes
+    ADD CONSTRAINT fk_rails_2e922593e0 FOREIGN KEY (building_type_code_id) REFERENCES building_type_codes(id);
+
+
+--
+-- Name: fk_rails_2f49a62832; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY county_changes
+    ADD CONSTRAINT fk_rails_2f49a62832 FOREIGN KEY (county_code_id) REFERENCES county_codes(id);
+
+
+--
+-- Name: fk_rails_34207d0abe; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_changes
+    ADD CONSTRAINT fk_rails_34207d0abe FOREIGN KEY (county_id) REFERENCES counties(id);
+
+
+--
+-- Name: fk_rails_36e1593362; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY county_changes
+    ADD CONSTRAINT fk_rails_36e1593362 FOREIGN KEY (change_id) REFERENCES changes(id);
+
+
+--
+-- Name: fk_rails_3735b7a878; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_number_changes
+    ADD CONSTRAINT fk_rails_3735b7a878 FOREIGN KEY (street_name_id) REFERENCES street_names(id);
+
+
+--
+-- Name: fk_rails_37c773e1c4; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY county_changes
+    ADD CONSTRAINT fk_rails_37c773e1c4 FOREIGN KEY (region_id) REFERENCES regions(id);
+
+
+--
+-- Name: fk_rails_4eeaebe090; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY district_changes
+    ADD CONSTRAINT fk_rails_4eeaebe090 FOREIGN KEY (change_id) REFERENCES changes(id);
+
+
+--
+-- Name: fk_rails_5651aa61bd; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY property_registration_number_changes
+    ADD CONSTRAINT fk_rails_5651aa61bd FOREIGN KEY (district_id) REFERENCES districts(id);
+
+
+--
+-- Name: fk_rails_56a851935d; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY street_name_changes_municipalities
+    ADD CONSTRAINT fk_rails_56a851935d FOREIGN KEY (street_name_change_id) REFERENCES street_name_changes(id);
+
+
+--
 -- Name: fk_rails_5dd55655b7; Type: FK CONSTRAINT; Schema: ra; Owner: -
 --
 
 ALTER TABLE ONLY county_changes
     ADD CONSTRAINT fk_rails_5dd55655b7 FOREIGN KEY (county_id) REFERENCES counties(id);
+
+
+--
+-- Name: fk_rails_6904502285; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_changes
+    ADD CONSTRAINT fk_rails_6904502285 FOREIGN KEY (change_id) REFERENCES changes(id);
+
+
+--
+-- Name: fk_rails_6d4037406a; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY street_name_changes_districts
+    ADD CONSTRAINT fk_rails_6d4037406a FOREIGN KEY (street_name_change_id) REFERENCES street_name_changes(id);
+
+
+--
+-- Name: fk_rails_7887f156dc; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY street_name_changes
+    ADD CONSTRAINT fk_rails_7887f156dc FOREIGN KEY (change_id) REFERENCES changes(id);
+
+
+--
+-- Name: fk_rails_866a34befa; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY district_changes
+    ADD CONSTRAINT fk_rails_866a34befa FOREIGN KEY (district_code_id) REFERENCES district_codes(id);
+
+
+--
+-- Name: fk_rails_86db50199a; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_number_changes
+    ADD CONSTRAINT fk_rails_86db50199a FOREIGN KEY (change_id) REFERENCES changes(id);
+
+
+--
+-- Name: fk_rails_99d3af8f82; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY property_registration_number_changes
+    ADD CONSTRAINT fk_rails_99d3af8f82 FOREIGN KEY (building_purpose_code_id) REFERENCES building_purpose_codes(id);
+
+
+--
+-- Name: fk_rails_a3b287c1bd; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_changes
+    ADD CONSTRAINT fk_rails_a3b287c1bd FOREIGN KEY (city_id) REFERENCES municipalities(id);
 
 
 --
@@ -5866,11 +6176,75 @@ ALTER TABLE ONLY building_unit_changes
 
 
 --
+-- Name: fk_rails_aeeb7b3888; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY property_registration_number_changes
+    ADD CONSTRAINT fk_rails_aeeb7b3888 FOREIGN KEY (change_id) REFERENCES changes(id);
+
+
+--
+-- Name: fk_rails_b65379a1e3; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY property_registration_number_changes
+    ADD CONSTRAINT fk_rails_b65379a1e3 FOREIGN KEY (property_registration_number_id) REFERENCES property_registration_numbers(id);
+
+
+--
+-- Name: fk_rails_ba938ad380; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY district_changes
+    ADD CONSTRAINT fk_rails_ba938ad380 FOREIGN KEY (municipality_id) REFERENCES municipalities(id);
+
+
+--
+-- Name: fk_rails_bf9792dcda; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY region_changes
+    ADD CONSTRAINT fk_rails_bf9792dcda FOREIGN KEY (region_code_id) REFERENCES region_codes(id);
+
+
+--
+-- Name: fk_rails_ce071ee646; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_number_changes
+    ADD CONSTRAINT fk_rails_ce071ee646 FOREIGN KEY (property_registration_number_id) REFERENCES property_registration_numbers(id);
+
+
+--
+-- Name: fk_rails_cecd401cf4; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY street_name_changes_districts
+    ADD CONSTRAINT fk_rails_cecd401cf4 FOREIGN KEY (district_id) REFERENCES districts(id);
+
+
+--
+-- Name: fk_rails_d08f531de9; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_unit_changes
+    ADD CONSTRAINT fk_rails_d08f531de9 FOREIGN KEY (change_id) REFERENCES changes(id);
+
+
+--
 -- Name: fk_rails_d12c0ce2ae; Type: FK CONSTRAINT; Schema: ra; Owner: -
 --
 
 ALTER TABLE ONLY street_name_changes
     ADD CONSTRAINT fk_rails_d12c0ce2ae FOREIGN KEY (street_name_id) REFERENCES street_names(id);
+
+
+--
+-- Name: fk_rails_e8ff605033; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY street_name_changes_municipalities
+    ADD CONSTRAINT fk_rails_e8ff605033 FOREIGN KEY (municipality_id) REFERENCES municipalities(id);
 
 
 SET search_path = rpo, pg_catalog;
@@ -6239,7 +6613,7 @@ ALTER TABLE ONLY raw_notices
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES
+INSERT INTO "schema_migrations" (version) VALUES
 ('20160228204654'),
 ('20160304144454'),
 ('20160304151009'),
@@ -6469,6 +6843,11 @@ INSERT INTO schema_migrations (version) VALUES
 ('20161018141504'),
 ('20161018141555'),
 ('20170222131821'),
-('20170223074140');
+('20170223074140'),
+('20170430173505'),
+('20170430190843'),
+('20170502120756'),
+('20170503112646'),
+('20170503203539');
 
 
