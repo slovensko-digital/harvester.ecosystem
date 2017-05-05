@@ -567,7 +567,9 @@ class Ra::FetchChangesBatchJob
   end
 
   def perform_on_file(path)
-    handler = Sample.new(Ra::RecordBuilder.new)
-    Ox.sax_parse(handler, File.open(path, 'r'))
+    Ra::ChangesBatch.transaction do
+      handler = Sample.new(Ra::RecordBuilder.new)
+      Ox.sax_parse(handler, File.open(path, 'r'))
+    end
   end
 end
