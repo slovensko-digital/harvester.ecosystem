@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.4
--- Dumped by pg_dump version 9.5.4
+-- Dumped from database version 9.5.6
+-- Dumped by pg_dump version 9.5.6
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -98,6 +98,13 @@ CREATE SCHEMA socpoist;
 
 
 --
+-- Name: upvs; Type: SCHEMA; Schema: -; Owner: -
+--
+
+CREATE SCHEMA upvs;
+
+
+--
 -- Name: vvo; Type: SCHEMA; Schema: -; Owner: -
 --
 
@@ -122,7 +129,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 -- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
 --
 
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA datahub;
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA ra;
 
 
 --
@@ -1113,6 +1120,7 @@ SET search_path = ra, pg_catalog;
 CREATE TABLE building_number_changes (
     id integer NOT NULL,
     property_registration_number_id integer NOT NULL,
+    change_id integer,
     street_name_id integer,
     changed_at timestamp without time zone,
     database_operation change_type,
@@ -1126,7 +1134,7 @@ CREATE TABLE building_number_changes (
     building_number character varying,
     building_index character varying NOT NULL,
     postal_code integer,
-    address_point datahub.geography(Point,4326),
+    address_point geography(Point,4326),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1152,10 +1160,40 @@ ALTER SEQUENCE building_number_changes_id_seq OWNED BY building_number_changes.i
 
 
 --
--- Name: building_purposes; Type: TABLE; Schema: ra; Owner: -
+-- Name: building_numbers; Type: TABLE; Schema: ra; Owner: -
 --
 
-CREATE TABLE building_purposes (
+CREATE TABLE building_numbers (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: building_numbers_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE building_numbers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: building_numbers_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE building_numbers_id_seq OWNED BY building_numbers.id;
+
+
+--
+-- Name: building_purpose_codes; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE building_purpose_codes (
     id integer NOT NULL,
     code character varying NOT NULL,
     name character varying NOT NULL,
@@ -1165,10 +1203,10 @@ CREATE TABLE building_purposes (
 
 
 --
--- Name: building_purposes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+-- Name: building_purpose_codes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
 --
 
-CREATE SEQUENCE building_purposes_id_seq
+CREATE SEQUENCE building_purpose_codes_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1177,10 +1215,10 @@ CREATE SEQUENCE building_purposes_id_seq
 
 
 --
--- Name: building_purposes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+-- Name: building_purpose_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
 --
 
-ALTER SEQUENCE building_purposes_id_seq OWNED BY building_purposes.id;
+ALTER SEQUENCE building_purpose_codes_id_seq OWNED BY building_purpose_codes.id;
 
 
 --
@@ -1222,6 +1260,7 @@ CREATE TABLE building_unit_changes (
     id integer NOT NULL,
     building_unit_id integer NOT NULL,
     building_number_id integer NOT NULL,
+    change_id integer,
     changed_at timestamp without time zone,
     database_operation change_type,
     version_id integer NOT NULL,
@@ -1257,6 +1296,36 @@ ALTER SEQUENCE building_unit_changes_id_seq OWNED BY building_unit_changes.id;
 
 
 --
+-- Name: building_units; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE building_units (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: building_units_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE building_units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: building_units_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE building_units_id_seq OWNED BY building_units.id;
+
+
+--
 -- Name: changes_batches; Type: TABLE; Schema: ra; Owner: -
 --
 
@@ -1288,6 +1357,36 @@ ALTER SEQUENCE changes_batches_id_seq OWNED BY changes_batches.id;
 
 
 --
+-- Name: counties; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE counties (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: counties_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE counties_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: counties_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE counties_id_seq OWNED BY counties.id;
+
+
+--
 -- Name: county_changes; Type: TABLE; Schema: ra; Owner: -
 --
 
@@ -1295,6 +1394,7 @@ CREATE TABLE county_changes (
     id integer NOT NULL,
     county_id integer NOT NULL,
     region_id integer NOT NULL,
+    change_id integer,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
@@ -1367,6 +1467,7 @@ CREATE TABLE district_changes (
     id integer NOT NULL,
     district_id integer NOT NULL,
     municipality_id integer NOT NULL,
+    change_id integer,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
@@ -1433,6 +1534,66 @@ ALTER SEQUENCE district_codes_id_seq OWNED BY district_codes.id;
 
 
 --
+-- Name: districts; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE districts (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: districts_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE districts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: districts_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE districts_id_seq OWNED BY districts.id;
+
+
+--
+-- Name: municipalities; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE municipalities (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: municipalities_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE municipalities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: municipalities_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE municipalities_id_seq OWNED BY municipalities.id;
+
+
+--
 -- Name: municipality_changes; Type: TABLE; Schema: ra; Owner: -
 --
 
@@ -1440,6 +1601,7 @@ CREATE TABLE municipality_changes (
     id integer NOT NULL,
     municipality_id integer NOT NULL,
     county_id integer NOT NULL,
+    change_id integer,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
@@ -1510,9 +1672,10 @@ ALTER SEQUENCE municipality_codes_id_seq OWNED BY municipality_codes.id;
 
 CREATE TABLE property_registration_number_changes (
     id integer NOT NULL,
+    property_registration_number_id integer NOT NULL,
+    change_id integer,
     changed_at timestamp without time zone,
     database_operation change_type,
-    property_registration_number_id integer NOT NULL,
     version_id integer NOT NULL,
     created_reason created_reason_type,
     valid_from timestamp without time zone,
@@ -1520,7 +1683,7 @@ CREATE TABLE property_registration_number_changes (
     effective_on date,
     property_registration_number integer,
     building_contains_flats boolean NOT NULL,
-    building_purpose_id integer,
+    building_purpose_code_id integer,
     building_type_id integer,
     municipality_id integer NOT NULL,
     district_id integer,
@@ -1555,6 +1718,7 @@ ALTER SEQUENCE property_registration_number_changes_id_seq OWNED BY property_reg
 CREATE TABLE region_changes (
     id integer NOT NULL,
     region_id integer NOT NULL,
+    change_id integer,
     database_operation change_type,
     version_id integer NOT NULL,
     created_reason created_reason_type,
@@ -1620,6 +1784,36 @@ ALTER SEQUENCE region_codes_id_seq OWNED BY region_codes.id;
 
 
 --
+-- Name: regions; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE regions (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE regions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE regions_id_seq OWNED BY regions.id;
+
+
+--
 -- Name: street_name_changes; Type: TABLE; Schema: ra; Owner: -
 --
 
@@ -1628,6 +1822,7 @@ CREATE TABLE street_name_changes (
     street_name_id integer NOT NULL,
     municipality_id integer NOT NULL,
     district_id integer,
+    change_id integer,
     changed_at timestamp without time zone,
     database_operation change_type,
     version_id integer NOT NULL,
@@ -1658,6 +1853,36 @@ CREATE SEQUENCE street_name_changes_id_seq
 --
 
 ALTER SEQUENCE street_name_changes_id_seq OWNED BY street_name_changes.id;
+
+
+--
+-- Name: street_names; Type: TABLE; Schema: ra; Owner: -
+--
+
+CREATE TABLE street_names (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: street_names_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
+--
+
+CREATE SEQUENCE street_names_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: street_names_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
+--
+
+ALTER SEQUENCE street_names_id_seq OWNED BY street_names.id;
 
 
 SET search_path = rpo, pg_catalog;
@@ -2918,6 +3143,45 @@ CREATE SEQUENCE debts_lists_id_seq
 ALTER SEQUENCE debts_lists_id_seq OWNED BY debts_lists.id;
 
 
+SET search_path = upvs, pg_catalog;
+
+--
+-- Name: public_authority_edesks; Type: TABLE; Schema: upvs; Owner: -
+--
+
+CREATE TABLE public_authority_edesks (
+    id integer NOT NULL,
+    cin bigint NOT NULL,
+    uri character varying NOT NULL,
+    name character varying NOT NULL,
+    street character varying,
+    street_number character varying,
+    postal_code character varying,
+    city character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: public_authority_edesks_id_seq; Type: SEQUENCE; Schema: upvs; Owner: -
+--
+
+CREATE SEQUENCE public_authority_edesks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: public_authority_edesks_id_seq; Type: SEQUENCE OWNED BY; Schema: upvs; Owner: -
+--
+
+ALTER SEQUENCE public_authority_edesks_id_seq OWNED BY public_authority_edesks.id;
+
+
 SET search_path = vvo, pg_catalog;
 
 --
@@ -3379,7 +3643,14 @@ ALTER TABLE ONLY building_number_changes ALTER COLUMN id SET DEFAULT nextval('bu
 -- Name: id; Type: DEFAULT; Schema: ra; Owner: -
 --
 
-ALTER TABLE ONLY building_purposes ALTER COLUMN id SET DEFAULT nextval('building_purposes_id_seq'::regclass);
+ALTER TABLE ONLY building_numbers ALTER COLUMN id SET DEFAULT nextval('building_numbers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_purpose_codes ALTER COLUMN id SET DEFAULT nextval('building_purpose_codes_id_seq'::regclass);
 
 
 --
@@ -3400,7 +3671,21 @@ ALTER TABLE ONLY building_unit_changes ALTER COLUMN id SET DEFAULT nextval('buil
 -- Name: id; Type: DEFAULT; Schema: ra; Owner: -
 --
 
+ALTER TABLE ONLY building_units ALTER COLUMN id SET DEFAULT nextval('building_units_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
 ALTER TABLE ONLY changes_batches ALTER COLUMN id SET DEFAULT nextval('changes_batches_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY counties ALTER COLUMN id SET DEFAULT nextval('counties_id_seq'::regclass);
 
 
 --
@@ -3429,6 +3714,20 @@ ALTER TABLE ONLY district_changes ALTER COLUMN id SET DEFAULT nextval('district_
 --
 
 ALTER TABLE ONLY district_codes ALTER COLUMN id SET DEFAULT nextval('district_codes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY districts ALTER COLUMN id SET DEFAULT nextval('districts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipalities ALTER COLUMN id SET DEFAULT nextval('municipalities_id_seq'::regclass);
 
 
 --
@@ -3470,7 +3769,21 @@ ALTER TABLE ONLY region_codes ALTER COLUMN id SET DEFAULT nextval('region_codes_
 -- Name: id; Type: DEFAULT; Schema: ra; Owner: -
 --
 
+ALTER TABLE ONLY regions ALTER COLUMN id SET DEFAULT nextval('regions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
 ALTER TABLE ONLY street_name_changes ALTER COLUMN id SET DEFAULT nextval('street_name_changes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY street_names ALTER COLUMN id SET DEFAULT nextval('street_names_id_seq'::regclass);
 
 
 SET search_path = rpo, pg_catalog;
@@ -3722,6 +4035,15 @@ ALTER TABLE ONLY debtors ALTER COLUMN id SET DEFAULT nextval('debtors_id_seq'::r
 --
 
 ALTER TABLE ONLY debts_lists ALTER COLUMN id SET DEFAULT nextval('debts_lists_id_seq'::regclass);
+
+
+SET search_path = upvs, pg_catalog;
+
+--
+-- Name: id; Type: DEFAULT; Schema: upvs; Owner: -
+--
+
+ALTER TABLE ONLY public_authority_edesks ALTER COLUMN id SET DEFAULT nextval('public_authority_edesks_id_seq'::regclass);
 
 
 SET search_path = vvo, pg_catalog;
@@ -4009,11 +4331,19 @@ ALTER TABLE ONLY building_number_changes
 
 
 --
--- Name: building_purposes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+-- Name: building_numbers_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
 --
 
-ALTER TABLE ONLY building_purposes
-    ADD CONSTRAINT building_purposes_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY building_numbers
+    ADD CONSTRAINT building_numbers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: building_purpose_codes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_purpose_codes
+    ADD CONSTRAINT building_purpose_codes_pkey PRIMARY KEY (id);
 
 
 --
@@ -4033,11 +4363,27 @@ ALTER TABLE ONLY building_unit_changes
 
 
 --
+-- Name: building_units_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_units
+    ADD CONSTRAINT building_units_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: changes_batches_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
 --
 
 ALTER TABLE ONLY changes_batches
     ADD CONSTRAINT changes_batches_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: counties_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY counties
+    ADD CONSTRAINT counties_pkey PRIMARY KEY (id);
 
 
 --
@@ -4070,6 +4416,22 @@ ALTER TABLE ONLY district_changes
 
 ALTER TABLE ONLY district_codes
     ADD CONSTRAINT district_codes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: districts_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY districts
+    ADD CONSTRAINT districts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: municipalities_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipalities
+    ADD CONSTRAINT municipalities_pkey PRIMARY KEY (id);
 
 
 --
@@ -4113,11 +4475,27 @@ ALTER TABLE ONLY region_codes
 
 
 --
+-- Name: regions_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY regions
+    ADD CONSTRAINT regions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: street_name_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
 --
 
 ALTER TABLE ONLY street_name_changes
     ADD CONSTRAINT street_name_changes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: street_names_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY street_names
+    ADD CONSTRAINT street_names_pkey PRIMARY KEY (id);
 
 
 SET search_path = rpo, pg_catalog;
@@ -4412,6 +4790,16 @@ ALTER TABLE ONLY debts_lists
 
 ALTER TABLE ONLY debtors
     ADD CONSTRAINT socpoist_debtor_name UNIQUE (name, address, city);
+
+
+SET search_path = upvs, pg_catalog;
+
+--
+-- Name: public_authority_edesks_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
+--
+
+ALTER TABLE ONLY public_authority_edesks
+    ADD CONSTRAINT public_authority_edesks_pkey PRIMARY KEY (id);
 
 
 SET search_path = vvo, pg_catalog;
@@ -4782,17 +5170,31 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 SET search_path = ra, pg_catalog;
 
 --
--- Name: index_ra.building_number_changes_on_version_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.building_number_changes_on_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.building_number_changes_on_version_id" ON building_number_changes USING btree (version_id);
+CREATE INDEX "index_ra.building_number_changes_on_id" ON building_number_changes USING btree (building_number_id, version_id);
 
 
 --
--- Name: index_ra.building_purposes_on_code; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.building_purpose_codes_on_code; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_ra.building_purposes_on_code" ON building_purposes USING btree (code);
+CREATE UNIQUE INDEX "index_ra.building_purpose_codes_on_code" ON building_purpose_codes USING btree (code);
+
+
+--
+-- Name: index_ra.building_unit_changes_on_object_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.building_unit_changes_on_object_id" ON building_unit_changes USING btree (building_unit_id, version_id);
+
+
+--
+-- Name: index_ra.county_changes_on_county_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.county_changes_on_county_id_and_version_id" ON county_changes USING btree (county_id, version_id);
 
 
 --
@@ -4803,10 +5205,24 @@ CREATE UNIQUE INDEX "index_ra.county_codes_on_code" ON county_codes USING btree 
 
 
 --
+-- Name: index_ra.district_changes_on_district_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.district_changes_on_district_id_and_version_id" ON district_changes USING btree (district_id, version_id);
+
+
+--
 -- Name: index_ra.district_codes_on_code_and_name; Type: INDEX; Schema: ra; Owner: -
 --
 
 CREATE UNIQUE INDEX "index_ra.district_codes_on_code_and_name" ON district_codes USING btree (code, name);
+
+
+--
+-- Name: index_ra.municipality_changes_on_municipality_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.municipality_changes_on_municipality_id_and_version_id" ON municipality_changes USING btree (municipality_id, version_id);
 
 
 --
@@ -4817,10 +5233,17 @@ CREATE UNIQUE INDEX "index_ra.municipality_codes_on_code_and_name" ON municipali
 
 
 --
--- Name: index_ra.property_registration_number_changes_on_version_id; Type: INDEX; Schema: ra; Owner: -
+-- Name: index_ra.property_registration_number_changes_on_id; Type: INDEX; Schema: ra; Owner: -
 --
 
-CREATE INDEX "index_ra.property_registration_number_changes_on_version_id" ON property_registration_number_changes USING btree (version_id);
+CREATE INDEX "index_ra.property_registration_number_changes_on_id" ON property_registration_number_changes USING btree (property_registration_number_id, version_id);
+
+
+--
+-- Name: index_ra.region_changes_on_region_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.region_changes_on_region_id_and_version_id" ON region_changes USING btree (region_id, version_id);
 
 
 --
@@ -4828,6 +5251,13 @@ CREATE INDEX "index_ra.property_registration_number_changes_on_version_id" ON pr
 --
 
 CREATE UNIQUE INDEX "index_ra.region_codes_on_code" ON region_codes USING btree (code);
+
+
+--
+-- Name: index_ra.street_name_changes_on_street_name_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX "index_ra.street_name_changes_on_street_name_id_and_version_id" ON street_name_changes USING btree (street_name_id, version_id);
 
 
 SET search_path = rpo, pg_catalog;
@@ -5116,6 +5546,22 @@ CREATE INDEX "index_socpoist.debtors_on_name" ON debtors USING btree (name);
 CREATE UNIQUE INDEX "index_socpoist.debts_lists_on_published_on" ON debts_lists USING btree (published_on);
 
 
+SET search_path = upvs, pg_catalog;
+
+--
+-- Name: index_upvs.public_authority_edesks_on_cin; Type: INDEX; Schema: upvs; Owner: -
+--
+
+CREATE INDEX "index_upvs.public_authority_edesks_on_cin" ON public_authority_edesks USING btree (cin);
+
+
+--
+-- Name: index_upvs.public_authority_edesks_on_uri; Type: INDEX; Schema: upvs; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_upvs.public_authority_edesks_on_uri" ON public_authority_edesks USING btree (uri);
+
+
 SET search_path = vvo, pg_catalog;
 
 --
@@ -5375,6 +5821,56 @@ ALTER TABLE ONLY raw_issues
 
 ALTER TABLE ONLY konkurz_restrukturalizacia_issues
     ADD CONSTRAINT fk_rails_fccf2c79e3 FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id) ON DELETE CASCADE;
+
+
+SET search_path = ra, pg_catalog;
+
+--
+-- Name: fk_rails_0b4cfd5ea8; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY municipality_changes
+    ADD CONSTRAINT fk_rails_0b4cfd5ea8 FOREIGN KEY (municipality_id) REFERENCES municipalities(id);
+
+
+--
+-- Name: fk_rails_1dbeb0c531; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY region_changes
+    ADD CONSTRAINT fk_rails_1dbeb0c531 FOREIGN KEY (region_id) REFERENCES regions(id);
+
+
+--
+-- Name: fk_rails_2812a036d9; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY district_changes
+    ADD CONSTRAINT fk_rails_2812a036d9 FOREIGN KEY (district_id) REFERENCES districts(id);
+
+
+--
+-- Name: fk_rails_5dd55655b7; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY county_changes
+    ADD CONSTRAINT fk_rails_5dd55655b7 FOREIGN KEY (county_id) REFERENCES counties(id);
+
+
+--
+-- Name: fk_rails_a934dd39c9; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY building_unit_changes
+    ADD CONSTRAINT fk_rails_a934dd39c9 FOREIGN KEY (building_unit_id) REFERENCES building_units(id);
+
+
+--
+-- Name: fk_rails_d12c0ce2ae; Type: FK CONSTRAINT; Schema: ra; Owner: -
+--
+
+ALTER TABLE ONLY street_name_changes
+    ADD CONSTRAINT fk_rails_d12c0ce2ae FOREIGN KEY (street_name_id) REFERENCES street_names(id);
 
 
 SET search_path = rpo, pg_catalog;
@@ -5743,6 +6239,236 @@ ALTER TABLE ONLY raw_notices
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160228204654'), ('20160304144454'), ('20160304151009'), ('20160304210816'), ('20160304211624'), ('20160304213306'), ('20160305001135'), ('20160305084653'), ('20160307215611'), ('20160308210325'), ('20160309115526'), ('20160309120612'), ('20160429141807'), ('20160506091443'), ('20160506115555'), ('20160506135302'), ('20160506141328'), ('20160506145648'), ('20160506201551'), ('20160506201735'), ('20160506204302'), ('20160509085025'), ('20160509091003'), ('20160509123118'), ('20160509133921'), ('20160509142808'), ('20160509144034'), ('20160509202636'), ('20160509210342'), ('20160509211550'), ('20160509213609'), ('20160510141343'), ('20160511143847'), ('20160511174234'), ('20160512140751'), ('20160512141004'), ('20160512142220'), ('20160512163333'), ('20160512205002'), ('20160512222238'), ('20160512223007'), ('20160513090321'), ('20160513093332'), ('20160513100718'), ('20160513102554'), ('20160513111743'), ('20160513115940'), ('20160513123028'), ('20160513144927'), ('20160515073133'), ('20160515073826'), ('20160515074954'), ('20160516152548'), ('20160516153747'), ('20160516194853'), ('20160517092857'), ('20160517101512'), ('20160517102123'), ('20160517103922'), ('20160517110722'), ('20160517111053'), ('20160517113734'), ('20160517115800'), ('20160517125158'), ('20160517211611'), ('20160519200530'), ('20160520141455'), ('20160520142114'), ('20160520151100'), ('20160523062919'), ('20160523111212'), ('20160523134144'), ('20160523144401'), ('20160523150519'), ('20160524145856'), ('20160524155401'), ('20160524192650'), ('20160524192805'), ('20160524192859'), ('20160524195216'), ('20160524210510'), ('20160524210952'), ('20160524213930'), ('20160524221026'), ('20160524223055'), ('20160525105622'), ('20160525122831'), ('20160525202154'), ('20160525202912'), ('20160525203905'), ('20160603134420'), ('20160603134547'), ('20160603134923'), ('20160603201156'), ('20160603201256'), ('20160603202143'), ('20160604214151'), ('20160604222116'), ('20160605101834'), ('20160605192328'), ('20160605192524'), ('20160605193318'), ('20160605211444'), ('20160605211612'), ('20160607183913'), ('20160609161856'), ('20160609175034'), ('20160609183417'), ('20160610124301'), ('20160613145120'), ('20160613161922'), ('20160614082527'), ('20160615165505'), ('20160622105806'), ('20160622112911'), ('20160622113449'), ('20160622113649'), ('20160622114653'), ('20160622115927'), ('20160622142531'), ('20160622143425'), ('20160622144845'), ('20160622202723'), ('20160622231145'), ('20160623135959'), ('20160623150755'), ('20160624113525'), ('20160629144830'), ('20160629151520'), ('20160629201243'), ('20160629221305'), ('20160629221424'), ('20160629221800'), ('20160706111638'), ('20160707212141'), ('20160708105151'), ('20160708121934'), ('20160708140307'), ('20160708155010'), ('20160708172910'), ('20160708173417'), ('20160711125108'), ('20160711151815'), ('20160718092226'), ('20160718092417'), ('20160718094712'), ('20160719123714'), ('20160720085630'), ('20160721091930'), ('20160721134515'), ('20160721144047'), ('20160721151057'), ('20160721153228'), ('20160721153817'), ('20160721160533'), ('20160721160901'), ('20160721162155'), ('20160722151335'), ('20160722151503'), ('20160727150803'), ('20160803124909'), ('20160803142910'), ('20160803205746'), ('20160808125148'), ('20160809092452'), ('20160809095256'), ('20160809115742'), ('20160809120030'), ('20160811100934'), ('20160811102028'), ('20160811103149'), ('20160811104830'), ('20160811111706'), ('20160811112312'), ('20160811121506'), ('20160811124755'), ('20160812133817'), ('20160812135204'), ('20160812135415'), ('20160812140655'), ('20160812142245'), ('20160812142416'), ('20160812202908'), ('20160812215714'), ('20160815130928'), ('20160818110211'), ('20160818110621'), ('20160818135739'), ('20160825110839'), ('20160825120623'), ('20160830120608'), ('20160830121920'), ('20160928120044'), ('20160928123138'), ('20160928213723'), ('20160929120951'), ('20160929121253'), ('20160929121400'), ('20160929124430'), ('20160929124817'), ('20160929125059'), ('20160929125508'), ('20160930085831'), ('20160930102048'), ('20161010145325'), ('20161010145425'), ('20161010205914'), ('20161010220918'), ('20161010221017'), ('20161010224003'), ('20161010224400'), ('20161010225250'), ('20161011210352'), ('20161011214757'), ('20161012110655'), ('20161012135758'), ('20161012150803'), ('20161012150927'), ('20161012195055'), ('20161012195151'), ('20161012210141'), ('20161012210225'), ('20161012212459'), ('20161012212552'), ('20161013060038');
+INSERT INTO schema_migrations (version) VALUES
+('20160228204654'),
+('20160304144454'),
+('20160304151009'),
+('20160304210816'),
+('20160304211624'),
+('20160304213306'),
+('20160305001135'),
+('20160305084653'),
+('20160307215611'),
+('20160308210325'),
+('20160309115526'),
+('20160309120612'),
+('20160429141807'),
+('20160506091443'),
+('20160506115555'),
+('20160506135302'),
+('20160506141328'),
+('20160506145648'),
+('20160506201551'),
+('20160506201735'),
+('20160506204302'),
+('20160509085025'),
+('20160509091003'),
+('20160509123118'),
+('20160509133921'),
+('20160509142808'),
+('20160509144034'),
+('20160509202636'),
+('20160509210342'),
+('20160509211550'),
+('20160509213609'),
+('20160510141343'),
+('20160511143847'),
+('20160511174234'),
+('20160512140751'),
+('20160512141004'),
+('20160512142220'),
+('20160512163333'),
+('20160512205002'),
+('20160512222238'),
+('20160512223007'),
+('20160513090321'),
+('20160513093332'),
+('20160513100718'),
+('20160513102554'),
+('20160513111743'),
+('20160513115940'),
+('20160513123028'),
+('20160513144927'),
+('20160515073133'),
+('20160515073826'),
+('20160515074954'),
+('20160516152548'),
+('20160516153747'),
+('20160516194853'),
+('20160517092857'),
+('20160517101512'),
+('20160517102123'),
+('20160517103922'),
+('20160517110722'),
+('20160517111053'),
+('20160517113734'),
+('20160517115800'),
+('20160517125158'),
+('20160517211611'),
+('20160519200530'),
+('20160520141455'),
+('20160520142114'),
+('20160520151100'),
+('20160523062919'),
+('20160523111212'),
+('20160523134144'),
+('20160523144401'),
+('20160523150519'),
+('20160524145856'),
+('20160524155401'),
+('20160524192650'),
+('20160524192805'),
+('20160524192859'),
+('20160524195216'),
+('20160524210510'),
+('20160524210952'),
+('20160524213930'),
+('20160524221026'),
+('20160524223055'),
+('20160525105622'),
+('20160525122831'),
+('20160525202154'),
+('20160525202912'),
+('20160525203905'),
+('20160603134420'),
+('20160603134547'),
+('20160603134923'),
+('20160603201156'),
+('20160603201256'),
+('20160603202143'),
+('20160604214151'),
+('20160604222116'),
+('20160605101834'),
+('20160605192328'),
+('20160605192524'),
+('20160605193318'),
+('20160605211444'),
+('20160605211612'),
+('20160607183913'),
+('20160609161856'),
+('20160609175034'),
+('20160609183417'),
+('20160610124301'),
+('20160613145120'),
+('20160613161922'),
+('20160614082527'),
+('20160615165505'),
+('20160622105806'),
+('20160622112911'),
+('20160622113449'),
+('20160622113649'),
+('20160622114653'),
+('20160622115927'),
+('20160622142531'),
+('20160622143425'),
+('20160622144845'),
+('20160622202723'),
+('20160622231145'),
+('20160623135959'),
+('20160623150755'),
+('20160624113525'),
+('20160629144830'),
+('20160629151520'),
+('20160629201243'),
+('20160629221305'),
+('20160629221424'),
+('20160629221800'),
+('20160706111638'),
+('20160707212141'),
+('20160708105151'),
+('20160708121934'),
+('20160708140307'),
+('20160708155010'),
+('20160708172910'),
+('20160708173417'),
+('20160711125108'),
+('20160711151815'),
+('20160718092226'),
+('20160718092417'),
+('20160718094712'),
+('20160719123714'),
+('20160720085630'),
+('20160721091930'),
+('20160721134515'),
+('20160721144047'),
+('20160721151057'),
+('20160721153228'),
+('20160721153817'),
+('20160721160533'),
+('20160721160901'),
+('20160721162155'),
+('20160722151335'),
+('20160722151503'),
+('20160727150803'),
+('20160803124909'),
+('20160803142910'),
+('20160803205746'),
+('20160808125148'),
+('20160809092452'),
+('20160809095256'),
+('20160809115742'),
+('20160809120030'),
+('20160811100934'),
+('20160811102028'),
+('20160811103149'),
+('20160811104830'),
+('20160811111706'),
+('20160811112312'),
+('20160811121506'),
+('20160811124755'),
+('20160812133817'),
+('20160812135204'),
+('20160812135415'),
+('20160812140655'),
+('20160812142245'),
+('20160812142416'),
+('20160812202908'),
+('20160812215714'),
+('20160815130928'),
+('20160818110211'),
+('20160818110621'),
+('20160818135739'),
+('20160825110839'),
+('20160825120623'),
+('20160830120608'),
+('20160830121920'),
+('20160928120044'),
+('20160928123138'),
+('20160928213723'),
+('20160929120951'),
+('20160929121253'),
+('20160929121400'),
+('20160929124430'),
+('20160929124817'),
+('20160929125059'),
+('20160929125508'),
+('20160930085831'),
+('20160930102048'),
+('20161010145325'),
+('20161010145425'),
+('20161010205914'),
+('20161010220918'),
+('20161010221017'),
+('20161010224003'),
+('20161010224400'),
+('20161010225250'),
+('20161011210352'),
+('20161011214757'),
+('20161012110655'),
+('20161012135758'),
+('20161012150803'),
+('20161012150927'),
+('20161012195055'),
+('20161012195151'),
+('20161012210141'),
+('20161012210225'),
+('20161012212459'),
+('20161012212552'),
+('20161013060038'),
+('20161018113906'),
+('20161018141504'),
+('20161018141555'),
+('20170222131821'),
+('20170223074140');
 
 
