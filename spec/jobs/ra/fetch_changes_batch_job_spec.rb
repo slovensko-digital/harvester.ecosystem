@@ -245,7 +245,15 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       )
     end
 
-    pending 'it adds batch record last'
+    it 'creates batch record only after successful import' do
+      expect(downloader).to receive(:download_file).with('abc').
+        and_return(fixture_filepath('jobs/ra/fixtures/zmenovadavka1952939_with_invalid_tag.xml'))
 
+      to_not_change_changes_batch_count = change { Ra::ChangesBatch.count }.by(0)
+
+      expect { subject.perform('abc', downloader: downloader) }.to(
+        raise_error(RuntimeError).and to_not_change_changes_batch_count
+      )
+    end
   end
 end
