@@ -195,7 +195,6 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       municipality_change = Ra::MunicipalityChange.first
       expect(municipality_change).to have_attributes(
-        change_id: nil,
         municipality_id: 92,
         county_id: 11,
         database_operation: 'INSERT',
@@ -204,18 +203,18 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         valid_to: Time.zone.parse('2004-04-30T23:59:59+02:00'),
         municipality_status: 'MUNICIPALITY',
 
-        change: nil,
         municipality_object: Ra::Municipality.find(92),
         county: Ra::County.find(11),
       )
+
+      # Attributes we don't have testing data for
+      expect(municipality_change).to respond_to(:change_id, :city_id, :change)
 
       expect(municipality_change.municipality_code).to have_attributes(
         code: '100000',
         name: 'Neznáma'
       )
     end
-
-    pending 'it parses city_id for some municipality changes'
 
     it 'can parse district changes' do
       expect(downloader).to receive(:download_file).with('abc').

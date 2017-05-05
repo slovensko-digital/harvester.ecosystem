@@ -245,6 +245,9 @@ module Ra
           when :countyIdentifier
             id = Integer(child.children.first.value)
             payload[:county] = Ra::County.find_or_create_by!(id: id)
+          when :cityIdentifier
+            id = Integer(child.children.first.value)
+            payload[:city_id] = id
           when :status
             payload[:municipality_status] = child.children.first.value
           when :Municipality
