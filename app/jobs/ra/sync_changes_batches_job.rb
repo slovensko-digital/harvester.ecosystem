@@ -13,8 +13,11 @@ class Ra::SyncChangesBatchesJob
   @@downloader = Faraday.new(request: { timeout: 5.minutes.to_i })
 
   def perform(downloader: @@downloader, job: ::Ra::FetchChangesBatchJob)
-    html = downloader.get(CHANGES_BATCHES_URL).body
-    doc = Nokogiri::HTML(html)
+    response = downloader.get(CHANGES_BATCHES_URL)
+
+    response.status == 200 || fail("Received non-200 HTTP status: #{response.status}")
+
+    doc = Nokogiri::HTML(response.body)
     doc.css('#dataset-resources .resource-item').each do |item|
       next unless item.at_css('a.heading')[:title].include?('Zmenová dávka č. ')
 
