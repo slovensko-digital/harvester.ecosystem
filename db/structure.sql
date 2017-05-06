@@ -5368,6 +5368,34 @@ CREATE INDEX "index_ra.region_changes_on_change_id" ON region_changes USING btre
 CREATE INDEX "index_ra.street_name_changes_on_change_id" ON street_name_changes USING btree (change_id);
 
 
+--
+-- Name: street_name_changes_districts_change; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX street_name_changes_districts_change ON street_name_changes_districts USING btree (street_name_change_id);
+
+
+--
+-- Name: street_name_changes_districts_district; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX street_name_changes_districts_district ON street_name_changes_districts USING btree (district_id);
+
+
+--
+-- Name: street_name_changes_municipalities_change; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX street_name_changes_municipalities_change ON street_name_changes_municipalities USING btree (street_name_change_id);
+
+
+--
+-- Name: street_name_changes_municipalities_municipality; Type: INDEX; Schema: ra; Owner: -
+--
+
+CREATE INDEX street_name_changes_municipalities_municipality ON street_name_changes_municipalities USING btree (municipality_id);
+
+
 SET search_path = rpo, pg_catalog;
 
 --
@@ -6807,6 +6835,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170502120756'),
 ('20170503112646'),
 ('20170503203539'),
-('20170506104022');
+('20170506104022'),
+('20170506190014');
 
 
