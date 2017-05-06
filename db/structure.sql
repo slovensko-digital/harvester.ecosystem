@@ -5292,20 +5292,6 @@ CREATE INDEX "index_ra.building_number_changes_on_version_id" ON building_number
 
 
 --
--- Name: index_ra.building_purpose_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.building_purpose_codes_on_code" ON building_purpose_codes USING btree (code);
-
-
---
--- Name: index_ra.building_type_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.building_type_codes_on_code" ON building_type_codes USING btree (code);
-
-
---
 -- Name: index_ra.building_unit_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
 --
 
@@ -5320,24 +5306,10 @@ CREATE INDEX "index_ra.county_changes_on_change_id" ON county_changes USING btre
 
 
 --
--- Name: index_ra.county_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.county_codes_on_code" ON county_codes USING btree (code);
-
-
---
 -- Name: index_ra.district_changes_on_change_id; Type: INDEX; Schema: ra; Owner: -
 --
 
 CREATE INDEX "index_ra.district_changes_on_change_id" ON district_changes USING btree (change_id);
-
-
---
--- Name: index_ra.district_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.district_codes_on_code" ON district_codes USING btree (code);
 
 
 --
@@ -5359,13 +5331,6 @@ CREATE INDEX "index_ra.municipality_changes_on_change_id" ON municipality_change
 --
 
 CREATE INDEX "index_ra.municipality_changes_on_city_id" ON municipality_changes USING btree (city_id);
-
-
---
--- Name: index_ra.municipality_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.municipality_codes_on_code" ON municipality_codes USING btree (code);
 
 
 --
@@ -5394,13 +5359,6 @@ CREATE INDEX "index_ra.property_registration_number_changes_on_version_id" ON pr
 --
 
 CREATE INDEX "index_ra.region_changes_on_change_id" ON region_changes USING btree (change_id);
-
-
---
--- Name: index_ra.region_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.region_codes_on_code" ON region_codes USING btree (code);
 
 
 --
@@ -6848,6 +6806,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170430190843'),
 ('20170502120756'),
 ('20170503112646'),
-('20170503203539');
+('20170503203539'),
+('20170506104022');
 
 
