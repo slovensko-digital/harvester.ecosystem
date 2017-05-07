@@ -77,7 +77,9 @@ module Ra
                 when :BuildingTypeCode
                   codelist = parse_codelist(ch.children.first)
                   fail unless codelist[:code] == 'CL010143'
-                  payload[:building_type_code] = Ra::BuildingTypeCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+                  if codelist[:item]
+                    payload[:building_type_code] = Ra::BuildingTypeCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+                  end
                 else
                   fail "Don't know how to handle #{ch.name}"
               end
@@ -198,7 +200,9 @@ module Ra
           when :Region
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000023'
-            payload[:region_code] = Ra::RegionCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            if codelist[:item]
+              payload[:region_code] = Ra::RegionCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            end
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -223,7 +227,9 @@ module Ra
           when :County
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000024'
-            payload[:county_code] = Ra::CountyCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            if codelist[:item]
+              payload[:county_code] = Ra::CountyCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            end
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -253,7 +259,9 @@ module Ra
           when :Municipality
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000025'
-            payload[:municipality_code] = Ra::MunicipalityCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            if codelist[:item]
+              payload[:municipality_code] = Ra::MunicipalityCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            end
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -279,7 +287,9 @@ module Ra
             payload[:unique_numbering] = child.attrs[:UniqueNumbering] == 'true'
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL010141'
-            payload[:district_code] = Ra::DistrictCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            if codelist[:item]
+              payload[:district_code] = Ra::DistrictCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            end
           else
             fail "Don't know how to handle #{child.name}"
         end
