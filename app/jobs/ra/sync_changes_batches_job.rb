@@ -4,10 +4,6 @@ class Ra::SyncChangesBatchesJob
 
   sidekiq_options queue: 'ra'
 
-  sidekiq_retry_in do |_count|
-    1.day.to_i
-  end
-
   CHANGES_BATCHES_URL = 'https://data.gov.sk/dataset/register-adries-zmenove-davky'
 
   @@downloader = Faraday.new(request: { timeout: 5.minutes.to_i })

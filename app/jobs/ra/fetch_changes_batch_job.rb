@@ -570,10 +570,6 @@ class Ra::FetchChangesBatchJob
 
   sidekiq_options queue: 'ra'
 
-  sidekiq_retry_in do |_count|
-    1.day.to_i
-  end
-
   def perform(url, downloader: ::Harvester::Utils)
     file = downloader.download_file(url)
     perform_on_file(file)
