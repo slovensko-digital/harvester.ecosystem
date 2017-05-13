@@ -1641,7 +1641,8 @@ CREATE TABLE municipality_changes (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     city_id integer,
-    change_id integer
+    change_id integer,
+    effective_on date
 );
 
 
@@ -6836,6 +6837,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170503112646'),
 ('20170503203539'),
 ('20170506104022'),
-('20170506190014');
-
-
+('20170506190014'),
+('20170513200748');
