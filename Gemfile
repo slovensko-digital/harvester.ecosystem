@@ -26,6 +26,7 @@ gem 'foreman'
 gem 'typhoeus'
 gem 'nokogiri'
 gem 'ox', '2.4.12'
+gem 'rubyzip'
 
 gem 'puma'
 gem 'newrelic_rpm'
