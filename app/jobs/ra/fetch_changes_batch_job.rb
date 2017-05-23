@@ -1,3 +1,5 @@
+require 'harvester_utils/downloader'
+
 module Ra
   class RecordBuilder
     GENERIC_CHANGE_COLUMNS = [
@@ -570,9 +572,9 @@ class Ra::FetchChangesBatchJob
 
   sidekiq_options queue: 'ra'
 
-  def perform(url, downloader: ::Harvester::Utils)
+  def perform(url, downloader: HarvesterUtils::Downloader)
     file = downloader.download_file(url)
-    perform_on_file(file)
+    perform_on_file(file.path)
   end
 
   def perform_on_file(path)
