@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Ra::FetchChangesBatchJob, type: :job do
+  def parse_local_time(time_string)
+    Time.use_zone('Europe/Bratislava') do
+      Time.zone.parse(time_string)
+    end
+  end
+
   describe '#perform' do
     let(:downloader) { double }
 
@@ -13,13 +19,13 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       property_change = Ra::PropertyRegistrationNumberChange.first
       expect(property_change).to have_attributes(
         change_id: 60195291,
-        changed_at: Time.zone.parse('2016-06-03T14:17:33.723'),
+        changed_at: parse_local_time('2016-06-03T14:17:33.723'),
         database_operation: 'INSERT',
         property_registration_number_id: 585020,
         version_id: 5245180,
         created_reason: 'CORRECT',
-        valid_from: Time.zone.parse('2016-06-03T14:17:33.65'),
-        valid_to: Time.zone.parse('3000-12-31T23:59:59.0'),
+        valid_from: parse_local_time('2016-06-03T14:17:33.65'),
+        valid_to: parse_local_time('3000-12-31T23:59:59.0'),
         effective_on: Date.parse('1000-01-01'),
         property_registration_number: 39,
         building_contains_flats: true,
@@ -45,13 +51,13 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       building_number_change = Ra::BuildingNumberChange.first
       expect(building_number_change).to have_attributes(
         change_id: 60195314,
-        changed_at: Time.zone.parse('2016-06-03T14:17:33.877'),
+        changed_at: parse_local_time('2016-06-03T14:17:33.877'),
         database_operation: 'UPDATE',
         building_number_id: 2125309,
         version_id: 5207552,
         created_reason: 'IMPORT',
-        valid_from: Time.zone.parse('1000-01-01T00:00:00.0'),
-        valid_to: Time.zone.parse('2016-06-03T14:17:33.65'),
+        valid_from: parse_local_time('1000-01-01T00:00:00.0'),
+        valid_to: parse_local_time('2016-06-03T14:17:33.65'),
         effective_on: Date.parse('1000-01-01'),
         building_index: '1745974A',
         postal_code: 7214,
@@ -80,12 +86,12 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         change_id: 60196464,
         building_unit_id: 4005683,
         building_number_id: 2734787,
-        changed_at: Time.zone.parse('2016-06-03T14:18:13.279'),
+        changed_at: parse_local_time('2016-06-03T14:18:13.279'),
         database_operation: 'INSERT',
         version_id: 3087790,
         created_reason: 'CREATE',
-        valid_from: Time.zone.parse('2016-06-03T14:18:13.222'),
-        valid_to: Time.zone.parse('3000-12-31T23:59:59.0'),
+        valid_from: parse_local_time('2016-06-03T14:18:13.222'),
+        valid_to: parse_local_time('3000-12-31T23:59:59.0'),
         effective_on: Date.parse('2016-06-03'),
         building_unit_floor: '1',
         building_unit_number: '17',
@@ -96,11 +102,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
 
       expect(Ra::ChangesBatch.first).to have_attributes(
         id: 5362764,
-        generated_at: Time.zone.parse('2016-10-06T02:35:21.615'),
-      )
-
-      expect(Ra::ChangesBatch.first.generated_at.utc).to eq(
-        '2016-10-06T02:35:21.615'.in_time_zone('Europe/Bratislava').utc
+        generated_at: parse_local_time('2016-10-06T02:35:21.615'),
       )
     end
 
@@ -114,12 +116,12 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
       expect(street_name_change).to have_attributes(
         change_id: 19764348,
         street_name_id: 39693,
-        changed_at: Time.zone.parse('2016-04-14T11:35:51.872'),
+        changed_at: parse_local_time('2016-04-14T11:35:51.872'),
         database_operation: 'UPDATE',
         version_id: 3034621,
         created_reason: 'IMPORT',
-        valid_from: Time.zone.parse('1981-01-26T00:00:00.0'),
-        valid_to: Time.zone.parse('2016-04-14T11:35:51.821'),
+        valid_from: parse_local_time('1981-01-26T00:00:00.0'),
+        valid_to: parse_local_time('2016-04-14T11:35:51.821'),
         effective_on: Date.parse('1981-01-26'),
         street_name: 'Juraja Hronca',
 
@@ -146,7 +148,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         database_operation: 'INSERT',
         version_id: 1,
         created_reason: 'CREATE',
-        valid_to: Time.zone.parse('2004-04-30T23:59:59+02:00'),
+        valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         effective_on: Date.parse('1996-07-24+02:00'),
 
         change: nil,
@@ -173,7 +175,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         database_operation: 'INSERT',
         version_id: 1,
         created_reason: 'CREATE',
-        valid_to: Time.zone.parse('2004-04-30T23:59:59+02:00'),
+        valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         effective_on: Date.parse('1996-07-24+02:00'),
 
         change: nil,
@@ -200,7 +202,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         database_operation: 'INSERT',
         version_id: 1,
         created_reason: 'CREATE',
-        valid_to: Time.zone.parse('2004-04-30T23:59:59+02:00'),
+        valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         municipality_status: 'MUNICIPALITY',
 
         municipality_object: Ra::Municipality.find(92),
@@ -230,7 +232,7 @@ RSpec.describe Ra::FetchChangesBatchJob, type: :job do
         database_operation: 'INSERT',
         version_id: 1,
         created_reason: 'CREATE',
-        valid_to: Time.zone.parse('2004-04-30T23:59:59+02:00'),
+        valid_to: Time.parse('2004-04-30T23:59:59+02:00'),
         unique_numbering: false,
 
         change: nil,

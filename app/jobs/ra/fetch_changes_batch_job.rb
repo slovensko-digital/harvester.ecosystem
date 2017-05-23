@@ -576,9 +576,19 @@ class Ra::FetchChangesBatchJob
   end
 
   def perform_on_file(path)
-    Ra::ChangesBatch.transaction do
-      handler = Sample.new(Ra::RecordBuilder.new)
+    handler = Sample.new(Ra::RecordBuilder.new)
+    with_parsing_context do
       Ox.sax_parse(handler, File.open(path, 'r'))
+    end
+  end
+
+  private
+
+  def with_parsing_context(&block)
+    Ra::ChangesBatch.transaction do
+      Time.use_zone("Europe/Bratislava") do
+        yield
+      end
     end
   end
 end
