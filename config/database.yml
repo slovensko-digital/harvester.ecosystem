@@ -1,6 +1,9 @@
 default: &default
   adapter: postgis
   encoding: unicode
+  username: datahub
+  password: datahub
+  host: localhost
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 20 } %>
@@ -8,22 +11,18 @@ default: &default
 development:
   <<: *default
   database: datahub_development
-  username: datahub
-  password: datahub
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  username: datahub
-  password: datahub
   database: datahub_test
 
 staging:
   <<: *default
-  password: <%= ENV['HARVESTER_DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
 
 production:
   <<: *default
-  password: <%= ENV['HARVESTER_DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>

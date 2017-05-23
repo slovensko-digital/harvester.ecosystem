@@ -1,5 +1,12 @@
+require 'harvester_utils/downloader'
+
 module Ra
   class RecordBuilder
+    GENERIC_CHANGE_COLUMNS = [
+      :changeId, :changedAt, :databaseOperation, :versionId, :createdReason,
+      :validFrom, :validTo, :effectiveDate
+    ]
+
     def initialize
       @data = {}
     end
@@ -17,7 +24,6 @@ module Ra
     end
 
     def report_generic(tag)
-      # puts tag.inspect
       case tag.name
         when :propertyRegistrationNumberChange
           build_property_registration_number_change(tag)
@@ -42,7 +48,7 @@ module Ra
 
     def report_end
       if @data[:changes_id]
-        Ra::ChangesBatch.find_or_create_by!(id: @data[:changes_id], generated_at: Time.parse(@data[:generated_at]))
+        Ra::ChangesBatch.find_or_create_by!(id: @data[:changes_id], generated_at: Time.zone.parse(@data[:generated_at]))
       end
     end
 
@@ -50,28 +56,16 @@ module Ra
 
     def build_property_registration_number_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = child.children.first.value.to_i
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
-            payload[:property_registration_number_id] = child.children.first.value.to_i
-          when :versionId
-            payload[:version_id] = child.children.first.value.to_i
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:property_registration_number_object] = Ra::PropertyRegistrationNumber.find_or_create_by!(id: id)
           when :PropertyRegistrationNumber
-            payload[:property_registration_number] = child.children.first.value.to_i
+            payload[:property_registration_number] = Integer(child.children.first.value)
           when :Building
             payload[:building_contains_flats] = child.attrs[:ContainsFlats] == 'true'
             child.children.each do |ch|
@@ -80,20 +74,24 @@ module Ra
                   codelist = parse_codelist(ch.children.first)
                   fail unless codelist[:code] == 'CL010142'
                   if codelist[:item]
-                    payload[:building_purpose] = Ra::BuildingPurpose.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+                    payload[:building_purpose_code] = Ra::BuildingPurposeCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
                   end
                 when :BuildingTypeCode
                   codelist = parse_codelist(ch.children.first)
                   fail unless codelist[:code] == 'CL010143'
-                  payload[:building_type] = Ra::BuildingType.find_or_create_by!(id: codelist[:item][:code], name: codelist[:item][:name])
+                  if codelist[:item]
+                    payload[:building_type_code] = Ra::BuildingTypeCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+                  end
                 else
                   fail "Don't know how to handle #{ch.name}"
               end
             end
           when :municipalityIdentifier
-            payload[:municipality_id] = child.children.first.value.to_i
+            id = Integer(child.children.first.value)
+            payload[:municipality] = Ra::Municipality.find_or_create_by!(id: id)
           when :districtIdentifier
-            payload[:district_id] = child.children.first.value.to_i
+            id = Integer(child.children.first.value)
+            payload[:district] = Ra::District.find_or_create_by!(id: id)
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -104,28 +102,16 @@ module Ra
 
     def build_building_number_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = Integer(child.children.first.value)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
-            payload[:building_number_id] = Integer(child.children.first.value)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:building_number_object] = Ra::BuildingNumber.find_or_create_by!(id: id)
           when :verifiedAt
-            payload[:verified_at] = Time.parse(child.children.first.value)
+            payload[:verified_at] = Time.zone.parse(child.children.first.value)
           when :BuildingNumber
             payload[:building_number] = child.children.first.value
           when :BuildingIndex
@@ -135,9 +121,11 @@ module Ra
           when :AddressPoint
             payload[:address_point] = parse_address_point(child)
           when :propertyRegistrationNumberIdentifier
-            payload[:property_registration_number_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:property_registration_number] = Ra::PropertyRegistrationNumber.find_or_create_by!(id: id)
           when :streetNameIdentifier
-            payload[:street_name_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:street_name] = Ra::StreetName.find_or_create_by!(id: id)
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -148,26 +136,14 @@ module Ra
 
     def build_building_unit_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = Integer(child.children.first.value)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
-            payload[:building_unit_id] = Integer(child.children.first.value)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:building_unit_object] = Ra::BuildingUnit.find_or_create_by!(id: id)
           when :BuildingUnit
             payload[:building_unit_label] = child.children.first.value
             payload[:building_unit_floor] = child.attrs[:Floor]
@@ -184,66 +160,51 @@ module Ra
 
     def build_street_name_change(tag)
       payload = {}
+      municipalities_payload = []
+      districts_payload = []
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = Integer(child.children.first.value)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
-            payload[:street_name_id] = Integer(child.children.first.value)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:street_name_object] = Ra::StreetName.find_or_create_by!(id: id)
           when :StreetName
             payload[:street_name] = child.children.first.value
           when :municipalityIdentifier
-            payload[:municipality_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            municipalities_payload << Ra::Municipality.find_or_create_by!(id: id)
           when :districtIdentifier
-            payload[:district_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            districts_payload << Ra::District.find_or_create_by!(id: id)
           else
             fail "Don't know how to handle #{child.name}"
         end
       end
 
-      Ra::StreetNameChange.find_or_create_by!(payload)
+      street_name_change = Ra::StreetNameChange.find_or_initialize_by(payload)
+      street_name_change.municipalities = municipalities_payload
+      street_name_change.districts = districts_payload
+      street_name_change.save!
     end
 
     def build_region_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = Integer(child.children.first.value)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
-            payload[:region_id] = Integer(child.children.first.value)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:region_object] = Ra::Region.find_or_create_by!(id: id)
           when :Region
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000023'
-            payload[:region_code] = Ra::RegionCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            if codelist[:item]
+              payload[:region_code] = Ra::RegionCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            end
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -254,32 +215,23 @@ module Ra
 
     def build_county_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = Integer(child.children.first.value)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
-            payload[:county_id] = Integer(child.children.first.value)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:county_object] = Ra::County.find_or_create_by!(id: id)
           when :regionIdentifier
-            payload[:region_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:region] = Ra::Region.find_or_create_by!(id: id)
           when :County
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000024'
-            payload[:county_code] = Ra::CountyCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            if codelist[:item]
+              payload[:county_code] = Ra::CountyCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            end
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -290,34 +242,28 @@ module Ra
 
     def build_municipality_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = Integer(child.children.first.value)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
-            payload[:municipality_id] = Integer(child.children.first.value)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:municipality_object] = Ra::Municipality.find_or_create_by!(id: id)
           when :countyIdentifier
-            payload[:county_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:county] = Ra::County.find_or_create_by!(id: id)
+          when :cityIdentifier
+            id = Integer(child.children.first.value)
+            payload[:city_id] = id
           when :status
             payload[:municipality_status] = child.children.first.value
           when :Municipality
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL000025'
-            payload[:municipality_code] = Ra::MunicipalityCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            if codelist[:item]
+              payload[:municipality_code] = Ra::MunicipalityCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            end
           else
             fail "Don't know how to handle #{child.name}"
         end
@@ -328,39 +274,56 @@ module Ra
 
     def build_district_change(tag)
       payload = {}
+
       tag.children.each do |child|
         case child.name
-          when :changeId
-            payload[:id] = Integer(child.children.first.value)
-          when :changedAt
-            payload[:changed_at] = Time.parse(child.children.first.value)
-          when :databaseOperation
-            payload[:database_operation] = child.children.first.value
+          when *GENERIC_CHANGE_COLUMNS
+            payload.merge!(parse_generic_change_tag(child))
           when :objectId
-            payload[:district_id] = Integer(child.children.first.value)
-          when :versionId
-            payload[:version_id] = Integer(child.children.first.value)
-          when :createdReason
-            payload[:created_reason] = child.children.first.value
-          when :validFrom
-            payload[:valid_from] = Time.parse(child.children.first.value)
-          when :validTo
-            payload[:valid_to] = Time.parse(child.children.first.value)
-          when :effectiveDate
-            payload[:effective_on] = Date.parse(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:district_object] = Ra::District.find_or_create_by!(id: id)
           when :municipalityIdentifier
-            payload[:municipality_id] = Integer(child.children.first.value)
+            id = Integer(child.children.first.value)
+            payload[:municipality] = Ra::Municipality.find_or_create_by!(id: id)
           when :District
             payload[:unique_numbering] = child.attrs[:UniqueNumbering] == 'true'
             codelist = parse_codelist(child.children.first)
             fail unless codelist[:code] == 'CL010141'
-            payload[:district_code] = Ra::DistrictCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            if codelist[:item]
+              payload[:district_code] = Ra::DistrictCode.find_or_create_by!(code: codelist[:item][:code], name: codelist[:item][:name])
+            end
           else
             fail "Don't know how to handle #{child.name}"
         end
       end
 
       Ra::DistrictChange.find_or_create_by!(payload)
+    end
+
+    def parse_generic_change_tag(tag)
+      payload = {}
+
+      case tag.name
+        when :changeId
+          id = Integer(tag.children.first.value)
+          payload[:change] = Ra::Change.find_or_create_by!(id: id)
+        when :changedAt
+          payload[:changed_at] = Time.zone.parse(tag.children.first.value)
+        when :databaseOperation
+          payload[:database_operation] = tag.children.first.value
+        when :versionId
+          payload[:version_id] = Integer(tag.children.first.value)
+        when :createdReason
+          payload[:created_reason] = tag.children.first.value
+        when :validFrom
+          payload[:valid_from] = Time.zone.parse(tag.children.first.value)
+        when :validTo
+          payload[:valid_to] = Time.zone.parse(tag.children.first.value)
+        when :effectiveDate
+          payload[:effective_on] = Date.parse(tag.children.first.value)
+      end
+
+      payload
     end
 
     def parse_codelist(tag)
@@ -531,8 +494,8 @@ module Ra
     def end_element(name, stack, listener)
       case name
         when :'ns0:getChangesResponse'
-        when :'ns0:register'
           listener.report_end
+        when :'ns0:register'
         when :return
         when :corrId
         when :resultCode
@@ -583,27 +546,22 @@ class Sample < ::Ox::Sax
   end
 
   def instruct(name)
-    # puts "instruct: #{name}"
     @stack.current.instruct(name, @stack, @listener)
   end
 
   def start_element(name)
-    # puts "start: #{name}"
     @stack.current.start_element(name, @stack, @listener)
   end
 
   def end_element(name)
-    # puts "end: #{name}"
     @stack.current.end_element(name, @stack, @listener)
   end
 
   def attr(name, value)
-    # puts "  #{name} => #{value}"
     @stack.current.attr(name, value, @stack, @listener)
   end
 
   def text(value)
-    # puts "text #{value}"
     @stack.current.text(value, @stack, @listener)
   end
 end
@@ -614,17 +572,25 @@ class Ra::FetchChangesBatchJob
 
   sidekiq_options queue: 'ra'
 
-  sidekiq_retry_in do |_count|
-    1.day.to_i
-  end
-
-  def perform(url, downloader: ::Harvester::Utils)
+  def perform(url, downloader: HarvesterUtils::Downloader)
     file = downloader.download_file(url)
-    perform_on_file(file)
+    perform_on_file(file.path)
   end
 
   def perform_on_file(path)
     handler = Sample.new(Ra::RecordBuilder.new)
-    Ox.sax_parse(handler, File.open(path, 'r'))
+    with_parsing_context do
+      Ox.sax_parse(handler, File.open(path, 'r'))
+    end
+  end
+
+  private
+
+  def with_parsing_context(&block)
+    Ra::ChangesBatch.transaction do
+      Time.use_zone("Europe/Bratislava") do
+        yield
+      end
+    end
   end
 end
