@@ -1,0 +1,97 @@
+[
+  {
+    "alokaciaEU": 0.15759135021874932,
+    "alokaciaSR": 0.015051768500706232,
+    "createdAt": "1973-07-25T22:14:47+01:00",
+    "datumUzavretia": "1973-12-16T12:43:47+01:00",
+    "datumVyhlasenia": "1986-03-05T16:56:24+01:00",
+    "doplnujuceInfo": [
+      {
+        "nazov": "Assumenda maxime error et.",
+        "url": "Delectus magnam harum ipsam voluptatem."
+      }
+    ],
+    "druh": "Qui et quidem animi dolore.",
+    "fondy": [
+      "Eaque sint eligendi."
+    ],
+    "href": "Atque fugit aspernatur.",
+    "id": 5608104377301085000,
+    "kod": "Perspiciatis quibusdam corrupti doloremque qui.",
+    "konkretneCiele": [
+      {
+        "href": "/konkretnyCiel/1",
+        "id": 2139854021380057000
+      }
+    ],
+    "kontaktneOsoby": [
+      {
+        "email": "Unde sit.",
+        "id": 6248541792933543000,
+        "meno": "Aspernatur reiciendis.",
+        "menoUplne": "Harum voluptatem sit magni dicta.",
+        "priezvisko": "Enim autem vitae iste velit nihil ab.",
+        "telefon": "Doloribus molestiae voluptatum."
+      },
+      {
+        "email": "Unde sit.",
+        "id": 6248541792933543001,
+        "meno": "Aspernatur reiciendis.",
+        "menoUplne": "Harum voluptatem sit magni dicta.",
+        "priezvisko": "Enim autem vitae iste velit nihil ab.",
+        "telefon": "Doloribus molestiae voluptatum."
+      }
+    ],
+    "nazov": "Ut alias est distinctio quia.",
+    "planovaneVyzvy": [
+      {
+        "href": "Pariatur voluptatem quis aperiam soluta praesentium a.",
+        "id": 4362122098381105000
+      },
+      {
+        "href": "Pariatur voluptatem quis aperiam soluta praesentium a.",
+        "id": 4362122098381105001
+      }
+    ],
+    "poskytovatelia": [
+      {
+        "href": "Eligendi id sit.",
+        "ico": "Atque error ad perferendis soluta autem.",
+        "id": 3604616086874745000,
+        "ineIdentifikacneCislo": "Omnis provident aperiam occaecati corrupti."
+      },
+      {
+        "href": "Eligendi id sit.",
+        "ico": "Atque error ad perferendis soluta autem.",
+        "id": 3604616086874745001,
+        "ineIdentifikacneCislo": "Omnis provident aperiam occaecati corrupti."
+      },
+      {
+        "href": "Eligendi id sit.",
+        "ico": "Atque error ad perferendis soluta autem.",
+        "id": 3604616086874745002,
+        "ineIdentifikacneCislo": "Omnis provident aperiam occaecati corrupti."
+      }
+    ],
+    "posudzovaneObdobia": [
+      {
+        "datumUzavierky": "Vel molestias quaerat qui eos enim deserunt.",
+        "poradoveCislo": 5880346236508920000
+      },
+      {
+        "datumUzavierky": "Vel molestias quaerat qui eos enim deserunt.",
+        "poradoveCislo": 5880346236508920001
+      }
+    ],
+    "stav": "Deserunt voluptatem autem.",
+    "technickaAsistencia": false,
+    "typ": "Laborum facere cupiditate.",
+    "updatedAt": "1973-10-14T20:59:33+01:00",
+    "vyhlasovatel": {
+      "href": "Eligendi id sit.",
+      "ico": "Atque error ad perferendis soluta autem.",
+      "id": 3604616086874745000,
+      "ineIdentifikacneCislo": "Omnis provident aperiam occaecati corrupti."
+    }
+  }
+]
