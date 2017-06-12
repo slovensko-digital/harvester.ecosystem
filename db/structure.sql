@@ -2,11 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.6
--- Dumped by pg_dump version 9.5.6
+-- Dumped from database version 9.6.2
+-- Dumped by pg_dump version 9.6.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -14,87 +15,10 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: core; Type: SCHEMA; Schema: -; Owner: -
+-- Name: itms; Type: SCHEMA; Schema: -; Owner: -
 --
 
-CREATE SCHEMA core;
-
-
---
--- Name: crz; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA crz;
-
-
---
--- Name: datahub; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA datahub;
-
-
---
--- Name: fs; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA fs;
-
-
---
--- Name: map_datahub_fs; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA map_datahub_fs;
-
-
---
--- Name: map_datahub_rpo; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA map_datahub_rpo;
-
-
---
--- Name: map_datahub_ruz; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA map_datahub_ruz;
-
-
---
--- Name: ov; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA ov;
-
-
---
--- Name: ra; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA ra;
-
-
---
--- Name: rpo; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA rpo;
-
-
---
--- Name: ruz; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA ruz;
-
-
---
--- Name: socpoist; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA socpoist;
+CREATE SCHEMA itms;
 
 
 --
@@ -102,13 +26,6 @@ CREATE SCHEMA socpoist;
 --
 
 CREATE SCHEMA upvs;
-
-
---
--- Name: vvo; Type: SCHEMA; Schema: -; Owner: -
---
-
-CREATE SCHEMA vvo;
 
 
 --
@@ -125,84 +42,33 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
---
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA ra;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
-
-
-SET search_path = ra, pg_catalog;
-
---
--- Name: change_type; Type: TYPE; Schema: ra; Owner: -
---
-
-CREATE TYPE change_type AS ENUM (
-    'INSERT',
-    'UPDATE',
-    'DELETE'
-);
-
-
---
--- Name: created_reason_type; Type: TYPE; Schema: ra; Owner: -
---
-
-CREATE TYPE created_reason_type AS ENUM (
-    'IMPORT',
-    'CREATE',
-    'UPDATE',
-    'CANCEL',
-    'CORRECT',
-    'REVERT'
-);
-
-
---
--- Name: municipality_status; Type: TYPE; Schema: ra; Owner: -
---
-
-CREATE TYPE municipality_status AS ENUM (
-    'MUNICIPALITY',
-    'CITY_DISTRICT',
-    'CITY',
-    'CITY_MANAGED_BY_SPECIAL_LAW',
-    'MILITARY_DISTRICT'
-);
-
-
-SET search_path = core, pg_catalog;
+SET search_path = itms, pg_catalog;
 
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: apps; Type: TABLE; Schema: core; Owner: -
+-- Name: dodavatelia; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE apps (
+CREATE TABLE dodavatelia (
     id integer NOT NULL,
-    name character varying NOT NULL,
-    access_token character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    itms_identifier bigint NOT NULL,
+    dic character varying,
+    ico character varying,
+    ine_identifikacne_cislo character varying,
+    nazov character varying,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone
 );
 
 
 --
--- Name: apps_id_seq; Type: SEQUENCE; Schema: core; Owner: -
+-- Name: dodavatelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE apps_id_seq
+CREATE SEQUENCE dodavatelia_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -211,37 +77,34 @@ CREATE SEQUENCE apps_id_seq
 
 
 --
--- Name: apps_id_seq; Type: SEQUENCE OWNED BY; Schema: core; Owner: -
+-- Name: dodavatelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE apps_id_seq OWNED BY apps.id;
+ALTER SEQUENCE dodavatelia_id_seq OWNED BY dodavatelia.id;
 
-
-SET search_path = crz, pg_catalog;
 
 --
--- Name: attachments; Type: TABLE; Schema: crz; Owner: -
+-- Name: konkretne_ciele; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE attachments (
+CREATE TABLE konkretne_ciele (
     id integer NOT NULL,
-    contract_id integer NOT NULL,
-    title character varying,
-    file_name character varying,
-    file_size integer,
-    changed_at timestamp without time zone NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    scan_file_name character varying,
-    scan_file_size integer
+    itms_identifier bigint NOT NULL,
+    fond character varying,
+    kategoria_regionov character varying,
+    kod character varying,
+    nazov character varying,
+    technicka_asistencia boolean,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
 --
--- Name: attachments_id_seq; Type: SEQUENCE; Schema: crz; Owner: -
+-- Name: konkretne_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE attachments_id_seq
+CREATE SEQUENCE konkretne_ciele_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -250,59 +113,28 @@ CREATE SEQUENCE attachments_id_seq
 
 
 --
--- Name: attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: crz; Owner: -
+-- Name: konkretne_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
+ALTER SEQUENCE konkretne_ciele_id_seq OWNED BY konkretne_ciele.id;
 
 
 --
--- Name: contracts; Type: TABLE; Schema: crz; Owner: -
+-- Name: konkretne_ciele_prioritna_os; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE contracts (
+CREATE TABLE konkretne_ciele_prioritna_os (
     id integer NOT NULL,
-    contract_identifier character varying,
-    contracting_authority_name character varying,
-    contracting_authority_formatted_address character varying,
-    contracting_authority_cin character varying,
-    supplier_name character varying,
-    supplier_formatted_address character varying,
-    supplier_cin character varying,
-    subject character varying,
-    subject_description character varying,
-    signed_on date,
-    effective_from date,
-    effective_to date,
-    effective_note character varying,
-    contract_price_amount numeric NOT NULL,
-    contract_price_total_amount numeric NOT NULL,
-    note character varying,
-    department_id integer NOT NULL,
-    published_at timestamp without time zone NOT NULL,
-    changed_at timestamp without time zone NOT NULL,
-    change_note character varying,
-    status_id integer NOT NULL,
-    type_id integer NOT NULL,
-    kind_id integer NOT NULL,
-    internal_id integer NOT NULL,
-    internal_note character varying,
-    confirmation_status_id integer NOT NULL,
-    confirmation_file_name character varying,
-    confirmed_on date,
-    source_id integer NOT NULL,
-    description character varying,
-    reference character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    itms_identifier bigint NOT NULL,
+    konkretne_ciele_id bigint NOT NULL
 );
 
 
 --
--- Name: contracts_id_seq; Type: SEQUENCE; Schema: crz; Owner: -
+-- Name: konkretne_ciele_prioritna_os_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE contracts_id_seq
+CREATE SEQUENCE konkretne_ciele_prioritna_os_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -311,29 +143,33 @@ CREATE SEQUENCE contracts_id_seq
 
 
 --
--- Name: contracts_id_seq; Type: SEQUENCE OWNED BY; Schema: crz; Owner: -
+-- Name: konkretne_ciele_prioritna_os_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE contracts_id_seq OWNED BY contracts.id;
+ALTER SEQUENCE konkretne_ciele_prioritna_os_id_seq OWNED BY konkretne_ciele_prioritna_os.id;
 
 
 --
--- Name: departments; Type: TABLE; Schema: crz; Owner: -
+-- Name: operacne_programy; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE departments (
+CREATE TABLE operacne_programy (
     id integer NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    itms_identifier bigint NOT NULL,
+    kod_cci character varying,
+    kod character varying,
+    nazov character varying,
+    skratka character varying,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone
 );
 
 
 --
--- Name: departments_id_seq; Type: SEQUENCE; Schema: crz; Owner: -
+-- Name: operacne_programy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE departments_id_seq
+CREATE SEQUENCE operacne_programy_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -342,16 +178,5391 @@ CREATE SEQUENCE departments_id_seq
 
 
 --
--- Name: departments_id_seq; Type: SEQUENCE OWNED BY; Schema: crz; Owner: -
+-- Name: operacne_programy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE departments_id_seq OWNED BY departments.id;
+ALTER SEQUENCE operacne_programy_id_seq OWNED BY operacne_programy.id;
 
-
-SET search_path = datahub, pg_catalog;
 
 --
--- Name: ar_internal_metadata; Type: TABLE; Schema: datahub; Owner: -
+-- Name: operacne_programy_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE operacne_programy_subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    operacne_programy_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: operacne_programy_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE operacne_programy_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: operacne_programy_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE operacne_programy_subjekty_id_seq OWNED BY operacne_programy_subjekty.id;
+
+
+--
+-- Name: prioritna_os_operacne_programy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE prioritna_os_operacne_programy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    prioritne_osi_id bigint NOT NULL
+);
+
+
+--
+-- Name: prioritna_os_operacne_programy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE prioritna_os_operacne_programy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: prioritna_os_operacne_programy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE prioritna_os_operacne_programy_id_seq OWNED BY prioritna_os_operacne_programy.id;
+
+
+--
+-- Name: prioritne_osi; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE prioritne_osi (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    nazov character varying,
+    kod character varying,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: prioritne_osi_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE prioritne_osi_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: prioritne_osi_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE prioritne_osi_id_seq OWNED BY prioritne_osi.id;
+
+
+--
+-- Name: projekty_ukoncene; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    akronym character varying,
+    cislo_zmluvy character varying,
+    kod character varying,
+    nazov character varying,
+    stav character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    datum_konca_hlavnych_aktivit timestamp without time zone,
+    datum_konca_realizacie timestamp without time zone,
+    datum_platnosti_zmluvy timestamp without time zone,
+    datum_ucinnosti_zmluvy timestamp without time zone,
+    datum_zaciatku_hlavnych_aktivit timestamp without time zone,
+    datum_zaciatku_realizacie timestamp without time zone,
+    dlzka_celkova_hlavnych_aktivit bigint,
+    dlzka_celkova_projektu bigint,
+    suma_celkova_projektov_generujucich_prijem numeric,
+    suma_zazmluvnena numeric,
+    suma_zazmluvnena_povodna numeric,
+    popis_projektu text,
+    zameranie_projektu text
+);
+
+
+--
+-- Name: projekty_ukoncene_aktivity; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_aktivity (
+    id integer NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    datum_konca_planovany character varying,
+    datum_konca_skutocny character varying,
+    datum_zaciatku_planovany character varying,
+    datum_zaciatku_skutocny character varying,
+    kod character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_aktivity_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_aktivity_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_aktivity_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_aktivity_id_seq OWNED BY projekty_ukoncene_aktivity.id;
+
+
+--
+-- Name: projekty_ukoncene_aktivity_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_aktivity_subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_aktivity_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_aktivity_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_aktivity_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_aktivity_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_aktivity_subjekty_id_seq OWNED BY projekty_ukoncene_aktivity_subjekty.id;
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_formy_financovania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_formy_financovania_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_formy_financovania_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_formy_financovania_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_formy_financovania_ciele_id_seq OWNED BY projekty_ukoncene_formy_financovania_ciele.id;
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_formy_financovania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_formy_financovania_id_seq OWNED BY projekty_ukoncene_formy_financovania.id;
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_hospodarske_cinnosti (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_hospodarske_cinnosti_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_hospodarske_cinnosti_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_hospodarske_cinnosti_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_hospodarske_cinnosti_ciele_id_seq OWNED BY projekty_ukoncene_hospodarske_cinnosti_ciele.id;
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_hospodarske_cinnosti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_hospodarske_cinnosti_id_seq OWNED BY projekty_ukoncene_hospodarske_cinnosti.id;
+
+
+--
+-- Name: projekty_ukoncene_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_id_seq OWNED BY projekty_ukoncene.id;
+
+
+--
+-- Name: projekty_ukoncene_intenzity; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_intenzity (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_intenzity_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_intenzity_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_intenzity_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_intenzity_id_seq OWNED BY projekty_ukoncene_intenzity.id;
+
+
+--
+-- Name: projekty_ukoncene_intenzity_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_intenzity_subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_intenzity_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_intenzity_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_intenzity_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_intenzity_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_intenzity_subjekty_id_seq OWNED BY projekty_ukoncene_intenzity_subjekty.id;
+
+
+--
+-- Name: projekty_ukoncene_intenzity_zdroje; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_intenzity_zdroje (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_intenzity_id bigint NOT NULL,
+    cerpanie_eu numeric,
+    cerpanie_ro numeric,
+    percento numeric,
+    suma_zazmluvnena numeric,
+    typ character varying,
+    kod character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_intenzity_zdroje_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_intenzity_zdroje_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_intenzity_zdroje_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_intenzity_zdroje_id_seq OWNED BY projekty_ukoncene_intenzity_zdroje.id;
+
+
+--
+-- Name: projekty_ukoncene_meratelne_ukazovatele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_meratelne_ukazovatele (
+    id integer NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    aktualny_skutocny_stav numeric,
+    hodnota_cielova_celkova numeric,
+    kod character varying,
+    merna_jednotka character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_meratelne_ukazovatele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_meratelne_ukazovatele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_meratelne_ukazovatele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_meratelne_ukazovatele_id_seq OWNED BY projekty_ukoncene_meratelne_ukazovatele.id;
+
+
+--
+-- Name: projekty_ukoncene_miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_miesta_realizacie (
+    id integer NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_ukoncene_miesta_realizacie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_miesta_realizacie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_miesta_realizacie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_miesta_realizacie_id_seq OWNED BY projekty_ukoncene_miesta_realizacie.id;
+
+
+--
+-- Name: projekty_ukoncene_miesta_realizacie_units; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_miesta_realizacie_units (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_miesta_realizacie_id bigint NOT NULL,
+    typ character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_miesta_realizacie_units_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_miesta_realizacie_units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_miesta_realizacie_units_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_miesta_realizacie_units_id_seq OWNED BY projekty_ukoncene_miesta_realizacie_units.id;
+
+
+--
+-- Name: projekty_ukoncene_monitorovacie_terminy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_monitorovacie_terminy (
+    id integer NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    datum_predlozenia_najneskorsi character varying,
+    termin_monitorovania character varying,
+    typ_monitorovacej_spravy character varying,
+    poradove_cislo bigint
+);
+
+
+--
+-- Name: projekty_ukoncene_monitorovacie_terminy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_monitorovacie_terminy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_monitorovacie_terminy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_monitorovacie_terminy_id_seq OWNED BY projekty_ukoncene_monitorovacie_terminy.id;
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_oblasti_intervencie (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_oblasti_intervencie_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_oblasti_intervencie_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_oblasti_intervencie_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_oblasti_intervencie_ciele_id_seq OWNED BY projekty_ukoncene_oblasti_intervencie_ciele.id;
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_oblasti_intervencie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_oblasti_intervencie_id_seq OWNED BY projekty_ukoncene_oblasti_intervencie.id;
+
+
+--
+-- Name: projekty_ukoncene_organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_organizacne_zlozky (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    adresa character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_organizacne_zlozky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_organizacne_zlozky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_organizacne_zlozky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_organizacne_zlozky_id_seq OWNED BY projekty_ukoncene_organizacne_zlozky.id;
+
+
+--
+-- Name: projekty_ukoncene_partneri; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_partneri (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_partneri_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_partneri_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_partneri_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_partneri_id_seq OWNED BY projekty_ukoncene_partneri.id;
+
+
+--
+-- Name: projekty_ukoncene_prijimatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_prijimatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    ine_identifikacne_cislo character varying,
+    ico character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_prijimatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_prijimatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_prijimatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_prijimatel_id_seq OWNED BY projekty_ukoncene_prijimatel.id;
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_typy_uzemia (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_typy_uzemia_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_typy_uzemia_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_typy_uzemia_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_typy_uzemia_ciele_id_seq OWNED BY projekty_ukoncene_typy_uzemia_ciele.id;
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_typy_uzemia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_typy_uzemia_id_seq OWNED BY projekty_ukoncene_typy_uzemia.id;
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_uzemne_mechanizmy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_uzemne_mechanizmy_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_uzemne_mechanizmy_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_uzemne_mechanizmy_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_uzemne_mechanizmy_ciele_id_seq OWNED BY projekty_ukoncene_uzemne_mechanizmy_ciele.id;
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_uzemne_mechanizmy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_uzemne_mechanizmy_id_seq OWNED BY projekty_ukoncene_uzemne_mechanizmy.id;
+
+
+--
+-- Name: projekty_ukoncene_vyzva; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_ukoncene_vyzva (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_ukoncene_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_ukoncene_vyzva_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_ukoncene_vyzva_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_ukoncene_vyzva_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_ukoncene_vyzva_id_seq OWNED BY projekty_ukoncene_vyzva.id;
+
+
+--
+-- Name: projekty_vrealizacii; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    akronym character varying,
+    cislo_zmluvy character varying,
+    kod character varying,
+    nazov character varying,
+    stav character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    datum_konca_hlavnych_aktivit timestamp without time zone,
+    datum_konca_realizacie timestamp without time zone,
+    datum_platnosti_zmluvy timestamp without time zone,
+    datum_ucinnosti_zmluvy timestamp without time zone,
+    datum_zaciatku_hlavnych_aktivit timestamp without time zone,
+    datum_zaciatku_realizacie timestamp without time zone,
+    dlzka_celkova_hlavnych_aktivit bigint,
+    dlzka_celkova_projektu bigint,
+    suma_celkova_projektov_generujucich_prijem numeric,
+    suma_zazmluvnena numeric,
+    suma_zazmluvnena_povodna numeric,
+    popis_projektu text,
+    zameranie_projektu text
+);
+
+
+--
+-- Name: projekty_vrealizacii_aktivity; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_aktivity (
+    id integer NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    datum_konca_planovany character varying,
+    datum_konca_skutocny character varying,
+    datum_zaciatku_planovany character varying,
+    datum_zaciatku_skutocny character varying,
+    kod character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_aktivity_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_aktivity_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_aktivity_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_aktivity_id_seq OWNED BY projekty_vrealizacii_aktivity.id;
+
+
+--
+-- Name: projekty_vrealizacii_aktivity_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_aktivity_subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_aktivity_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_aktivity_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_aktivity_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_aktivity_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_aktivity_subjekty_id_seq OWNED BY projekty_vrealizacii_aktivity_subjekty.id;
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_formy_financovania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_formy_financovania_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_formy_financovania_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_formy_financovania_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_formy_financovania_ciele_id_seq OWNED BY projekty_vrealizacii_formy_financovania_ciele.id;
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_formy_financovania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_formy_financovania_id_seq OWNED BY projekty_vrealizacii_formy_financovania.id;
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_hospodarske_cinnosti (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_hospodarske_cinnosti_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_hospodarske_cinnosti_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_hospodarske_cinnosti_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_hospodarske_cinnosti_ciele_id_seq OWNED BY projekty_vrealizacii_hospodarske_cinnosti_ciele.id;
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_hospodarske_cinnosti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_hospodarske_cinnosti_id_seq OWNED BY projekty_vrealizacii_hospodarske_cinnosti.id;
+
+
+--
+-- Name: projekty_vrealizacii_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_id_seq OWNED BY projekty_vrealizacii.id;
+
+
+--
+-- Name: projekty_vrealizacii_intenzity; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_intenzity (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_intenzity_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_intenzity_id_seq OWNED BY projekty_vrealizacii_intenzity.id;
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_intenzity_subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_intenzity_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_intenzity_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_intenzity_subjekty_id_seq OWNED BY projekty_vrealizacii_intenzity_subjekty.id;
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_zdroje; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_intenzity_zdroje (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_intenzity_id bigint NOT NULL,
+    cerpanie_eu numeric,
+    cerpanie_ro numeric,
+    percento numeric,
+    suma_zazmluvnena numeric,
+    typ character varying,
+    kod character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_zdroje_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_intenzity_zdroje_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_zdroje_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_intenzity_zdroje_id_seq OWNED BY projekty_vrealizacii_intenzity_zdroje.id;
+
+
+--
+-- Name: projekty_vrealizacii_meratelne_ukazovatele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_meratelne_ukazovatele (
+    id integer NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    aktualny_skutocny_stav numeric,
+    hodnota_cielova_celkova numeric,
+    kod character varying,
+    merna_jednotka character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_meratelne_ukazovatele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_meratelne_ukazovatele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_meratelne_ukazovatele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_meratelne_ukazovatele_id_seq OWNED BY projekty_vrealizacii_meratelne_ukazovatele.id;
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_miesta_realizacie (
+    id integer NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_miesta_realizacie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_miesta_realizacie_id_seq OWNED BY projekty_vrealizacii_miesta_realizacie.id;
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie_units; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_miesta_realizacie_units (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_miesta_realizacie_id bigint NOT NULL,
+    typ character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie_units_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_miesta_realizacie_units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie_units_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_miesta_realizacie_units_id_seq OWNED BY projekty_vrealizacii_miesta_realizacie_units.id;
+
+
+--
+-- Name: projekty_vrealizacii_monitorovacie_terminy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_monitorovacie_terminy (
+    id integer NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    datum_predlozenia_najneskorsi character varying,
+    termin_monitorovania character varying,
+    typ_monitorovacej_spravy character varying,
+    poradove_cislo bigint
+);
+
+
+--
+-- Name: projekty_vrealizacii_monitorovacie_terminy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_monitorovacie_terminy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_monitorovacie_terminy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_monitorovacie_terminy_id_seq OWNED BY projekty_vrealizacii_monitorovacie_terminy.id;
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_oblasti_intervencie (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_oblasti_intervencie_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_oblasti_intervencie_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_oblasti_intervencie_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_oblasti_intervencie_ciele_id_seq OWNED BY projekty_vrealizacii_oblasti_intervencie_ciele.id;
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_oblasti_intervencie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_oblasti_intervencie_id_seq OWNED BY projekty_vrealizacii_oblasti_intervencie.id;
+
+
+--
+-- Name: projekty_vrealizacii_organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_organizacne_zlozky (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    adresa character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_organizacne_zlozky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_organizacne_zlozky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_organizacne_zlozky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_organizacne_zlozky_id_seq OWNED BY projekty_vrealizacii_organizacne_zlozky.id;
+
+
+--
+-- Name: projekty_vrealizacii_partneri; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_partneri (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_partneri_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_partneri_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_partneri_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_partneri_id_seq OWNED BY projekty_vrealizacii_partneri.id;
+
+
+--
+-- Name: projekty_vrealizacii_prijimatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_prijimatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    ine_identifikacne_cislo character varying,
+    ico character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_prijimatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_prijimatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_prijimatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_prijimatel_id_seq OWNED BY projekty_vrealizacii_prijimatel.id;
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_typy_uzemia (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_typy_uzemia_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_typy_uzemia_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_typy_uzemia_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_typy_uzemia_ciele_id_seq OWNED BY projekty_vrealizacii_typy_uzemia_ciele.id;
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_typy_uzemia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_typy_uzemia_id_seq OWNED BY projekty_vrealizacii_typy_uzemia.id;
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_uzemne_mechanizmy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_uzemne_mechanizmy_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_uzemne_mechanizmy_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_uzemne_mechanizmy_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_uzemne_mechanizmy_ciele_id_seq OWNED BY projekty_vrealizacii_uzemne_mechanizmy_ciele.id;
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_uzemne_mechanizmy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_uzemne_mechanizmy_id_seq OWNED BY projekty_vrealizacii_uzemne_mechanizmy.id;
+
+
+--
+-- Name: projekty_vrealizacii_vyzva; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_vrealizacii_vyzva (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    projekty_vrealizacii_id bigint NOT NULL
+);
+
+
+--
+-- Name: projekty_vrealizacii_vyzva_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_vrealizacii_vyzva_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_vrealizacii_vyzva_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_vrealizacii_vyzva_id_seq OWNED BY projekty_vrealizacii_vyzva.id;
+
+
+--
+-- Name: subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    dic character varying,
+    ico character varying,
+    ine_identifikacne_cislo character varying,
+    nazov character varying,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE subjekty_id_seq OWNED BY subjekty.id;
+
+
+--
+-- Name: uctovne_doklady; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE uctovne_doklady (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    celkova_vyska_dokladu numeric,
+    cislo_dokladu character varying,
+    cislo_zmluvy_s_dodavatelom_bez_vo character varying,
+    nazov character varying,
+    typ character varying,
+    datum_uhrady timestamp without time zone,
+    datum_vyhotovenia timestamp without time zone,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: uctovne_doklady_dodavatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE uctovne_doklady_dodavatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    uctovne_doklady_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: uctovne_doklady_dodavatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE uctovne_doklady_dodavatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: uctovne_doklady_dodavatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE uctovne_doklady_dodavatel_id_seq OWNED BY uctovne_doklady_dodavatel.id;
+
+
+--
+-- Name: uctovne_doklady_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE uctovne_doklady_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: uctovne_doklady_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE uctovne_doklady_id_seq OWNED BY uctovne_doklady.id;
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE uctovne_doklady_polozky_dokladu (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    uctovne_doklady_id bigint NOT NULL,
+    dph numeric,
+    jednotkova_cena numeric,
+    mnozstvo numeric,
+    sadzba_dph numeric,
+    suma_bez_dph numeric,
+    suma_opravnena numeric,
+    suma_spolu numeric,
+    suma_ziadana numeric,
+    suma_zrealizovanych_vydavkov numeric,
+    nazov character varying,
+    poradove_cislo bigint
+);
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE uctovne_doklady_polozky_dokladu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE uctovne_doklady_polozky_dokladu_id_seq OWNED BY uctovne_doklady_polozky_dokladu.id;
+
+
+--
+-- Name: uctovne_doklady_projekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE uctovne_doklady_projekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    uctovne_doklady_id bigint NOT NULL
+);
+
+
+--
+-- Name: uctovne_doklady_projekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE uctovne_doklady_projekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: uctovne_doklady_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE uctovne_doklady_projekty_id_seq OWNED BY uctovne_doklady_projekty.id;
+
+
+--
+-- Name: uctovne_doklady_verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE uctovne_doklady_verejne_obstaravania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    uctovne_doklady_id bigint NOT NULL
+);
+
+
+--
+-- Name: uctovne_doklady_verejne_obstaravania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE uctovne_doklady_verejne_obstaravania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: uctovne_doklady_verejne_obstaravania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE uctovne_doklady_verejne_obstaravania_id_seq OWNED BY uctovne_doklady_verejne_obstaravania.id;
+
+
+--
+-- Name: uctovne_doklady_vlastnik_dokladu; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE uctovne_doklady_vlastnik_dokladu (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    uctovne_doklady_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: uctovne_doklady_vlastnik_dokladu_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE uctovne_doklady_vlastnik_dokladu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: uctovne_doklady_vlastnik_dokladu_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE uctovne_doklady_vlastnik_dokladu_id_seq OWNED BY uctovne_doklady_vlastnik_dokladu.id;
+
+
+--
+-- Name: verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    cislo_vestnika character varying,
+    cislo_zverejnenia_vo_vestniku character varying,
+    kod character varying,
+    nazov character varying,
+    stav character varying,
+    url_odkaz_oznamenie character varying,
+    pocet_prijatych_ponuk bigint,
+    pocet_vylucenych_ponuk bigint,
+    predpokladana_hodnota_zakazky numeric,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    datum_zverejnenia_vo_vestniku timestamp without time zone,
+    zverejnene_vo_vestniku_eu boolean
+);
+
+
+--
+-- Name: verejne_obstaravania_druh_zakazky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_druh_zakazky (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: verejne_obstaravania_druh_zakazky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_druh_zakazky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_druh_zakazky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_druh_zakazky_id_seq OWNED BY verejne_obstaravania_druh_zakazky.id;
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq OWNED BY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky.id;
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_hlavny_predmet_hlavny_slovniky (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq OWNED BY verejne_obstaravania_hlavny_predmet_hlavny_slovniky.id;
+
+
+--
+-- Name: verejne_obstaravania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_id_seq OWNED BY verejne_obstaravania.id;
+
+
+--
+-- Name: verejne_obstaravania_metody_vo; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_metody_vo (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: verejne_obstaravania_metody_vo_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_metody_vo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_metody_vo_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_metody_vo_id_seq OWNED BY verejne_obstaravania_metody_vo.id;
+
+
+--
+-- Name: verejne_obstaravania_obstaravatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_obstaravatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: verejne_obstaravania_obstaravatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_obstaravatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_obstaravatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_obstaravatel_id_seq OWNED BY verejne_obstaravania_obstaravatel.id;
+
+
+--
+-- Name: verejne_obstaravania_operacne_programy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_operacne_programy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL
+);
+
+
+--
+-- Name: verejne_obstaravania_operacne_programy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_operacne_programy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_operacne_programy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_operacne_programy_id_seq OWNED BY verejne_obstaravania_operacne_programy.id;
+
+
+--
+-- Name: verejne_obstaravania_postup_obstaravania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_postup_obstaravania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: verejne_obstaravania_postup_obstaravania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_postup_obstaravania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_postup_obstaravania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_postup_obstaravania_id_seq OWNED BY verejne_obstaravania_postup_obstaravania.id;
+
+
+--
+-- Name: verejne_obstaravania_projekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_projekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL
+);
+
+
+--
+-- Name: verejne_obstaravania_projekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_projekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_projekty_id_seq OWNED BY verejne_obstaravania_projekty.id;
+
+
+--
+-- Name: verejne_obstaravania_uctovne_doklady; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_uctovne_doklady (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL
+);
+
+
+--
+-- Name: verejne_obstaravania_uctovne_doklady_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_uctovne_doklady_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_uctovne_doklady_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_uctovne_doklady_id_seq OWNED BY verejne_obstaravania_uctovne_doklady.id;
+
+
+--
+-- Name: verejne_obstaravania_zadavatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE verejne_obstaravania_zadavatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: verejne_obstaravania_zadavatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE verejne_obstaravania_zadavatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: verejne_obstaravania_zadavatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE verejne_obstaravania_zadavatel_id_seq OWNED BY verejne_obstaravania_zadavatel.id;
+
+
+--
+-- Name: vyzvy_planovane; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_planovane (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    druh character varying,
+    kod character varying,
+    nazov character varying,
+    stav character varying,
+    typ character varying,
+    alokacia_eu numeric,
+    alokacia_sr numeric,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone,
+    technicka_asistencia boolean,
+    typ1_kolo character varying,
+    typ2_kolo character varying,
+    datum_uzavretia1_kolo timestamp without time zone,
+    datum_uzavretia2_kolo timestamp without time zone,
+    datum_vyhlasenia1_kolo timestamp without time zone,
+    datum_vyhlasenia2_kolo timestamp without time zone
+);
+
+
+--
+-- Name: vyzvy_planovane_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_planovane_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    vyzvy_planovane_id bigint NOT NULL
+);
+
+
+--
+-- Name: vyzvy_planovane_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_planovane_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_planovane_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_planovane_ciele_id_seq OWNED BY vyzvy_planovane_ciele.id;
+
+
+--
+-- Name: vyzvy_planovane_doplnujuce_info; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_planovane_doplnujuce_info (
+    id integer NOT NULL,
+    vyzvy_planovane_id bigint NOT NULL,
+    nazov character varying,
+    url character varying
+);
+
+
+--
+-- Name: vyzvy_planovane_doplnujuce_info_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_planovane_doplnujuce_info_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_planovane_doplnujuce_info_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_planovane_doplnujuce_info_id_seq OWNED BY vyzvy_planovane_doplnujuce_info.id;
+
+
+--
+-- Name: vyzvy_planovane_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_planovane_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_planovane_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_planovane_id_seq OWNED BY vyzvy_planovane.id;
+
+
+--
+-- Name: vyzvy_planovane_poskytovatelia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_planovane_poskytovatelia (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    vyzvy_planovane_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: vyzvy_planovane_poskytovatelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_planovane_poskytovatelia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_planovane_poskytovatelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_planovane_poskytovatelia_id_seq OWNED BY vyzvy_planovane_poskytovatelia.id;
+
+
+--
+-- Name: vyzvy_planovane_vyhlasovatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_planovane_vyhlasovatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    vyzvy_planovane_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: vyzvy_planovane_vyhlasovatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_planovane_vyhlasovatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_planovane_vyhlasovatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_planovane_vyhlasovatel_id_seq OWNED BY vyzvy_planovane_vyhlasovatel.id;
+
+
+--
+-- Name: vyzvy_vyhlasene; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_vyhlasene (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    druh character varying,
+    kod character varying,
+    nazov character varying,
+    stav character varying,
+    typ character varying,
+    alokacia_eu numeric,
+    alokacia_sr numeric,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone,
+    technicka_asistencia boolean,
+    datum_uzavretia timestamp without time zone,
+    datum_vyhlasenia timestamp without time zone
+);
+
+
+--
+-- Name: vyzvy_vyhlasene_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_vyhlasene_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    vyzvy_vyhlasene_id bigint NOT NULL
+);
+
+
+--
+-- Name: vyzvy_vyhlasene_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_vyhlasene_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_vyhlasene_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_vyhlasene_ciele_id_seq OWNED BY vyzvy_vyhlasene_ciele.id;
+
+
+--
+-- Name: vyzvy_vyhlasene_doplnujuce_info; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_vyhlasene_doplnujuce_info (
+    id integer NOT NULL,
+    vyzvy_vyhlasene_id bigint NOT NULL,
+    nazov character varying,
+    url character varying
+);
+
+
+--
+-- Name: vyzvy_vyhlasene_doplnujuce_info_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_vyhlasene_doplnujuce_info_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_vyhlasene_doplnujuce_info_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_vyhlasene_doplnujuce_info_id_seq OWNED BY vyzvy_vyhlasene_doplnujuce_info.id;
+
+
+--
+-- Name: vyzvy_vyhlasene_fondy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_vyhlasene_fondy (
+    id integer NOT NULL,
+    vyzvy_vyhlasene_id bigint NOT NULL,
+    nazov character varying
+);
+
+
+--
+-- Name: vyzvy_vyhlasene_fondy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_vyhlasene_fondy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_vyhlasene_fondy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_vyhlasene_fondy_id_seq OWNED BY vyzvy_vyhlasene_fondy.id;
+
+
+--
+-- Name: vyzvy_vyhlasene_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_vyhlasene_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_vyhlasene_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_vyhlasene_id_seq OWNED BY vyzvy_vyhlasene.id;
+
+
+--
+-- Name: vyzvy_vyhlasene_poskytovatelia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_vyhlasene_poskytovatelia (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    vyzvy_vyhlasene_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: vyzvy_vyhlasene_poskytovatelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_vyhlasene_poskytovatelia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_vyhlasene_poskytovatelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_vyhlasene_poskytovatelia_id_seq OWNED BY vyzvy_vyhlasene_poskytovatelia.id;
+
+
+--
+-- Name: vyzvy_vyhlasene_vyhlasovatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_vyhlasene_vyhlasovatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    vyzvy_vyhlasene_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: vyzvy_vyhlasene_vyhlasovatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_vyhlasene_vyhlasovatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_vyhlasene_vyhlasovatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_vyhlasene_vyhlasovatel_id_seq OWNED BY vyzvy_vyhlasene_vyhlasovatel.id;
+
+
+--
+-- Name: vzvy_vyhlasene_kontaktne_osoby; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vzvy_vyhlasene_kontaktne_osoby (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    vyzvy_vyhlasene_id bigint NOT NULL,
+    email character varying,
+    meno character varying,
+    meno_uplne character varying,
+    priezvisko character varying,
+    telefon character varying
+);
+
+
+--
+-- Name: vzvy_vyhlasene_kontaktne_osoby_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vzvy_vyhlasene_kontaktne_osoby_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vzvy_vyhlasene_kontaktne_osoby_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vzvy_vyhlasene_kontaktne_osoby_id_seq OWNED BY vzvy_vyhlasene_kontaktne_osoby.id;
+
+
+--
+-- Name: vzvy_vyhlasene_planovane_vyzvy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vzvy_vyhlasene_planovane_vyzvy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    vyzvy_vyhlasene_id bigint NOT NULL
+);
+
+
+--
+-- Name: vzvy_vyhlasene_planovane_vyzvy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vzvy_vyhlasene_planovane_vyzvy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vzvy_vyhlasene_planovane_vyzvy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vzvy_vyhlasene_planovane_vyzvy_id_seq OWNED BY vzvy_vyhlasene_planovane_vyzvy.id;
+
+
+--
+-- Name: vzvy_vyhlasene_posudzovane_obdobia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vzvy_vyhlasene_posudzovane_obdobia (
+    id integer NOT NULL,
+    vyzvy_vyhlasene_id bigint NOT NULL,
+    datum_uzavierky character varying,
+    poradove_cislo bigint
+);
+
+
+--
+-- Name: vzvy_vyhlasene_posudzovane_obdobia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vzvy_vyhlasene_posudzovane_obdobia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vzvy_vyhlasene_posudzovane_obdobia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vzvy_vyhlasene_posudzovane_obdobia_id_seq OWNED BY vzvy_vyhlasene_posudzovane_obdobia.id;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zmluvy_verejne_obstaravanie (
+    id integer NOT NULL,
+    verejne_obstaravania_id bigint NOT NULL,
+    itms_identifier bigint NOT NULL,
+    cislo_zmluvy character varying,
+    kod character varying,
+    nazov character varying,
+    predmet_zmluvy character varying,
+    url_odkaz_na_zmluvu character varying,
+    celkova_suma_zmluvy numeric,
+    suma_bez_dph numeric,
+    datum_platnosti timestamp without time zone,
+    datum_ucinnosti timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dalsie_url; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zmluvy_verejne_obstaravanie_dalsie_url (
+    id integer NOT NULL,
+    zmluvy_verejne_obstaravanie_id bigint NOT NULL,
+    nazov character varying,
+    url character varying
+);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dalsie_url_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zmluvy_verejne_obstaravanie_dalsie_url_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dalsie_url_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zmluvy_verejne_obstaravanie_dalsie_url_id_seq OWNED BY zmluvy_verejne_obstaravanie_dalsie_url.id;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zmluvy_verejne_obstaravanie_dodavatelia (
+    id integer NOT NULL,
+    zmluvy_verejne_obstaravanie_id bigint NOT NULL,
+    je_hlavny_dodavatel boolean
+);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zmluvy_verejne_obstaravanie_dodavatelia_dodavatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zmluvy_verejne_obstaravanie_dodavatelia_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq OWNED BY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel.id;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_id_seq OWNED BY zmluvy_verejne_obstaravanie_dodavatelia.id;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zmluvy_verejne_obstaravanie_hlavny_dodavatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zmluvy_verejne_obstaravanie_id bigint NOT NULL,
+    ico character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq OWNED BY zmluvy_verejne_obstaravanie_hlavny_dodavatel.id;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zmluvy_verejne_obstaravanie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zmluvy_verejne_obstaravanie_id_seq OWNED BY zmluvy_verejne_obstaravanie.id;
+
+
+--
+-- Name: zonfp_prijate; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    akronym character varying,
+    kod character varying,
+    nazov character varying,
+    zameranie_projektu character varying,
+    popis_projektu text,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone,
+    datum_predlozenia timestamp without time zone,
+    datum_ziadany_konca_hlavnych_aktivit timestamp without time zone,
+    datum_ziadany_konca_realizacie timestamp without time zone,
+    datum_ziadany_zaciatku_hlavnych_aktivit timestamp without time zone,
+    datum_ziadany_zaciatku_realizacie timestamp without time zone,
+    percento_ziadane_spolufinancovania numeric,
+    suma_ziadana_celkova numeric,
+    suma_ziadana_celkova_projektov_generujucich_prijem numeric,
+    suma_ziadana_nfp numeric,
+    suma_ziadana_vlastnych_zdrojov numeric
+);
+
+
+--
+-- Name: zonfp_prijate_aktivity_projekt_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_aktivity_projekt_subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_aktivity_projekty_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_prijate_aktivity_projekt_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_aktivity_projekt_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_aktivity_projekt_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_aktivity_projekt_subjekty_id_seq OWNED BY zonfp_prijate_aktivity_projekt_subjekty.id;
+
+
+--
+-- Name: zonfp_prijate_aktivity_projekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_aktivity_projekty (
+    id integer NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    kod character varying,
+    nazov character varying,
+    datum_konca_planovany character varying,
+    datum_konca_skutocny character varying,
+    datum_zaciatku_planovany character varying,
+    datum_zaciatku_skutocny character varying
+);
+
+
+--
+-- Name: zonfp_prijate_aktivity_projekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_aktivity_projekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_aktivity_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_aktivity_projekty_id_seq OWNED BY zonfp_prijate_aktivity_projekty.id;
+
+
+--
+-- Name: zonfp_prijate_formy_financovania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_formy_financovania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_prijate_formy_financovania_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_formy_financovania_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_formy_financovania_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_prijate_formy_financovania_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_formy_financovania_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_formy_financovania_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_formy_financovania_ciele_id_seq OWNED BY zonfp_prijate_formy_financovania_ciele.id;
+
+
+--
+-- Name: zonfp_prijate_formy_financovania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_formy_financovania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_formy_financovania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_formy_financovania_id_seq OWNED BY zonfp_prijate_formy_financovania.id;
+
+
+--
+-- Name: zonfp_prijate_hospodarske_cinnosti; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_hospodarske_cinnosti (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_prijate_hospodarske_cinnosti_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_hospodarske_cinnosti_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_hospodarske_cinnosti_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_prijate_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_hospodarske_cinnosti_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_hospodarske_cinnosti_ciele_id_seq OWNED BY zonfp_prijate_hospodarske_cinnosti_ciele.id;
+
+
+--
+-- Name: zonfp_prijate_hospodarske_cinnosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_hospodarske_cinnosti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_hospodarske_cinnosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_hospodarske_cinnosti_id_seq OWNED BY zonfp_prijate_hospodarske_cinnosti.id;
+
+
+--
+-- Name: zonfp_prijate_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_id_seq OWNED BY zonfp_prijate.id;
+
+
+--
+-- Name: zonfp_prijate_meratelne_ukazovatele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_meratelne_ukazovatele (
+    id integer NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    kod character varying,
+    merna_jednotka character varying,
+    nazov character varying,
+    aktualny_skutocny_stav numeric,
+    hodnota_cielova_celkova numeric
+);
+
+
+--
+-- Name: zonfp_prijate_meratelne_ukazovatele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_meratelne_ukazovatele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_meratelne_ukazovatele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_meratelne_ukazovatele_id_seq OWNED BY zonfp_prijate_meratelne_ukazovatele.id;
+
+
+--
+-- Name: zonfp_prijate_miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_miesta_realizacie (
+    id integer NOT NULL,
+    zonfp_prijate_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_prijate_miesta_realizacie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_miesta_realizacie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_miesta_realizacie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_miesta_realizacie_id_seq OWNED BY zonfp_prijate_miesta_realizacie.id;
+
+
+--
+-- Name: zonfp_prijate_miesta_realizacie_units; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_miesta_realizacie_units (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_miesta_realizacie_id bigint NOT NULL,
+    typ character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_prijate_miesta_realizacie_units_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_miesta_realizacie_units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_miesta_realizacie_units_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_miesta_realizacie_units_id_seq OWNED BY zonfp_prijate_miesta_realizacie_units.id;
+
+
+--
+-- Name: zonfp_prijate_oblasti_intervencie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_oblasti_intervencie (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_prijate_oblasti_intervencie_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_oblasti_intervencie_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_oblasti_intervencie_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_prijate_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_oblasti_intervencie_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_oblasti_intervencie_ciele_id_seq OWNED BY zonfp_prijate_oblasti_intervencie_ciele.id;
+
+
+--
+-- Name: zonfp_prijate_oblasti_intervencie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_oblasti_intervencie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_oblasti_intervencie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_oblasti_intervencie_id_seq OWNED BY zonfp_prijate_oblasti_intervencie.id;
+
+
+--
+-- Name: zonfp_prijate_organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_organizacne_zlozky (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    adresa character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_prijate_organizacne_zlozky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_organizacne_zlozky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_organizacne_zlozky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_organizacne_zlozky_id_seq OWNED BY zonfp_prijate_organizacne_zlozky.id;
+
+
+--
+-- Name: zonfp_prijate_partneri; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_partneri (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_prijate_partneri_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_partneri_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_partneri_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_partneri_id_seq OWNED BY zonfp_prijate_partneri.id;
+
+
+--
+-- Name: zonfp_prijate_typy_uzemia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_typy_uzemia (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_prijate_typy_uzemia_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_typy_uzemia_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_typy_uzemia_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_prijate_typy_uzemia_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_typy_uzemia_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_typy_uzemia_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_typy_uzemia_ciele_id_seq OWNED BY zonfp_prijate_typy_uzemia_ciele.id;
+
+
+--
+-- Name: zonfp_prijate_typy_uzemia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_typy_uzemia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_typy_uzemia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_typy_uzemia_id_seq OWNED BY zonfp_prijate_typy_uzemia.id;
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_uzemne_mechanizmy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_uzemne_mechanizmy_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_uzemne_mechanizmy_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_uzemne_mechanizmy_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_uzemne_mechanizmy_ciele_id_seq OWNED BY zonfp_prijate_uzemne_mechanizmy_ciele.id;
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_uzemne_mechanizmy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_uzemne_mechanizmy_id_seq OWNED BY zonfp_prijate_uzemne_mechanizmy.id;
+
+
+--
+-- Name: zonfp_prijate_vyzvy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_vyzvy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_prijate_vyzvy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_vyzvy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_vyzvy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_vyzvy_id_seq OWNED BY zonfp_prijate_vyzvy.id;
+
+
+--
+-- Name: zonfp_prijate_ziadatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_prijate_ziadatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_prijate_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_prijate_ziadatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_prijate_ziadatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_prijate_ziadatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_prijate_ziadatel_id_seq OWNED BY zonfp_prijate_ziadatel.id;
+
+
+--
+-- Name: zonfp_schvalene; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    akronym character varying,
+    kod character varying,
+    nazov character varying,
+    zameranie_projektu character varying,
+    popis_projektu text,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone,
+    datum_schvalenia timestamp without time zone,
+    datum_schvaleny_konca_hlavnych_aktivit timestamp without time zone,
+    datum_schvaleny_konca_realizacie timestamp without time zone,
+    datum_schvaleny_zaciatku_hlavnych_aktivit timestamp without time zone,
+    datum_schvaleny_zaciatku_realizacie timestamp without time zone,
+    percento_schvalene_spolufinancovania numeric,
+    pocet_bodov_hodnotenia_celkovy numeric,
+    suma_schvalena_celkova numeric,
+    suma_schvalena_celkova_projektov_generujucich_prijem numeric,
+    suma_schvalena_nfp numeric,
+    suma_schvalena_vlastnych_zdrojov numeric
+);
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekt_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_aktivity_projekt_subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_aktivity_projekty_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekt_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_aktivity_projekt_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekt_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_aktivity_projekt_subjekty_id_seq OWNED BY zonfp_schvalene_aktivity_projekt_subjekty.id;
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_aktivity_projekty (
+    id integer NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    kod character varying,
+    nazov character varying,
+    datum_konca_planovany character varying,
+    datum_konca_skutocny character varying,
+    datum_zaciatku_planovany character varying,
+    datum_zaciatku_skutocny character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_aktivity_projekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_aktivity_projekty_id_seq OWNED BY zonfp_schvalene_aktivity_projekty.id;
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_formy_financovania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_formy_financovania_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_formy_financovania_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_formy_financovania_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_formy_financovania_ciele_id_seq OWNED BY zonfp_schvalene_formy_financovania_ciele.id;
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_formy_financovania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_formy_financovania_id_seq OWNED BY zonfp_schvalene_formy_financovania.id;
+
+
+--
+-- Name: zonfp_schvalene_hodnotitelia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_hodnotitelia (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    email character varying,
+    meno character varying,
+    meno_uplne character varying,
+    priezvisko character varying,
+    telefon character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_hodnotitelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_hodnotitelia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_hodnotitelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_hodnotitelia_id_seq OWNED BY zonfp_schvalene_hodnotitelia.id;
+
+
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_hospodarske_cinnosti (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_hospodarske_cinnosti_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_hospodarske_cinnosti_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_hospodarske_cinnosti_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_hospodarske_cinnosti_ciele_id_seq OWNED BY zonfp_schvalene_hospodarske_cinnosti_ciele.id;
+
+
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_hospodarske_cinnosti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_hospodarske_cinnosti_id_seq OWNED BY zonfp_schvalene_hospodarske_cinnosti.id;
+
+
+--
+-- Name: zonfp_schvalene_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_id_seq OWNED BY zonfp_schvalene.id;
+
+
+--
+-- Name: zonfp_schvalene_meratelne_ukazovatele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_meratelne_ukazovatele (
+    id integer NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    kod character varying,
+    merna_jednotka character varying,
+    nazov character varying,
+    aktualny_skutocny_stav numeric,
+    hodnota_cielova_celkova numeric
+);
+
+
+--
+-- Name: zonfp_schvalene_meratelne_ukazovatele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_meratelne_ukazovatele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_meratelne_ukazovatele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_meratelne_ukazovatele_id_seq OWNED BY zonfp_schvalene_meratelne_ukazovatele.id;
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_miesta_realizacie (
+    id integer NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_miesta_realizacie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_miesta_realizacie_id_seq OWNED BY zonfp_schvalene_miesta_realizacie.id;
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie_units; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_miesta_realizacie_units (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_miesta_realizacie_id bigint NOT NULL,
+    typ character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie_units_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_miesta_realizacie_units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie_units_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_miesta_realizacie_units_id_seq OWNED BY zonfp_schvalene_miesta_realizacie_units.id;
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_oblasti_intervencie (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_oblasti_intervencie_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_oblasti_intervencie_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_oblasti_intervencie_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_oblasti_intervencie_ciele_id_seq OWNED BY zonfp_schvalene_oblasti_intervencie_ciele.id;
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_oblasti_intervencie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_oblasti_intervencie_id_seq OWNED BY zonfp_schvalene_oblasti_intervencie.id;
+
+
+--
+-- Name: zonfp_schvalene_organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_organizacne_zlozky (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    adresa character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_organizacne_zlozky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_organizacne_zlozky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_organizacne_zlozky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_organizacne_zlozky_id_seq OWNED BY zonfp_schvalene_organizacne_zlozky.id;
+
+
+--
+-- Name: zonfp_schvalene_partneri; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_partneri (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_partneri_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_partneri_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_partneri_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_partneri_id_seq OWNED BY zonfp_schvalene_partneri.id;
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_typy_uzemia (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_typy_uzemia_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_typy_uzemia_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_typy_uzemia_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_typy_uzemia_ciele_id_seq OWNED BY zonfp_schvalene_typy_uzemia_ciele.id;
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_typy_uzemia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_typy_uzemia_id_seq OWNED BY zonfp_schvalene_typy_uzemia.id;
+
+
+--
+-- Name: zonfp_schvalene_uzemne_mechanizmy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_uzemne_mechanizmy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_uzemne_mechanizmy_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_uzemne_mechanizmy_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_uzemne_mechanizmy_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_schvalene_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_uzemne_mechanizmy_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_uzemne_mechanizmy_ciele_id_seq OWNED BY zonfp_schvalene_uzemne_mechanizmy_ciele.id;
+
+
+--
+-- Name: zonfp_schvalene_uzemne_mechanizmy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_uzemne_mechanizmy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_uzemne_mechanizmy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_uzemne_mechanizmy_id_seq OWNED BY zonfp_schvalene_uzemne_mechanizmy.id;
+
+
+--
+-- Name: zonfp_schvalene_vyzvy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_vyzvy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_schvalene_vyzvy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_vyzvy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_vyzvy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_vyzvy_id_seq OWNED BY zonfp_schvalene_vyzvy.id;
+
+
+--
+-- Name: zonfp_schvalene_ziadatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_schvalene_ziadatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_schvalene_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_schvalene_ziadatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_schvalene_ziadatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_schvalene_ziadatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_schvalene_ziadatel_id_seq OWNED BY zonfp_schvalene_ziadatel.id;
+
+
+--
+-- Name: zonfp_zamietnute; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    akronym character varying,
+    kod character varying,
+    nazov character varying,
+    zameranie_projektu character varying,
+    popis_projektu text,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone,
+    datum_zamietnutia timestamp without time zone,
+    datum_ziadany_konca_hlavnych_aktivit timestamp without time zone,
+    datum_ziadany_konca_realizacie timestamp without time zone,
+    datum_ziadany_zaciatku_hlavnych_aktivit timestamp without time zone,
+    datum_ziadany_zaciatku_realizacie timestamp without time zone,
+    percento_ziadane_spolufinancovania numeric,
+    suma_ziadana_celkova numeric,
+    suma_ziadana_celkova_projektov_generujucich_prijem numeric,
+    suma_ziadana_nfp numeric,
+    suma_ziadana_vlastnych_zdrojov numeric
+);
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekt_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_aktivity_projekt_subjekty (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_aktivity_projekty_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekt_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_aktivity_projekt_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekt_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_aktivity_projekt_subjekty_id_seq OWNED BY zonfp_zamietnute_aktivity_projekt_subjekty.id;
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_aktivity_projekty (
+    id integer NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    kod character varying,
+    nazov character varying,
+    datum_konca_planovany character varying,
+    datum_konca_skutocny character varying,
+    datum_zaciatku_planovany character varying,
+    datum_zaciatku_skutocny character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_aktivity_projekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_aktivity_projekty_id_seq OWNED BY zonfp_zamietnute_aktivity_projekty.id;
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_formy_financovania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_formy_financovania_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_formy_financovania_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_formy_financovania_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_formy_financovania_ciele_id_seq OWNED BY zonfp_zamietnute_formy_financovania_ciele.id;
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_formy_financovania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_formy_financovania_id_seq OWNED BY zonfp_zamietnute_formy_financovania.id;
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_hospodarske_cinnosti (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_hospodarske_cinnosti_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_hospodarske_cinnosti_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_hospodarske_cinnosti_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_hospodarske_cinnosti_ciele_id_seq OWNED BY zonfp_zamietnute_hospodarske_cinnosti_ciele.id;
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_hospodarske_cinnosti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_hospodarske_cinnosti_id_seq OWNED BY zonfp_zamietnute_hospodarske_cinnosti.id;
+
+
+--
+-- Name: zonfp_zamietnute_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_id_seq OWNED BY zonfp_zamietnute.id;
+
+
+--
+-- Name: zonfp_zamietnute_meratelne_ukazovatele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_meratelne_ukazovatele (
+    id integer NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    kod character varying,
+    merna_jednotka character varying,
+    nazov character varying,
+    aktualny_skutocny_stav numeric,
+    hodnota_cielova_celkova numeric
+);
+
+
+--
+-- Name: zonfp_zamietnute_meratelne_ukazovatele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_meratelne_ukazovatele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_meratelne_ukazovatele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_meratelne_ukazovatele_id_seq OWNED BY zonfp_zamietnute_meratelne_ukazovatele.id;
+
+
+--
+-- Name: zonfp_zamietnute_miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_miesta_realizacie (
+    id integer NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_zamietnute_miesta_realizacie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_miesta_realizacie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_miesta_realizacie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_miesta_realizacie_id_seq OWNED BY zonfp_zamietnute_miesta_realizacie.id;
+
+
+--
+-- Name: zonfp_zamietnute_miesta_realizacie_units; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_miesta_realizacie_units (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_miesta_realizacie_id bigint NOT NULL,
+    typ character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_miesta_realizacie_units_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_miesta_realizacie_units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_miesta_realizacie_units_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_miesta_realizacie_units_id_seq OWNED BY zonfp_zamietnute_miesta_realizacie_units.id;
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_oblasti_intervencie (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_oblasti_intervencie_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_oblasti_intervencie_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_oblasti_intervencie_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_oblasti_intervencie_ciele_id_seq OWNED BY zonfp_zamietnute_oblasti_intervencie_ciele.id;
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_oblasti_intervencie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_oblasti_intervencie_id_seq OWNED BY zonfp_zamietnute_oblasti_intervencie.id;
+
+
+--
+-- Name: zonfp_zamietnute_organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_organizacne_zlozky (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    adresa character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_organizacne_zlozky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_organizacne_zlozky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_organizacne_zlozky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_organizacne_zlozky_id_seq OWNED BY zonfp_zamietnute_organizacne_zlozky.id;
+
+
+--
+-- Name: zonfp_zamietnute_partneri; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_partneri (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_partneri_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_partneri_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_partneri_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_partneri_id_seq OWNED BY zonfp_zamietnute_partneri.id;
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_typy_uzemia (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_typy_uzemia_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_typy_uzemia_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_typy_uzemia_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_typy_uzemia_ciele_id_seq OWNED BY zonfp_zamietnute_typy_uzemia_ciele.id;
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_typy_uzemia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_typy_uzemia_id_seq OWNED BY zonfp_zamietnute_typy_uzemia.id;
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_uzemne_mechanizmy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy_ciele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_uzemne_mechanizmy_ciele (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_uzemne_mechanizmy_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_uzemne_mechanizmy_ciele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_uzemne_mechanizmy_ciele_id_seq OWNED BY zonfp_zamietnute_uzemne_mechanizmy_ciele.id;
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_uzemne_mechanizmy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_uzemne_mechanizmy_id_seq OWNED BY zonfp_zamietnute_uzemne_mechanizmy.id;
+
+
+--
+-- Name: zonfp_zamietnute_vysledok_konania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_vysledok_konania (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    kod_zdroj character varying,
+    nazov character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_vysledok_konania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_vysledok_konania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_vysledok_konania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_vysledok_konania_id_seq OWNED BY zonfp_zamietnute_vysledok_konania.id;
+
+
+--
+-- Name: zonfp_zamietnute_vyzvy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_vyzvy (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL
+);
+
+
+--
+-- Name: zonfp_zamietnute_vyzvy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_vyzvy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_vyzvy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_vyzvy_id_seq OWNED BY zonfp_zamietnute_vyzvy.id;
+
+
+--
+-- Name: zonfp_zamietnute_ziadatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_zamietnute_ziadatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zonfp_zamietnute_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zonfp_zamietnute_ziadatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_zamietnute_ziadatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_zamietnute_ziadatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_zamietnute_ziadatel_id_seq OWNED BY zonfp_zamietnute_ziadatel.id;
+
+
+--
+-- Name: zop_predlozene; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_predlozene (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    kod character varying,
+    typ character varying,
+    narokovana_suma numeric,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    datum_prijatia timestamp without time zone,
+    vyplaca_sa_partnerovi boolean,
+    zop_je_zaverecna boolean
+);
+
+
+--
+-- Name: zop_predlozene_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_predlozene_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_predlozene_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_predlozene_id_seq OWNED BY zop_predlozene.id;
+
+
+--
+-- Name: zop_predlozene_predfinancovanie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_predlozene_predfinancovanie (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_predlozene_id bigint NOT NULL
+);
+
+
+--
+-- Name: zop_predlozene_predfinancovanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_predlozene_predfinancovanie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_predlozene_predfinancovanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_predlozene_predfinancovanie_id_seq OWNED BY zop_predlozene_predfinancovanie.id;
+
+
+--
+-- Name: zop_predlozene_predkladana_za; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_predlozene_predkladana_za (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_predlozene_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zop_predlozene_predkladana_za_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_predlozene_predkladana_za_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_predlozene_predkladana_za_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_predlozene_predkladana_za_id_seq OWNED BY zop_predlozene_predkladana_za.id;
+
+
+--
+-- Name: zop_predlozene_prijimatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_predlozene_prijimatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_predlozene_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zop_predlozene_prijimatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_predlozene_prijimatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_predlozene_prijimatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_predlozene_prijimatel_id_seq OWNED BY zop_predlozene_prijimatel.id;
+
+
+--
+-- Name: zop_predlozene_projekt; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_predlozene_projekt (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_predlozene_id bigint NOT NULL
+);
+
+
+--
+-- Name: zop_predlozene_projekt_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_predlozene_projekt_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_predlozene_projekt_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_predlozene_projekt_id_seq OWNED BY zop_predlozene_projekt.id;
+
+
+--
+-- Name: zop_uhradene; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_uhradene (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    kod character varying,
+    typ character varying,
+    narokovana_suma numeric,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    datum_prijatia timestamp without time zone,
+    vyplaca_sa_partnerovi boolean,
+    zop_je_zaverecna boolean
+);
+
+
+--
+-- Name: zop_uhradene_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_uhradene_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_uhradene_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_uhradene_id_seq OWNED BY zop_uhradene.id;
+
+
+--
+-- Name: zop_uhradene_predfinancovanie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_uhradene_predfinancovanie (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_uhradene_id bigint NOT NULL
+);
+
+
+--
+-- Name: zop_uhradene_predfinancovanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_uhradene_predfinancovanie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_uhradene_predfinancovanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_uhradene_predfinancovanie_id_seq OWNED BY zop_uhradene_predfinancovanie.id;
+
+
+--
+-- Name: zop_uhradene_predkladana_za; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_uhradene_predkladana_za (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_uhradene_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zop_uhradene_predkladana_za_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_uhradene_predkladana_za_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_uhradene_predkladana_za_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_uhradene_predkladana_za_id_seq OWNED BY zop_uhradene_predkladana_za.id;
+
+
+--
+-- Name: zop_uhradene_prijimatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_uhradene_prijimatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_uhradene_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zop_uhradene_prijimatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_uhradene_prijimatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_uhradene_prijimatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_uhradene_prijimatel_id_seq OWNED BY zop_uhradene_prijimatel.id;
+
+
+--
+-- Name: zop_uhradene_projekt; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_uhradene_projekt (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_uhradene_id bigint NOT NULL
+);
+
+
+--
+-- Name: zop_uhradene_projekt_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_uhradene_projekt_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_uhradene_projekt_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_uhradene_projekt_id_seq OWNED BY zop_uhradene_projekt.id;
+
+
+--
+-- Name: zop_zamietnute; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_zamietnute (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    kod character varying,
+    typ character varying,
+    narokovana_suma numeric,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    datum_prijatia timestamp without time zone,
+    vyplaca_sa_partnerovi boolean,
+    zop_je_zaverecna boolean
+);
+
+
+--
+-- Name: zop_zamietnute_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_zamietnute_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_zamietnute_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_zamietnute_id_seq OWNED BY zop_zamietnute.id;
+
+
+--
+-- Name: zop_zamietnute_predfinancovanie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_zamietnute_predfinancovanie (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_zamietnute_id bigint NOT NULL
+);
+
+
+--
+-- Name: zop_zamietnute_predfinancovanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_zamietnute_predfinancovanie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_zamietnute_predfinancovanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_zamietnute_predfinancovanie_id_seq OWNED BY zop_zamietnute_predfinancovanie.id;
+
+
+--
+-- Name: zop_zamietnute_predkladana_za; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_zamietnute_predkladana_za (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_zamietnute_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zop_zamietnute_predkladana_za_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_zamietnute_predkladana_za_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_zamietnute_predkladana_za_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_zamietnute_predkladana_za_id_seq OWNED BY zop_zamietnute_predkladana_za.id;
+
+
+--
+-- Name: zop_zamietnute_prijimatel; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_zamietnute_prijimatel (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_zamietnute_id bigint NOT NULL,
+    ico character varying,
+    dic character varying,
+    ine_identifikacne_cislo character varying
+);
+
+
+--
+-- Name: zop_zamietnute_prijimatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_zamietnute_prijimatel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_zamietnute_prijimatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_zamietnute_prijimatel_id_seq OWNED BY zop_zamietnute_prijimatel.id;
+
+
+--
+-- Name: zop_zamietnute_projekt; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_zamietnute_projekt (
+    id integer NOT NULL,
+    itms_identifier bigint NOT NULL,
+    zop_zamietnute_id bigint NOT NULL
+);
+
+
+--
+-- Name: zop_zamietnute_projekt_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_zamietnute_projekt_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_zamietnute_projekt_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_zamietnute_projekt_id_seq OWNED BY zop_zamietnute_projekt.id;
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE ar_internal_metadata (
@@ -363,2784 +5574,12 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
--- Name: corporate_bodies; Type: TABLE; Schema: datahub; Owner: -
---
-
-CREATE TABLE corporate_bodies (
-    id integer NOT NULL,
-    cin bigint NOT NULL,
-    tin bigint,
-    vatin character varying,
-    name character varying NOT NULL,
-    formatted_address character varying,
-    street character varying,
-    reg_number integer,
-    building_number character varying,
-    postal_code character varying,
-    municipality character varying,
-    country character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    established_on date,
-    terminated_on date,
-    vatin_paragraph character varying,
-    registration_office character varying,
-    registration_number character varying
-);
-
-
---
--- Name: corporate_bodies_id_seq; Type: SEQUENCE; Schema: datahub; Owner: -
---
-
-CREATE SEQUENCE corporate_bodies_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: corporate_bodies_id_seq; Type: SEQUENCE OWNED BY; Schema: datahub; Owner: -
---
-
-ALTER SEQUENCE corporate_bodies_id_seq OWNED BY corporate_bodies.id;
-
-
-SET search_path = fs, pg_catalog;
-
---
--- Name: vat_subjects; Type: TABLE; Schema: fs; Owner: -
---
-
-CREATE TABLE vat_subjects (
-    id integer NOT NULL,
-    vat_number character varying NOT NULL,
-    name character varying NOT NULL,
-    municipality character varying,
-    postal_code character varying NOT NULL,
-    address character varying,
-    paragraph character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: financna_sprava_vat_subjects_id_seq; Type: SEQUENCE; Schema: fs; Owner: -
---
-
-CREATE SEQUENCE financna_sprava_vat_subjects_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: financna_sprava_vat_subjects_id_seq; Type: SEQUENCE OWNED BY; Schema: fs; Owner: -
---
-
-ALTER SEQUENCE financna_sprava_vat_subjects_id_seq OWNED BY vat_subjects.id;
-
-
---
--- Name: vat_subject_entries; Type: TABLE; Schema: fs; Owner: -
---
-
-CREATE TABLE vat_subject_entries (
-    id integer NOT NULL,
-    list_id integer NOT NULL,
-    subject_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: vat_subject_entries_id_seq; Type: SEQUENCE; Schema: fs; Owner: -
---
-
-CREATE SEQUENCE vat_subject_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: vat_subject_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: fs; Owner: -
---
-
-ALTER SEQUENCE vat_subject_entries_id_seq OWNED BY vat_subject_entries.id;
-
-
---
--- Name: vat_subject_ranges; Type: TABLE; Schema: fs; Owner: -
---
-
-CREATE TABLE vat_subject_ranges (
-    id integer NOT NULL,
-    subject_id integer NOT NULL,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: vat_subject_ranges_id_seq; Type: SEQUENCE; Schema: fs; Owner: -
---
-
-CREATE SEQUENCE vat_subject_ranges_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: vat_subject_ranges_id_seq; Type: SEQUENCE OWNED BY; Schema: fs; Owner: -
---
-
-ALTER SEQUENCE vat_subject_ranges_id_seq OWNED BY vat_subject_ranges.id;
-
-
---
--- Name: vat_subjects_lists; Type: TABLE; Schema: fs; Owner: -
---
-
-CREATE TABLE vat_subjects_lists (
-    id integer NOT NULL,
-    date date NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: vat_subjects_lists_id_seq; Type: SEQUENCE; Schema: fs; Owner: -
---
-
-CREATE SEQUENCE vat_subjects_lists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: vat_subjects_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: fs; Owner: -
---
-
-ALTER SEQUENCE vat_subjects_lists_id_seq OWNED BY vat_subjects_lists.id;
-
-
-SET search_path = map_datahub_fs, pg_catalog;
-
---
--- Name: vat_subject_mappings; Type: TABLE; Schema: map_datahub_fs; Owner: -
---
-
-CREATE TABLE vat_subject_mappings (
-    id integer NOT NULL,
-    corporate_body_id integer,
-    vat_subject_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: vat_subject_mappings_id_seq; Type: SEQUENCE; Schema: map_datahub_fs; Owner: -
---
-
-CREATE SEQUENCE vat_subject_mappings_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: vat_subject_mappings_id_seq; Type: SEQUENCE OWNED BY; Schema: map_datahub_fs; Owner: -
---
-
-ALTER SEQUENCE vat_subject_mappings_id_seq OWNED BY vat_subject_mappings.id;
-
-
-SET search_path = map_datahub_rpo, pg_catalog;
-
---
--- Name: corporate_body_mappings; Type: TABLE; Schema: map_datahub_rpo; Owner: -
---
-
-CREATE TABLE corporate_body_mappings (
-    id integer NOT NULL,
-    corporate_body_id integer,
-    organization_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    done boolean DEFAULT false NOT NULL
-);
-
-
---
--- Name: corporate_body_mappings_id_seq; Type: SEQUENCE; Schema: map_datahub_rpo; Owner: -
---
-
-CREATE SEQUENCE corporate_body_mappings_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: corporate_body_mappings_id_seq; Type: SEQUENCE OWNED BY; Schema: map_datahub_rpo; Owner: -
---
-
-ALTER SEQUENCE corporate_body_mappings_id_seq OWNED BY corporate_body_mappings.id;
-
-
-SET search_path = map_datahub_ruz, pg_catalog;
-
---
--- Name: corporate_body_mappings; Type: TABLE; Schema: map_datahub_ruz; Owner: -
---
-
-CREATE TABLE corporate_body_mappings (
-    id integer NOT NULL,
-    corporate_body_id integer,
-    accounting_entity_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    done boolean DEFAULT false NOT NULL
-);
-
-
---
--- Name: corporate_body_mappings_id_seq; Type: SEQUENCE; Schema: map_datahub_ruz; Owner: -
---
-
-CREATE SEQUENCE corporate_body_mappings_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: corporate_body_mappings_id_seq; Type: SEQUENCE OWNED BY; Schema: map_datahub_ruz; Owner: -
---
-
-ALTER SEQUENCE corporate_body_mappings_id_seq OWNED BY corporate_body_mappings.id;
-
-
-SET search_path = ov, pg_catalog;
-
---
--- Name: bulletin_issues; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE bulletin_issues (
-    id integer NOT NULL,
-    year integer NOT NULL,
-    number integer NOT NULL,
-    published_at timestamp without time zone NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: bulletin_issues_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE bulletin_issues_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: bulletin_issues_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE bulletin_issues_id_seq OWNED BY bulletin_issues.id;
-
-
---
--- Name: konkurz_restrukturalizacia_actors; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE konkurz_restrukturalizacia_actors (
-    id integer NOT NULL,
-    corporate_body_name character varying,
-    cin bigint,
-    street character varying,
-    building_number character varying,
-    city character varying,
-    postal_code character varying,
-    country character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: konkurz_restrukturalizacia_actors_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE konkurz_restrukturalizacia_actors_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: konkurz_restrukturalizacia_actors_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE konkurz_restrukturalizacia_actors_id_seq OWNED BY konkurz_restrukturalizacia_actors.id;
-
-
---
--- Name: konkurz_restrukturalizacia_issues; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE konkurz_restrukturalizacia_issues (
-    id integer NOT NULL,
-    bulletin_issue_id integer NOT NULL,
-    raw_issue_id integer NOT NULL,
-    court_name character varying NOT NULL,
-    file_reference character varying NOT NULL,
-    ics character varying NOT NULL,
-    released_by character varying NOT NULL,
-    releaser_position character varying,
-    sent_by character varying NOT NULL,
-    released_date date NOT NULL,
-    debtor_id integer,
-    kind character varying NOT NULL,
-    heading text,
-    decision text,
-    announcement text,
-    advice text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: konkurz_restrukturalizacia_issues_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE konkurz_restrukturalizacia_issues_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: konkurz_restrukturalizacia_issues_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE konkurz_restrukturalizacia_issues_id_seq OWNED BY konkurz_restrukturalizacia_issues.id;
-
-
---
--- Name: konkurz_restrukturalizacia_proposings; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE konkurz_restrukturalizacia_proposings (
-    id integer NOT NULL,
-    issue_id integer NOT NULL,
-    actor_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: konkurz_restrukturalizacia_proposings_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE konkurz_restrukturalizacia_proposings_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: konkurz_restrukturalizacia_proposings_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE konkurz_restrukturalizacia_proposings_id_seq OWNED BY konkurz_restrukturalizacia_proposings.id;
-
-
---
--- Name: konkurz_vyrovnanie_issues; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE konkurz_vyrovnanie_issues (
-    id integer NOT NULL,
-    bulletin_issue_id integer NOT NULL,
-    raw_issue_id integer NOT NULL,
-    court_code character varying NOT NULL,
-    court_name character varying NOT NULL,
-    file_reference character varying NOT NULL,
-    corporate_body_name character varying NOT NULL,
-    cin integer,
-    street character varying,
-    building_number character varying,
-    city character varying,
-    postal_code character varying,
-    country character varying,
-    kind_code character varying NOT NULL,
-    kind_name character varying NOT NULL,
-    announcement text NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: konkurz_vyrovnanie_issues_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE konkurz_vyrovnanie_issues_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: konkurz_vyrovnanie_issues_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE konkurz_vyrovnanie_issues_id_seq OWNED BY konkurz_vyrovnanie_issues.id;
-
-
---
--- Name: likvidator_issues; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE likvidator_issues (
-    id integer NOT NULL,
-    bulletin_issue_id integer NOT NULL,
-    raw_issue_id integer NOT NULL,
-    legal_form_code character varying NOT NULL,
-    legal_form_name character varying NOT NULL,
-    corporate_body_name character varying NOT NULL,
-    cin integer NOT NULL,
-    sid character varying,
-    street character varying NOT NULL,
-    building_number character varying NOT NULL,
-    city character varying NOT NULL,
-    postal_code character varying NOT NULL,
-    country character varying NOT NULL,
-    in_business_register boolean DEFAULT false NOT NULL,
-    br_insertion character varying,
-    br_court_code character varying,
-    br_court_name character varying,
-    br_section character varying,
-    other_registrar_name character varying,
-    other_registration_number character varying,
-    decision_based_on character varying NOT NULL,
-    decision_date date NOT NULL,
-    claim_term character varying NOT NULL,
-    liquidation_start_date date NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    debtee_legal_form_code character varying,
-    debtee_legal_form_name character varying
-);
-
-
---
--- Name: likvidator_issues_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE likvidator_issues_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: likvidator_issues_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE likvidator_issues_id_seq OWNED BY likvidator_issues.id;
-
-
---
--- Name: or_podanie_issue_documents; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE or_podanie_issue_documents (
-    id integer NOT NULL,
-    or_podanie_issue_id integer NOT NULL,
-    name character varying NOT NULL,
-    delivery_date date NOT NULL,
-    ruz_deposit_date date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: or_podanie_issue_documents_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE or_podanie_issue_documents_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: or_podanie_issue_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE or_podanie_issue_documents_id_seq OWNED BY or_podanie_issue_documents.id;
-
-
---
--- Name: or_podanie_issues; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE or_podanie_issues (
-    id integer NOT NULL,
-    bulletin_issue_id integer NOT NULL,
-    raw_issue_id integer NOT NULL,
-    br_mark character varying NOT NULL,
-    br_court_code character varying NOT NULL,
-    br_court_name character varying NOT NULL,
-    kind_code character varying NOT NULL,
-    kind_name character varying NOT NULL,
-    cin integer,
-    registration_date date,
-    corporate_body_name character varying,
-    br_section character varying NOT NULL,
-    br_insertion character varying NOT NULL,
-    text text NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    address_line character varying,
-    street character varying,
-    postal_code character varying,
-    city character varying
-);
-
-
---
--- Name: or_podanie_issues_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE or_podanie_issues_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: or_podanie_issues_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE or_podanie_issues_id_seq OWNED BY or_podanie_issues.id;
-
-
---
--- Name: raw_issues; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE raw_issues (
-    id integer NOT NULL,
-    bulletin_issue_id integer NOT NULL,
-    file_name character varying NOT NULL,
-    content text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: raw_issues_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE raw_issues_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: raw_issues_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE raw_issues_id_seq OWNED BY raw_issues.id;
-
-
---
--- Name: znizenie_imania_ceos; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE znizenie_imania_ceos (
-    id integer NOT NULL,
-    znizenie_imania_issue_id integer NOT NULL,
-    prefixes character varying,
-    postfixes character varying,
-    given_name character varying,
-    family_name character varying,
-    street character varying,
-    building_number character varying,
-    postal_code character varying,
-    city character varying,
-    country character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: znizenie_imania_ceos_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE znizenie_imania_ceos_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: znizenie_imania_ceos_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE znizenie_imania_ceos_id_seq OWNED BY znizenie_imania_ceos.id;
-
-
---
--- Name: znizenie_imania_issues; Type: TABLE; Schema: ov; Owner: -
---
-
-CREATE TABLE znizenie_imania_issues (
-    id integer NOT NULL,
-    bulletin_issue_id integer NOT NULL,
-    raw_issue_id integer NOT NULL,
-    corporate_body_name character varying NOT NULL,
-    street character varying,
-    building_number character varying,
-    postal_code character varying,
-    city character varying,
-    country character varying,
-    br_court_code character varying NOT NULL,
-    br_court_name character varying NOT NULL,
-    br_section character varying NOT NULL,
-    br_insertion character varying NOT NULL,
-    cin integer NOT NULL,
-    decision_text text,
-    decision_date date,
-    equity_currency_code character varying NOT NULL,
-    old_equity_value numeric(12,2) NOT NULL,
-    new_equity_value numeric(12,2) NOT NULL,
-    resolution_store_date date,
-    first_ov_released_date date,
-    first_ov_released_number character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: znizenie_imania_issues_id_seq; Type: SEQUENCE; Schema: ov; Owner: -
---
-
-CREATE SEQUENCE znizenie_imania_issues_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: znizenie_imania_issues_id_seq; Type: SEQUENCE OWNED BY; Schema: ov; Owner: -
---
-
-ALTER SEQUENCE znizenie_imania_issues_id_seq OWNED BY znizenie_imania_issues.id;
-
-
-SET search_path = public, pg_catalog;
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE schema_migrations (
     version character varying NOT NULL
 );
-
-
-SET search_path = ra, pg_catalog;
-
---
--- Name: building_number_changes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE building_number_changes (
-    id integer NOT NULL,
-    property_registration_number_id integer NOT NULL,
-    change_id integer,
-    street_name_id integer,
-    changed_at timestamp without time zone,
-    database_operation change_type,
-    building_number_id integer NOT NULL,
-    version_id integer NOT NULL,
-    created_reason created_reason_type,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    effective_on date,
-    verified_at timestamp without time zone,
-    building_number character varying,
-    building_index character varying NOT NULL,
-    postal_code integer,
-    address_point geography(Point,4326),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: building_number_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE building_number_changes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: building_number_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE building_number_changes_id_seq OWNED BY building_number_changes.id;
-
-
---
--- Name: building_numbers; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE building_numbers (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: building_numbers_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE building_numbers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: building_numbers_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE building_numbers_id_seq OWNED BY building_numbers.id;
-
-
---
--- Name: building_purpose_codes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE building_purpose_codes (
-    id integer NOT NULL,
-    code character varying NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: building_purpose_codes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE building_purpose_codes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: building_purpose_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE building_purpose_codes_id_seq OWNED BY building_purpose_codes.id;
-
-
---
--- Name: building_types; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE building_types (
-    id integer NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: building_types_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE building_types_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: building_types_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE building_types_id_seq OWNED BY building_types.id;
-
-
---
--- Name: building_unit_changes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE building_unit_changes (
-    id integer NOT NULL,
-    building_unit_id integer NOT NULL,
-    building_number_id integer NOT NULL,
-    change_id integer,
-    changed_at timestamp without time zone,
-    database_operation change_type,
-    version_id integer NOT NULL,
-    created_reason created_reason_type,
-    valid_from timestamp without time zone NOT NULL,
-    valid_to timestamp without time zone,
-    effective_on date,
-    building_unit_floor character varying,
-    building_unit_number character varying NOT NULL,
-    building_unit_label character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: building_unit_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE building_unit_changes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: building_unit_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE building_unit_changes_id_seq OWNED BY building_unit_changes.id;
-
-
---
--- Name: building_units; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE building_units (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: building_units_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE building_units_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: building_units_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE building_units_id_seq OWNED BY building_units.id;
-
-
---
--- Name: changes_batches; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE changes_batches (
-    id integer NOT NULL,
-    generated_at timestamp without time zone NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: changes_batches_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE changes_batches_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: changes_batches_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE changes_batches_id_seq OWNED BY changes_batches.id;
-
-
---
--- Name: counties; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE counties (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: counties_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE counties_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: counties_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE counties_id_seq OWNED BY counties.id;
-
-
---
--- Name: county_changes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE county_changes (
-    id integer NOT NULL,
-    county_id integer NOT NULL,
-    region_id integer NOT NULL,
-    change_id integer,
-    database_operation change_type,
-    version_id integer NOT NULL,
-    created_reason created_reason_type,
-    changed_at timestamp without time zone,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    effective_on date NOT NULL,
-    county_code_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: county_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE county_changes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: county_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE county_changes_id_seq OWNED BY county_changes.id;
-
-
---
--- Name: county_codes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE county_codes (
-    id integer NOT NULL,
-    code character varying,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: county_codes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE county_codes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: county_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE county_codes_id_seq OWNED BY county_codes.id;
-
-
---
--- Name: district_changes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE district_changes (
-    id integer NOT NULL,
-    district_id integer NOT NULL,
-    municipality_id integer NOT NULL,
-    change_id integer,
-    database_operation change_type,
-    version_id integer NOT NULL,
-    created_reason created_reason_type,
-    changed_at timestamp without time zone,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    effective_on date,
-    district_code_id integer NOT NULL,
-    unique_numbering boolean NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: district_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE district_changes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: district_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE district_changes_id_seq OWNED BY district_changes.id;
-
-
---
--- Name: district_codes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE district_codes (
-    id integer NOT NULL,
-    code character varying,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: district_codes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE district_codes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: district_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE district_codes_id_seq OWNED BY district_codes.id;
-
-
---
--- Name: districts; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE districts (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: districts_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE districts_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: districts_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE districts_id_seq OWNED BY districts.id;
-
-
---
--- Name: municipalities; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE municipalities (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: municipalities_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE municipalities_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: municipalities_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE municipalities_id_seq OWNED BY municipalities.id;
-
-
---
--- Name: municipality_changes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE municipality_changes (
-    id integer NOT NULL,
-    municipality_id integer NOT NULL,
-    county_id integer NOT NULL,
-    change_id integer,
-    database_operation change_type,
-    version_id integer NOT NULL,
-    created_reason created_reason_type,
-    changed_at timestamp without time zone,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    municipality_code_id integer NOT NULL,
-    municipality_status municipality_status,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: municipality_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE municipality_changes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: municipality_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE municipality_changes_id_seq OWNED BY municipality_changes.id;
-
-
---
--- Name: municipality_codes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE municipality_codes (
-    id integer NOT NULL,
-    code character varying,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: municipality_codes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE municipality_codes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: municipality_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE municipality_codes_id_seq OWNED BY municipality_codes.id;
-
-
---
--- Name: property_registration_number_changes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE property_registration_number_changes (
-    id integer NOT NULL,
-    property_registration_number_id integer NOT NULL,
-    change_id integer,
-    changed_at timestamp without time zone,
-    database_operation change_type,
-    version_id integer NOT NULL,
-    created_reason created_reason_type,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    effective_on date,
-    property_registration_number integer,
-    building_contains_flats boolean NOT NULL,
-    building_purpose_code_id integer,
-    building_type_id integer,
-    municipality_id integer NOT NULL,
-    district_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: property_registration_number_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE property_registration_number_changes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: property_registration_number_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE property_registration_number_changes_id_seq OWNED BY property_registration_number_changes.id;
-
-
---
--- Name: region_changes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE region_changes (
-    id integer NOT NULL,
-    region_id integer NOT NULL,
-    change_id integer,
-    database_operation change_type,
-    version_id integer NOT NULL,
-    created_reason created_reason_type,
-    changed_at timestamp without time zone,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    effective_on date NOT NULL,
-    region_code_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: region_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE region_changes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: region_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE region_changes_id_seq OWNED BY region_changes.id;
-
-
---
--- Name: region_codes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE region_codes (
-    id integer NOT NULL,
-    code character varying,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: region_codes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE region_codes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: region_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE region_codes_id_seq OWNED BY region_codes.id;
-
-
---
--- Name: regions; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE regions (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: regions_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE regions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: regions_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE regions_id_seq OWNED BY regions.id;
-
-
---
--- Name: street_name_changes; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE street_name_changes (
-    id integer NOT NULL,
-    street_name_id integer NOT NULL,
-    municipality_id integer NOT NULL,
-    district_id integer,
-    change_id integer,
-    changed_at timestamp without time zone,
-    database_operation change_type,
-    version_id integer NOT NULL,
-    created_reason created_reason_type,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    effective_on date,
-    street_name character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: street_name_changes_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE street_name_changes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: street_name_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE street_name_changes_id_seq OWNED BY street_name_changes.id;
-
-
---
--- Name: street_names; Type: TABLE; Schema: ra; Owner: -
---
-
-CREATE TABLE street_names (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: street_names_id_seq; Type: SEQUENCE; Schema: ra; Owner: -
---
-
-CREATE SEQUENCE street_names_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: street_names_id_seq; Type: SEQUENCE OWNED BY; Schema: ra; Owner: -
---
-
-ALTER SEQUENCE street_names_id_seq OWNED BY street_names.id;
-
-
-SET search_path = rpo, pg_catalog;
-
---
--- Name: esa2010_codes; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE esa2010_codes (
-    id integer NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: esu2010_codes_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE esu2010_codes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: esu2010_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE esu2010_codes_id_seq OWNED BY esa2010_codes.id;
-
-
---
--- Name: legal_forms; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE legal_forms (
-    id integer NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: legal_forms_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE legal_forms_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: legal_forms_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE legal_forms_id_seq OWNED BY legal_forms.id;
-
-
---
--- Name: main_activity_codes; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE main_activity_codes (
-    id integer NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: main_activity_codes_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE main_activity_codes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: main_activity_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE main_activity_codes_id_seq OWNED BY main_activity_codes.id;
-
-
---
--- Name: organization_address_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_address_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    formatted_address character varying,
-    street character varying,
-    reg_number integer,
-    building_number character varying,
-    postal_code character varying,
-    municipality character varying,
-    country character varying,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_address_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_address_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_address_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_address_entries_id_seq OWNED BY organization_address_entries.id;
-
-
---
--- Name: organization_alternate_name_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_alternate_name_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    name character varying NOT NULL,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_alternate_name_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_alternate_name_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_alternate_name_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_alternate_name_entries_id_seq OWNED BY organization_alternate_name_entries.id;
-
-
---
--- Name: organization_authorization_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_authorization_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    body character varying NOT NULL,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_authorization_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_authorization_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_authorization_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_authorization_entries_id_seq OWNED BY organization_authorization_entries.id;
-
-
---
--- Name: organization_deposit_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_deposit_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    full_name character varying,
-    person_formatted_name character varying,
-    person_given_name character varying,
-    person_family_name character varying,
-    person_given_family_name character varying,
-    person_prefixes character varying,
-    person_postfixes character varying,
-    deposit_amount numeric NOT NULL,
-    deposit_currency character varying NOT NULL,
-    deposit_type character varying,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_deposit_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_deposit_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_deposit_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_deposit_entries_id_seq OWNED BY organization_deposit_entries.id;
-
-
---
--- Name: organization_economic_activity_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_economic_activity_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    description character varying NOT NULL,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    suspended_from date,
-    suspended_to date
-);
-
-
---
--- Name: organization_economic_activity_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_economic_activity_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_economic_activity_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_economic_activity_entries_id_seq OWNED BY organization_economic_activity_entries.id;
-
-
---
--- Name: organization_equity_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_equity_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    investment_amount numeric(14,2),
-    investment_currency character varying NOT NULL,
-    paid_amount numeric(14,2),
-    paid_currency character varying NOT NULL,
-    approved_amount numeric(14,2),
-    approved_currency character varying NOT NULL,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_equity_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_equity_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_equity_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_equity_entries_id_seq OWNED BY organization_equity_entries.id;
-
-
---
--- Name: organization_identifier_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_identifier_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    ipo integer,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_identifier_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_identifier_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_identifier_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_identifier_entries_id_seq OWNED BY organization_identifier_entries.id;
-
-
---
--- Name: organization_legal_form_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_legal_form_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    legal_form_id integer,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_legal_form_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_legal_form_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_legal_form_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_legal_form_entries_id_seq OWNED BY organization_legal_form_entries.id;
-
-
---
--- Name: organization_legal_status_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_legal_status_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    body character varying NOT NULL,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_legal_status_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_legal_status_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_legal_status_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_legal_status_entries_id_seq OWNED BY organization_legal_status_entries.id;
-
-
---
--- Name: organization_name_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_name_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    name character varying NOT NULL,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_name_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_name_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_name_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_name_entries_id_seq OWNED BY organization_name_entries.id;
-
-
---
--- Name: organization_other_legal_fact_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_other_legal_fact_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    body character varying NOT NULL,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_other_legal_fact_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_other_legal_fact_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_other_legal_fact_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_other_legal_fact_entries_id_seq OWNED BY organization_other_legal_fact_entries.id;
-
-
---
--- Name: organization_predecessor_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_predecessor_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    ico integer,
-    full_name character varying NOT NULL,
-    address_formatted character varying,
-    address_street character varying,
-    address_reg_number integer,
-    address_building_number character varying,
-    address_postal_code character varying,
-    address_municipality character varying,
-    address_country character varying,
-    established_on date NOT NULL,
-    terminated_on date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_predecessor_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_predecessor_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_predecessor_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_predecessor_entries_id_seq OWNED BY organization_predecessor_entries.id;
-
-
---
--- Name: organization_share_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_share_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    share_type_id integer NOT NULL,
-    share_form_id integer,
-    share_price numeric NOT NULL,
-    share_currency character varying NOT NULL,
-    share_amount bigint NOT NULL,
-    share_transfer character varying,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_share_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_share_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_share_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_share_entries_id_seq OWNED BY organization_share_entries.id;
-
-
---
--- Name: organization_stakeholder_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_stakeholder_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    stakeholder_type_id integer,
-    full_name character varying,
-    person_formatted_name character varying,
-    person_given_name character varying,
-    person_family_name character varying,
-    person_given_family_name character varying,
-    person_prefixes character varying,
-    person_postfixes character varying,
-    address_formatted character varying,
-    address_street character varying,
-    address_reg_number integer,
-    address_building_number character varying,
-    address_postal_code character varying,
-    address_municipality character varying,
-    address_country character varying,
-    address_effective_from date,
-    address_effective_to date,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    stakeholder_organization_id integer,
-    ico integer
-);
-
-
---
--- Name: organization_stakeholder_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_stakeholder_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_stakeholder_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_stakeholder_entries_id_seq OWNED BY organization_stakeholder_entries.id;
-
-
---
--- Name: organization_statutory_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_statutory_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    stakeholder_type_id integer,
-    full_name character varying,
-    person_formatted_name character varying,
-    person_given_name character varying,
-    person_family_name character varying,
-    person_given_family_name character varying,
-    person_prefixes character varying,
-    person_postfixes character varying,
-    address_formatted character varying,
-    address_street character varying,
-    address_reg_number integer,
-    address_building_number character varying,
-    address_postal_code character varying,
-    address_municipality character varying,
-    address_country character varying,
-    effective_from date NOT NULL,
-    effective_to date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    ico integer
-);
-
-
---
--- Name: organization_statutory_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_statutory_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_statutory_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_statutory_entries_id_seq OWNED BY organization_statutory_entries.id;
-
-
---
--- Name: organization_successor_entries; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organization_successor_entries (
-    id integer NOT NULL,
-    organization_id integer NOT NULL,
-    ico integer,
-    full_name character varying NOT NULL,
-    address_formatted character varying,
-    address_street character varying,
-    address_reg_number integer,
-    address_building_number character varying,
-    address_postal_code character varying,
-    address_municipality character varying,
-    address_country character varying,
-    established_on date NOT NULL,
-    terminated_on date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_successor_entries_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organization_successor_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organization_successor_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organization_successor_entries_id_seq OWNED BY organization_successor_entries.id;
-
-
---
--- Name: organizations; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE organizations (
-    id integer NOT NULL,
-    established_on date NOT NULL,
-    terminated_on date,
-    actualized_at timestamp without time zone,
-    has_organization_unit boolean NOT NULL,
-    has_operations boolean NOT NULL,
-    statistical_codes_actualized_on date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    main_activity_code_id integer,
-    esa2010_code_id integer,
-    source_register character varying,
-    registration_office character varying,
-    registration_number character varying,
-    main_organization_id integer,
-    deleted_at timestamp without time zone
-);
-
-
---
--- Name: organizations_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE organizations_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: organizations_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE organizations_id_seq OWNED BY organizations.id;
-
-
---
--- Name: share_forms; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE share_forms (
-    id integer NOT NULL,
-    name character varying NOT NULL
-);
-
-
---
--- Name: share_forms_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE share_forms_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: share_forms_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE share_forms_id_seq OWNED BY share_forms.id;
-
-
---
--- Name: share_types; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE share_types (
-    id integer NOT NULL,
-    name character varying NOT NULL
-);
-
-
---
--- Name: share_types_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE share_types_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: share_types_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE share_types_id_seq OWNED BY share_types.id;
-
-
---
--- Name: stakeholder_types; Type: TABLE; Schema: rpo; Owner: -
---
-
-CREATE TABLE stakeholder_types (
-    id integer NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: stakeholder_types_id_seq; Type: SEQUENCE; Schema: rpo; Owner: -
---
-
-CREATE SEQUENCE stakeholder_types_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: stakeholder_types_id_seq; Type: SEQUENCE OWNED BY; Schema: rpo; Owner: -
---
-
-ALTER SEQUENCE stakeholder_types_id_seq OWNED BY stakeholder_types.id;
-
-
-SET search_path = ruz, pg_catalog;
-
---
--- Name: accounting_entities; Type: TABLE; Schema: ruz; Owner: -
---
-
-CREATE TABLE accounting_entities (
-    id integer NOT NULL,
-    cin integer,
-    tin bigint,
-    corporate_body_name character varying,
-    city character varying,
-    street character varying,
-    postal_code character varying,
-    region_id integer,
-    district_id integer,
-    municipality_id integer,
-    last_updated_on date,
-    established_on date,
-    legal_form_id integer,
-    sk_nace_category_id integer,
-    organization_size_id integer,
-    ownership_type_id integer,
-    consolidated boolean,
-    data_source character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    deleted boolean DEFAULT false NOT NULL,
-    terminated_on date,
-    sid character varying
-);
-
-
---
--- Name: districts; Type: TABLE; Schema: ruz; Owner: -
---
-
-CREATE TABLE districts (
-    id integer NOT NULL,
-    region_id integer NOT NULL,
-    name_sk character varying NOT NULL,
-    name_en character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: legal_forms; Type: TABLE; Schema: ruz; Owner: -
---
-
-CREATE TABLE legal_forms (
-    id integer NOT NULL,
-    name_sk character varying NOT NULL,
-    name_en character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: municipalities; Type: TABLE; Schema: ruz; Owner: -
---
-
-CREATE TABLE municipalities (
-    id integer NOT NULL,
-    parent_id integer,
-    name_sk character varying NOT NULL,
-    name_en character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: organization_sizes; Type: TABLE; Schema: ruz; Owner: -
---
-
-CREATE TABLE organization_sizes (
-    id integer NOT NULL,
-    name_sk character varying NOT NULL,
-    name_en character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: ownership_types; Type: TABLE; Schema: ruz; Owner: -
---
-
-CREATE TABLE ownership_types (
-    id integer NOT NULL,
-    name_sk character varying NOT NULL,
-    name_en character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: regions; Type: TABLE; Schema: ruz; Owner: -
---
-
-CREATE TABLE regions (
-    id integer NOT NULL,
-    name_sk character varying NOT NULL,
-    name_en character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: ruz_accounting_entities_id_seq; Type: SEQUENCE; Schema: ruz; Owner: -
---
-
-CREATE SEQUENCE ruz_accounting_entities_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ruz_accounting_entities_id_seq; Type: SEQUENCE OWNED BY; Schema: ruz; Owner: -
---
-
-ALTER SEQUENCE ruz_accounting_entities_id_seq OWNED BY accounting_entities.id;
-
-
---
--- Name: ruz_districts_id_seq; Type: SEQUENCE; Schema: ruz; Owner: -
---
-
-CREATE SEQUENCE ruz_districts_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ruz_districts_id_seq; Type: SEQUENCE OWNED BY; Schema: ruz; Owner: -
---
-
-ALTER SEQUENCE ruz_districts_id_seq OWNED BY districts.id;
-
-
---
--- Name: ruz_legal_forms_id_seq; Type: SEQUENCE; Schema: ruz; Owner: -
---
-
-CREATE SEQUENCE ruz_legal_forms_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ruz_legal_forms_id_seq; Type: SEQUENCE OWNED BY; Schema: ruz; Owner: -
---
-
-ALTER SEQUENCE ruz_legal_forms_id_seq OWNED BY legal_forms.id;
-
-
---
--- Name: ruz_municipalities_id_seq; Type: SEQUENCE; Schema: ruz; Owner: -
---
-
-CREATE SEQUENCE ruz_municipalities_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ruz_municipalities_id_seq; Type: SEQUENCE OWNED BY; Schema: ruz; Owner: -
---
-
-ALTER SEQUENCE ruz_municipalities_id_seq OWNED BY municipalities.id;
-
-
---
--- Name: ruz_organization_sizes_id_seq; Type: SEQUENCE; Schema: ruz; Owner: -
---
-
-CREATE SEQUENCE ruz_organization_sizes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ruz_organization_sizes_id_seq; Type: SEQUENCE OWNED BY; Schema: ruz; Owner: -
---
-
-ALTER SEQUENCE ruz_organization_sizes_id_seq OWNED BY organization_sizes.id;
-
-
---
--- Name: ruz_ownership_types_id_seq; Type: SEQUENCE; Schema: ruz; Owner: -
---
-
-CREATE SEQUENCE ruz_ownership_types_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ruz_ownership_types_id_seq; Type: SEQUENCE OWNED BY; Schema: ruz; Owner: -
---
-
-ALTER SEQUENCE ruz_ownership_types_id_seq OWNED BY ownership_types.id;
-
-
---
--- Name: ruz_regions_id_seq; Type: SEQUENCE; Schema: ruz; Owner: -
---
-
-CREATE SEQUENCE ruz_regions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ruz_regions_id_seq; Type: SEQUENCE OWNED BY; Schema: ruz; Owner: -
---
-
-ALTER SEQUENCE ruz_regions_id_seq OWNED BY regions.id;
-
-
---
--- Name: sk_nace_categories; Type: TABLE; Schema: ruz; Owner: -
---
-
-CREATE TABLE sk_nace_categories (
-    id integer NOT NULL,
-    name_sk character varying NOT NULL,
-    name_en character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: ruz_sk_nace_categories_id_seq; Type: SEQUENCE; Schema: ruz; Owner: -
---
-
-CREATE SEQUENCE ruz_sk_nace_categories_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ruz_sk_nace_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: ruz; Owner: -
---
-
-ALTER SEQUENCE ruz_sk_nace_categories_id_seq OWNED BY sk_nace_categories.id;
-
-
-SET search_path = socpoist, pg_catalog;
-
---
--- Name: debt_entries; Type: TABLE; Schema: socpoist; Owner: -
---
-
-CREATE TABLE debt_entries (
-    id integer NOT NULL,
-    debtor_id integer NOT NULL,
-    list_id integer NOT NULL,
-    amount numeric NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: debt_entries_id_seq; Type: SEQUENCE; Schema: socpoist; Owner: -
---
-
-CREATE SEQUENCE debt_entries_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: debt_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: socpoist; Owner: -
---
-
-ALTER SEQUENCE debt_entries_id_seq OWNED BY debt_entries.id;
-
-
---
--- Name: debt_ranges; Type: TABLE; Schema: socpoist; Owner: -
---
-
-CREATE TABLE debt_ranges (
-    id integer NOT NULL,
-    debtor_id integer,
-    effective_from date NOT NULL,
-    effective_to date,
-    amount numeric NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: debt_ranges_id_seq; Type: SEQUENCE; Schema: socpoist; Owner: -
---
-
-CREATE SEQUENCE debt_ranges_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: debt_ranges_id_seq; Type: SEQUENCE OWNED BY; Schema: socpoist; Owner: -
---
-
-ALTER SEQUENCE debt_ranges_id_seq OWNED BY debt_ranges.id;
-
-
---
--- Name: debtors; Type: TABLE; Schema: socpoist; Owner: -
---
-
-CREATE TABLE debtors (
-    id integer NOT NULL,
-    name character varying NOT NULL,
-    address character varying,
-    city character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: debtors_id_seq; Type: SEQUENCE; Schema: socpoist; Owner: -
---
-
-CREATE SEQUENCE debtors_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: debtors_id_seq; Type: SEQUENCE OWNED BY; Schema: socpoist; Owner: -
---
-
-ALTER SEQUENCE debtors_id_seq OWNED BY debtors.id;
-
-
---
--- Name: debts_lists; Type: TABLE; Schema: socpoist; Owner: -
---
-
-CREATE TABLE debts_lists (
-    id integer NOT NULL,
-    published_on date NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: debts_lists_id_seq; Type: SEQUENCE; Schema: socpoist; Owner: -
---
-
-CREATE SEQUENCE debts_lists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: debts_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: socpoist; Owner: -
---
-
-ALTER SEQUENCE debts_lists_id_seq OWNED BY debts_lists.id;
 
 
 SET search_path = upvs, pg_catalog;
@@ -3182,968 +5621,2558 @@ CREATE SEQUENCE public_authority_edesks_id_seq
 ALTER SEQUENCE public_authority_edesks_id_seq OWNED BY public_authority_edesks.id;
 
 
-SET search_path = vvo, pg_catalog;
+SET search_path = itms, pg_catalog;
 
 --
--- Name: notice_types; Type: TABLE; Schema: vvo; Owner: -
+-- Name: dodavatelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE TABLE notice_types (
-    id integer NOT NULL,
-    code character varying NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
+ALTER TABLE ONLY dodavatelia ALTER COLUMN id SET DEFAULT nextval('dodavatelia_id_seq'::regclass);
 
 
 --
--- Name: announcement_types_id_seq; Type: SEQUENCE; Schema: vvo; Owner: -
+-- Name: konkretne_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE announcement_types_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY konkretne_ciele ALTER COLUMN id SET DEFAULT nextval('konkretne_ciele_id_seq'::regclass);
 
 
 --
--- Name: announcement_types_id_seq; Type: SEQUENCE OWNED BY; Schema: vvo; Owner: -
+-- Name: konkretne_ciele_prioritna_os id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE announcement_types_id_seq OWNED BY notice_types.id;
+ALTER TABLE ONLY konkretne_ciele_prioritna_os ALTER COLUMN id SET DEFAULT nextval('konkretne_ciele_prioritna_os_id_seq'::regclass);
 
 
 --
--- Name: bulletin_issues; Type: TABLE; Schema: vvo; Owner: -
+-- Name: operacne_programy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE TABLE bulletin_issues (
-    id integer NOT NULL,
-    year integer NOT NULL,
-    number integer NOT NULL,
-    published_on date NOT NULL,
-    source_url character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
+ALTER TABLE ONLY operacne_programy ALTER COLUMN id SET DEFAULT nextval('operacne_programy_id_seq'::regclass);
 
 
 --
--- Name: bulletins_id_seq; Type: SEQUENCE; Schema: vvo; Owner: -
+-- Name: operacne_programy_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE bulletins_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY operacne_programy_subjekty ALTER COLUMN id SET DEFAULT nextval('operacne_programy_subjekty_id_seq'::regclass);
 
 
 --
--- Name: bulletins_id_seq; Type: SEQUENCE OWNED BY; Schema: vvo; Owner: -
+-- Name: prioritna_os_operacne_programy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE bulletins_id_seq OWNED BY bulletin_issues.id;
+ALTER TABLE ONLY prioritna_os_operacne_programy ALTER COLUMN id SET DEFAULT nextval('prioritna_os_operacne_programy_id_seq'::regclass);
 
 
 --
--- Name: contracting_authorities; Type: TABLE; Schema: vvo; Owner: -
+-- Name: prioritne_osi id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE TABLE contracting_authorities (
-    id integer NOT NULL,
-    name character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
+ALTER TABLE ONLY prioritne_osi ALTER COLUMN id SET DEFAULT nextval('prioritne_osi_id_seq'::regclass);
 
 
 --
--- Name: contracting_authorities_id_seq; Type: SEQUENCE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE contracting_authorities_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY projekty_ukoncene ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_id_seq'::regclass);
 
 
 --
--- Name: contracting_authorities_id_seq; Type: SEQUENCE OWNED BY; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_aktivity id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE contracting_authorities_id_seq OWNED BY contracting_authorities.id;
+ALTER TABLE ONLY projekty_ukoncene_aktivity ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_aktivity_id_seq'::regclass);
 
 
 --
--- Name: contracts; Type: TABLE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_aktivity_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE TABLE contracts (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
+ALTER TABLE ONLY projekty_ukoncene_aktivity_subjekty ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_aktivity_subjekty_id_seq'::regclass);
 
 
 --
--- Name: contracts_id_seq; Type: SEQUENCE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_formy_financovania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE contracts_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY projekty_ukoncene_formy_financovania ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_formy_financovania_id_seq'::regclass);
 
 
 --
--- Name: contracts_id_seq; Type: SEQUENCE OWNED BY; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_formy_financovania_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE contracts_id_seq OWNED BY contracts.id;
+ALTER TABLE ONLY projekty_ukoncene_formy_financovania_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_formy_financovania_ciele_id_seq'::regclass);
 
 
 --
--- Name: notice_suppliers; Type: TABLE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_hospodarske_cinnosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE TABLE notice_suppliers (
-    id integer NOT NULL,
-    notice_id integer NOT NULL,
-    name character varying NOT NULL,
-    cin integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
+ALTER TABLE ONLY projekty_ukoncene_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_hospodarske_cinnosti_id_seq'::regclass);
 
 
 --
--- Name: notice_suppliers_id_seq; Type: SEQUENCE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_hospodarske_cinnosti_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE notice_suppliers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY projekty_ukoncene_hospodarske_cinnosti_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_hospodarske_cinnosti_ciele_id_seq'::regclass);
 
 
 --
--- Name: notice_suppliers_id_seq; Type: SEQUENCE OWNED BY; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_intenzity id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE notice_suppliers_id_seq OWNED BY notice_suppliers.id;
+ALTER TABLE ONLY projekty_ukoncene_intenzity ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_intenzity_id_seq'::regclass);
 
 
 --
--- Name: notices; Type: TABLE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_intenzity_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE TABLE notices (
-    id integer NOT NULL,
-    title character varying NOT NULL,
-    contracting_authority_name character varying NOT NULL,
-    contracting_authority_cin integer NOT NULL,
-    estimated_value_amount numeric,
-    estimated_value_currency character varying,
-    contracting_authority_id integer NOT NULL,
-    procedure_type_id integer,
-    contract_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    e_auction boolean,
-    raw_notice_id integer NOT NULL,
-    bulletin_issue_id integer NOT NULL,
-    notice_type_id integer NOT NULL
-);
+ALTER TABLE ONLY projekty_ukoncene_intenzity_subjekty ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_intenzity_subjekty_id_seq'::regclass);
 
 
 --
--- Name: notices_id_seq; Type: SEQUENCE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_intenzity_zdroje id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE notices_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY projekty_ukoncene_intenzity_zdroje ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_intenzity_zdroje_id_seq'::regclass);
 
 
 --
--- Name: notices_id_seq; Type: SEQUENCE OWNED BY; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_meratelne_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE notices_id_seq OWNED BY notices.id;
+ALTER TABLE ONLY projekty_ukoncene_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_meratelne_ukazovatele_id_seq'::regclass);
 
 
 --
--- Name: procedure_types; Type: TABLE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE TABLE procedure_types (
-    id integer NOT NULL,
-    title character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    code integer NOT NULL,
-    category character varying NOT NULL
-);
+ALTER TABLE ONLY projekty_ukoncene_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_miesta_realizacie_id_seq'::regclass);
 
 
 --
--- Name: procedure_types_id_seq; Type: SEQUENCE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_miesta_realizacie_units id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE procedure_types_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY projekty_ukoncene_miesta_realizacie_units ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_miesta_realizacie_units_id_seq'::regclass);
 
 
 --
--- Name: procedure_types_id_seq; Type: SEQUENCE OWNED BY; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_monitorovacie_terminy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE procedure_types_id_seq OWNED BY procedure_types.id;
+ALTER TABLE ONLY projekty_ukoncene_monitorovacie_terminy ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_monitorovacie_terminy_id_seq'::regclass);
 
 
 --
--- Name: raw_notices; Type: TABLE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_oblasti_intervencie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE TABLE raw_notices (
-    id integer NOT NULL,
-    bulletin_issue_id integer NOT NULL,
-    number integer NOT NULL,
-    notice_type_id integer,
-    body xml NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
+ALTER TABLE ONLY projekty_ukoncene_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_oblasti_intervencie_id_seq'::regclass);
 
 
 --
--- Name: raw_notices_id_seq; Type: SEQUENCE; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_oblasti_intervencie_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE raw_notices_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY projekty_ukoncene_oblasti_intervencie_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_oblasti_intervencie_ciele_id_seq'::regclass);
 
 
 --
--- Name: raw_notices_id_seq; Type: SEQUENCE OWNED BY; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE raw_notices_id_seq OWNED BY raw_notices.id;
+ALTER TABLE ONLY projekty_ukoncene_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_organizacne_zlozky_id_seq'::regclass);
 
 
-SET search_path = core, pg_catalog;
+--
+-- Name: projekty_ukoncene_partneri id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_partneri ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_partneri_id_seq'::regclass);
+
+
+--
+-- Name: projekty_ukoncene_prijimatel id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_prijimatel ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_prijimatel_id_seq'::regclass);
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_typy_uzemia_id_seq'::regclass);
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_typy_uzemia_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_typy_uzemia_ciele_id_seq'::regclass);
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_uzemne_mechanizmy_id_seq'::regclass);
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_uzemne_mechanizmy_ciele_id_seq'::regclass);
+
+
+--
+-- Name: projekty_ukoncene_vyzva id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_vyzva ALTER COLUMN id SET DEFAULT nextval('projekty_ukoncene_vyzva_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_aktivity id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_aktivity ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_aktivity_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_aktivity_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_aktivity_subjekty ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_aktivity_subjekty_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_formy_financovania ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_formy_financovania_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_formy_financovania_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_formy_financovania_ciele_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_hospodarske_cinnosti_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_hospodarske_cinnosti_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_hospodarske_cinnosti_ciele_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_intenzity ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_intenzity_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_intenzity_subjekty ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_intenzity_subjekty_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_zdroje id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_intenzity_zdroje ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_intenzity_zdroje_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_meratelne_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_meratelne_ukazovatele_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_miesta_realizacie_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie_units id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie_units ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_miesta_realizacie_units_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_monitorovacie_terminy id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_monitorovacie_terminy ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_monitorovacie_terminy_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_oblasti_intervencie_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_oblasti_intervencie_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_oblasti_intervencie_ciele_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_organizacne_zlozky_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_partneri id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_partneri ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_partneri_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_prijimatel id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_prijimatel ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_prijimatel_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_typy_uzemia_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_typy_uzemia_ciele_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_uzemne_mechanizmy_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy_ciele ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_uzemne_mechanizmy_ciele_id_seq'::regclass);
+
+
+--
+-- Name: projekty_vrealizacii_vyzva id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_vyzva ALTER COLUMN id SET DEFAULT nextval('projekty_vrealizacii_vyzva_id_seq'::regclass);
+
+
+--
+-- Name: subjekty id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY subjekty ALTER COLUMN id SET DEFAULT nextval('subjekty_id_seq'::regclass);
+
+
+--
+-- Name: uctovne_doklady id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_id_seq'::regclass);
+
+
+--
+-- Name: uctovne_doklady_dodavatel id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_dodavatel ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_dodavatel_id_seq'::regclass);
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_polozky_dokladu ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_polozky_dokladu_id_seq'::regclass);
+
+
+--
+-- Name: uctovne_doklady_projekty id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_projekty ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_projekty_id_seq'::regclass);
+
+
+--
+-- Name: uctovne_doklady_verejne_obstaravania id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_verejne_obstaravania_id_seq'::regclass);
+
+
+--
+-- Name: uctovne_doklady_vlastnik_dokladu id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_vlastnik_dokladu ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_vlastnik_dokladu_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania_druh_zakazky id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_druh_zakazky ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_druh_zakazky_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_hlavny_slovniky ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania_metody_vo id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_metody_vo ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_metody_vo_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania_obstaravatel id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_obstaravatel ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_obstaravatel_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania_operacne_programy id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_operacne_programy ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_operacne_programy_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania_postup_obstaravania id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_postup_obstaravania ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_postup_obstaravania_id_seq'::regclass);
+
+
+--
+-- Name: verejne_obstaravania_projekty id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_projekty ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_projekty_id_seq'::regclass);
+
 
 --
--- Name: id; Type: DEFAULT; Schema: core; Owner: -
+-- Name: verejne_obstaravania_uctovne_doklady id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY apps ALTER COLUMN id SET DEFAULT nextval('apps_id_seq'::regclass);
+ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_uctovne_doklady_id_seq'::regclass);
 
 
-SET search_path = crz, pg_catalog;
+--
+-- Name: verejne_obstaravania_zadavatel id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_zadavatel ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_zadavatel_id_seq'::regclass);
+
+
+--
+-- Name: vyzvy_planovane id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane ALTER COLUMN id SET DEFAULT nextval('vyzvy_planovane_id_seq'::regclass);
+
+
+--
+-- Name: vyzvy_planovane_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_ciele ALTER COLUMN id SET DEFAULT nextval('vyzvy_planovane_ciele_id_seq'::regclass);
+
+
+--
+-- Name: vyzvy_planovane_doplnujuce_info id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_doplnujuce_info ALTER COLUMN id SET DEFAULT nextval('vyzvy_planovane_doplnujuce_info_id_seq'::regclass);
+
+
+--
+-- Name: vyzvy_planovane_poskytovatelia id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_poskytovatelia ALTER COLUMN id SET DEFAULT nextval('vyzvy_planovane_poskytovatelia_id_seq'::regclass);
+
+
+--
+-- Name: vyzvy_planovane_vyhlasovatel id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_vyhlasovatel ALTER COLUMN id SET DEFAULT nextval('vyzvy_planovane_vyhlasovatel_id_seq'::regclass);
+
+
+--
+-- Name: vyzvy_vyhlasene id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_id_seq'::regclass);
+
+
+--
+-- Name: vyzvy_vyhlasene_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_ciele ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_ciele_id_seq'::regclass);
+
 
 --
--- Name: id; Type: DEFAULT; Schema: crz; Owner: -
+-- Name: vyzvy_vyhlasene_doplnujuce_info id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id_seq'::regclass);
+ALTER TABLE ONLY vyzvy_vyhlasene_doplnujuce_info ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_doplnujuce_info_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: crz; Owner: -
+-- Name: vyzvy_vyhlasene_fondy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY contracts ALTER COLUMN id SET DEFAULT nextval('contracts_id_seq'::regclass);
+ALTER TABLE ONLY vyzvy_vyhlasene_fondy ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_fondy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: crz; Owner: -
+-- Name: vyzvy_vyhlasene_poskytovatelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY departments ALTER COLUMN id SET DEFAULT nextval('departments_id_seq'::regclass);
+ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_poskytovatelia_id_seq'::regclass);
 
 
-SET search_path = datahub, pg_catalog;
+--
+-- Name: vyzvy_vyhlasene_vyhlasovatel id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY vyzvy_vyhlasene_vyhlasovatel ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_vyhlasovatel_id_seq'::regclass);
+
+
 --
--- Name: id; Type: DEFAULT; Schema: datahub; Owner: -
+-- Name: vzvy_vyhlasene_kontaktne_osoby id; Type: DEFAULT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY vzvy_vyhlasene_kontaktne_osoby ALTER COLUMN id SET DEFAULT nextval('vzvy_vyhlasene_kontaktne_osoby_id_seq'::regclass);
 
-ALTER TABLE ONLY corporate_bodies ALTER COLUMN id SET DEFAULT nextval('corporate_bodies_id_seq'::regclass);
 
+--
+-- Name: vzvy_vyhlasene_planovane_vyzvy id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
-SET search_path = fs, pg_catalog;
+ALTER TABLE ONLY vzvy_vyhlasene_planovane_vyzvy ALTER COLUMN id SET DEFAULT nextval('vzvy_vyhlasene_planovane_vyzvy_id_seq'::regclass);
 
+
 --
--- Name: id; Type: DEFAULT; Schema: fs; Owner: -
+-- Name: vzvy_vyhlasene_posudzovane_obdobia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vat_subject_entries ALTER COLUMN id SET DEFAULT nextval('vat_subject_entries_id_seq'::regclass);
+ALTER TABLE ONLY vzvy_vyhlasene_posudzovane_obdobia ALTER COLUMN id SET DEFAULT nextval('vzvy_vyhlasene_posudzovane_obdobia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: fs; Owner: -
+-- Name: zmluvy_verejne_obstaravanie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vat_subject_ranges ALTER COLUMN id SET DEFAULT nextval('vat_subject_ranges_id_seq'::regclass);
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: fs; Owner: -
+-- Name: zmluvy_verejne_obstaravanie_dalsie_url id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vat_subjects ALTER COLUMN id SET DEFAULT nextval('financna_sprava_vat_subjects_id_seq'::regclass);
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dalsie_url ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_dalsie_url_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: fs; Owner: -
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_dodavatelia_id_seq'::regclass);
+
 
-ALTER TABLE ONLY vat_subjects_lists ALTER COLUMN id SET DEFAULT nextval('vat_subjects_lists_id_seq'::regclass);
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq'::regclass);
 
-SET search_path = map_datahub_fs, pg_catalog;
 
 --
--- Name: id; Type: DEFAULT; Schema: map_datahub_fs; Owner: -
+-- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vat_subject_mappings ALTER COLUMN id SET DEFAULT nextval('vat_subject_mappings_id_seq'::regclass);
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_hlavny_dodavatel ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq'::regclass);
+
+
+--
+-- Name: zonfp_prijate id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zonfp_prijate ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_id_seq'::regclass);
 
-SET search_path = map_datahub_rpo, pg_catalog;
 
 --
--- Name: id; Type: DEFAULT; Schema: map_datahub_rpo; Owner: -
+-- Name: zonfp_prijate_aktivity_projekt_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY zonfp_prijate_aktivity_projekt_subjekty ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_aktivity_projekt_subjekty_id_seq'::regclass);
 
-ALTER TABLE ONLY corporate_body_mappings ALTER COLUMN id SET DEFAULT nextval('corporate_body_mappings_id_seq'::regclass);
+
+--
+-- Name: zonfp_prijate_aktivity_projekty id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zonfp_prijate_aktivity_projekty ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_aktivity_projekty_id_seq'::regclass);
 
-SET search_path = map_datahub_ruz, pg_catalog;
 
 --
--- Name: id; Type: DEFAULT; Schema: map_datahub_ruz; Owner: -
+-- Name: zonfp_prijate_formy_financovania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY corporate_body_mappings ALTER COLUMN id SET DEFAULT nextval('corporate_body_mappings_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_formy_financovania ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_formy_financovania_id_seq'::regclass);
 
 
-SET search_path = ov, pg_catalog;
+--
+-- Name: zonfp_prijate_formy_financovania_ciele id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zonfp_prijate_formy_financovania_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_formy_financovania_ciele_id_seq'::regclass);
+
+
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_hospodarske_cinnosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY bulletin_issues ALTER COLUMN id SET DEFAULT nextval('bulletin_issues_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_hospodarske_cinnosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_hospodarske_cinnosti_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_restrukturalizacia_actors ALTER COLUMN id SET DEFAULT nextval('konkurz_restrukturalizacia_actors_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_hospodarske_cinnosti_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_hospodarske_cinnosti_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_meratelne_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_restrukturalizacia_issues ALTER COLUMN id SET DEFAULT nextval('konkurz_restrukturalizacia_issues_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_meratelne_ukazovatele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_restrukturalizacia_proposings ALTER COLUMN id SET DEFAULT nextval('konkurz_restrukturalizacia_proposings_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_miesta_realizacie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie_units id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_vyrovnanie_issues ALTER COLUMN id SET DEFAULT nextval('konkurz_vyrovnanie_issues_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_miesta_realizacie_units ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_miesta_realizacie_units_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_oblasti_intervencie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY likvidator_issues ALTER COLUMN id SET DEFAULT nextval('likvidator_issues_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_oblasti_intervencie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_oblasti_intervencie_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY or_podanie_issue_documents ALTER COLUMN id SET DEFAULT nextval('or_podanie_issue_documents_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_oblasti_intervencie_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY or_podanie_issues ALTER COLUMN id SET DEFAULT nextval('or_podanie_issues_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_organizacne_zlozky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_partneri id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY raw_issues ALTER COLUMN id SET DEFAULT nextval('raw_issues_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_partneri ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_partneri_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_typy_uzemia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY znizenie_imania_ceos ALTER COLUMN id SET DEFAULT nextval('znizenie_imania_ceos_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_typy_uzemia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_typy_uzemia_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY zonfp_prijate_typy_uzemia_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_typy_uzemia_ciele_id_seq'::regclass);
 
-ALTER TABLE ONLY znizenie_imania_issues ALTER COLUMN id SET DEFAULT nextval('znizenie_imania_issues_id_seq'::regclass);
 
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
-SET search_path = ra, pg_catalog;
+ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_uzemne_mechanizmy_id_seq'::regclass);
 
+
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_prijate_uzemne_mechanizmy_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY building_number_changes ALTER COLUMN id SET DEFAULT nextval('building_number_changes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_uzemne_mechanizmy_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_prijate_vyzvy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY building_numbers ALTER COLUMN id SET DEFAULT nextval('building_numbers_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_vyzvy ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_vyzvy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_prijate_ziadatel id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY building_purpose_codes ALTER COLUMN id SET DEFAULT nextval('building_purpose_codes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_prijate_ziadatel ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_ziadatel_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY building_types ALTER COLUMN id SET DEFAULT nextval('building_types_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_aktivity_projekt_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY building_unit_changes ALTER COLUMN id SET DEFAULT nextval('building_unit_changes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_aktivity_projekt_subjekty ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_aktivity_projekt_subjekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_aktivity_projekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY building_units ALTER COLUMN id SET DEFAULT nextval('building_units_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_aktivity_projekty ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_aktivity_projekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_formy_financovania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY changes_batches ALTER COLUMN id SET DEFAULT nextval('changes_batches_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_formy_financovania ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_formy_financovania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_formy_financovania_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY counties ALTER COLUMN id SET DEFAULT nextval('counties_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_formy_financovania_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_formy_financovania_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_hodnotitelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY county_changes ALTER COLUMN id SET DEFAULT nextval('county_changes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_hodnotitelia ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_hodnotitelia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_hospodarske_cinnosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY county_codes ALTER COLUMN id SET DEFAULT nextval('county_codes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_hospodarske_cinnosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_hospodarske_cinnosti_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY district_changes ALTER COLUMN id SET DEFAULT nextval('district_changes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_hospodarske_cinnosti_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_hospodarske_cinnosti_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_meratelne_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY district_codes ALTER COLUMN id SET DEFAULT nextval('district_codes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_meratelne_ukazovatele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY districts ALTER COLUMN id SET DEFAULT nextval('districts_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_miesta_realizacie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_miesta_realizacie_units id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY municipalities ALTER COLUMN id SET DEFAULT nextval('municipalities_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie_units ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_miesta_realizacie_units_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_oblasti_intervencie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY municipality_changes ALTER COLUMN id SET DEFAULT nextval('municipality_changes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_oblasti_intervencie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_oblasti_intervencie_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY municipality_codes ALTER COLUMN id SET DEFAULT nextval('municipality_codes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_oblasti_intervencie_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_oblasti_intervencie_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY property_registration_number_changes ALTER COLUMN id SET DEFAULT nextval('property_registration_number_changes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_organizacne_zlozky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_partneri id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY region_changes ALTER COLUMN id SET DEFAULT nextval('region_changes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_partneri ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_partneri_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_typy_uzemia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY region_codes ALTER COLUMN id SET DEFAULT nextval('region_codes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_typy_uzemia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_typy_uzemia_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY regions ALTER COLUMN id SET DEFAULT nextval('regions_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_typy_uzemia_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_typy_uzemia_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_uzemne_mechanizmy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY street_name_changes ALTER COLUMN id SET DEFAULT nextval('street_name_changes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_uzemne_mechanizmy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_uzemne_mechanizmy_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_uzemne_mechanizmy_ciele_id_seq'::regclass);
+
 
-ALTER TABLE ONLY street_names ALTER COLUMN id SET DEFAULT nextval('street_names_id_seq'::regclass);
+--
+-- Name: zonfp_schvalene_vyzvy id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zonfp_schvalene_vyzvy ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_vyzvy_id_seq'::regclass);
 
-SET search_path = rpo, pg_catalog;
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_schvalene_ziadatel id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY esa2010_codes ALTER COLUMN id SET DEFAULT nextval('esu2010_codes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_schvalene_ziadatel ALTER COLUMN id SET DEFAULT nextval('zonfp_schvalene_ziadatel_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY legal_forms ALTER COLUMN id SET DEFAULT nextval('legal_forms_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_aktivity_projekt_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY main_activity_codes ALTER COLUMN id SET DEFAULT nextval('main_activity_codes_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_aktivity_projekt_subjekty ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_aktivity_projekt_subjekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_aktivity_projekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_address_entries ALTER COLUMN id SET DEFAULT nextval('organization_address_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_aktivity_projekty ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_aktivity_projekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_formy_financovania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_alternate_name_entries ALTER COLUMN id SET DEFAULT nextval('organization_alternate_name_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_formy_financovania ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_formy_financovania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_formy_financovania_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_authorization_entries ALTER COLUMN id SET DEFAULT nextval('organization_authorization_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_formy_financovania_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_formy_financovania_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_hospodarske_cinnosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_deposit_entries ALTER COLUMN id SET DEFAULT nextval('organization_deposit_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_hospodarske_cinnosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_hospodarske_cinnosti_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_economic_activity_entries ALTER COLUMN id SET DEFAULT nextval('organization_economic_activity_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_hospodarske_cinnosti_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_meratelne_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_equity_entries ALTER COLUMN id SET DEFAULT nextval('organization_equity_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_meratelne_ukazovatele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_identifier_entries ALTER COLUMN id SET DEFAULT nextval('organization_identifier_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_miesta_realizacie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_miesta_realizacie_units id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_legal_form_entries ALTER COLUMN id SET DEFAULT nextval('organization_legal_form_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie_units ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_miesta_realizacie_units_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_oblasti_intervencie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_legal_status_entries ALTER COLUMN id SET DEFAULT nextval('organization_legal_status_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_oblasti_intervencie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_oblasti_intervencie_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_name_entries ALTER COLUMN id SET DEFAULT nextval('organization_name_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_oblasti_intervencie_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_oblasti_intervencie_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_other_legal_fact_entries ALTER COLUMN id SET DEFAULT nextval('organization_other_legal_fact_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_organizacne_zlozky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_partneri id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_predecessor_entries ALTER COLUMN id SET DEFAULT nextval('organization_predecessor_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_partneri ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_partneri_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_typy_uzemia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_share_entries ALTER COLUMN id SET DEFAULT nextval('organization_share_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_typy_uzemia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_typy_uzemia_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_stakeholder_entries ALTER COLUMN id SET DEFAULT nextval('organization_stakeholder_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_typy_uzemia_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_typy_uzemia_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_uzemne_mechanizmy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_statutory_entries ALTER COLUMN id SET DEFAULT nextval('organization_statutory_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_uzemne_mechanizmy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_uzemne_mechanizmy_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_successor_entries ALTER COLUMN id SET DEFAULT nextval('organization_successor_entries_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy_ciele ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_uzemne_mechanizmy_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_vysledok_konania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organizations ALTER COLUMN id SET DEFAULT nextval('organizations_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_vysledok_konania ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_vysledok_konania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_vyzvy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY share_forms ALTER COLUMN id SET DEFAULT nextval('share_forms_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_vyzvy ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_vyzvy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_ziadatel id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY share_types ALTER COLUMN id SET DEFAULT nextval('share_types_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_zamietnute_ziadatel ALTER COLUMN id SET DEFAULT nextval('zonfp_zamietnute_ziadatel_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: rpo; Owner: -
+-- Name: zop_predlozene id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY stakeholder_types ALTER COLUMN id SET DEFAULT nextval('stakeholder_types_id_seq'::regclass);
+ALTER TABLE ONLY zop_predlozene ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_id_seq'::regclass);
+
+
+--
+-- Name: zop_predlozene_predfinancovanie id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zop_predlozene_predfinancovanie ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_predfinancovanie_id_seq'::regclass);
 
-SET search_path = ruz, pg_catalog;
 
 --
--- Name: id; Type: DEFAULT; Schema: ruz; Owner: -
+-- Name: zop_predlozene_predkladana_za id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY accounting_entities ALTER COLUMN id SET DEFAULT nextval('ruz_accounting_entities_id_seq'::regclass);
+ALTER TABLE ONLY zop_predlozene_predkladana_za ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_predkladana_za_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ruz; Owner: -
+-- Name: zop_predlozene_prijimatel id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY districts ALTER COLUMN id SET DEFAULT nextval('ruz_districts_id_seq'::regclass);
+ALTER TABLE ONLY zop_predlozene_prijimatel ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_prijimatel_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ruz; Owner: -
+-- Name: zop_predlozene_projekt id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY legal_forms ALTER COLUMN id SET DEFAULT nextval('ruz_legal_forms_id_seq'::regclass);
+ALTER TABLE ONLY zop_predlozene_projekt ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_projekt_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ruz; Owner: -
+-- Name: zop_uhradene id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY municipalities ALTER COLUMN id SET DEFAULT nextval('ruz_municipalities_id_seq'::regclass);
+ALTER TABLE ONLY zop_uhradene ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ruz; Owner: -
+-- Name: zop_uhradene_predfinancovanie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_sizes ALTER COLUMN id SET DEFAULT nextval('ruz_organization_sizes_id_seq'::regclass);
+ALTER TABLE ONLY zop_uhradene_predfinancovanie ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_predfinancovanie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ruz; Owner: -
+-- Name: zop_uhradene_predkladana_za id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY ownership_types ALTER COLUMN id SET DEFAULT nextval('ruz_ownership_types_id_seq'::regclass);
+ALTER TABLE ONLY zop_uhradene_predkladana_za ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_predkladana_za_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ruz; Owner: -
+-- Name: zop_uhradene_prijimatel id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY regions ALTER COLUMN id SET DEFAULT nextval('ruz_regions_id_seq'::regclass);
+ALTER TABLE ONLY zop_uhradene_prijimatel ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_prijimatel_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: ruz; Owner: -
+-- Name: zop_uhradene_projekt id; Type: DEFAULT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY zop_uhradene_projekt ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_projekt_id_seq'::regclass);
 
-ALTER TABLE ONLY sk_nace_categories ALTER COLUMN id SET DEFAULT nextval('ruz_sk_nace_categories_id_seq'::regclass);
+
+--
+-- Name: zop_zamietnute id; Type: DEFAULT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zop_zamietnute ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_id_seq'::regclass);
 
-SET search_path = socpoist, pg_catalog;
 
 --
--- Name: id; Type: DEFAULT; Schema: socpoist; Owner: -
+-- Name: zop_zamietnute_predfinancovanie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY debt_entries ALTER COLUMN id SET DEFAULT nextval('debt_entries_id_seq'::regclass);
+ALTER TABLE ONLY zop_zamietnute_predfinancovanie ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_predfinancovanie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: socpoist; Owner: -
+-- Name: zop_zamietnute_predkladana_za id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY debt_ranges ALTER COLUMN id SET DEFAULT nextval('debt_ranges_id_seq'::regclass);
+ALTER TABLE ONLY zop_zamietnute_predkladana_za ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_predkladana_za_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: socpoist; Owner: -
+-- Name: zop_zamietnute_prijimatel id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY debtors ALTER COLUMN id SET DEFAULT nextval('debtors_id_seq'::regclass);
+ALTER TABLE ONLY zop_zamietnute_prijimatel ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_prijimatel_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: socpoist; Owner: -
+-- Name: zop_zamietnute_projekt id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY debts_lists ALTER COLUMN id SET DEFAULT nextval('debts_lists_id_seq'::regclass);
+ALTER TABLE ONLY zop_zamietnute_projekt ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_projekt_id_seq'::regclass);
 
 
 SET search_path = upvs, pg_catalog;
 
 --
--- Name: id; Type: DEFAULT; Schema: upvs; Owner: -
+-- Name: public_authority_edesks id; Type: DEFAULT; Schema: upvs; Owner: -
 --
 
 ALTER TABLE ONLY public_authority_edesks ALTER COLUMN id SET DEFAULT nextval('public_authority_edesks_id_seq'::regclass);
 
 
-SET search_path = vvo, pg_catalog;
+SET search_path = itms, pg_catalog;
 
 --
--- Name: id; Type: DEFAULT; Schema: vvo; Owner: -
+-- Name: dodavatelia dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY bulletin_issues ALTER COLUMN id SET DEFAULT nextval('bulletins_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: vvo; Owner: -
---
-
-ALTER TABLE ONLY contracting_authorities ALTER COLUMN id SET DEFAULT nextval('contracting_authorities_id_seq'::regclass);
+ALTER TABLE ONLY dodavatelia
+    ADD CONSTRAINT dodavatelia_pkey PRIMARY KEY (id);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: vvo; Owner: -
+-- Name: konkretne_ciele konkretne_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY contracts ALTER COLUMN id SET DEFAULT nextval('contracts_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: vvo; Owner: -
---
-
-ALTER TABLE ONLY notice_suppliers ALTER COLUMN id SET DEFAULT nextval('notice_suppliers_id_seq'::regclass);
+ALTER TABLE ONLY konkretne_ciele
+    ADD CONSTRAINT konkretne_ciele_pkey PRIMARY KEY (id);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: vvo; Owner: -
+-- Name: konkretne_ciele_prioritna_os konkretne_ciele_prioritna_os_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notice_types ALTER COLUMN id SET DEFAULT nextval('announcement_types_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: vvo; Owner: -
---
-
-ALTER TABLE ONLY notices ALTER COLUMN id SET DEFAULT nextval('notices_id_seq'::regclass);
+ALTER TABLE ONLY konkretne_ciele_prioritna_os
+    ADD CONSTRAINT konkretne_ciele_prioritna_os_pkey PRIMARY KEY (id);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: vvo; Owner: -
+-- Name: operacne_programy operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY procedure_types ALTER COLUMN id SET DEFAULT nextval('procedure_types_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: vvo; Owner: -
---
-
-ALTER TABLE ONLY raw_notices ALTER COLUMN id SET DEFAULT nextval('raw_notices_id_seq'::regclass);
-
-
-SET search_path = core, pg_catalog;
-
---
--- Name: apps_pkey; Type: CONSTRAINT; Schema: core; Owner: -
---
-
-ALTER TABLE ONLY apps
-    ADD CONSTRAINT apps_pkey PRIMARY KEY (id);
-
-
-SET search_path = crz, pg_catalog;
-
---
--- Name: attachments_pkey; Type: CONSTRAINT; Schema: crz; Owner: -
---
-
-ALTER TABLE ONLY attachments
-    ADD CONSTRAINT attachments_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY operacne_programy
+    ADD CONSTRAINT operacne_programy_pkey PRIMARY KEY (id);
 
 
 --
--- Name: contracts_pkey; Type: CONSTRAINT; Schema: crz; Owner: -
+-- Name: operacne_programy_subjekty operacne_programy_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY contracts
-    ADD CONSTRAINT contracts_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY operacne_programy_subjekty
+    ADD CONSTRAINT operacne_programy_subjekty_pkey PRIMARY KEY (id);
 
 
 --
--- Name: departments_pkey; Type: CONSTRAINT; Schema: crz; Owner: -
+-- Name: prioritna_os_operacne_programy prioritna_os_operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY departments
-    ADD CONSTRAINT departments_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY prioritna_os_operacne_programy
+    ADD CONSTRAINT prioritna_os_operacne_programy_pkey PRIMARY KEY (id);
 
-
-SET search_path = datahub, pg_catalog;
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: datahub; Owner: -
+-- Name: prioritne_osi prioritne_osi_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY prioritne_osi
+    ADD CONSTRAINT prioritne_osi_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_aktivity projekty_ukoncene_aktivity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_aktivity
+    ADD CONSTRAINT projekty_ukoncene_aktivity_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_aktivity_subjekty projekty_ukoncene_aktivity_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_aktivity_subjekty
+    ADD CONSTRAINT projekty_ukoncene_aktivity_subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania_ciele projekty_ukoncene_formy_financovania_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_formy_financovania_ciele
+    ADD CONSTRAINT projekty_ukoncene_formy_financovania_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania projekty_ukoncene_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_formy_financovania
+    ADD CONSTRAINT projekty_ukoncene_formy_financovania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti_ciele projekty_ukoncene_hospodarske_cinnosti_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT projekty_ukoncene_hospodarske_cinnosti_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti projekty_ukoncene_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_hospodarske_cinnosti
+    ADD CONSTRAINT projekty_ukoncene_hospodarske_cinnosti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_intenzity projekty_ukoncene_intenzity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_intenzity
+    ADD CONSTRAINT projekty_ukoncene_intenzity_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_intenzity_subjekty projekty_ukoncene_intenzity_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_intenzity_subjekty
+    ADD CONSTRAINT projekty_ukoncene_intenzity_subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_intenzity_zdroje projekty_ukoncene_intenzity_zdroje_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_intenzity_zdroje
+    ADD CONSTRAINT projekty_ukoncene_intenzity_zdroje_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_meratelne_ukazovatele projekty_ukoncene_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_meratelne_ukazovatele
+    ADD CONSTRAINT projekty_ukoncene_meratelne_ukazovatele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_miesta_realizacie projekty_ukoncene_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_miesta_realizacie
+    ADD CONSTRAINT projekty_ukoncene_miesta_realizacie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_miesta_realizacie_units projekty_ukoncene_miesta_realizacie_units_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_miesta_realizacie_units
+    ADD CONSTRAINT projekty_ukoncene_miesta_realizacie_units_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_monitorovacie_terminy projekty_ukoncene_monitorovacie_terminy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_monitorovacie_terminy
+    ADD CONSTRAINT projekty_ukoncene_monitorovacie_terminy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie_ciele projekty_ukoncene_oblasti_intervencie_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_oblasti_intervencie_ciele
+    ADD CONSTRAINT projekty_ukoncene_oblasti_intervencie_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie projekty_ukoncene_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_oblasti_intervencie
+    ADD CONSTRAINT projekty_ukoncene_oblasti_intervencie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_organizacne_zlozky projekty_ukoncene_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_organizacne_zlozky
+    ADD CONSTRAINT projekty_ukoncene_organizacne_zlozky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_partneri projekty_ukoncene_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_partneri
+    ADD CONSTRAINT projekty_ukoncene_partneri_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene projekty_ukoncene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene
+    ADD CONSTRAINT projekty_ukoncene_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_prijimatel projekty_ukoncene_prijimatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_prijimatel
+    ADD CONSTRAINT projekty_ukoncene_prijimatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia_ciele projekty_ukoncene_typy_uzemia_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_typy_uzemia_ciele
+    ADD CONSTRAINT projekty_ukoncene_typy_uzemia_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia projekty_ukoncene_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_typy_uzemia
+    ADD CONSTRAINT projekty_ukoncene_typy_uzemia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy_ciele projekty_ukoncene_uzemne_mechanizmy_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT projekty_ukoncene_uzemne_mechanizmy_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy projekty_ukoncene_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy
+    ADD CONSTRAINT projekty_ukoncene_uzemne_mechanizmy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_ukoncene_vyzva projekty_ukoncene_vyzva_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_vyzva
+    ADD CONSTRAINT projekty_ukoncene_vyzva_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_aktivity projekty_vrealizacii_aktivity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_aktivity
+    ADD CONSTRAINT projekty_vrealizacii_aktivity_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_aktivity_subjekty projekty_vrealizacii_aktivity_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_aktivity_subjekty
+    ADD CONSTRAINT projekty_vrealizacii_aktivity_subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania_ciele projekty_vrealizacii_formy_financovania_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_formy_financovania_ciele
+    ADD CONSTRAINT projekty_vrealizacii_formy_financovania_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania projekty_vrealizacii_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_formy_financovania
+    ADD CONSTRAINT projekty_vrealizacii_formy_financovania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti_ciele projekty_vrealizacii_hospodarske_cinnosti_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT projekty_vrealizacii_hospodarske_cinnosti_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti projekty_vrealizacii_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_hospodarske_cinnosti
+    ADD CONSTRAINT projekty_vrealizacii_hospodarske_cinnosti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity projekty_vrealizacii_intenzity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_intenzity
+    ADD CONSTRAINT projekty_vrealizacii_intenzity_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_subjekty projekty_vrealizacii_intenzity_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_intenzity_subjekty
+    ADD CONSTRAINT projekty_vrealizacii_intenzity_subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity_zdroje projekty_vrealizacii_intenzity_zdroje_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_intenzity_zdroje
+    ADD CONSTRAINT projekty_vrealizacii_intenzity_zdroje_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_meratelne_ukazovatele projekty_vrealizacii_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_meratelne_ukazovatele
+    ADD CONSTRAINT projekty_vrealizacii_meratelne_ukazovatele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie projekty_vrealizacii_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie
+    ADD CONSTRAINT projekty_vrealizacii_miesta_realizacie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_miesta_realizacie_units projekty_vrealizacii_miesta_realizacie_units_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie_units
+    ADD CONSTRAINT projekty_vrealizacii_miesta_realizacie_units_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_monitorovacie_terminy projekty_vrealizacii_monitorovacie_terminy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_monitorovacie_terminy
+    ADD CONSTRAINT projekty_vrealizacii_monitorovacie_terminy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie_ciele projekty_vrealizacii_oblasti_intervencie_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_oblasti_intervencie_ciele
+    ADD CONSTRAINT projekty_vrealizacii_oblasti_intervencie_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_oblasti_intervencie projekty_vrealizacii_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_oblasti_intervencie
+    ADD CONSTRAINT projekty_vrealizacii_oblasti_intervencie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_organizacne_zlozky projekty_vrealizacii_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_organizacne_zlozky
+    ADD CONSTRAINT projekty_vrealizacii_organizacne_zlozky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_partneri projekty_vrealizacii_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_partneri
+    ADD CONSTRAINT projekty_vrealizacii_partneri_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii projekty_vrealizacii_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii
+    ADD CONSTRAINT projekty_vrealizacii_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_prijimatel projekty_vrealizacii_prijimatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_prijimatel
+    ADD CONSTRAINT projekty_vrealizacii_prijimatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia_ciele projekty_vrealizacii_typy_uzemia_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia_ciele
+    ADD CONSTRAINT projekty_vrealizacii_typy_uzemia_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia projekty_vrealizacii_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia
+    ADD CONSTRAINT projekty_vrealizacii_typy_uzemia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy_ciele projekty_vrealizacii_uzemne_mechanizmy_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT projekty_vrealizacii_uzemne_mechanizmy_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_uzemne_mechanizmy projekty_vrealizacii_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy
+    ADD CONSTRAINT projekty_vrealizacii_uzemne_mechanizmy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_vrealizacii_vyzva projekty_vrealizacii_vyzva_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_vyzva
+    ADD CONSTRAINT projekty_vrealizacii_vyzva_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: subjekty subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY subjekty
+    ADD CONSTRAINT subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uctovne_doklady_dodavatel uctovne_doklady_dodavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_dodavatel
+    ADD CONSTRAINT uctovne_doklady_dodavatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uctovne_doklady uctovne_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady
+    ADD CONSTRAINT uctovne_doklady_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu uctovne_doklady_polozky_dokladu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_polozky_dokladu
+    ADD CONSTRAINT uctovne_doklady_polozky_dokladu_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uctovne_doklady_projekty uctovne_doklady_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_projekty
+    ADD CONSTRAINT uctovne_doklady_projekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uctovne_doklady_verejne_obstaravania uctovne_doklady_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_verejne_obstaravania
+    ADD CONSTRAINT uctovne_doklady_verejne_obstaravania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uctovne_doklady_vlastnik_dokladu uctovne_doklady_vlastnik_dokladu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_vlastnik_dokladu
+    ADD CONSTRAINT uctovne_doklady_vlastnik_dokladu_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_druh_zakazky verejne_obstaravania_druh_zakazky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_druh_zakazky
+    ADD CONSTRAINT verejne_obstaravania_druh_zakazky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky
+    ADD CONSTRAINT verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky verejne_obstaravania_hlavny_predmet_hlavny_slovniky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_hlavny_slovniky
+    ADD CONSTRAINT verejne_obstaravania_hlavny_predmet_hlavny_slovniky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_metody_vo verejne_obstaravania_metody_vo_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_metody_vo
+    ADD CONSTRAINT verejne_obstaravania_metody_vo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_obstaravatel verejne_obstaravania_obstaravatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_obstaravatel
+    ADD CONSTRAINT verejne_obstaravania_obstaravatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_operacne_programy verejne_obstaravania_operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_operacne_programy
+    ADD CONSTRAINT verejne_obstaravania_operacne_programy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania
+    ADD CONSTRAINT verejne_obstaravania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_postup_obstaravania verejne_obstaravania_postup_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_postup_obstaravania
+    ADD CONSTRAINT verejne_obstaravania_postup_obstaravania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_projekty verejne_obstaravania_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_projekty
+    ADD CONSTRAINT verejne_obstaravania_projekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_uctovne_doklady verejne_obstaravania_uctovne_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
+    ADD CONSTRAINT verejne_obstaravania_uctovne_doklady_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: verejne_obstaravania_zadavatel verejne_obstaravania_zadavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_zadavatel
+    ADD CONSTRAINT verejne_obstaravania_zadavatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_planovane_ciele vyzvy_planovane_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_ciele
+    ADD CONSTRAINT vyzvy_planovane_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_planovane_doplnujuce_info vyzvy_planovane_doplnujuce_info_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_doplnujuce_info
+    ADD CONSTRAINT vyzvy_planovane_doplnujuce_info_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_planovane vyzvy_planovane_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane
+    ADD CONSTRAINT vyzvy_planovane_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_planovane_poskytovatelia vyzvy_planovane_poskytovatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_poskytovatelia
+    ADD CONSTRAINT vyzvy_planovane_poskytovatelia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_planovane_vyhlasovatel vyzvy_planovane_vyhlasovatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_vyhlasovatel
+    ADD CONSTRAINT vyzvy_planovane_vyhlasovatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_vyhlasene_ciele vyzvy_vyhlasene_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_ciele
+    ADD CONSTRAINT vyzvy_vyhlasene_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_vyhlasene_doplnujuce_info vyzvy_vyhlasene_doplnujuce_info_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_doplnujuce_info
+    ADD CONSTRAINT vyzvy_vyhlasene_doplnujuce_info_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_vyhlasene_fondy vyzvy_vyhlasene_fondy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_fondy
+    ADD CONSTRAINT vyzvy_vyhlasene_fondy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_vyhlasene vyzvy_vyhlasene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene
+    ADD CONSTRAINT vyzvy_vyhlasene_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_vyhlasene_poskytovatelia vyzvy_vyhlasene_poskytovatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
+    ADD CONSTRAINT vyzvy_vyhlasene_poskytovatelia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_vyhlasene_vyhlasovatel vyzvy_vyhlasene_vyhlasovatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_vyhlasovatel
+    ADD CONSTRAINT vyzvy_vyhlasene_vyhlasovatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vzvy_vyhlasene_kontaktne_osoby vzvy_vyhlasene_kontaktne_osoby_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vzvy_vyhlasene_kontaktne_osoby
+    ADD CONSTRAINT vzvy_vyhlasene_kontaktne_osoby_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vzvy_vyhlasene_planovane_vyzvy vzvy_vyhlasene_planovane_vyzvy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vzvy_vyhlasene_planovane_vyzvy
+    ADD CONSTRAINT vzvy_vyhlasene_planovane_vyzvy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vzvy_vyhlasene_posudzovane_obdobia vzvy_vyhlasene_posudzovane_obdobia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vzvy_vyhlasene_posudzovane_obdobia
+    ADD CONSTRAINT vzvy_vyhlasene_posudzovane_obdobia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dalsie_url zmluvy_verejne_obstaravanie_dalsie_url_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dalsie_url
+    ADD CONSTRAINT zmluvy_verejne_obstaravanie_dalsie_url_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel
+    ADD CONSTRAINT zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia zmluvy_verejne_obstaravanie_dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia
+    ADD CONSTRAINT zmluvy_verejne_obstaravanie_dodavatelia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel zmluvy_verejne_obstaravanie_hlavny_dodavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_hlavny_dodavatel
+    ADD CONSTRAINT zmluvy_verejne_obstaravanie_hlavny_dodavatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie zmluvy_verejne_obstaravanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie
+    ADD CONSTRAINT zmluvy_verejne_obstaravanie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_aktivity_projekt_subjekty zonfp_prijate_aktivity_projekt_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_aktivity_projekt_subjekty
+    ADD CONSTRAINT zonfp_prijate_aktivity_projekt_subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_aktivity_projekty zonfp_prijate_aktivity_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_aktivity_projekty
+    ADD CONSTRAINT zonfp_prijate_aktivity_projekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_formy_financovania_ciele zonfp_prijate_formy_financovania_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_formy_financovania_ciele
+    ADD CONSTRAINT zonfp_prijate_formy_financovania_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_formy_financovania zonfp_prijate_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_formy_financovania
+    ADD CONSTRAINT zonfp_prijate_formy_financovania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_hospodarske_cinnosti_ciele zonfp_prijate_hospodarske_cinnosti_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT zonfp_prijate_hospodarske_cinnosti_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_hospodarske_cinnosti zonfp_prijate_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_hospodarske_cinnosti
+    ADD CONSTRAINT zonfp_prijate_hospodarske_cinnosti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_meratelne_ukazovatele zonfp_prijate_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_meratelne_ukazovatele
+    ADD CONSTRAINT zonfp_prijate_meratelne_ukazovatele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_miesta_realizacie zonfp_prijate_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_miesta_realizacie
+    ADD CONSTRAINT zonfp_prijate_miesta_realizacie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_miesta_realizacie_units zonfp_prijate_miesta_realizacie_units_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_miesta_realizacie_units
+    ADD CONSTRAINT zonfp_prijate_miesta_realizacie_units_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_oblasti_intervencie_ciele zonfp_prijate_oblasti_intervencie_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie_ciele
+    ADD CONSTRAINT zonfp_prijate_oblasti_intervencie_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_oblasti_intervencie zonfp_prijate_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie
+    ADD CONSTRAINT zonfp_prijate_oblasti_intervencie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_organizacne_zlozky zonfp_prijate_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_organizacne_zlozky
+    ADD CONSTRAINT zonfp_prijate_organizacne_zlozky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_partneri zonfp_prijate_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_partneri
+    ADD CONSTRAINT zonfp_prijate_partneri_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate zonfp_prijate_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate
+    ADD CONSTRAINT zonfp_prijate_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_typy_uzemia_ciele zonfp_prijate_typy_uzemia_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_typy_uzemia_ciele
+    ADD CONSTRAINT zonfp_prijate_typy_uzemia_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_typy_uzemia zonfp_prijate_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_typy_uzemia
+    ADD CONSTRAINT zonfp_prijate_typy_uzemia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy_ciele zonfp_prijate_uzemne_mechanizmy_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT zonfp_prijate_uzemne_mechanizmy_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy zonfp_prijate_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy
+    ADD CONSTRAINT zonfp_prijate_uzemne_mechanizmy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_vyzvy zonfp_prijate_vyzvy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_vyzvy
+    ADD CONSTRAINT zonfp_prijate_vyzvy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_prijate_ziadatel zonfp_prijate_ziadatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_ziadatel
+    ADD CONSTRAINT zonfp_prijate_ziadatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekt_subjekty zonfp_schvalene_aktivity_projekt_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_aktivity_projekt_subjekty
+    ADD CONSTRAINT zonfp_schvalene_aktivity_projekt_subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekty zonfp_schvalene_aktivity_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_aktivity_projekty
+    ADD CONSTRAINT zonfp_schvalene_aktivity_projekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania_ciele zonfp_schvalene_formy_financovania_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_formy_financovania_ciele
+    ADD CONSTRAINT zonfp_schvalene_formy_financovania_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania zonfp_schvalene_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_formy_financovania
+    ADD CONSTRAINT zonfp_schvalene_formy_financovania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_hodnotitelia zonfp_schvalene_hodnotitelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_hodnotitelia
+    ADD CONSTRAINT zonfp_schvalene_hodnotitelia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti_ciele zonfp_schvalene_hospodarske_cinnosti_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT zonfp_schvalene_hospodarske_cinnosti_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti zonfp_schvalene_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_hospodarske_cinnosti
+    ADD CONSTRAINT zonfp_schvalene_hospodarske_cinnosti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_meratelne_ukazovatele zonfp_schvalene_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_meratelne_ukazovatele
+    ADD CONSTRAINT zonfp_schvalene_meratelne_ukazovatele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie zonfp_schvalene_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie
+    ADD CONSTRAINT zonfp_schvalene_miesta_realizacie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie_units zonfp_schvalene_miesta_realizacie_units_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie_units
+    ADD CONSTRAINT zonfp_schvalene_miesta_realizacie_units_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie_ciele zonfp_schvalene_oblasti_intervencie_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_oblasti_intervencie_ciele
+    ADD CONSTRAINT zonfp_schvalene_oblasti_intervencie_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie zonfp_schvalene_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_oblasti_intervencie
+    ADD CONSTRAINT zonfp_schvalene_oblasti_intervencie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_organizacne_zlozky zonfp_schvalene_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_organizacne_zlozky
+    ADD CONSTRAINT zonfp_schvalene_organizacne_zlozky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_partneri zonfp_schvalene_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_partneri
+    ADD CONSTRAINT zonfp_schvalene_partneri_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene zonfp_schvalene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene
+    ADD CONSTRAINT zonfp_schvalene_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia_ciele zonfp_schvalene_typy_uzemia_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_typy_uzemia_ciele
+    ADD CONSTRAINT zonfp_schvalene_typy_uzemia_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia zonfp_schvalene_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_typy_uzemia
+    ADD CONSTRAINT zonfp_schvalene_typy_uzemia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_uzemne_mechanizmy_ciele zonfp_schvalene_uzemne_mechanizmy_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT zonfp_schvalene_uzemne_mechanizmy_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_uzemne_mechanizmy zonfp_schvalene_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy
+    ADD CONSTRAINT zonfp_schvalene_uzemne_mechanizmy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_vyzvy zonfp_schvalene_vyzvy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_vyzvy
+    ADD CONSTRAINT zonfp_schvalene_vyzvy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_schvalene_ziadatel zonfp_schvalene_ziadatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_ziadatel
+    ADD CONSTRAINT zonfp_schvalene_ziadatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekt_subjekty zonfp_zamietnute_aktivity_projekt_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_aktivity_projekt_subjekty
+    ADD CONSTRAINT zonfp_zamietnute_aktivity_projekt_subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekty zonfp_zamietnute_aktivity_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_aktivity_projekty
+    ADD CONSTRAINT zonfp_zamietnute_aktivity_projekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania_ciele zonfp_zamietnute_formy_financovania_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_formy_financovania_ciele
+    ADD CONSTRAINT zonfp_zamietnute_formy_financovania_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania zonfp_zamietnute_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_formy_financovania
+    ADD CONSTRAINT zonfp_zamietnute_formy_financovania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti_ciele zonfp_zamietnute_hospodarske_cinnosti_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT zonfp_zamietnute_hospodarske_cinnosti_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti zonfp_zamietnute_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti
+    ADD CONSTRAINT zonfp_zamietnute_hospodarske_cinnosti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_meratelne_ukazovatele zonfp_zamietnute_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_meratelne_ukazovatele
+    ADD CONSTRAINT zonfp_zamietnute_meratelne_ukazovatele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_miesta_realizacie zonfp_zamietnute_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie
+    ADD CONSTRAINT zonfp_zamietnute_miesta_realizacie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_miesta_realizacie_units zonfp_zamietnute_miesta_realizacie_units_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie_units
+    ADD CONSTRAINT zonfp_zamietnute_miesta_realizacie_units_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie_ciele zonfp_zamietnute_oblasti_intervencie_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_oblasti_intervencie_ciele
+    ADD CONSTRAINT zonfp_zamietnute_oblasti_intervencie_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie zonfp_zamietnute_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_oblasti_intervencie
+    ADD CONSTRAINT zonfp_zamietnute_oblasti_intervencie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_organizacne_zlozky zonfp_zamietnute_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_organizacne_zlozky
+    ADD CONSTRAINT zonfp_zamietnute_organizacne_zlozky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_partneri zonfp_zamietnute_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_partneri
+    ADD CONSTRAINT zonfp_zamietnute_partneri_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute zonfp_zamietnute_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute
+    ADD CONSTRAINT zonfp_zamietnute_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia_ciele zonfp_zamietnute_typy_uzemia_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_typy_uzemia_ciele
+    ADD CONSTRAINT zonfp_zamietnute_typy_uzemia_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia zonfp_zamietnute_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_typy_uzemia
+    ADD CONSTRAINT zonfp_zamietnute_typy_uzemia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy_ciele zonfp_zamietnute_uzemne_mechanizmy_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT zonfp_zamietnute_uzemne_mechanizmy_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy zonfp_zamietnute_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy
+    ADD CONSTRAINT zonfp_zamietnute_uzemne_mechanizmy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_vysledok_konania zonfp_zamietnute_vysledok_konania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_vysledok_konania
+    ADD CONSTRAINT zonfp_zamietnute_vysledok_konania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_vyzvy zonfp_zamietnute_vyzvy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_vyzvy
+    ADD CONSTRAINT zonfp_zamietnute_vyzvy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_zamietnute_ziadatel zonfp_zamietnute_ziadatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_ziadatel
+    ADD CONSTRAINT zonfp_zamietnute_ziadatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_predlozene zop_predlozene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predlozene
+    ADD CONSTRAINT zop_predlozene_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_predlozene_predfinancovanie zop_predlozene_predfinancovanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predlozene_predfinancovanie
+    ADD CONSTRAINT zop_predlozene_predfinancovanie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_predlozene_predkladana_za zop_predlozene_predkladana_za_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predlozene_predkladana_za
+    ADD CONSTRAINT zop_predlozene_predkladana_za_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_predlozene_prijimatel zop_predlozene_prijimatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predlozene_prijimatel
+    ADD CONSTRAINT zop_predlozene_prijimatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_predlozene_projekt zop_predlozene_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predlozene_projekt
+    ADD CONSTRAINT zop_predlozene_projekt_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_uhradene zop_uhradene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_uhradene
+    ADD CONSTRAINT zop_uhradene_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_uhradene_predfinancovanie zop_uhradene_predfinancovanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_uhradene_predfinancovanie
+    ADD CONSTRAINT zop_uhradene_predfinancovanie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_uhradene_predkladana_za zop_uhradene_predkladana_za_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_uhradene_predkladana_za
+    ADD CONSTRAINT zop_uhradene_predkladana_za_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_uhradene_prijimatel zop_uhradene_prijimatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_uhradene_prijimatel
+    ADD CONSTRAINT zop_uhradene_prijimatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_uhradene_projekt zop_uhradene_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_uhradene_projekt
+    ADD CONSTRAINT zop_uhradene_projekt_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_zamietnute zop_zamietnute_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_zamietnute
+    ADD CONSTRAINT zop_zamietnute_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_zamietnute_predfinancovanie zop_zamietnute_predfinancovanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_zamietnute_predfinancovanie
+    ADD CONSTRAINT zop_zamietnute_predfinancovanie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_zamietnute_predkladana_za zop_zamietnute_predkladana_za_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_zamietnute_predkladana_za
+    ADD CONSTRAINT zop_zamietnute_predkladana_za_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_zamietnute_prijimatel zop_zamietnute_prijimatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_zamietnute_prijimatel
+    ADD CONSTRAINT zop_zamietnute_prijimatel_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_zamietnute_projekt zop_zamietnute_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_zamietnute_projekt
+    ADD CONSTRAINT zop_zamietnute_projekt_pkey PRIMARY KEY (id);
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ar_internal_metadata
@@ -4151,1399 +8180,149 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
--- Name: corporate_bodies_pkey; Type: CONSTRAINT; Schema: datahub; Owner: -
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY corporate_bodies
-    ADD CONSTRAINT corporate_bodies_pkey PRIMARY KEY (id);
-
-
-SET search_path = fs, pg_catalog;
-
---
--- Name: financna_sprava_vat_subjects_pkey; Type: CONSTRAINT; Schema: fs; Owner: -
---
-
-ALTER TABLE ONLY vat_subjects
-    ADD CONSTRAINT financna_sprava_vat_subjects_pkey PRIMARY KEY (id);
-
-
---
--- Name: vat_subject_entries_pkey; Type: CONSTRAINT; Schema: fs; Owner: -
---
-
-ALTER TABLE ONLY vat_subject_entries
-    ADD CONSTRAINT vat_subject_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: vat_subject_ranges_pkey; Type: CONSTRAINT; Schema: fs; Owner: -
---
-
-ALTER TABLE ONLY vat_subject_ranges
-    ADD CONSTRAINT vat_subject_ranges_pkey PRIMARY KEY (id);
-
-
---
--- Name: vat_subjects_lists_pkey; Type: CONSTRAINT; Schema: fs; Owner: -
---
-
-ALTER TABLE ONLY vat_subjects_lists
-    ADD CONSTRAINT vat_subjects_lists_pkey PRIMARY KEY (id);
-
-
-SET search_path = map_datahub_fs, pg_catalog;
-
---
--- Name: vat_subject_mappings_pkey; Type: CONSTRAINT; Schema: map_datahub_fs; Owner: -
---
-
-ALTER TABLE ONLY vat_subject_mappings
-    ADD CONSTRAINT vat_subject_mappings_pkey PRIMARY KEY (id);
-
-
-SET search_path = map_datahub_rpo, pg_catalog;
-
---
--- Name: corporate_body_mappings_pkey; Type: CONSTRAINT; Schema: map_datahub_rpo; Owner: -
---
-
-ALTER TABLE ONLY corporate_body_mappings
-    ADD CONSTRAINT corporate_body_mappings_pkey PRIMARY KEY (id);
-
-
---
--- Name: map_datahub_rpo_unique; Type: CONSTRAINT; Schema: map_datahub_rpo; Owner: -
---
-
-ALTER TABLE ONLY corporate_body_mappings
-    ADD CONSTRAINT map_datahub_rpo_unique UNIQUE (corporate_body_id, organization_id);
-
-
-SET search_path = map_datahub_ruz, pg_catalog;
-
---
--- Name: corporate_body_mappings_pkey; Type: CONSTRAINT; Schema: map_datahub_ruz; Owner: -
---
-
-ALTER TABLE ONLY corporate_body_mappings
-    ADD CONSTRAINT corporate_body_mappings_pkey PRIMARY KEY (id);
-
-
-SET search_path = ov, pg_catalog;
-
---
--- Name: bulletin_issues_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY bulletin_issues
-    ADD CONSTRAINT bulletin_issues_pkey PRIMARY KEY (id);
-
-
---
--- Name: konkurz_restrukturalizacia_actors_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY konkurz_restrukturalizacia_actors
-    ADD CONSTRAINT konkurz_restrukturalizacia_actors_pkey PRIMARY KEY (id);
-
-
---
--- Name: konkurz_restrukturalizacia_issues_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY konkurz_restrukturalizacia_issues
-    ADD CONSTRAINT konkurz_restrukturalizacia_issues_pkey PRIMARY KEY (id);
-
-
---
--- Name: konkurz_restrukturalizacia_proposings_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY konkurz_restrukturalizacia_proposings
-    ADD CONSTRAINT konkurz_restrukturalizacia_proposings_pkey PRIMARY KEY (id);
-
-
---
--- Name: konkurz_vyrovnanie_issues_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY konkurz_vyrovnanie_issues
-    ADD CONSTRAINT konkurz_vyrovnanie_issues_pkey PRIMARY KEY (id);
-
-
---
--- Name: likvidator_issues_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY likvidator_issues
-    ADD CONSTRAINT likvidator_issues_pkey PRIMARY KEY (id);
-
-
---
--- Name: or_podanie_issue_documents_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY or_podanie_issue_documents
-    ADD CONSTRAINT or_podanie_issue_documents_pkey PRIMARY KEY (id);
-
-
---
--- Name: or_podanie_issues_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY or_podanie_issues
-    ADD CONSTRAINT or_podanie_issues_pkey PRIMARY KEY (id);
-
-
---
--- Name: raw_issues_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY raw_issues
-    ADD CONSTRAINT raw_issues_pkey PRIMARY KEY (id);
-
-
---
--- Name: znizenie_imania_ceos_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY znizenie_imania_ceos
-    ADD CONSTRAINT znizenie_imania_ceos_pkey PRIMARY KEY (id);
-
-
---
--- Name: znizenie_imania_issues_pkey; Type: CONSTRAINT; Schema: ov; Owner: -
---
-
-ALTER TABLE ONLY znizenie_imania_issues
-    ADD CONSTRAINT znizenie_imania_issues_pkey PRIMARY KEY (id);
-
-
-SET search_path = ra, pg_catalog;
-
---
--- Name: building_number_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY building_number_changes
-    ADD CONSTRAINT building_number_changes_pkey PRIMARY KEY (id);
-
-
---
--- Name: building_numbers_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY building_numbers
-    ADD CONSTRAINT building_numbers_pkey PRIMARY KEY (id);
-
-
---
--- Name: building_purpose_codes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY building_purpose_codes
-    ADD CONSTRAINT building_purpose_codes_pkey PRIMARY KEY (id);
-
-
---
--- Name: building_types_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY building_types
-    ADD CONSTRAINT building_types_pkey PRIMARY KEY (id);
-
-
---
--- Name: building_unit_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY building_unit_changes
-    ADD CONSTRAINT building_unit_changes_pkey PRIMARY KEY (id);
-
-
---
--- Name: building_units_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY building_units
-    ADD CONSTRAINT building_units_pkey PRIMARY KEY (id);
-
-
---
--- Name: changes_batches_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY changes_batches
-    ADD CONSTRAINT changes_batches_pkey PRIMARY KEY (id);
-
-
---
--- Name: counties_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY counties
-    ADD CONSTRAINT counties_pkey PRIMARY KEY (id);
-
-
---
--- Name: county_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY county_changes
-    ADD CONSTRAINT county_changes_pkey PRIMARY KEY (id);
-
-
---
--- Name: county_codes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY county_codes
-    ADD CONSTRAINT county_codes_pkey PRIMARY KEY (id);
-
-
---
--- Name: district_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY district_changes
-    ADD CONSTRAINT district_changes_pkey PRIMARY KEY (id);
-
-
---
--- Name: district_codes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY district_codes
-    ADD CONSTRAINT district_codes_pkey PRIMARY KEY (id);
-
-
---
--- Name: districts_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY districts
-    ADD CONSTRAINT districts_pkey PRIMARY KEY (id);
-
-
---
--- Name: municipalities_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY municipalities
-    ADD CONSTRAINT municipalities_pkey PRIMARY KEY (id);
-
-
---
--- Name: municipality_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY municipality_changes
-    ADD CONSTRAINT municipality_changes_pkey PRIMARY KEY (id);
-
-
---
--- Name: municipality_codes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY municipality_codes
-    ADD CONSTRAINT municipality_codes_pkey PRIMARY KEY (id);
-
-
---
--- Name: property_registration_number_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY property_registration_number_changes
-    ADD CONSTRAINT property_registration_number_changes_pkey PRIMARY KEY (id);
-
-
---
--- Name: region_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY region_changes
-    ADD CONSTRAINT region_changes_pkey PRIMARY KEY (id);
-
-
---
--- Name: region_codes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY region_codes
-    ADD CONSTRAINT region_codes_pkey PRIMARY KEY (id);
-
-
---
--- Name: regions_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY regions
-    ADD CONSTRAINT regions_pkey PRIMARY KEY (id);
-
-
---
--- Name: street_name_changes_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY street_name_changes
-    ADD CONSTRAINT street_name_changes_pkey PRIMARY KEY (id);
-
-
---
--- Name: street_names_pkey; Type: CONSTRAINT; Schema: ra; Owner: -
---
-
-ALTER TABLE ONLY street_names
-    ADD CONSTRAINT street_names_pkey PRIMARY KEY (id);
-
-
-SET search_path = rpo, pg_catalog;
-
---
--- Name: esu2010_codes_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY esa2010_codes
-    ADD CONSTRAINT esu2010_codes_pkey PRIMARY KEY (id);
-
-
---
--- Name: legal_forms_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY legal_forms
-    ADD CONSTRAINT legal_forms_pkey PRIMARY KEY (id);
-
-
---
--- Name: main_activity_codes_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY main_activity_codes
-    ADD CONSTRAINT main_activity_codes_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_address_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_address_entries
-    ADD CONSTRAINT organization_address_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_alternate_name_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_alternate_name_entries
-    ADD CONSTRAINT organization_alternate_name_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_authorization_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_authorization_entries
-    ADD CONSTRAINT organization_authorization_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_deposit_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_deposit_entries
-    ADD CONSTRAINT organization_deposit_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_economic_activity_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_economic_activity_entries
-    ADD CONSTRAINT organization_economic_activity_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_equity_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_equity_entries
-    ADD CONSTRAINT organization_equity_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_identifier_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_identifier_entries
-    ADD CONSTRAINT organization_identifier_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_legal_form_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_legal_form_entries
-    ADD CONSTRAINT organization_legal_form_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_legal_status_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_legal_status_entries
-    ADD CONSTRAINT organization_legal_status_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_name_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_name_entries
-    ADD CONSTRAINT organization_name_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_other_legal_fact_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_other_legal_fact_entries
-    ADD CONSTRAINT organization_other_legal_fact_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_predecessor_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_predecessor_entries
-    ADD CONSTRAINT organization_predecessor_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_share_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_share_entries
-    ADD CONSTRAINT organization_share_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_stakeholder_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_stakeholder_entries
-    ADD CONSTRAINT organization_stakeholder_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_statutory_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_statutory_entries
-    ADD CONSTRAINT organization_statutory_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organization_successor_entries_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organization_successor_entries
-    ADD CONSTRAINT organization_successor_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: organizations_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY organizations
-    ADD CONSTRAINT organizations_pkey PRIMARY KEY (id);
-
-
---
--- Name: share_forms_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY share_forms
-    ADD CONSTRAINT share_forms_pkey PRIMARY KEY (id);
-
-
---
--- Name: share_types_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY share_types
-    ADD CONSTRAINT share_types_pkey PRIMARY KEY (id);
-
-
---
--- Name: stakeholder_types_pkey; Type: CONSTRAINT; Schema: rpo; Owner: -
---
-
-ALTER TABLE ONLY stakeholder_types
-    ADD CONSTRAINT stakeholder_types_pkey PRIMARY KEY (id);
-
-
-SET search_path = ruz, pg_catalog;
-
---
--- Name: ruz_accounting_entities_pkey; Type: CONSTRAINT; Schema: ruz; Owner: -
---
-
-ALTER TABLE ONLY accounting_entities
-    ADD CONSTRAINT ruz_accounting_entities_pkey PRIMARY KEY (id);
-
-
---
--- Name: ruz_districts_pkey; Type: CONSTRAINT; Schema: ruz; Owner: -
---
-
-ALTER TABLE ONLY districts
-    ADD CONSTRAINT ruz_districts_pkey PRIMARY KEY (id);
-
-
---
--- Name: ruz_legal_forms_pkey; Type: CONSTRAINT; Schema: ruz; Owner: -
---
-
-ALTER TABLE ONLY legal_forms
-    ADD CONSTRAINT ruz_legal_forms_pkey PRIMARY KEY (id);
-
-
---
--- Name: ruz_municipalities_pkey; Type: CONSTRAINT; Schema: ruz; Owner: -
---
-
-ALTER TABLE ONLY municipalities
-    ADD CONSTRAINT ruz_municipalities_pkey PRIMARY KEY (id);
-
-
---
--- Name: ruz_organization_sizes_pkey; Type: CONSTRAINT; Schema: ruz; Owner: -
---
-
-ALTER TABLE ONLY organization_sizes
-    ADD CONSTRAINT ruz_organization_sizes_pkey PRIMARY KEY (id);
-
-
---
--- Name: ruz_ownership_types_pkey; Type: CONSTRAINT; Schema: ruz; Owner: -
---
-
-ALTER TABLE ONLY ownership_types
-    ADD CONSTRAINT ruz_ownership_types_pkey PRIMARY KEY (id);
-
-
---
--- Name: ruz_regions_pkey; Type: CONSTRAINT; Schema: ruz; Owner: -
---
-
-ALTER TABLE ONLY regions
-    ADD CONSTRAINT ruz_regions_pkey PRIMARY KEY (id);
-
-
---
--- Name: ruz_sk_nace_categories_pkey; Type: CONSTRAINT; Schema: ruz; Owner: -
---
-
-ALTER TABLE ONLY sk_nace_categories
-    ADD CONSTRAINT ruz_sk_nace_categories_pkey PRIMARY KEY (id);
-
-
-SET search_path = socpoist, pg_catalog;
-
---
--- Name: debt_entries_pkey; Type: CONSTRAINT; Schema: socpoist; Owner: -
---
-
-ALTER TABLE ONLY debt_entries
-    ADD CONSTRAINT debt_entries_pkey PRIMARY KEY (id);
-
-
---
--- Name: debt_ranges_pkey; Type: CONSTRAINT; Schema: socpoist; Owner: -
---
-
-ALTER TABLE ONLY debt_ranges
-    ADD CONSTRAINT debt_ranges_pkey PRIMARY KEY (id);
-
-
---
--- Name: debtors_pkey; Type: CONSTRAINT; Schema: socpoist; Owner: -
---
-
-ALTER TABLE ONLY debtors
-    ADD CONSTRAINT debtors_pkey PRIMARY KEY (id);
-
-
---
--- Name: debts_lists_pkey; Type: CONSTRAINT; Schema: socpoist; Owner: -
---
-
-ALTER TABLE ONLY debts_lists
-    ADD CONSTRAINT debts_lists_pkey PRIMARY KEY (id);
-
-
---
--- Name: socpoist_debtor_name; Type: CONSTRAINT; Schema: socpoist; Owner: -
---
-
-ALTER TABLE ONLY debtors
-    ADD CONSTRAINT socpoist_debtor_name UNIQUE (name, address, city);
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
 
 
 SET search_path = upvs, pg_catalog;
 
 --
--- Name: public_authority_edesks_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
+-- Name: public_authority_edesks public_authority_edesks_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
 --
 
 ALTER TABLE ONLY public_authority_edesks
     ADD CONSTRAINT public_authority_edesks_pkey PRIMARY KEY (id);
 
 
-SET search_path = vvo, pg_catalog;
+SET search_path = itms, pg_catalog;
 
 --
--- Name: announcement_types_pkey; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.operacne_programy_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notice_types
-    ADD CONSTRAINT announcement_types_pkey PRIMARY KEY (id);
+CREATE UNIQUE INDEX "index_itms.operacne_programy_on_itms_identifier" ON operacne_programy USING btree (itms_identifier);
 
 
 --
--- Name: bulletins_pkey; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.projekty_ukoncene_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY bulletin_issues
-    ADD CONSTRAINT bulletins_pkey PRIMARY KEY (id);
+CREATE UNIQUE INDEX "index_itms.projekty_ukoncene_on_itms_identifier" ON projekty_ukoncene USING btree (itms_identifier);
 
 
 --
--- Name: contracting_authorities_pkey; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.projekty_vrealizacii_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY contracting_authorities
-    ADD CONSTRAINT contracting_authorities_pkey PRIMARY KEY (id);
+CREATE UNIQUE INDEX "index_itms.projekty_vrealizacii_on_itms_identifier" ON projekty_vrealizacii USING btree (itms_identifier);
 
 
 --
--- Name: contracts_pkey; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.uctovne_doklady_dodavatel_on_uctovne_doklady_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY contracts
-    ADD CONSTRAINT contracts_pkey PRIMARY KEY (id);
+CREATE INDEX "index_itms.uctovne_doklady_dodavatel_on_uctovne_doklady_id" ON uctovne_doklady_dodavatel USING btree (uctovne_doklady_id);
 
 
 --
--- Name: notice_suppliers_pkey; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.uctovne_doklady_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notice_suppliers
-    ADD CONSTRAINT notice_suppliers_pkey PRIMARY KEY (id);
+CREATE UNIQUE INDEX "index_itms.uctovne_doklady_on_itms_identifier" ON uctovne_doklady USING btree (itms_identifier);
 
 
 --
--- Name: notices_pkey; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.uctovne_doklady_projekty_on_uctovne_doklady_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notices
-    ADD CONSTRAINT notices_pkey PRIMARY KEY (id);
+CREATE INDEX "index_itms.uctovne_doklady_projekty_on_uctovne_doklady_id" ON uctovne_doklady_projekty USING btree (uctovne_doklady_id);
 
 
 --
--- Name: procedure_types_pkey; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.verejne_obstaravania_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY procedure_types
-    ADD CONSTRAINT procedure_types_pkey PRIMARY KEY (id);
+CREATE UNIQUE INDEX "index_itms.verejne_obstaravania_on_itms_identifier" ON verejne_obstaravania USING btree (itms_identifier);
 
 
 --
--- Name: raw_notices_pkey; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.vyzvy_planovane_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY raw_notices
-    ADD CONSTRAINT raw_notices_pkey PRIMARY KEY (id);
+CREATE UNIQUE INDEX "index_itms.vyzvy_planovane_on_itms_identifier" ON vyzvy_planovane USING btree (itms_identifier);
 
 
 --
--- Name: vvo_unique_code; Type: CONSTRAINT; Schema: vvo; Owner: -
+-- Name: index_itms.vyzvy_vyhlasene_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY procedure_types
-    ADD CONSTRAINT vvo_unique_code UNIQUE (code, category);
+CREATE UNIQUE INDEX "index_itms.vyzvy_vyhlasene_on_itms_identifier" ON vyzvy_vyhlasene USING btree (itms_identifier);
 
 
-SET search_path = core, pg_catalog;
-
---
--- Name: index_core.apps_on_access_token; Type: INDEX; Schema: core; Owner: -
---
-
-CREATE UNIQUE INDEX "index_core.apps_on_access_token" ON apps USING btree (access_token);
-
-
---
--- Name: index_core.apps_on_name; Type: INDEX; Schema: core; Owner: -
---
-
-CREATE UNIQUE INDEX "index_core.apps_on_name" ON apps USING btree (name);
-
-
-SET search_path = crz, pg_catalog;
-
---
--- Name: index_crz.attachments_on_contract_id; Type: INDEX; Schema: crz; Owner: -
---
-
-CREATE INDEX "index_crz.attachments_on_contract_id" ON attachments USING btree (contract_id);
-
-
---
--- Name: index_crz.contracts_on_updated_at_and_id; Type: INDEX; Schema: crz; Owner: -
---
-
-CREATE UNIQUE INDEX "index_crz.contracts_on_updated_at_and_id" ON contracts USING btree (updated_at, id);
-
-
-SET search_path = datahub, pg_catalog;
-
---
--- Name: index_datahub.corporate_bodies_on_cin; Type: INDEX; Schema: datahub; Owner: -
---
-
-CREATE UNIQUE INDEX "index_datahub.corporate_bodies_on_cin" ON corporate_bodies USING btree (cin);
-
-
---
--- Name: index_datahub.corporate_bodies_on_name; Type: INDEX; Schema: datahub; Owner: -
---
-
-CREATE INDEX "index_datahub.corporate_bodies_on_name" ON corporate_bodies USING btree (name);
-
-
---
--- Name: index_datahub.corporate_bodies_on_tin; Type: INDEX; Schema: datahub; Owner: -
---
-
-CREATE INDEX "index_datahub.corporate_bodies_on_tin" ON corporate_bodies USING btree (tin);
-
-
---
--- Name: index_datahub.corporate_bodies_on_updated_at_and_id; Type: INDEX; Schema: datahub; Owner: -
---
-
-CREATE UNIQUE INDEX "index_datahub.corporate_bodies_on_updated_at_and_id" ON corporate_bodies USING btree (updated_at, id);
-
-
-SET search_path = fs, pg_catalog;
-
---
--- Name: index_fs.vat_subject_entries_on_subject_id_and_list_id; Type: INDEX; Schema: fs; Owner: -
---
-
-CREATE UNIQUE INDEX "index_fs.vat_subject_entries_on_subject_id_and_list_id" ON vat_subject_entries USING btree (subject_id, list_id);
-
-
---
--- Name: index_fs.vat_subject_ranges_on_subject_id_and_effective_from; Type: INDEX; Schema: fs; Owner: -
---
-
-CREATE INDEX "index_fs.vat_subject_ranges_on_subject_id_and_effective_from" ON vat_subject_ranges USING btree (subject_id, effective_from);
-
-
---
--- Name: index_fs.vat_subjects_lists_on_date; Type: INDEX; Schema: fs; Owner: -
---
-
-CREATE UNIQUE INDEX "index_fs.vat_subjects_lists_on_date" ON vat_subjects_lists USING btree (date);
-
-
-SET search_path = map_datahub_fs, pg_catalog;
-
---
--- Name: index_map_datahub_fs.vat_subject_mappings_on_corporate_body_id; Type: INDEX; Schema: map_datahub_fs; Owner: -
---
-
-CREATE INDEX "index_map_datahub_fs.vat_subject_mappings_on_corporate_body_id" ON vat_subject_mappings USING btree (corporate_body_id);
-
-
---
--- Name: index_map_datahub_fs.vat_subject_mappings_on_vat_subject_id; Type: INDEX; Schema: map_datahub_fs; Owner: -
---
-
-CREATE UNIQUE INDEX "index_map_datahub_fs.vat_subject_mappings_on_vat_subject_id" ON vat_subject_mappings USING btree (vat_subject_id);
-
-
-SET search_path = map_datahub_rpo, pg_catalog;
-
---
--- Name: index_map_datahub_rpo.cbm_on_corporate_body_id; Type: INDEX; Schema: map_datahub_rpo; Owner: -
---
-
-CREATE UNIQUE INDEX "index_map_datahub_rpo.cbm_on_corporate_body_id" ON corporate_body_mappings USING btree (corporate_body_id);
-
-
---
--- Name: index_map_datahub_rpo.cbm_on_org_id; Type: INDEX; Schema: map_datahub_rpo; Owner: -
---
-
-CREATE UNIQUE INDEX "index_map_datahub_rpo.cbm_on_org_id" ON corporate_body_mappings USING btree (organization_id);
-
-
-SET search_path = map_datahub_ruz, pg_catalog;
-
---
--- Name: index.corporate_body_mappings_on_corporate_body_id; Type: INDEX; Schema: map_datahub_ruz; Owner: -
---
-
-CREATE UNIQUE INDEX "index.corporate_body_mappings_on_corporate_body_id" ON corporate_body_mappings USING btree (corporate_body_id);
-
-
-SET search_path = ov, pg_catalog;
-
---
--- Name: index_ov.bulletin_issues_on_updated_at_and_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.bulletin_issues_on_updated_at_and_id" ON bulletin_issues USING btree (updated_at, id);
-
-
---
--- Name: index_ov.bulletin_issues_on_year_and_number; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.bulletin_issues_on_year_and_number" ON bulletin_issues USING btree (year, number);
-
-
---
--- Name: index_ov.konkurz_restrukturalizacia_issues_on_bulletin_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.konkurz_restrukturalizacia_issues_on_bulletin_issue_id" ON konkurz_restrukturalizacia_issues USING btree (bulletin_issue_id);
-
-
---
--- Name: index_ov.konkurz_restrukturalizacia_issues_on_raw_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.konkurz_restrukturalizacia_issues_on_raw_issue_id" ON konkurz_restrukturalizacia_issues USING btree (raw_issue_id);
-
-
---
--- Name: index_ov.konkurz_restrukturalizacia_issues_on_updated_at_and_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.konkurz_restrukturalizacia_issues_on_updated_at_and_id" ON konkurz_restrukturalizacia_issues USING btree (updated_at, id);
-
-
---
--- Name: index_ov.konkurz_restrukturalizacia_proposings_on_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.konkurz_restrukturalizacia_proposings_on_issue_id" ON konkurz_restrukturalizacia_proposings USING btree (issue_id);
-
-
---
--- Name: index_ov.konkurz_vyrovnanie_issues_on_bulletin_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.konkurz_vyrovnanie_issues_on_bulletin_issue_id" ON konkurz_vyrovnanie_issues USING btree (bulletin_issue_id);
-
-
---
--- Name: index_ov.konkurz_vyrovnanie_issues_on_raw_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.konkurz_vyrovnanie_issues_on_raw_issue_id" ON konkurz_vyrovnanie_issues USING btree (raw_issue_id);
-
-
---
--- Name: index_ov.konkurz_vyrovnanie_issues_on_updated_at_and_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.konkurz_vyrovnanie_issues_on_updated_at_and_id" ON konkurz_vyrovnanie_issues USING btree (updated_at, id);
-
-
---
--- Name: index_ov.likvidator_issues_on_bulletin_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.likvidator_issues_on_bulletin_issue_id" ON likvidator_issues USING btree (bulletin_issue_id);
-
-
---
--- Name: index_ov.likvidator_issues_on_raw_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.likvidator_issues_on_raw_issue_id" ON likvidator_issues USING btree (raw_issue_id);
-
-
---
--- Name: index_ov.likvidator_issues_on_updated_at_and_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.likvidator_issues_on_updated_at_and_id" ON likvidator_issues USING btree (updated_at, id);
-
-
---
--- Name: index_ov.or_podanie_issue_documents_on_or_podanie_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.or_podanie_issue_documents_on_or_podanie_issue_id" ON or_podanie_issue_documents USING btree (or_podanie_issue_id);
-
-
---
--- Name: index_ov.or_podanie_issues_on_bulletin_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.or_podanie_issues_on_bulletin_issue_id" ON or_podanie_issues USING btree (bulletin_issue_id);
-
-
---
--- Name: index_ov.or_podanie_issues_on_raw_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.or_podanie_issues_on_raw_issue_id" ON or_podanie_issues USING btree (raw_issue_id);
-
-
---
--- Name: index_ov.or_podanie_issues_on_updated_at_and_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.or_podanie_issues_on_updated_at_and_id" ON or_podanie_issues USING btree (updated_at, id);
-
-
---
--- Name: index_ov.raw_issues_on_bulletin_issue_id_and_file_name; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.raw_issues_on_bulletin_issue_id_and_file_name" ON raw_issues USING btree (bulletin_issue_id, file_name);
-
-
---
--- Name: index_ov.raw_issues_on_updated_at_and_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.raw_issues_on_updated_at_and_id" ON raw_issues USING btree (updated_at, id);
-
-
---
--- Name: index_ov.znizenie_imania_ceos_on_znizenie_imania_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.znizenie_imania_ceos_on_znizenie_imania_issue_id" ON znizenie_imania_ceos USING btree (znizenie_imania_issue_id);
-
-
---
--- Name: index_ov.znizenie_imania_issues_on_bulletin_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE INDEX "index_ov.znizenie_imania_issues_on_bulletin_issue_id" ON znizenie_imania_issues USING btree (bulletin_issue_id);
-
-
---
--- Name: index_ov.znizenie_imania_issues_on_raw_issue_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.znizenie_imania_issues_on_raw_issue_id" ON znizenie_imania_issues USING btree (raw_issue_id);
-
-
---
--- Name: index_ov.znizenie_imania_issues_on_updated_at_and_id; Type: INDEX; Schema: ov; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ov.znizenie_imania_issues_on_updated_at_and_id" ON znizenie_imania_issues USING btree (updated_at, id);
-
-
-SET search_path = public, pg_catalog;
-
---
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
-SET search_path = ra, pg_catalog;
-
---
--- Name: index_ra.building_number_changes_on_id; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE INDEX "index_ra.building_number_changes_on_id" ON building_number_changes USING btree (building_number_id, version_id);
-
-
---
--- Name: index_ra.building_purpose_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.building_purpose_codes_on_code" ON building_purpose_codes USING btree (code);
-
-
---
--- Name: index_ra.building_unit_changes_on_object_id; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE INDEX "index_ra.building_unit_changes_on_object_id" ON building_unit_changes USING btree (building_unit_id, version_id);
-
-
---
--- Name: index_ra.county_changes_on_county_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE INDEX "index_ra.county_changes_on_county_id_and_version_id" ON county_changes USING btree (county_id, version_id);
-
-
---
--- Name: index_ra.county_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.county_codes_on_code" ON county_codes USING btree (code);
-
-
---
--- Name: index_ra.district_changes_on_district_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE INDEX "index_ra.district_changes_on_district_id_and_version_id" ON district_changes USING btree (district_id, version_id);
-
-
---
--- Name: index_ra.district_codes_on_code_and_name; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.district_codes_on_code_and_name" ON district_codes USING btree (code, name);
-
-
---
--- Name: index_ra.municipality_changes_on_municipality_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE INDEX "index_ra.municipality_changes_on_municipality_id_and_version_id" ON municipality_changes USING btree (municipality_id, version_id);
-
-
---
--- Name: index_ra.municipality_codes_on_code_and_name; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.municipality_codes_on_code_and_name" ON municipality_codes USING btree (code, name);
-
-
---
--- Name: index_ra.property_registration_number_changes_on_id; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE INDEX "index_ra.property_registration_number_changes_on_id" ON property_registration_number_changes USING btree (property_registration_number_id, version_id);
-
-
---
--- Name: index_ra.region_changes_on_region_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE INDEX "index_ra.region_changes_on_region_id_and_version_id" ON region_changes USING btree (region_id, version_id);
-
-
---
--- Name: index_ra.region_codes_on_code; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ra.region_codes_on_code" ON region_codes USING btree (code);
-
-
---
--- Name: index_ra.street_name_changes_on_street_name_id_and_version_id; Type: INDEX; Schema: ra; Owner: -
---
-
-CREATE INDEX "index_ra.street_name_changes_on_street_name_id_and_version_id" ON street_name_changes USING btree (street_name_id, version_id);
-
-
-SET search_path = rpo, pg_catalog;
-
---
--- Name: index_rpo.organization_address_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_address_entries_on_organization_id" ON organization_address_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_alternames_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_alternames_on_organization_id" ON organization_alternate_name_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_authorization_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_authorization_entries_on_organization_id" ON organization_authorization_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_deposit_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_deposit_entries_on_organization_id" ON organization_deposit_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_economic_activity_entries_on_org_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_economic_activity_entries_on_org_id" ON organization_economic_activity_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_equity_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_equity_entries_on_organization_id" ON organization_equity_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_identifier_entries_on_ipo_and_org_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_identifier_entries_on_ipo_and_org_id" ON organization_identifier_entries USING btree (ipo, organization_id);
-
-
---
--- Name: index_rpo.organization_identifier_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_identifier_entries_on_organization_id" ON organization_identifier_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_legal_form_entries_on_legal_form_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_legal_form_entries_on_legal_form_id" ON organization_legal_form_entries USING btree (legal_form_id);
-
-
---
--- Name: index_rpo.organization_legal_form_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_legal_form_entries_on_organization_id" ON organization_legal_form_entries USING btree (organization_id);
-
-
 --
--- Name: index_rpo.organization_legal_status_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
+-- Name: index_itms.zonfp_prijate_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_rpo.organization_legal_status_entries_on_organization_id" ON organization_legal_status_entries USING btree (organization_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_prijate_on_itms_identifier" ON zonfp_prijate USING btree (itms_identifier);
 
 
 --
--- Name: index_rpo.organization_name_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
+-- Name: index_itms.zonfp_schvalene_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_rpo.organization_name_entries_on_organization_id" ON organization_name_entries USING btree (organization_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_schvalene_on_itms_identifier" ON zonfp_schvalene USING btree (itms_identifier);
 
 
 --
--- Name: index_rpo.organization_olfe_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
+-- Name: index_itms.zonfp_zamietnute_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_rpo.organization_olfe_on_organization_id" ON organization_other_legal_fact_entries USING btree (organization_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_zamietnute_on_itms_identifier" ON zonfp_zamietnute USING btree (itms_identifier);
 
 
 --
--- Name: index_rpo.organization_predecessor_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
+-- Name: index_itms.zop_predlozene_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
-
-CREATE INDEX "index_rpo.organization_predecessor_entries_on_organization_id" ON organization_predecessor_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_share_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_share_entries_on_organization_id" ON organization_share_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_share_entries_on_share_form_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_share_entries_on_share_form_id" ON organization_share_entries USING btree (share_form_id);
-
-
---
--- Name: index_rpo.organization_share_entries_on_share_type_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_share_entries_on_share_type_id" ON organization_share_entries USING btree (share_type_id);
-
-
---
--- Name: index_rpo.organization_stakeholder_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_stakeholder_entries_on_organization_id" ON organization_stakeholder_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_statutory_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_statutory_entries_on_organization_id" ON organization_statutory_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organization_statutory_entries_on_stakeholder_type_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_statutory_entries_on_stakeholder_type_id" ON organization_statutory_entries USING btree (stakeholder_type_id);
-
-
---
--- Name: index_rpo.organization_successor_entries_on_organization_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.organization_successor_entries_on_organization_id" ON organization_successor_entries USING btree (organization_id);
-
-
---
--- Name: index_rpo.organizations_on_updated_at_and_id; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE UNIQUE INDEX "index_rpo.organizations_on_updated_at_and_id" ON organizations USING btree (updated_at, id);
-
-
---
--- Name: index_rpo.share_forms_on_name; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.share_forms_on_name" ON share_forms USING btree (name);
-
-
---
--- Name: index_rpo.share_types_on_name; Type: INDEX; Schema: rpo; Owner: -
---
-
-CREATE INDEX "index_rpo.share_types_on_name" ON share_types USING btree (name);
-
-
-SET search_path = ruz, pg_catalog;
-
---
--- Name: index_ruz.accounting_entities_on_ico; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX "index_ruz.accounting_entities_on_ico" ON accounting_entities USING btree (cin);
-
-
---
--- Name: index_ruz.accounting_entities_on_updated_at_and_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE UNIQUE INDEX "index_ruz.accounting_entities_on_updated_at_and_id" ON accounting_entities USING btree (updated_at, id);
-
-
---
--- Name: index_ruz_accounting_entities_on_district_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_accounting_entities_on_district_id ON accounting_entities USING btree (district_id);
-
-
---
--- Name: index_ruz_accounting_entities_on_legal_form_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_accounting_entities_on_legal_form_id ON accounting_entities USING btree (legal_form_id);
-
-
---
--- Name: index_ruz_accounting_entities_on_municipality_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_accounting_entities_on_municipality_id ON accounting_entities USING btree (municipality_id);
-
-
---
--- Name: index_ruz_accounting_entities_on_organization_size_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_accounting_entities_on_organization_size_id ON accounting_entities USING btree (organization_size_id);
-
-
---
--- Name: index_ruz_accounting_entities_on_ownership_type_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_accounting_entities_on_ownership_type_id ON accounting_entities USING btree (ownership_type_id);
-
-
---
--- Name: index_ruz_accounting_entities_on_region_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_accounting_entities_on_region_id ON accounting_entities USING btree (region_id);
-
-
---
--- Name: index_ruz_accounting_entities_on_sk_nace_category_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_accounting_entities_on_sk_nace_category_id ON accounting_entities USING btree (sk_nace_category_id);
-
-
---
--- Name: index_ruz_districts_on_region_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_districts_on_region_id ON districts USING btree (region_id);
-
-
---
--- Name: index_ruz_municipalities_on_parent_id; Type: INDEX; Schema: ruz; Owner: -
---
-
-CREATE INDEX index_ruz_municipalities_on_parent_id ON municipalities USING btree (parent_id);
 
+CREATE UNIQUE INDEX "index_itms.zop_predlozene_on_itms_identifier" ON zop_predlozene USING btree (itms_identifier);
 
-SET search_path = socpoist, pg_catalog;
 
 --
--- Name: index_socpoist.debt_entries_on_debtor_id; Type: INDEX; Schema: socpoist; Owner: -
+-- Name: index_itms.zop_uhradene_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_socpoist.debt_entries_on_debtor_id" ON debt_entries USING btree (debtor_id);
+CREATE UNIQUE INDEX "index_itms.zop_uhradene_on_itms_identifier" ON zop_uhradene USING btree (itms_identifier);
 
 
 --
--- Name: index_socpoist.debt_entries_on_list_id; Type: INDEX; Schema: socpoist; Owner: -
+-- Name: index_itms.zop_zamietnute_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_socpoist.debt_entries_on_list_id" ON debt_entries USING btree (list_id);
+CREATE UNIQUE INDEX "index_itms.zop_zamietnute_on_itms_identifier" ON zop_zamietnute USING btree (itms_identifier);
 
 
 --
--- Name: index_socpoist.debt_ranges_on_debtor_id; Type: INDEX; Schema: socpoist; Owner: -
+-- Name: itms.ud_pd_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_socpoist.debt_ranges_on_debtor_id" ON debt_ranges USING btree (debtor_id);
+CREATE INDEX "itms.ud_pd_id" ON uctovne_doklady_polozky_dokladu USING btree (uctovne_doklady_id);
 
 
 --
--- Name: index_socpoist.debtors_on_name; Type: INDEX; Schema: socpoist; Owner: -
+-- Name: itms.ud_vd_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_socpoist.debtors_on_name" ON debtors USING btree (name);
+CREATE INDEX "itms.ud_vd_id" ON uctovne_doklady_vlastnik_dokladu USING btree (uctovne_doklady_id);
 
 
 --
--- Name: index_socpoist.debts_lists_on_published_on; Type: INDEX; Schema: socpoist; Owner: -
+-- Name: itms.ud_vo_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_socpoist.debts_lists_on_published_on" ON debts_lists USING btree (published_on);
+CREATE INDEX "itms.ud_vo_id" ON uctovne_doklady_verejne_obstaravania USING btree (uctovne_doklady_id);
 
 
 SET search_path = upvs, pg_catalog;
@@ -5562,675 +8341,1222 @@ CREATE INDEX "index_upvs.public_authority_edesks_on_cin" ON public_authority_ede
 CREATE UNIQUE INDEX "index_upvs.public_authority_edesks_on_uri" ON public_authority_edesks USING btree (uri);
 
 
-SET search_path = vvo, pg_catalog;
+SET search_path = itms, pg_catalog;
 
 --
--- Name: index_vvo.announcement_types_on_code; Type: INDEX; Schema: vvo; Owner: -
+-- Name: zonfp_prijate_meratelne_ukazovatele fk_rails_06f323bf15; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_vvo.announcement_types_on_code" ON notice_types USING btree (code);
+ALTER TABLE ONLY zonfp_prijate_meratelne_ukazovatele
+    ADD CONSTRAINT fk_rails_06f323bf15 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: index_vvo.notice_suppliers_on_notice_id; Type: INDEX; Schema: vvo; Owner: -
+-- Name: zonfp_prijate_hospodarske_cinnosti_ciele fk_rails_08b0e2b924; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_vvo.notice_suppliers_on_notice_id" ON notice_suppliers USING btree (notice_id);
+ALTER TABLE ONLY zonfp_prijate_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT fk_rails_08b0e2b924 FOREIGN KEY (zonfp_prijate_hospodarske_cinnosti_id) REFERENCES zonfp_prijate_hospodarske_cinnosti(id);
 
 
 --
--- Name: index_vvo.notices_on_contract_id; Type: INDEX; Schema: vvo; Owner: -
+-- Name: zonfp_prijate_ziadatel fk_rails_0ae8024275; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_vvo.notices_on_contract_id" ON notices USING btree (contract_id);
+ALTER TABLE ONLY zonfp_prijate_ziadatel
+    ADD CONSTRAINT fk_rails_0ae8024275 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: index_vvo.notices_on_contracting_authority_id; Type: INDEX; Schema: vvo; Owner: -
+-- Name: projekty_vrealizacii_typy_uzemia_ciele fk_rails_0d2a71f396; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_vvo.notices_on_contracting_authority_id" ON notices USING btree (contracting_authority_id);
+ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia_ciele
+    ADD CONSTRAINT fk_rails_0d2a71f396 FOREIGN KEY (projekty_vrealizacii_typy_uzemia_id) REFERENCES projekty_vrealizacii_typy_uzemia(id);
 
 
 --
--- Name: index_vvo.notices_on_procedure_type_id; Type: INDEX; Schema: vvo; Owner: -
+-- Name: vyzvy_planovane_doplnujuce_info fk_rails_0fcfadbe7c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_vvo.notices_on_procedure_type_id" ON notices USING btree (procedure_type_id);
+ALTER TABLE ONLY vyzvy_planovane_doplnujuce_info
+    ADD CONSTRAINT fk_rails_0fcfadbe7c FOREIGN KEY (vyzvy_planovane_id) REFERENCES vyzvy_planovane(id);
 
 
 --
--- Name: index_vvo.raw_notices_on_bulletin_id; Type: INDEX; Schema: vvo; Owner: -
+-- Name: zonfp_zamietnute_organizacne_zlozky fk_rails_131189e0ab; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_vvo.raw_notices_on_bulletin_id" ON raw_notices USING btree (bulletin_issue_id);
+ALTER TABLE ONLY zonfp_zamietnute_organizacne_zlozky
+    ADD CONSTRAINT fk_rails_131189e0ab FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
 
 
 --
--- Name: index_vvo.raw_notices_on_bulletin_id_and_number; Type: INDEX; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_intenzity_subjekty fk_rails_131656cb1b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_vvo.raw_notices_on_bulletin_id_and_number" ON raw_notices USING btree (bulletin_issue_id, number);
+ALTER TABLE ONLY projekty_ukoncene_intenzity_subjekty
+    ADD CONSTRAINT fk_rails_131656cb1b FOREIGN KEY (projekty_ukoncene_intenzity_id) REFERENCES projekty_ukoncene_intenzity(id);
 
 
-SET search_path = crz, pg_catalog;
+--
+-- Name: zonfp_zamietnute_vysledok_konania fk_rails_132d3013ca; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_vysledok_konania
+    ADD CONSTRAINT fk_rails_132d3013ca FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: verejne_obstaravania_operacne_programy fk_rails_1469c50b9c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_operacne_programy
+    ADD CONSTRAINT fk_rails_1469c50b9c FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
+
+
+--
+-- Name: zonfp_prijate_formy_financovania_ciele fk_rails_169af2760b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_formy_financovania_ciele
+    ADD CONSTRAINT fk_rails_169af2760b FOREIGN KEY (zonfp_prijate_formy_financovania_id) REFERENCES zonfp_prijate_formy_financovania(id);
+
+
+--
+-- Name: zonfp_schvalene_typy_uzemia_ciele fk_rails_174103e9f8; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_typy_uzemia_ciele
+    ADD CONSTRAINT fk_rails_174103e9f8 FOREIGN KEY (zonfp_schvalene_typy_uzemia_id) REFERENCES zonfp_schvalene_typy_uzemia(id);
+
+
+--
+-- Name: projekty_ukoncene_prijimatel fk_rails_1965577acd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_prijimatel
+    ADD CONSTRAINT fk_rails_1965577acd FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
+
+
+--
+-- Name: zonfp_zamietnute_formy_financovania fk_rails_1ba901166f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_formy_financovania
+    ADD CONSTRAINT fk_rails_1ba901166f FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy_ciele fk_rails_1baa81f3f7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT fk_rails_1baa81f3f7 FOREIGN KEY (zonfp_zamietnute_uzemne_mechanizmy_id) REFERENCES zonfp_zamietnute_uzemne_mechanizmy(id);
+
+
+--
+-- Name: projekty_ukoncene_formy_financovania fk_rails_1c48e81f7b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_formy_financovania
+    ADD CONSTRAINT fk_rails_1c48e81f7b FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
+
+
+--
+-- Name: zonfp_zamietnute_typy_uzemia_ciele fk_rails_1d6686783c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_typy_uzemia_ciele
+    ADD CONSTRAINT fk_rails_1d6686783c FOREIGN KEY (zonfp_zamietnute_typy_uzemia_id) REFERENCES zonfp_zamietnute_typy_uzemia(id);
+
+
+--
+-- Name: vyzvy_planovane_vyhlasovatel fk_rails_1e5f5d421c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_planovane_vyhlasovatel
+    ADD CONSTRAINT fk_rails_1e5f5d421c FOREIGN KEY (vyzvy_planovane_id) REFERENCES vyzvy_planovane(id);
+
+
+--
+-- Name: zop_predlozene_predkladana_za fk_rails_1ff2f777dc; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predlozene_predkladana_za
+    ADD CONSTRAINT fk_rails_1ff2f777dc FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti_ciele fk_rails_203b5a335e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT fk_rails_203b5a335e FOREIGN KEY (projekty_ukoncene_hospodarske_cinnosti_id) REFERENCES projekty_ukoncene_hospodarske_cinnosti(id);
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti fk_rails_20e5c19bdc; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti
+    ADD CONSTRAINT fk_rails_20e5c19bdc FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: vyzvy_vyhlasene_doplnujuce_info fk_rails_26775dc4be; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_doplnujuce_info
+    ADD CONSTRAINT fk_rails_26775dc4be FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie fk_rails_27238f3f9c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_oblasti_intervencie
+    ADD CONSTRAINT fk_rails_27238f3f9c FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
+
+
+--
+-- Name: zop_zamietnute_predkladana_za fk_rails_276ee63a5d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_zamietnute_predkladana_za
+    ADD CONSTRAINT fk_rails_276ee63a5d FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
+
+
+--
+-- Name: zonfp_schvalene_oblasti_intervencie_ciele fk_rails_2826c1e619; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_oblasti_intervencie_ciele
+    ADD CONSTRAINT fk_rails_2826c1e619 FOREIGN KEY (zonfp_schvalene_oblasti_intervencie_id) REFERENCES zonfp_schvalene_oblasti_intervencie(id);
+
+
+--
+-- Name: zonfp_zamietnute_aktivity_projekt_subjekty fk_rails_286e4aa34c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_aktivity_projekt_subjekty
+    ADD CONSTRAINT fk_rails_286e4aa34c FOREIGN KEY (zonfp_zamietnute_aktivity_projekty_id) REFERENCES zonfp_zamietnute_aktivity_projekty(id);
+
+
+--
+-- Name: projekty_vrealizacii_formy_financovania_ciele fk_rails_2af438a4ad; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_formy_financovania_ciele
+    ADD CONSTRAINT fk_rails_2af438a4ad FOREIGN KEY (projekty_vrealizacii_formy_financovania_id) REFERENCES projekty_vrealizacii_formy_financovania(id);
+
+
+--
+-- Name: operacne_programy_subjekty fk_rails_2fb6b8b9aa; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY operacne_programy_subjekty
+    ADD CONSTRAINT fk_rails_2fb6b8b9aa FOREIGN KEY (operacne_programy_id) REFERENCES operacne_programy(id);
+
+
+--
+-- Name: projekty_ukoncene_hospodarske_cinnosti fk_rails_304e3fffe0; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_hospodarske_cinnosti
+    ADD CONSTRAINT fk_rails_304e3fffe0 FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
+
+
+--
+-- Name: verejne_obstaravania_postup_obstaravania fk_rails_3475e6ed37; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_postup_obstaravania
+    ADD CONSTRAINT fk_rails_3475e6ed37 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
+
+
+--
+-- Name: projekty_ukoncene_meratelne_ukazovatele fk_rails_36c02f5cf6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_meratelne_ukazovatele
+    ADD CONSTRAINT fk_rails_36c02f5cf6 FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
+
+
+--
+-- Name: zonfp_schvalene_ziadatel fk_rails_372cf8756f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_ziadatel
+    ADD CONSTRAINT fk_rails_372cf8756f FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
+
+--
+-- Name: projekty_vrealizacii_intenzity fk_rails_37be77bcc1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_intenzity
+    ADD CONSTRAINT fk_rails_37be77bcc1 FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: verejne_obstaravania_zadavatel fk_rails_385db36ba3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_zadavatel
+    ADD CONSTRAINT fk_rails_385db36ba3 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
+
+
+--
+-- Name: zonfp_zamietnute_uzemne_mechanizmy fk_rails_38bac79fdc; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_38bac79fdc FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: uctovne_doklady_projekty fk_rails_3bb36e4382; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_projekty
+    ADD CONSTRAINT fk_rails_3bb36e4382 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania fk_rails_3db8d84aaa; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_formy_financovania
+    ADD CONSTRAINT fk_rails_3db8d84aaa FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
+
+--
+-- Name: zonfp_zamietnute_oblasti_intervencie_ciele fk_rails_3deb67d8ba; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_oblasti_intervencie_ciele
+    ADD CONSTRAINT fk_rails_3deb67d8ba FOREIGN KEY (zonfp_zamietnute_oblasti_intervencie_id) REFERENCES zonfp_zamietnute_oblasti_intervencie(id);
+
+
+--
+-- Name: zonfp_prijate_formy_financovania fk_rails_3e3a53de08; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_formy_financovania
+    ADD CONSTRAINT fk_rails_3e3a53de08 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
+
+
+--
+-- Name: zop_uhradene_prijimatel fk_rails_3f7de3afd6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_uhradene_prijimatel
+    ADD CONSTRAINT fk_rails_3f7de3afd6 FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
+
+
+--
+-- Name: zop_predlozene_prijimatel fk_rails_42a6c1da2a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predlozene_prijimatel
+    ADD CONSTRAINT fk_rails_42a6c1da2a FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
+
+
+--
+-- Name: uctovne_doklady_verejne_obstaravania fk_rails_46a417cc77; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_verejne_obstaravania
+    ADD CONSTRAINT fk_rails_46a417cc77 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
+
+
+--
+-- Name: prioritna_os_operacne_programy fk_rails_4772cf02fa; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY prioritna_os_operacne_programy
+    ADD CONSTRAINT fk_rails_4772cf02fa FOREIGN KEY (prioritne_osi_id) REFERENCES prioritne_osi(id);
+
+
+--
+-- Name: vyzvy_vyhlasene_ciele fk_rails_48bf1b5ec9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_ciele
+    ADD CONSTRAINT fk_rails_48bf1b5ec9 FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
+
+
+--
+-- Name: zonfp_schvalene_vyzvy fk_rails_4c5ebdf210; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_vyzvy
+    ADD CONSTRAINT fk_rails_4c5ebdf210 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
+
+--
+-- Name: projekty_vrealizacii_typy_uzemia fk_rails_4c7925a69d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia
+    ADD CONSTRAINT fk_rails_4c7925a69d FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: zonfp_schvalene_miesta_realizacie_units fk_rails_4f4d107e15; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie_units
+    ADD CONSTRAINT fk_rails_4f4d107e15 FOREIGN KEY (zonfp_schvalene_miesta_realizacie_id) REFERENCES zonfp_schvalene_miesta_realizacie(id);
+
+
+--
+-- Name: zop_zamietnute_prijimatel fk_rails_5473ddf63b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_zamietnute_prijimatel
+    ADD CONSTRAINT fk_rails_5473ddf63b FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
+
+
+--
+-- Name: zop_zamietnute_projekt fk_rails_5979b8f53a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_zamietnute_projekt
+    ADD CONSTRAINT fk_rails_5979b8f53a FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia fk_rails_600510ad00; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia
+    ADD CONSTRAINT fk_rails_600510ad00 FOREIGN KEY (zmluvy_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravanie(id);
+
+
+--
+-- Name: verejne_obstaravania_projekty fk_rails_600b82bfc3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_projekty
+    ADD CONSTRAINT fk_rails_600b82bfc3 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
+
+
+--
+-- Name: projekty_vrealizacii_monitorovacie_terminy fk_rails_6264b2a8e9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_monitorovacie_terminy
+    ADD CONSTRAINT fk_rails_6264b2a8e9 FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: projekty_vrealizacii_hospodarske_cinnosti fk_rails_62e4e0f847; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_vrealizacii_hospodarske_cinnosti
+    ADD CONSTRAINT fk_rails_62e4e0f847 FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: zop_uhradene_projekt fk_rails_6347bcec2b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_uhradene_projekt
+    ADD CONSTRAINT fk_rails_6347bcec2b FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
+
+
+--
+-- Name: zonfp_zamietnute_hospodarske_cinnosti_ciele fk_rails_66f817d32a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT fk_rails_66f817d32a FOREIGN KEY (zonfp_zamietnute_hospodarske_cinnosti_id) REFERENCES zonfp_zamietnute_hospodarske_cinnosti(id);
+
+
+--
+-- Name: zmluvy_verejne_obstaravanie_dalsie_url fk_rails_67194c25e9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dalsie_url
+    ADD CONSTRAINT fk_rails_67194c25e9 FOREIGN KEY (zmluvy_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravanie(id);
+
+
+--
+-- Name: zop_predlozene_predfinancovanie fk_rails_6756f57485; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predlozene_predfinancovanie
+    ADD CONSTRAINT fk_rails_6756f57485 FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
+
+
+--
+-- Name: zonfp_schvalene_organizacne_zlozky fk_rails_690e6a8952; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_organizacne_zlozky
+    ADD CONSTRAINT fk_rails_690e6a8952 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
+
+--
+-- Name: zop_uhradene_predfinancovanie fk_rails_6f36ab41e1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_uhradene_predfinancovanie
+    ADD CONSTRAINT fk_rails_6f36ab41e1 FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
+
+
+--
+-- Name: projekty_ukoncene_intenzity_zdroje fk_rails_777bf03d64; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_intenzity_zdroje
+    ADD CONSTRAINT fk_rails_777bf03d64 FOREIGN KEY (projekty_ukoncene_intenzity_id) REFERENCES projekty_ukoncene_intenzity(id);
+
+
+--
+-- Name: zonfp_prijate_uzemne_mechanizmy_ciele fk_rails_77a3989ba2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT fk_rails_77a3989ba2 FOREIGN KEY (zonfp_prijate_uzemne_mechanizmy_id) REFERENCES zonfp_prijate_uzemne_mechanizmy(id);
+
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy fk_rails_7b0bdf691c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_7b0bdf691c FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
+
+
+--
+-- Name: projekty_ukoncene_typy_uzemia_ciele fk_rails_7b211c12fb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_typy_uzemia_ciele
+    ADD CONSTRAINT fk_rails_7b211c12fb FOREIGN KEY (projekty_ukoncene_typy_uzemia_id) REFERENCES projekty_ukoncene_typy_uzemia(id);
+
+
+--
+-- Name: zonfp_prijate_organizacne_zlozky fk_rails_7c74b60b48; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_prijate_organizacne_zlozky
+    ADD CONSTRAINT fk_rails_7c74b60b48 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
+
+
+--
+-- Name: zonfp_zamietnute_meratelne_ukazovatele fk_rails_7e27a6a773; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_zamietnute_meratelne_ukazovatele
+    ADD CONSTRAINT fk_rails_7e27a6a773 FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: projekty_ukoncene_oblasti_intervencie_ciele fk_rails_7f4ecf0df3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_ukoncene_oblasti_intervencie_ciele
+    ADD CONSTRAINT fk_rails_7f4ecf0df3 FOREIGN KEY (projekty_ukoncene_oblasti_intervencie_id) REFERENCES projekty_ukoncene_oblasti_intervencie(id);
+
+
+--
+-- Name: zonfp_schvalene_formy_financovania_ciele fk_rails_80b7e1eff1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_formy_financovania_ciele
+    ADD CONSTRAINT fk_rails_80b7e1eff1 FOREIGN KEY (zonfp_schvalene_formy_financovania_id) REFERENCES zonfp_schvalene_formy_financovania(id);
+
+
+--
+-- Name: projekty_vrealizacii_vyzva fk_rails_8169b658ea; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY projekty_vrealizacii_vyzva
+    ADD CONSTRAINT fk_rails_8169b658ea FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu fk_rails_819fc2ce24; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_polozky_dokladu
+    ADD CONSTRAINT fk_rails_819fc2ce24 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
+
+
 --
--- Name: fk_rails_43c7c1b4e3; Type: FK CONSTRAINT; Schema: crz; Owner: -
+-- Name: zonfp_prijate_aktivity_projekty fk_rails_8389e158be; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY contracts
-    ADD CONSTRAINT fk_rails_43c7c1b4e3 FOREIGN KEY (department_id) REFERENCES departments(id);
+ALTER TABLE ONLY zonfp_prijate_aktivity_projekty
+    ADD CONSTRAINT fk_rails_8389e158be FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: fk_rails_741b6026e6; Type: FK CONSTRAINT; Schema: crz; Owner: -
+-- Name: projekty_vrealizacii_formy_financovania fk_rails_859094ae9b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY attachments
-    ADD CONSTRAINT fk_rails_741b6026e6 FOREIGN KEY (contract_id) REFERENCES contracts(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_vrealizacii_formy_financovania
+    ADD CONSTRAINT fk_rails_859094ae9b FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: zonfp_schvalene_aktivity_projekty fk_rails_85eacf3416; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zonfp_schvalene_aktivity_projekty
+    ADD CONSTRAINT fk_rails_85eacf3416 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
 
-SET search_path = fs, pg_catalog;
 
 --
--- Name: fk_rails_866e5686f1; Type: FK CONSTRAINT; Schema: fs; Owner: -
+-- Name: zonfp_schvalene_hospodarske_cinnosti fk_rails_867519c9e3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vat_subject_entries
-    ADD CONSTRAINT fk_rails_866e5686f1 FOREIGN KEY (list_id) REFERENCES vat_subjects_lists(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_schvalene_hospodarske_cinnosti
+    ADD CONSTRAINT fk_rails_867519c9e3 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
 
 
 --
--- Name: fk_rails_add234478f; Type: FK CONSTRAINT; Schema: fs; Owner: -
+-- Name: vyzvy_vyhlasene_poskytovatelia fk_rails_86bdea70cc; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vat_subject_ranges
-    ADD CONSTRAINT fk_rails_add234478f FOREIGN KEY (subject_id) REFERENCES vat_subjects(id) ON DELETE CASCADE;
+ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
+    ADD CONSTRAINT fk_rails_86bdea70cc FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
--- Name: fk_rails_ba0ea23187; Type: FK CONSTRAINT; Schema: fs; Owner: -
+-- Name: projekty_vrealizacii_oblasti_intervencie fk_rails_87000b5551; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY projekty_vrealizacii_oblasti_intervencie
+    ADD CONSTRAINT fk_rails_87000b5551 FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
 
-ALTER TABLE ONLY vat_subject_entries
-    ADD CONSTRAINT fk_rails_ba0ea23187 FOREIGN KEY (subject_id) REFERENCES vat_subjects(id) ON DELETE CASCADE;
+
+--
+-- Name: projekty_vrealizacii_partneri fk_rails_8795e0b0af; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY projekty_vrealizacii_partneri
+    ADD CONSTRAINT fk_rails_8795e0b0af FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
 
-SET search_path = map_datahub_fs, pg_catalog;
 
 --
--- Name: fk_rails_6e200c775e; Type: FK CONSTRAINT; Schema: map_datahub_fs; Owner: -
+-- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky fk_rails_87a68d09a7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vat_subject_mappings
-    ADD CONSTRAINT fk_rails_6e200c775e FOREIGN KEY (corporate_body_id) REFERENCES datahub.corporate_bodies(id) ON DELETE CASCADE;
+ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_hlavny_slovniky
+    ADD CONSTRAINT fk_rails_87a68d09a7 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
 
 
 --
--- Name: fk_rails_f4ff7f16d4; Type: FK CONSTRAINT; Schema: map_datahub_fs; Owner: -
+-- Name: zonfp_zamietnute_oblasti_intervencie fk_rails_8986ddb3e0; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vat_subject_mappings
-    ADD CONSTRAINT fk_rails_f4ff7f16d4 FOREIGN KEY (vat_subject_id) REFERENCES fs.vat_subjects(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_zamietnute_oblasti_intervencie
+    ADD CONSTRAINT fk_rails_8986ddb3e0 FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
 
 
-SET search_path = map_datahub_rpo, pg_catalog;
+--
+-- Name: zonfp_schvalene_hospodarske_cinnosti_ciele fk_rails_899f745c2a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_schvalene_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT fk_rails_899f745c2a FOREIGN KEY (zonfp_schvalene_hospodarske_cinnosti_id) REFERENCES zonfp_schvalene_hospodarske_cinnosti(id);
 
+
 --
--- Name: fk_rails_c3b7d4a7cd; Type: FK CONSTRAINT; Schema: map_datahub_rpo; Owner: -
+-- Name: zonfp_schvalene_typy_uzemia fk_rails_8a9cbb93cb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY corporate_body_mappings
-    ADD CONSTRAINT fk_rails_c3b7d4a7cd FOREIGN KEY (organization_id) REFERENCES rpo.organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_schvalene_typy_uzemia
+    ADD CONSTRAINT fk_rails_8a9cbb93cb FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
 
 
 --
--- Name: fk_rails_fac45fa0c7; Type: FK CONSTRAINT; Schema: map_datahub_rpo; Owner: -
+-- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky fk_rails_8abe3aac03; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky
+    ADD CONSTRAINT fk_rails_8abe3aac03 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
+
 
-ALTER TABLE ONLY corporate_body_mappings
-    ADD CONSTRAINT fk_rails_fac45fa0c7 FOREIGN KEY (corporate_body_id) REFERENCES datahub.corporate_bodies(id) ON DELETE SET NULL;
+--
+-- Name: vyzvy_planovane_ciele fk_rails_8ad08ae289; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY vyzvy_planovane_ciele
+    ADD CONSTRAINT fk_rails_8ad08ae289 FOREIGN KEY (vyzvy_planovane_id) REFERENCES vyzvy_planovane(id);
 
-SET search_path = ov, pg_catalog;
 
 --
--- Name: fk_rails_01f2555605; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: projekty_vrealizacii_oblasti_intervencie_ciele fk_rails_9327f0bc50; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_restrukturalizacia_issues
-    ADD CONSTRAINT fk_rails_01f2555605 FOREIGN KEY (debtor_id) REFERENCES konkurz_restrukturalizacia_actors(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_vrealizacii_oblasti_intervencie_ciele
+    ADD CONSTRAINT fk_rails_9327f0bc50 FOREIGN KEY (projekty_vrealizacii_oblasti_intervencie_id) REFERENCES projekty_vrealizacii_oblasti_intervencie(id);
 
 
 --
--- Name: fk_rails_06649ad96d; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_zamietnute_partneri fk_rails_94bff2dc1a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY or_podanie_issue_documents
-    ADD CONSTRAINT fk_rails_06649ad96d FOREIGN KEY (or_podanie_issue_id) REFERENCES or_podanie_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_zamietnute_partneri
+    ADD CONSTRAINT fk_rails_94bff2dc1a FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
 
 
 --
--- Name: fk_rails_10be52a24f; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_zamietnute_vyzvy fk_rails_9bee500755; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY znizenie_imania_issues
-    ADD CONSTRAINT fk_rails_10be52a24f FOREIGN KEY (raw_issue_id) REFERENCES raw_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_zamietnute_vyzvy
+    ADD CONSTRAINT fk_rails_9bee500755 FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
 
 
 --
--- Name: fk_rails_296053f2e5; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: verejne_obstaravania_obstaravatel fk_rails_9e848b2700; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY or_podanie_issues
-    ADD CONSTRAINT fk_rails_296053f2e5 FOREIGN KEY (raw_issue_id) REFERENCES raw_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY verejne_obstaravania_obstaravatel
+    ADD CONSTRAINT fk_rails_9e848b2700 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
 
 
 --
--- Name: fk_rails_478427253d; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: projekty_ukoncene_miesta_realizacie_units fk_rails_9eea4311d4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_restrukturalizacia_proposings
-    ADD CONSTRAINT fk_rails_478427253d FOREIGN KEY (issue_id) REFERENCES konkurz_restrukturalizacia_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_ukoncene_miesta_realizacie_units
+    ADD CONSTRAINT fk_rails_9eea4311d4 FOREIGN KEY (projekty_ukoncene_miesta_realizacie_id) REFERENCES projekty_ukoncene_miesta_realizacie(id);
 
 
 --
--- Name: fk_rails_4c291d9773; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: uctovne_doklady_vlastnik_dokladu fk_rails_9fc80cbae3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY likvidator_issues
-    ADD CONSTRAINT fk_rails_4c291d9773 FOREIGN KEY (raw_issue_id) REFERENCES raw_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY uctovne_doklady_vlastnik_dokladu
+    ADD CONSTRAINT fk_rails_9fc80cbae3 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
 
 
 --
--- Name: fk_rails_4ce66fa0cc; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_zamietnute_formy_financovania_ciele fk_rails_a446ffcc6a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY likvidator_issues
-    ADD CONSTRAINT fk_rails_4ce66fa0cc FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_zamietnute_formy_financovania_ciele
+    ADD CONSTRAINT fk_rails_a446ffcc6a FOREIGN KEY (zonfp_zamietnute_formy_financovania_id) REFERENCES zonfp_zamietnute_formy_financovania(id);
 
 
 --
--- Name: fk_rails_5bf005ec9f; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_schvalene_miesta_realizacie fk_rails_a7d99d3ceb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_restrukturalizacia_issues
-    ADD CONSTRAINT fk_rails_5bf005ec9f FOREIGN KEY (raw_issue_id) REFERENCES raw_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie
+    ADD CONSTRAINT fk_rails_a7d99d3ceb FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
 
 
 --
--- Name: fk_rails_605d9df774; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie fk_rails_aa07f2a0b3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_vyrovnanie_issues
-    ADD CONSTRAINT fk_rails_605d9df774 FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_prijate_miesta_realizacie
+    ADD CONSTRAINT fk_rails_aa07f2a0b3 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: fk_rails_6726036788; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_hospodarske_cinnosti fk_rails_aaf66724bd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY or_podanie_issues
-    ADD CONSTRAINT fk_rails_6726036788 FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_prijate_hospodarske_cinnosti
+    ADD CONSTRAINT fk_rails_aaf66724bd FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: fk_rails_7aee147bb0; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_zamietnute_miesta_realizacie_units fk_rails_ab21eb7dbf; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY znizenie_imania_issues
-    ADD CONSTRAINT fk_rails_7aee147bb0 FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie_units
+    ADD CONSTRAINT fk_rails_ab21eb7dbf FOREIGN KEY (zonfp_zamietnute_miesta_realizacie_id) REFERENCES zonfp_zamietnute_miesta_realizacie(id);
 
 
 --
--- Name: fk_rails_7d80f1d1cd; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_schvalene_aktivity_projekt_subjekty fk_rails_abf5b2acff; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_restrukturalizacia_proposings
-    ADD CONSTRAINT fk_rails_7d80f1d1cd FOREIGN KEY (actor_id) REFERENCES konkurz_restrukturalizacia_actors(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_schvalene_aktivity_projekt_subjekty
+    ADD CONSTRAINT fk_rails_abf5b2acff FOREIGN KEY (zonfp_schvalene_aktivity_projekty_id) REFERENCES zonfp_schvalene_aktivity_projekty(id);
 
 
 --
--- Name: fk_rails_8bb6f430bf; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_zamietnute_ziadatel fk_rails_acd8f0376f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY znizenie_imania_ceos
-    ADD CONSTRAINT fk_rails_8bb6f430bf FOREIGN KEY (znizenie_imania_issue_id) REFERENCES znizenie_imania_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_zamietnute_ziadatel
+    ADD CONSTRAINT fk_rails_acd8f0376f FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
 
 
 --
--- Name: fk_rails_c2450a59ca; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: vzvy_vyhlasene_kontaktne_osoby fk_rails_aeec9f40a3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_vyrovnanie_issues
-    ADD CONSTRAINT fk_rails_c2450a59ca FOREIGN KEY (raw_issue_id) REFERENCES raw_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY vzvy_vyhlasene_kontaktne_osoby
+    ADD CONSTRAINT fk_rails_aeec9f40a3 FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
--- Name: fk_rails_ebe06fe061; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_vyzvy fk_rails_b29797bf99; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY raw_issues
-    ADD CONSTRAINT fk_rails_ebe06fe061 FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_prijate_vyzvy
+    ADD CONSTRAINT fk_rails_b29797bf99 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: fk_rails_fccf2c79e3; Type: FK CONSTRAINT; Schema: ov; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie_units fk_rails_b33c26e656; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkurz_restrukturalizacia_issues
-    ADD CONSTRAINT fk_rails_fccf2c79e3 FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_prijate_miesta_realizacie_units
+    ADD CONSTRAINT fk_rails_b33c26e656 FOREIGN KEY (zonfp_prijate_miesta_realizacie_id) REFERENCES zonfp_prijate_miesta_realizacie(id);
+
+
+--
+-- Name: projekty_ukoncene_partneri fk_rails_b5d68e3ca4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY projekty_ukoncene_partneri
+    ADD CONSTRAINT fk_rails_b5d68e3ca4 FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
 
-SET search_path = ra, pg_catalog;
 
 --
--- Name: fk_rails_0b4cfd5ea8; Type: FK CONSTRAINT; Schema: ra; Owner: -
+-- Name: projekty_ukoncene_vyzva fk_rails_b7b13e16ec; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY municipality_changes
-    ADD CONSTRAINT fk_rails_0b4cfd5ea8 FOREIGN KEY (municipality_id) REFERENCES municipalities(id);
+ALTER TABLE ONLY projekty_ukoncene_vyzva
+    ADD CONSTRAINT fk_rails_b7b13e16ec FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
 
 
 --
--- Name: fk_rails_1dbeb0c531; Type: FK CONSTRAINT; Schema: ra; Owner: -
+-- Name: projekty_vrealizacii_meratelne_ukazovatele fk_rails_b9b07a10b4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY region_changes
-    ADD CONSTRAINT fk_rails_1dbeb0c531 FOREIGN KEY (region_id) REFERENCES regions(id);
+ALTER TABLE ONLY projekty_vrealizacii_meratelne_ukazovatele
+    ADD CONSTRAINT fk_rails_b9b07a10b4 FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
 
 
 --
--- Name: fk_rails_2812a036d9; Type: FK CONSTRAINT; Schema: ra; Owner: -
+-- Name: zonfp_schvalene_hodnotitelia fk_rails_bb32b68e7f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY district_changes
-    ADD CONSTRAINT fk_rails_2812a036d9 FOREIGN KEY (district_id) REFERENCES districts(id);
+ALTER TABLE ONLY zonfp_schvalene_hodnotitelia
+    ADD CONSTRAINT fk_rails_bb32b68e7f FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
 
 
 --
--- Name: fk_rails_5dd55655b7; Type: FK CONSTRAINT; Schema: ra; Owner: -
+-- Name: zop_zamietnute_predfinancovanie fk_rails_bb8efda835; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY county_changes
-    ADD CONSTRAINT fk_rails_5dd55655b7 FOREIGN KEY (county_id) REFERENCES counties(id);
+ALTER TABLE ONLY zop_zamietnute_predfinancovanie
+    ADD CONSTRAINT fk_rails_bb8efda835 FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
 
 
 --
--- Name: fk_rails_a934dd39c9; Type: FK CONSTRAINT; Schema: ra; Owner: -
+-- Name: zonfp_prijate_aktivity_projekt_subjekty fk_rails_bde76ecd09; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY building_unit_changes
-    ADD CONSTRAINT fk_rails_a934dd39c9 FOREIGN KEY (building_unit_id) REFERENCES building_units(id);
+ALTER TABLE ONLY zonfp_prijate_aktivity_projekt_subjekty
+    ADD CONSTRAINT fk_rails_bde76ecd09 FOREIGN KEY (zonfp_prijate_aktivity_projekty_id) REFERENCES zonfp_prijate_aktivity_projekty(id);
 
 
 --
--- Name: fk_rails_d12c0ce2ae; Type: FK CONSTRAINT; Schema: ra; Owner: -
+-- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel fk_rails_be079d854a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_hlavny_dodavatel
+    ADD CONSTRAINT fk_rails_be079d854a FOREIGN KEY (zmluvy_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravanie(id);
+
 
-ALTER TABLE ONLY street_name_changes
-    ADD CONSTRAINT fk_rails_d12c0ce2ae FOREIGN KEY (street_name_id) REFERENCES street_names(id);
+--
+-- Name: zonfp_prijate_oblasti_intervencie_ciele fk_rails_bf15cbc5cf; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie_ciele
+    ADD CONSTRAINT fk_rails_bf15cbc5cf FOREIGN KEY (zonfp_prijate_oblasti_intervencie_id) REFERENCES zonfp_prijate_oblasti_intervencie(id);
 
-SET search_path = rpo, pg_catalog;
 
 --
--- Name: fk_rails_215d851542; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_ukoncene_formy_financovania_ciele fk_rails_c2e0f43203; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_other_legal_fact_entries
-    ADD CONSTRAINT fk_rails_215d851542 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_ukoncene_formy_financovania_ciele
+    ADD CONSTRAINT fk_rails_c2e0f43203 FOREIGN KEY (projekty_ukoncene_formy_financovania_id) REFERENCES projekty_ukoncene_formy_financovania(id);
 
 
 --
--- Name: fk_rails_23fe270425; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_vrealizacii_aktivity fk_rails_c324a013fa; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organizations
-    ADD CONSTRAINT fk_rails_23fe270425 FOREIGN KEY (main_organization_id) REFERENCES organizations(id);
+ALTER TABLE ONLY projekty_vrealizacii_aktivity
+    ADD CONSTRAINT fk_rails_c324a013fa FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
 
 
 --
--- Name: fk_rails_28212d8658; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_vrealizacii_hospodarske_cinnosti_ciele fk_rails_c4537af002; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_name_entries
-    ADD CONSTRAINT fk_rails_28212d8658 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_vrealizacii_hospodarske_cinnosti_ciele
+    ADD CONSTRAINT fk_rails_c4537af002 FOREIGN KEY (projekty_vrealizacii_hospodarske_cinnosti_id) REFERENCES projekty_vrealizacii_hospodarske_cinnosti(id);
 
 
 --
--- Name: fk_rails_390f731901; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: zonfp_schvalene_oblasti_intervencie fk_rails_c456178d5d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_economic_activity_entries
-    ADD CONSTRAINT fk_rails_390f731901 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_schvalene_oblasti_intervencie
+    ADD CONSTRAINT fk_rails_c456178d5d FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
 
 
 --
--- Name: fk_rails_4005e2af52; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_typy_uzemia fk_rails_c556957979; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_alternate_name_entries
-    ADD CONSTRAINT fk_rails_4005e2af52 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_zamietnute_typy_uzemia
+    ADD CONSTRAINT fk_rails_c556957979 FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
 
 
 --
--- Name: fk_rails_48a2a0edd8; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_ukoncene_miesta_realizacie fk_rails_c6c94be22c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_equity_entries
-    ADD CONSTRAINT fk_rails_48a2a0edd8 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_ukoncene_miesta_realizacie
+    ADD CONSTRAINT fk_rails_c6c94be22c FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
 
 
 --
--- Name: fk_rails_4b0656a8ad; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_ukoncene_intenzity fk_rails_c7190db08c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_share_entries
-    ADD CONSTRAINT fk_rails_4b0656a8ad FOREIGN KEY (share_type_id) REFERENCES share_types(id);
+ALTER TABLE ONLY projekty_ukoncene_intenzity
+    ADD CONSTRAINT fk_rails_c7190db08c FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
 
 
 --
--- Name: fk_rails_508997d9f2; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: zonfp_schvalene_uzemne_mechanizmy fk_rails_c7cc60fd51; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_share_entries
-    ADD CONSTRAINT fk_rails_508997d9f2 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_c7cc60fd51 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
 
 
 --
--- Name: fk_rails_6cef665c99; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: zonfp_zamietnute_aktivity_projekty fk_rails_c91e683028; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_legal_status_entries
-    ADD CONSTRAINT fk_rails_6cef665c99 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_zamietnute_aktivity_projekty
+    ADD CONSTRAINT fk_rails_c91e683028 FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
 
 
 --
--- Name: fk_rails_72a67bd06f; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: vzvy_vyhlasene_posudzovane_obdobia fk_rails_c99d21522a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_statutory_entries
-    ADD CONSTRAINT fk_rails_72a67bd06f FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY vzvy_vyhlasene_posudzovane_obdobia
+    ADD CONSTRAINT fk_rails_c99d21522a FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
--- Name: fk_rails_7868457a85; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel fk_rails_caa56b5235; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organizations
-    ADD CONSTRAINT fk_rails_7868457a85 FOREIGN KEY (esa2010_code_id) REFERENCES esa2010_codes(id);
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel
+    ADD CONSTRAINT fk_rails_caa56b5235 FOREIGN KEY (zmluvy_verejne_obstaravanie_dodavatelia_id) REFERENCES zmluvy_verejne_obstaravanie_dodavatelia(id);
 
 
 --
--- Name: fk_rails_789033779b; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: vyzvy_vyhlasene_vyhlasovatel fk_rails_cc9d9e9d3c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_address_entries
-    ADD CONSTRAINT fk_rails_789033779b FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY vyzvy_vyhlasene_vyhlasovatel
+    ADD CONSTRAINT fk_rails_cc9d9e9d3c FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
--- Name: fk_rails_78ea181ad6; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: vzvy_vyhlasene_planovane_vyzvy fk_rails_cddb29730e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_authorization_entries
-    ADD CONSTRAINT fk_rails_78ea181ad6 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY vzvy_vyhlasene_planovane_vyzvy
+    ADD CONSTRAINT fk_rails_cddb29730e FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
--- Name: fk_rails_8229555cd0; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: zmluvy_verejne_obstaravanie fk_rails_ce4600c8f2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_deposit_entries
-    ADD CONSTRAINT fk_rails_8229555cd0 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zmluvy_verejne_obstaravanie
+    ADD CONSTRAINT fk_rails_ce4600c8f2 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
 
 
 --
--- Name: fk_rails_94f387014a; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_vrealizacii_miesta_realizacie_units fk_rails_d1aba6ce0f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_statutory_entries
-    ADD CONSTRAINT fk_rails_94f387014a FOREIGN KEY (stakeholder_type_id) REFERENCES stakeholder_types(id);
+ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie_units
+    ADD CONSTRAINT fk_rails_d1aba6ce0f FOREIGN KEY (projekty_vrealizacii_miesta_realizacie_id) REFERENCES projekty_vrealizacii_miesta_realizacie(id);
 
 
 --
--- Name: fk_rails_9bb9d00968; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_vrealizacii_aktivity_subjekty fk_rails_d2880474b3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_predecessor_entries
-    ADD CONSTRAINT fk_rails_9bb9d00968 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_vrealizacii_aktivity_subjekty
+    ADD CONSTRAINT fk_rails_d2880474b3 FOREIGN KEY (projekty_vrealizacii_aktivity_id) REFERENCES projekty_vrealizacii_aktivity(id);
 
 
 --
--- Name: fk_rails_b9d1486d04; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_ukoncene_typy_uzemia fk_rails_d420725193; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_stakeholder_entries
-    ADD CONSTRAINT fk_rails_b9d1486d04 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_ukoncene_typy_uzemia
+    ADD CONSTRAINT fk_rails_d420725193 FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
 
 
 --
--- Name: fk_rails_c704e079d2; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: konkretne_ciele_prioritna_os fk_rails_d46c3bc9c9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_share_entries
-    ADD CONSTRAINT fk_rails_c704e079d2 FOREIGN KEY (share_form_id) REFERENCES share_forms(id);
+ALTER TABLE ONLY konkretne_ciele_prioritna_os
+    ADD CONSTRAINT fk_rails_d46c3bc9c9 FOREIGN KEY (konkretne_ciele_id) REFERENCES konkretne_ciele(id);
 
 
 --
--- Name: fk_rails_d0211d6167; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: zonfp_prijate_partneri fk_rails_d50f9dbb57; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_legal_form_entries
-    ADD CONSTRAINT fk_rails_d0211d6167 FOREIGN KEY (legal_form_id) REFERENCES legal_forms(id);
+ALTER TABLE ONLY zonfp_prijate_partneri
+    ADD CONSTRAINT fk_rails_d50f9dbb57 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: fk_rails_d4e3e4bde0; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_vrealizacii_organizacne_zlozky fk_rails_d6559c195f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_successor_entries
-    ADD CONSTRAINT fk_rails_d4e3e4bde0 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_vrealizacii_organizacne_zlozky
+    ADD CONSTRAINT fk_rails_d6559c195f FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
 
 
 --
--- Name: fk_rails_d551f8828e; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: zonfp_schvalene_partneri fk_rails_d75aef9463; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_identifier_entries
-    ADD CONSTRAINT fk_rails_d551f8828e FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+ALTER TABLE ONLY zonfp_schvalene_partneri
+    ADD CONSTRAINT fk_rails_d75aef9463 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
 
 
 --
--- Name: fk_rails_d575a47b40; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: verejne_obstaravania_metody_vo fk_rails_d7faf83117; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organizations
-    ADD CONSTRAINT fk_rails_d575a47b40 FOREIGN KEY (main_activity_code_id) REFERENCES main_activity_codes(id);
+ALTER TABLE ONLY verejne_obstaravania_metody_vo
+    ADD CONSTRAINT fk_rails_d7faf83117 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
 
 
 --
--- Name: fk_rails_df1f7464af; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: verejne_obstaravania_uctovne_doklady fk_rails_d845918157; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY organization_stakeholder_entries
-    ADD CONSTRAINT fk_rails_df1f7464af FOREIGN KEY (stakeholder_type_id) REFERENCES stakeholder_types(id);
+ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
+    ADD CONSTRAINT fk_rails_d845918157 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
 
 
 --
--- Name: fk_rails_fbdd6d9c68; Type: FK CONSTRAINT; Schema: rpo; Owner: -
+-- Name: projekty_vrealizacii_intenzity_zdroje fk_rails_d89d786f35; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY projekty_vrealizacii_intenzity_zdroje
+    ADD CONSTRAINT fk_rails_d89d786f35 FOREIGN KEY (projekty_vrealizacii_intenzity_id) REFERENCES projekty_vrealizacii_intenzity(id);
 
-ALTER TABLE ONLY organization_legal_form_entries
-    ADD CONSTRAINT fk_rails_fbdd6d9c68 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
 
+--
+-- Name: projekty_vrealizacii_miesta_realizacie fk_rails_d9ac66b139; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
-SET search_path = ruz, pg_catalog;
+ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie
+    ADD CONSTRAINT fk_rails_d9ac66b139 FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
 
+
 --
--- Name: fk_rails_07ed14320c; Type: FK CONSTRAINT; Schema: ruz; Owner: -
+-- Name: zonfp_prijate_typy_uzemia fk_rails_dd066eede4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY accounting_entities
-    ADD CONSTRAINT fk_rails_07ed14320c FOREIGN KEY (municipality_id) REFERENCES municipalities(id);
+ALTER TABLE ONLY zonfp_prijate_typy_uzemia
+    ADD CONSTRAINT fk_rails_dd066eede4 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: fk_rails_38ebf8d996; Type: FK CONSTRAINT; Schema: ruz; Owner: -
+-- Name: zop_uhradene_predkladana_za fk_rails_de5d60c98a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY accounting_entities
-    ADD CONSTRAINT fk_rails_38ebf8d996 FOREIGN KEY (region_id) REFERENCES regions(id);
+ALTER TABLE ONLY zop_uhradene_predkladana_za
+    ADD CONSTRAINT fk_rails_de5d60c98a FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
 
 
 --
--- Name: fk_rails_6a4ade2d22; Type: FK CONSTRAINT; Schema: ruz; Owner: -
+-- Name: projekty_vrealizacii_prijimatel fk_rails_e373af711d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY accounting_entities
-    ADD CONSTRAINT fk_rails_6a4ade2d22 FOREIGN KEY (legal_form_id) REFERENCES legal_forms(id);
+ALTER TABLE ONLY projekty_vrealizacii_prijimatel
+    ADD CONSTRAINT fk_rails_e373af711d FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
 
 
 --
--- Name: fk_rails_97883ca5ad; Type: FK CONSTRAINT; Schema: ruz; Owner: -
+-- Name: zonfp_schvalene_uzemne_mechanizmy_ciele fk_rails_e4f9b6a174; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY accounting_entities
-    ADD CONSTRAINT fk_rails_97883ca5ad FOREIGN KEY (organization_size_id) REFERENCES organization_sizes(id);
+ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT fk_rails_e4f9b6a174 FOREIGN KEY (zonfp_schvalene_uzemne_mechanizmy_id) REFERENCES zonfp_schvalene_uzemne_mechanizmy(id);
 
 
 --
--- Name: fk_rails_ad69be1cc0; Type: FK CONSTRAINT; Schema: ruz; Owner: -
+-- Name: projekty_vrealizacii_uzemne_mechanizmy fk_rails_e709ec16d9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY accounting_entities
-    ADD CONSTRAINT fk_rails_ad69be1cc0 FOREIGN KEY (ownership_type_id) REFERENCES ownership_types(id);
+ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_e709ec16d9 FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
 
 
 --
--- Name: fk_rails_b859c65541; Type: FK CONSTRAINT; Schema: ruz; Owner: -
+-- Name: vyzvy_planovane_poskytovatelia fk_rails_e782c270e2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY districts
-    ADD CONSTRAINT fk_rails_b859c65541 FOREIGN KEY (region_id) REFERENCES regions(id) ON DELETE CASCADE;
+ALTER TABLE ONLY vyzvy_planovane_poskytovatelia
+    ADD CONSTRAINT fk_rails_e782c270e2 FOREIGN KEY (vyzvy_planovane_id) REFERENCES vyzvy_planovane(id);
 
 
 --
--- Name: fk_rails_e8d3e563e0; Type: FK CONSTRAINT; Schema: ruz; Owner: -
+-- Name: zonfp_prijate_uzemne_mechanizmy fk_rails_e7ad464858; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY accounting_entities
-    ADD CONSTRAINT fk_rails_e8d3e563e0 FOREIGN KEY (district_id) REFERENCES districts(id);
+ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_e7ad464858 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
 
 --
--- Name: fk_rails_f37ffa746c; Type: FK CONSTRAINT; Schema: ruz; Owner: -
+-- Name: zonfp_schvalene_meratelne_ukazovatele fk_rails_e906d93305; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY zonfp_schvalene_meratelne_ukazovatele
+    ADD CONSTRAINT fk_rails_e906d93305 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
 
-ALTER TABLE ONLY accounting_entities
-    ADD CONSTRAINT fk_rails_f37ffa746c FOREIGN KEY (sk_nace_category_id) REFERENCES sk_nace_categories(id);
+--
+-- Name: zonfp_prijate_oblasti_intervencie fk_rails_e92b5798fe; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie
+    ADD CONSTRAINT fk_rails_e92b5798fe FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
 
-SET search_path = socpoist, pg_catalog;
 
 --
--- Name: fk_rails_48ebd9b66f; Type: FK CONSTRAINT; Schema: socpoist; Owner: -
+-- Name: zop_predlozene_projekt fk_rails_e9c0519acf; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY debt_entries
-    ADD CONSTRAINT fk_rails_48ebd9b66f FOREIGN KEY (debtor_id) REFERENCES debtors(id);
+ALTER TABLE ONLY zop_predlozene_projekt
+    ADD CONSTRAINT fk_rails_e9c0519acf FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
 
 
 --
--- Name: fk_rails_b9c185bd49; Type: FK CONSTRAINT; Schema: socpoist; Owner: -
+-- Name: projekty_ukoncene_aktivity_subjekty fk_rails_ebd65c5288; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY debt_entries
-    ADD CONSTRAINT fk_rails_b9c185bd49 FOREIGN KEY (list_id) REFERENCES debts_lists(id);
+ALTER TABLE ONLY projekty_ukoncene_aktivity_subjekty
+    ADD CONSTRAINT fk_rails_ebd65c5288 FOREIGN KEY (projekty_ukoncene_aktivity_id) REFERENCES projekty_ukoncene_aktivity(id);
 
 
 --
--- Name: fk_rails_c7f63375a4; Type: FK CONSTRAINT; Schema: socpoist; Owner: -
+-- Name: projekty_ukoncene_organizacne_zlozky fk_rails_ef82846cc4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
+
+ALTER TABLE ONLY projekty_ukoncene_organizacne_zlozky
+    ADD CONSTRAINT fk_rails_ef82846cc4 FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
 
-ALTER TABLE ONLY debt_ranges
-    ADD CONSTRAINT fk_rails_c7f63375a4 FOREIGN KEY (debtor_id) REFERENCES debtors(id);
+
+--
+-- Name: projekty_ukoncene_uzemne_mechanizmy_ciele fk_rails_f1e2d1e253; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
 
+ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT fk_rails_f1e2d1e253 FOREIGN KEY (projekty_ukoncene_uzemne_mechanizmy_id) REFERENCES projekty_ukoncene_uzemne_mechanizmy(id);
 
-SET search_path = vvo, pg_catalog;
 
 --
--- Name: fk_rails_189dae0237; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: projekty_vrealizacii_uzemne_mechanizmy_ciele fk_rails_f20660ea9f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notices
-    ADD CONSTRAINT fk_rails_189dae0237 FOREIGN KEY (raw_notice_id) REFERENCES raw_notices(id);
+ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy_ciele
+    ADD CONSTRAINT fk_rails_f20660ea9f FOREIGN KEY (projekty_vrealizacii_uzemne_mechanizmy_id) REFERENCES projekty_vrealizacii_uzemne_mechanizmy(id);
 
 
 --
--- Name: fk_rails_2965d55cab; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: verejne_obstaravania_druh_zakazky fk_rails_f2aa972bf9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY raw_notices
-    ADD CONSTRAINT fk_rails_2965d55cab FOREIGN KEY (notice_type_id) REFERENCES notice_types(id);
+ALTER TABLE ONLY verejne_obstaravania_druh_zakazky
+    ADD CONSTRAINT fk_rails_f2aa972bf9 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
 
 
 --
--- Name: fk_rails_56618ccf4f; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_monitorovacie_terminy fk_rails_f4a2aa0697; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notice_suppliers
-    ADD CONSTRAINT fk_rails_56618ccf4f FOREIGN KEY (notice_id) REFERENCES notices(id) ON DELETE CASCADE;
+ALTER TABLE ONLY projekty_ukoncene_monitorovacie_terminy
+    ADD CONSTRAINT fk_rails_f4a2aa0697 FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
 
 
 --
--- Name: fk_rails_6154057566; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: zonfp_zamietnute_miesta_realizacie fk_rails_f55d944621; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notices
-    ADD CONSTRAINT fk_rails_6154057566 FOREIGN KEY (notice_type_id) REFERENCES notice_types(id);
+ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie
+    ADD CONSTRAINT fk_rails_f55d944621 FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
 
 
 --
--- Name: fk_rails_7044e59199; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: vyzvy_vyhlasene_fondy fk_rails_f74d2d4574; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notices
-    ADD CONSTRAINT fk_rails_7044e59199 FOREIGN KEY (contracting_authority_id) REFERENCES contracting_authorities(id);
+ALTER TABLE ONLY vyzvy_vyhlasene_fondy
+    ADD CONSTRAINT fk_rails_f74d2d4574 FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
--- Name: fk_rails_86b5e17ff4; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: zonfp_prijate_typy_uzemia_ciele fk_rails_f927319243; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notices
-    ADD CONSTRAINT fk_rails_86b5e17ff4 FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id);
+ALTER TABLE ONLY zonfp_prijate_typy_uzemia_ciele
+    ADD CONSTRAINT fk_rails_f927319243 FOREIGN KEY (zonfp_prijate_typy_uzemia_id) REFERENCES zonfp_prijate_typy_uzemia(id);
 
 
 --
--- Name: fk_rails_b442791ca1; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: projekty_ukoncene_aktivity fk_rails_f941f44f4e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notices
-    ADD CONSTRAINT fk_rails_b442791ca1 FOREIGN KEY (contract_id) REFERENCES contracts(id);
+ALTER TABLE ONLY projekty_ukoncene_aktivity
+    ADD CONSTRAINT fk_rails_f941f44f4e FOREIGN KEY (projekty_ukoncene_id) REFERENCES projekty_ukoncene(id);
 
 
 --
--- Name: fk_rails_b5b2f1b1b2; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: uctovne_doklady_dodavatel fk_rails_f9a65c182f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY notices
-    ADD CONSTRAINT fk_rails_b5b2f1b1b2 FOREIGN KEY (procedure_type_id) REFERENCES procedure_types(id);
+ALTER TABLE ONLY uctovne_doklady_dodavatel
+    ADD CONSTRAINT fk_rails_f9a65c182f FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
 
 
 --
--- Name: fk_rails_c0eda68529; Type: FK CONSTRAINT; Schema: vvo; Owner: -
+-- Name: projekty_vrealizacii_intenzity_subjekty fk_rails_fa124ae26c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY raw_notices
-    ADD CONSTRAINT fk_rails_c0eda68529 FOREIGN KEY (bulletin_issue_id) REFERENCES bulletin_issues(id);
+ALTER TABLE ONLY projekty_vrealizacii_intenzity_subjekty
+    ADD CONSTRAINT fk_rails_fa124ae26c FOREIGN KEY (projekty_vrealizacii_intenzity_id) REFERENCES projekty_vrealizacii_intenzity(id);
 
 
 --
@@ -6239,236 +9565,21 @@ ALTER TABLE ONLY raw_notices
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES
-('20160228204654'),
-('20160304144454'),
-('20160304151009'),
-('20160304210816'),
-('20160304211624'),
-('20160304213306'),
-('20160305001135'),
-('20160305084653'),
-('20160307215611'),
-('20160308210325'),
-('20160309115526'),
-('20160309120612'),
-('20160429141807'),
-('20160506091443'),
-('20160506115555'),
-('20160506135302'),
-('20160506141328'),
-('20160506145648'),
-('20160506201551'),
-('20160506201735'),
-('20160506204302'),
-('20160509085025'),
-('20160509091003'),
-('20160509123118'),
-('20160509133921'),
-('20160509142808'),
-('20160509144034'),
-('20160509202636'),
-('20160509210342'),
-('20160509211550'),
-('20160509213609'),
-('20160510141343'),
-('20160511143847'),
-('20160511174234'),
-('20160512140751'),
-('20160512141004'),
-('20160512142220'),
-('20160512163333'),
-('20160512205002'),
-('20160512222238'),
-('20160512223007'),
-('20160513090321'),
-('20160513093332'),
-('20160513100718'),
-('20160513102554'),
-('20160513111743'),
-('20160513115940'),
-('20160513123028'),
-('20160513144927'),
-('20160515073133'),
-('20160515073826'),
-('20160515074954'),
-('20160516152548'),
-('20160516153747'),
-('20160516194853'),
-('20160517092857'),
-('20160517101512'),
-('20160517102123'),
-('20160517103922'),
-('20160517110722'),
-('20160517111053'),
-('20160517113734'),
-('20160517115800'),
-('20160517125158'),
-('20160517211611'),
-('20160519200530'),
-('20160520141455'),
-('20160520142114'),
-('20160520151100'),
-('20160523062919'),
-('20160523111212'),
-('20160523134144'),
-('20160523144401'),
-('20160523150519'),
-('20160524145856'),
-('20160524155401'),
-('20160524192650'),
-('20160524192805'),
-('20160524192859'),
-('20160524195216'),
-('20160524210510'),
-('20160524210952'),
-('20160524213930'),
-('20160524221026'),
-('20160524223055'),
-('20160525105622'),
-('20160525122831'),
-('20160525202154'),
-('20160525202912'),
-('20160525203905'),
-('20160603134420'),
-('20160603134547'),
-('20160603134923'),
-('20160603201156'),
-('20160603201256'),
-('20160603202143'),
-('20160604214151'),
-('20160604222116'),
-('20160605101834'),
-('20160605192328'),
-('20160605192524'),
-('20160605193318'),
-('20160605211444'),
-('20160605211612'),
-('20160607183913'),
-('20160609161856'),
-('20160609175034'),
-('20160609183417'),
-('20160610124301'),
-('20160613145120'),
-('20160613161922'),
-('20160614082527'),
-('20160615165505'),
-('20160622105806'),
-('20160622112911'),
-('20160622113449'),
-('20160622113649'),
-('20160622114653'),
-('20160622115927'),
-('20160622142531'),
-('20160622143425'),
-('20160622144845'),
-('20160622202723'),
-('20160622231145'),
-('20160623135959'),
-('20160623150755'),
-('20160624113525'),
-('20160629144830'),
-('20160629151520'),
-('20160629201243'),
-('20160629221305'),
-('20160629221424'),
-('20160629221800'),
-('20160706111638'),
-('20160707212141'),
-('20160708105151'),
-('20160708121934'),
-('20160708140307'),
-('20160708155010'),
-('20160708172910'),
-('20160708173417'),
-('20160711125108'),
-('20160711151815'),
-('20160718092226'),
-('20160718092417'),
-('20160718094712'),
-('20160719123714'),
-('20160720085630'),
-('20160721091930'),
-('20160721134515'),
-('20160721144047'),
-('20160721151057'),
-('20160721153228'),
-('20160721153817'),
-('20160721160533'),
-('20160721160901'),
-('20160721162155'),
-('20160722151335'),
-('20160722151503'),
-('20160727150803'),
-('20160803124909'),
-('20160803142910'),
-('20160803205746'),
-('20160808125148'),
-('20160809092452'),
-('20160809095256'),
-('20160809115742'),
-('20160809120030'),
-('20160811100934'),
-('20160811102028'),
-('20160811103149'),
-('20160811104830'),
-('20160811111706'),
-('20160811112312'),
-('20160811121506'),
-('20160811124755'),
-('20160812133817'),
-('20160812135204'),
-('20160812135415'),
-('20160812140655'),
-('20160812142245'),
-('20160812142416'),
-('20160812202908'),
-('20160812215714'),
-('20160815130928'),
-('20160818110211'),
-('20160818110621'),
-('20160818135739'),
-('20160825110839'),
-('20160825120623'),
-('20160830120608'),
-('20160830121920'),
-('20160928120044'),
-('20160928123138'),
-('20160928213723'),
-('20160929120951'),
-('20160929121253'),
-('20160929121400'),
-('20160929124430'),
-('20160929124817'),
-('20160929125059'),
-('20160929125508'),
-('20160930085831'),
-('20160930102048'),
-('20161010145325'),
-('20161010145425'),
-('20161010205914'),
-('20161010220918'),
-('20161010221017'),
-('20161010224003'),
-('20161010224400'),
-('20161010225250'),
-('20161011210352'),
-('20161011214757'),
-('20161012110655'),
-('20161012135758'),
-('20161012150803'),
-('20161012150927'),
-('20161012195055'),
-('20161012195151'),
-('20161012210141'),
-('20161012210225'),
-('20161012212459'),
-('20161012212552'),
-('20161013060038'),
-('20161018113906'),
-('20161018141504'),
-('20161018141555'),
+INSERT INTO "schema_migrations" (version) VALUES
 ('20170222131821'),
-('20170223074140');
+('20170223074140'),
+('20170424171314'),
+('20170503084111'),
+('20170503142604'),
+('20170503160605'),
+('20170503162251'),
+('20170503165125'),
+('20170503173221'),
+('20170503194931'),
+('20170503212442'),
+('20170504134508'),
+('20170504182810'),
+('20170504192725'),
+('20170612194706');
 
 
