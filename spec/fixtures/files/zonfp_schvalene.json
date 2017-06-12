@@ -1,0 +1,255 @@
+[
+  {
+    "akronym": "Enim nihil.",
+    "aktivityProjekt": [
+      {
+        "datumKoncaPlanovany": "Qui fugiat minima.",
+        "datumKoncaSkutocny": "Ratione eum commodi et qui recusandae ut.",
+        "datumZaciatkuPlanovany": "Et consequuntur qui.",
+        "datumZaciatkuSkutocny": "Aut sequi repellat.",
+        "kod": "Laboriosam et molestiae expedita aut omnis quo.",
+        "nazov": "Id aut laboriosam doloremque reiciendis non molestiae.",
+        "subjekt": {
+          "dic": "Eligendi id sit.",
+          "href": "/subjekty/1",
+          "ico": "Velit omnis provident aperiam occaecati corrupti quibusdam.",
+          "id": 1264743098737356000,
+          "ineIdentifikacneCislo": "Rerum qui voluptatem harum aut eaque."
+        }
+      }
+    ],
+    "createdAt": "1970-06-24T12:43:02+01:00",
+    "datumSchvalenia": "2011-04-23T12:34:08+02:00",
+    "datumSchvalenyKoncaHlavnychAktivit": "1996-11-17T08:51:46+01:00",
+    "datumSchvalenyKoncaRealizacie": "2012-02-25T03:00:10+01:00",
+    "datumSchvalenyZaciatkuHlavnychAktivit": "2013-08-21T17:27:41+02:00",
+    "datumSchvalenyZaciatkuRealizacie": "1987-09-25T02:38:10+02:00",
+    "formyFinancovania": [
+      {
+        "id": 6619364344456191000,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      }
+    ],
+    "hodnotitelia": [
+      {
+        "email": "Unde sit.",
+        "id": 6248541792933543000,
+        "meno": "Aspernatur reiciendis.",
+        "menoUplne": "Harum voluptatem sit magni dicta.",
+        "priezvisko": "Enim autem vitae iste velit nihil ab.",
+        "telefon": "Doloribus molestiae voluptatum."
+      },
+      {
+        "email": "Unde sit.",
+        "id": 6248541792933543001,
+        "meno": "Aspernatur reiciendis.",
+        "menoUplne": "Harum voluptatem sit magni dicta.",
+        "priezvisko": "Enim autem vitae iste velit nihil ab.",
+        "telefon": "Doloribus molestiae voluptatum."
+      }
+    ],
+    "hospodarskeCinnosti": [
+      {
+        "id": 6619364344456191000,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      },
+      {
+        "id": 6619364344456191001,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      },
+      {
+        "id": 6619364344456191002,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      }
+    ],
+    "href": "Repellendus autem tenetur sed est vitae.",
+    "id": 4187030973569588000,
+    "kod": "Sed nam.",
+    "meratelneUkazovatele": [
+      {
+        "aktualnySkutocnyStav": 0.4083853128854474,
+        "hodnotaCielovaCelkova": 0.26356889429365415,
+        "kod": "Nemo dolores magnam voluptatibus praesentium molestias animi.",
+        "mernaJednotka": "Voluptatem ea nesciunt non voluptas quia.",
+        "nazov": "Dolor ipsum harum sit aut officiis."
+      },
+      {
+        "aktualnySkutocnyStav": 0.4083853128854474,
+        "hodnotaCielovaCelkova": 0.26356889429365415,
+        "kod": "Nemo dolores magnam voluptatibus praesentium molestias animi.",
+        "mernaJednotka": "Voluptatem ea nesciunt non voluptas quia.",
+        "nazov": "Dolor ipsum harum sit aut officiis."
+      },
+      {
+        "aktualnySkutocnyStav": 0.4083853128854474,
+        "hodnotaCielovaCelkova": 0.26356889429365415,
+        "kod": "Nemo dolores magnam voluptatibus praesentium molestias animi.",
+        "mernaJednotka": "Voluptatem ea nesciunt non voluptas quia.",
+        "nazov": "Dolor ipsum harum sit aut officiis."
+      }
+    ],
+    "miestaRealizacie": [
+      {
+        "nuts3": {
+          "id": 5181764159482812000,
+          "nazov": "Excepturi non placeat quos sit quia aut."
+        },
+        "nuts4": {
+          "id": 5181764159482812000,
+          "nazov": "Excepturi non placeat quos sit quia aut."
+        },
+        "nuts5": {
+          "id": 5181764159482812000,
+          "nazov": "Excepturi non placeat quos sit quia aut."
+        },
+        "stat": {
+          "id": 5181764159482812000,
+          "nazov": "Excepturi non placeat quos sit quia aut."
+        }
+      }
+    ],
+    "nazov": "Enim sit.",
+    "oblastiIntervencie": [
+      {
+        "id": 6619364344456191000,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      },
+      {
+        "id": 6619364344456191001,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      },
+      {
+        "id": 6619364344456191002,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      }
+    ],
+    "organizacneZlozky": [
+      {
+        "adresa": "Sunt eius voluptas aut.",
+        "id": 5386523305359476000,
+        "nazov": "Quam voluptate."
+      },
+      {
+        "adresa": "Sunt eius voluptas aut.",
+        "id": 5386523305359476001,
+        "nazov": "Quam voluptate."
+      },
+      {
+        "adresa": "Sunt eius voluptas aut.",
+        "id": 5386523305359476002,
+        "nazov": "Quam voluptate."
+      }
+    ],
+    "partneri": [
+      {
+        "dic": "Eligendi id sit.",
+        "href": "Atque error ad perferendis soluta autem.",
+        "ico": "Velit omnis provident aperiam occaecati corrupti quibusdam.",
+        "id": 1264743098737356000,
+        "ineIdentifikacneCislo": "Rerum qui voluptatem harum aut eaque."
+      },
+      {
+        "dic": "Eligendi id sit.",
+        "href": "Atque error ad perferendis soluta autem.",
+        "ico": "Velit omnis provident aperiam occaecati corrupti quibusdam.",
+        "id": 1264743098737356001,
+        "ineIdentifikacneCislo": "Rerum qui voluptatem harum aut eaque."
+      }
+    ],
+    "percentoSchvaleneSpolufinancovania": 0.6071870730949112,
+    "pocetBodovHodnoteniaCelkovy": 0.5465577011904372,
+    "popisProjektu": "Ut sed fugit tempora ea rem est.",
+    "sumaSchvalenaCelkova": 0.2971515798048493,
+    "sumaSchvalenaCelkovaProjektovGenerujucichPrijem": 0.15887355483306884,
+    "sumaSchvalenaNFP": 0.6472328856133379,
+    "sumaSchvalenaVlastnychZdrojov": 0.7995324147160178,
+    "typyUzemia": [
+      {
+        "id": 6619364344456191000,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      },
+      {
+        "id": 6619364344456191001,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      }
+    ],
+    "updatedAt": "1994-03-05T06:31:21+01:00",
+    "uzemneMechanizmy": [
+      {
+        "id": 6619364344456191000,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      },
+      {
+        "id": 6619364344456191001,
+        "kodZdroj": "Ut ipsum.",
+        "konkretnyCiel": {
+          "href": "/konkretnyCiel/1",
+          "id": 2139854021380057000
+        },
+        "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
+      }
+    ],
+    "vyzva": {
+      "href": "Qui aut et.",
+      "id": 8999066612424642000
+    },
+    "zameranieProjektu": "Dolores dolorem sit.",
+    "ziadatel": {
+      "dic": "Eligendi id sit.",
+      "href": "Atque error ad perferendis soluta autem.",
+      "ico": "Velit omnis provident aperiam occaecati corrupti quibusdam.",
+      "id": 1264743098737356000,
+      "ineIdentifikacneCislo": "Rerum qui voluptatem harum aut eaque."
+    }
+  }
+]

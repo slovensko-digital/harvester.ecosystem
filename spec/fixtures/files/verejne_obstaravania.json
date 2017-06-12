@@ -1,0 +1,85 @@
+[
+  {
+    "cisloVestnika": "Omnis odit.",
+    "cisloZverejneniaVoVestniku": "Rerum ab.",
+    "createdAt": "2008-09-28T08:54:52+02:00",
+    "datumZverejneniaVoVestniku": "2012-10-09T22:05:38+02:00",
+    "druhZakazky": {
+      "id": 1296447484042784300,
+      "kodZdroj": "Deleniti corporis nulla omnis in.",
+      "nazov": "Aut harum officia est aperiam."
+    },
+    "hlavnyPredmetDoplnkovySlovnik": [
+      {
+        "id": 1296447484042784300,
+        "kodZdroj": "Deleniti corporis nulla omnis in.",
+        "nazov": "Aut harum officia est aperiam."
+      },
+      {
+        "id": 1296447484042784301,
+        "kodZdroj": "Deleniti corporis nulla omnis in.",
+        "nazov": "Aut harum officia est aperiam."
+      }
+    ],
+    "hlavnyPredmetHlavnySlovnik": {
+      "id": 1296447484042784300,
+      "kodZdroj": "Deleniti corporis nulla omnis in.",
+      "nazov": "Aut harum officia est aperiam."
+    },
+    "href": "Adipisci sunt.",
+    "id": 8373586022319921000,
+    "kod": "Explicabo consequatur doloremque inventore magni.",
+    "metodaVo": {
+      "id": 1296447484042784301,
+      "kodZdroj": "Deleniti corporis nulla omnis in.",
+      "nazov": "Aut harum officia est aperiam."
+    },
+    "nazov": "Est inventore esse eaque mollitia.",
+    "obstaravatel": {
+      "href": "Aut dolores omnis id.",
+      "ico": "Nihil nam tenetur quisquam harum aspernatur.",
+      "id": 987741135256222700,
+      "ineIdentifikacneCislo": "Quae mollitia quae ut corporis."
+    },
+    "operacneProgramy": [
+      {
+        "href": "Quisquam a non in.",
+        "id": 4047731169218545000
+      }
+    ],
+    "pocetPrijatychPonuk": 8753804882895689000,
+    "pocetVylucenychPonuk": 5880104912417865000,
+    "postupObstaravania": {
+      "id": 1296447484042784300,
+      "kodZdroj": "Deleniti corporis nulla omnis in.",
+      "nazov": "Aut harum officia est aperiam."
+    },
+    "predpokladanaHodnotaZakazky": 0.5942105728724053,
+    "projekty": [
+      {
+        "href": "Atque maxime fugiat explicabo.",
+        "id": 6058429222335320000
+      },
+      {
+        "href": "Atque maxime fugiat explicabo.",
+        "id": 6058429222335320001
+      }
+    ],
+    "stav": "Cumque distinctio odio deserunt ut ipsum suscipit.",
+    "uctovneDoklady": [
+      {
+        "href": "Iure numquam accusantium.",
+        "id": 2622646263305975300
+      }
+    ],
+    "updatedAt": "2015-09-27T09:03:35+02:00",
+    "urlOdkazOznamenie": "Veniam autem quo.",
+    "zadavatel": {
+      "href": "Eligendi id sit.",
+      "ico": "Atque error ad perferendis soluta autem.",
+      "id": 3604616086874745000,
+      "ineIdentifikacneCislo": "Omnis provident aperiam occaecati corrupti."
+    },
+    "zverejneneVoVestnikuEU": false
+  }
+]
