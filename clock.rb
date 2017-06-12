@@ -9,4 +9,5 @@ module Clockwork
   end
 
   every(1.week, 'upvs:public_authority_edesks:sync', at: 'Sunday 4:00')
+  every(1.day, 'itms:all:sync', at: '5:00')
 end
