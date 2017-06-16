@@ -3,7 +3,7 @@ require 'harvester_utils/downloader'
 class Itms::AccountingDocumentsHarvester < Itms::Harvester
 
   def run
-    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/uctovneDoklady?minId=#{min_id}&limit=100")
+    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/uctovneDoklady?minId=#{min_id}&limit=100")
 
     json_response.each do |json|
       Itms::AccountingDocument.transaction do

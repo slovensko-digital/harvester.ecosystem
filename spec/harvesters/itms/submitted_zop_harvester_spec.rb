@@ -7,9 +7,9 @@ RSpec.describe Itms::SubmittedZopHarvester, type: :service do
       zop_content = File.read(fixture_filepath('fixtures/files/zop_predlozene.json'))
       downloader = double
 
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/zop/predlozene?minId=0&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zop/predlozene?minId=0&limit=100')
         .and_return(double('response', response_code: 200, body: zop_content)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/zop/predlozene?minId=1404159811923837200&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zop/predlozene?minId=1404159811923837200&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect {
         described_class.run(min_id: 0, downloader: downloader)

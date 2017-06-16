@@ -3,7 +3,7 @@ require 'harvester_utils/downloader'
 class Itms::SubmittedZopHarvester < Itms::Harvester
 
   def run
-    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/zop/predlozene?minId=#{min_id}&limit=100")
+    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/zop/predlozene?minId=#{min_id}&limit=100")
 
     json_response.each do |json|
       Itms::SubmittedZop.transaction do

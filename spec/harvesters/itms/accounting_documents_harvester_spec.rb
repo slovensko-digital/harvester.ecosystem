@@ -8,15 +8,15 @@ RSpec.describe Itms::AccountingDocumentsHarvester, type: :service do
       supplier_content = File.read(fixture_filepath('fixtures/files/dodavatel.json'))
       downloader = double
 
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/uctovneDoklady?minId=0&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/uctovneDoklady?minId=0&limit=100')
         .and_return(double('response', response_code: 500, body: '[]')).once
       expect{ described_class.run(min_id: 0, downloader: downloader) }.to raise_error(Itms::Harvester::ApiError)
       
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/uctovneDoklady?minId=0&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/uctovneDoklady?minId=0&limit=100')
         .and_return(double('response', response_code: 200, body: documents_content)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/uctovneDoklady?minId=3422888082168929300&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/uctovneDoklady?minId=3422888082168929300&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/dodavatelia/1')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/dodavatelia/1')
         .and_return(double('response', response_code: 200, body: supplier_content)).at_least(:once)
       expect {
         expect {

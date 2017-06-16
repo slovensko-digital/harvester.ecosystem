@@ -10,15 +10,15 @@ RSpec.describe Itms::OngoingProjectsHarvester, type: :service do
       axis_content = File.read(fixture_filepath('fixtures/files/prioritna_os.json'))
       downloader = double
 
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/projekty/vrealizacii?minId=0&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/projekty/vrealizacii?minId=0&limit=100')
         .and_return(double('response', response_code: 200, body: project_file)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/projekty/vrealizacii?minId=6058429222335320000&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/projekty/vrealizacii?minId=6058429222335320000&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/prioritnaOs/1')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/prioritnaOs/1')
         .and_return(double('response', response_code: 200, body: axis_content)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/konkretnyCiel/1')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/konkretnyCiel/1')
         .and_return(double('response', response_code: 200, body: goal_file)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/subjekty/1')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/subjekty/1')
         .and_return(double('response', response_code: 200, body: unit_content)).at_least(:once)
       expect {
         expect {

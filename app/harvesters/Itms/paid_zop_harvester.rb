@@ -3,7 +3,7 @@ require 'harvester_utils/downloader'
 class Itms::PaidZopHarvester < Itms::Harvester
 
   def run
-    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/zop/uhradene?minId=#{min_id}&limit=100")
+    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/zop/uhradene?minId=#{min_id}&limit=100")
 
     json_response.each do |json|
       Itms::PaidZop.transaction do

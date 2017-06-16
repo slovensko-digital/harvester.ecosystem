@@ -9,13 +9,13 @@ RSpec.describe Itms::ProcurementsHarvester, type: :service do
       supplier_content = File.read(fixture_filepath('fixtures/files/dodavatel.json'))
       downloader = double
 
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/verejneObstaravania?minId=0&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/verejneObstaravania?minId=0&limit=100')
         .and_return(double('response', response_code: 200, body: procurements_content)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/verejneObstaravania?minId=8373586022319921000&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/verejneObstaravania?minId=8373586022319921000&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/verejneObstaravania/8373586022319921000/zmluvyVerejneObstaravanie')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/verejneObstaravania/8373586022319921000/zmluvyVerejneObstaravanie')
         .and_return(double('response', response_code: 200, body: procurement_contracts_content)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/dodavatelia/1')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/dodavatelia/1')
         .and_return(double('response', response_code: 200, body: supplier_content)).at_least(:once)
       expect {
         expect {

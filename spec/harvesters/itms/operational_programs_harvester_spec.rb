@@ -9,13 +9,13 @@ RSpec.describe Itms::OperationalProgramsHarvester, type: :service do
       unit_content = File.read(fixture_filepath('fixtures/files/subjekt.json'))
       downloader = double
 
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/operacneProgramy?minId=0&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/operacneProgramy?minId=0&limit=100')
         .and_return(double('response', response_code: 200, body: programs_content)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/operacneProgramy?minId=99&limit=100')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/operacneProgramy?minId=99&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/operacneProgramy/99/prioritneOsi')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/operacneProgramy/99/prioritneOsi')
         .and_return(double('response', response_code: 200, body: axes_content)).at_least(:once)
-      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/subjekty/1')
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/subjekty/1')
         .and_return(double('response', response_code: 200, body: unit_content)).at_least(:once)
       expect {
         expect {

@@ -3,7 +3,7 @@ require 'harvester_utils/downloader'
 class Itms::ProcurementsHarvester < Itms::Harvester
 
   def run
-    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/verejneObstaravania?minId=#{min_id}&limit=100")
+    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/verejneObstaravania?minId=#{min_id}&limit=100")
 
     json_response.each do |json|
       Itms::Procurement.transaction do
@@ -140,7 +140,7 @@ class Itms::ProcurementsHarvester < Itms::Harvester
   end
 
   def save_procurement_contract(procurement)
-    response = downloader.get("https://opendata.itms2014.sk/verejneObstaravania/#{procurement.itms_identifier}/zmluvyVerejneObstaravanie")
+    response = downloader.get("https://opendata.itms2014.sk/v1/verejneObstaravania/#{procurement.itms_identifier}/zmluvyVerejneObstaravanie")
     handle_api_response(response).each do |contract_json|
       contract = Itms::ProcurementContract.find_or_initialize_by(itms_identifier: contract_json['id'])
       contract.procurement_contract_procurement = procurement

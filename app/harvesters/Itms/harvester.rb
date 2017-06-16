@@ -37,7 +37,7 @@ class Itms::Harvester
   end
 
   def load_and_save_specific_goal(href)
-    response = downloader.get("https://opendata.itms2014.sk#{href}")
+    response = downloader.get("https://opendata.itms2014.sk/v1#{href}")
     json = handle_api_response(response)
 
     specific_goal = Itms::SpecificGoal.find_or_initialize_by(itms_identifier: json['id'])
@@ -61,13 +61,13 @@ class Itms::Harvester
   end
 
   def load_and_save_priority_axis(href)
-    response = downloader.get("https://opendata.itms2014.sk#{href}")
+    response = downloader.get("https://opendata.itms2014.sk/v1#{href}")
 
     save_axis(handle_api_response(response))
   end
 
   def load_and_save_priority_axes(href)
-    response = downloader.get("https://opendata.itms2014.sk#{href}")
+    response = downloader.get("https://opendata.itms2014.sk/v1#{href}")
 
     handle_api_response(response).each do |axis_json|
       save_axis(axis_json)
@@ -93,7 +93,7 @@ class Itms::Harvester
   end
 
   def load_and_save_unit(href)
-    response = downloader.get("https://opendata.itms2014.sk#{href}")
+    response = downloader.get("https://opendata.itms2014.sk/v1#{href}")
     json = handle_api_response(response)
 
     unit = Itms::Unit.find_or_initialize_by(itms_identifier: json['id'])
@@ -108,7 +108,7 @@ class Itms::Harvester
   end
 
   def load_and_save_supplier(href)
-    response = downloader.get("https://opendata.itms2014.sk#{href}")
+    response = downloader.get("https://opendata.itms2014.sk/v1#{href}")
     json = handle_api_response(response)
 
     supplier = Itms::Supplier.find_or_initialize_by(itms_identifier: json['id'])
