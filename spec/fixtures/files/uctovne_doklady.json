@@ -7,7 +7,7 @@
     "datumUhrady": "1983-10-05T15:57:49+01:00",
     "datumVyhotovenia": "1985-07-21T05:35:18+02:00",
     "dodavatel": {
-      "href": "/dodavatelia/1",
+      "href": "/v1/dodavatelia/1",
       "ico": "Nihil nam tenetur quisquam harum aspernatur.",
       "id": 987741135256222700,
       "ineIdentifikacneCislo": "Quae mollitia quae ut corporis."

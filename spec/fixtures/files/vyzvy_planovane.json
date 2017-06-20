@@ -19,15 +19,15 @@
     "kod": "Quia accusantium eveniet tempora ab.",
     "konkretneCiele": [
       {
-        "href": "/konkretnyCiel/1",
+        "href": "/v1/konkretnyCiel/1",
         "id": 2139854021380057000
       },
       {
-        "href": "/konkretnyCiel/1",
+        "href": "/v1/konkretnyCiel/1",
         "id": 2139854021380057001
       },
       {
-        "href": "/konkretnyCiel/1",
+        "href": "/v1/konkretnyCiel/1",
         "id": 2139854021380057002
       }
     ],

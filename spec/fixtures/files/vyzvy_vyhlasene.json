@@ -20,7 +20,7 @@
     "kod": "Perspiciatis quibusdam corrupti doloremque qui.",
     "konkretneCiele": [
       {
-        "href": "/konkretnyCiel/1",
+        "href": "/v1/konkretnyCiel/1",
         "id": 2139854021380057000
       }
     ],

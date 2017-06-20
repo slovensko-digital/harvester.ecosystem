@@ -7,7 +7,7 @@
   "kod": "Est eos nulla et.",
   "nazov": "Rerum aspernatur sed modi nihil.",
   "prioritnaOs": {
-    "href": "/prioritnaOs/1",
+    "href": "/v1/prioritnaOs/1",
     "id": 2525418410172522000
   },
   "technickaAsistencia": false,

@@ -11,7 +11,7 @@
         "nazov": "Id aut laboriosam doloremque reiciendis non molestiae.",
         "subjekt": {
           "dic": "Eligendi id sit.",
-          "href": "/subjekty/1",
+          "href": "/v1/subjekty/1",
           "ico": "Velit omnis provident aperiam occaecati corrupti quibusdam.",
           "id": 1264743098737356000,
           "ineIdentifikacneCislo": "Rerum qui voluptatem harum aut eaque."
@@ -29,7 +29,7 @@
         "id": 6619364344456191000,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -58,7 +58,7 @@
         "id": 6619364344456191000,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -67,7 +67,7 @@
         "id": 6619364344456191001,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -76,7 +76,7 @@
         "id": 6619364344456191002,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -134,7 +134,7 @@
         "id": 6619364344456191000,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -143,7 +143,7 @@
         "id": 6619364344456191001,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -152,7 +152,7 @@
         "id": 6619364344456191002,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -203,7 +203,7 @@
         "id": 6619364344456191000,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -212,7 +212,7 @@
         "id": 6619364344456191001,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -224,7 +224,7 @@
         "id": 6619364344456191000,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."
@@ -233,7 +233,7 @@
         "id": 6619364344456191001,
         "kodZdroj": "Ut ipsum.",
         "konkretnyCiel": {
-          "href": "/konkretnyCiel/1",
+          "href": "/v1/konkretnyCiel/1",
           "id": 2139854021380057000
         },
         "nazov": "Dolores quo recusandae blanditiis quaerat dignissimos minima."

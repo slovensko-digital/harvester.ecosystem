@@ -18,7 +18,7 @@ class Itms::OperationalProgramsHarvester < Itms::Harvester
           program[:skratka] = json['skratka']
 
           save_program_subject(json, program)
-          load_and_save_priority_axes("/operacneProgramy/#{program.itms_identifier}/prioritneOsi")
+          load_and_save_priority_axes("/v1/operacneProgramy/#{program.itms_identifier}/prioritneOsi")
 
           program.save!
         rescue ActiveRecord::RecordNotUnique

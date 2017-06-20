@@ -14,7 +14,7 @@
     "dodavatelia": [
       {
         "dodavatel": {
-          "href": "/dodavatelia/1",
+          "href": "/v1/dodavatelia/1",
           "ico": "Nihil nam tenetur quisquam harum aspernatur.",
           "id": 987741135256222700,
           "ineIdentifikacneCislo": "Quae mollitia quae ut corporis."
@@ -23,7 +23,7 @@
       }
     ],
     "hlavnyDodavatel": {
-      "href": "/dodavatelia/1",
+      "href": "/v1/dodavatelia/1",
       "ico": "Nihil nam tenetur quisquam harum aspernatur.",
       "id": 987741135256222700,
       "ineIdentifikacneCislo": "Quae mollitia quae ut corporis."
