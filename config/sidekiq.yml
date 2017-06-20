@@ -5,3 +5,4 @@ production:
   :concurrency: 8
 :queues:
   - [upvs, 1]
+  - [itms, 1]
