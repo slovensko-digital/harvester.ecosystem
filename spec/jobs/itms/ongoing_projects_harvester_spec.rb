@@ -4,14 +4,17 @@ RSpec.describe Itms::OngoingProjectsHarvester, type: :service do
 
   context '#run' do
     it 'loads and imports all ongoing projects' do
-      project_file = File.read(fixture_filepath('fixtures/files/projekty.json'))
+      projects_list = File.read(fixture_filepath('fixtures/files/projekty.json'))
+      project_content = File.read(fixture_filepath('fixtures/files/projekt.json'))
       goal_file = File.read(fixture_filepath('fixtures/files/konkretny_ciel.json'))
       unit_content = File.read(fixture_filepath('fixtures/files/subjekt.json'))
       axis_content = File.read(fixture_filepath('fixtures/files/prioritna_os.json'))
       downloader = double
 
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/projekty/vrealizacii?minId=0&limit=100')
-        .and_return(double('response', response_code: 200, body: project_file)).at_least(:once)
+        .and_return(double('response', response_code: 200, body: projects_list)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/href/to/project')
+        .and_return(double('response', response_code: 200, body: project_content)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/projekty/vrealizacii?minId=6058429222335320000&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/prioritnaOs/1')

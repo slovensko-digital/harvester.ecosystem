@@ -3,9 +3,11 @@ require 'harvester_utils/downloader'
 class Itms::FinishedProjectsHarvester < Itms::Harvester
 
   def run
-    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/projekty/ukoncene?minId=#{min_id}&limit=100")
+    list_json = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/projekty/ukoncene?minId=#{min_id}&limit=100")
 
-    json_response.each do |json|
+    list_json.each do |list_entry_json|
+      json = load_and_parse_endpoint("https://opendata.itms2014.sk#{list_entry_json['href']}")
+
       Itms::FinishedProject.transaction do
         begin
           project = Itms::FinishedProject.new
@@ -54,7 +56,7 @@ class Itms::FinishedProjectsHarvester < Itms::Harvester
       end
     end
 
-    rerun_if_necessary(json_response, Itms::FinishedProject)
+    rerun_if_necessary(list_json, Itms::FinishedProject)
   end
 
   private
