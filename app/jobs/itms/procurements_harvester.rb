@@ -5,7 +5,9 @@ class Itms::ProcurementsHarvester < Itms::Harvester
   def run
     json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/verejneObstaravania?minId=#{min_id}&limit=100")
 
-    json_response.each do |json|
+    json_response.each do |list_item_json|
+      json = load_and_parse_relative_url(list_item_json['href'])
+
       Itms::Procurement.transaction do
         begin
           procurement = Itms::Procurement.new
