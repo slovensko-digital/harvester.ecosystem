@@ -5,7 +5,9 @@ class Itms::SubmittedZopHarvester < Itms::Harvester
   def run
     json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/zop/predlozene?minId=#{min_id}&limit=100")
 
-    json_response.each do |json|
+    json_response.each do |list_item_json|
+      json = load_and_parse_relative_url(list_item_json['href'])
+
       Itms::SubmittedZop.transaction do
         begin
           zop = Itms::SubmittedZop.new
