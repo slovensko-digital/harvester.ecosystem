@@ -18,6 +18,10 @@ class Itms::Harvester
     handle_api_response(response)
   end
 
+  def load_and_parse_relative_url(relative_url)
+    load_and_parse_endpoint("https://opendata.itms2014.sk#{relative_url}")
+  end
+
   def handle_api_response(response)
     if response.response_code == 200
       JSON.parse(response.body)
