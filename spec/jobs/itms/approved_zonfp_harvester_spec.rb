@@ -4,14 +4,17 @@ RSpec.describe Itms::ApprovedZonfpHarvester, type: :service do
 
   context '#run' do
     it 'loads and imports all approved zonfp' do
-      zonfp_content = File.read(fixture_filepath('fixtures/files/zonfp_schvalene.json'))
+      zonfp_list_content = File.read(fixture_filepath('fixtures/files/zonfp_schvalene_list.json'))
+      zonfp_item_content = File.read(fixture_filepath('fixtures/files/zonfp_schvalene_item.json'))
       unit_content = File.read(fixture_filepath('fixtures/files/subjekt.json'))
       goal_file = File.read(fixture_filepath('fixtures/files/konkretny_ciel.json'))
       axis_content = File.read(fixture_filepath('fixtures/files/prioritna_os.json'))
       downloader = double
 
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zonfp/schvalene?minId=0&limit=100')
-        .and_return(double('response', response_code: 200, body: zonfp_content)).at_least(:once)
+        .and_return(double('response', response_code: 200, body: zonfp_list_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zonfp/schvalene/4187030973569588000')
+        .and_return(double('response', response_code: 200, body: zonfp_item_content)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zonfp/schvalene?minId=4187030973569588000&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/subjekty/1')
