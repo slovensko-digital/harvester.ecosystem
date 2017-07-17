@@ -5,6 +5,7 @@ RSpec.describe Itms::AccountingDocumentsHarvester, type: :service do
   context '#run' do
     it 'loads and imports all accounting documents' do
       documents_content = File.read(fixture_filepath('fixtures/files/uctovne_doklady.json'))
+      document_content = File.read(fixture_filepath('fixtures/files/uctovny_doklad.json'))
       supplier_content = File.read(fixture_filepath('fixtures/files/dodavatel.json'))
       downloader = double
 
@@ -14,6 +15,8 @@ RSpec.describe Itms::AccountingDocumentsHarvester, type: :service do
       
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/uctovneDoklady?minId=0&limit=100')
         .and_return(double('response', response_code: 200, body: documents_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/uctovneDoklady/3422888082168929300')
+        .and_return(double('response', response_code: 200, body: document_content)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/uctovneDoklady?minId=3422888082168929300&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/dodavatelia/1')
