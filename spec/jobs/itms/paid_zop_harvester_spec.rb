@@ -4,11 +4,14 @@ RSpec.describe Itms::PaidZopHarvester, type: :service do
 
   context '#run' do
     it 'loads and imports all paid zop' do
-      zop_content = File.read(fixture_filepath('fixtures/files/zop_uhradene.json'))
+      zop_list_content = File.read(fixture_filepath('fixtures/files/zop_uhradene_list.json'))
+      zop_item_content = File.read(fixture_filepath('fixtures/files/zop_uhradene_item.json'))
       downloader = double
 
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zop/uhradene?minId=0&limit=100')
-        .and_return(double('response', response_code: 200, body: zop_content)).at_least(:once)
+        .and_return(double('response', response_code: 200, body: zop_list_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zop/uhradene/1404159811923837200')
+        .and_return(double('response', response_code: 200, body: zop_item_content)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zop/uhradene?minId=1404159811923837200&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect {

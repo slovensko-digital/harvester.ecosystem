@@ -4,11 +4,14 @@ RSpec.describe Itms::RejectedZopHarvester, type: :service do
 
   context '#run' do
     it 'loads and imports all rejected zop' do
-      zop_content = File.read(fixture_filepath('fixtures/files/zop_zamietnute.json'))
+      zop_list_content = File.read(fixture_filepath('fixtures/files/zop_zamietnute_list.json'))
+      zop_item_content = File.read(fixture_filepath('fixtures/files/zop_zamietnute_item.json'))
       downloader = double
 
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zop/zamietnute?minId=0&limit=100')
-        .and_return(double('response', response_code: 200, body: zop_content)).at_least(:once)
+        .and_return(double('response', response_code: 200, body: zop_list_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zop/zamietnute/1404159811923837200')
+        .and_return(double('response', response_code: 200, body: zop_item_content)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zop/zamietnute?minId=1404159811923837200&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect {

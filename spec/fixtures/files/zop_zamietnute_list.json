@@ -2,14 +2,10 @@
   {
     "createdAt": "1985-11-29T22:46:53+01:00",
     "datumPrijatia": "2007-09-03T19:47:40+02:00",
-    "href": "Fuga officiis quo molestiae.",
+    "href": "/v1/zop/zamietnute/1404159811923837200",
     "id": 1404159811923837200,
     "kod": "Nobis commodi.",
     "narokovanaSuma": 0.06503558901480866,
-    "predfinancovanie": {
-      "href": "Fuga officiis quo molestiae.",
-      "id": 1404159811923837200
-    },
     "predkladanaZa": {
       "dic": "Eligendi id sit.",
       "href": "Atque error ad perferendis soluta autem.",
@@ -28,9 +24,8 @@
       "href": "Est est hic.",
       "id": 8800877751400878000
     },
+    "stavZamietnutejZop": "Stiahnutá prijímateľom (K)",
     "typ": "Ipsam molestias nobis.",
-    "updatedAt": "1977-12-10T11:49:32+01:00",
-    "vyplacaSaPartnerovi": false,
-    "zopJeZaverecna": false
+    "updatedAt": "1977-12-10T11:49:32+01:00"
   }
 ]
