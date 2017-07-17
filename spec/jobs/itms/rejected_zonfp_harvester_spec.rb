@@ -4,14 +4,17 @@ RSpec.describe Itms::RejectedZonfpHarvester, type: :service do
 
   context '#run' do
     it 'loads and imports all rejected zonfp' do
-      zonfp_content = File.read(fixture_filepath('fixtures/files/zonfp_zamietnute.json'))
+      zonfp_list_content = File.read(fixture_filepath('fixtures/files/zonfp_zamietnute_list.json'))
+      zonfp_item_content = File.read(fixture_filepath('fixtures/files/zonfp_zamietnute_item.json'))
       unit_content = File.read(fixture_filepath('fixtures/files/subjekt.json'))
       goal_file = File.read(fixture_filepath('fixtures/files/konkretny_ciel.json'))
       axis_content = File.read(fixture_filepath('fixtures/files/prioritna_os.json'))
       downloader = double
 
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zonfp/zamietnute?minId=0&limit=100')
-        .and_return(double('response', response_code: 200, body: zonfp_content)).at_least(:once)
+        .and_return(double('response', response_code: 200, body: zonfp_list_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zonfp/zamietnute/4549911737367425500')
+        .and_return(double('response', response_code: 200, body: zonfp_item_content)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/zonfp/zamietnute?minId=4549911737367425500&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/subjekty/1')
