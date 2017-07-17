@@ -1,0 +1,35 @@
+[
+  {
+    "alokaciaEU": 0.913376840284702,
+    "createdAt": "2005-11-06T13:12:58+01:00",
+    "datumUzavretia1Kolo": "1992-06-14T14:14:50+02:00",
+    "datumVyhlasenia1Kolo": "2011-07-26T19:38:40+02:00",
+    "druh": "Rerum voluptatem sed.",
+    "href": "/v1/vyzvy/planovane/4362122098381105000",
+    "id": 4362122098381105000,
+    "kod": "Quia accusantium eveniet tempora ab.",
+    "konkretneCiele": [
+      {
+        "href": "/v1/konkretnyCiel/1",
+        "id": 2139854021380057000
+      },
+      {
+        "href": "/v1/konkretnyCiel/1",
+        "id": 2139854021380057001
+      },
+      {
+        "href": "/v1/konkretnyCiel/1",
+        "id": 2139854021380057002
+      }
+    ],
+    "nazov": "Aspernatur impedit veritatis tempore nam qui dolores.",
+    "stav": "Omnis qui odio molestiae sequi maxime.",
+    "updatedAt": "1986-11-25T13:12:19+01:00",
+    "vyhlasovatel": {
+      "href": "Eligendi id sit.",
+      "ico": "Atque error ad perferendis soluta autem.",
+      "id": 3604616086874745000,
+      "ineIdentifikacneCislo": "Omnis provident aperiam occaecati corrupti."
+    }
+  }
+]

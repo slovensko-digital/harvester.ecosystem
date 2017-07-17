@@ -4,13 +4,16 @@ RSpec.describe Itms::DeclaredAppealsHarvester, type: :service do
 
   context '#run' do
     it 'loads and imports all planned appeals' do
-      appeals_content = File.read(fixture_filepath('fixtures/files/vyzvy_vyhlasene.json'))
+      appeals_list_content = File.read(fixture_filepath('fixtures/files/vyzvy_vyhlasene_list.json'))
+      appeals_item_content = File.read(fixture_filepath('fixtures/files/vyzvy_vyhlasene_item.json'))
       goal_file = File.read(fixture_filepath('fixtures/files/konkretny_ciel.json'))
       axis_content = File.read(fixture_filepath('fixtures/files/prioritna_os.json'))
       downloader = double
 
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/vyzvy/vyhlasene?minId=0&limit=100')
-        .and_return(double('response', response_code: 200, body: appeals_content)).at_least(:once)
+        .and_return(double('response', response_code: 200, body: appeals_list_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/vyzvy/vyhlasene/5608104377301085000')
+        .and_return(double('response', response_code: 200, body: appeals_item_content)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/vyzvy/vyhlasene?minId=5608104377301085000&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/konkretnyCiel/1')
