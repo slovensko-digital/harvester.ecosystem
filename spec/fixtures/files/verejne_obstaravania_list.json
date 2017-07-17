@@ -1,0 +1,17 @@
+[
+  {
+    "createdAt": "2008-09-28T08:54:52+02:00",
+    "href": "/v1/verejneObstaravania/8373586022319921000",
+    "id": 8373586022319921000,
+    "kod": "Explicabo consequatur doloremque inventore magni.",
+    "obstaravatel": {
+      "href": "Aut dolores omnis id.",
+      "ico": "Nihil nam tenetur quisquam harum aspernatur.",
+      "id": 987741135256222700,
+      "ineIdentifikacneCislo": "Quae mollitia quae ut corporis."
+    },
+    "predpokladanaHodnotaZakazky": 0.5942105728724053,
+    "stav": "Cumque distinctio odio deserunt ut ipsum suscipit.",
+    "updatedAt": "2015-09-27T09:03:35+02:00"
+  }
+]

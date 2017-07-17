@@ -4,13 +4,16 @@ RSpec.describe Itms::ProcurementsHarvester, type: :service do
 
   context '#run' do
     it 'loads and imports all procurements' do
-      procurements_content = File.read(fixture_filepath('fixtures/files/verejne_obstaravania.json'))
+      procurements_list_content = File.read(fixture_filepath('fixtures/files/verejne_obstaravania_list.json'))
+      procurements_item_content = File.read(fixture_filepath('fixtures/files/verejne_obstaravania_item.json'))
       procurement_contracts_content = File.read(fixture_filepath('fixtures/files/zmluvy_verejneho_obstaravania.json'))
       supplier_content = File.read(fixture_filepath('fixtures/files/dodavatel.json'))
       downloader = double
 
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/verejneObstaravania?minId=0&limit=100')
-        .and_return(double('response', response_code: 200, body: procurements_content)).at_least(:once)
+        .and_return(double('response', response_code: 200, body: procurements_list_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/verejneObstaravania/8373586022319921000')
+        .and_return(double('response', response_code: 200, body: procurements_item_content)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/verejneObstaravania?minId=8373586022319921000&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/verejneObstaravania/8373586022319921000/zmluvyVerejneObstaravanie')
