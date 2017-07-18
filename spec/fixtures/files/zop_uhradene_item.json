@@ -1,6 +1,7 @@
 {
   "createdAt": "1985-11-29T22:46:53+01:00",
   "datumPrijatia": "2007-09-03T19:47:40+02:00",
+  "datumUhrady": "2016-02-09T00:00:00Z",
   "href": "/v1/zop/uhradene/1404159811923837200",
   "id": 1404159811923837200,
   "kod": "Nobis commodi.",
@@ -27,6 +28,7 @@
     "href": "Est est hic.",
     "id": 8800877751400878000
   },
+  "schvalenaSuma": 7177500,
   "typ": "Ipsam molestias nobis.",
   "updatedAt": "1977-12-10T11:49:32+01:00",
   "vyplacaSaPartnerovi": false,

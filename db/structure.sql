@@ -5246,7 +5246,9 @@ CREATE TABLE zop_uhradene (
     updated_at timestamp without time zone,
     datum_prijatia timestamp without time zone,
     vyplaca_sa_partnerovi boolean,
-    zop_je_zaverecna boolean
+    zop_je_zaverecna boolean,
+    datum_uhrady timestamp without time zone,
+    schvalena_suma integer
 );
 
 
@@ -9580,6 +9582,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170504182810'),
 ('20170504192725'),
 ('20170612194706'),
-('20170621103205');
+('20170621103205'),
+('20170718063739');
 
 
