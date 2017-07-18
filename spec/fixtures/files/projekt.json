@@ -262,6 +262,10 @@
     "id": 3604616086874745000,
     "ineIdentifikacneCislo": "ine_123123123_cislo"
   },
+  "schvalenaZonfp": {
+    "href": "/v1/zonfp/prijate/6737247880451281000",
+    "id": 6737247880451281000
+  },
   "stav": "Quia est assumenda in nihil.",
   "sumaCelkovaProjektovGenerujucichPrijem": 0.8730151764127463,
   "sumaZazmluvnena": 0.7374011238180925,

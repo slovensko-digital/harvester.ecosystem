@@ -14,5 +14,6 @@ class Itms::FinishedProject < ApplicationRecord
   has_many :finished_project_territory_types, foreign_key: :projekty_ukoncene_id
   has_many :finished_project_territorial_mechanisms, foreign_key: :projekty_ukoncene_id
   has_one :finished_project_recipient, foreign_key: :projekty_ukoncene_id
+  has_one :finished_project_approved_zonfp, foreign_key: :projekty_ukoncene_id
   has_one :finished_project_appeal, foreign_key: :projekty_ukoncene_id
 end

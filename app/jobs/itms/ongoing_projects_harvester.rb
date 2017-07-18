@@ -44,6 +44,7 @@ class Itms::OngoingProjectsHarvester < Itms::Harvester
           save_project_organizational_components(json, project)
           save_project_partners(json, project)
           save_project_recipient(json, project)
+          save_project_approved_zonfp(json, project)
           save_project_territory_types(json, project)
           save_project_territorial_mechanisms(json, project)
           save_project_appeal(json, project)
@@ -221,6 +222,14 @@ class Itms::OngoingProjectsHarvester < Itms::Harvester
       recipient[:itms_identifier] = recipient_json['id']
       recipient[:ico] = recipient_json['ico']
       recipient[:ine_identifikacne_cislo] = recipient_json['ineIdentifikacneCislo']
+    end
+  end
+
+  def save_project_approved_zonfp(json, project)
+    zonfp_json = json['schvalenaZonfp']
+    if zonfp_json.present?
+      zonfp = project.build_ongoing_project_approved_zonfp
+      zonfp[:itms_identifier] = zonfp_json['id']
     end
   end
 

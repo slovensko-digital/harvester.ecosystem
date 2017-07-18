@@ -140,6 +140,9 @@ RSpec.describe Itms::FinishedProjectsHarvester, type: :service do
         ico: '123123123',
         ine_identifikacne_cislo: 'ine_123123123_cislo'
       )
+      expect(finished_project.finished_project_approved_zonfp).to have_attributes(
+        itms_identifier: 6737247880451281000,
+      )
       expect(finished_project.finished_project_territory_types.first).to have_attributes(
         itms_identifier: 6619364344456191000,
         kod_zdroj: 'Ut ipsum.',

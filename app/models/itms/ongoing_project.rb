@@ -14,5 +14,6 @@ class Itms::OngoingProject < ApplicationRecord
   has_many :ongoing_project_territory_types, foreign_key: :projekty_vrealizacii_id
   has_many :ongoing_project_territorial_mechanisms, foreign_key: :projekty_vrealizacii_id
   has_one :ongoing_project_recipient, foreign_key: :projekty_vrealizacii_id
+  has_one :ongoing_project_approved_zonfp, foreign_key: :projekty_vrealizacii_id
   has_one :ongoing_project_appeal, foreign_key: :projekty_vrealizacii_id
 end
