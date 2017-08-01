@@ -142,8 +142,11 @@ class Itms::ProcurementsHarvester < Itms::Harvester
   end
 
   def save_procurement_contract(procurement)
-    response = downloader.get("https://opendata.itms2014.sk/v1/verejneObstaravania/#{procurement.itms_identifier}/zmluvyVerejneObstaravanie")
-    handle_api_response(response).each do |contract_json|
+    json_response = load_and_parse_endpoint("https://opendata.itms2014.sk/v1/verejneObstaravania/#{procurement.itms_identifier}/zmluvyVerejneObstaravanie")
+
+    json_response.each do |contract_list_item|
+      contract_json = load_and_parse_relative_url(contract_list_item['href'])
+
       contract = Itms::ProcurementContract.find_or_initialize_by(itms_identifier: contract_json['id'])
       contract.procurement_contract_procurement = procurement
       contract[:celkova_suma_zmluvy] = contract_json['celkovaSumaZmluvy']

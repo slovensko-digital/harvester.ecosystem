@@ -1,0 +1,17 @@
+[
+  {
+    "celkovaSumaZmluvy": 0.24297325655314403,
+    "cisloZmluvy": "Laboriosam ducimus.",
+    "createdAt": "1999-11-22T03:46:20+01:00",
+    "datumUcinnosti": "1972-05-09T19:26:26+01:00",
+    "hlavnyDodavatel": {
+      "href": "/v1/dodavatelia/1",
+      "ico": "Nihil nam tenetur quisquam harum aspernatur.",
+      "id": 987741135256222700,
+      "ineIdentifikacneCislo": "Quae mollitia quae ut corporis."
+    },
+    "href": "/v1/zmluvaVerejneObstaravanie/2387149493414072000",
+    "id": 2387149493414072000,
+    "kod": "Doloremque nobis rerum voluptates."
+  }
+]
