@@ -249,15 +249,15 @@
   ],
   "partneri": [
     {
-      "href": "Eligendi id sit.",
+      "href": "/v1/subjekty/3604616086874745001",
       "ico": "Atque error ad perferendis soluta autem.",
-      "id": 3604616086874745000,
+      "id": 3604616086874745001,
       "ineIdentifikacneCislo": "Omnis provident aperiam occaecati corrupti."
     }
   ],
   "popisProjektu": "Doloremque eius voluptatem.",
   "prijimatel": {
-    "href": "Eligendi id sit.",
+    "href": "/v1/subjekty/3604616086874745000",
     "ico": "123123123",
     "id": 3604616086874745000,
     "ineIdentifikacneCislo": "ine_123123123_cislo"

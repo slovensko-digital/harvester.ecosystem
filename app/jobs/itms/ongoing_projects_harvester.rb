@@ -212,6 +212,7 @@ class Itms::OngoingProjectsHarvester < Itms::Harvester
       partner[:itms_identifier] = partner_json['id']
       partner[:ico] = partner_json['ico']
       partner[:ine_identifikacne_cislo] = partner_json['ineIdentifikacneCislo']
+      load_and_save_unit(partner_json['href'])
     end
   end
 
@@ -222,6 +223,7 @@ class Itms::OngoingProjectsHarvester < Itms::Harvester
       recipient[:itms_identifier] = recipient_json['id']
       recipient[:ico] = recipient_json['ico']
       recipient[:ine_identifikacne_cislo] = recipient_json['ineIdentifikacneCislo']
+      load_and_save_unit(recipient_json['href'])
     end
   end
 

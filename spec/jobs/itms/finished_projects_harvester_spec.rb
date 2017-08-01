@@ -4,8 +4,8 @@ RSpec.describe Itms::FinishedProjectsHarvester, type: :service do
 
   context '#run' do
     it 'loads and imports all finished projects' do
-      projects_list = File.read(fixture_filepath('fixtures/files/projekty.json'))
-      project_content = File.read(fixture_filepath('fixtures/files/projekt.json'))
+      projects_list = File.read(fixture_filepath('fixtures/files/projekty_list.json'))
+      projects_item = File.read(fixture_filepath('fixtures/files/projekty_item.json'))
       goal_file = File.read(fixture_filepath('fixtures/files/konkretny_ciel.json'))
       unit_content = File.read(fixture_filepath('fixtures/files/subjekt.json'))
       axis_content = File.read(fixture_filepath('fixtures/files/prioritna_os.json'))
@@ -14,7 +14,7 @@ RSpec.describe Itms::FinishedProjectsHarvester, type: :service do
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/projekty/ukoncene?minId=0&limit=100')
         .and_return(double('response', response_code: 200, body: projects_list)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/href/to/project')
-        .and_return(double('response', response_code: 200, body: project_content)).at_least(:once)
+        .and_return(double('response', response_code: 200, body: projects_item)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/projekty/ukoncene?minId=6058429222335320000&limit=100')
         .and_return(double('response', response_code: 200, body: '[]')).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/prioritnaOs/1')
@@ -22,6 +22,10 @@ RSpec.describe Itms::FinishedProjectsHarvester, type: :service do
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/konkretnyCiel/1')
         .and_return(double('response', response_code: 200, body: goal_file)).at_least(:once)
       expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/subjekty/1')
+        .and_return(double('response', response_code: 200, body: unit_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/subjekty/3604616086874745000')
+        .and_return(double('response', response_code: 200, body: unit_content)).at_least(:once)
+      expect(downloader).to receive(:get).with('https://opendata.itms2014.sk/v1/subjekty/3604616086874745001')
         .and_return(double('response', response_code: 200, body: unit_content)).at_least(:once)
       expect {
         described_class.run(min_id: 0, downloader: downloader)
@@ -132,7 +136,7 @@ RSpec.describe Itms::FinishedProjectsHarvester, type: :service do
       )
       expect(finished_project.finished_project_partners.first).to have_attributes(
         ico: 'Atque error ad perferendis soluta autem.',
-        itms_identifier: 3604616086874745000,
+        itms_identifier: 3604616086874745001,
         ine_identifikacne_cislo: 'Omnis provident aperiam occaecati corrupti.'
       )
       expect(finished_project.finished_project_recipient).to have_attributes(
