@@ -11,7 +11,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
       uri = row.fetch('URI')
       edesk = Upvs::PublicAuthorityEdesk.find_or_initialize_by(uri: uri)
       edesk.cin = row.fetch('IČO')
-      edesk.name = row.fetch('NAZOV INŠTITÚCIE')
+      edesk.name = row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV')
       edesk.street = row.fetch('ULICA')
       edesk.street_number = row.fetch('ČÍSLO')
       edesk.postal_code = row.fetch('PSČ')
