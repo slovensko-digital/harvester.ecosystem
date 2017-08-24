@@ -12,5 +12,14 @@ RSpec.describe Upvs::FindPublicAuthorityEdeskListJob, type: :job do
 
       expect(fetch_job).to have_received(:perform_later).with('https://data.gov.sk/dataset/7d918796-3c9a-44a5-95a9-7e1dfca76407/resource/456a5bc6-32bd-4346-bcd1-12ee171ac010/download/zoznamintituciisozriadenouelektronickouschrankou8.csv')
     end
+
+    it 'throws error when there is no csv file detected' do
+      downloader = double
+      expect(downloader).to receive(:download).with('https://data.gov.sk/dataset/upvs-institucie-so-schrankou').and_return('<html></html>')
+
+      expect do
+        subject.perform(downloader: downloader)
+      end.to raise_error(Upvs::ResourceNotFoundError)
+    end
   end
 end
