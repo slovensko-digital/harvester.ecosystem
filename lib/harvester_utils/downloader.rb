@@ -27,6 +27,12 @@ module HarvesterUtils
       file
     end
 
+    def self.download(url)
+      response = Typhoeus.get(url)
+      raise DownloadError, "Unexpected response code: #{response.code} for url: #{url}" if response.code != 200
+      response.body
+    end
+
     def self.get(url)
       Typhoeus.get(url)
     end
