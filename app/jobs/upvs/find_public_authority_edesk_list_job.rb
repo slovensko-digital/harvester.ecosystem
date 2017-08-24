@@ -12,14 +12,15 @@ module Upvs
     def perform(downloader: HarvesterUtils::Downloader, fetch_job: Upvs::FetchPublicAuthorityEdesksListJob)
       html = downloader.download(DATASET_URL)
       doc = Nokogiri::HTML.parse(html)
-      doc.search('.resource-item .dropdown-menu a').each do |a|
-        if a['href'].include?('.csv')
-          fetch_job.perform_later(a['href'])
-          return
-        end
+      resource_link = doc.search('.resource-item .dropdown-menu a').detect do |a|
+        a['href'].include?('.csv')
       end
 
-      raise ResourceNotFoundError
+      if resource_link
+        fetch_job.perform_later(resource_link['href'])
+      else
+        raise ResourceNotFoundError
+      end
     end
   end
 end
