@@ -13,7 +13,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
   private
 
   def import_csv(file)
-    header = File.open(file) {|f| f.readline}
+    header = File.open(file) { |f| f.readline }
     separator = detect_separator(header)
     CSV.foreach(file, headers: true, col_sep: separator) do |row|
       uri = row.fetch('URI')
