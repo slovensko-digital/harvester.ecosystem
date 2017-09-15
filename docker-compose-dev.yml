@@ -1,0 +1,35 @@
+version: '2'
+services:
+
+
+  postgres_data:
+    image: busybox
+    volumes:
+      - /var/lib/postgresql/data
+
+  postgres:
+    image: postgres:9.6
+    logging:
+      driver: "none"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: datahub
+      POSTGRES_USER: datahub
+      POSTGRES_DB: datahub_development
+    volumes_from:
+      -  postgres_data
+
+  harvester:
+    build: .
+    command: bash
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    links:
+          - postgres
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_HOST: postgres
+      BUNDLE_PATH: /app/.bundle
