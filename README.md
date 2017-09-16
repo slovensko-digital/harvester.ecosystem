@@ -10,27 +10,22 @@ Harvester is an open-source application that downloads data from various public 
 
 ## Development  
 
-Harvester is a Ruby-on-Rails application, requiring: 
-- Ruby version 2.4.1 and higher
-- Postgres 9.6 or higher
+Harvester is a Ruby-on-Rails application. However, there is no web process present. The application
+runs as a backend worker/scheduler and uses the Rails framework to enforce coding rules for the project. 
 
-#### Start with Docker
+For development, Harvester requires:
 
-The quickest way to get the application running is using [Docker](https://www.docker.com), which 
-enables to get the complete environment up and running with one command. 
- 
-Ensure you have the Docker v17+ and Docker-Compose 1.14+ installed. 
-If installed properly, the commands `docker -v` and `docker-compose -v` should give you the versions.
+ - Postgres 9.6+ and `psql` Postgres client `(to store scraped data) 
+ - Redis (for job queue management)
 
-Then, start Harvester with `docker-compose -f docker-compose-dev.yml up`. This will:
+Run the application as follows: 
 
-- start the Postgres instance
-- install application dependencies (gems) to `/.bundle` directory
-- run database migrations
-- start the server 
+- Prepare the environment and start the worker with `bin/setup`
+- Ensure that all tests pass: `rake spec`
+- Run a selected job with `rake itms:all:sync`
 
-Running `docker-compose up` for the first time might take a few minutes in order to download 
-the Postgres and Ruby Docker containers.
+If you prefer to run external dependencies (Postgres and Redis) in Docker, you can start them with `docker-compose up`.  
+
 
 ## Contributing
 

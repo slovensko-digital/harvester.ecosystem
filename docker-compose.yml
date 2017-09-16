@@ -20,16 +20,7 @@ services:
     volumes_from:
       -  postgres_data
 
-  harvester:
-    build: .
-    command: bash
-    working_dir: /app
+  redis:
+    image: "redis"
     ports:
-      - "3000:3000"
-    links:
-          - postgres
-    volumes:
-      - .:/app
-    environment:
-      DATABASE_HOST: postgres
-      BUNDLE_PATH: /app/.bundle
+      - "6379:6379"
