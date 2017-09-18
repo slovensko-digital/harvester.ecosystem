@@ -8,6 +8,17 @@ Harvester is an open-source application that downloads data from various public 
 [![Test Coverage](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem/badges/coverage.svg)](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem/coverage)
 [![Inch CI](https://inch-ci.org/github/slovensko-digital/harvester.ecosystem.svg)](https://inch-ci.org/github/slovensko-digital/harvester.ecosystem)
 
+## Supported data sources
+
+Currently, Harvester supports the following data-sources:
+
+- [ITMS2014+](https://www.itms2014.sk/) 
+- [Institutions with public e-desk](https://data.gov.sk/dataset/upvs-institucie-so-schrankou)
+
+Currently, there are data sources in [ekosystem.slovensko.digital](https://ekosystem.slovensko.digital/)
+which are not ingested by Harvester. The corresponding code hasn't been open-sourced yet.
+ 
+
 ## Development  
 
 Harvester is a Ruby-on-Rails application. However, there is no web process present. The application
