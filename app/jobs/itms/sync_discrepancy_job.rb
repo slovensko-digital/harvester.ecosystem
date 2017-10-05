@@ -3,7 +3,7 @@ require 'harvester_utils/downloader'
 class Itms::SyncDiscrepancyJob < ApplicationJob
   def perform(itms_id, downloader: HarvesterUtils::Downloader)
     response = downloader.get("https://opendata.itms2014.sk/v2/nezrovnalost/#{itms_id}")
-    json = JSON.parse(response)
+    json = JSON.parse(response.body)
 
     d = Itms::Discrepancy.find_or_initialize_by(itms_id: itms_id)
 
