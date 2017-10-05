@@ -1,0 +1,90 @@
+{
+  "administrativnyStav": {
+    "id": 5,
+    "kodZdroj": "PX",
+    "nazov": "Ukončené konanie"
+  },
+  "celkovaSumaNezrovnalosti": 23.68,
+  "celkovaSumaNezrovnalostiZdrojEU": 20.13,
+  "celkovaSumaNezrovnalostiZdrojSR": 3.55,
+  "createdAt": "2016-05-26T14:19:38.598Z",
+  "datumPrvejInformacie": "2016-03-02T00:00:00Z",
+  "datumZistenia": "2016-01-19T00:00:00Z",
+  "dlznik": {
+    "dic": "2021777780",
+    "href": "/v2/subjekty/100077",
+    "ico": "30794536",
+    "id": 100077
+  },
+  "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+  "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+  "financnyStav": {
+    "id": 7,
+    "kodZdroj": "G-FULR",
+    "nazov": "Vrátené / vymožené v plnej výške"
+  },
+  "hlavnyTypNezrovnalosti": {
+    "id": 113,
+    "kodZdroj": "811",
+    "nazov": "Akcia neukončená"
+  },
+  "href": "/v2/nezrovnalost/1",
+  "id": 1,
+  "jeSystemova": false,
+  "kod": "312IP160001",
+  "popis": "KU porušil dohodu s ÚPSVR, na základe čoho vznikli neoprávnené výdavky",
+  "projekt": {
+    "href": "/v2/projekty/vrealizacii/4",
+    "id": 4
+  },
+  "stanoviskoDlznika": "prijímateľ oznámil neoprávnené výdavky RO",
+  "stanoviskoOrganu": "RO na základe oznámenia zaevidoval N",
+  "stav": "Vysporiadaná",
+  "subjektyKtoreZistiliNezrovnalost": [
+    {
+      "dic": "2020799209",
+      "href": "/v2/subjekty/100003",
+      "ico": "00681156",
+      "id": 100003
+    }
+  ],
+  "subjektyZodpovedneZaNasledneKonanie": [
+    {
+      "dic": "2020799209",
+      "href": "/v2/subjekty/100003",
+      "ico": "00681156",
+      "id": 100003
+    }
+  ],
+  "sumaNaVymahanie": 23.68,
+  "sumaNaVymahanieZdrojEU": 20.13,
+  "sumaNaVymahanieZdrojSR": 3.55,
+  "suvisiacePohladavkoveDoklady": [
+    {
+      "href": "/v2/pohladavkovyDoklad/3",
+      "id": 3
+    }
+  ],
+  "suvisiaceZop": [
+    {
+      "href": "/v2/zop/uhradene/18",
+      "id": 18
+    }
+  ],
+  "typyNezrovnalosti": [
+    {
+      "id": 113,
+      "kodZdroj": "811",
+      "nazov": "Akcia neukončená"
+    },
+    {
+      "id": 105,
+      "kodZdroj": "741",
+      "nazov": "Nedodržanie záväzkov vyplývajúcich zo zmluvných vzťahov"
+    }
+  ],
+  "updatedAt": "2016-12-01T00:00:00Z",
+  "vratenaSuma": 23.68,
+  "vratenaSumaZdrojEU": 20.13,
+  "vratenaSumaZdrojSR": 3.55
+}
