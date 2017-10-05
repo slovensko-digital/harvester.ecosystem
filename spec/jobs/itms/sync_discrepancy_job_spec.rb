@@ -8,7 +8,7 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
       expect(downloader)
           .to receive(:get)
           .with('https://opendata.itms2014.sk/v2/nezrovnalost/1')
-          .and_return(itms_file_fixture('nezrovnalost_item.json'))
+          .and_return(double(body: itms_file_fixture('nezrovnalost_item.json')))
 
       subject.perform(1, downloader: downloader)
 
