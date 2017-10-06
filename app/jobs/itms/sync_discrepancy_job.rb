@@ -11,7 +11,7 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
     d.itms_created_at = json['createdAt']
     d.itms_updated_at = json['updatedAt']
     
-    #TODO :administrativny_stav
+    d.administrativny_stav = find_or_initialize_code_by_json(json['administrativnyStav'])
     d.celkova_suma_nezrovnalosti = json['celkovaSumaNezrovnalosti']
     d.celkova_suma_nezrovnalosti_zdroj_eu = json['celkovaSumaNezrovnalostiZdrojEU']
     d.celkova_suma_nezrovnalosti_zdroj_pr = json['celkovaSumaNezrovnalostiZdrojPR']
@@ -21,8 +21,8 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
     #TODO :dlznik
     d.dopad_na_rozpocet_eu = json['dopadNaRozpocetEU']
     d.druh_nezrovnalosti = json['druhNezrovnalosti']
-    #TODO :financny_stav
-    #TODO :hlavny_typ_nezrovnalosti
+    d.financny_stav = find_or_initialize_code_by_json(json['financnyStav'])
+    d.hlavny_typ_nezrovnalosti = find_or_initialize_code_by_json(json['hlavnyTypNezrovnalosti'])
     d.je_systemova = json['jeSystemova']
     d.kod = json['kod']
     #TODO :konkretny_ciel
@@ -55,5 +55,15 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
     d.vratena_suma_zdroj_sr = json['vratenaSumaZdrojSR']
 
     d.save!
+  end
+
+  private
+
+  def find_or_initialize_code_by_json(json)
+    Itms::Code.find_or_initialize_by(
+      kod_id: json['id'],
+      kod_zdroj: json['kodZdroj'],
+      nazov: json['nazov']
+    )
   end
 end

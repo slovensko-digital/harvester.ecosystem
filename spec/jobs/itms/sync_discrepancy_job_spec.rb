@@ -13,6 +13,7 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
       subject.perform(1, downloader: downloader)
 
       expect(Itms::Discrepancy.first).to have_attributes(
+        administrativny_stav: Itms::Code.find_by!(kod_id: 5, kod_zdroj: 'PX', nazov: 'Ukončené konanie'),
         celkova_suma_nezrovnalosti: 23.68,
         celkova_suma_nezrovnalosti_zdroj_eu: 20.13,
         celkova_suma_nezrovnalosti_zdroj_pr: nil,
@@ -21,6 +22,8 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         datum_zistenia: DateTime.parse('2016-01-19T00:00:00Z'),
         dopad_na_rozpocet_eu: 'S_DOPADOM_NA_ROZPOCET_EU',
         druh_nezrovnalosti: 'INDIVIDUALNA_NEZROVNALOST',
+        financny_stav: Itms::Code.find_by!(kod_id: 7, kod_zdroj: 'G-FULR', nazov: 'Vrátené / vymožené v plnej výške'),
+        hlavny_typ_nezrovnalosti: Itms::Code.find_by!(kod_id: 113, kod_zdroj: '811', nazov: 'Akcia neukončená'),
         je_systemova: false,
         kod: '312IP160001',
         penale: nil,
@@ -49,10 +52,7 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
 
     pending 'syncs second-level and 1-to-M attributes' do
       expect(Itms::Discrepancy.first).to respond_to(
-       :administrativny_stav,
        :dlznik,
-       :financny_stav,
-       :hlavny_typ_nezrovnalosti,
        :konkretny_ciel,
        :operacny_program,
        :prioritna_os,

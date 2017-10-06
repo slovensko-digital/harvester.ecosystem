@@ -6,7 +6,7 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.datetime :itms_created_at
       t.datetime :itms_updated_at
 
-      #TODO :administrativny_stav
+      t.references :administrativny_stav, index: true, foreign_key: { to_table: 'itms.kody' }
       t.decimal :celkova_suma_nezrovnalosti
       t.decimal :celkova_suma_nezrovnalosti_zdroj_eu
       t.decimal :celkova_suma_nezrovnalosti_zdroj_pr
@@ -16,8 +16,8 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       #TODO :dlznik
       t.string :dopad_na_rozpocet_eu
       t.string :druh_nezrovnalosti
-      #TODO :financny_stav
-      #TODO :hlavny_typ_nezrovnalosti
+      t.references :financny_stav, index: true, foreign_key: { to_table: 'itms.kody' }
+      t.references :hlavny_typ_nezrovnalosti, index: true, foreign_key: { to_table: 'itms.kody' }
       t.boolean :je_systemova
       t.string :kod
       #TODO :konkretny_ciel
