@@ -1,8 +1,8 @@
 class CreateItmsCodes < ActiveRecord::Migration[5.0]
   def change
     create_table 'itms.kody' do |t|
-      t.integer :kod_id, null: false
-      t.string :kod_zdroj, null: false
+      t.integer :kod_id
+      t.string :kod_zdroj
       t.string :nazov
 
       t.timestamps
