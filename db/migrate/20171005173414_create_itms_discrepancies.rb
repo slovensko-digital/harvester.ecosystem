@@ -13,7 +13,7 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.decimal :celkova_suma_nezrovnalosti_zdroj_sr
       t.datetime :datum_prvej_informacie
       t.datetime :datum_zistenia
-      #TODO :dlznik
+      t.references :dlznik, index: true, foreign_key: { to_table: 'itms.subjekty' }
       t.string :dopad_na_rozpocet_eu
       t.string :druh_nezrovnalosti
       t.references :financny_stav, index: true, foreign_key: { to_table: 'itms.kody' }
@@ -49,6 +49,24 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.decimal :vratena_suma_zdroj_pr
       t.decimal :vratena_suma_zdroj_sr
 
+      t.timestamps
+    end
+
+    create_table 'itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost' do |t|
+      t.references :nezrovnalost, index: { name: 'index_itms.nezrovnalosti_subjekty_sposobili_nezrovnalosti' }, foreign_key: { to_table: 'itms.nezrovnalosti' }
+      t.references :subjekt, index: { name: 'index_itms.nezrovnalosti_subjekty_sposobili_subjekty' }, foreign_key: { to_table: 'itms.subjekty' }
+      t.timestamps
+    end
+
+    create_table 'itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost' do |t|
+      t.references :nezrovnalost, index: { name: 'index_itms.nezrovnalosti_subjekty_zistili_nezrovnalost' }, foreign_key: { to_table: 'itms.nezrovnalosti' }
+      t.references :subjekt, index: { name: 'index_itms.nezrovnalosti_subjekty_zistili_subjekty' }, foreign_key: { to_table: 'itms.subjekty' }
+      t.timestamps
+    end
+
+    create_table 'itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie' do |t|
+      t.references :nezrovnalost, index: { name: 'index_itms.nezrovnalosti_subjekty_zodpovedne_nezrovnalosti' }, foreign_key: { to_table: 'itms.nezrovnalosti' }
+      t.references :subjekt, index: { name: 'index_itms.nezrovnalosti_subjekty_zodpovedne_subjekty' }, foreign_key: { to_table: 'itms.subjekty' }
       t.timestamps
     end
   end

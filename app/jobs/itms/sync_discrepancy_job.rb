@@ -18,7 +18,7 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
     d.celkova_suma_nezrovnalosti_zdroj_sr = json['celkovaSumaNezrovnalostiZdrojSR']
     d.datum_prvej_informacie = json['datumPrvejInformacie']
     d.datum_zistenia = json['datumZistenia']
-    #TODO :dlznik
+    d.dlznik = find_or_create_subject_by_json(json['dlznik'], downloader)
     d.dopad_na_rozpocet_eu = json['dopadNaRozpocetEU']
     d.druh_nezrovnalosti = json['druhNezrovnalosti']
     d.financny_stav = find_or_initialize_code_by_json(json['financnyStav'])
@@ -37,9 +37,9 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
     d.stanovisko_dlznika = json['stanoviskoDlznika']
     d.stanovisko_organu = json['stanoviskoOrganu']
     d.stav = json['stav']
-    #TODO :subjekty_ktore_sposobili_nezrovnalost
-    #TODO :subjekty_ktore_zistili_nezrovnalost
-    #TODO :subjekty_zodpovedne_za_nasledne_konanie
+    d.subjekty_ktore_sposobili_nezrovnalost = find_or_create_subjects_by_json(json['subjektyKtoreSposobiliNezrovnalost'], downloader)
+    d.subjekty_ktore_zistili_nezrovnalost = find_or_create_subjects_by_json(json['subjektyKtoreZistiliNezrovnalost'], downloader)
+    d.subjekty_zodpovedne_za_nasledne_konanie = find_or_create_subjects_by_json(json['subjektyZodpovedneZaNasledneKonanie'], downloader)
     d.suma_na_vymahanie = json['sumaNaVymahanie']
     d.suma_na_vymahanie_zdroj_eu = json['sumaNaVymahanieZdrojEU']
     d.suma_na_vymahanie_zdroj_pr = json['sumaNaVymahanieZdrojPR']
@@ -65,5 +65,18 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
       kod_zdroj: json['kodZdroj'],
       nazov: json['nazov']
     )
+  end
+
+  def find_or_create_subject_by_json(json, downloader)
+    unit = Itms::Subject.find_by(itms_id: json['id'])
+    return unit if unit.present?
+
+    Itms::SyncSubjectJob.perform_now(json['id'], downloader: downloader)
+    Itms::Subject.find_by!(itms_id: json['id'])
+  end
+
+  def find_or_create_subjects_by_json(json, downloader)
+    return [] if json.blank?
+    json.map { |subject_json| find_or_create_subject_by_json(subject_json, downloader) }
   end
 end
