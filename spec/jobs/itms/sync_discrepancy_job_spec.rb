@@ -4,11 +4,16 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
   let(:downloader) { double(:downloader) }
 
   context '#perform' do
-    it 'syncs first-level attributes' do
+    it 'syncs discrepancy and all of its attributes' do
       expect(downloader)
           .to receive(:get)
           .with('https://opendata.itms2014.sk/v2/nezrovnalost/1')
           .and_return(double(body: itms_file_fixture('nezrovnalost_item.json')))
+
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
+          .and_return(double(body: itms_file_fixture('subjekt_item.json')))
 
       subject.perform(1, downloader: downloader)
 
@@ -20,6 +25,7 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         celkova_suma_nezrovnalosti_zdroj_sr: 3.55,
         datum_prvej_informacie: DateTime.parse('2016-03-02T00:00:00Z'),
         datum_zistenia: DateTime.parse('2016-01-19T00:00:00Z'),
+        dlznik: Itms::Subject.find_by!(itms_id: 100077),
         dopad_na_rozpocet_eu: 'S_DOPADOM_NA_ROZPOCET_EU',
         druh_nezrovnalosti: 'INDIVIDUALNA_NEZROVNALOST',
         financny_stav: Itms::Code.find_by!(kod_id: 7, kod_zdroj: 'G-FULR', nazov: 'Vrátené / vymožené v plnej výške'),
@@ -34,6 +40,9 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         stanovisko_dlznika: 'prijímateľ oznámil neoprávnené výdavky RO',
         stanovisko_organu: 'RO na základe oznámenia zaevidoval N',
         stav: 'Vysporiadaná',
+        subjekty_ktore_sposobili_nezrovnalost: [],
+        subjekty_ktore_zistili_nezrovnalost: [Itms::Subject.find_by!(itms_id: 100003)],
+        subjekty_zodpovedne_za_nasledne_konanie: [Itms::Subject.find_by!(itms_id: 100003)],
         suma_na_vymahanie: 23.68,
         suma_na_vymahanie_zdroj_eu: 20.13,
         suma_na_vymahanie_zdroj_pr: nil,
@@ -52,14 +61,10 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
 
     pending 'syncs second-level and 1-to-M attributes' do
       expect(Itms::Discrepancy.first).to respond_to(
-       :dlznik,
        :konkretny_ciel,
        :operacny_program,
        :prioritna_os,
        :projekt,
-       :subjekty_ktore_sposobili_nezrovnalost,
-       :subjekty_ktore_zistili_nezrovnalost,
-       :subjekty_zodpovedne_za_nasledne_konanie,
        :suvisiace_nezrovnalosti,
        :suvisiace_pohladavkove_doklady,
        :suvisiace_verejne_obstaravania,
