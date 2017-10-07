@@ -1,0 +1,36 @@
+{
+  "createdAt": "2016-12-14T18:31:24.067Z",
+  "fond": {
+    "id": 3,
+    "kodZdroj": "CF",
+    "nazov": "Kohézny fond"
+  },
+  "href": "/v2/konkretnyCiel/33",
+  "id": 33,
+  "kategoriaRegionov": "menej rozvinuté regióny",
+  "kod": "310010020",
+  "nazov": "1.2.1 Zlepšenie odvádzania a čistenia komunálnych odpadových vôd v aglomeráciách nad 2 000 EO v zmysle záväzkov SR voči EÚ",
+  "prioritnaOs": {
+    "href": "/v2/prioritnaOs/8",
+    "id": 8
+  },
+  "technickaAsistencia": false,
+  "typyAktivit": [
+    {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    },
+    {
+      "href": "/v2/typyAktivit/218",
+      "id": 218
+    },
+    {
+      "href": "/v2/typyAktivit/796",
+      "id": 796
+    },
+    {
+      "href": "/v2/typyAktivit/1268",
+      "id": 1268
+    }
+  ]
+}
