@@ -1,0 +1,54 @@
+{
+  "createdAt": "0001-01-01T00:00:00Z",
+  "datumSplatnosti": "2017-01-16T00:00:00Z",
+  "datumVzniku": "2016-11-11T00:00:00Z",
+  "dlznik": {
+    "dic": "2021846299",
+    "href": "/v2/subjekty/100140",
+    "ico": "30854687",
+    "id": 100140
+  },
+  "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+  "dovodVratenia": {
+    "id": 7,
+    "kodZdroj": "VZN",
+    "nazov": "Vrátenie zistenej nezrovnalosti"
+  },
+  "druh": "PD_K_PROJEKTU",
+  "href": "/v2/pohladavkovyDoklad/2",
+  "id": 2,
+  "kod": "312041A136Z001",
+  "konkretnyCiel": {
+    "href": "/v2/konkretnyCiel/8",
+    "id": 8
+  },
+  "nezrovnalost": {
+    "href": "/v2/nezrovnalost/4",
+    "id": 4
+  },
+  "projekt": {
+    "href": "/v2/projekty/vrealizacii/12",
+    "id": 12
+  },
+  "stav": "Vysporiadaný",
+  "subjektZodpovednyZaVymahanie": {
+    "dic": "2020799209",
+    "href": "/v2/subjekty/100003",
+    "ico": "00681156",
+    "id": 100003
+  },
+  "sumaNaVratenie": 773.79,
+  "sumaNaVratenieZdrojEU": 657.72,
+  "sumaNaVratenieZdrojSR": 116.07,
+  "suvisiaceZop": [
+    {
+      "href": "/v2/zop/uhradene/185",
+      "id": 185
+    }
+  ],
+  "typ": "ZOVFP",
+  "vraciaSaDoRozpoctuProjektu": false,
+  "vratenaSuma": 773.79,
+  "vratenaSumaZdrojEU": 657.72,
+  "vratenaSumaZdrojSR": 116.07
+}
