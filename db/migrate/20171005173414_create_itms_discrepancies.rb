@@ -21,6 +21,7 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.boolean :je_systemova
       t.string :kod
       #TODO :konkretny_ciel
+      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
       #TODO :operacny_program
       t.decimal :penale
       t.decimal :pokuty
