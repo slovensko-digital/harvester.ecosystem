@@ -1,6 +1,6 @@
 require 'harvester_utils/downloader'
 
-class Itms::SyncDiscrepancyJob < ApplicationJob
+class Itms::SyncDiscrepancyJob < ItmsJob
   def perform(itms_id, downloader: HarvesterUtils::Downloader)
     response = downloader.get("https://opendata.itms2014.sk/v2/nezrovnalost/#{itms_id}")
     json = JSON.parse(response.body)
@@ -25,7 +25,7 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
     d.hlavny_typ_nezrovnalosti = find_or_initialize_code_by_json(json['hlavnyTypNezrovnalosti'])
     d.je_systemova = json['jeSystemova']
     d.kod = json['kod']
-    #TODO :konkretny_ciel
+    d.konkretny_ciel = find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader)
     #TODO :operacny_program
     d.penale = json['penale']
     d.pokuty = json['pokuty']
@@ -59,14 +59,6 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
 
   private
 
-  def find_or_initialize_code_by_json(json)
-    Itms::Code.find_or_initialize_by(
-      kod_id: json['id'],
-      kod_zdroj: json['kodZdroj'],
-      nazov: json['nazov']
-    )
-  end
-
   def find_or_create_subject_by_json(json, downloader)
     unit = Itms::Subject.find_by(itms_id: json['id'])
     return unit if unit.present?
@@ -78,5 +70,13 @@ class Itms::SyncDiscrepancyJob < ApplicationJob
   def find_or_create_subjects_by_json(json, downloader)
     return [] if json.blank?
     json.map { |subject_json| find_or_create_subject_by_json(subject_json, downloader) }
+  end
+
+  def find_or_create_specific_goal_by_json(json, downloader)
+    specific_goal = Itms::SpecificGoal.find_by(itms_id: json['id'])
+    return specific_goal if specific_goal.present?
+
+    Itms::SyncSpecificGoalJob.perform_now(json['id'], downloader: downloader)
+    Itms::SpecificGoal.find_by!(itms_id: json['id'])
   end
 end

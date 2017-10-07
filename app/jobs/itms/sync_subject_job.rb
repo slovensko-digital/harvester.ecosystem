@@ -1,6 +1,6 @@
 require 'harvester_utils/downloader'
 
-class Itms::SyncSubjectJob < ApplicationJob
+class Itms::SyncSubjectJob < ItmsJob
   def perform(itms_id, downloader: HarvesterUtils::Downloader)
     response = downloader.get("https://opendata.itms2014.sk/v2/subjekty/#{itms_id}")
     json = JSON.parse(response.body)
