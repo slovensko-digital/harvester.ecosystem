@@ -32,7 +32,19 @@
   "id": 1,
   "jeSystemova": false,
   "kod": "312IP160001",
+  "konkretnyCiel": {
+    "href": "/v2/konkretnyCiel/8",
+    "id": 8
+  },
+  "operacnyProgram": {
+    "href": "/v2/operacneProgramy/4",
+    "id": 4
+  },
   "popis": "KU porušil dohodu s ÚPSVR, na základe čoho vznikli neoprávnené výdavky",
+  "prioritnaOs": {
+    "href": "/v2/prioritnaOs/8",
+    "id": 8
+  },
   "projekt": {
     "href": "/v2/projekty/vrealizacii/4",
     "id": 4

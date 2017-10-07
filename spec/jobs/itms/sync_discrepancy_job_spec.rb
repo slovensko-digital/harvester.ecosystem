@@ -15,6 +15,11 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
           .and_return(double(body: itms_file_fixture('subjekt_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/konkretnyCiel/'))
+          .and_return(double(body: itms_file_fixture('konkretny_ciel_item.json')))
+
       subject.perform(1, downloader: downloader)
 
       expect(Itms::Discrepancy.first).to have_attributes(
@@ -32,10 +37,13 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         hlavny_typ_nezrovnalosti: Itms::Code.find_by!(kod_id: 113, kod_zdroj: '811', nazov: 'Akcia neukončená'),
         je_systemova: false,
         kod: '312IP160001',
+        konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 8),
+        # TODO operacny_program: Itms::OperationalProgram.find_by!(itms_identifier: 4),
         penale: nil,
         pokuty: nil,
         popis: 'KU porušil dohodu s ÚPSVR, na základe čoho vznikli neoprávnené výdavky',
         pouzite_praktiky: nil,
+        # TODO prioritna_os: Itms::PriorityAxis.find_by!(itms_identifier: 8),
         projekt_v_priprave_alebo_nerealizovany: nil,
         stanovisko_dlznika: 'prijímateľ oznámil neoprávnené výdavky RO',
         stanovisko_organu: 'RO na základe oznámenia zaevidoval N',
@@ -61,7 +69,6 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
 
     pending 'syncs second-level and 1-to-M attributes' do
       expect(Itms::Discrepancy.first).to respond_to(
-       :konkretny_ciel,
        :operacny_program,
        :prioritna_os,
        :projekt,
