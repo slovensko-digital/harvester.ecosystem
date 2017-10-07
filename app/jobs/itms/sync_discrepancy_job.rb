@@ -59,14 +59,6 @@ class Itms::SyncDiscrepancyJob < ItmsJob
 
   private
 
-  def find_or_create_subject_by_json(json, downloader)
-    unit = Itms::Subject.find_by(itms_id: json['id'])
-    return unit if unit.present?
-
-    Itms::SyncSubjectJob.perform_now(json['id'], downloader: downloader)
-    Itms::Subject.find_by!(itms_id: json['id'])
-  end
-
   def find_or_create_subjects_by_json(json, downloader)
     return [] if json.blank?
     json.map { |subject_json| find_or_create_subject_by_json(subject_json, downloader) }
