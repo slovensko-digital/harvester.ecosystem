@@ -77,6 +77,7 @@ class Itms::SyncDiscrepancyJob < ItmsJob
   end
 
   def find_or_create_specific_goal_by_json(json, downloader)
+    return if json.blank?
     specific_goal = Itms::SpecificGoal.find_by(itms_id: json['id'])
     return specific_goal if specific_goal.present?
 
