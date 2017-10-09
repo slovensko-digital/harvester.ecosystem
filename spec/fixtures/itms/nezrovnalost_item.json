@@ -77,6 +77,18 @@
       "id": 3
     }
   ],
+  "suvisiaceNezrovnalosti": [
+    {
+      "href": "/v2/nezrovnalost/3",
+      "id": 3
+    }
+  ],
+  "suvisiacePohladavkoveDoklady": [
+    {
+      "href": "/v2/pohladavkovyDoklad/2",
+      "id": 2
+    }
+  ],
   "suvisiaceZop": [
     {
       "href": "/v2/zop/uhradene/18",

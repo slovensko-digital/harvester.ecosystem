@@ -12,6 +12,14 @@ class ItmsJob < ApplicationJob
     json.map { |code_json| find_or_create_code_by_json(code_json) }
   end
 
+  def find_or_create_accounts_receivable_document_by_json(json, downloader)
+    unit = Itms::AccountsReceivableDocument.find_by(itms_id: json['id'])
+    return unit if unit.present?
+
+    Itms::SyncAccountsReceivableDocumentJob.perform_now(json['id'], downloader: downloader)
+    Itms::AccountsReceivableDocument.find_by!(itms_id: json['id'])
+  end
+
   def find_or_create_discrepancy_by_json(json, downloader)
     unit = Itms::Discrepancy.find_by(itms_id: json['id'])
     return unit if unit.present?
