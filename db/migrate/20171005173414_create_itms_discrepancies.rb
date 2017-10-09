@@ -33,15 +33,10 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.string :stanovisko_dlznika
       t.string :stanovisko_organu
       t.string :stav
-      #TODO :subjekty_ktore_sposobili_nezrovnalost
-      #TODO :subjekty_ktore_zistili_nezrovnalost
-      #TODO :subjekty_zodpovedne_za_nasledne_konanie
       t.decimal :suma_na_vymahanie
       t.decimal :suma_na_vymahanie_zdroj_eu
       t.decimal :suma_na_vymahanie_zdroj_pr
       t.decimal :suma_na_vymahanie_zdroj_sr
-      # TODO :suvisiace_nezrovnalosti
-      # TODO :suvisiace_pohladavkove_doklady
       # TODO :suvisiace_verejne_obstaravania
       # TODO :suvisiace_zop
       # TODO :typy_nezrovnalosti

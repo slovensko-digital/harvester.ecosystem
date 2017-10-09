@@ -24,4 +24,16 @@ class Itms::Discrepancy < ApplicationRecord
   has_many :subjekty_zodpovedne_za_nasledne_konanie,
            through: :nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie,
            source: :subjekt
+  has_many :nezrovnalosti_suvisiace_nezrovnalosti,
+           class_name: Itms::DiscrepancyRelatedDiscrepancy,
+           foreign_key: 'nezrovnalost_id'
+  has_many :suvisiace_nezrovnalosti,
+           through: :nezrovnalosti_suvisiace_nezrovnalosti,
+           source: :suvisiaca_nezrovnalost
+  has_many :nezrovnalosti_suvisiace_pohladavkove_doklady,
+           class_name: Itms::DiscrepancyRelatedAccountsReceivableDocument,
+           foreign_key: 'nezrovnalost_id'
+  has_many :suvisiace_pohladavkove_doklady,
+           through: :nezrovnalosti_suvisiace_pohladavkove_doklady,
+           source: :pohladavkovy_doklad
 end
