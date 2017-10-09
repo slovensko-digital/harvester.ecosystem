@@ -68,6 +68,10 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         suma_na_vymahanie_zdroj_sr: 3.55,
         suvisiace_nezrovnalosti: [Itms::Discrepancy.find_by!(itms_id: 3)],
         suvisiace_pohladavkove_doklady: [Itms::AccountsReceivableDocument.find_by!(itms_id: 2)],
+        typy_nezrovnalosti: [
+          Itms::Code.find_by!(kod_id: 113, kod_zdroj: '811', nazov: 'Akcia neukončená'),
+          Itms::Code.find_by!(kod_id: 105, kod_zdroj: '741', nazov: 'Nedodržanie záväzkov vyplývajúcich zo zmluvných vzťahov'),
+        ],
         vratena_suma: 23.68,
         vratena_suma_zdroj_eu: 20.13,
         vratena_suma_zdroj_pr: nil,
@@ -82,7 +86,6 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
        :projekt,
        :suvisiace_verejne_obstaravania,
        :suvisiace_zop,
-       :typy_nezrovnalosti,
       )
     end
   end

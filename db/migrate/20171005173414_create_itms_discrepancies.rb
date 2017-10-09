@@ -20,7 +20,6 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.references :hlavny_typ_nezrovnalosti, index: true, foreign_key: { to_table: 'itms.kody' }
       t.boolean :je_systemova
       t.string :kod
-      #TODO :konkretny_ciel
       t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
       #TODO :operacny_program
       t.decimal :penale
@@ -39,30 +38,11 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.decimal :suma_na_vymahanie_zdroj_sr
       # TODO :suvisiace_verejne_obstaravania
       # TODO :suvisiace_zop
-      # TODO :typy_nezrovnalosti
       t.decimal :vratena_suma
       t.decimal :vratena_suma_zdroj_eu
       t.decimal :vratena_suma_zdroj_pr
       t.decimal :vratena_suma_zdroj_sr
 
-      t.timestamps
-    end
-
-    create_table 'itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost' do |t|
-      t.references :nezrovnalost, index: { name: 'index_itms.nezrovnalosti_subjekty_sposobili_nezrovnalosti' }, foreign_key: { to_table: 'itms.nezrovnalosti' }
-      t.references :subjekt, index: { name: 'index_itms.nezrovnalosti_subjekty_sposobili_subjekty' }, foreign_key: { to_table: 'itms.subjekty' }
-      t.timestamps
-    end
-
-    create_table 'itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost' do |t|
-      t.references :nezrovnalost, index: { name: 'index_itms.nezrovnalosti_subjekty_zistili_nezrovnalost' }, foreign_key: { to_table: 'itms.nezrovnalosti' }
-      t.references :subjekt, index: { name: 'index_itms.nezrovnalosti_subjekty_zistili_subjekty' }, foreign_key: { to_table: 'itms.subjekty' }
-      t.timestamps
-    end
-
-    create_table 'itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie' do |t|
-      t.references :nezrovnalost, index: { name: 'index_itms.nezrovnalosti_subjekty_zodpovedne_nezrovnalosti' }, foreign_key: { to_table: 'itms.nezrovnalosti' }
-      t.references :subjekt, index: { name: 'index_itms.nezrovnalosti_subjekty_zodpovedne_subjekty' }, foreign_key: { to_table: 'itms.subjekty' }
       t.timestamps
     end
   end

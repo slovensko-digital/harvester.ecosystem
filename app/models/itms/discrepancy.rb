@@ -36,4 +36,10 @@ class Itms::Discrepancy < ApplicationRecord
   has_many :suvisiace_pohladavkove_doklady,
            through: :nezrovnalosti_suvisiace_pohladavkove_doklady,
            source: :pohladavkovy_doklad
+  has_many :nezrovnalosti_typy_nezrovnalosti,
+           class_name: Itms::DiscrepancyDiscrepancyType,
+           foreign_key: 'nezrovnalost_id'
+  has_many :typy_nezrovnalosti,
+           through: :nezrovnalosti_typy_nezrovnalosti,
+           source: :kod
 end
