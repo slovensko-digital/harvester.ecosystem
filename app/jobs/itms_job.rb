@@ -13,6 +13,7 @@ class ItmsJob < ApplicationJob
   end
 
   def find_or_create_accounts_receivable_document_by_json(json, downloader)
+    return if json.blank?
     unit = Itms::AccountsReceivableDocument.find_by(itms_id: json['id'])
     return unit if unit.present?
 
@@ -21,6 +22,7 @@ class ItmsJob < ApplicationJob
   end
 
   def find_or_create_discrepancy_by_json(json, downloader)
+    return if json.blank?
     unit = Itms::Discrepancy.find_by(itms_id: json['id'])
     return unit if unit.present?
 
@@ -29,6 +31,7 @@ class ItmsJob < ApplicationJob
   end
 
   def find_or_create_specific_goal_by_json(json, downloader)
+    return if json.blank?
     specific_goal = Itms::SpecificGoal.find_by(itms_id: json['id'])
     return specific_goal if specific_goal.present?
 
@@ -37,6 +40,7 @@ class ItmsJob < ApplicationJob
   end
 
   def find_or_create_subject_by_json(json, downloader)
+    return if json.blank?
     unit = Itms::Subject.find_by(itms_id: json['id'])
     return unit if unit.present?
 
