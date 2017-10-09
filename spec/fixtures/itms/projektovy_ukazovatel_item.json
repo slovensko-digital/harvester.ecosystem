@@ -1,0 +1,26 @@
+{
+  "casPlnenia": [
+    {
+      "id": 4,
+      "nazov": "K - koniec realizácie projektu"
+    }
+  ],
+  "createdAt": "2015-05-18T09:09:08.405Z",
+  "definicia": "<div>Osoby vo veku do 29 rokov, ktor&eacute; s&uacute; bez pr&aacute;ce, k dispoz&iacute;cii pre pr&aacute;cu a akt&iacute;vne hľadaj&uacute;ce pr&aacute;cu, a z&aacute;roveň s&uacute; registrovan&eacute; na &uacute;radoch pr&aacute;ce a ktor&eacute; dokončia intervenciu IZM podľa harmonogramu až do posledn&eacute;ho dňa, resp. posledn&eacute;ho stretnutia podľa harmonogramu. Zamestnaneck&yacute; status sa určuje dňom vstupu do projektu. Vek &uacute;častn&iacute;ka sa poč&iacute;ta od roku narodenia a urč&iacute; sa v deň jeho vstupu do aktiv&iacute;t projektu./<br />Ukazovateľ sa vypoč&iacute;ta ako s&uacute;čet počtu os&ocirc;b vo veku do 29 rokov, ktor&eacute; s&uacute; bez pr&aacute;ce, k dispoz&iacute;cii pre pr&aacute;cu a akt&iacute;vne hľadaj&uacute;ce pr&aacute;cu, a z&aacute;roveň s&uacute; registrovan&eacute; na &uacute;radoch pr&aacute;ce a ktor&eacute; dokončia intervenciu IZM podľa harmonogramu až do posledn&eacute;ho dňa, resp. posledn&eacute;ho stretnutia podľa harmonogramu.<br />Počet sa bude zisťovať na z&aacute;klade&nbsp; monitorovac&iacute;ch spr&aacute;v a z v&yacute;stupn&yacute;ch zost&aacute;v ITMS.</div>",
+  "evidenciaPodlaPohlavia": true,
+  "fondy": [
+    {
+      "id": 2,
+      "kodZdroj": "ESF",
+      "nazov": "Európsky sociálny fond"
+    }
+  ],
+  "href": "/v2/projektovyUkazovatel/1",
+  "id": 1,
+  "kod": "P0099",
+  "mernaJednotka": "počet",
+  "nazov": "Nezamestnaní účastníci, ktorí dokončia intervenciu podporovanú z prostriedkov vyčlenených na iniciatívu na podporu zamestnanosti mladých ľudí",
+  "platnost": true,
+  "typVypoctu": "SUCET",
+  "updatedAt": "2017-09-11T15:15:46.455Z"
+}
