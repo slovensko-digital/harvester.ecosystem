@@ -15,7 +15,7 @@ class Itms::SyncAccountsReceivableDocumentJob < ItmsJob
     ard.datum_vzniku = json['datumVzniku']
     ard.dlznik = find_or_create_subject_by_json(json['dlznik'], downloader)
     ard.dopad_na_rozpocet_eu = json['dopadNaRozpocetEU']
-    ard.dovod_vratenia = find_or_initialize_code_by_json(json['dovodVratenia'])
+    ard.dovod_vratenia = find_or_create_code_by_json(json['dovodVratenia'])
     ard.druh = json['druh']
     ard.kod = json['kod']
     ard.konkretny_ciel = find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader)
