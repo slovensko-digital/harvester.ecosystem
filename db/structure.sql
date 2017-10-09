@@ -179,10 +179,12 @@ CREATE TABLE nezrovnalosti (
     je_systemova boolean,
     kod character varying,
     konkretny_ciel_id integer,
+    operacny_program_id integer,
     penale numeric,
     pokuty numeric,
     popis character varying,
     pouzite_praktiky character varying,
+    prioritna_os_id integer,
     projekt_v_priprave_alebo_nerealizovany character varying,
     stanovisko_dlznika character varying,
     stanovisko_organu character varying,
@@ -417,13 +419,20 @@ ALTER SEQUENCE nezrovnalosti_typy_nezrovnalosti_id_seq OWNED BY nezrovnalosti_ty
 
 CREATE TABLE operacne_programy (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    kod_cci character varying,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    celkova_financna_alokacia numeric,
+    hlavna_alokacia numeric,
     kod character varying,
+    kod_cci character varying,
     nazov character varying,
     skratka character varying,
-    updated_at timestamp without time zone,
-    created_at timestamp without time zone
+    subjekt_id integer,
+    vykonnostna_rezerva numeric,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -447,38 +456,6 @@ ALTER SEQUENCE operacne_programy_id_seq OWNED BY operacne_programy.id;
 
 
 --
--- Name: operacne_programy_subjekty; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE operacne_programy_subjekty (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    operacne_programy_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: operacne_programy_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE operacne_programy_subjekty_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: operacne_programy_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE operacne_programy_subjekty_id_seq OWNED BY operacne_programy_subjekty.id;
-
-
---
 -- Name: pohladavkove_doklady; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -497,6 +474,7 @@ CREATE TABLE pohladavkove_doklady (
     kod character varying,
     konkretny_ciel_id integer,
     nezrovnalost_id integer,
+    prioritna_os_id integer,
     stav character varying,
     subjekt_zodpovedny_za_vymahanie_id integer,
     suma_na_vratenie numeric,
@@ -534,46 +512,23 @@ ALTER SEQUENCE pohladavkove_doklady_id_seq OWNED BY pohladavkove_doklady.id;
 
 
 --
--- Name: prioritna_os_operacne_programy; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE prioritna_os_operacne_programy (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    prioritne_osi_id bigint NOT NULL
-);
-
-
---
--- Name: prioritna_os_operacne_programy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE prioritna_os_operacne_programy_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: prioritna_os_operacne_programy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE prioritna_os_operacne_programy_id_seq OWNED BY prioritna_os_operacne_programy.id;
-
-
---
 -- Name: prioritne_osi; Type: TABLE; Schema: itms; Owner: -
 --
 
 CREATE TABLE prioritne_osi (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    nazov character varying,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    celkova_financna_alokacia numeric,
+    hlavna_alokacia numeric,
     kod character varying,
-    updated_at timestamp without time zone,
-    created_at timestamp without time zone
+    nazov character varying,
+    operacny_program_id integer,
+    vykonnostna_rezerva numeric,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -6235,21 +6190,7 @@ ALTER TABLE ONLY operacne_programy ALTER COLUMN id SET DEFAULT nextval('operacne
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY operacne_programy_subjekty ALTER COLUMN id SET DEFAULT nextval('operacne_programy_subjekty_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
 ALTER TABLE ONLY pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('pohladavkove_doklady_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY prioritna_os_operacne_programy ALTER COLUMN id SET DEFAULT nextval('prioritna_os_operacne_programy_id_seq'::regclass);
 
 
 --
@@ -7535,27 +7476,11 @@ ALTER TABLE ONLY operacne_programy
 
 
 --
--- Name: operacne_programy_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY operacne_programy_subjekty
-    ADD CONSTRAINT operacne_programy_subjekty_pkey PRIMARY KEY (id);
-
-
---
 -- Name: pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY pohladavkove_doklady
     ADD CONSTRAINT pohladavkove_doklady_pkey PRIMARY KEY (id);
-
-
---
--- Name: prioritna_os_operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY prioritna_os_operacne_programy
-    ADD CONSTRAINT prioritna_os_operacne_programy_pkey PRIMARY KEY (id);
 
 
 --
@@ -9004,6 +8929,20 @@ CREATE INDEX "index_itms.nezrovnalosti_on_konkretny_ciel_id" ON nezrovnalosti US
 
 
 --
+-- Name: index_itms.nezrovnalosti_on_operacny_program_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_on_operacny_program_id" ON nezrovnalosti USING btree (operacny_program_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_on_prioritna_os_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_on_prioritna_os_id" ON nezrovnalosti USING btree (prioritna_os_id);
+
+
+--
 -- Name: index_itms.nezrovnalosti_pohladavkove_doklady_doklad; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -9088,10 +9027,17 @@ CREATE INDEX "index_itms.nezrovnalosti_typy_nezrovnalosti_on_nezrovnalost_id" ON
 
 
 --
--- Name: index_itms.operacne_programy_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.operacne_programy_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.operacne_programy_on_itms_identifier" ON operacne_programy USING btree (itms_identifier);
+CREATE UNIQUE INDEX "index_itms.operacne_programy_on_itms_id" ON operacne_programy USING btree (itms_id);
+
+
+--
+-- Name: index_itms.operacne_programy_on_subjekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.operacne_programy_on_subjekt_id" ON operacne_programy USING btree (subjekt_id);
 
 
 --
@@ -9130,10 +9076,31 @@ CREATE INDEX "index_itms.pohladavkove_doklady_on_nezrovnalost_id" ON pohladavkov
 
 
 --
+-- Name: index_itms.pohladavkove_doklady_on_prioritna_os_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_on_prioritna_os_id" ON pohladavkove_doklady USING btree (prioritna_os_id);
+
+
+--
 -- Name: index_itms.pohladavkove_doklady_on_zodpovedny_subjekt; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE INDEX "index_itms.pohladavkove_doklady_on_zodpovedny_subjekt" ON pohladavkove_doklady USING btree (subjekt_zodpovedny_za_vymahanie_id);
+
+
+--
+-- Name: index_itms.prioritne_osi_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.prioritne_osi_on_itms_id" ON prioritne_osi USING btree (itms_id);
+
+
+--
+-- Name: index_itms.prioritne_osi_on_operacny_program_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.prioritne_osi_on_operacny_program_id" ON prioritne_osi USING btree (operacny_program_id);
 
 
 --
@@ -9595,11 +9562,11 @@ ALTER TABLE ONLY projekty_vrealizacii_formy_financovania_ciele
 
 
 --
--- Name: fk_rails_2fb6b8b9aa; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_2faddf5b73; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY operacne_programy_subjekty
-    ADD CONSTRAINT fk_rails_2fb6b8b9aa FOREIGN KEY (operacne_programy_id) REFERENCES operacne_programy(id);
+ALTER TABLE ONLY prioritne_osi
+    ADD CONSTRAINT fk_rails_2faddf5b73 FOREIGN KEY (operacny_program_id) REFERENCES operacne_programy(id);
 
 
 --
@@ -9739,14 +9706,6 @@ ALTER TABLE ONLY uctovne_doklady_verejne_obstaravania
 
 
 --
--- Name: fk_rails_4772cf02fa; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY prioritna_os_operacne_programy
-    ADD CONSTRAINT fk_rails_4772cf02fa FOREIGN KEY (prioritne_osi_id) REFERENCES prioritne_osi(id);
-
-
---
 -- Name: fk_rails_48bf1b5ec9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9768,6 +9727,14 @@ ALTER TABLE ONLY zonfp_schvalene_vyzvy
 
 ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia
     ADD CONSTRAINT fk_rails_4c7925a69d FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: fk_rails_4d83be54d9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_4d83be54d9 FOREIGN KEY (prioritna_os_id) REFERENCES prioritne_osi(id);
 
 
 --
@@ -9896,6 +9863,22 @@ ALTER TABLE ONLY zop_predlozene_predfinancovanie
 
 ALTER TABLE ONLY zonfp_schvalene_organizacne_zlozky
     ADD CONSTRAINT fk_rails_690e6a8952 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
+
+--
+-- Name: fk_rails_69da6acee6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY operacne_programy
+    ADD CONSTRAINT fk_rails_69da6acee6 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
+
+
+--
+-- Name: fk_rails_6e7c1b8881; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT fk_rails_6e7c1b8881 FOREIGN KEY (prioritna_os_id) REFERENCES prioritne_osi(id);
 
 
 --
@@ -10611,6 +10594,14 @@ ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy
 
 
 --
+-- Name: fk_rails_e847f12883; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT fk_rails_e847f12883 FOREIGN KEY (operacny_program_id) REFERENCES operacne_programy(id);
+
+
+--
 -- Name: fk_rails_e906d93305; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10789,6 +10780,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170718083436'),
 ('20171005080348'),
 ('20171005104049'),
+('20171005105044'),
+('20171005110144'),
 ('20171005115835'),
 ('20171005173414'),
 ('20171007133948'),
