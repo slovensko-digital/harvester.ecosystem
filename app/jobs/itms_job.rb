@@ -1,10 +1,15 @@
 class ItmsJob < ApplicationJob
-  def find_or_initialize_code_by_json(json)
-    Itms::Code.find_or_initialize_by(
+  def find_or_create_code_by_json(json)
+    Itms::Code.find_or_create_by!(
         kod_id: json['id'],
         kod_zdroj: json['kodZdroj'],
         nazov: json['nazov']
     )
+  end
+
+  def find_or_create_codes_by_json(json)
+    return [] if json.blank?
+    json.map { |code_json| find_or_create_code_by_json(code_json) }
   end
 
   def find_or_create_discrepancy_by_json(json, downloader)

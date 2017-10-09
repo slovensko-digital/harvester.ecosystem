@@ -11,7 +11,7 @@ class Itms::SyncSpecificGoalJob < ItmsJob
     sg.itms_created_at = json['createdAt']
     sg.itms_updated_at = json['updatedAt']
 
-    sg.fond = find_or_initialize_code_by_json(json['fond'])
+    sg.fond = find_or_create_code_by_json(json['fond'])
     sg.kategoria_regionov = json ['kategoriaRegionov']
     sg.kod = json ['kod']
     sg.nazov = json ['nazov']
