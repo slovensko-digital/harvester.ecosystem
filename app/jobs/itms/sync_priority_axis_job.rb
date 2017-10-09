@@ -16,6 +16,7 @@ class Itms::SyncPriorityAxisJob < ItmsJob
       pa.hlavna_alokacia = json['hlavnaAlokacia']
       pa.kod = json['kod']
       pa.nazov = json['nazov']
+      pa.operacny_program = find_or_create_operational_program_by_json(json['operacnyProgram'], downloader)
       pa.vykonnostna_rezerva = json['vykonnostnaRezerva']
 
       pa.save!

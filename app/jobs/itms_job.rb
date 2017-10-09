@@ -30,6 +30,15 @@ class ItmsJob < ApplicationJob
     Itms::Discrepancy.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_operational_program_by_json(json, downloader)
+    return if json.blank?
+    operational_program = Itms::OperationalProgram.find_by(itms_id: json['id'])
+    return operational_program if operational_program.present?
+
+    Itms::SyncOperationalProgramJob.perform_now(json['id'], downloader: downloader)
+    Itms::OperationalProgram.find_by!(itms_id: json['id'])
+  end
+
   def find_or_create_priority_axis_by_json(json, downloader)
     return if json.blank?
     priority_axis = Itms::PriorityAxis.find_by(itms_id: json['id'])

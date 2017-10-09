@@ -27,7 +27,7 @@ class Itms::SyncDiscrepancyJob < ItmsJob
       d.je_systemova = json['jeSystemova']
       d.kod = json['kod']
       d.konkretny_ciel = find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader)
-      #TODO :operacny_program
+      d.operacny_program = find_or_create_operational_program_by_json(json['operacnyProgram'], downloader)
       d.penale = json['penale']
       d.pokuty = json['pokuty']
       d.popis = json['popis']
