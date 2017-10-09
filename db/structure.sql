@@ -2368,6 +2368,42 @@ ALTER SEQUENCE subjekty_id_seq OWNED BY subjekty.id;
 
 
 --
+-- Name: typy_aktivit; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE typy_aktivit (
+    id integer NOT NULL,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    kod character varying,
+    nazov character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: typy_aktivit_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE typy_aktivit_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: typy_aktivit_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE typy_aktivit_id_seq OWNED BY typy_aktivit.id;
+
+
+--
 -- Name: uctovne_doklady; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -6605,6 +6641,13 @@ ALTER TABLE ONLY subjekty ALTER COLUMN id SET DEFAULT nextval('subjekty_id_seq':
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY typy_aktivit ALTER COLUMN id SET DEFAULT nextval('typy_aktivit_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY uctovne_doklady ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_id_seq'::regclass);
 
 
@@ -7956,6 +7999,14 @@ ALTER TABLE ONLY subjekty
 
 
 --
+-- Name: typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY typy_aktivit
+    ADD CONSTRAINT typy_aktivit_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: uctovne_doklady_dodavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9139,6 +9190,13 @@ CREATE UNIQUE INDEX "index_itms.projekty_vrealizacii_on_itms_identifier" ON proj
 --
 
 CREATE UNIQUE INDEX "index_itms.subjekty_on_itms_id" ON subjekty USING btree (itms_id);
+
+
+--
+-- Name: index_itms.typy_aktivit_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.typy_aktivit_on_itms_id" ON typy_aktivit USING btree (itms_id);
 
 
 --
@@ -10734,6 +10792,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171005115835'),
 ('20171005173414'),
 ('20171007133948'),
+('20171008150412'),
 ('20171009080951'),
 ('20171009115759');
 
