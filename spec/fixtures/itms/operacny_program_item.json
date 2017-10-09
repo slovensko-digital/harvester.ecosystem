@@ -1,0 +1,19 @@
+{
+  "celkovaFinancnaAlokacia": 4327609993,
+  "createdAt": "2017-10-09T10:31:02.622Z",
+  "hlavnaAlokacia": 4327609993,
+  "href": "/v2/operacneProgramy/1",
+  "id": 1,
+  "kod": "310000/7",
+  "kodCCI": "2014SK16M1OP002",
+  "nazov": "Operačný program Kvalita životného prostredia",
+  "skratka": "OP KZP",
+  "subjekt": {
+    "dic": "2023106679",
+    "href": "/v2/subjekty/100002",
+    "ico": "42181810",
+    "id": 100002
+  },
+  "updatedAt": "2017-10-09T10:31:03.057Z",
+  "vykonnostnaRezerva": 0
+}
