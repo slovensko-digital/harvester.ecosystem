@@ -28,6 +28,11 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
 
       allow(downloader)
           .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/operacneProgramy/'))
+          .and_return(double(body: itms_file_fixture('operacny_program_item.json')))
+
+      allow(downloader)
+          .to receive(:get)
           .with(include('https://opendata.itms2014.sk/v2/prioritnaOs/'))
           .and_return(double(body: itms_file_fixture('prioritna_os_item.json')))
 
@@ -54,7 +59,7 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         je_systemova: false,
         kod: '312IP160001',
         konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 8),
-        # TODO operacny_program: Itms::OperationalProgram.find_by!(itms_identifier: 4),
+        operacny_program: Itms::OperationalProgram.find_by!(itms_id: 4),
         penale: nil,
         pokuty: nil,
         popis: 'KU porušil dohodu s ÚPSVR, na základe čoho vznikli neoprávnené výdavky',
@@ -86,7 +91,6 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
 
     pending 'syncs second-level and 1-to-M attributes' do
       expect(Itms::Discrepancy.first).to respond_to(
-       :operacny_program,
        :projekt,
        :suvisiace_verejne_obstaravania,
        :suvisiace_zop,

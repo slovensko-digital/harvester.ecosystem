@@ -13,6 +13,7 @@ class UpdateItmsPriorityAxes < ActiveRecord::Migration[5.0]
       t.decimal :hlavna_alokacia
       t.string :kod
       t.string :nazov
+      t.references :operacny_program, index: true, foreign_key: { to_table: 'itms.operacne_programy' }
       t.decimal :vykonnostna_rezerva
 
       t.timestamps
