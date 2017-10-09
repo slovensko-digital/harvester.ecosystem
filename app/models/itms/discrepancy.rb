@@ -6,6 +6,7 @@ class Itms::Discrepancy < ApplicationRecord
   belongs_to :financny_stav, class_name: Itms::Code
   belongs_to :hlavny_typ_nezrovnalosti, class_name: Itms::Code
   belongs_to :konkretny_ciel, class_name: Itms::SpecificGoal
+  belongs_to :prioritna_os, class_name: Itms::PriorityAxis
   has_many :nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost,
            class_name: Itms::DiscrepancyCauserSubject,
            foreign_key: 'nezrovnalost_id'

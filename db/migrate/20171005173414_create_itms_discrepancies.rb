@@ -26,7 +26,7 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.decimal :pokuty
       t.string :popis
       t.string :pouzite_praktiky
-      #TODO :prioritna_os
+      t.references :prioritna_os, index: true, foreign_key: { to_table: 'itms.prioritne_osi' }
       #TODO :projekt
       t.string :projekt_v_priprave_alebo_nerealizovany
       t.string :stanovisko_dlznika

@@ -26,6 +26,11 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/pohladavkovyDoklad/'))
           .and_return(double(body: itms_file_fixture('pohladavkovy_doklad_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/prioritnaOs/'))
+          .and_return(double(body: itms_file_fixture('prioritna_os_item.json')))
+
       subject.perform(1, downloader: downloader)
 
       expect(Itms::Discrepancy.first).to have_attributes(
@@ -54,7 +59,7 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         pokuty: nil,
         popis: 'KU porušil dohodu s ÚPSVR, na základe čoho vznikli neoprávnené výdavky',
         pouzite_praktiky: nil,
-        # TODO prioritna_os: Itms::PriorityAxis.find_by!(itms_identifier: 8),
+        prioritna_os: Itms::PriorityAxis.find_by!(itms_id: 8),
         projekt_v_priprave_alebo_nerealizovany: nil,
         stanovisko_dlznika: 'prijímateľ oznámil neoprávnené výdavky RO',
         stanovisko_organu: 'RO na základe oznámenia zaevidoval N',
@@ -82,7 +87,6 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
     pending 'syncs second-level and 1-to-M attributes' do
       expect(Itms::Discrepancy.first).to respond_to(
        :operacny_program,
-       :prioritna_os,
        :projekt,
        :suvisiace_verejne_obstaravania,
        :suvisiace_zop,

@@ -15,6 +15,7 @@ class CreateItmsAccountsReceivableDocuments < ActiveRecord::Migration[5.0]
       t.string :kod
       t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
       t.references :nezrovnalost, index: true, foreign_key: { to_table: 'itms.nezrovnalosti' }
+      t.references :prioritna_os, index: true, foreign_key: { to_table: 'itms.prioritne_osi' }
       t.string :stav
       t.references :subjekt_zodpovedny_za_vymahanie, index: { name: 'index_itms.pohladavkove_doklady_on_zodpovedny_subjekt' }, foreign_key: { to_table: 'itms.subjekty' }
       t.decimal :suma_na_vratenie

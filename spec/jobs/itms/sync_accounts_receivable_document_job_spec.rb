@@ -25,6 +25,11 @@ RSpec.describe Itms::SyncAccountsReceivableDocumentJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/nezrovnalost/'))
           .and_return(double(body: itms_file_fixture('nezrovnalost_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/prioritnaOs/'))
+          .and_return(double(body: itms_file_fixture('prioritna_os_item.json')))
+
       subject.perform(2, downloader: downloader)
 
       expect(Itms::AccountsReceivableDocument.first).to have_attributes(
@@ -42,6 +47,7 @@ RSpec.describe Itms::SyncAccountsReceivableDocumentJob, type: :job do
         kod: '312041A136Z001',
         konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 8),
         nezrovnalost: Itms::Discrepancy.find_by!(itms_id: 4),
+        prioritna_os: Itms::PriorityAxis.find_by!(itms_id: 8),
         stav: 'Vysporiadaný',
         subjekt_zodpovedny_za_vymahanie: Itms::Subject.find_by!(itms_id: 100003),
         suma_na_vratenie: 773.79,
@@ -59,7 +65,6 @@ RSpec.describe Itms::SyncAccountsReceivableDocumentJob, type: :job do
 
     pending 'syncs second-level and 1-to-M attributes' do
       expect(Itms::AccountsReceivableDocument.first).to respond_to(
-        :prioritna_os,
         :projekt,
         :suvisiace_verejne_obstaravania,
         :suvisiace_zop

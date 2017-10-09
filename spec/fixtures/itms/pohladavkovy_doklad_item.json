@@ -26,6 +26,10 @@
     "href": "/v2/nezrovnalost/4",
     "id": 4
   },
+  "prioritnaOs": {
+    "href": "/v2/prioritnaOs/8",
+    "id": 8
+  },
   "projekt": {
     "href": "/v2/projekty/vrealizacii/12",
     "id": 12
