@@ -49,7 +49,7 @@ class Itms::SyncDiscrepancyJob < ItmsJob
       d.suvisiace_pohladavkove_doklady = find_or_create_accounts_receivable_documents_by_json(json['suvisiacePohladavkoveDoklady'], downloader)
       # TODO :suvisiace_verejne_obstaravania
       # TODO :suvisiace_zop
-      # TODO :typy_nezrovnalosti
+      d.typy_nezrovnalosti = find_or_create_codes_by_json(json['typyNezrovnalosti'])
       d.vratena_suma = json['vratenaSuma']
       d.vratena_suma_zdroj_eu = json['vratenaSumaZdrojEU']
       d.vratena_suma_zdroj_pr = json['vratenaSumaZdrojPR']
