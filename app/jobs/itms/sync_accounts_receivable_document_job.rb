@@ -21,6 +21,7 @@ class Itms::SyncAccountsReceivableDocumentJob < ItmsJob
       ard.kod = json['kod']
       ard.konkretny_ciel = find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader)
       ard.nezrovnalost = find_or_create_discrepancy_by_json(json['nezrovnalost'], downloader)
+      ard.prioritna_os = find_or_create_priority_axis_by_json(json['prioritnaOs'], downloader)
       ard.stav = json['stav']
       ard.subjekt_zodpovedny_za_vymahanie = find_or_create_subject_by_json(json['subjektZodpovednyZaVymahanie'], downloader)
       ard.suma_na_vratenie = json['sumaNaVratenie']

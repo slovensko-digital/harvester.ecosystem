@@ -32,7 +32,7 @@ class Itms::SyncDiscrepancyJob < ItmsJob
       d.pokuty = json['pokuty']
       d.popis = json['popis']
       d.pouzite_praktiky = json['pouzitePraktiky']
-      #TODO :prioritna_os
+      d.prioritna_os = find_or_create_priority_axis_by_json(json['prioritnaOs'], downloader)
       #TODO :projekt
       d.projekt_v_priprave_alebo_nerealizovany = json['projektVPripraveAleboNerealizovany']
       d.stanovisko_dlznika = json['stanoviskoDlznika']
