@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.2
+-- Dumped from database version 9.5.6
+-- Dumped by pg_dump version 9.5.8
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -83,19 +83,55 @@ ALTER SEQUENCE dodavatelia_id_seq OWNED BY dodavatelia.id;
 
 
 --
+-- Name: kody; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE kody (
+    id integer NOT NULL,
+    kod_id integer,
+    kod_zdroj character varying,
+    nazov character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: kody_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE kody_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: kody_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE kody_id_seq OWNED BY kody.id;
+
+
+--
 -- Name: konkretne_ciele; Type: TABLE; Schema: itms; Owner: -
 --
 
 CREATE TABLE konkretne_ciele (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    fond character varying,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    fond_id integer,
     kategoria_regionov character varying,
     kod character varying,
     nazov character varying,
     technicka_asistencia boolean,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -119,21 +155,56 @@ ALTER SEQUENCE konkretne_ciele_id_seq OWNED BY konkretne_ciele.id;
 
 
 --
--- Name: konkretne_ciele_prioritna_os; Type: TABLE; Schema: itms; Owner: -
+-- Name: nezrovnalosti; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE konkretne_ciele_prioritna_os (
+CREATE TABLE nezrovnalosti (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    konkretne_ciele_id bigint NOT NULL
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    administrativny_stav_id integer,
+    celkova_suma_nezrovnalosti numeric,
+    celkova_suma_nezrovnalosti_zdroj_eu numeric,
+    celkova_suma_nezrovnalosti_zdroj_pr numeric,
+    celkova_suma_nezrovnalosti_zdroj_sr numeric,
+    datum_prvej_informacie timestamp without time zone,
+    datum_zistenia timestamp without time zone,
+    dlznik_id integer,
+    dopad_na_rozpocet_eu character varying,
+    druh_nezrovnalosti character varying,
+    financny_stav_id integer,
+    hlavny_typ_nezrovnalosti_id integer,
+    je_systemova boolean,
+    kod character varying,
+    konkretny_ciel_id integer,
+    penale numeric,
+    pokuty numeric,
+    popis character varying,
+    pouzite_praktiky character varying,
+    projekt_v_priprave_alebo_nerealizovany character varying,
+    stanovisko_dlznika character varying,
+    stanovisko_organu character varying,
+    stav character varying,
+    suma_na_vymahanie numeric,
+    suma_na_vymahanie_zdroj_eu numeric,
+    suma_na_vymahanie_zdroj_pr numeric,
+    suma_na_vymahanie_zdroj_sr numeric,
+    vratena_suma numeric,
+    vratena_suma_zdroj_eu numeric,
+    vratena_suma_zdroj_pr numeric,
+    vratena_suma_zdroj_sr numeric,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: konkretne_ciele_prioritna_os_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: nezrovnalosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE konkretne_ciele_prioritna_os_id_seq
+CREATE SEQUENCE nezrovnalosti_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -142,10 +213,202 @@ CREATE SEQUENCE konkretne_ciele_prioritna_os_id_seq
 
 
 --
--- Name: konkretne_ciele_prioritna_os_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: nezrovnalosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE konkretne_ciele_prioritna_os_id_seq OWNED BY konkretne_ciele_prioritna_os.id;
+ALTER SEQUENCE nezrovnalosti_id_seq OWNED BY nezrovnalosti.id;
+
+
+--
+-- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost (
+    id integer NOT NULL,
+    nezrovnalost_id integer,
+    subjekt_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_id_seq OWNED BY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost.id;
+
+
+--
+-- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nezrovnalosti_subjekty_ktore_zistili_nezrovnalost (
+    id integer NOT NULL,
+    nezrovnalost_id integer,
+    subjekt_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_id_seq OWNED BY nezrovnalosti_subjekty_ktore_zistili_nezrovnalost.id;
+
+
+--
+-- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie (
+    id integer NOT NULL,
+    nezrovnalost_id integer,
+    subjekt_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_id_seq OWNED BY nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie.id;
+
+
+--
+-- Name: nezrovnalosti_suvisiace_nezrovnalosti; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nezrovnalosti_suvisiace_nezrovnalosti (
+    id integer NOT NULL,
+    nezrovnalost_id integer,
+    suvisiaca_nezrovnalost_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nezrovnalosti_suvisiace_nezrovnalosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nezrovnalosti_suvisiace_nezrovnalosti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nezrovnalosti_suvisiace_nezrovnalosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nezrovnalosti_suvisiace_nezrovnalosti_id_seq OWNED BY nezrovnalosti_suvisiace_nezrovnalosti.id;
+
+
+--
+-- Name: nezrovnalosti_suvisiace_pohladavkove_doklady; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nezrovnalosti_suvisiace_pohladavkove_doklady (
+    id integer NOT NULL,
+    nezrovnalost_id integer,
+    pohladavkovy_doklad_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq OWNED BY nezrovnalosti_suvisiace_pohladavkove_doklady.id;
+
+
+--
+-- Name: nezrovnalosti_typy_nezrovnalosti; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nezrovnalosti_typy_nezrovnalosti (
+    id integer NOT NULL,
+    nezrovnalost_id integer,
+    kod_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nezrovnalosti_typy_nezrovnalosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nezrovnalosti_typy_nezrovnalosti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nezrovnalosti_typy_nezrovnalosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nezrovnalosti_typy_nezrovnalosti_id_seq OWNED BY nezrovnalosti_typy_nezrovnalosti.id;
 
 
 --
@@ -216,6 +479,61 @@ ALTER SEQUENCE operacne_programy_subjekty_id_seq OWNED BY operacne_programy_subj
 
 
 --
+-- Name: pohladavkove_doklady; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE pohladavkove_doklady (
+    id integer NOT NULL,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    datum_splatnosti timestamp without time zone,
+    datum_vzniku timestamp without time zone,
+    dlznik_id integer,
+    dopad_na_rozpocet_eu character varying,
+    dovod_vratenia_id integer,
+    druh character varying,
+    kod character varying,
+    konkretny_ciel_id integer,
+    nezrovnalost_id integer,
+    stav character varying,
+    subjekt_zodpovedny_za_vymahanie_id integer,
+    suma_na_vratenie numeric,
+    suma_na_vratenie_zdroj_eu numeric,
+    suma_na_vratenie_zdroj_pr numeric,
+    suma_na_vratenie_zdroj_sr numeric,
+    typ character varying,
+    vracia_sa_do_rozpoctu_projektu boolean,
+    vratena_suma numeric,
+    vratena_suma_zdroj_eu numeric,
+    vratena_suma_zdroj_pr numeric,
+    vratena_suma_zdroj_sr numeric,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: pohladavkove_doklady_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE pohladavkove_doklady_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: pohladavkove_doklady_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE pohladavkove_doklady_id_seq OWNED BY pohladavkove_doklady.id;
+
+
+--
 -- Name: prioritna_os_operacne_programy; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -276,6 +594,111 @@ CREATE SEQUENCE prioritne_osi_id_seq
 --
 
 ALTER SEQUENCE prioritne_osi_id_seq OWNED BY prioritne_osi.id;
+
+
+--
+-- Name: projektove_ukazovatele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projektove_ukazovatele (
+    id integer NOT NULL,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    definicia character varying,
+    evidencia_podla_pohlavia boolean,
+    kod character varying,
+    merna_jednotka character varying,
+    nazov character varying,
+    platnost boolean,
+    typ_vypoctu character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: projektove_ukazovatele_casy_plnenia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projektove_ukazovatele_casy_plnenia (
+    id integer NOT NULL,
+    projektovy_ukazovatel_id integer,
+    kod_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: projektove_ukazovatele_casy_plnenia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projektove_ukazovatele_casy_plnenia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projektove_ukazovatele_casy_plnenia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projektove_ukazovatele_casy_plnenia_id_seq OWNED BY projektove_ukazovatele_casy_plnenia.id;
+
+
+--
+-- Name: projektove_ukazovatele_fondy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projektove_ukazovatele_fondy (
+    id integer NOT NULL,
+    projektovy_ukazovatel_id integer,
+    kod_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: projektove_ukazovatele_fondy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projektove_ukazovatele_fondy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projektove_ukazovatele_fondy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projektove_ukazovatele_fondy_id_seq OWNED BY projektove_ukazovatele_fondy.id;
+
+
+--
+-- Name: projektove_ukazovatele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projektove_ukazovatele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projektove_ukazovatele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projektove_ukazovatele_id_seq OWNED BY projektove_ukazovatele.id;
 
 
 --
@@ -1904,13 +2327,24 @@ ALTER SEQUENCE projekty_vrealizacii_vyzva_id_seq OWNED BY projekty_vrealizacii_v
 
 CREATE TABLE subjekty (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
     dic character varying,
+    gps_lat numeric,
+    gps_lon numeric,
     ico character varying,
     ine_identifikacne_cislo character varying,
     nazov character varying,
-    updated_at timestamp without time zone,
-    created_at timestamp without time zone
+    obec character varying,
+    psc character varying,
+    stat character varying,
+    typ_ineho_identifikacneho_cisla character varying,
+    ulica character varying,
+    ulica_cislo character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -5695,6 +6129,13 @@ ALTER TABLE ONLY dodavatelia ALTER COLUMN id SET DEFAULT nextval('dodavatelia_id
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY kody ALTER COLUMN id SET DEFAULT nextval('kody_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY konkretne_ciele ALTER COLUMN id SET DEFAULT nextval('konkretne_ciele_id_seq'::regclass);
 
 
@@ -5702,7 +6143,49 @@ ALTER TABLE ONLY konkretne_ciele ALTER COLUMN id SET DEFAULT nextval('konkretne_
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkretne_ciele_prioritna_os ALTER COLUMN id SET DEFAULT nextval('konkretne_ciele_prioritna_os_id_seq'::regclass);
+ALTER TABLE ONLY nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_zistili_nezrovnalost ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_suvisiace_nezrovnalosti_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_typy_nezrovnalosti_id_seq'::regclass);
 
 
 --
@@ -5723,6 +6206,13 @@ ALTER TABLE ONLY operacne_programy_subjekty ALTER COLUMN id SET DEFAULT nextval(
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('pohladavkove_doklady_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY prioritna_os_operacne_programy ALTER COLUMN id SET DEFAULT nextval('prioritna_os_operacne_programy_id_seq'::regclass);
 
 
@@ -5731,6 +6221,27 @@ ALTER TABLE ONLY prioritna_os_operacne_programy ALTER COLUMN id SET DEFAULT next
 --
 
 ALTER TABLE ONLY prioritne_osi ALTER COLUMN id SET DEFAULT nextval('prioritne_osi_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele ALTER COLUMN id SET DEFAULT nextval('projektove_ukazovatele_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia ALTER COLUMN id SET DEFAULT nextval('projektove_ukazovatele_casy_plnenia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele_fondy ALTER COLUMN id SET DEFAULT nextval('projektove_ukazovatele_fondy_id_seq'::regclass);
 
 
 --
@@ -6901,6 +7412,14 @@ ALTER TABLE ONLY dodavatelia
 
 
 --
+-- Name: kody_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY kody
+    ADD CONSTRAINT kody_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: konkretne_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6909,11 +7428,59 @@ ALTER TABLE ONLY konkretne_ciele
 
 
 --
--- Name: konkretne_ciele_prioritna_os_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY konkretne_ciele_prioritna_os
-    ADD CONSTRAINT konkretne_ciele_prioritna_os_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT nezrovnalosti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
+    ADD CONSTRAINT nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
+    ADD CONSTRAINT nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
+    ADD CONSTRAINT nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nezrovnalosti_suvisiace_nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_nezrovnalosti
+    ADD CONSTRAINT nezrovnalosti_suvisiace_nezrovnalosti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nezrovnalosti_suvisiace_pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
+    ADD CONSTRAINT nezrovnalosti_suvisiace_pohladavkove_doklady_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nezrovnalosti_typy_nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti
+    ADD CONSTRAINT nezrovnalosti_typy_nezrovnalosti_pkey PRIMARY KEY (id);
 
 
 --
@@ -6933,6 +7500,14 @@ ALTER TABLE ONLY operacne_programy_subjekty
 
 
 --
+-- Name: pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady
+    ADD CONSTRAINT pohladavkove_doklady_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: prioritna_os_operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6946,6 +7521,30 @@ ALTER TABLE ONLY prioritna_os_operacne_programy
 
 ALTER TABLE ONLY prioritne_osi
     ADD CONSTRAINT prioritne_osi_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projektove_ukazovatele_casy_plnenia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia
+    ADD CONSTRAINT projektove_ukazovatele_casy_plnenia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projektove_ukazovatele_fondy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele_fondy
+    ADD CONSTRAINT projektove_ukazovatele_fondy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projektove_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele
+    ADD CONSTRAINT projektove_ukazovatele_pkey PRIMARY KEY (id);
 
 
 --
@@ -8291,10 +8890,234 @@ ALTER TABLE ONLY public_authority_edesks
 SET search_path = itms, pg_catalog;
 
 --
+-- Name: index_itms.kody_on_kod_id_and_kod_zdroj; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.kody_on_kod_id_and_kod_zdroj" ON kody USING btree (kod_id, kod_zdroj);
+
+
+--
+-- Name: index_itms.konkretne_ciele_on_fond_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.konkretne_ciele_on_fond_id" ON konkretne_ciele USING btree (fond_id);
+
+
+--
+-- Name: index_itms.konkretne_ciele_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.konkretne_ciele_on_itms_id" ON konkretne_ciele USING btree (itms_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_on_administrativny_stav_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_on_administrativny_stav_id" ON nezrovnalosti USING btree (administrativny_stav_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_on_dlznik_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_on_dlznik_id" ON nezrovnalosti USING btree (dlznik_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_on_financny_stav_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_on_financny_stav_id" ON nezrovnalosti USING btree (financny_stav_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_on_hlavny_typ_nezrovnalosti_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_on_hlavny_typ_nezrovnalosti_id" ON nezrovnalosti USING btree (hlavny_typ_nezrovnalosti_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.nezrovnalosti_on_itms_id" ON nezrovnalosti USING btree (itms_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_on_konkretny_ciel_id" ON nezrovnalosti USING btree (konkretny_ciel_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_pohladavkove_doklady_doklad; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_pohladavkove_doklady_doklad" ON nezrovnalosti_suvisiace_pohladavkove_doklady USING btree (pohladavkovy_doklad_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_pohladavkove_doklady_nezrovnalost; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_pohladavkove_doklady_nezrovnalost" ON nezrovnalosti_suvisiace_pohladavkove_doklady USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_subjekty_sposobili_nezrovnalosti; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_subjekty_sposobili_nezrovnalosti" ON nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_subjekty_sposobili_subjekty; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_subjekty_sposobili_subjekty" ON nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost USING btree (subjekt_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_subjekty_zistili_nezrovnalost; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_subjekty_zistili_nezrovnalost" ON nezrovnalosti_subjekty_ktore_zistili_nezrovnalost USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_subjekty_zistili_subjekty; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_subjekty_zistili_subjekty" ON nezrovnalosti_subjekty_ktore_zistili_nezrovnalost USING btree (subjekt_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_subjekty_zodpovedne_nezrovnalosti; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_subjekty_zodpovedne_nezrovnalosti" ON nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_subjekty_zodpovedne_subjekty; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_subjekty_zodpovedne_subjekty" ON nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie USING btree (subjekt_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_suvisiace_nezrovnalosti_nezrovnalost; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_suvisiace_nezrovnalosti_nezrovnalost" ON nezrovnalosti_suvisiace_nezrovnalosti USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_suvisiace_nezrovnalosti_suvisiaca; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_suvisiace_nezrovnalosti_suvisiaca" ON nezrovnalosti_suvisiace_nezrovnalosti USING btree (suvisiaca_nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_typy_nezrovnalosti_on_kod_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_typy_nezrovnalosti_on_kod_id" ON nezrovnalosti_typy_nezrovnalosti USING btree (kod_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_typy_nezrovnalosti_on_nezrovnalost_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_typy_nezrovnalosti_on_nezrovnalost_id" ON nezrovnalosti_typy_nezrovnalosti USING btree (nezrovnalost_id);
+
+
+--
 -- Name: index_itms.operacne_programy_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE UNIQUE INDEX "index_itms.operacne_programy_on_itms_identifier" ON operacne_programy USING btree (itms_identifier);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_on_dlznik_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_on_dlznik_id" ON pohladavkove_doklady USING btree (dlznik_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_on_dovod_vratenia_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_on_dovod_vratenia_id" ON pohladavkove_doklady USING btree (dovod_vratenia_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.pohladavkove_doklady_on_itms_id" ON pohladavkove_doklady USING btree (itms_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_on_konkretny_ciel_id" ON pohladavkove_doklady USING btree (konkretny_ciel_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_on_nezrovnalost_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_on_nezrovnalost_id" ON pohladavkove_doklady USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_on_zodpovedny_subjekt; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_on_zodpovedny_subjekt" ON pohladavkove_doklady USING btree (subjekt_zodpovedny_za_vymahanie_id);
+
+
+--
+-- Name: index_itms.projektove_ukazovatele_casy_plnenia_cas; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projektove_ukazovatele_casy_plnenia_cas" ON projektove_ukazovatele_casy_plnenia USING btree (kod_id);
+
+
+--
+-- Name: index_itms.projektove_ukazovatele_casy_plnenia_ukazovatel; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projektove_ukazovatele_casy_plnenia_ukazovatel" ON projektove_ukazovatele_casy_plnenia USING btree (projektovy_ukazovatel_id);
+
+
+--
+-- Name: index_itms.projektove_ukazovatele_fondy_fond; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projektove_ukazovatele_fondy_fond" ON projektove_ukazovatele_fondy USING btree (kod_id);
+
+
+--
+-- Name: index_itms.projektove_ukazovatele_fondy_ukazovatel; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projektove_ukazovatele_fondy_ukazovatel" ON projektove_ukazovatele_fondy USING btree (projektovy_ukazovatel_id);
+
+
+--
+-- Name: index_itms.projektove_ukazovatele_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projektove_ukazovatele_on_itms_id" ON projektove_ukazovatele USING btree (itms_id);
 
 
 --
@@ -8309,6 +9132,13 @@ CREATE UNIQUE INDEX "index_itms.projekty_ukoncene_on_itms_identifier" ON projekt
 --
 
 CREATE UNIQUE INDEX "index_itms.projekty_vrealizacii_on_itms_identifier" ON projekty_vrealizacii USING btree (itms_identifier);
+
+
+--
+-- Name: index_itms.subjekty_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.subjekty_on_itms_id" ON subjekty USING btree (itms_id);
 
 
 --
@@ -8435,6 +9265,14 @@ CREATE UNIQUE INDEX "index_upvs.public_authority_edesks_on_uri" ON public_author
 SET search_path = itms, pg_catalog;
 
 --
+-- Name: fk_rails_03702170c9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_nezrovnalosti
+    ADD CONSTRAINT fk_rails_03702170c9 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
 -- Name: fk_rails_06f323bf15; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8451,6 +9289,14 @@ ALTER TABLE ONLY zonfp_prijate_hospodarske_cinnosti_ciele
 
 
 --
+-- Name: fk_rails_09e399f617; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele_fondy
+    ADD CONSTRAINT fk_rails_09e399f617 FOREIGN KEY (projektovy_ukazovatel_id) REFERENCES projektove_ukazovatele(id);
+
+
+--
 -- Name: fk_rails_0ae8024275; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8464,6 +9310,14 @@ ALTER TABLE ONLY zonfp_prijate_ziadatel
 
 ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia_ciele
     ADD CONSTRAINT fk_rails_0d2a71f396 FOREIGN KEY (projekty_vrealizacii_typy_uzemia_id) REFERENCES projekty_vrealizacii_typy_uzemia(id);
+
+
+--
+-- Name: fk_rails_0ec85641c2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_0ec85641c2 FOREIGN KEY (pohladavkovy_doklad_id) REFERENCES pohladavkove_doklady(id);
 
 
 --
@@ -8499,6 +9353,22 @@ ALTER TABLE ONLY zonfp_zamietnute_vysledok_konania
 
 
 --
+-- Name: fk_rails_136836cd96; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti
+    ADD CONSTRAINT fk_rails_136836cd96 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
+-- Name: fk_rails_140cb2bca8; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_140cb2bca8 FOREIGN KEY (dovod_vratenia_id) REFERENCES kody(id);
+
+
+--
 -- Name: fk_rails_1469c50b9c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8520,6 +9390,14 @@ ALTER TABLE ONLY zonfp_prijate_formy_financovania_ciele
 
 ALTER TABLE ONLY zonfp_schvalene_typy_uzemia_ciele
     ADD CONSTRAINT fk_rails_174103e9f8 FOREIGN KEY (zonfp_schvalene_typy_uzemia_id) REFERENCES zonfp_schvalene_typy_uzemia(id);
+
+
+--
+-- Name: fk_rails_17faad18e6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
+    ADD CONSTRAINT fk_rails_17faad18e6 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
 
 
 --
@@ -8592,6 +9470,22 @@ ALTER TABLE ONLY projekty_ukoncene_hospodarske_cinnosti_ciele
 
 ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti
     ADD CONSTRAINT fk_rails_20e5c19bdc FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: fk_rails_257a019f0e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti
+    ADD CONSTRAINT fk_rails_257a019f0e FOREIGN KEY (kod_id) REFERENCES kody(id);
+
+
+--
+-- Name: fk_rails_25c3a95ab7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
+    ADD CONSTRAINT fk_rails_25c3a95ab7 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
 
 
 --
@@ -8707,11 +9601,27 @@ ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy
 
 
 --
+-- Name: fk_rails_3980438432; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT fk_rails_3980438432 FOREIGN KEY (financny_stav_id) REFERENCES kody(id);
+
+
+--
 -- Name: fk_rails_3bb36e4382; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY uctovne_doklady_projekty
     ADD CONSTRAINT fk_rails_3bb36e4382 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
+
+
+--
+-- Name: fk_rails_3cad360dd7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_3cad360dd7 FOREIGN KEY (subjekt_zodpovedny_za_vymahanie_id) REFERENCES subjekty(id);
 
 
 --
@@ -8755,6 +9665,14 @@ ALTER TABLE ONLY zop_predlozene_prijimatel
 
 
 --
+-- Name: fk_rails_44f150d5d8; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY konkretne_ciele
+    ADD CONSTRAINT fk_rails_44f150d5d8 FOREIGN KEY (fond_id) REFERENCES kody(id);
+
+
+--
 -- Name: fk_rails_46a417cc77; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8795,6 +9713,14 @@ ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia
 
 
 --
+-- Name: fk_rails_4f35e719c2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT fk_rails_4f35e719c2 FOREIGN KEY (hlavny_typ_nezrovnalosti_id) REFERENCES kody(id);
+
+
+--
 -- Name: fk_rails_4f4d107e15; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8824,6 +9750,14 @@ ALTER TABLE ONLY projekty_vrealizacii_schvalene_zonfp
 
 ALTER TABLE ONLY zop_zamietnute_projekt
     ADD CONSTRAINT fk_rails_5979b8f53a FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
+
+
+--
+-- Name: fk_rails_5f723e1acd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
+    ADD CONSTRAINT fk_rails_5f723e1acd FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
 
 
 --
@@ -8864,6 +9798,14 @@ ALTER TABLE ONLY projekty_vrealizacii_hospodarske_cinnosti
 
 ALTER TABLE ONLY zop_uhradene_projekt
     ADD CONSTRAINT fk_rails_6347bcec2b FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
+
+
+--
+-- Name: fk_rails_6364309b83; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia
+    ADD CONSTRAINT fk_rails_6364309b83 FOREIGN KEY (kod_id) REFERENCES kody(id);
 
 
 --
@@ -8963,6 +9905,14 @@ ALTER TABLE ONLY projekty_ukoncene_oblasti_intervencie_ciele
 
 
 --
+-- Name: fk_rails_803c402796; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
+    ADD CONSTRAINT fk_rails_803c402796 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
 -- Name: fk_rails_80b7e1eff1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9000,6 +9950,14 @@ ALTER TABLE ONLY zonfp_prijate_aktivity_projekty
 
 ALTER TABLE ONLY projekty_vrealizacii_formy_financovania
     ADD CONSTRAINT fk_rails_859094ae9b FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: fk_rails_85d83b30d7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_85d83b30d7 FOREIGN KEY (dlznik_id) REFERENCES subjekty(id);
 
 
 --
@@ -9051,6 +10009,14 @@ ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_hlavny_slovniky
 
 
 --
+-- Name: fk_rails_8897be5588; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
+    ADD CONSTRAINT fk_rails_8897be5588 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
+
+
+--
 -- Name: fk_rails_8986ddb3e0; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9088,6 +10054,14 @@ ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky
 
 ALTER TABLE ONLY vyzvy_planovane_ciele
     ADD CONSTRAINT fk_rails_8ad08ae289 FOREIGN KEY (vyzvy_planovane_id) REFERENCES vyzvy_planovane(id);
+
+
+--
+-- Name: fk_rails_8d000a95b1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_8d000a95b1 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
 
 
 --
@@ -9136,6 +10110,14 @@ ALTER TABLE ONLY projekty_ukoncene_miesta_realizacie_units
 
 ALTER TABLE ONLY uctovne_doklady_vlastnik_dokladu
     ADD CONSTRAINT fk_rails_9fc80cbae3 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
+
+
+--
+-- Name: fk_rails_a191cf5c1f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele_fondy
+    ADD CONSTRAINT fk_rails_a191cf5c1f FOREIGN KEY (kod_id) REFERENCES kody(id);
 
 
 --
@@ -9275,11 +10257,27 @@ ALTER TABLE ONLY zmluvy_verejne_obstaravanie_hlavny_dodavatel
 
 
 --
+-- Name: fk_rails_bea5988603; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
+    ADD CONSTRAINT fk_rails_bea5988603 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
+
+
+--
 -- Name: fk_rails_bf15cbc5cf; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie_ciele
     ADD CONSTRAINT fk_rails_bf15cbc5cf FOREIGN KEY (zonfp_prijate_oblasti_intervencie_id) REFERENCES zonfp_prijate_oblasti_intervencie(id);
+
+
+--
+-- Name: fk_rails_c0ce7701a5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_c0ce7701a5 FOREIGN KEY (konkretny_ciel_id) REFERENCES konkretne_ciele(id);
 
 
 --
@@ -9419,14 +10417,6 @@ ALTER TABLE ONLY projekty_ukoncene_typy_uzemia
 
 
 --
--- Name: fk_rails_d46c3bc9c9; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY konkretne_ciele_prioritna_os
-    ADD CONSTRAINT fk_rails_d46c3bc9c9 FOREIGN KEY (konkretne_ciele_id) REFERENCES konkretne_ciele(id);
-
-
---
 -- Name: fk_rails_d50f9dbb57; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9435,7 +10425,7 @@ ALTER TABLE ONLY zonfp_prijate_partneri
 
 
 --
--- Name: projekty_vrealizacii_organizacne_zlozky fk_rails_d6559c195f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_d6559c195f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_vrealizacii_organizacne_zlozky
@@ -9443,7 +10433,7 @@ ALTER TABLE ONLY projekty_vrealizacii_organizacne_zlozky
 
 
 --
--- Name: zonfp_schvalene_partneri fk_rails_d75aef9463; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_d75aef9463; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_schvalene_partneri
@@ -9451,7 +10441,7 @@ ALTER TABLE ONLY zonfp_schvalene_partneri
 
 
 --
--- Name: verejne_obstaravania_metody_vo fk_rails_d7faf83117; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_d7faf83117; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY verejne_obstaravania_metody_vo
@@ -9459,7 +10449,7 @@ ALTER TABLE ONLY verejne_obstaravania_metody_vo
 
 
 --
--- Name: verejne_obstaravania_uctovne_doklady fk_rails_d845918157; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_d845918157; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
@@ -9467,7 +10457,7 @@ ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
 
 
 --
--- Name: projekty_vrealizacii_intenzity_zdroje fk_rails_d89d786f35; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_d89d786f35; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_vrealizacii_intenzity_zdroje
@@ -9475,7 +10465,7 @@ ALTER TABLE ONLY projekty_vrealizacii_intenzity_zdroje
 
 
 --
--- Name: projekty_vrealizacii_miesta_realizacie fk_rails_d9ac66b139; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_d9ac66b139; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie
@@ -9483,7 +10473,15 @@ ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie
 
 
 --
--- Name: zonfp_prijate_typy_uzemia fk_rails_dd066eede4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_dca9598718; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT fk_rails_dca9598718 FOREIGN KEY (administrativny_stav_id) REFERENCES kody(id);
+
+
+--
+-- Name: fk_rails_dd066eede4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_prijate_typy_uzemia
@@ -9491,7 +10489,7 @@ ALTER TABLE ONLY zonfp_prijate_typy_uzemia
 
 
 --
--- Name: zop_uhradene_predkladana_za fk_rails_de5d60c98a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_de5d60c98a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zop_uhradene_predkladana_za
@@ -9499,7 +10497,15 @@ ALTER TABLE ONLY zop_uhradene_predkladana_za
 
 
 --
--- Name: projekty_vrealizacii_prijimatel fk_rails_e373af711d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_e281735595; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT fk_rails_e281735595 FOREIGN KEY (dlznik_id) REFERENCES subjekty(id);
+
+
+--
+-- Name: fk_rails_e373af711d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_vrealizacii_prijimatel
@@ -9507,7 +10513,7 @@ ALTER TABLE ONLY projekty_vrealizacii_prijimatel
 
 
 --
--- Name: zonfp_schvalene_uzemne_mechanizmy_ciele fk_rails_e4f9b6a174; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_e4f9b6a174; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy_ciele
@@ -9515,7 +10521,7 @@ ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy_ciele
 
 
 --
--- Name: projekty_vrealizacii_uzemne_mechanizmy fk_rails_e709ec16d9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_e709ec16d9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy
@@ -9523,7 +10529,7 @@ ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy
 
 
 --
--- Name: vyzvy_planovane_poskytovatelia fk_rails_e782c270e2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_e782c270e2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY vyzvy_planovane_poskytovatelia
@@ -9539,7 +10545,7 @@ ALTER TABLE ONLY projekty_ukoncene_schvalene_zonfp
 
 
 --
--- Name: zonfp_prijate_uzemne_mechanizmy fk_rails_e7ad464858; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_e7ad464858; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy
@@ -9547,7 +10553,7 @@ ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy
 
 
 --
--- Name: zonfp_schvalene_meratelne_ukazovatele fk_rails_e906d93305; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_e906d93305; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_schvalene_meratelne_ukazovatele
@@ -9555,7 +10561,7 @@ ALTER TABLE ONLY zonfp_schvalene_meratelne_ukazovatele
 
 
 --
--- Name: zonfp_prijate_oblasti_intervencie fk_rails_e92b5798fe; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_e92b5798fe; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie
@@ -9563,7 +10569,7 @@ ALTER TABLE ONLY zonfp_prijate_oblasti_intervencie
 
 
 --
--- Name: zop_predlozene_projekt fk_rails_e9c0519acf; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_e9c0519acf; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zop_predlozene_projekt
@@ -9571,7 +10577,7 @@ ALTER TABLE ONLY zop_predlozene_projekt
 
 
 --
--- Name: projekty_ukoncene_aktivity_subjekty fk_rails_ebd65c5288; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_ebd65c5288; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_ukoncene_aktivity_subjekty
@@ -9579,7 +10585,15 @@ ALTER TABLE ONLY projekty_ukoncene_aktivity_subjekty
 
 
 --
--- Name: projekty_ukoncene_organizacne_zlozky fk_rails_ef82846cc4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_ec6c3cb4c4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia
+    ADD CONSTRAINT fk_rails_ec6c3cb4c4 FOREIGN KEY (projektovy_ukazovatel_id) REFERENCES projektove_ukazovatele(id);
+
+
+--
+-- Name: fk_rails_ef82846cc4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_ukoncene_organizacne_zlozky
@@ -9587,7 +10601,7 @@ ALTER TABLE ONLY projekty_ukoncene_organizacne_zlozky
 
 
 --
--- Name: projekty_ukoncene_uzemne_mechanizmy_ciele fk_rails_f1e2d1e253; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f1e2d1e253; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy_ciele
@@ -9595,7 +10609,7 @@ ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy_ciele
 
 
 --
--- Name: projekty_vrealizacii_uzemne_mechanizmy_ciele fk_rails_f20660ea9f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f20660ea9f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy_ciele
@@ -9603,7 +10617,7 @@ ALTER TABLE ONLY projekty_vrealizacii_uzemne_mechanizmy_ciele
 
 
 --
--- Name: verejne_obstaravania_druh_zakazky fk_rails_f2aa972bf9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f2aa972bf9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY verejne_obstaravania_druh_zakazky
@@ -9611,7 +10625,7 @@ ALTER TABLE ONLY verejne_obstaravania_druh_zakazky
 
 
 --
--- Name: projekty_ukoncene_monitorovacie_terminy fk_rails_f4a2aa0697; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f4a2aa0697; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_ukoncene_monitorovacie_terminy
@@ -9619,7 +10633,7 @@ ALTER TABLE ONLY projekty_ukoncene_monitorovacie_terminy
 
 
 --
--- Name: zonfp_zamietnute_miesta_realizacie fk_rails_f55d944621; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f55d944621; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie
@@ -9627,7 +10641,7 @@ ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie
 
 
 --
--- Name: vyzvy_vyhlasene_fondy fk_rails_f74d2d4574; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f74d2d4574; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY vyzvy_vyhlasene_fondy
@@ -9635,7 +10649,15 @@ ALTER TABLE ONLY vyzvy_vyhlasene_fondy
 
 
 --
--- Name: zonfp_prijate_typy_uzemia_ciele fk_rails_f927319243; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f8a54bdaf1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_nezrovnalosti
+    ADD CONSTRAINT fk_rails_f8a54bdaf1 FOREIGN KEY (suvisiaca_nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
+-- Name: fk_rails_f927319243; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY zonfp_prijate_typy_uzemia_ciele
@@ -9643,7 +10665,7 @@ ALTER TABLE ONLY zonfp_prijate_typy_uzemia_ciele
 
 
 --
--- Name: projekty_ukoncene_aktivity fk_rails_f941f44f4e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f941f44f4e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_ukoncene_aktivity
@@ -9651,7 +10673,7 @@ ALTER TABLE ONLY projekty_ukoncene_aktivity
 
 
 --
--- Name: uctovne_doklady_dodavatel fk_rails_f9a65c182f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f9a65c182f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY uctovne_doklady_dodavatel
@@ -9659,11 +10681,27 @@ ALTER TABLE ONLY uctovne_doklady_dodavatel
 
 
 --
--- Name: projekty_vrealizacii_intenzity_subjekty fk_rails_fa124ae26c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_fa124ae26c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_vrealizacii_intenzity_subjekty
     ADD CONSTRAINT fk_rails_fa124ae26c FOREIGN KEY (projekty_vrealizacii_intenzity_id) REFERENCES projekty_vrealizacii_intenzity(id);
+
+
+--
+-- Name: fk_rails_fc1493d31c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT fk_rails_fc1493d31c FOREIGN KEY (konkretny_ciel_id) REFERENCES konkretne_ciele(id);
+
+
+--
+-- Name: fk_rails_fe55c9b1f5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_fe55c9b1f5 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
 
 
 --
@@ -9690,6 +10728,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170612194706'),
 ('20170621103205'),
 ('20170718063739'),
-('20170718083436');
+('20170718083436'),
+('20171005080348'),
+('20171005104049'),
+('20171005115835'),
+('20171005173414'),
+('20171007133948'),
+('20171009080951'),
+('20171009115759');
 
 
