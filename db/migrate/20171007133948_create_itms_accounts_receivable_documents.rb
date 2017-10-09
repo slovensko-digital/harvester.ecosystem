@@ -27,6 +27,8 @@ class CreateItmsAccountsReceivableDocuments < ActiveRecord::Migration[5.0]
       t.decimal :vratena_suma_zdroj_eu
       t.decimal :vratena_suma_zdroj_pr
       t.decimal :vratena_suma_zdroj_sr
+
+      t.timestamps
     end
   end
 end
