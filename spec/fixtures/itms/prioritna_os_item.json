@@ -1,0 +1,14 @@
+{
+  "celkovaFinancnaAlokacia": 84341765,
+  "createdAt": "2017-02-23T18:09:03.502Z",
+  "hlavnaAlokacia": 84341765,
+  "href": "/v2/prioritnaOs/33",
+  "id": 33,
+  "kod": "313050",
+  "nazov": "5 Technická pomoc",
+  "operacnyProgram": {
+    "href": "/v2/operacneProgramy/4",
+    "id": 4
+  },
+  "vykonnostnaRezerva": 0
+}
