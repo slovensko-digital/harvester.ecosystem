@@ -1,0 +1,20 @@
+{
+  "datumKoncaPlanovany": "2018-06-01T00:00:00Z",
+  "datumKoncaSkutocny": "2015-09-07T00:00:00Z",
+  "datumZaciatkuPlanovany": "2017-01-01T00:00:00Z",
+  "datumZaciatkuSkutocny": "2015-09-07T00:00:00Z",
+  "href": "/v2/aktivita/122",
+  "id": 122,
+  "kod": "217A01900002",
+  "nazov": "Čistiareň odpadových vôd",
+  "subjekt": {
+    "dic": "2021776174",
+    "href": "/v2/subjekty/100062",
+    "ico": "36067725",
+    "id": 100062
+  },
+  "typAktivity": {
+    "href": "/v2/typyAktivit/217",
+    "id": 217
+  }
+}
