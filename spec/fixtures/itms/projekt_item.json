@@ -1,0 +1,361 @@
+{
+  "akronym": "MET OPII",
+  "aktivity": [
+    {
+      "href": "/v2/aktivita/122",
+      "id": 122
+    },
+    {
+      "href": "/v2/aktivita/123",
+      "id": 123
+    },
+    {
+      "href": "/v2/aktivita/121",
+      "id": 121
+    },
+    {
+      "href": "/v2/aktivita/120",
+      "id": 120
+    }
+  ],
+  "cisloZmluvy": "OPKZPPO1SC121/1222015/04",
+  "createdAt": "2016-02-19T09:15:40.868Z",
+  "datumKoncaHlavnychAktivit": "2018-06-01T00:00:00Z",
+  "datumKoncaRealizacie": "2018-06-01T00:00:00Z",
+  "datumPlatnostiZmluvy": "2016-03-11T00:00:00Z",
+  "datumUcinnostiZmluvy": "2016-03-23T00:00:00Z",
+  "datumZaciatkuHlavnychAktivit": "2017-01-01T00:00:00Z",
+  "datumZaciatkuRealizacie": "2017-01-01T00:00:00Z",
+  "dlzkaCelkovaHlavnychAktivit": 18,
+  "dlzkaCelkovaProjektu": 18,
+  "formyFinancovania": [
+    {
+      "id": 1,
+      "kodZdroj": "01",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/33",
+        "id": 33
+      },
+      "nazov": "Nenávratný grant"
+    },
+    {
+      "id": 1,
+      "kodZdroj": "01",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/39",
+        "id": 39
+      },
+      "nazov": "Nenávratný grant"
+    }
+  ],
+  "hospodarskeCinnosti": [
+    {
+      "id": 22,
+      "kodZdroj": "22",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/39",
+        "id": 39
+      },
+      "nazov": "Činnosti súvisiace so životným prostredím a zmenou klímy"
+    },
+    {
+      "id": 22,
+      "kodZdroj": "22",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/33",
+        "id": 33
+      },
+      "nazov": "Činnosti súvisiace so životným prostredím a zmenou klímy"
+    }
+  ],
+  "href": "/v2/projekty/ukoncene/31",
+  "id": 31,
+  "intenzity": [
+    {
+      "href": "/v2/intenzita/46",
+      "id": 46
+    }
+  ],
+  "kod": "310011A019",
+  "meratelneUkazovatele": [
+    {
+      "aktualnySkutocnyStav": 0,
+      "datumPoslednehoMerania": "2016-12-31",
+      "hodnotaCielovaCelkova": 22.74,
+      "kod": "P0041",
+      "mernaJednotka": "km",
+      "nazov": "Dĺžka novovybudovaných kanalizačných sietí (bez kanal. prípojok)"
+    },
+    {
+      "aktualnySkutocnyStav": 0,
+      "datumPoslednehoMerania": "2016-12-31",
+      "hodnotaCielovaCelkova": 1,
+      "kod": "P0598",
+      "mernaJednotka": "počet",
+      "nazov": "Počet zrekonštruovaných alebo novovybudovaných ČOV"
+    },
+    {
+      "aktualnySkutocnyStav": 0,
+      "datumPoslednehoMerania": "2016-12-31",
+      "hodnotaCielovaCelkova": 2689,
+      "kod": "P0714",
+      "mernaJednotka": "EO",
+      "nazov": "Zvýšený počet obyvateľov so zlepšeným čistením komunálnych odpadových vôd"
+    },
+    {
+      "aktualnySkutocnyStav": 0,
+      "datumPoslednehoMerania": "2016-12-31",
+      "hodnotaCielovaCelkova": 3.62,
+      "kod": "P0042",
+      "mernaJednotka": "km",
+      "nazov": "Dĺžka novovybudovaných rozvodov pitnej vody (bez vodovod. prípojok)"
+    },
+    {
+      "aktualnySkutocnyStav": 0,
+      "datumPoslednehoMerania": "2016-12-31",
+      "hodnotaCielovaCelkova": 589,
+      "kod": "P0712",
+      "mernaJednotka": "osoby",
+      "nazov": "Zvýšený počet obyvateľov so zlepšenou dodávkou pitnej vody"
+    }
+  ],
+  "miestaRealizacie": [
+    {
+      "nuts3": {
+        "id": 9,
+        "kodZdroj": "SK010",
+        "nazov": "Bratislavský kraj"
+      },
+      "nuts4": {
+        "id": 23,
+        "kodZdroj": "SK0106",
+        "nazov": "Malacky"
+      },
+      "nuts5": {
+        "id": 123,
+        "kodZdroj": "SK0106504947",
+        "nazov": "Veľké Leváre"
+      },
+      "stat": {
+        "id": 210,
+        "kodZdroj": "703",
+        "nazov": "Slovensko"
+      }
+    },
+    {
+      "nuts3": {
+        "id": 9,
+        "kodZdroj": "SK010",
+        "nazov": "Bratislavský kraj"
+      },
+      "nuts4": {
+        "id": 23,
+        "kodZdroj": "SK0106",
+        "nazov": "Malacky"
+      },
+      "nuts5": {
+        "id": 117,
+        "kodZdroj": "SK0106504556",
+        "nazov": "Malé Leváre"
+      },
+      "stat": {
+        "id": 210,
+        "kodZdroj": "703",
+        "nazov": "Slovensko"
+      }
+    },
+    {
+      "nuts3": {
+        "id": 9,
+        "kodZdroj": "SK010",
+        "nazov": "Bratislavský kraj"
+      },
+      "nuts4": {
+        "id": 23,
+        "kodZdroj": "SK0106",
+        "nazov": "Malacky"
+      },
+      "nuts5": {
+        "id": 126,
+        "kodZdroj": "SK0106507890",
+        "nazov": "Gajary"
+      },
+      "stat": {
+        "id": 210,
+        "kodZdroj": "703",
+        "nazov": "Slovensko"
+      }
+    }
+  ],
+  "monitorovacieTerminy": [
+    {
+      "datumPredlozeniaNajneskorsi": "2018-01-31",
+      "poradoveCislo": 2,
+      "terminMonitorovania": "2017-12-31",
+      "typMonitorovacejSpravy": "VYROCNA"
+    },
+    {
+      "datumPredlozeniaNajneskorsi": "2018-08-13",
+      "poradoveCislo": 3,
+      "terminMonitorovania": "2018-06-30",
+      "typMonitorovacejSpravy": "ZAVERECNA"
+    },
+    {
+      "datumPredlozeniaNajneskorsi": "2017-01-31",
+      "poradoveCislo": 1,
+      "terminMonitorovania": "2016-12-31",
+      "typMonitorovacejSpravy": "VYROCNA"
+    }
+  ],
+  "nazov": "Dobudovanie kanalizačnej siete v aglomerácii Veľké Leváre a rozšírenie ČOV Gajary",
+  "oblastiIntervencie": [
+    {
+      "id": 22,
+      "kodZdroj": "022",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/33",
+        "id": 33
+      },
+      "nazov": "Čistenie odpadových vôd"
+    },
+    {
+      "id": 20,
+      "kodZdroj": "020",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/39",
+        "id": 39
+      },
+      "nazov": "Dodávky vody na ľudskú spotrebu (získavanie, čistenie, infraštruktúra na uskladňovanie a distribúciu)"
+    }
+  ],
+  "organizacneZlozky": [
+    {
+      "adresa": "Pribinova 2, 81272 Bratislava - mestská časť Staré Mesto",
+      "id": 127,
+      "nazov": "Úrad splnomocnenca vlády SR pre rómske komunity"
+    }
+  ],
+  "otvorenaZmena": false,
+  "otvorenyDodatok": false,
+  "partneri": [
+    {
+      "dic": "2020799209",
+      "href": "/v2/subjekty/100003",
+      "ico": "00681156",
+      "id": 100003
+    }
+  ],
+  "polozkyRozpoctu": [
+    {
+      "href": "/v2/polozkaRozpoctu/204",
+      "id": 204
+    },
+    {
+      "href": "/v2/polozkaRozpoctu/205",
+      "id": 205
+    },
+    {
+      "href": "/v2/polozkaRozpoctu/206",
+      "id": 206
+    },
+    {
+      "href": "/v2/polozkaRozpoctu/207",
+      "id": 207
+    },
+    {
+      "href": "/v2/polozkaRozpoctu/208",
+      "id": 208
+    }
+  ],
+  "popisProjektu": "\u003cdiv\u003eCieľom\u0026nbsp;predkladan\u0026eacute;ho projektu je\u0026nbsp;zlep\u0026scaron;enie stavu odv\u0026aacute;dzania a čistenia komun\u0026aacute;lnych v\u0026ocirc;d v aglomer\u0026aacute;cii Veľk\u0026eacute; Lev\u0026aacute;re. D\u0026ocirc;vodom pre realiz\u0026aacute;ciu projektu je nevyhovuj\u0026uacute;ci stav v obciach Mal\u0026eacute; a Veľk\u0026eacute; Lev\u0026aacute;re, kde napojenosť obyvateľstva na kanalizačn\u0026uacute; sieť predstavuje len tretinu tohto obyvateľstva. Odpadov\u0026aacute; voda z uveden\u0026yacute;ch obc\u0026iacute; sa spracuv\u0026aacute;va v čistiarni odpadov\u0026yacute;ch v\u0026ocirc;d (ďalej len ČOV) v obci Gajary, ktor\u0026aacute; je kapacitne plne vyťažen\u0026aacute;. Ostatn\u0026iacute; občania zachyt\u0026aacute;vaj\u0026uacute; spla\u0026scaron;kov\u0026eacute; vody v žump\u0026aacute;ch, čo je rizikov\u0026eacute; najm\u0026auml; z pohľadu vplyvu na životn\u0026eacute; prostredie a z\u0026aacute;roveň aj na zdravie obyvateľstva.\u0026nbsp;\u003c/div\u003e\u003cdiv\u003eProjekt pozost\u0026aacute;va z nasledovn\u0026yacute;ch aktiv\u0026iacute;t:\u0026nbsp;\u003c/div\u003e\u003cdiv\u003ea. dobudovanie\u0026nbsp;kanalizačnej siete v aglomer\u0026aacute;cii Veľk\u0026eacute; Lev\u0026aacute;re\u003c/div\u003e\u003cdiv\u003eb. dobudovanie vodovodnej siete v obci Mal\u0026eacute; Lev\u0026aacute;re\u003c/div\u003e\u003cdiv\u003ec. zv\u0026yacute;\u0026scaron;enie kapacity \u003cspan style=\"background-color:rgb(255, 255, 255); color:rgb(51, 51, 51); line-height:20.8px\"\u003ečistiarne odpadov\u0026yacute;ch v\u0026ocirc;d \u003c/span\u003ev obci Gajary.\u003c/div\u003e\u003cdiv\u003eV\u0026yacute;sledkom projektu bude vybudovan\u0026aacute; kanalizačn\u0026aacute; sieť v celkovej dĺžke 22,74\u0026nbsp;km, vybudovan\u0026aacute; vodovodn\u0026aacute; sieť v dĺžke 3,62\u0026nbsp;km a zv\u0026yacute;\u0026scaron;en\u0026aacute; kapacita čistiarne odpadov\u0026yacute;ch v\u0026ocirc;d na 13 000 EO. Realizovan\u0026iacute;m projektu sa dosiahne zv\u0026yacute;\u0026scaron;en\u0026aacute; napojenosť obyvateľstva na kanalizačn\u0026eacute; siete na viac ako 90 %. Aktivity s\u0026uacute; v\u0026nbsp;s\u0026uacute;lade s\u0026nbsp;OP KŽP a s\u0026nbsp;Pl\u0026aacute;nom rozvoja verejn\u0026yacute;ch kanaliz\u0026aacute;ci\u0026iacute; v\u0026nbsp;SR. Cieľovou skupinou projektu s\u0026uacute; obyvatelia obc\u0026iacute; Veľk\u0026eacute; Lev\u0026aacute;re, Mal\u0026eacute; Lev\u0026aacute;re a Gajary.\u003c/div\u003e",
+  "prijimatel": {
+    "dic": "2021776174",
+    "href": "/v2/subjekty/100062",
+    "ico": "36067725",
+    "id": 100062
+  },
+  "schvalenaZonfp": {
+    "href": "/v2/zonfp/schvalene/48",
+    "id": 48
+  },
+  "sekundarnyTematickyOkruh": [
+    {
+      "id": 6,
+      "kodZdroj": "06",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/24",
+        "id": 24
+      },
+      "nazov": "NediskriminĂˇcia"
+    },
+    {
+      "id": 7,
+      "kodZdroj": "07",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/24",
+        "id": 24
+      },
+      "nazov": "RodovĂˇ rovnosĹĄ"
+    },
+    {
+      "id": 2,
+      "kodZdroj": "02",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/24",
+        "id": 24
+      },
+      "nazov": "SociĂˇlna inovĂˇcia"
+    }
+  ],
+  "stav": "Projekt mimoriadne ukončený - neprispel k cieľom OP (K)",
+  "sumaCelkovaProjektovGenerujucichPrijem": 16165937.74,
+  "sumaZazmluvnena": 16165937.74,
+  "sumaZazmluvnenaPovodna": 16165937.74,
+  "typyUzemia": [
+    {
+      "id": 3,
+      "kodZdroj": "03",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/33",
+        "id": 33
+      },
+      "nazov": "Vidiecke oblasti (riedke osídlenie)"
+    },
+    {
+      "id": 3,
+      "kodZdroj": "03",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/39",
+        "id": 39
+      },
+      "nazov": "Vidiecke oblasti (riedke osídlenie)"
+    }
+  ],
+  "updatedAt": "2017-06-30T09:32:14.961Z",
+  "urlAdresaZmluva": "http://www.crz.gov.sk/index.php?ID=3144219&l=sk",
+  "uzemneMechanizmy": [
+    {
+      "id": 7,
+      "kodZdroj": "07",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/63",
+        "id": 63
+      },
+      "nazov": "NeuplatĹuje sa"
+    },
+    {
+      "id": 7,
+      "kodZdroj": "07",
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/64",
+        "id": 64
+      },
+      "nazov": "NeuplatĹuje sa"
+    }
+  ],
+  "vyzva": {
+    "href": "/v2/vyzvy/vyhlasene/1",
+    "id": 1
+  },
+  "zameranieProjektu": "Dopytovo-orientovaný projekt"
+}
