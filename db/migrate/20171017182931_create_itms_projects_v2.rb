@@ -48,5 +48,11 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    create_table 'itms.projekty_aktivity' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :aktivita, index: true, foreign_key: { to_table: 'itms.aktivity' }
+      t.timestamps
+    end
   end
 end
