@@ -16,6 +16,16 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
           .and_return(double(body: itms_file_fixture('subjekt_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/aktivita/'))
+          .and_return(double(body: itms_file_fixture('aktivita_item.json')))
+
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/typyAktivit/'))
+          .and_return(double(body: itms_file_fixture('typ_aktivity_item.json')))
+
       subject.perform('/v2/projekty/ukoncene/31', downloader: downloader)
 
       expect(Itms::Project.first).to have_attributes(
@@ -25,7 +35,12 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         itms_updated_at: DateTime.parse('2017-06-30T09:32:14.961Z'),
 
         akronym: 'MET OPII',
-        #TODO aktivity: ,
+        aktivity: [
+            Itms::ProjectActivity.find_by!(itms_id: 122),
+            Itms::ProjectActivity.find_by!(itms_id: 123),
+            Itms::ProjectActivity.find_by!(itms_id: 121),
+            Itms::ProjectActivity.find_by!(itms_id: 120),
+        ],
         cislo_zmluvy: 'OPKZPPO1SC121/1222015/04',
         #TODO data_projektu: ,
         datum_konca_hlavnych_aktivit: DateTime.parse('2018-06-01T00:00:00Z'),
@@ -344,7 +359,6 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
 
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
-        :aktivity,
         :data_projektu,
         :formy_financovania,
         :hospodarske_cinnosti,

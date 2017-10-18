@@ -14,7 +14,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.save!
 
       p.akronym = json['akronym']
-      #TODO p.aktivity = json['aktivity']
+      p.aktivity = find_or_create_project_activities_by_json(json['aktivity'], downloader)
       p.cislo_zmluvy = json['cisloZmluvy']
       #TODO p.data_projektu = json['dataProjektu']
       p.datum_konca_hlavnych_aktivit = json['datumKoncaHlavnychAktivit']
@@ -55,5 +55,21 @@ class Itms::SyncProjectJob < ItmsJob
 
       p.save!
     end
+  end
+
+  private
+
+  def find_or_create_project_activities_by_json(json, downloader)
+    return [] if json.blank?
+    json.map { |json| find_or_create_project_activity_by_json(json, downloader) }
+  end
+
+  def find_or_create_project_activity_by_json(json, downloader)
+    return if json.blank?
+    unit = Itms::ProjectActivity.find_by(itms_id: json['id'])
+    return unit if unit.present?
+
+    Itms::SyncProjectActivityJob.perform_now(json['href'], downloader: downloader)
+    Itms::ProjectActivity.find_by!(itms_id: json['id'])
   end
 end
