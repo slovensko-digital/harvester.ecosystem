@@ -7,7 +7,6 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.datetime :itms_updated_at
 
       t.string :akronym
-      #TODO t.string :aktivity
       t.string :cislo_zmluvy
       #TODO t.string :data_projektu
       t.datetime :datum_konca_hlavnych_aktivit
@@ -18,7 +17,6 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.datetime :datum_zaciatku_realizacie
       t.integer :dlzka_celkova_hlavnych_aktivit
       t.integer :dlzka_celkova_projektu
-      #TODO t.string :formy_financovania
       #TODO t.string :hospodarske_cinnosti
       #TODO t.string :intenzity
       t.string :kod
@@ -52,6 +50,12 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
     create_table 'itms.projekty_aktivity' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
       t.references :aktivita, index: true, foreign_key: { to_table: 'itms.aktivity' }
+      t.timestamps
+    end
+
+    create_table 'itms.projekty_formy_financovania' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :forma_financovania, index: true, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
       t.timestamps
     end
   end

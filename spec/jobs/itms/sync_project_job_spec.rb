@@ -26,6 +26,11 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/typyAktivit/'))
           .and_return(double(body: itms_file_fixture('typ_aktivity_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/konkretnyCiel/'))
+          .and_return(double(body: itms_file_fixture('konkretny_ciel_item.json')))
+
       subject.perform('/v2/projekty/ukoncene/31', downloader: downloader)
 
       expect(Itms::Project.first).to have_attributes(
@@ -51,33 +56,20 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         datum_zaciatku_realizacie: DateTime.parse('2017-01-01T00:00:00Z'),
         dlzka_celkova_hlavnych_aktivit: 18,
         dlzka_celkova_projektu: 18,
-        #TODO formy_financovania: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/Idkodnazovkonkretnyciel"
-            # # },
-            # "description": "Formy financovania",
-            # "example": [
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # # },
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # }
-            # ]
-        # },
+        formy_financovania: [
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 1,
+                kod_zdroj: '01',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
+                nazov: 'Nenávratný grant'
+            ),
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 1,
+                kod_zdroj: '01',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
+                nazov: 'Nenávratný grant'
+            ),
+        ],
         #TODO hospodarske_cinnosti: ,
             # "type": "array",
             # items: ,
