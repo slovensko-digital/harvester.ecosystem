@@ -25,7 +25,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.datum_zaciatku_realizacie = json['datumZaciatkuRealizacie']
       p.dlzka_celkova_hlavnych_aktivit = json['dlzkaCelkovaHlavnychAktivit']
       p.dlzka_celkova_projektu = json['dlzkaCelkovaProjektu']
-      #TODO p.formy_financovania = json['formyFinancovania']
+      p.formy_financovania = find_or_create_specific_goal_codes_by_json(json['formyFinancovania'], downloader)
       #TODO p.hospodarske_cinnosti = json['hospodarskeCinnosti']
       #TODO p.intenzity = json['intenzity']
       p.kod = json['kod']
@@ -66,10 +66,25 @@ class Itms::SyncProjectJob < ItmsJob
 
   def find_or_create_project_activity_by_json(json, downloader)
     return if json.blank?
-    unit = Itms::ProjectActivity.find_by(itms_id: json['id'])
-    return unit if unit.present?
+    project_activity = Itms::ProjectActivity.find_by(itms_id: json['id'])
+    return project_activity if project_activity.present?
 
     Itms::SyncProjectActivityJob.perform_now(json['href'], downloader: downloader)
     Itms::ProjectActivity.find_by!(itms_id: json['id'])
+  end
+
+  def find_or_create_specific_goal_codes_by_json(json, downloader)
+    return [] if json.blank?
+    json.map { |json| find_or_create_specific_goal_code_by_json(json, downloader) }
+  end
+
+  def find_or_create_specific_goal_code_by_json(json, downloader)
+    return if json.blank?
+    Itms::SpecificGoalCode.find_or_create_by!(
+        kod_id: json['id'],
+        kod_zdroj: json['kodZdroj'],
+        konkretny_ciel: find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader),
+        nazov: json['nazov']
+    )
   end
 end

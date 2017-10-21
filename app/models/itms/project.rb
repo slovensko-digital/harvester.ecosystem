@@ -8,4 +8,10 @@ class Itms::Project < ApplicationRecord
   has_many :aktivity,
            through: :projekty_aktivity,
            source: :aktivita
+  has_many :projekty_formy_financovania,
+           class_name: Itms::ProjectFinancingForm,
+           foreign_key: 'projekt_id'
+  has_many :formy_financovania,
+           through: :projekty_formy_financovania,
+           source: :forma_financovania
 end
