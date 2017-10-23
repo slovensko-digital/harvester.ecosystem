@@ -27,7 +27,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.dlzka_celkova_projektu = json['dlzkaCelkovaProjektu']
       p.formy_financovania = find_or_create_specific_goal_codes_by_json(json['formyFinancovania'], downloader)
       p.hospodarske_cinnosti = find_or_create_specific_goal_codes_by_json(json['hospodarskeCinnosti'], downloader)
-      #TODO p.intenzity = json['intenzity']
+      p.intenzity = find_or_create_intensities_by_json(json['intenzity'], downloader)
       p.kod = json['kod']
       #TODO p.meratelne_ukazovatele = json['meratelneUkazovatele']
       #TODO p.miesta_realizacie = json['miestaRealizacie']
@@ -58,6 +58,20 @@ class Itms::SyncProjectJob < ItmsJob
   end
 
   private
+
+  def find_or_create_intensities_by_json(json, downloader)
+    return [] if json.blank?
+    json.map { |json| find_or_create_intensity_by_json(json, downloader) }
+  end
+
+  def find_or_create_intensity_by_json(json, downloader)
+    return if json.blank?
+    intensity = Itms::Intensity.find_by(itms_id: json['id'])
+    return intensity if intensity.present?
+
+    Itms::SyncIntensityJob.perform_now(json['href'], downloader: downloader)
+    Itms::Intensity.find_by!(itms_id: json['id'])
+  end
 
   def find_or_create_project_activities_by_json(json, downloader)
     return [] if json.blank?

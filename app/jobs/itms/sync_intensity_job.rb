@@ -28,13 +28,13 @@ class Itms::SyncIntensityJob < ItmsJob
   def find_or_create_intensity_source_by_json(json)
     return if json.blank?
     Itms::IntensitySource.find_or_create_by!(
-        cerpanie_eu: json['cerpanieEu'].to_d,
-        cerpanie_ro: json['cerpanieRo'].to_d,
+        cerpanie_eu: json['cerpanieEu'] ? json['cerpanieEu'].to_d : nil,
+        cerpanie_ro: json['cerpanieRo'] ? json['cerpanieRo'].to_d : nil,
         zdroj_id: json['id'],
         kod: json['kod'],
         nazov: json['nazov'],
-        percento: json['percento'].to_d,
-        suma_zazmluvnena: json['sumaZazmluvnena'].to_d,
+        percento: json['percento'] ? json['percento'].to_d : nil,
+        suma_zazmluvnena: json['sumaZazmluvnena'] ? json['sumaZazmluvnena'].to_d : nil,
     )
   end
 end

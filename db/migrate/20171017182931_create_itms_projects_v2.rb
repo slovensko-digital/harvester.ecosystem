@@ -17,7 +17,6 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.datetime :datum_zaciatku_realizacie
       t.integer :dlzka_celkova_hlavnych_aktivit
       t.integer :dlzka_celkova_projektu
-      #TODO t.string :intenzity
       t.string :kod
       #TODO t.string :meratelne_ukazovatele
       #TODO t.string :miesta_realizacie
@@ -58,6 +57,12 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
     create_table 'itms.projekty_hospodarske_cinnosti' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
       t.references :hospodarska_cinnost, index: { name: 'index_itms.projekty_hospodarske_cinnosti_hosp_cinnost' }, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.timestamps
+    end
+
+    create_table 'itms.projekty_intenzity' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :intenzita, index: true, foreign_key: { to_table: 'itms.intenzity' }
       t.timestamps
     end
 
