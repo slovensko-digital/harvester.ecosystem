@@ -70,33 +70,20 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
                 nazov: 'Nenávratný grant'
             ),
         ],
-        #TODO hospodarske_cinnosti: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/Idkodnazovkonkretnyciel"
-            # # },
-            # "description": "Hospodárske činnosti",
-            # "example": [
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # # },
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # }
-            # ]
-        # },
+        hospodarske_cinnosti: [
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 22,
+                kod_zdroj: '22',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
+                nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy'
+            ),
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 22,
+                kod_zdroj: '22',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
+                nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy'
+            ),
+        ],
         #TODO intenzity: ,
             # "$ref": "#/definitions/IntenzitaLinkCollection"
         # },
@@ -209,24 +196,20 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             # ]
         # },
         nazov: 'Dobudovanie kanalizačnej siete v aglomerácii Veľké Leváre a rozšírenie ČOV Gajary',
-        #TODO oblasti_intervencie: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/Idkodnazovkonkretnyciel"
-            # # },
-            # "description": "Oblasti intervencie",
-            # "example": [
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # }
-            # ]
-        # },
+        oblasti_intervencie: [
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 22,
+                kod_zdroj: '022',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
+                nazov: 'Čistenie odpadových vôd'
+            ),
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 20,
+                kod_zdroj: '020',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
+                nazov: 'Dodávky vody na ľudskú spotrebu (získavanie, čistenie, infraštruktúra na uskladňovanie a distribúciu)'
+            ),
+        ],
         #TODO organizacne_zlozky: ,
             # "type": "array",
             # items: ,
@@ -265,83 +248,59 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         #TODO schvalena_zonfp: ,
             # "$ref": "#/definitions/SchvalenazonfpLink"
         # },
-        #TODO sekundarny_tematicky_okruh: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/Idkodnazovkonkretnyciel"
-            # # },
-            # "description": "Sekundárny tematický okruh",
-            # "example": [
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # }
-            # ]
-        # },
+        sekundarny_tematicky_okruh: [
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 6,
+                kod_zdroj: '06',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
+                nazov: 'NediskriminĂˇcia'
+            ),
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 7,
+                kod_zdroj: '07',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
+                nazov: 'RodovĂˇ rovnosĹĄ'
+            ),
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 2,
+                kod_zdroj: '02',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
+                nazov: 'SociĂˇlna inovĂˇcia'
+            ),
+        ],
         stav: 'Projekt mimoriadne ukončený - neprispel k cieľom OP (K)',
         suma_celkova_projektov_generujucich_prijem: 16165937.74,
         suma_zazmluvnena: 16165937.74,
         suma_zazmluvnena_povodna: 16165937.74,
-        #TODO typy_uzemia: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/Idkodnazovkonkretnyciel"
-            # # },
-            # "description": "Typy územia",
-            # "example": [
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # # },
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # # },
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # }
-            # ]
-        # },
+        typy_uzemia: [
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 3,
+                kod_zdroj: '03',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
+                nazov: 'Vidiecke oblasti (riedke osídlenie)'
+            ),
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 3,
+                kod_zdroj: '03',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
+                nazov: 'Vidiecke oblasti (riedke osídlenie)'
+            ),
+        ],
         url_adresa_zmluva: 'http://www.crz.gov.sk/index.php?ID=3144219&l=sk',
-        #TODO uzemne_mechanizmy: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/Idkodnazovkonkretnyciel"
-            # # },
-            # "description": "Územné mechanizmy realizácie",
-            # "example": [
-                # {
-                    # "id": 3444143626401543459,
-                    # "kodZdroj": "Delectus fugit ipsam.",
-                    # konkretny_ciel: ,
-                        # "href": "Illo perferendis nisi.",
-                        # "id": 7861799691988884539
-                    # # },
-                    # "nazov": "Quos vel at corporis veritatis dolor."
-                # }
-            # ]
-        # },
+        uzemne_mechanizmy: [
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 7,
+                kod_zdroj: '07',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 63),
+                nazov: 'NeuplatĹuje sa'
+            ),
+            Itms::SpecificGoalCode.find_by!(
+                kod_id: 7,
+                kod_zdroj: '07',
+                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 64),
+                nazov: 'NeuplatĹuje sa'
+            ),
+        ],
         #TODO vyzva: ,
             # "$ref": "#/definitions/VyhlasenavyzvaLink"
         # },
@@ -352,20 +311,14 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
         :data_projektu,
-        :formy_financovania,
-        :hospodarske_cinnosti,
         :intenzity,
         :meratelne_ukazovatele,
         :miesta_realizacie,
         :monitorovacie_terminy,
-        :oblasti_intervencie,
         :organizacne_zlozky,
         :partneri,
         :polozky_rozpoctu,
         :schvalena_zonfp,
-        :sekundarny_tematicky_okruh,
-        :typy_uzemia,
-        :uzemne_mechanizmy,
         :vyzva,
       )
     end

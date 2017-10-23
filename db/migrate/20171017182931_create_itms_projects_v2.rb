@@ -17,7 +17,6 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.datetime :datum_zaciatku_realizacie
       t.integer :dlzka_celkova_hlavnych_aktivit
       t.integer :dlzka_celkova_projektu
-      #TODO t.string :hospodarske_cinnosti
       #TODO t.string :intenzity
       t.string :kod
       #TODO t.string :meratelne_ukazovatele
@@ -33,14 +32,11 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.string :popis_projektu
       t.references :prijimatel, index: true, foreign_key: { to_table: 'itms.subjekty' }
       #TODO t.string :schvalena_zonfp
-      #TODO t.string :sekundarny_tematicky_okruh
       t.string :stav
       t.decimal :suma_celkova_projektov_generujucich_prijem
       t.decimal :suma_zazmluvnena
       t.decimal :suma_zazmluvnena_povodna
-      #TODO t.string :typy_uzemia
       t.string :url_adresa_zmluva
-      #TODO t.string :uzemne_mechanizmy
       #TODO t.string :vyzva
       t.string :zameranie_projektu
 
@@ -56,6 +52,36 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
     create_table 'itms.projekty_formy_financovania' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
       t.references :forma_financovania, index: true, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.timestamps
+    end
+
+    create_table 'itms.projekty_hospodarske_cinnosti' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :hospodarska_cinnost, index: { name: 'index_itms.projekty_hospodarske_cinnosti_hosp_cinnost' }, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.timestamps
+    end
+
+    create_table 'itms.projekty_oblasti_intervencie' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :oblast_intervencie, index: { name: 'index_itms.projekty_oblasti_intervencie_oblast' }, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.timestamps
+    end
+
+    create_table 'itms.projekty_sekundarne_tematicke_okruhy' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :sekundarny_tematicky_okruh, index: { name: 'index_itms.projekty_sekundarne_tematicke_okruhy_okruh' }, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.timestamps
+    end
+
+    create_table 'itms.projekty_typy_uzemia' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :typ_uzemia, index: true, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.timestamps
+    end
+
+    create_table 'itms.projekty_uzemne_mechanizmy' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :uzemny_mechanizmus, index: true, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
       t.timestamps
     end
   end
