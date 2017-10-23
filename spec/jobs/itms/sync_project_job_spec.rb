@@ -31,6 +31,11 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/konkretnyCiel/'))
           .and_return(double(body: itms_file_fixture('konkretny_ciel_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/intenzita/'))
+          .and_return(double(body: itms_file_fixture('intenzita_item.json')))
+
       subject.perform('/v2/projekty/ukoncene/31', downloader: downloader)
 
       expect(Itms::Project.first).to have_attributes(
@@ -84,9 +89,9 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
                 nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy'
             ),
         ],
-        #TODO intenzity: ,
-            # "$ref": "#/definitions/IntenzitaLinkCollection"
-        # },
+        intenzity: [
+            Itms::Intensity.find_by!(itms_id: 46)
+        ],
         kod: '310011A019',
         #TODO meratelne_ukazovatele: ,
             # "type": "array",
@@ -311,7 +316,6 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
         :data_projektu,
-        :intenzity,
         :meratelne_ukazovatele,
         :miesta_realizacie,
         :monitorovacie_terminy,

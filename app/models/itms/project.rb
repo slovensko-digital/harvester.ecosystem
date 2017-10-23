@@ -20,6 +20,12 @@ class Itms::Project < ApplicationRecord
   has_many :hospodarske_cinnosti,
            through: :projekty_hospodarske_cinnosti,
            source: :hospodarska_cinnost
+  has_many :projekty_intenzity,
+           class_name: Itms::ProjectIntensity,
+           foreign_key: 'projekt_id'
+  has_many :intenzity,
+           through: :projekty_intenzity,
+           source: :intenzita
   has_many :projekty_oblasti_intervencie,
            class_name: Itms::ProjectInterventionArea,
            foreign_key: 'projekt_id'
