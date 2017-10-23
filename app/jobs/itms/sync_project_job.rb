@@ -26,14 +26,14 @@ class Itms::SyncProjectJob < ItmsJob
       p.dlzka_celkova_hlavnych_aktivit = json['dlzkaCelkovaHlavnychAktivit']
       p.dlzka_celkova_projektu = json['dlzkaCelkovaProjektu']
       p.formy_financovania = find_or_create_specific_goal_codes_by_json(json['formyFinancovania'], downloader)
-      #TODO p.hospodarske_cinnosti = json['hospodarskeCinnosti']
+      p.hospodarske_cinnosti = find_or_create_specific_goal_codes_by_json(json['hospodarskeCinnosti'], downloader)
       #TODO p.intenzity = json['intenzity']
       p.kod = json['kod']
       #TODO p.meratelne_ukazovatele = json['meratelneUkazovatele']
       #TODO p.miesta_realizacie = json['miestaRealizacie']
       #TODO p.monitorovacie_terminy = json['monitorovacieTerminy']
       p.nazov = json['nazov']
-      #TODO p.oblasti_intervencie = json['oblastiIntervencie']
+      p.oblasti_intervencie = find_or_create_specific_goal_codes_by_json(json['oblastiIntervencie'], downloader)
       #TODO p.organizacne_zlozky = json['organizacneZlozky']
       p.otvorena_zmena = json['otvorenaZmena']
       p.otvoreny_dodatok = json['otvorenyDodatok']
@@ -42,14 +42,14 @@ class Itms::SyncProjectJob < ItmsJob
       p.popis_projektu = json['popisProjektu']
       p.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)
       #TODO p.schvalena_zonfp = json['schvalenaZonfp']
-      #TODO p.sekundarny_tematicky_okruh = json['sekundarnyTematickyOkruh']
+      p.sekundarny_tematicky_okruh = find_or_create_specific_goal_codes_by_json(json['sekundarnyTematickyOkruh'], downloader)
       p.stav = json['stav']
       p.suma_celkova_projektov_generujucich_prijem = json['sumaCelkovaProjektovGenerujucichPrijem']
       p.suma_zazmluvnena = json['sumaZazmluvnena']
       p.suma_zazmluvnena_povodna = json['sumaZazmluvnenaPovodna']
-      #TODO p.typy_uzemia = json['typyUzemia']
+      p.typy_uzemia = find_or_create_specific_goal_codes_by_json(json['typyUzemia'], downloader)
       p.url_adresa_zmluva = json['urlAdresaZmluva']
-      #TODO p.uzemne_mechanizmy = json['uzemneMechanizmy']
+      p.uzemne_mechanizmy = find_or_create_specific_goal_codes_by_json(json['uzemneMechanizmy'], downloader)
       #TODO p.vyzva = json['vyzva']
       p.zameranie_projektu = json['zameranieProjektu']
 
