@@ -1,0 +1,54 @@
+[
+  {
+    "cisloZmluvy": "Z312020A017",
+    "createdAt": "2015-10-29T09:57:18.114Z",
+    "datumPlatnostiZmluvy": "2015-11-05T00:00:00Z",
+    "datumUcinnostiZmluvy": "2015-11-06T00:00:00Z",
+    "href": "/v2/projekty/vrealizacii/1",
+    "id": 1,
+    "kod": "312021A017",
+    "nazov": "Praxou k zamestnaniu",
+    "otvorenaZmena": false,
+    "otvorenyDodatok": true,
+    "prijimatel": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "stav": "Zmluva uzavretá",
+    "sumaZazmluvnena": 33007500,
+    "updatedAt": "2017-10-17T14:44:44.718Z",
+    "vyzva": {
+      "href": "/v2/vyzvy/vyhlasene/7",
+      "id": 7
+    },
+    "zameranieProjektu": "Národný projekt"
+  },
+  {
+    "cisloZmluvy": "Z312030A020",
+    "createdAt": "2015-10-29T14:01:27.336Z",
+    "datumPlatnostiZmluvy": "2015-11-12T00:00:00Z",
+    "datumUcinnostiZmluvy": "2015-11-13T00:00:00Z",
+    "href": "/v2/projekty/vrealizacii/2",
+    "id": 2,
+    "kod": "312031A020",
+    "nazov": "Podpora zamestnávania UoZ prostredníctvom vybraných aktívnych opatrení na trhu práce",
+    "otvorenaZmena": false,
+    "otvorenyDodatok": false,
+    "prijimatel": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "stav": "Zmluva uzavretá",
+    "sumaZazmluvnena": 50000000,
+    "updatedAt": "2017-03-17T11:23:37.678Z",
+    "vyzva": {
+      "href": "/v2/vyzvy/vyhlasene/6",
+      "id": 6
+    },
+    "zameranieProjektu": "Národný projekt"
+  }
+]

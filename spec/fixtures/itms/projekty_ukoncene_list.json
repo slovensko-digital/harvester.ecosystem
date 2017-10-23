@@ -1,0 +1,54 @@
+[
+  {
+    "cisloZmluvy": "OPKZPPO1SC121/1222015/04",
+    "createdAt": "2016-02-19T09:15:40.868Z",
+    "datumPlatnostiZmluvy": "2016-03-11T00:00:00Z",
+    "datumUcinnostiZmluvy": "2016-03-23T00:00:00Z",
+    "href": "/v2/projekty/ukoncene/31",
+    "id": 31,
+    "kod": "310011A019",
+    "nazov": "Dobudovanie kanalizačnej siete v aglomerácii Veľké Leváre a rozšírenie ČOV Gajary",
+    "otvorenaZmena": false,
+    "otvorenyDodatok": false,
+    "prijimatel": {
+      "dic": "2021776174",
+      "href": "/v2/subjekty/100062",
+      "ico": "36067725",
+      "id": 100062
+    },
+    "stav": "Projekt mimoriadne ukončený - neprispel k cieľom OP (K)",
+    "sumaZazmluvnena": 16165937.74,
+    "updatedAt": "2017-06-30T09:32:14.961Z",
+    "vyzva": {
+      "href": "/v2/vyzvy/vyhlasene/1",
+      "id": 1
+    },
+    "zameranieProjektu": "Dopytovo-orientovaný projekt"
+  },
+  {
+    "cisloZmluvy": "Z311310A347",
+    "createdAt": "2016-03-24T13:20:14.365Z",
+    "datumPlatnostiZmluvy": "2016-03-23T00:00:00Z",
+    "datumUcinnostiZmluvy": "2016-03-25T00:00:00Z",
+    "href": "/v2/projekty/ukoncene/60",
+    "id": 60,
+    "kod": "311031A347",
+    "nazov": "DPB, Obnova vozového parku električiek v Bratislave - opcia na 15 ks jednosmerných električiek",
+    "otvorenaZmena": false,
+    "otvorenyDodatok": false,
+    "prijimatel": {
+      "dic": "2020298786",
+      "href": "/v2/subjekty/100578",
+      "ico": "00492736",
+      "id": 100578
+    },
+    "stav": "Projekt riadne ukončený (K)",
+    "sumaZazmluvnena": 36750170,
+    "updatedAt": "2017-08-16T13:08:23.258Z",
+    "vyzva": {
+      "href": "/v2/vyzvy/vyhlasene/95",
+      "id": 95
+    },
+    "zameranieProjektu": "Národný projekt"
+  }
+]
