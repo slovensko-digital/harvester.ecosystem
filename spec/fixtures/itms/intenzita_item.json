@@ -1,0 +1,55 @@
+{
+  "href": "/v2/intenzita/1",
+  "id": 1,
+  "nazov": "Intenzita 312020/7170/LDR/30794536",
+  "subjekt": {
+    "dic": "2021777780",
+    "href": "/v2/subjekty/100077",
+    "ico": "30794536",
+    "id": 100077
+  },
+  "zdrojEu": {
+    "cerpanieEu": 2494121.91,
+    "cerpanieRo": 4296101.17,
+    "id": 6,
+    "kod": "1AC1",
+    "nazov": "Európsky sociálny fond – prostriedky EÚ",
+    "percento": 0.565845,
+    "sumaZazmluvnena": 18677128.8375
+  },
+  "zdrojPr": {
+    "cerpanieEu": 7642.8,
+    "cerpanieRo": 7642.8,
+    "id": 3,
+    "kod": "1AA3",
+    "nazov": "EurĂłpsky fond regionĂˇlneho rozvoja â€“ pro rata",
+    "percento": 0.0345,
+    "sumaZazmluvnena": 24020.97
+  },
+  "zdrojSr": {
+    "cerpanieEu": 440139.14,
+    "cerpanieRo": 758135.49,
+    "id": 7,
+    "kod": "1AC2",
+    "nazov": "Európsky sociálny fond – spolufinancovanie ŠR",
+    "percento": 0.099855,
+    "sumaZazmluvnena": 3295963.9125
+  },
+  "zdrojVz": {
+    "cerpanieRo": 64497.05,
+    "id": 17,
+    "kod": "9020",
+    "nazov": "VlastnĂ© verejnĂ©",
+    "percento": 0.05,
+    "sumaZazmluvnena": 68618.5
+  },
+  "zdrojYei": {
+    "cerpanieEu": 1473521.81,
+    "cerpanieRo": 2538127.27,
+    "id": 200001,
+    "kod": "1AL1",
+    "nazov": "Iniciatíva na podporu zamestnanosti mladých ľudí",
+    "percento": 0.3343,
+    "sumaZazmluvnena": 11034407.25
+  }
+}
