@@ -62,31 +62,24 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         dlzka_celkova_hlavnych_aktivit: 18,
         dlzka_celkova_projektu: 18,
         formy_financovania: [
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 1,
-                kod_zdroj: '01',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 1, kod_zdroj: '01', nazov: 'Nenávratný grant'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
-                nazov: 'Nenávratný grant'
+
             ),
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 1,
-                kod_zdroj: '01',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 1, kod_zdroj: '01', nazov: 'Nenávratný grant'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
-                nazov: 'Nenávratný grant'
             ),
         ],
         hospodarske_cinnosti: [
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 22,
-                kod_zdroj: '22',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 22, kod_zdroj: '22', nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
-                nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy'
             ),
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 22,
-                kod_zdroj: '22',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 22, kod_zdroj: '22', nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
-                nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy'
             ),
         ],
         intenzity: [
@@ -202,17 +195,13 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         # },
         nazov: 'Dobudovanie kanalizačnej siete v aglomerácii Veľké Leváre a rozšírenie ČOV Gajary',
         oblasti_intervencie: [
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 22,
-                kod_zdroj: '022',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 22, kod_zdroj: '022', nazov: 'Čistenie odpadových vôd'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
-                nazov: 'Čistenie odpadových vôd'
             ),
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 20,
-                kod_zdroj: '020',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 22, kod_zdroj: '022', nazov: 'Dodávky vody na ľudskú spotrebu (získavanie, čistenie, infraštruktúra na uskladňovanie a distribúciu)'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
-                nazov: 'Dodávky vody na ľudskú spotrebu (získavanie, čistenie, infraštruktúra na uskladňovanie a distribúciu)'
             ),
         ],
         #TODO organizacne_zlozky: ,
@@ -254,23 +243,17 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             # "$ref": "#/definitions/SchvalenazonfpLink"
         # },
         sekundarny_tematicky_okruh: [
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 6,
-                kod_zdroj: '06',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 6, kod_zdroj: '06', nazov: 'NediskriminĂˇcia'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
-                nazov: 'NediskriminĂˇcia'
             ),
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 7,
-                kod_zdroj: '07',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 6, kod_zdroj: '06', nazov: 'RodovĂˇ rovnosĹĄ'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
-                nazov: 'RodovĂˇ rovnosĹĄ'
             ),
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 2,
-                kod_zdroj: '02',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 2, kod_zdroj: '02', nazov: 'SociĂˇlna inovĂˇcia'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
-                nazov: 'SociĂˇlna inovĂˇcia'
             ),
         ],
         stav: 'Projekt mimoriadne ukončený - neprispel k cieľom OP (K)',
@@ -278,13 +261,15 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         suma_zazmluvnena: 16165937.74,
         suma_zazmluvnena_povodna: 16165937.74,
         typy_uzemia: [
-            Itms::SpecificGoalCode.find_by!(
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 2, kod_zdroj: '02', nazov: 'SociĂˇlna inovĂˇcia'),
                 kod_id: 3,
                 kod_zdroj: '03',
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
                 nazov: 'Vidiecke oblasti (riedke osídlenie)'
             ),
-            Itms::SpecificGoalCode.find_by!(
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 2, kod_zdroj: '02', nazov: 'SociĂˇlna inovĂˇcia'),
                 kod_id: 3,
                 kod_zdroj: '03',
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
@@ -293,17 +278,13 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         ],
         url_adresa_zmluva: 'http://www.crz.gov.sk/index.php?ID=3144219&l=sk',
         uzemne_mechanizmy: [
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 7,
-                kod_zdroj: '07',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 7, kod_zdroj: '07', nazov: 'NeuplatĹuje sa'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 63),
-                nazov: 'NeuplatĹuje sa'
             ),
-            Itms::SpecificGoalCode.find_by!(
-                kod_id: 7,
-                kod_zdroj: '07',
+            Itms::CodeSpecificGoal.find_by!(
+                kod: Itms::Code.find_by!(kod_id: 7, kod_zdroj: '07', nazov: 'NeuplatĹuje sa'),
                 konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 64),
-                nazov: 'NeuplatĹuje sa'
             ),
         ],
         #TODO vyzva: ,
