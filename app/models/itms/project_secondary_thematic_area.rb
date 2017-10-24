@@ -1,5 +1,6 @@
 class Itms::ProjectSecondaryThematicArea < ApplicationRecord
   self.table_name = 'itms.projekty_sekundarne_tematicke_okruhy'
 
-  belongs_to :sekundarny_tematicky_okruh, class_name: Itms::CodeSpecificGoal
+  belongs_to :projekt, class_name: Itms::Project
+  belongs_to :konkretny_ciel, class_name: Itms::SpecificGoal
 end
