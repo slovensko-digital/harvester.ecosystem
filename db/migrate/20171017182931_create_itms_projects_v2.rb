@@ -50,13 +50,13 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
 
     create_table 'itms.projekty_formy_financovania' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :forma_financovania, index: true, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.references :forma_financovania, index: true, foreign_key: { to_table: 'itms.kody_konkretne_ciele' }
       t.timestamps
     end
 
     create_table 'itms.projekty_hospodarske_cinnosti' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :hospodarska_cinnost, index: { name: 'index_itms.projekty_hospodarske_cinnosti_hosp_cinnost' }, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.references :hospodarska_cinnost, index: { name: 'index_itms.projekty_hospodarske_cinnosti_hosp_cinnost' }, foreign_key: { to_table: 'itms.kody_konkretne_ciele' }
       t.timestamps
     end
 
@@ -68,25 +68,25 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
 
     create_table 'itms.projekty_oblasti_intervencie' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :oblast_intervencie, index: { name: 'index_itms.projekty_oblasti_intervencie_oblast' }, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.references :oblast_intervencie, index: { name: 'index_itms.projekty_oblasti_intervencie_oblast' }, foreign_key: { to_table: 'itms.kody_konkretne_ciele' }
       t.timestamps
     end
 
     create_table 'itms.projekty_sekundarne_tematicke_okruhy' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :sekundarny_tematicky_okruh, index: { name: 'index_itms.projekty_sekundarne_tematicke_okruhy_okruh' }, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.references :sekundarny_tematicky_okruh, index: { name: 'index_itms.projekty_sekundarne_tematicke_okruhy_okruh' }, foreign_key: { to_table: 'itms.kody_konkretne_ciele' }
       t.timestamps
     end
 
     create_table 'itms.projekty_typy_uzemia' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :typ_uzemia, index: true, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.references :typ_uzemia, index: true, foreign_key: { to_table: 'itms.kody_konkretne_ciele' }
       t.timestamps
     end
 
     create_table 'itms.projekty_uzemne_mechanizmy' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :uzemny_mechanizmus, index: true, foreign_key: { to_table: 'itms.kody_konkretnych_cielov' }
+      t.references :uzemny_mechanizmus, index: true, foreign_key: { to_table: 'itms.kody_konkretne_ciele' }
       t.timestamps
     end
   end

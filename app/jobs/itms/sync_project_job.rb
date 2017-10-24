@@ -25,15 +25,15 @@ class Itms::SyncProjectJob < ItmsJob
       p.datum_zaciatku_realizacie = json['datumZaciatkuRealizacie']
       p.dlzka_celkova_hlavnych_aktivit = json['dlzkaCelkovaHlavnychAktivit']
       p.dlzka_celkova_projektu = json['dlzkaCelkovaProjektu']
-      p.formy_financovania = find_or_create_specific_goal_codes_by_json(json['formyFinancovania'], downloader)
-      p.hospodarske_cinnosti = find_or_create_specific_goal_codes_by_json(json['hospodarskeCinnosti'], downloader)
+      p.formy_financovania = find_or_create_codes_specific_goals_by_json(json['formyFinancovania'], downloader)
+      p.hospodarske_cinnosti = find_or_create_codes_specific_goals_by_json(json['hospodarskeCinnosti'], downloader)
       p.intenzity = find_or_create_intensities_by_json(json['intenzity'], downloader)
       p.kod = json['kod']
       #TODO p.meratelne_ukazovatele = json['meratelneUkazovatele']
       #TODO p.miesta_realizacie = json['miestaRealizacie']
       #TODO p.monitorovacie_terminy = json['monitorovacieTerminy']
       p.nazov = json['nazov']
-      p.oblasti_intervencie = find_or_create_specific_goal_codes_by_json(json['oblastiIntervencie'], downloader)
+      p.oblasti_intervencie = find_or_create_codes_specific_goals_by_json(json['oblastiIntervencie'], downloader)
       #TODO p.organizacne_zlozky = json['organizacneZlozky']
       p.otvorena_zmena = json['otvorenaZmena']
       p.otvoreny_dodatok = json['otvorenyDodatok']
@@ -42,14 +42,14 @@ class Itms::SyncProjectJob < ItmsJob
       p.popis_projektu = json['popisProjektu']
       p.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)
       #TODO p.schvalena_zonfp = json['schvalenaZonfp']
-      p.sekundarny_tematicky_okruh = find_or_create_specific_goal_codes_by_json(json['sekundarnyTematickyOkruh'], downloader)
+      p.sekundarny_tematicky_okruh = find_or_create_codes_specific_goals_by_json(json['sekundarnyTematickyOkruh'], downloader)
       p.stav = json['stav']
       p.suma_celkova_projektov_generujucich_prijem = json['sumaCelkovaProjektovGenerujucichPrijem']
       p.suma_zazmluvnena = json['sumaZazmluvnena']
       p.suma_zazmluvnena_povodna = json['sumaZazmluvnenaPovodna']
-      p.typy_uzemia = find_or_create_specific_goal_codes_by_json(json['typyUzemia'], downloader)
+      p.typy_uzemia = find_or_create_codes_specific_goals_by_json(json['typyUzemia'], downloader)
       p.url_adresa_zmluva = json['urlAdresaZmluva']
-      p.uzemne_mechanizmy = find_or_create_specific_goal_codes_by_json(json['uzemneMechanizmy'], downloader)
+      p.uzemne_mechanizmy = find_or_create_codes_specific_goals_by_json(json['uzemneMechanizmy'], downloader)
       #TODO p.vyzva = json['vyzva']
       p.zameranie_projektu = json['zameranieProjektu']
 
@@ -87,18 +87,16 @@ class Itms::SyncProjectJob < ItmsJob
     Itms::ProjectActivity.find_by!(itms_id: json['id'])
   end
 
-  def find_or_create_specific_goal_codes_by_json(json, downloader)
+  def find_or_create_codes_specific_goals_by_json(json, downloader)
     return [] if json.blank?
-    json.map { |json| find_or_create_specific_goal_code_by_json(json, downloader) }
+    json.map { |json| find_or_create_code_specific_goal_by_json(json, downloader) }
   end
 
-  def find_or_create_specific_goal_code_by_json(json, downloader)
+  def find_or_create_code_specific_goal_by_json(json, downloader)
     return if json.blank?
-    Itms::SpecificGoalCode.find_or_create_by!(
-        kod_id: json['id'],
-        kod_zdroj: json['kodZdroj'],
+    Itms::CodeSpecificGoal.find_or_create_by!(
+        kod: find_or_create_code_by_json(json),
         konkretny_ciel: find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader),
-        nazov: json['nazov']
     )
   end
 end
