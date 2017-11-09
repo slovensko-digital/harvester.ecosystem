@@ -1,15 +1,16 @@
 class ItmsJob < ApplicationJob
-  def find_or_create_code_by_json(json)
-    Itms::Code.find_or_create_by!(
-        kod_id: json['id'],
-        kod_zdroj: json['kodZdroj'],
-        nazov: json['nazov']
-    )
+  def find_or_create_codelist_value_by_json(json, downloader)
+    return if json.blank?
+    codelist_value = Itms::CodelistValue.where_codelist_and_value(json['ciselnikKod'], json['id']).first
+    return codelist_value if codelist_value.present?
+
+    Itms::SyncCodelistValueJob.perform_now(json['ciselnikKod'], json['id'], downloader: downloader)
+    Itms::CodelistValue.where_codelist_and_value(json['ciselnikKod'], json['id']).first!
   end
 
-  def find_or_create_codes_by_json(json)
+  def find_or_create_codelist_values_by_json(json, downloader)
     return [] if json.blank?
-    json.map { |code_json| find_or_create_code_by_json(code_json) }
+    json.map { |codelist_value_json| find_or_create_codelist_value_by_json(codelist_value_json, downloader) }
   end
 
   def find_or_create_activity_type_by_json(json, downloader)

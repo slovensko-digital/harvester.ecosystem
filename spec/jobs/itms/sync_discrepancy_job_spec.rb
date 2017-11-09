@@ -36,6 +36,16 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/prioritnaOs/'))
           .and_return(double(body: itms_file_fixture('prioritna_os_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
+          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
+
+      allow(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/ciselniky')
+          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
+
       subject.perform(1, downloader: downloader)
 
       expect(Itms::Discrepancy.first).to have_attributes(
@@ -44,7 +54,7 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         itms_created_at: DateTime.parse('2016-05-26T14:19:38.598Z'),
         itms_updated_at: DateTime.parse('2016-12-01T00:00:00Z'),
 
-        administrativny_stav: Itms::Code.find_by!(kod_id: 5, kod_zdroj: 'PX', nazov: 'Ukončené konanie'),
+        administrativny_stav: Itms::CodelistValue.where_codelist_and_value(1063, 5).first!,
         celkova_suma_nezrovnalosti: 23.68,
         celkova_suma_nezrovnalosti_zdroj_eu: 20.13,
         celkova_suma_nezrovnalosti_zdroj_pr: nil,
@@ -54,8 +64,8 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         dlznik: Itms::Subject.find_by!(itms_id: 100077),
         dopad_na_rozpocet_eu: 'S_DOPADOM_NA_ROZPOCET_EU',
         druh_nezrovnalosti: 'INDIVIDUALNA_NEZROVNALOST',
-        financny_stav: Itms::Code.find_by!(kod_id: 7, kod_zdroj: 'G-FULR', nazov: 'Vrátené / vymožené v plnej výške'),
-        hlavny_typ_nezrovnalosti: Itms::Code.find_by!(kod_id: 113, kod_zdroj: '811', nazov: 'Akcia neukončená'),
+        financny_stav: Itms::CodelistValue.where_codelist_and_value(1067, 7).first!,
+        hlavny_typ_nezrovnalosti: Itms::CodelistValue.where_codelist_and_value(1075, 113).first!,
         je_systemova: false,
         kod: '312IP160001',
         konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 8),
@@ -79,8 +89,8 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         suvisiace_nezrovnalosti: [Itms::Discrepancy.find_by!(itms_id: 3)],
         suvisiace_pohladavkove_doklady: [Itms::AccountsReceivableDocument.find_by!(itms_id: 2)],
         typy_nezrovnalosti: [
-          Itms::Code.find_by!(kod_id: 113, kod_zdroj: '811', nazov: 'Akcia neukončená'),
-          Itms::Code.find_by!(kod_id: 105, kod_zdroj: '741', nazov: 'Nedodržanie záväzkov vyplývajúcich zo zmluvných vzťahov'),
+          Itms::CodelistValue.where_codelist_and_value(1075, 113).first!,
+          Itms::CodelistValue.where_codelist_and_value(1075, 105).first!,
         ],
         vratena_suma: 23.68,
         vratena_suma_zdroj_eu: 20.13,

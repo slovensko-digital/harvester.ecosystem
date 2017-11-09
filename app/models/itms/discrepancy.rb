@@ -1,10 +1,10 @@
 class Itms::Discrepancy < ApplicationRecord
   self.table_name = 'itms.nezrovnalosti'
 
-  belongs_to :administrativny_stav, class_name: Itms::Code
+  belongs_to :administrativny_stav, class_name: Itms::CodelistValue
   belongs_to :dlznik, class_name: Itms::Subject
-  belongs_to :financny_stav, class_name: Itms::Code
-  belongs_to :hlavny_typ_nezrovnalosti, class_name: Itms::Code
+  belongs_to :financny_stav, class_name: Itms::CodelistValue
+  belongs_to :hlavny_typ_nezrovnalosti, class_name: Itms::CodelistValue
   belongs_to :konkretny_ciel, class_name: Itms::SpecificGoal
   belongs_to :operacny_program, class_name: Itms::OperationalProgram
   belongs_to :prioritna_os, class_name: Itms::PriorityAxis

@@ -9,7 +9,7 @@ class UpdateItmsSpecificGoals < ActiveRecord::Migration[5.0]
       t.datetime :itms_created_at
       t.datetime :itms_updated_at
 
-      t.references :fond, index: true, foreign_key: { to_table: 'itms.kody' }
+      t.references :fond, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.string :kategoria_regionov
       t.string :kod
       t.string :nazov

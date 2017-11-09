@@ -32,7 +32,7 @@ class AddItmsDiscrepanciesJoinTables < ActiveRecord::Migration[5.0]
 
     create_table 'itms.nezrovnalosti_typy_nezrovnalosti' do |t|
       t.references :nezrovnalost, index: true, foreign_key: { to_table: 'itms.nezrovnalosti' }
-      t.references :kod, index: true, foreign_key: { to_table: 'itms.kody' }
+      t.references :kod, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
   end

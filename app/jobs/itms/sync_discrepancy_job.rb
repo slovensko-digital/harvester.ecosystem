@@ -12,7 +12,7 @@ class Itms::SyncDiscrepancyJob < ItmsJob
       d.itms_updated_at = json['updatedAt']
       d.save!
 
-      d.administrativny_stav = find_or_create_code_by_json(json['administrativnyStav'])
+      d.administrativny_stav = find_or_create_codelist_value_by_json(json['administrativnyStav'], downloader)
       d.celkova_suma_nezrovnalosti = json['celkovaSumaNezrovnalosti']
       d.celkova_suma_nezrovnalosti_zdroj_eu = json['celkovaSumaNezrovnalostiZdrojEU']
       d.celkova_suma_nezrovnalosti_zdroj_pr = json['celkovaSumaNezrovnalostiZdrojPR']
@@ -22,8 +22,8 @@ class Itms::SyncDiscrepancyJob < ItmsJob
       d.dlznik = find_or_create_subject_by_json(json['dlznik'], downloader)
       d.dopad_na_rozpocet_eu = json['dopadNaRozpocetEU']
       d.druh_nezrovnalosti = json['druhNezrovnalosti']
-      d.financny_stav = find_or_create_code_by_json(json['financnyStav'])
-      d.hlavny_typ_nezrovnalosti = find_or_create_code_by_json(json['hlavnyTypNezrovnalosti'])
+      d.financny_stav = find_or_create_codelist_value_by_json(json['financnyStav'], downloader)
+      d.hlavny_typ_nezrovnalosti = find_or_create_codelist_value_by_json(json['hlavnyTypNezrovnalosti'], downloader)
       d.je_systemova = json['jeSystemova']
       d.kod = json['kod']
       d.konkretny_ciel = find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader)
@@ -49,7 +49,7 @@ class Itms::SyncDiscrepancyJob < ItmsJob
       d.suvisiace_pohladavkove_doklady = find_or_create_accounts_receivable_documents_by_json(json['suvisiacePohladavkoveDoklady'], downloader)
       # TODO :suvisiace_verejne_obstaravania
       # TODO :suvisiace_zop
-      d.typy_nezrovnalosti = find_or_create_codes_by_json(json['typyNezrovnalosti'])
+      d.typy_nezrovnalosti = find_or_create_codelist_values_by_json(json['typyNezrovnalosti'], downloader)
       d.vratena_suma = json['vratenaSuma']
       d.vratena_suma_zdroj_eu = json['vratenaSumaZdrojEU']
       d.vratena_suma_zdroj_pr = json['vratenaSumaZdrojPR']

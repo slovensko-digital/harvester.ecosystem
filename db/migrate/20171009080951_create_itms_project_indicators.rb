@@ -19,13 +19,13 @@ class CreateItmsProjectIndicators < ActiveRecord::Migration[5.0]
 
     create_table 'itms.projektove_ukazovatele_casy_plnenia' do |t|
       t.references :projektovy_ukazovatel, index: { name: 'index_itms.projektove_ukazovatele_casy_plnenia_ukazovatel' }, foreign_key: { to_table: 'itms.projektove_ukazovatele' }
-      t.references :kod, index: { name: 'index_itms.projektove_ukazovatele_casy_plnenia_cas' }, foreign_key: { to_table: 'itms.kody' }
+      t.references :kod, index: { name: 'index_itms.projektove_ukazovatele_casy_plnenia_cas' }, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
 
     create_table 'itms.projektove_ukazovatele_fondy' do |t|
       t.references :projektovy_ukazovatel, index: { name: 'index_itms.projektove_ukazovatele_fondy_ukazovatel' }, foreign_key: { to_table: 'itms.projektove_ukazovatele' }
-      t.references :kod, index: { name: 'index_itms.projektove_ukazovatele_fondy_fond' }, foreign_key: { to_table: 'itms.kody' }
+      t.references :kod, index: { name: 'index_itms.projektove_ukazovatele_fondy_fond' }, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
   end
