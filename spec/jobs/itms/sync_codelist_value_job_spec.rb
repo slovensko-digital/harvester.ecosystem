@@ -1,21 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe Itms::SyncCodelistValuesJob, type: :job do
+RSpec.describe Itms::SyncCodelistValueJob, type: :job do
   let(:downloader) { double(:downloader) }
 
   context '#perform' do
     it 'syncs values of a given codelist' do
       expect(downloader)
           .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
-          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_list.json')))
+          .with('https://opendata.itms2014.sk/v2/hodnotaCiselnika/1001/hodnota/1')
+          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
           .once
 
-      Itms::Codelist.create(ciselnik_kod: 1001)
+      expect(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/ciselniky')
+          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
+          .once
 
-      expect {
-        subject.perform(1001, downloader: downloader)
-      }.to change{ Itms::CodelistValue.count }.by(37)
+      subject.perform(1001, 1, downloader: downloader)
 
       expect(Itms::CodelistValue.first).to have_attributes(
         ciselnik: Itms::Codelist.find_by!(ciselnik_kod: 1001),
