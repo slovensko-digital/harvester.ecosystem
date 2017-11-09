@@ -1,0 +1,336 @@
+[
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/1",
+    "id": 1,
+    "kod": "10010200",
+    "kodZdroj": "0200",
+    "nazov": "Všeobecná úverová banka, a.s.",
+    "platnostDo": "2093-01-01T00:00:00Z",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Všeobecná úverová banka, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/2",
+    "id": 2,
+    "kod": "10010900",
+    "kodZdroj": "0900",
+    "nazov": "Slovenská sporiteľňa, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Slovenská sporiteľňa, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/3",
+    "id": 3,
+    "kod": "10010720",
+    "kodZdroj": "0720",
+    "nazov": "Národná banka Slovenska",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Národná banka Slovenska"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/4",
+    "id": 4,
+    "kod": "10011100",
+    "kodZdroj": "1100",
+    "nazov": "Tatra banka, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Tatra banka, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/5",
+    "id": 5,
+    "kod": "10011111",
+    "kodZdroj": "1111",
+    "nazov": "UniCredit Bank Slovakia, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "UniCredit Bank Slovakia, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/6",
+    "id": 6,
+    "kod": "10013000",
+    "kodZdroj": "3000",
+    "nazov": "Slovenská záručná a rozvojová banka, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Slovenská záručná a rozvojová banka, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/7",
+    "id": 7,
+    "kod": "10013100",
+    "kodZdroj": "3100",
+    "nazov": "Sberbank Slovensko, a.s. ",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Sberbank Slovensko, a.s. "
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/8",
+    "id": 8,
+    "kod": "10015200",
+    "kodZdroj": "5200",
+    "nazov": "OTP Banka Slovensko, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "OTP Banka Slovensko, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/10",
+    "id": 10,
+    "kod": "10015900",
+    "kodZdroj": "5900",
+    "nazov": "Prvá stavebná sporiteľňa, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Prvá stavebná sporiteľňa, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/11",
+    "id": 11,
+    "kod": "10016500",
+    "kodZdroj": "6500",
+    "nazov": "Poštová banka, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Poštová banka, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/12",
+    "id": 12,
+    "kod": "10017300",
+    "kodZdroj": "7300",
+    "nazov": "ING Bank N.V.,  pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "ING Bank N.V.,  pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/13",
+    "id": 13,
+    "kod": "10017500",
+    "kodZdroj": "7500",
+    "nazov": "Československá obchodná banka, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Československá obchodná banka, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/14",
+    "id": 14,
+    "kod": "10017930",
+    "kodZdroj": "7930",
+    "nazov": "Wüstenrot stavebná sporiteľňa, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Wüstenrot stavebná sporiteľňa, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/15",
+    "id": 15,
+    "kod": "10018020",
+    "kodZdroj": "8020",
+    "nazov": "Crédit Agricole Corporate and Investment Bank S.A., pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Crédit Agricole Corporate and Investment Bank S.A., pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/16",
+    "id": 16,
+    "kod": "10018050",
+    "kodZdroj": "8050",
+    "nazov": "Commerzbank Aktiengesellschaft, pobočka zahraničnej banky, Bratislava",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Commerzbank Aktiengesellschaft, pobočka zahraničnej banky, Bratislava"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/17",
+    "id": 17,
+    "kod": "10018100",
+    "kodZdroj": "8100",
+    "nazov": "Komerční banka Bratislava, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Komerční banka Bratislava, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/18",
+    "id": 18,
+    "kod": "10018120",
+    "kodZdroj": "8120",
+    "nazov": "Privatbanka, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Privatbanka, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/19",
+    "id": 19,
+    "kod": "10018130",
+    "kodZdroj": "8130",
+    "nazov": "Citibank Europe plc, pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Citibank Europe plc, pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/20",
+    "id": 20,
+    "kod": "10018170",
+    "kodZdroj": "8170",
+    "nazov": "ČSOB stavebná sporiteľňa, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "ČSOB stavebná sporiteľňa, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/21",
+    "id": 21,
+    "kod": "10018160",
+    "kodZdroj": "8160",
+    "nazov": "EXIMBANKA SR",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "EXIMBANKA SR"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/22",
+    "id": 22,
+    "kod": "10018180",
+    "kodZdroj": "8180",
+    "nazov": "Štátna pokladnica",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Štátna pokladnica"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/23",
+    "id": 23,
+    "kod": "10018191",
+    "kodZdroj": "8191",
+    "nazov": "Centrálny depozitár cenných papierov SR, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Centrálny depozitár cenných papierov SR, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/24",
+    "id": 24,
+    "kod": "10018300",
+    "kodZdroj": "8300",
+    "nazov": "HSBC Bank plc, pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "HSBC Bank plc, pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/25",
+    "id": 25,
+    "kod": "10018400",
+    "kodZdroj": "8400",
+    "nazov": "Banco Mais, S.A.,  pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Banco Mais, S.A.,  pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/26",
+    "id": 26,
+    "kod": "10018320",
+    "kodZdroj": "8320",
+    "nazov": "J\u0026T BANKA, a.s., pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "J\u0026T BANKA, a.s., pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/27",
+    "id": 27,
+    "kod": "10018330",
+    "kodZdroj": "8330",
+    "nazov": "Fio banka, a.s., pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Fio banka, a.s., pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/28",
+    "id": 28,
+    "kod": "10018350",
+    "kodZdroj": "8350",
+    "nazov": "The Royal Bank of Scotland N.V., pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "The Royal Bank of Scotland N.V., pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/29",
+    "id": 29,
+    "kod": "10018360",
+    "kodZdroj": "8360",
+    "nazov": "BRE Bank SA, pobočka zahraničnej banky mBank v Slovenskej republike",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "BRE Bank SA, pobočka zahraničnej banky mBank v Slovenskej republike"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/30",
+    "id": 30,
+    "kod": "10018370",
+    "kodZdroj": "8370",
+    "nazov": "Oberbank AG  pobočka zahraničnej banky v Slovenskej republike",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Oberbank AG  pobočka zahraničnej banky v Slovenskej republike"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/31",
+    "id": 31,
+    "kod": "10018340",
+    "kodZdroj": "8340",
+    "nazov": "UNIBON - spořitelní a uvěrní družstvo, organizačná zložka zahraničnej osoby",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "UNIBON - spořitelní a uvěrní družstvo, organizačná zložka zahraničnej osoby"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/32",
+    "id": 32,
+    "kod": "10018380",
+    "kodZdroj": "8380",
+    "nazov": "AXA Bank Europe, pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "AXA Bank Europe, pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/33",
+    "id": 33,
+    "kod": "10018410",
+    "kodZdroj": "8410",
+    "nazov": "ZUNO BANK AG, pobočka zahraničnej banky",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "ZUNO BANK AG, pobočka zahraničnej banky"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/34",
+    "id": 34,
+    "kod": "10011030",
+    "kodZdroj": "1030",
+    "nazov": "Národná banka Slovenska - prevádzkovateľ platobného systému EURO SIPS",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Národná banka Slovenska - prevádzkovateľ platobného systému EURO SIPS"
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/35",
+    "id": 35,
+    "kod": "10019950",
+    "kodZdroj": "9950",
+    "nazov": "First Data Slovakia, s.r.o.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "First Data Slovakia, s.r.o."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/36",
+    "id": 36,
+    "kod": "10019951",
+    "kodZdroj": "9951",
+    "nazov": "Burza cenných papierov v Bratislave, a.s.",
+    "platnostOd": "1993-01-01T00:00:00Z",
+    "popis": "Burza cenných papierov v Bratislave, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/37",
+    "id": 37,
+    "kod": "10015600",
+    "kodZdroj": "5600",
+    "nazov": "Prima banka Slovensko, a.s.",
+    "platnostOd": "2012-01-01T00:00:00Z",
+    "popis": "Prima banka Slovensko, a.s."
+  },
+  {
+    "href": "/v2/hodnotaCiselnika/1001/hodnota/38",
+    "id": 38,
+    "kod": "10019952",
+    "kodZdroj": "9952",
+    "nazov": "Trust Pay, a.s.",
+    "platnostOd": "2013-07-04T00:00:00Z",
+    "popis": "Trust Pay, a.s."
+  }
+]

@@ -1,0 +1,386 @@
+[
+  {
+    "ciselnikKod": 1001,
+    "nazov": "Banky (NBS)",
+    "popis": "Číselník bánk pôsobiacich v SR. Číselník spravuje NBS"
+  },
+  {
+    "ciselnikKod": 1003,
+    "nazov": "Druhy vlastníctva (ŠÚ SR)",
+    "popis": "Číselník druhov vlastníctva subjektu. Číselník spravuje ŠU SR."
+  },
+  {
+    "ciselnikKod": 1004,
+    "nazov": "Kategória veľkosti podniku podľa počtu zamestnancov",
+    "popis": "Kategória veľkosti firmy podľa počtu zamestnancov. "
+  },
+  {
+    "ciselnikKod": 1006,
+    "nazov": "Katalóg územnosprávnych jednotiek NUTS (Eurostat)",
+    "popis": "Číselník regiónov - NUTS = všetky úrovne.  Číselník spravuje EuroStat."
+  },
+  {
+    "ciselnikKod": 1008,
+    "nazov": "Typ účtovníctva",
+    "popis": "Číselník typov účtovníctva."
+  },
+  {
+    "ciselnikKod": 1009,
+    "nazov": "Právne formy  (ŠÚ SR)",
+    "popis": "Číselník  právnych foriem. Číselník spravuje ŠU SR."
+  },
+  {
+    "ciselnikKod": 1011,
+    "nazov": "Nace - Štatistická klasifikácia ekonomických činností. (Eurostat)",
+    "popis": "Číselník  štatistickej klasifikácie ekonomických činností SK NACE Rev. 2 (2008) - obsahuje sekcie, divízie, skupiny, triedy, podtriedy. Obsahuje . Číselník spravuje ŠU SR. Hierarchický  číselník."
+  },
+  {
+    "ciselnikKod": 1012,
+    "nazov": "Krajiny OSN (ISO)",
+    "popis": "Číselník  krajín - ISO 3166. Číselník spravuje ŠU SR."
+  },
+  {
+    "ciselnikKod": 1013,
+    "nazov": "Tituly pred menom  (ŠÚ SR)",
+    "popis": "Číselník titulov pred menom. Číselník spravuje ŠU SR."
+  },
+  {
+    "ciselnikKod": 1014,
+    "nazov": "Tituly za menom  (ŠÚ SR)",
+    "popis": "Číselník titulov za menom. Číselník spravuje ŠU SR."
+  },
+  {
+    "ciselnikKod": 1021,
+    "nazov": "Vzdelania (Eurostat)",
+    "popis": "Číselník vzdelaní ISCED, prvá úroveň. Číselník spravuje Eurostat"
+  },
+  {
+    "ciselnikKod": 1024,
+    "nazov": "Meny (ISO)",
+    "popis": "Číselník svetových mien (EUR, CZK, USD a pod.) Číselník spravuje NBS"
+  },
+  {
+    "ciselnikKod": 1032,
+    "nazov": "Fondy",
+    "popis": "Číselník fondov"
+  },
+  {
+    "ciselnikKod": 1033,
+    "nazov": "Kategórie regiónov",
+    "popis": "Číselník kategórií regiónov"
+  },
+  {
+    "ciselnikKod": 1034,
+    "nazov": "Typy územia",
+    "popis": "Číselník typu územia"
+  },
+  {
+    "ciselnikKod": 1036,
+    "nazov": "Oblasti intervencie",
+    "popis": "Číselník oblasti intervencie"
+  },
+  {
+    "ciselnikKod": 1037,
+    "nazov": "Formy financovania",
+    "popis": "Číselník formy financovania"
+  },
+  {
+    "ciselnikKod": 1038,
+    "nazov": "Hospodárske činnosti",
+    "popis": "Číselník hospodárskych činností"
+  },
+  {
+    "ciselnikKod": 1039,
+    "nazov": "Cieľové skupiny",
+    "popis": "Číselník cieľových skupín"
+  },
+  {
+    "ciselnikKod": 1040,
+    "nazov": "Skupina výdavkov",
+    "popis": "Číselník skupín výdavkov"
+  },
+  {
+    "ciselnikKod": 1041,
+    "nazov": "Typy metód VO podľa finančného limitu",
+    "popis": "Číselník typu metód VO podľa finančného limitu"
+  },
+  {
+    "ciselnikKod": 1042,
+    "nazov": "Postupy obstarávania VO",
+    "popis": "Číselník postupu obstarávania VO"
+  },
+  {
+    "ciselnikKod": 1043,
+    "nazov": "Územné mechanizmy realizácie",
+    "popis": "Číselník územných mechanizmov realizácie"
+  },
+  {
+    "ciselnikKod": 1044,
+    "nazov": "Sekundárny tématický okruh ESF",
+    "popis": "Číselník sekundárneho tematického okruhu ESF"
+  },
+  {
+    "ciselnikKod": 1045,
+    "nazov": "Doplnkový slovník CPV",
+    "popis": "Doplnkový slovník Spoločného slovníka obstarávania (CPV)"
+  },
+  {
+    "ciselnikKod": 1046,
+    "nazov": "Druhy obstarávateľa VO",
+    "popis": "Číselník druhov obstarávateľa VO"
+  },
+  {
+    "ciselnikKod": 1048,
+    "nazov": "Druhy zákazky VO",
+    "popis": "Číselník druhov zákazky VO"
+  },
+  {
+    "ciselnikKod": 1049,
+    "nazov": "Hlavný slovník CPV",
+    "popis": "Hlavný slovník Spoločného slovníka obstarávania (CPV)"
+  },
+  {
+    "ciselnikKod": 1051,
+    "nazov": "Dôvody stiahnutia VO",
+    "popis": "Číselník dôvodov stiahnutia VO"
+  },
+  {
+    "ciselnikKod": 1052,
+    "nazov": "Zdroje",
+    "popis": "Číselník zdrojov"
+  },
+  {
+    "ciselnikKod": 1053,
+    "nazov": "Merné jednotky",
+    "popis": "Číselník merných jednotiek"
+  },
+  {
+    "ciselnikKod": 1054,
+    "nazov": "Typy zmlúv",
+    "popis": "Číselník typov zmlúv"
+  },
+  {
+    "ciselnikKod": 1055,
+    "nazov": "Druhy úloh",
+    "popis": "Číselník druhov úloh"
+  },
+  {
+    "ciselnikKod": 1060,
+    "nazov": "Typy zistení v rámci certifikačného overovania",
+    "popis": "Číselník typu zistení v rámci certifikačného overovania"
+  },
+  {
+    "ciselnikKod": 1061,
+    "nazov": "Predmety tematického certifikačného overovania",
+    "popis": "Číselník predmetu tematického certifikačného overovania"
+  },
+  {
+    "ciselnikKod": 1062,
+    "nazov": "Výsledky konania ŽoNFP",
+    "popis": "Číselník výsledkov konania ŽoNFP"
+  },
+  {
+    "ciselnikKod": 1063,
+    "nazov": "Administratívne stavy",
+    "popis": "Administratívne stavy"
+  },
+  {
+    "ciselnikKod": 1064,
+    "nazov": "Dôvody výkonu kontroly",
+    "popis": "Dôvody výkonu kontroly"
+  },
+  {
+    "ciselnikKod": 1065,
+    "nazov": "Druhy konania",
+    "popis": "Druhy konania"
+  },
+  {
+    "ciselnikKod": 1066,
+    "nazov": "Druhy sankcie",
+    "popis": "Druhy sankcie"
+  },
+  {
+    "ciselnikKod": 1067,
+    "nazov": "Finančné stavy",
+    "popis": "Finančné stavy"
+  },
+  {
+    "ciselnikKod": 1068,
+    "nazov": "Kategórie sankcie",
+    "popis": "Kategórie sankcie"
+  },
+  {
+    "ciselnikKod": 1069,
+    "nazov": "Kvalifikácie nezrovnalosti",
+    "popis": "Kvalifikácie nezrovnalosti"
+  },
+  {
+    "ciselnikKod": 1070,
+    "nazov": "Metódy odhalenia",
+    "popis": "Metódy odhalenia"
+  },
+  {
+    "ciselnikKod": 1071,
+    "nazov": "Momenty výkonu kontroly",
+    "popis": "Momenty výkonu kontroly"
+  },
+  {
+    "ciselnikKod": 1072,
+    "nazov": "Rozhodnutia o konaniach na uloženie sankcií",
+    "popis": "Rozhodnutia o konaniach na uloženie sankcií"
+  },
+  {
+    "ciselnikKod": 1073,
+    "nazov": "Stavy konania",
+    "popis": "Stavy konania"
+  },
+  {
+    "ciselnikKod": 1074,
+    "nazov": "Typy kontroly",
+    "popis": "Typy kontroly"
+  },
+  {
+    "ciselnikKod": 1075,
+    "nazov": "Typy nezrovnalosti",
+    "popis": "Typy nezrovnalosti"
+  },
+  {
+    "ciselnikKod": 1076,
+    "nazov": "Číselník výsledkov kontroly",
+    "popis": "Číselník výsledkov kontroly"
+  },
+  {
+    "ciselnikKod": 1077,
+    "nazov": "Zamestnanecké postavenie",
+    "popis": "Zamestnanecké postavenie"
+  },
+  {
+    "ciselnikKod": 1078,
+    "nazov": "Ďalšie údaje účastníka",
+    "popis": "Ďalšie údaje účastníka"
+  },
+  {
+    "ciselnikKod": 1079,
+    "nazov": "Znevýhodnenie",
+    "popis": "Znevýhodnenie"
+  },
+  {
+    "ciselnikKod": 1080,
+    "nazov": "Kategórie skupiny výdavkov"
+  },
+  {
+    "ciselnikKod": 1081,
+    "nazov": "Typ identifikátora",
+    "popis": "Typ identifikátora"
+  },
+  {
+    "ciselnikKod": 1082,
+    "nazov": "Dôvody vrátenia",
+    "popis": "Dôvody vrátenia"
+  },
+  {
+    "ciselnikKod": 1083,
+    "nazov": "Konštanty",
+    "popis": "Konštanty"
+  },
+  {
+    "ciselnikKod": 1084,
+    "nazov": "Metóda hodnotenia",
+    "popis": "Metóda hodnotenia"
+  },
+  {
+    "ciselnikKod": 1085,
+    "nazov": "Potreba hodnotenia",
+    "popis": "Potreba hodnotenia"
+  },
+  {
+    "ciselnikKod": 1086,
+    "nazov": "Predmet hodnotenia",
+    "popis": "Predmet hodnotenia"
+  },
+  {
+    "ciselnikKod": 1087,
+    "nazov": "Zdroj údajov hodnotenia",
+    "popis": "Zdroj údajov hodnotenia"
+  },
+  {
+    "ciselnikKod": 1088,
+    "nazov": "Čas plnenia merateľných ukazovateľov",
+    "popis": "Číselník času plnenia merateľných ukazovateľov"
+  },
+  {
+    "ciselnikKod": 1089,
+    "nazov": "Typ korekcie",
+    "popis": "Typ korekcie"
+  },
+  {
+    "ciselnikKod": 1090,
+    "nazov": "Funkcia osoby na subjekte",
+    "popis": "Číselník funkcií osob na subjekte"
+  },
+  {
+    "ciselnikKod": 1091,
+    "nazov": "Funkcia osoby na orgáne",
+    "popis": "Číselník funkcií osob na orgáne"
+  },
+  {
+    "ciselnikKod": 1092,
+    "nazov": "Typ rizika",
+    "popis": "Typ rizika"
+  },
+  {
+    "ciselnikKod": 1093,
+    "nazov": "Riziková oblasť",
+    "popis": "Riziková oblasť"
+  },
+  {
+    "ciselnikKod": 1094,
+    "nazov": "Riziková podoblasť",
+    "popis": "Riziková podoblasť"
+  },
+  {
+    "ciselnikKod": 1095,
+    "nazov": "Číselník účtovných rokov  a ich dátumov",
+    "popis": "Číselník účtovných rokov  a ich dátumov"
+  },
+  {
+    "ciselnikKod": 1096,
+    "nazov": "Dôvody dodatku zmluvy VO",
+    "popis": "Číselník dôvody dodatku zmluvy VO"
+  },
+  {
+    "ciselnikKod": 1097,
+    "nazov": "Kategórie dôvodov dodatku zmluvy VO",
+    "popis": "Číselník kategórie dôvodov dodatku zmluvy VO"
+  },
+  {
+    "ciselnikKod": 1098,
+    "nazov": "Typ správy EŠIF",
+    "popis": "Typ správy EŠIF"
+  },
+  {
+    "ciselnikKod": 1099,
+    "nazov": "Dôvody priradenia",
+    "popis": "Dôvody priradenia"
+  },
+  {
+    "ciselnikKod": 1100,
+    "nazov": "Ekonomická klasifikácia",
+    "popis": "Ekonomická klasifikácia"
+  },
+  {
+    "ciselnikKod": 1101,
+    "nazov": "Funkčná klasifikácia",
+    "popis": "Funkčná klasifikácia"
+  },
+  {
+    "ciselnikKod": 1102,
+    "nazov": "Forma kontroly ",
+    "popis": "Forma kontroly "
+  },
+  {
+    "ciselnikKod": 1103,
+    "nazov": "Druh kontroly VO",
+    "popis": "Druh kontroly VO"
+  }
+]
