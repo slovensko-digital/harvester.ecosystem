@@ -88,6 +88,39 @@ ALTER SEQUENCE aktivity_id_seq OWNED BY aktivity.id;
 
 
 --
+-- Name: ciselniky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE ciselniky (
+    id integer NOT NULL,
+    ciselnik_kod integer NOT NULL,
+    nazov character varying,
+    popis character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: ciselniky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE ciselniky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: ciselniky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE ciselniky_id_seq OWNED BY ciselniky.id;
+
+
+--
 -- Name: dodavatelia; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -120,6 +153,43 @@ CREATE SEQUENCE dodavatelia_id_seq
 --
 
 ALTER SEQUENCE dodavatelia_id_seq OWNED BY dodavatelia.id;
+
+
+--
+-- Name: hodnoty_ciselnikov; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE hodnoty_ciselnikov (
+    id integer NOT NULL,
+    ciselnik_id integer NOT NULL,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    kod character varying,
+    kod_zdroj character varying,
+    nazov character varying,
+    platnost_do timestamp without time zone,
+    platnost_od timestamp without time zone,
+    popis character varying
+);
+
+
+--
+-- Name: hodnoty_ciselnikov_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE hodnoty_ciselnikov_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: hodnoty_ciselnikov_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE hodnoty_ciselnikov_id_seq OWNED BY hodnoty_ciselnikov.id;
 
 
 --
@@ -6566,7 +6636,21 @@ ALTER TABLE ONLY aktivity ALTER COLUMN id SET DEFAULT nextval('aktivity_id_seq':
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY ciselniky ALTER COLUMN id SET DEFAULT nextval('ciselniky_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY dodavatelia ALTER COLUMN id SET DEFAULT nextval('dodavatelia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY hodnoty_ciselnikov ALTER COLUMN id SET DEFAULT nextval('hodnoty_ciselnikov_id_seq'::regclass);
 
 
 --
@@ -7926,11 +8010,27 @@ ALTER TABLE ONLY aktivity
 
 
 --
+-- Name: ciselniky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY ciselniky
+    ADD CONSTRAINT ciselniky_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY dodavatelia
     ADD CONSTRAINT dodavatelia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: hodnoty_ciselnikov_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY hodnoty_ciselnikov
+    ADD CONSTRAINT hodnoty_ciselnikov_pkey PRIMARY KEY (id);
 
 
 --
@@ -9513,6 +9613,34 @@ CREATE INDEX "index_itms.aktivity_on_typ_aktivity_id" ON aktivity USING btree (t
 
 
 --
+-- Name: index_itms.ciselniky_on_ciselnik_kod; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.ciselniky_on_ciselnik_kod" ON ciselniky USING btree (ciselnik_kod);
+
+
+--
+-- Name: index_itms.hodnoty_ciselnikov_on_ciselnik_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.hodnoty_ciselnikov_on_ciselnik_id" ON hodnoty_ciselnikov USING btree (ciselnik_id);
+
+
+--
+-- Name: index_itms.hodnoty_ciselnikov_on_ciselnik_id_and_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.hodnoty_ciselnikov_on_ciselnik_id_and_itms_id" ON hodnoty_ciselnikov USING btree (ciselnik_id, itms_id);
+
+
+--
+-- Name: index_itms.hodnoty_ciselnikov_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.hodnoty_ciselnikov_on_itms_id" ON hodnoty_ciselnikov USING btree (itms_id);
+
+
+--
 -- Name: index_itms.intenzity_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -9559,13 +9687,6 @@ CREATE INDEX "index_itms.intenzity_on_zdroj_vz_id" ON intenzity USING btree (zdr
 --
 
 CREATE INDEX "index_itms.intenzity_on_zdroj_yei_id" ON intenzity USING btree (zdroj_yei_id);
-
-
---
--- Name: index_itms.kody_on_kod_id_and_kod_zdroj; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE UNIQUE INDEX "index_itms.kody_on_kod_id_and_kod_zdroj" ON kody USING btree (kod_id, kod_zdroj);
 
 
 --
@@ -10228,7 +10349,7 @@ ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti
 --
 
 ALTER TABLE ONLY pohladavkove_doklady
-    ADD CONSTRAINT fk_rails_140cb2bca8 FOREIGN KEY (dovod_vratenia_id) REFERENCES kody(id);
+    ADD CONSTRAINT fk_rails_140cb2bca8 FOREIGN KEY (dovod_vratenia_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -10340,7 +10461,7 @@ ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti
 --
 
 ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti
-    ADD CONSTRAINT fk_rails_257a019f0e FOREIGN KEY (kod_id) REFERENCES kody(id);
+    ADD CONSTRAINT fk_rails_257a019f0e FOREIGN KEY (kod_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -10484,7 +10605,7 @@ ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy
 --
 
 ALTER TABLE ONLY nezrovnalosti
-    ADD CONSTRAINT fk_rails_3980438432 FOREIGN KEY (financny_stav_id) REFERENCES kody(id);
+    ADD CONSTRAINT fk_rails_3980438432 FOREIGN KEY (financny_stav_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -10564,7 +10685,7 @@ ALTER TABLE ONLY zop_predlozene_prijimatel
 --
 
 ALTER TABLE ONLY konkretne_ciele
-    ADD CONSTRAINT fk_rails_44f150d5d8 FOREIGN KEY (fond_id) REFERENCES kody(id);
+    ADD CONSTRAINT fk_rails_44f150d5d8 FOREIGN KEY (fond_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -10628,7 +10749,7 @@ ALTER TABLE ONLY projekty_typy_uzemia
 --
 
 ALTER TABLE ONLY nezrovnalosti
-    ADD CONSTRAINT fk_rails_4f35e719c2 FOREIGN KEY (hlavny_typ_nezrovnalosti_id) REFERENCES kody(id);
+    ADD CONSTRAINT fk_rails_4f35e719c2 FOREIGN KEY (hlavny_typ_nezrovnalosti_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -10740,7 +10861,7 @@ ALTER TABLE ONLY zop_uhradene_projekt
 --
 
 ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia
-    ADD CONSTRAINT fk_rails_6364309b83 FOREIGN KEY (kod_id) REFERENCES kody(id);
+    ADD CONSTRAINT fk_rails_6364309b83 FOREIGN KEY (kod_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -11040,6 +11161,14 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
 
 
 --
+-- Name: fk_rails_8fb44e9504; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY hodnoty_ciselnikov
+    ADD CONSTRAINT fk_rails_8fb44e9504 FOREIGN KEY (ciselnik_id) REFERENCES ciselniky(id);
+
+
+--
 -- Name: fk_rails_9327f0bc50; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11092,7 +11221,7 @@ ALTER TABLE ONLY uctovne_doklady_vlastnik_dokladu
 --
 
 ALTER TABLE ONLY projektove_ukazovatele_fondy
-    ADD CONSTRAINT fk_rails_a191cf5c1f FOREIGN KEY (kod_id) REFERENCES kody(id);
+    ADD CONSTRAINT fk_rails_a191cf5c1f FOREIGN KEY (kod_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -11492,7 +11621,7 @@ ALTER TABLE ONLY aktivity
 --
 
 ALTER TABLE ONLY nezrovnalosti
-    ADD CONSTRAINT fk_rails_dca9598718 FOREIGN KEY (administrativny_stav_id) REFERENCES kody(id);
+    ADD CONSTRAINT fk_rails_dca9598718 FOREIGN KEY (administrativny_stav_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --

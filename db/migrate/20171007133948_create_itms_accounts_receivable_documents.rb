@@ -10,7 +10,7 @@ class CreateItmsAccountsReceivableDocuments < ActiveRecord::Migration[5.0]
       t.datetime :datum_vzniku
       t.references :dlznik, index: true, foreign_key: { to_table: 'itms.subjekty' }
       t.string :dopad_na_rozpocet_eu
-      t.references :dovod_vratenia, index: true, foreign_key: { to_table: 'itms.kody' }
+      t.references :dovod_vratenia, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.string :druh
       t.string :kod
       t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }

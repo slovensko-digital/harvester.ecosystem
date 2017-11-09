@@ -1,8 +1,8 @@
 {
   "administrativnyStav": {
-    "id": 5,
-    "kodZdroj": "PX",
-    "nazov": "Ukončené konanie"
+    "ciselnikKod": 1063,
+    "href": "/v2/hodnotaCiselnika/1063/hodnota/5",
+    "id": 5
   },
   "celkovaSumaNezrovnalosti": 23.68,
   "celkovaSumaNezrovnalostiZdrojEU": 20.13,
@@ -19,14 +19,14 @@
   "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
   "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
   "financnyStav": {
-    "id": 7,
-    "kodZdroj": "G-FULR",
-    "nazov": "Vrátené / vymožené v plnej výške"
+    "ciselnikKod": 1067,
+    "href": "/v2/hodnotaCiselnika/1067/hodnota/7",
+    "id": 7
   },
   "hlavnyTypNezrovnalosti": {
-    "id": 113,
-    "kodZdroj": "811",
-    "nazov": "Akcia neukončená"
+    "ciselnikKod": 1075,
+    "href": "/v2/hodnotaCiselnika/1075/hodnota/113",
+    "id": 113
   },
   "href": "/v2/nezrovnalost/1",
   "id": 1,
@@ -71,12 +71,6 @@
   "sumaNaVymahanie": 23.68,
   "sumaNaVymahanieZdrojEU": 20.13,
   "sumaNaVymahanieZdrojSR": 3.55,
-  "suvisiacePohladavkoveDoklady": [
-    {
-      "href": "/v2/pohladavkovyDoklad/3",
-      "id": 3
-    }
-  ],
   "suvisiaceNezrovnalosti": [
     {
       "href": "/v2/nezrovnalost/3",
@@ -97,14 +91,14 @@
   ],
   "typyNezrovnalosti": [
     {
-      "id": 113,
-      "kodZdroj": "811",
-      "nazov": "Akcia neukončená"
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/113",
+      "id": 113
     },
     {
-      "id": 105,
-      "kodZdroj": "741",
-      "nazov": "Nedodržanie záväzkov vyplývajúcich zo zmluvných vzťahov"
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/105",
+      "id": 105
     }
   ],
   "updatedAt": "2016-12-01T00:00:00Z",

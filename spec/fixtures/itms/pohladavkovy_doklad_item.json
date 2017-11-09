@@ -1,5 +1,5 @@
 {
-  "createdAt": "0001-01-01T00:00:00Z",
+  "createdAt": "2016-10-17T15:37:16.521Z",
   "datumSplatnosti": "2017-01-16T00:00:00Z",
   "datumVzniku": "2016-11-11T00:00:00Z",
   "dlznik": {
@@ -10,9 +10,9 @@
   },
   "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
   "dovodVratenia": {
-    "id": 7,
-    "kodZdroj": "VZN",
-    "nazov": "Vrátenie zistenej nezrovnalosti"
+    "ciselnikKod": 1082,
+    "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+    "id": 7
   },
   "druh": "PD_K_PROJEKTU",
   "href": "/v2/pohladavkovyDoklad/2",
@@ -51,6 +51,7 @@
     }
   ],
   "typ": "ZOVFP",
+  "updatedAt": "2016-11-11T00:00:00Z",
   "vraciaSaDoRozpoctuProjektu": false,
   "vratenaSuma": 773.79,
   "vratenaSumaZdrojEU": 657.72,

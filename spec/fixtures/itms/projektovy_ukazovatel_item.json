@@ -1,18 +1,19 @@
 {
   "casPlnenia": [
     {
-      "id": 4,
-      "nazov": "K - koniec realizácie projektu"
+      "ciselnikKod": 1088,
+      "href": "/v2/hodnotaCiselnika/1088/hodnota/4",
+      "id": 4
     }
   ],
   "createdAt": "2015-05-18T09:09:08.405Z",
-  "definicia": "<div>Osoby vo veku do 29 rokov, ktor&eacute; s&uacute; bez pr&aacute;ce, k dispoz&iacute;cii pre pr&aacute;cu a akt&iacute;vne hľadaj&uacute;ce pr&aacute;cu, a z&aacute;roveň s&uacute; registrovan&eacute; na &uacute;radoch pr&aacute;ce a ktor&eacute; dokončia intervenciu IZM podľa harmonogramu až do posledn&eacute;ho dňa, resp. posledn&eacute;ho stretnutia podľa harmonogramu. Zamestnaneck&yacute; status sa určuje dňom vstupu do projektu. Vek &uacute;častn&iacute;ka sa poč&iacute;ta od roku narodenia a urč&iacute; sa v deň jeho vstupu do aktiv&iacute;t projektu./<br />Ukazovateľ sa vypoč&iacute;ta ako s&uacute;čet počtu os&ocirc;b vo veku do 29 rokov, ktor&eacute; s&uacute; bez pr&aacute;ce, k dispoz&iacute;cii pre pr&aacute;cu a akt&iacute;vne hľadaj&uacute;ce pr&aacute;cu, a z&aacute;roveň s&uacute; registrovan&eacute; na &uacute;radoch pr&aacute;ce a ktor&eacute; dokončia intervenciu IZM podľa harmonogramu až do posledn&eacute;ho dňa, resp. posledn&eacute;ho stretnutia podľa harmonogramu.<br />Počet sa bude zisťovať na z&aacute;klade&nbsp; monitorovac&iacute;ch spr&aacute;v a z v&yacute;stupn&yacute;ch zost&aacute;v ITMS.</div>",
+  "definicia": "\u003cdiv\u003eOsoby vo veku do 29 rokov, ktor\u0026eacute; s\u0026uacute; bez pr\u0026aacute;ce, k dispoz\u0026iacute;cii pre pr\u0026aacute;cu a akt\u0026iacute;vne hľadaj\u0026uacute;ce pr\u0026aacute;cu, a z\u0026aacute;roveň s\u0026uacute; registrovan\u0026eacute; na \u0026uacute;radoch pr\u0026aacute;ce a ktor\u0026eacute; dokončia intervenciu IZM podľa harmonogramu až do posledn\u0026eacute;ho dňa, resp. posledn\u0026eacute;ho stretnutia podľa harmonogramu. Zamestnaneck\u0026yacute; status sa určuje dňom vstupu do projektu. Vek \u0026uacute;častn\u0026iacute;ka sa poč\u0026iacute;ta od roku narodenia a urč\u0026iacute; sa v deň jeho vstupu do aktiv\u0026iacute;t projektu./\u003cbr /\u003eUkazovateľ sa vypoč\u0026iacute;ta ako s\u0026uacute;čet počtu os\u0026ocirc;b vo veku do 29 rokov, ktor\u0026eacute; s\u0026uacute; bez pr\u0026aacute;ce, k dispoz\u0026iacute;cii pre pr\u0026aacute;cu a akt\u0026iacute;vne hľadaj\u0026uacute;ce pr\u0026aacute;cu, a z\u0026aacute;roveň s\u0026uacute; registrovan\u0026eacute; na \u0026uacute;radoch pr\u0026aacute;ce a ktor\u0026eacute; dokončia intervenciu IZM podľa harmonogramu až do posledn\u0026eacute;ho dňa, resp. posledn\u0026eacute;ho stretnutia podľa harmonogramu.\u003cbr /\u003ePočet sa bude zisťovať na z\u0026aacute;klade\u0026nbsp; monitorovac\u0026iacute;ch spr\u0026aacute;v a z v\u0026yacute;stupn\u0026yacute;ch zost\u0026aacute;v ITMS.\u003c/div\u003e",
   "evidenciaPodlaPohlavia": true,
   "fondy": [
     {
-      "id": 2,
-      "kodZdroj": "ESF",
-      "nazov": "Európsky sociálny fond"
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/2",
+      "id": 2
     }
   ],
   "href": "/v2/projektovyUkazovatel/1",

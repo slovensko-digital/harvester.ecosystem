@@ -17,7 +17,7 @@ class CreateItmsCodelists < ActiveRecord::Migration[5.0]
     end
 
     create_table 'itms.hodnoty_ciselnikov' do |t|
-      t.references :ciselnik, index: true, foreign_key: { to_table: 'itms.ciselniky' }
+      t.references :ciselnik, null: false, index: true, foreign_key: { to_table: 'itms.ciselniky' }
 
       t.integer :itms_id, null: false, index: true
       t.string :itms_href

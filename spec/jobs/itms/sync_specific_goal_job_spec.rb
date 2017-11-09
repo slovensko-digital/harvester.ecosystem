@@ -5,6 +5,16 @@ RSpec.describe Itms::SyncSpecificGoalJob, type: :job do
 
   context '#perform' do
     it 'syncs specific goal and all its attributes' do
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
+          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
+
+      allow(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/ciselniky')
+          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
+
       expect(downloader)
           .to receive(:get)
           .with('https://opendata.itms2014.sk/v2/konkretnyCiel/33')
@@ -18,7 +28,7 @@ RSpec.describe Itms::SyncSpecificGoalJob, type: :job do
         itms_created_at: DateTime.parse('2016-12-14T18:31:24.067Z'),
         itms_updated_at: nil,
 
-        fond: Itms::Code.find_by!(kod_id: 3, kod_zdroj: 'CF', nazov: 'Kohézny fond'),
+        fond: Itms::CodelistValue.where_codelist_and_value(1032, 3).first!,
         kategoria_regionov: 'menej rozvinuté regióny',
         kod: '310010020',
         nazov: '1.2.1 Zlepšenie odvádzania a čistenia komunálnych odpadových vôd v aglomeráciách nad 2 000 EO v zmysle záväzkov SR voči EÚ',

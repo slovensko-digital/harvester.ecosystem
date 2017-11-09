@@ -30,19 +30,29 @@ RSpec.describe Itms::SyncAccountsReceivableDocumentJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/prioritnaOs/'))
           .and_return(double(body: itms_file_fixture('prioritna_os_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
+          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
+
+      allow(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/ciselniky')
+          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
+
       subject.perform(2, downloader: downloader)
 
       expect(Itms::AccountsReceivableDocument.first).to have_attributes(
         itms_id: 2,
         itms_href: '/v2/pohladavkovyDoklad/2',
-        itms_created_at: DateTime.parse('0001-01-01T00:00:00Z'),
-        itms_updated_at: nil,
+        itms_created_at: DateTime.parse('2016-10-17T15:37:16.521Z'),
+        itms_updated_at: DateTime.parse('2016-11-11T00:00:00Z'),
 
         datum_splatnosti: DateTime.parse('2017-01-16T00:00:00Z'),
         datum_vzniku: DateTime.parse('2016-11-11T00:00:00Z'),
         dlznik: Itms::Subject.find_by!(itms_id: 100140),
         dopad_na_rozpocet_eu: 'S_DOPADOM_NA_ROZPOCET_EU',
-        dovod_vratenia: Itms::Code.find_by!(kod_id: 7, kod_zdroj: 'VZN', nazov: 'Vrátenie zistenej nezrovnalosti'),
+        dovod_vratenia: Itms::CodelistValue.where_codelist_and_value!(1082, 7).first!,
         druh: 'PD_K_PROJEKTU',
         kod: '312041A136Z001',
         konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 8),

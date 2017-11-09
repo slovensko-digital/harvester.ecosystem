@@ -1,9 +1,9 @@
 {
   "createdAt": "2016-12-14T18:31:24.067Z",
   "fond": {
-    "id": 3,
-    "kodZdroj": "CF",
-    "nazov": "Kohézny fond"
+    "ciselnikKod": 1032,
+    "href": "/v2/hodnotaCiselnika/1032/hodnota/3",
+    "id": 3
   },
   "href": "/v2/konkretnyCiel/33",
   "id": 33,
