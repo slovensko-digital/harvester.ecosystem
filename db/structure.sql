@@ -880,11 +880,9 @@ ALTER SEQUENCE projekty_aktivity_id_seq OWNED BY projekty_aktivity.id;
 
 CREATE TABLE projekty_formy_financovania (
     id integer NOT NULL,
-    kod_id integer,
-    kod_zdroj character varying,
-    nazov character varying,
-    konkretny_ciel_id integer,
     projekt_id integer,
+    konkretny_ciel_id integer,
+    hodnota_ciselnika_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -915,11 +913,9 @@ ALTER SEQUENCE projekty_formy_financovania_id_seq OWNED BY projekty_formy_financ
 
 CREATE TABLE projekty_hospodarske_cinnosti (
     id integer NOT NULL,
-    kod_id integer,
-    kod_zdroj character varying,
-    nazov character varying,
-    konkretny_ciel_id integer,
     projekt_id integer,
+    konkretny_ciel_id integer,
+    hodnota_ciselnika_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -970,7 +966,8 @@ ALTER SEQUENCE projekty_id_seq OWNED BY projekty.id;
 CREATE TABLE projekty_intenzity (
     id integer NOT NULL,
     projekt_id integer,
-    intenzita_id integer,
+    konkretny_ciel_id integer,
+    hodnota_ciselnika_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1001,11 +998,9 @@ ALTER SEQUENCE projekty_intenzity_id_seq OWNED BY projekty_intenzity.id;
 
 CREATE TABLE projekty_oblasti_intervencie (
     id integer NOT NULL,
-    kod_id integer,
-    kod_zdroj character varying,
-    nazov character varying,
-    konkretny_ciel_id integer,
     projekt_id integer,
+    konkretny_ciel_id integer,
+    hodnota_ciselnika_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1036,11 +1031,9 @@ ALTER SEQUENCE projekty_oblasti_intervencie_id_seq OWNED BY projekty_oblasti_int
 
 CREATE TABLE projekty_sekundarne_tematicke_okruhy (
     id integer NOT NULL,
-    kod_id integer,
-    kod_zdroj character varying,
-    nazov character varying,
-    konkretny_ciel_id integer,
     projekt_id integer,
+    konkretny_ciel_id integer,
+    hodnota_ciselnika_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1071,11 +1064,9 @@ ALTER SEQUENCE projekty_sekundarne_tematicke_okruhy_id_seq OWNED BY projekty_sek
 
 CREATE TABLE projekty_typy_uzemia (
     id integer NOT NULL,
-    kod_id integer,
-    kod_zdroj character varying,
-    nazov character varying,
-    konkretny_ciel_id integer,
     projekt_id integer,
+    konkretny_ciel_id integer,
+    hodnota_ciselnika_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1916,11 +1907,9 @@ ALTER SEQUENCE projekty_ukoncene_vyzva_id_seq OWNED BY projekty_ukoncene_vyzva.i
 
 CREATE TABLE projekty_uzemne_mechanizmy (
     id integer NOT NULL,
-    kod_id integer,
-    kod_zdroj character varying,
-    nazov character varying,
-    konkretny_ciel_id integer,
     projekt_id integer,
+    konkretny_ciel_id integer,
+    hodnota_ciselnika_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -9690,6 +9679,13 @@ CREATE INDEX "index_itms.intenzity_on_zdroj_yei_id" ON intenzity USING btree (zd
 
 
 --
+-- Name: index_itms.itms.projekty_intenzity_on_p_kc_hc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.itms.projekty_intenzity_on_p_kc_hc" ON projekty_intenzity USING btree (projekt_id, konkretny_ciel_id, hodnota_ciselnika_id);
+
+
+--
 -- Name: index_itms.konkretne_ciele_on_fond_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -9970,6 +9966,13 @@ CREATE INDEX "index_itms.projekty_aktivity_on_projekt_id" ON projekty_aktivity U
 
 
 --
+-- Name: index_itms.projekty_formy_financovania_on_hodnota_ciselnika_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_formy_financovania_on_hodnota_ciselnika_id" ON projekty_formy_financovania USING btree (hodnota_ciselnika_id);
+
+
+--
 -- Name: index_itms.projekty_formy_financovania_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -9977,10 +9980,31 @@ CREATE INDEX "index_itms.projekty_formy_financovania_on_konkretny_ciel_id" ON pr
 
 
 --
+-- Name: index_itms.projekty_formy_financovania_on_p_kc_hc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_formy_financovania_on_p_kc_hc" ON projekty_formy_financovania USING btree (projekt_id, konkretny_ciel_id, hodnota_ciselnika_id);
+
+
+--
 -- Name: index_itms.projekty_formy_financovania_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE INDEX "index_itms.projekty_formy_financovania_on_projekt_id" ON projekty_formy_financovania USING btree (projekt_id);
+
+
+--
+-- Name: index_itms.projekty_hosp_cinnosti_on_p_kc_hc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_hosp_cinnosti_on_p_kc_hc" ON projekty_hospodarske_cinnosti USING btree (projekt_id, konkretny_ciel_id, hodnota_ciselnika_id);
+
+
+--
+-- Name: index_itms.projekty_hospodarske_cinnosti_on_hc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_hospodarske_cinnosti_on_hc" ON projekty_hospodarske_cinnosti USING btree (hodnota_ciselnika_id);
 
 
 --
@@ -9998,10 +10022,17 @@ CREATE INDEX "index_itms.projekty_hospodarske_cinnosti_on_projekt_id" ON projekt
 
 
 --
--- Name: index_itms.projekty_intenzity_on_intenzita_id; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.projekty_intenzity_on_hodnota_ciselnika_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.projekty_intenzity_on_intenzita_id" ON projekty_intenzity USING btree (intenzita_id);
+CREATE INDEX "index_itms.projekty_intenzity_on_hodnota_ciselnika_id" ON projekty_intenzity USING btree (hodnota_ciselnika_id);
+
+
+--
+-- Name: index_itms.projekty_intenzity_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_intenzity_on_konkretny_ciel_id" ON projekty_intenzity USING btree (konkretny_ciel_id);
 
 
 --
@@ -10012,10 +10043,24 @@ CREATE INDEX "index_itms.projekty_intenzity_on_projekt_id" ON projekty_intenzity
 
 
 --
+-- Name: index_itms.projekty_oblasti_intervencie_on_hodnota_ciselnika_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_oblasti_intervencie_on_hodnota_ciselnika_id" ON projekty_oblasti_intervencie USING btree (hodnota_ciselnika_id);
+
+
+--
 -- Name: index_itms.projekty_oblasti_intervencie_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE INDEX "index_itms.projekty_oblasti_intervencie_on_konkretny_ciel_id" ON projekty_oblasti_intervencie USING btree (konkretny_ciel_id);
+
+
+--
+-- Name: index_itms.projekty_oblasti_intervencie_on_p_kc_hc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_oblasti_intervencie_on_p_kc_hc" ON projekty_oblasti_intervencie USING btree (projekt_id, konkretny_ciel_id, hodnota_ciselnika_id);
 
 
 --
@@ -10040,10 +10085,24 @@ CREATE INDEX "index_itms.projekty_on_prijimatel_id" ON projekty USING btree (pri
 
 
 --
--- Name: index_itms.projekty_sekundarne_tematicke_okruhy_on_ciel_id; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.projekty_sekundarne_tematicke_okruhy_on_hc; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.projekty_sekundarne_tematicke_okruhy_on_ciel_id" ON projekty_sekundarne_tematicke_okruhy USING btree (konkretny_ciel_id);
+CREATE INDEX "index_itms.projekty_sekundarne_tematicke_okruhy_on_hc" ON projekty_sekundarne_tematicke_okruhy USING btree (hodnota_ciselnika_id);
+
+
+--
+-- Name: index_itms.projekty_sekundarne_tematicke_okruhy_on_kc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_sekundarne_tematicke_okruhy_on_kc" ON projekty_sekundarne_tematicke_okruhy USING btree (konkretny_ciel_id);
+
+
+--
+-- Name: index_itms.projekty_sekundarne_tematicke_okruhy_on_p_kc_hc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_sekundarne_tematicke_okruhy_on_p_kc_hc" ON projekty_sekundarne_tematicke_okruhy USING btree (projekt_id, konkretny_ciel_id, hodnota_ciselnika_id);
 
 
 --
@@ -10054,10 +10113,24 @@ CREATE INDEX "index_itms.projekty_sekundarne_tematicke_okruhy_on_projekt_id" ON 
 
 
 --
+-- Name: index_itms.projekty_typy_uzemia_on_hodnota_ciselnika_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_typy_uzemia_on_hodnota_ciselnika_id" ON projekty_typy_uzemia USING btree (hodnota_ciselnika_id);
+
+
+--
 -- Name: index_itms.projekty_typy_uzemia_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE INDEX "index_itms.projekty_typy_uzemia_on_konkretny_ciel_id" ON projekty_typy_uzemia USING btree (konkretny_ciel_id);
+
+
+--
+-- Name: index_itms.projekty_typy_uzemia_on_p_kc_hc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_typy_uzemia_on_p_kc_hc" ON projekty_typy_uzemia USING btree (projekt_id, konkretny_ciel_id, hodnota_ciselnika_id);
 
 
 --
@@ -10075,10 +10148,24 @@ CREATE UNIQUE INDEX "index_itms.projekty_ukoncene_on_itms_identifier" ON projekt
 
 
 --
+-- Name: index_itms.projekty_uzemne_mechanizmy_on_hodnota_ciselnika_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_uzemne_mechanizmy_on_hodnota_ciselnika_id" ON projekty_uzemne_mechanizmy USING btree (hodnota_ciselnika_id);
+
+
+--
 -- Name: index_itms.projekty_uzemne_mechanizmy_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE INDEX "index_itms.projekty_uzemne_mechanizmy_on_konkretny_ciel_id" ON projekty_uzemne_mechanizmy USING btree (konkretny_ciel_id);
+
+
+--
+-- Name: index_itms.projekty_uzemne_mechanizmy_on_p_kc_hc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_uzemne_mechanizmy_on_p_kc_hc" ON projekty_uzemne_mechanizmy USING btree (projekt_id, konkretny_ciel_id, hodnota_ciselnika_id);
 
 
 --
@@ -10262,6 +10349,14 @@ ALTER TABLE ONLY projekty_sekundarne_tematicke_okruhy
 
 ALTER TABLE ONLY zonfp_prijate_meratelne_ukazovatele
     ADD CONSTRAINT fk_rails_06f323bf15 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
+
+
+--
+-- Name: fk_rails_0854327a3f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_sekundarne_tematicke_okruhy
+    ADD CONSTRAINT fk_rails_0854327a3f FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -10729,6 +10824,14 @@ ALTER TABLE ONLY projekty_vrealizacii_typy_uzemia
 
 
 --
+-- Name: fk_rails_4ceaac61ef; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_4ceaac61ef FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_4d83be54d9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10758,6 +10861,22 @@ ALTER TABLE ONLY nezrovnalosti
 
 ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie_units
     ADD CONSTRAINT fk_rails_4f4d107e15 FOREIGN KEY (zonfp_schvalene_miesta_realizacie_id) REFERENCES zonfp_schvalene_miesta_realizacie(id);
+
+
+--
+-- Name: fk_rails_5106891e8c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_intenzity
+    ADD CONSTRAINT fk_rails_5106891e8c FOREIGN KEY (konkretny_ciel_id) REFERENCES konkretne_ciele(id);
+
+
+--
+-- Name: fk_rails_512e1ff920; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_hospodarske_cinnosti
+    ADD CONSTRAINT fk_rails_512e1ff920 FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -10953,14 +11072,6 @@ ALTER TABLE ONLY projekty_ukoncene_typy_uzemia_ciele
 
 
 --
--- Name: fk_rails_7c26d63282; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY projekty_intenzity
-    ADD CONSTRAINT fk_rails_7c26d63282 FOREIGN KEY (intenzita_id) REFERENCES intenzity(id);
-
-
---
 -- Name: fk_rails_7c74b60b48; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11046,6 +11157,14 @@ ALTER TABLE ONLY zonfp_prijate_aktivity_projekty
 
 ALTER TABLE ONLY projekty_vrealizacii_formy_financovania
     ADD CONSTRAINT fk_rails_859094ae9b FOREIGN KEY (projekty_vrealizacii_id) REFERENCES projekty_vrealizacii(id);
+
+
+--
+-- Name: fk_rails_8593edf06e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_formy_financovania
+    ADD CONSTRAINT fk_rails_8593edf06e FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -11166,6 +11285,14 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
 
 ALTER TABLE ONLY hodnoty_ciselnikov
     ADD CONSTRAINT fk_rails_8fb44e9504 FOREIGN KEY (ciselnik_id) REFERENCES ciselniky(id);
+
+
+--
+-- Name: fk_rails_9286d58589; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_oblasti_intervencie
+    ADD CONSTRAINT fk_rails_9286d58589 FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -11537,6 +11664,14 @@ ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie_units
 
 
 --
+-- Name: fk_rails_d1dd63381a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_intenzity
+    ADD CONSTRAINT fk_rails_d1dd63381a FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_d2880474b3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11766,6 +11901,14 @@ ALTER TABLE ONLY projekty_ukoncene_aktivity_subjekty
 
 ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia
     ADD CONSTRAINT fk_rails_ec6c3cb4c4 FOREIGN KEY (projektovy_ukazovatel_id) REFERENCES projektove_ukazovatele(id);
+
+
+--
+-- Name: fk_rails_ecf1ac688d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_typy_uzemia
+    ADD CONSTRAINT fk_rails_ecf1ac688d FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --

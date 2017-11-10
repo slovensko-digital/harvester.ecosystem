@@ -49,63 +49,80 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
     end
 
     create_table 'itms.projekty_formy_financovania' do |t|
-      t.integer :kod_id
-      t.string :kod_zdroj
-      t.string :nazov
-      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :hodnota_ciselnika, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
+    add_index 'itms.projekty_formy_financovania',
+              [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
+              name: 'index_itms.projekty_formy_financovania_on_p_kc_hc',
+              unique: true
 
     create_table 'itms.projekty_hospodarske_cinnosti' do |t|
-      t.integer :kod_id
-      t.string :kod_zdroj
-      t.string :nazov
-      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :hodnota_ciselnika, index: { name: 'index_itms.projekty_hospodarske_cinnosti_on_hc' }, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
+    add_index 'itms.projekty_hospodarske_cinnosti',
+              [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
+              name: 'index_itms.projekty_hosp_cinnosti_on_p_kc_hc',
+              unique: true
 
     create_table 'itms.projekty_intenzity' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :intenzita, index: true, foreign_key: { to_table: 'itms.intenzity' }
+      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :hodnota_ciselnika, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
+    add_index 'itms.projekty_intenzity',
+              [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
+              name: 'index_itms.itms.projekty_intenzity_on_p_kc_hc',
+              unique: true
 
     create_table 'itms.projekty_oblasti_intervencie' do |t|
-      t.integer :kod_id
-      t.string :kod_zdroj
-      t.string :nazov
-      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :hodnota_ciselnika, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
+    add_index 'itms.projekty_oblasti_intervencie',
+              [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
+              name: 'index_itms.projekty_oblasti_intervencie_on_p_kc_hc',
+              unique: true
 
     create_table 'itms.projekty_sekundarne_tematicke_okruhy' do |t|
-      t.integer :kod_id
-      t.string :kod_zdroj
-      t.string :nazov
-      t.references :konkretny_ciel, index: { name: 'index_itms.projekty_sekundarne_tematicke_okruhy_on_ciel_id' }, foreign_key: { to_table: 'itms.konkretne_ciele' }
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :konkretny_ciel, index: { name: 'index_itms.projekty_sekundarne_tematicke_okruhy_on_kc' }, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :hodnota_ciselnika, index: { name: 'index_itms.projekty_sekundarne_tematicke_okruhy_on_hc' }, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
+    add_index 'itms.projekty_sekundarne_tematicke_okruhy',
+              [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
+              name: 'index_itms.projekty_sekundarne_tematicke_okruhy_on_p_kc_hc',
+              unique: true
 
     create_table 'itms.projekty_typy_uzemia' do |t|
-      t.integer :kod_id
-      t.string :kod_zdroj
-      t.string :nazov
-      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :hodnota_ciselnika, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
+    add_index 'itms.projekty_typy_uzemia',
+              [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
+              name: 'index_itms.projekty_typy_uzemia_on_p_kc_hc',
+              unique: true
 
     create_table 'itms.projekty_uzemne_mechanizmy' do |t|
-      t.integer :kod_id
-      t.string :kod_zdroj
-      t.string :nazov
-      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :hodnota_ciselnika, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.timestamps
     end
+    add_index 'itms.projekty_uzemne_mechanizmy',
+              [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
+              name: 'index_itms.projekty_uzemne_mechanizmy_on_p_kc_hc',
+              unique: true
   end
 end

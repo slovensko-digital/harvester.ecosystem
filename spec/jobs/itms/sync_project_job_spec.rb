@@ -36,6 +36,16 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/intenzita/'))
           .and_return(double(body: itms_file_fixture('intenzita_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
+          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
+
+      allow(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/ciselniky')
+          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
+
       subject.perform('/v2/projekty/ukoncene/31', downloader: downloader)
 
       expect(Itms::Project.first).to have_attributes(
@@ -62,36 +72,16 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         dlzka_celkova_hlavnych_aktivit: 18,
         dlzka_celkova_projektu: 18,
         formy_financovania: [
-            Itms::ProjectFinancingForm.find_by!(
-                kod_id: 1,
-                kod_zdroj: '01',
-                nazov: 'Nenávratný grant',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
-            ),
-            Itms::ProjectFinancingForm.find_by!(
-                kod_id: 1,
-                kod_zdroj: '01',
-                nazov: 'Nenávratný grant',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
-            ),
+            Itms::ProjectFinancingForm.where_goal_and_codelist(33, 1037, 1).first!,
+            Itms::ProjectFinancingForm.where_goal_and_codelist(39, 1037, 1).first!,
         ],
         hospodarske_cinnosti: [
-            Itms::ProjectEconomicActivity.find_by!(
-                kod_id: 22,
-                kod_zdroj: '22',
-                nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
-            ),
-            Itms::ProjectEconomicActivity.find_by!(
-                kod_id: 22,
-                kod_zdroj: '22',
-                nazov: 'Činnosti súvisiace so životným prostredím a zmenou klímy',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
-            ),
+            Itms::ProjectEconomicActivity.where_goal_and_codelist(33, 1038, 22).first!,
+            Itms::ProjectEconomicActivity.where_goal_and_codelist(39, 1038, 22).first!,
         ],
-        intenzity: [
-            Itms::Intensity.find_by!(itms_id: 46)
-        ],
+        # intenzity: [
+        #     Itms::Intensity.find_by!(itms_id: 46)
+        # ],
         kod: '310011A019',
         #TODO meratelne_ukazovatele: ,
             # "type": "array",
@@ -202,18 +192,8 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         # },
         nazov: 'Dobudovanie kanalizačnej siete v aglomerácii Veľké Leváre a rozšírenie ČOV Gajary',
         oblasti_intervencie: [
-            Itms::ProjectInterventionArea.find_by!(
-                kod_id: 22,
-                kod_zdroj: '022',
-                nazov: 'Čistenie odpadových vôd',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
-            ),
-            Itms::ProjectInterventionArea.find_by!(
-                kod_id: 20,
-                kod_zdroj: '020',
-                nazov: 'Dodávky vody na ľudskú spotrebu (získavanie, čistenie, infraštruktúra na uskladňovanie a distribúciu)',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
-            ),
+            Itms::ProjectInterventionArea.where_goal_and_codelist(33, 1036, 22).first!,
+            Itms::ProjectInterventionArea.where_goal_and_codelist(39, 1036, 20).first!,
         ],
         #TODO organizacne_zlozky: ,
             # "type": "array",
@@ -254,57 +234,21 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             # "$ref": "#/definitions/SchvalenazonfpLink"
         # },
         sekundarny_tematicky_okruh: [
-            Itms::ProjectSecondaryThematicArea.find_by!(
-                kod_id: 6,
-                kod_zdroj: '06',
-                nazov: 'NediskriminĂˇcia',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
-            ),
-            Itms::ProjectSecondaryThematicArea.find_by!(
-                kod_id: 7,
-                kod_zdroj: '07',
-                nazov: 'RodovĂˇ rovnosĹĄ',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
-            ),
-            Itms::ProjectSecondaryThematicArea.find_by!(
-                kod_id: 2,
-                kod_zdroj: '02',
-                nazov: 'SociĂˇlna inovĂˇcia',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 24),
-            ),
+            Itms::ProjectSecondaryThematicArea.where_goal_and_codelist(24, 1044, 7).first!,
+            Itms::ProjectSecondaryThematicArea.where_goal_and_codelist(24, 1044, 6).first!,
+            Itms::ProjectSecondaryThematicArea.where_goal_and_codelist(24, 1044, 2).first!,
         ],
         stav: 'Projekt mimoriadne ukončený - neprispel k cieľom OP (K)',
         suma_celkova_projektov_generujucich_prijem: 16165937.74,
         suma_zazmluvnena: 16165937.74,
         suma_zazmluvnena_povodna: 16165937.74,
         typy_uzemia: [
-            Itms::ProjectTerritoryType.find_by!(
-                kod_id: 3,
-                kod_zdroj: '03',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 33),
-                nazov: 'Vidiecke oblasti (riedke osídlenie)'
-            ),
-            Itms::ProjectTerritoryType.find_by!(
-                kod_id: 3,
-                kod_zdroj: '03',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 39),
-                nazov: 'Vidiecke oblasti (riedke osídlenie)'
-            ),
+            Itms::ProjectTerritoryType.where_goal_and_codelist(33, 1034, 3).first!,
+            Itms::ProjectTerritoryType.where_goal_and_codelist(39, 1034, 3).first!,
         ],
         url_adresa_zmluva: 'http://www.crz.gov.sk/index.php?ID=3144219&l=sk',
         uzemne_mechanizmy: [
-            Itms::ProjectTerritorialMechanism.find_by!(
-                kod_id: 7,
-                kod_zdroj: '07',
-                nazov: 'NeuplatĹuje sa',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 63),
-            ),
-            Itms::ProjectTerritorialMechanism.find_by!(
-                kod_id: 7,
-                kod_zdroj: '07',
-                nazov: 'NeuplatĹuje sa',
-                konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 64),
-            ),
+            Itms::ProjectTerritorialMechanism.where_goal_and_codelist(24, 1043, 7).first!,
         ],
         #TODO vyzva: ,
             # "$ref": "#/definitions/VyhlasenavyzvaLink"
@@ -318,10 +262,15 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         :data_projektu,
         :meratelne_ukazovatele,
         :miesta_realizacie,
+        :miesta_realizacie_mimo_uzemia_op,
         :monitorovacie_terminy,
         :organizacne_zlozky,
         :partneri,
         :polozky_rozpoctu,
+        :popis_situacie_po_realizacii,
+        :popis_sposobu_realizacie,
+        :popis_vychodiskovej_situacie,
+        :popis_kapacity_prijimatela,
         :schvalena_zonfp,
         :vyzva,
       )
