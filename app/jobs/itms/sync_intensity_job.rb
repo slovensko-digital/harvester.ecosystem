@@ -13,11 +13,11 @@ class Itms::SyncIntensityJob < ItmsJob
 
       i.nazov = json['nazov']
       i.subjekt = find_or_create_subject_by_json(json['subjekt'], downloader)
-      i.zdroj_eu = find_or_create_intensity_source_by_json(json['zdrojEu'])
-      i.zdroj_pr = find_or_create_intensity_source_by_json(json['zdrojPr'])
-      i.zdroj_sr = find_or_create_intensity_source_by_json(json['zdrojSr'])
-      i.zdroj_vz = find_or_create_intensity_source_by_json(json['zdrojVz'])
-      i.zdroj_yei = find_or_create_intensity_source_by_json(json['zdrojYei'])
+      i.zdroj_eu = find_or_create_intensity_source(i.zdroj_eu, json['zdrojEu'], downloader)
+      i.zdroj_pr = find_or_create_intensity_source(i.zdroj_pr, json['zdrojPr'], downloader)
+      i.zdroj_sr = find_or_create_intensity_source(i.zdroj_sr, json['zdrojSr'], downloader)
+      i.zdroj_vz = find_or_create_intensity_source(i.zdroj_vz, json['zdrojVz'], downloader)
+      i.zdroj_yei = find_or_create_intensity_source(i.zdroj_yei, json['zdrojYei'], downloader)
 
       i.save!
     end
@@ -25,16 +25,22 @@ class Itms::SyncIntensityJob < ItmsJob
 
   private
 
-  def find_or_create_intensity_source_by_json(json)
+  def find_or_create_intensity_source(current_id, json, downloader)
+    if current_id.present? && json.blank?
+      Itms::IntensitySource.find(current_id).destroy!
+      return
+    end
+
     return if json.blank?
-    Itms::IntensitySource.find_or_create_by!(
-        cerpanie_eu: json['cerpanieEu'] ? json['cerpanieEu'].to_d : nil,
-        cerpanie_ro: json['cerpanieRo'] ? json['cerpanieRo'].to_d : nil,
-        zdroj_id: json['id'],
-        kod: json['kod'],
-        nazov: json['nazov'],
-        percento: json['percento'] ? json['percento'].to_d : nil,
-        suma_zazmluvnena: json['sumaZazmluvnena'] ? json['sumaZazmluvnena'].to_d : nil,
-    )
+
+    is = Itms::IntensitySource.find_or_initialize_by(id: current_id)
+    is.cerpanie_eu = json['cerpanieEu'] ? json['cerpanieEu'].to_d : nil
+    is.cerpanie_ro = json['cerpanieRo'] ? json['cerpanieRo'].to_d : nil
+    is.percento = json['percento'] ? json['percento'].to_d : nil
+    is.suma_zazmluvnena = json['sumaZazmluvnena'] ? json['sumaZazmluvnena'].to_d : nil
+    is.zdroj = find_or_create_codelist_value_by_json(json['zdroj'], downloader)
+    is.save!
+
+    is
   end
 end

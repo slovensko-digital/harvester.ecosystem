@@ -3,11 +3,9 @@ class CreateItmsIntensities < ActiveRecord::Migration[5.0]
     create_table 'itms.zdroje_intenzit' do |t|
       t.decimal :cerpanie_eu
       t.decimal :cerpanie_ro
-      t.integer :zdroj_id
-      t.string :kod
-      t.string :nazov
       t.decimal :percento
       t.decimal :suma_zazmluvnena
+      t.references :zdroj, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
 
       t.timestamps
     end

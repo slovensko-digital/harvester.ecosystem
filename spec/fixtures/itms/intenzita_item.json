@@ -9,47 +9,58 @@
     "id": 100077
   },
   "zdrojEu": {
-    "cerpanieEu": 2494121.91,
-    "cerpanieRo": 4296101.17,
-    "id": 6,
-    "kod": "1AC1",
-    "nazov": "Európsky sociálny fond – prostriedky EÚ",
+    "cerpanieEu": 2830622.31,
+    "cerpanieRo": 4545240.46,
     "percento": 0.565845,
-    "sumaZazmluvnena": 18677128.8375
+    "sumaZazmluvnena": 18677128.8375,
+    "zdroj": {
+      "ciselnikKod": 1052,
+      "href": "/v2/hodnotaCiselnika/1052/hodnota/6",
+      "id": 6
+    }
   },
   "zdrojPr": {
-    "cerpanieEu": 7642.8,
-    "cerpanieRo": 7642.8,
-    "id": 3,
-    "kod": "1AA3",
-    "nazov": "EurĂłpsky fond regionĂˇlneho rozvoja â€“ pro rata",
-    "percento": 0.0345,
-    "sumaZazmluvnena": 24020.97
+    "cerpanieEu": 2830622.32,
+    "cerpanieRo": 4545240.46,
+    "percento": 0.565845,
+    "sumaZazmluvnena": 18677128.8375,
+    "zdroj": {
+      "ciselnikKod": 1052,
+      "href": "/v2/hodnotaCiselnika/1052/hodnota/6",
+      "id": 6
+    }
   },
   "zdrojSr": {
-    "cerpanieEu": 440139.14,
-    "cerpanieRo": 758135.49,
-    "id": 7,
-    "kod": "1AC2",
-    "nazov": "Európsky sociálny fond – spolufinancovanie ŠR",
+    "cerpanieEu": 499521.57,
+    "cerpanieRo": 802101.25,
     "percento": 0.099855,
-    "sumaZazmluvnena": 3295963.9125
+    "sumaZazmluvnena": 3295963.9125,
+    "zdroj": {
+      "ciselnikKod": 1052,
+      "href": "/v2/hodnotaCiselnika/1052/hodnota/7",
+      "id": 7
+    }
   },
   "zdrojVz": {
-    "cerpanieRo": 64497.05,
-    "id": 17,
-    "kod": "9020",
-    "nazov": "VlastnĂ© verejnĂ©",
-    "percento": 0.05,
-    "sumaZazmluvnena": 68618.5
+    "cerpanieEu": 499521.58,
+    "cerpanieRo": 802101.25,
+    "percento": 0.099855,
+    "sumaZazmluvnena": 3295963.9125,
+    "zdroj": {
+      "ciselnikKod": 1052,
+      "href": "/v2/hodnotaCiselnika/1052/hodnota/7",
+      "id": 7
+    }
   },
   "zdrojYei": {
-    "cerpanieEu": 1473521.81,
-    "cerpanieRo": 2538127.27,
-    "id": 200001,
-    "kod": "1AL1",
-    "nazov": "Iniciatíva na podporu zamestnanosti mladých ľudí",
+    "cerpanieEu": 1672325.51,
+    "cerpanieRo": 2685318.22,
     "percento": 0.3343,
-    "sumaZazmluvnena": 11034407.25
+    "sumaZazmluvnena": 11034407.25,
+    "zdroj": {
+      "ciselnikKod": 1052,
+      "href": "/v2/hodnotaCiselnika/1052/hodnota/200001",
+      "id": 200001
+    }
   }
 }

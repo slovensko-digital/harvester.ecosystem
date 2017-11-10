@@ -16,6 +16,16 @@ RSpec.describe Itms::SyncIntensityJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
           .and_return(double(body: itms_file_fixture('subjekt_item.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
+          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
+
+      allow(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/ciselniky')
+          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
+
       subject.perform('/v2/intenzita/1', downloader: downloader)
 
       expect(Itms::Intensity.first).to have_attributes(
@@ -25,49 +35,39 @@ RSpec.describe Itms::SyncIntensityJob, type: :job do
         nazov: 'Intenzita 312020/7170/LDR/30794536',
         subjekt: Itms::Subject.find_by!(itms_id: 100077),
         zdroj_eu: Itms::IntensitySource.find_by!(
-            cerpanie_eu: 2494121.91.to_d,
-            cerpanie_ro: 4296101.17.to_d,
-            zdroj_id: 6,
-            kod: '1AC1',
-            nazov: 'Európsky sociálny fond – prostriedky EÚ',
+            cerpanie_eu: 2830622.31.to_d,
+            cerpanie_ro: 4545240.46.to_d,
             percento: 0.565845.to_d,
-            suma_zazmluvnena: 18677128.8375.to_d
+            suma_zazmluvnena: 18677128.8375.to_d,
+            zdroj: Itms::CodelistValue.where_codelist_and_value(1052, 6),
         ),
         zdroj_pr: Itms::IntensitySource.find_by!(
-            cerpanie_eu: 7642.8.to_d,
-            cerpanie_ro: 7642.8.to_d,
-            zdroj_id: 3,
-            kod: '1AA3',
-            nazov: 'EurĂłpsky fond regionĂˇlneho rozvoja â€“ pro rata',
-            percento: 0.0345.to_d,
-            suma_zazmluvnena: 24020.97.to_d
+            cerpanie_eu: 2830622.32.to_d,
+            cerpanie_ro: 4545240.46.to_d,
+            percento: 0.565845.to_d,
+            suma_zazmluvnena: 18677128.8375.to_d,
+            zdroj: Itms::CodelistValue.where_codelist_and_value(1052, 6),
         ),
         zdroj_sr: Itms::IntensitySource.find_by!(
-            cerpanie_eu: 440139.14.to_d,
-            cerpanie_ro: 758135.49.to_d,
-            zdroj_id: 7,
-            kod: '1AC2',
-            nazov: 'Európsky sociálny fond – spolufinancovanie ŠR',
+            cerpanie_eu: 499521.57.to_d,
+            cerpanie_ro: 802101.25.to_d,
             percento: 0.099855.to_d,
-            suma_zazmluvnena: 3295963.9125.to_d
+            suma_zazmluvnena: 3295963.9125.to_d,
+            zdroj: Itms::CodelistValue.where_codelist_and_value(1052, 7),
         ),
         zdroj_vz: Itms::IntensitySource.find_by!(
-            cerpanie_eu: nil,
-            cerpanie_ro: 64497.05.to_d,
-            zdroj_id: 17,
-            kod: '9020',
-            nazov: 'VlastnĂ© verejnĂ©',
-            percento: 0.05.to_d,
-            suma_zazmluvnena: 68618.5.to_d
+            cerpanie_eu: 499521.58.to_d,
+            cerpanie_ro: 802101.25.to_d,
+            percento: 0.099855.to_d,
+            suma_zazmluvnena: 3295963.9125.to_d,
+            zdroj: Itms::CodelistValue.where_codelist_and_value(1052, 7),
         ),
         zdroj_yei: Itms::IntensitySource.find_by!(
-            cerpanie_eu: 1473521.81.to_d,
-            cerpanie_ro: 2538127.27.to_d,
-            zdroj_id: 200001,
-            kod: '1AL1',
-            nazov: 'Iniciatíva na podporu zamestnanosti mladých ľudí',
+            cerpanie_eu: 1672325.51.to_d,
+            cerpanie_ro: 2685318.22.to_d,
             percento: 0.3343.to_d,
-            suma_zazmluvnena: 11034407.25.to_d
+            suma_zazmluvnena: 11034407.25.to_d,
+            zdroj: Itms::CodelistValue.where_codelist_and_value(1052, 200001),
         ),
       )
     end
