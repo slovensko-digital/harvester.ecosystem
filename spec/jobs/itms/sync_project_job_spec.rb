@@ -79,9 +79,9 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             Itms::ProjectEconomicActivity.where_goal_and_codelist(33, 1038, 22).first!,
             Itms::ProjectEconomicActivity.where_goal_and_codelist(39, 1038, 22).first!,
         ],
-        # intenzity: [
-        #     Itms::Intensity.find_by!(itms_id: 46)
-        # ],
+        intenzity: [
+            Itms::Intensity.find_by!(itms_id: 46)
+        ],
         kod: '310011A019',
         #TODO meratelne_ukazovatele: ,
             # "type": "array",

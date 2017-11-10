@@ -27,7 +27,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.dlzka_celkova_projektu = json['dlzkaCelkovaProjektu']
       p.formy_financovania = find_or_create_codelist_values_with_goals_by_json(json['formyFinancovania'], p.formy_financovania, downloader)
       p.hospodarske_cinnosti = find_or_create_codelist_values_with_goals_by_json(json['hospodarskeCinnosti'], p.hospodarske_cinnosti, downloader)
-      # p.intenzity = find_or_create_intensities_by_json(json['intenzity'], downloader)
+      p.intenzity = find_or_create_intensities_by_json(json['intenzity'], downloader)
       p.kod = json['kod']
       #TODO p.meratelne_ukazovatele = json['meratelneUkazovatele']
       #TODO p.miesta_realizacie = json['miestaRealizacie']

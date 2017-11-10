@@ -966,8 +966,7 @@ ALTER SEQUENCE projekty_id_seq OWNED BY projekty.id;
 CREATE TABLE projekty_intenzity (
     id integer NOT NULL,
     projekt_id integer,
-    konkretny_ciel_id integer,
-    hodnota_ciselnika_id integer,
+    intenzita_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -3855,11 +3854,9 @@ CREATE TABLE zdroje_intenzit (
     id integer NOT NULL,
     cerpanie_eu numeric,
     cerpanie_ro numeric,
-    zdroj_id integer,
-    kod character varying,
-    nazov character varying,
     percento numeric,
     suma_zazmluvnena numeric,
+    zdroj_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -9679,13 +9676,6 @@ CREATE INDEX "index_itms.intenzity_on_zdroj_yei_id" ON intenzity USING btree (zd
 
 
 --
--- Name: index_itms.itms.projekty_intenzity_on_p_kc_hc; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE UNIQUE INDEX "index_itms.itms.projekty_intenzity_on_p_kc_hc" ON projekty_intenzity USING btree (projekt_id, konkretny_ciel_id, hodnota_ciselnika_id);
-
-
---
 -- Name: index_itms.konkretne_ciele_on_fond_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -10022,17 +10012,10 @@ CREATE INDEX "index_itms.projekty_hospodarske_cinnosti_on_projekt_id" ON projekt
 
 
 --
--- Name: index_itms.projekty_intenzity_on_hodnota_ciselnika_id; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.projekty_intenzity_on_intenzita_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.projekty_intenzity_on_hodnota_ciselnika_id" ON projekty_intenzity USING btree (hodnota_ciselnika_id);
-
-
---
--- Name: index_itms.projekty_intenzity_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE INDEX "index_itms.projekty_intenzity_on_konkretny_ciel_id" ON projekty_intenzity USING btree (konkretny_ciel_id);
+CREATE INDEX "index_itms.projekty_intenzity_on_intenzita_id" ON projekty_intenzity USING btree (intenzita_id);
 
 
 --
@@ -10040,6 +10023,13 @@ CREATE INDEX "index_itms.projekty_intenzity_on_konkretny_ciel_id" ON projekty_in
 --
 
 CREATE INDEX "index_itms.projekty_intenzity_on_projekt_id" ON projekty_intenzity USING btree (projekt_id);
+
+
+--
+-- Name: index_itms.projekty_intenzity_on_projekt_id_and_intenzita_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_intenzity_on_projekt_id_and_intenzita_id" ON projekty_intenzity USING btree (projekt_id, intenzita_id);
 
 
 --
@@ -10236,6 +10226,13 @@ CREATE UNIQUE INDEX "index_itms.vyzvy_planovane_on_itms_identifier" ON vyzvy_pla
 --
 
 CREATE UNIQUE INDEX "index_itms.vyzvy_vyhlasene_on_itms_identifier" ON vyzvy_vyhlasene USING btree (itms_identifier);
+
+
+--
+-- Name: index_itms.zdroje_intenzit_on_zdroj_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zdroje_intenzit_on_zdroj_id" ON zdroje_intenzit USING btree (zdroj_id);
 
 
 --
@@ -10864,14 +10861,6 @@ ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie_units
 
 
 --
--- Name: fk_rails_5106891e8c; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY projekty_intenzity
-    ADD CONSTRAINT fk_rails_5106891e8c FOREIGN KEY (konkretny_ciel_id) REFERENCES konkretne_ciele(id);
-
-
---
 -- Name: fk_rails_512e1ff920; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11069,6 +11058,14 @@ ALTER TABLE ONLY projekty_ukoncene_uzemne_mechanizmy
 
 ALTER TABLE ONLY projekty_ukoncene_typy_uzemia_ciele
     ADD CONSTRAINT fk_rails_7b211c12fb FOREIGN KEY (projekty_ukoncene_typy_uzemia_id) REFERENCES projekty_ukoncene_typy_uzemia(id);
+
+
+--
+-- Name: fk_rails_7c26d63282; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_intenzity
+    ADD CONSTRAINT fk_rails_7c26d63282 FOREIGN KEY (intenzita_id) REFERENCES intenzity(id);
 
 
 --
@@ -11664,14 +11661,6 @@ ALTER TABLE ONLY projekty_vrealizacii_miesta_realizacie_units
 
 
 --
--- Name: fk_rails_d1dd63381a; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY projekty_intenzity
-    ADD CONSTRAINT fk_rails_d1dd63381a FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
-
-
---
 -- Name: fk_rails_d2880474b3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11773,6 +11762,14 @@ ALTER TABLE ONLY zonfp_prijate_typy_uzemia
 
 ALTER TABLE ONLY zop_uhradene_predkladana_za
     ADD CONSTRAINT fk_rails_de5d60c98a FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
+
+
+--
+-- Name: fk_rails_de79713a9b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zdroje_intenzit
+    ADD CONSTRAINT fk_rails_de79713a9b FOREIGN KEY (zdroj_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --

@@ -72,14 +72,10 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
 
     create_table 'itms.projekty_intenzity' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
-      t.references :hodnota_ciselnika, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
+      t.references :intenzita, index: true, foreign_key: { to_table: 'itms.intenzity' }
       t.timestamps
     end
-    add_index 'itms.projekty_intenzity',
-              [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
-              name: 'index_itms.itms.projekty_intenzity_on_p_kc_hc',
-              unique: true
+    add_index 'itms.projekty_intenzity', [:projekt_id, :intenzita_id], unique: true
 
     create_table 'itms.projekty_oblasti_intervencie' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
