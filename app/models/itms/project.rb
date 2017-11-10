@@ -20,6 +20,9 @@ class Itms::Project < ApplicationRecord
   has_many :intenzity,
            through: :projekty_intenzity,
            source: :intenzita
+  has_many :meratelne_ukazovatele,
+           class_name: Itms::MeasurableIndicator,
+           foreign_key: 'projekt_id'
   has_many :oblasti_intervencie,
            class_name: Itms::ProjectInterventionArea,
            foreign_key: 'projekt_id'

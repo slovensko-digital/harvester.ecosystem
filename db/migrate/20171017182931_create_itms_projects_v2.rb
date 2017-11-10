@@ -77,6 +77,19 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
     end
     add_index 'itms.projekty_intenzity', [:projekt_id, :intenzita_id], unique: true
 
+    create_table 'itms.projekty_meratelne_ukazovatele' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.decimal :aktualny_skutocny_stav
+      t.date :datum_posledneho_merania
+      t.decimal :hodnota_cielova_celkova
+      t.boolean :priznak_rizika
+      t.references :projektovy_ukazovatel, index: { name: 'index_itms.projekty_meratelne_ukazovatele_on_ukazovatel'}, foreign_key: { to_table: 'itms.projektove_ukazovatele' }
+    end
+    add_index 'itms.projekty_meratelne_ukazovatele',
+              [:projekt_id, :projektovy_ukazovatel_id],
+              name: 'index_itms.projekty_meratelne_ukazovatele_on_projekt_ukazovatel',
+              unique: true
+
     create_table 'itms.projekty_oblasti_intervencie' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
       t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
