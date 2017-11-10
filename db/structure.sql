@@ -992,6 +992,40 @@ ALTER SEQUENCE projekty_intenzity_id_seq OWNED BY projekty_intenzity.id;
 
 
 --
+-- Name: projekty_meratelne_ukazovatele; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_meratelne_ukazovatele (
+    id integer NOT NULL,
+    projekt_id integer,
+    aktualny_skutocny_stav numeric,
+    datum_posledneho_merania date,
+    hodnota_cielova_celkova numeric,
+    priznak_rizika boolean,
+    projektovy_ukazovatel_id integer
+);
+
+
+--
+-- Name: projekty_meratelne_ukazovatele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_meratelne_ukazovatele_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_meratelne_ukazovatele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_meratelne_ukazovatele_id_seq OWNED BY projekty_meratelne_ukazovatele.id;
+
+
+--
 -- Name: projekty_oblasti_intervencie; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -6790,6 +6824,13 @@ ALTER TABLE ONLY projekty_intenzity ALTER COLUMN id SET DEFAULT nextval('projekt
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY projekty_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('projekty_meratelne_ukazovatele_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY projekty_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('projekty_oblasti_intervencie_id_seq'::regclass);
 
 
@@ -8177,6 +8218,14 @@ ALTER TABLE ONLY projekty_hospodarske_cinnosti
 
 ALTER TABLE ONLY projekty_intenzity
     ADD CONSTRAINT projekty_intenzity_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_meratelne_ukazovatele
+    ADD CONSTRAINT projekty_meratelne_ukazovatele_pkey PRIMARY KEY (id);
 
 
 --
@@ -10033,6 +10082,27 @@ CREATE UNIQUE INDEX "index_itms.projekty_intenzity_on_projekt_id_and_intenzita_i
 
 
 --
+-- Name: index_itms.projekty_meratelne_ukazovatele_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_meratelne_ukazovatele_on_projekt_id" ON projekty_meratelne_ukazovatele USING btree (projekt_id);
+
+
+--
+-- Name: index_itms.projekty_meratelne_ukazovatele_on_projekt_ukazovatel; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_meratelne_ukazovatele_on_projekt_ukazovatel" ON projekty_meratelne_ukazovatele USING btree (projekt_id, projektovy_ukazovatel_id);
+
+
+--
+-- Name: index_itms.projekty_meratelne_ukazovatele_on_ukazovatel; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_meratelne_ukazovatele_on_ukazovatel" ON projekty_meratelne_ukazovatele USING btree (projektovy_ukazovatel_id);
+
+
+--
 -- Name: index_itms.projekty_oblasti_intervencie_on_hodnota_ciselnika_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -10869,6 +10939,14 @@ ALTER TABLE ONLY projekty_hospodarske_cinnosti
 
 
 --
+-- Name: fk_rails_546a109c63; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_meratelne_ukazovatele
+    ADD CONSTRAINT fk_rails_546a109c63 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
 -- Name: fk_rails_5473ddf63b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11474,6 +11552,14 @@ ALTER TABLE ONLY zonfp_schvalene_hodnotitelia
 
 ALTER TABLE ONLY zop_zamietnute_predfinancovanie
     ADD CONSTRAINT fk_rails_bb8efda835 FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
+
+
+--
+-- Name: fk_rails_bbef4e8041; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_meratelne_ukazovatele
+    ADD CONSTRAINT fk_rails_bbef4e8041 FOREIGN KEY (projektovy_ukazovatel_id) REFERENCES projektove_ukazovatele(id);
 
 
 --

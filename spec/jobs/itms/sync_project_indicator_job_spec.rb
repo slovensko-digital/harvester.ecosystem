@@ -20,7 +20,7 @@ RSpec.describe Itms::SyncProjectIndicatorJob, type: :job do
           .with('https://opendata.itms2014.sk/v2/projektovyUkazovatel/1')
           .and_return(double(body: itms_file_fixture('projektovy_ukazovatel_item.json')))
 
-      subject.perform(1, downloader: downloader)
+      subject.perform('/v2/projektovyUkazovatel/1', downloader: downloader)
 
       expect(Itms::ProjectIndicator.first).to have_attributes(
         itms_href: '/v2/projektovyUkazovatel/1',

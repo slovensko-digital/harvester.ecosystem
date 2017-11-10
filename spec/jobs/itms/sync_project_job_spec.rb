@@ -46,6 +46,11 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
           .with('https://opendata.itms2014.sk/v2/ciselniky')
           .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
 
+      allow(downloader)
+          .to receive(:get)
+          .with(include('https://opendata.itms2014.sk/v2/projektovyUkazovatel/'))
+          .and_return(double(body: itms_file_fixture('projektovy_ukazovatel_item.json')))
+
       subject.perform('/v2/projekty/ukoncene/31', downloader: downloader)
 
       expect(Itms::Project.first).to have_attributes(
@@ -83,39 +88,43 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             Itms::Intensity.find_by!(itms_id: 46)
         ],
         kod: '310011A019',
-        #TODO meratelne_ukazovatele: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/MeratelnyUkazovatel"
-            # # },
-            # "description": "Merateľné ukazovatele",
-            # "example": [
-                # {
-                    # "aktualnySkutocnyStav": 0.9560800557173746,
-                    # "datumPoslednehoMerania": "Quia ullam quo quae temporibus ut.",
-                    # "hodnotaCielovaCelkova": 0.2410834283342169,
-                    # "kod": "Non minima.",
-                    # "mernaJednotka": "Odio reiciendis molestiae quo.",
-                    # "nazov": "Repellat ut ipsum autem."
-                # # },
-                # {
-                    # "aktualnySkutocnyStav": 0.9560800557173746,
-                    # "datumPoslednehoMerania": "Quia ullam quo quae temporibus ut.",
-                    # "hodnotaCielovaCelkova": 0.2410834283342169,
-                    # "kod": "Non minima.",
-                    # "mernaJednotka": "Odio reiciendis molestiae quo.",
-                    # "nazov": "Repellat ut ipsum autem."
-                # # },
-                # {
-                    # "aktualnySkutocnyStav": 0.9560800557173746,
-                    # "datumPoslednehoMerania": "Quia ullam quo quae temporibus ut.",
-                    # "hodnotaCielovaCelkova": 0.2410834283342169,
-                    # "kod": "Non minima.",
-                    # "mernaJednotka": "Odio reiciendis molestiae quo.",
-                    # "nazov": "Repellat ut ipsum autem."
-                # }
-            # ]
-        # },
+        meratelne_ukazovatele: [
+          Itms::MeasurableIndicator.find_by!(
+            aktualny_skutocny_stav: 0.to_d,
+            datum_posledneho_merania: Date.parse('2016-12-31'),
+            hodnota_cielova_celkova: 22.74.to_d,
+            priznak_rizika: false,
+            projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 213)
+          ),
+          Itms::MeasurableIndicator.find_by!(
+            aktualny_skutocny_stav: 0.to_d,
+            datum_posledneho_merania: Date.parse('2016-12-31'),
+            hodnota_cielova_celkova: 1.to_d,
+            priznak_rizika: false,
+            projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 216)
+          ),
+          Itms::MeasurableIndicator.find_by!(
+            aktualny_skutocny_stav: 0.to_d,
+            datum_posledneho_merania: Date.parse('2016-12-31'),
+            hodnota_cielova_celkova: 2689.to_d,
+            priznak_rizika: true,
+            projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 218)
+          ),
+          Itms::MeasurableIndicator.find_by!(
+            aktualny_skutocny_stav: 0.to_d,
+            datum_posledneho_merania: Date.parse('2016-12-31'),
+            hodnota_cielova_celkova: 3.62.to_d,
+            priznak_rizika: false,
+            projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 221)
+          ),
+          Itms::MeasurableIndicator.find_by!(
+            aktualny_skutocny_stav: 0.to_d,
+            datum_posledneho_merania: Date.parse('2016-12-31'),
+            hodnota_cielova_celkova: 589.to_d,
+            priznak_rizika: true,
+            projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 223)
+          ),
+        ],
         # TODO miesta_realizacie: ,
             # "type": "array",
             # items: ,
@@ -256,6 +265,8 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         zameranie_projektu: 'Dopytovo-orientovaný projekt',
       )
     end
+
+    pending 'deletes meratelne_ukazovatele (Itms::MeasurableIndicator) that disappear from the list'
 
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
