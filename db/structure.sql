@@ -304,6 +304,40 @@ ALTER SEQUENCE konkretne_ciele_id_seq OWNED BY konkretne_ciele.id;
 
 
 --
+-- Name: miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE miesta_realizacie (
+    id integer NOT NULL,
+    nuts_3_id integer,
+    nuts_4_id integer,
+    nuts_5_id integer,
+    stat_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: miesta_realizacie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE miesta_realizacie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: miesta_realizacie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE miesta_realizacie_id_seq OWNED BY miesta_realizacie.id;
+
+
+--
 -- Name: nezrovnalosti; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -560,6 +594,39 @@ CREATE SEQUENCE nezrovnalosti_typy_nezrovnalosti_id_seq
 --
 
 ALTER SEQUENCE nezrovnalosti_typy_nezrovnalosti_id_seq OWNED BY nezrovnalosti_typy_nezrovnalosti.id;
+
+
+--
+-- Name: nuts_kody; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nuts_kody (
+    id integer NOT NULL,
+    gps_lat numeric,
+    gps_lon numeric,
+    hodnota_nuts_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nuts_kody_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nuts_kody_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nuts_kody_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nuts_kody_id_seq OWNED BY nuts_kody.id;
 
 
 --
@@ -1023,6 +1090,36 @@ CREATE SEQUENCE projekty_meratelne_ukazovatele_id_seq
 --
 
 ALTER SEQUENCE projekty_meratelne_ukazovatele_id_seq OWNED BY projekty_meratelne_ukazovatele.id;
+
+
+--
+-- Name: projekty_miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_miesta_realizacie (
+    id integer NOT NULL,
+    projekt_id integer,
+    miesto_realizacie_id integer
+);
+
+
+--
+-- Name: projekty_miesta_realizacie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_miesta_realizacie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_miesta_realizacie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_miesta_realizacie_id_seq OWNED BY projekty_miesta_realizacie.id;
 
 
 --
@@ -6698,6 +6795,13 @@ ALTER TABLE ONLY konkretne_ciele ALTER COLUMN id SET DEFAULT nextval('konkretne_
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('miesta_realizacie_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_id_seq'::regclass);
 
 
@@ -6741,6 +6845,13 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady ALTER COLUMN id SE
 --
 
 ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_typy_nezrovnalosti_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nuts_kody ALTER COLUMN id SET DEFAULT nextval('nuts_kody_id_seq'::regclass);
 
 
 --
@@ -6825,6 +6936,13 @@ ALTER TABLE ONLY projekty_intenzity ALTER COLUMN id SET DEFAULT nextval('projekt
 --
 
 ALTER TABLE ONLY projekty_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('projekty_meratelne_ukazovatele_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('projekty_miesta_realizacie_id_seq'::regclass);
 
 
 --
@@ -8085,6 +8203,14 @@ ALTER TABLE ONLY konkretne_ciele
 
 
 --
+-- Name: miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY miesta_realizacie
+    ADD CONSTRAINT miesta_realizacie_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8138,6 +8264,14 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
 
 ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti
     ADD CONSTRAINT nezrovnalosti_typy_nezrovnalosti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nuts_kody_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nuts_kody
+    ADD CONSTRAINT nuts_kody_pkey PRIMARY KEY (id);
 
 
 --
@@ -8226,6 +8360,14 @@ ALTER TABLE ONLY projekty_intenzity
 
 ALTER TABLE ONLY projekty_meratelne_ukazovatele
     ADD CONSTRAINT projekty_meratelne_ukazovatele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_miesta_realizacie
+    ADD CONSTRAINT projekty_miesta_realizacie_pkey PRIMARY KEY (id);
 
 
 --
@@ -9739,6 +9881,34 @@ CREATE UNIQUE INDEX "index_itms.konkretne_ciele_on_itms_id" ON konkretne_ciele U
 
 
 --
+-- Name: index_itms.miesta_realizacie_on_nuts_3_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.miesta_realizacie_on_nuts_3_id" ON miesta_realizacie USING btree (nuts_3_id);
+
+
+--
+-- Name: index_itms.miesta_realizacie_on_nuts_4_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.miesta_realizacie_on_nuts_4_id" ON miesta_realizacie USING btree (nuts_4_id);
+
+
+--
+-- Name: index_itms.miesta_realizacie_on_nuts_5_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.miesta_realizacie_on_nuts_5_id" ON miesta_realizacie USING btree (nuts_5_id);
+
+
+--
+-- Name: index_itms.miesta_realizacie_on_stat_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.miesta_realizacie_on_stat_id" ON miesta_realizacie USING btree (stat_id);
+
+
+--
 -- Name: index_itms.nezrovnalosti_on_administrativny_stav_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -9876,6 +10046,13 @@ CREATE INDEX "index_itms.nezrovnalosti_typy_nezrovnalosti_on_kod_id" ON nezrovna
 --
 
 CREATE INDEX "index_itms.nezrovnalosti_typy_nezrovnalosti_on_nezrovnalost_id" ON nezrovnalosti_typy_nezrovnalosti USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nuts_kody_on_hodnota_nuts_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nuts_kody_on_hodnota_nuts_id" ON nuts_kody USING btree (hodnota_nuts_id);
 
 
 --
@@ -10100,6 +10277,20 @@ CREATE UNIQUE INDEX "index_itms.projekty_meratelne_ukazovatele_on_projekt_ukazov
 --
 
 CREATE INDEX "index_itms.projekty_meratelne_ukazovatele_on_ukazovatel" ON projekty_meratelne_ukazovatele USING btree (projektovy_ukazovatel_id);
+
+
+--
+-- Name: index_itms.projekty_miesta_realizacie_on_miesto_realizacie_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_miesta_realizacie_on_miesto_realizacie_id" ON projekty_miesta_realizacie USING btree (miesto_realizacie_id);
+
+
+--
+-- Name: index_itms.projekty_miesta_realizacie_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_miesta_realizacie_on_projekt_id" ON projekty_miesta_realizacie USING btree (projekt_id);
 
 
 --
@@ -10723,6 +10914,14 @@ ALTER TABLE ONLY verejne_obstaravania_postup_obstaravania
 
 
 --
+-- Name: fk_rails_350aad395f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY miesta_realizacie
+    ADD CONSTRAINT fk_rails_350aad395f FOREIGN KEY (stat_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_36c02f5cf6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11091,6 +11290,14 @@ ALTER TABLE ONLY operacne_programy
 
 
 --
+-- Name: fk_rails_6d8977cc9f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nuts_kody
+    ADD CONSTRAINT fk_rails_6d8977cc9f FOREIGN KEY (hodnota_nuts_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_6e7c1b8881; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11387,6 +11594,14 @@ ALTER TABLE ONLY zonfp_zamietnute_partneri
 
 
 --
+-- Name: fk_rails_985f46756c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY miesta_realizacie
+    ADD CONSTRAINT fk_rails_985f46756c FOREIGN KEY (nuts_5_id) REFERENCES nuts_kody(id);
+
+
+--
 -- Name: fk_rails_9bee500755; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11408,6 +11623,14 @@ ALTER TABLE ONLY verejne_obstaravania_obstaravatel
 
 ALTER TABLE ONLY projekty_ukoncene_miesta_realizacie_units
     ADD CONSTRAINT fk_rails_9eea4311d4 FOREIGN KEY (projekty_ukoncene_miesta_realizacie_id) REFERENCES projekty_ukoncene_miesta_realizacie(id);
+
+
+--
+-- Name: fk_rails_9f12cb21f5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_miesta_realizacie
+    ADD CONSTRAINT fk_rails_9f12cb21f5 FOREIGN KEY (miesto_realizacie_id) REFERENCES miesta_realizacie(id);
 
 
 --
@@ -11472,6 +11695,14 @@ ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie_units
 
 ALTER TABLE ONLY zonfp_schvalene_aktivity_projekt_subjekty
     ADD CONSTRAINT fk_rails_abf5b2acff FOREIGN KEY (zonfp_schvalene_aktivity_projekty_id) REFERENCES zonfp_schvalene_aktivity_projekty(id);
+
+
+--
+-- Name: fk_rails_abf9fbf76a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY miesta_realizacie
+    ADD CONSTRAINT fk_rails_abf9fbf76a FOREIGN KEY (nuts_4_id) REFERENCES nuts_kody(id);
 
 
 --
@@ -11827,6 +12058,14 @@ ALTER TABLE ONLY aktivity
 
 
 --
+-- Name: fk_rails_dc617d6865; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_miesta_realizacie
+    ADD CONSTRAINT fk_rails_dc617d6865 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
 -- Name: fk_rails_dca9598718; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -11960,6 +12199,14 @@ ALTER TABLE ONLY intenzity
 
 ALTER TABLE ONLY zop_predlozene_projekt
     ADD CONSTRAINT fk_rails_e9c0519acf FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
+
+
+--
+-- Name: fk_rails_ea79d69beb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY miesta_realizacie
+    ADD CONSTRAINT fk_rails_ea79d69beb FOREIGN KEY (nuts_3_id) REFERENCES nuts_kody(id);
 
 
 --
@@ -12165,6 +12412,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171008150412'),
 ('20171009080951'),
 ('20171009115759'),
+('20171012201924'),
 ('20171017111719'),
 ('20171017171650'),
 ('20171017182931');

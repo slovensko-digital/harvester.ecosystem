@@ -125,59 +125,62 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 223)
           ),
         ],
-        # TODO miesta_realizacie: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/MiestoRealizacie"
-            # # },
-            # "description": "Miesta realizácie",
-            # "example": [
-                # {
-                    # nuts3: ,
-                        # "id": 346272781115811725,
-                        # "kodZdroj": "Quasi in adipisci molestiae rerum aut quo.",
-                        # "nazov": "Iste omnis fuga et accusantium impedit eveniet."
-                    # # },
-                    # nuts4: ,
-                        # "id": 346272781115811725,
-                        # "kodZdroj": "Quasi in adipisci molestiae rerum aut quo.",
-                        # "nazov": "Iste omnis fuga et accusantium impedit eveniet."
-                    # # },
-                    # nuts5: ,
-                        # "id": 346272781115811725,
-                        # "kodZdroj": "Quasi in adipisci molestiae rerum aut quo.",
-                        # "nazov": "Iste omnis fuga et accusantium impedit eveniet."
-                    # # },
-                    # stat: ,
-                        # "id": 346272781115811725,
-                        # "kodZdroj": "Quasi in adipisci molestiae rerum aut quo.",
-                        # "nazov": "Iste omnis fuga et accusantium impedit eveniet."
-                    # }
-                # # },
-                # {
-                    # nuts3: ,
-                        # "id": 346272781115811725,
-                        # "kodZdroj": "Quasi in adipisci molestiae rerum aut quo.",
-                        # "nazov": "Iste omnis fuga et accusantium impedit eveniet."
-                    # # },
-                    # nuts4: ,
-                        # "id": 346272781115811725,
-                        # "kodZdroj": "Quasi in adipisci molestiae rerum aut quo.",
-                        # "nazov": "Iste omnis fuga et accusantium impedit eveniet."
-                    # # },
-                    # nuts5: ,
-                        # "id": 346272781115811725,
-                        # "kodZdroj": "Quasi in adipisci molestiae rerum aut quo.",
-                        # "nazov": "Iste omnis fuga et accusantium impedit eveniet."
-                    # # },
-                    # stat: ,
-                        # "id": 346272781115811725,
-                        # "kodZdroj": "Quasi in adipisci molestiae rerum aut quo.",
-                        # "nazov": "Iste omnis fuga et accusantium impedit eveniet."
-                    # }
-                # }
-            # ]
-        # },
+        miesta_realizacie: [
+          Itms::ImplementationPlace.find_by!(
+            nuts_3: Itms::NutsCode.find_by!(
+              gps_lat: 48.147648.to_d,
+              gps_lon: 17.109832.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 9).first!
+            ),
+            nuts_4: Itms::NutsCode.find_by!(
+              gps_lat: 48.436091.to_d,
+              gps_lon: 17.019968.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 23).first!
+            ),
+            nuts_5: Itms::NutsCode.find_by!(
+              gps_lat: 48.503181.to_d,
+              gps_lon: 17.001698.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 123).first!
+            ),
+            stat: Itms::CodelistValue.where_codelist_and_value(1012, 210).first!
+          ),
+          Itms::ImplementationPlace.find_by!(
+            nuts_3: Itms::NutsCode.find_by!(
+              gps_lat: 48.147648.to_d,
+              gps_lon: 17.109832.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 9).first!
+            ),
+            nuts_4: Itms::NutsCode.find_by!(
+              gps_lat: 48.436091.to_d,
+              gps_lon: 17.019968.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 23).first!
+            ),
+            nuts_5: Itms::NutsCode.find_by!(
+              gps_lat: 48.503122.to_d,
+              gps_lon: 16.969778.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 117).first!
+            ),
+            stat: Itms::CodelistValue.where_codelist_and_value(1012, 210).first!
+          ),
+        Itms::ImplementationPlace.find_by!(
+            nuts_3: Itms::NutsCode.find_by!(
+              gps_lat: 48.147648.to_d,
+              gps_lon: 17.109832.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 9).first!
+            ),
+            nuts_4: Itms::NutsCode.find_by!(
+              gps_lat: 48.436091.to_d,
+              gps_lon: 17.019968.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 23).first!
+            ),
+            nuts_5: Itms::NutsCode.find_by!(
+              gps_lat: 48.466084.to_d,
+              gps_lon: 16.923253.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 126).first!
+            ),
+            stat: Itms::CodelistValue.where_codelist_and_value(1012, 210).first!
+          ),
+        ],
         #TODO monitorovacie_terminy: ,
             # "type": "array",
             # items: ,

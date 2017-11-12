@@ -23,6 +23,12 @@ class Itms::Project < ApplicationRecord
   has_many :meratelne_ukazovatele,
            class_name: Itms::MeasurableIndicator,
            foreign_key: 'projekt_id'
+  has_many :projekty_miesta_realizacie,
+           class_name: Itms::ProjectImplementationPlace,
+           foreign_key: 'projekt_id'
+  has_many :miesta_realizacie,
+           through: :projekty_miesta_realizacie,
+           source: :miesto_realizacie
   has_many :oblasti_intervencie,
            class_name: Itms::ProjectInterventionArea,
            foreign_key: 'projekt_id'

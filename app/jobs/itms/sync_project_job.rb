@@ -30,7 +30,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.intenzity = find_or_create_intensities_by_json(json['intenzity'], downloader)
       p.kod = json['kod']
       p.meratelne_ukazovatele = find_or_create_measurable_indicators_by_json(json['meratelneUkazovatele'], p.meratelne_ukazovatele, downloader)
-      #TODO p.miesta_realizacie = json['miestaRealizacie']
+      p.miesta_realizacie = find_or_create_implementation_places_by_json(json['miestaRealizacie'], downloader)
       #TODO p.monitorovacie_terminy = json['monitorovacieTerminy']
       p.nazov = json['nazov']
       p.oblasti_intervencie = find_or_create_codelist_values_with_goals_by_json(json['oblastiIntervencie'], p.oblasti_intervencie, downloader)
@@ -132,5 +132,25 @@ class Itms::SyncProjectJob < ItmsJob
 
     Itms::SyncProjectIndicatorJob.perform_now(json['href'], downloader: downloader)
     Itms::ProjectIndicator.find_by!(itms_id: json['id'])
+  end
+
+  def find_or_create_implementation_places_by_json(json, downloader)
+    return [] if json.blank?
+    json.map do |j|
+      Itms::ImplementationPlace.find_or_create_by(
+        nuts_3: find_or_create_nuts_code_by_json(j['nuts3'], downloader),
+        nuts_4: find_or_create_nuts_code_by_json(j['nuts4'], downloader),
+        nuts_5: find_or_create_nuts_code_by_json(j['nuts5'], downloader),
+        stat: find_or_create_codelist_value_by_json(j['stat'], downloader)
+      )
+    end
+  end
+
+  def find_or_create_nuts_code_by_json(json, downloader)
+    Itms::NutsCode.find_or_create_by(
+      gps_lat: json['gpsLat'].to_d,
+      gps_lon: json['gpsLon'].to_d,
+      hodnota_nuts: find_or_create_codelist_value_by_json(json['hodnotaNuts'], downloader)
+    )
   end
 end
