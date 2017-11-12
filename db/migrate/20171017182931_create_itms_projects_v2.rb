@@ -90,6 +90,11 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
               name: 'index_itms.projekty_meratelne_ukazovatele_on_projekt_ukazovatel',
               unique: true
 
+    create_table 'itms.projekty_miesta_realizacie' do |t|
+      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :miesto_realizacie, index: true, foreign_key: { to_table: 'itms.miesta_realizacie' }
+    end
+
     create_table 'itms.projekty_oblasti_intervencie' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
       t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
