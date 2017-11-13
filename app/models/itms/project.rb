@@ -48,6 +48,12 @@ class Itms::Project < ApplicationRecord
   has_many :organizacne_zlozky,
            through: :projekty_organizacne_zlozky,
            source: :organizacna_zlozka
+  has_many :projekty_partneri,
+           class_name: Itms::ProjectPartner,
+           foreign_key: 'projekt_id'
+  has_many :partneri,
+           through: :projekty_partneri,
+           source: :partner
   has_many :sekundarny_tematicky_okruh,
            class_name: Itms::ProjectSecondaryThematicArea,
            foreign_key: 'projekt_id'

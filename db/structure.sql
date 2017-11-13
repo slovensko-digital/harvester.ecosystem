@@ -1286,6 +1286,38 @@ ALTER SEQUENCE projekty_organizacne_zlozky_id_seq OWNED BY projekty_organizacne_
 
 
 --
+-- Name: projekty_partneri; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_partneri (
+    id integer NOT NULL,
+    projekt_id integer NOT NULL,
+    partner_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: projekty_partneri_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_partneri_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_partneri_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_partneri_id_seq OWNED BY projekty_partneri.id;
+
+
+--
 -- Name: projekty_sekundarne_tematicke_okruhy; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -7114,6 +7146,13 @@ ALTER TABLE ONLY projekty_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY projekty_partneri ALTER COLUMN id SET DEFAULT nextval('projekty_partneri_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY projekty_sekundarne_tematicke_okruhy ALTER COLUMN id SET DEFAULT nextval('projekty_sekundarne_tematicke_okruhy_id_seq'::regclass);
 
 
@@ -8566,6 +8605,14 @@ ALTER TABLE ONLY projekty_oblasti_intervencie
 
 ALTER TABLE ONLY projekty_organizacne_zlozky
     ADD CONSTRAINT projekty_organizacne_zlozky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_partneri
+    ADD CONSTRAINT projekty_partneri_pkey PRIMARY KEY (id);
 
 
 --
@@ -10568,6 +10615,27 @@ CREATE INDEX "index_itms.projekty_organizacne_zlozky_on_zlozka" ON projekty_orga
 
 
 --
+-- Name: index_itms.projekty_partneri_on_partner_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_partneri_on_partner_id" ON projekty_partneri USING btree (partner_id);
+
+
+--
+-- Name: index_itms.projekty_partneri_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_partneri_on_projekt_id" ON projekty_partneri USING btree (projekt_id);
+
+
+--
+-- Name: index_itms.projekty_partneri_on_projekt_id_and_partner_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_partneri_on_projekt_id_and_partner_id" ON projekty_partneri USING btree (projekt_id, partner_id);
+
+
+--
 -- Name: index_itms.projekty_sekundarne_tematicke_okruhy_on_hc; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -11762,6 +11830,14 @@ ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_hlavny_slovniky
 
 
 --
+-- Name: fk_rails_88302c96ad; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_partneri
+    ADD CONSTRAINT fk_rails_88302c96ad FOREIGN KEY (partner_id) REFERENCES subjekty(id);
+
+
+--
 -- Name: fk_rails_8897be5588; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -12623,6 +12699,14 @@ ALTER TABLE ONLY uctovne_doklady_dodavatel
 
 ALTER TABLE ONLY projekty_vrealizacii_intenzity_subjekty
     ADD CONSTRAINT fk_rails_fa124ae26c FOREIGN KEY (projekty_vrealizacii_intenzity_id) REFERENCES projekty_vrealizacii_intenzity(id);
+
+
+--
+-- Name: fk_rails_fb2a83b9a4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_partneri
+    ADD CONSTRAINT fk_rails_fb2a83b9a4 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
 
 
 --

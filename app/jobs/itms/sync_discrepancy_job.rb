@@ -61,11 +61,6 @@ class Itms::SyncDiscrepancyJob < ItmsJob
 
   private
 
-  def find_or_create_subjects_by_json(json, downloader)
-    return [] if json.blank?
-    json.map { |subject_json| find_or_create_subject_by_json(subject_json, downloader) }
-  end
-
   def find_or_create_accounts_receivable_documents_by_json(json, downloader)
     return [] if json.blank?
     json.map { |subject_json| find_or_create_accounts_receivable_document_by_json(subject_json, downloader) }
