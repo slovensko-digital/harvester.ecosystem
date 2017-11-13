@@ -1001,6 +1001,7 @@ CREATE TABLE projekty (
     popis_vychodiskovej_situacie character varying,
     popis_kapacity_prijimatela character varying,
     prijimatel_id integer,
+    schvalena_zonfp_id integer,
     stav character varying,
     suma_celkova_projektov_generujucich_prijem numeric,
     suma_zazmluvnena numeric,
@@ -4405,6 +4406,37 @@ CREATE SEQUENCE zmluvy_verejne_obstaravanie_id_seq
 --
 
 ALTER SEQUENCE zmluvy_verejne_obstaravanie_id_seq OWNED BY zmluvy_verejne_obstaravanie.id;
+
+
+--
+-- Name: zonfp; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp (
+    id integer NOT NULL,
+    itms_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: zonfp_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_id_seq OWNED BY zonfp.id;
 
 
 --
@@ -7878,6 +7910,13 @@ ALTER TABLE ONLY zmluvy_verejne_obstaravanie_hlavny_dodavatel ALTER COLUMN id SE
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY zonfp ALTER COLUMN id SET DEFAULT nextval('zonfp_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY zonfp_prijate ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_id_seq'::regclass);
 
 
@@ -9457,6 +9496,14 @@ ALTER TABLE ONLY zmluvy_verejne_obstaravanie
 
 
 --
+-- Name: zonfp_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp
+    ADD CONSTRAINT zonfp_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: zonfp_prijate_aktivity_projekt_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10705,6 +10752,13 @@ CREATE INDEX "index_itms.projekty_on_prijimatel_id" ON projekty USING btree (pri
 
 
 --
+-- Name: index_itms.projekty_on_schvalena_zonfp_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_on_schvalena_zonfp_id" ON projekty USING btree (schvalena_zonfp_id);
+
+
+--
 -- Name: index_itms.projekty_organizacne_zlozky_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -10912,6 +10966,13 @@ CREATE UNIQUE INDEX "index_itms.vyzvy_vyhlasene_on_itms_identifier" ON vyzvy_vyh
 --
 
 CREATE INDEX "index_itms.zdroje_intenzit_on_zdroj_id" ON zdroje_intenzit USING btree (zdroj_id);
+
+
+--
+-- Name: index_itms.zonfp_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.zonfp_on_itms_id" ON zonfp USING btree (itms_id);
 
 
 --
@@ -11353,6 +11414,14 @@ ALTER TABLE ONLY verejne_obstaravania_postup_obstaravania
 
 ALTER TABLE ONLY miesta_realizacie
     ADD CONSTRAINT fk_rails_350aad395f FOREIGN KEY (stat_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_35284387ac; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty
+    ADD CONSTRAINT fk_rails_35284387ac FOREIGN KEY (schvalena_zonfp_id) REFERENCES zonfp(id);
 
 
 --
@@ -12905,6 +12974,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171012201924'),
 ('20171017111719'),
 ('20171017171650'),
+('20171017175218'),
 ('20171017182931'),
 ('20171113145824'),
 ('20171113180259'),
