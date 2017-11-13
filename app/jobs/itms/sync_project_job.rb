@@ -35,7 +35,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.monitorovacie_terminy = find_or_create_monitoring_dates_by_json(json['monitorovacieTerminy'], p.monitorovacie_terminy)
       p.nazov = json['nazov']
       p.oblasti_intervencie = find_or_create_codelist_values_with_goals_by_json(json['oblastiIntervencie'], p.oblasti_intervencie, downloader)
-      #TODO p.organizacne_zlozky = json['organizacneZlozky']
+      p.organizacne_zlozky = find_or_create_organisational_units_by_json(json['organizacneZlozky'])
       p.otvorena_zmena = json['otvorenaZmena']
       p.otvoreny_dodatok = json['otvorenyDodatok']
       #TODO p.partneri = json['partneri']
@@ -166,5 +166,18 @@ class Itms::SyncProjectJob < ItmsJob
         typ_monitorovacej_spravy: j['typMonitorovacejSpravy'],
       )
     end
+  end
+
+  def find_or_create_organisational_units_by_json(json)
+    return [] if json.blank?
+
+    json.map do |j|
+      unit = Itms::OrganisationalUnit.find_or_create_by(itms_id: j['id'])
+      unit.adresa = j['adresa']
+      unit.nazov = j['nazov']
+      unit.save!
+      unit
+    end
+
   end
 end

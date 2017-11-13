@@ -707,6 +707,39 @@ ALTER SEQUENCE operacne_programy_id_seq OWNED BY operacne_programy.id;
 
 
 --
+-- Name: organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE organizacne_zlozky (
+    id integer NOT NULL,
+    itms_id integer NOT NULL,
+    adresa character varying,
+    nazov character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: organizacne_zlozky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE organizacne_zlozky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: organizacne_zlozky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE organizacne_zlozky_id_seq OWNED BY organizacne_zlozky.id;
+
+
+--
 -- Name: pohladavkove_doklady; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -1218,6 +1251,38 @@ CREATE SEQUENCE projekty_oblasti_intervencie_id_seq
 --
 
 ALTER SEQUENCE projekty_oblasti_intervencie_id_seq OWNED BY projekty_oblasti_intervencie.id;
+
+
+--
+-- Name: projekty_organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_organizacne_zlozky (
+    id integer NOT NULL,
+    projekt_id integer NOT NULL,
+    organizacna_zlozka_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: projekty_organizacne_zlozky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_organizacne_zlozky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_organizacne_zlozky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_organizacne_zlozky_id_seq OWNED BY projekty_organizacne_zlozky.id;
 
 
 --
@@ -6937,6 +7002,13 @@ ALTER TABLE ONLY operacne_programy ALTER COLUMN id SET DEFAULT nextval('operacne
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('organizacne_zlozky_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('pohladavkove_doklady_id_seq'::regclass);
 
 
@@ -7029,6 +7101,13 @@ ALTER TABLE ONLY projekty_miesta_realizacie_mimo_uzemia_op ALTER COLUMN id SET D
 --
 
 ALTER TABLE ONLY projekty_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('projekty_oblasti_intervencie_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('projekty_organizacne_zlozky_id_seq'::regclass);
 
 
 --
@@ -8370,6 +8449,14 @@ ALTER TABLE ONLY operacne_programy
 
 
 --
+-- Name: organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY organizacne_zlozky
+    ADD CONSTRAINT organizacne_zlozky_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8471,6 +8558,14 @@ ALTER TABLE ONLY projekty_miesta_realizacie
 
 ALTER TABLE ONLY projekty_oblasti_intervencie
     ADD CONSTRAINT projekty_oblasti_intervencie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_organizacne_zlozky
+    ADD CONSTRAINT projekty_organizacne_zlozky_pkey PRIMARY KEY (id);
 
 
 --
@@ -10172,6 +10267,13 @@ CREATE INDEX "index_itms.operacne_programy_on_subjekt_id" ON operacne_programy U
 
 
 --
+-- Name: index_itms.organizacne_zlozky_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.organizacne_zlozky_on_itms_id" ON organizacne_zlozky USING btree (itms_id);
+
+
+--
 -- Name: index_itms.pohladavkove_doklady_on_dlznik_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -10449,6 +10551,20 @@ CREATE UNIQUE INDEX "index_itms.projekty_on_itms_id" ON projekty USING btree (it
 --
 
 CREATE INDEX "index_itms.projekty_on_prijimatel_id" ON projekty USING btree (prijimatel_id);
+
+
+--
+-- Name: index_itms.projekty_organizacne_zlozky_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_organizacne_zlozky_on_projekt_id" ON projekty_organizacne_zlozky USING btree (projekt_id);
+
+
+--
+-- Name: index_itms.projekty_organizacne_zlozky_on_zlozka; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_organizacne_zlozky_on_zlozka" ON projekty_organizacne_zlozky USING btree (organizacna_zlozka_id);
 
 
 --
@@ -11678,6 +11794,14 @@ ALTER TABLE ONLY zonfp_schvalene_typy_uzemia
 
 
 --
+-- Name: fk_rails_8aa8b44f6c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_organizacne_zlozky
+    ADD CONSTRAINT fk_rails_8aa8b44f6c FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
 -- Name: fk_rails_8abe3aac03; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -12238,6 +12362,14 @@ ALTER TABLE ONLY zdroje_intenzit
 
 
 --
+-- Name: fk_rails_e184bf1313; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_organizacne_zlozky
+    ADD CONSTRAINT fk_rails_e184bf1313 FOREIGN KEY (organizacna_zlozka_id) REFERENCES organizacne_zlozky(id);
+
+
+--
 -- Name: fk_rails_e281735595; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -12556,6 +12688,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171017111719'),
 ('20171017171650'),
 ('20171017182931'),
-('20171113145824');
+('20171113145824'),
+('20171113180259');
 
 

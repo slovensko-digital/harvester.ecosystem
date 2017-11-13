@@ -322,6 +322,13 @@
       }
     }
   ],
+  "organizacneZlozky": [
+    {
+      "adresa": "Bajkalská 27, 82799 Bratislava - mestská časť Ružinov",
+      "id": 100,
+      "nazov": "Sekcia energetických činností"
+    }
+  ],
   "otvorenaZmena": false,
   "otvorenyDodatok": false,
   "partneri": [
