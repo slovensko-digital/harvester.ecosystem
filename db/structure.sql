@@ -338,6 +338,41 @@ ALTER SEQUENCE miesta_realizacie_id_seq OWNED BY miesta_realizacie.id;
 
 
 --
+-- Name: monitorovacie_terminy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE monitorovacie_terminy (
+    id integer NOT NULL,
+    projekt_id integer NOT NULL,
+    datum_predlozenia_najneskorsi timestamp without time zone,
+    poradove_cislo integer,
+    termin_monitorovania timestamp without time zone,
+    typ_monitorovacej_spravy character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: monitorovacie_terminy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE monitorovacie_terminy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: monitorovacie_terminy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE monitorovacie_terminy_id_seq OWNED BY monitorovacie_terminy.id;
+
+
+--
 -- Name: nezrovnalosti; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -6802,6 +6837,13 @@ ALTER TABLE ONLY miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('miesta_r
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY monitorovacie_terminy ALTER COLUMN id SET DEFAULT nextval('monitorovacie_terminy_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_id_seq'::regclass);
 
 
@@ -8208,6 +8250,14 @@ ALTER TABLE ONLY konkretne_ciele
 
 ALTER TABLE ONLY miesta_realizacie
     ADD CONSTRAINT miesta_realizacie_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: monitorovacie_terminy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY monitorovacie_terminy
+    ADD CONSTRAINT monitorovacie_terminy_pkey PRIMARY KEY (id);
 
 
 --
@@ -9909,6 +9959,13 @@ CREATE INDEX "index_itms.miesta_realizacie_on_stat_id" ON miesta_realizacie USIN
 
 
 --
+-- Name: index_itms.monitorovacie_terminy_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.monitorovacie_terminy_on_projekt_id" ON monitorovacie_terminy USING btree (projekt_id);
+
+
+--
 -- Name: index_itms.nezrovnalosti_on_administrativny_stav_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -11434,6 +11491,14 @@ ALTER TABLE ONLY zonfp_prijate_aktivity_projekty
 
 
 --
+-- Name: fk_rails_83b35e71b4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY monitorovacie_terminy
+    ADD CONSTRAINT fk_rails_83b35e71b4 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
 -- Name: fk_rails_859094ae9b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -12415,6 +12480,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171012201924'),
 ('20171017111719'),
 ('20171017171650'),
-('20171017182931');
+('20171017182931'),
+('20171113145824');
 
 

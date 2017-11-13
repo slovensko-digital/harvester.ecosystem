@@ -31,7 +31,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.kod = json['kod']
       p.meratelne_ukazovatele = find_or_create_measurable_indicators_by_json(json['meratelneUkazovatele'], p.meratelne_ukazovatele, downloader)
       p.miesta_realizacie = find_or_create_implementation_places_by_json(json['miestaRealizacie'], downloader)
-      #TODO p.monitorovacie_terminy = json['monitorovacieTerminy']
+      p.monitorovacie_terminy = find_or_create_monitoring_dates_by_json(json['monitorovacieTerminy'], p.monitorovacie_terminy)
       p.nazov = json['nazov']
       p.oblasti_intervencie = find_or_create_codelist_values_with_goals_by_json(json['oblastiIntervencie'], p.oblasti_intervencie, downloader)
       #TODO p.organizacne_zlozky = json['organizacneZlozky']
@@ -152,5 +152,18 @@ class Itms::SyncProjectJob < ItmsJob
       gps_lon: json['gpsLon'].to_d,
       hodnota_nuts: find_or_create_codelist_value_by_json(json['hodnotaNuts'], downloader)
     )
+  end
+
+  def find_or_create_monitoring_dates_by_json(json, scope)
+    return [] if json.blank?
+
+    json.map do |j|
+      scope.find_or_create_by(
+        datum_predlozenia_najneskorsi: j['datumPredlozeniaNajneskorsi'],
+        poradove_cislo: j['poradoveCislo'],
+        termin_monitorovania: j['terminMonitorovania'],
+        typ_monitorovacej_spravy: j['typMonitorovacejSpravy'],
+      )
+    end
   end
 end
