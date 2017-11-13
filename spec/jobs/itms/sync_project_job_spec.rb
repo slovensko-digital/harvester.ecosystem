@@ -181,27 +181,26 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             stat: Itms::CodelistValue.where_codelist_and_value(1012, 210).first!
           ),
         ],
-        #TODO monitorovacie_terminy: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/MonitorovaciTermin"
-            # # },
-            # "description": "Monitorovacie termíny",
-            # "example": [
-                # {
-                    # "datumPredlozeniaNajneskorsi": "Veritatis quidem perspiciatis temporibus.",
-                    # "poradoveCislo": 7227638007954916079,
-                    # "terminMonitorovania": "Esse itaque saepe.",
-                    # "typMonitorovacejSpravy": "Quod sunt commodi vel quisquam aliquid."
-                # # },
-                # {
-                    # "datumPredlozeniaNajneskorsi": "Veritatis quidem perspiciatis temporibus.",
-                    # "poradoveCislo": 7227638007954916079,
-                    # "terminMonitorovania": "Esse itaque saepe.",
-                    # "typMonitorovacejSpravy": "Quod sunt commodi vel quisquam aliquid."
-                # }
-            # ]
-        # },
+        monitorovacie_terminy: [
+          Itms::MonitoringDate.find_by!(
+            datum_predlozenia_najneskorsi: Date.parse('2018-01-31'),
+            poradove_cislo: 2,
+            termin_monitorovania: Date.parse('2017-12-31'),
+            typ_monitorovacej_spravy: 'VYROCNA',
+          ),
+          Itms::MonitoringDate.find_by!(
+            datum_predlozenia_najneskorsi: Date.parse('2018-08-13'),
+            poradove_cislo: 3,
+            termin_monitorovania: Date.parse('2018-06-30'),
+            typ_monitorovacej_spravy: 'ZAVERECNA',
+          ),
+          Itms::MonitoringDate.find_by!(
+            datum_predlozenia_najneskorsi: Date.parse('2017-01-31'),
+            poradove_cislo: 1,
+            termin_monitorovania: Date.parse('2016-12-31'),
+            typ_monitorovacej_spravy: 'VYROCNA',
+          ),
+        ],
         nazov: 'Dobudovanie kanalizačnej siete v aglomerácii Veľké Leváre a rozšírenie ČOV Gajary',
         oblasti_intervencie: [
             Itms::ProjectInterventionArea.where_goal_and_codelist(33, 1036, 22).first!,
@@ -274,10 +273,7 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
         :data_projektu,
-        :meratelne_ukazovatele,
-        :miesta_realizacie,
         :miesta_realizacie_mimo_uzemia_op,
-        :monitorovacie_terminy,
         :organizacne_zlozky,
         :partneri,
         :polozky_rozpoctu,

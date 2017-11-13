@@ -29,6 +29,10 @@ class Itms::Project < ApplicationRecord
   has_many :miesta_realizacie,
            through: :projekty_miesta_realizacie,
            source: :miesto_realizacie
+  has_many :monitorovacie_terminy,
+           class_name: Itms::MonitoringDate,
+           foreign_key: 'projekt_id',
+           dependent: :destroy
   has_many :oblasti_intervencie,
            class_name: Itms::ProjectInterventionArea,
            foreign_key: 'projekt_id'
