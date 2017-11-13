@@ -241,6 +241,42 @@
       }
     }
   ],
+  "miestaRealizacieMimoUzemiaOP": [
+    {
+      "nuts3": {
+        "gpsLat": 48.147648,
+        "gpsLon": 17.109832,
+        "hodnotaNuts": {
+          "ciselnikKod": 1006,
+          "href": "/v2/hodnotaCiselnika/1006/hodnota/9",
+          "id": 9
+        }
+      },
+      "nuts4": {
+        "gpsLat": 48.436091,
+        "gpsLon": 17.019968,
+        "hodnotaNuts": {
+          "ciselnikKod": 1006,
+          "href": "/v2/hodnotaCiselnika/1006/hodnota/23",
+          "id": 23
+        }
+      },
+      "nuts5": {
+        "gpsLat": 48.503181,
+        "gpsLon": 17.001698,
+        "hodnotaNuts": {
+          "ciselnikKod": 1006,
+          "href": "/v2/hodnotaCiselnika/1006/hodnota/123",
+          "id": 123
+        }
+      },
+      "stat": {
+        "ciselnikKod": 1012,
+        "href": "/v2/hodnotaCiselnika/1012/hodnota/210",
+        "id": 210
+      }
+    }
+  ],
   "monitorovacieTerminy": [
     {
       "datumPredlozeniaNajneskorsi": "2018-01-31",

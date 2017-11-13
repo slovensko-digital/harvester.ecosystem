@@ -1133,8 +1133,8 @@ ALTER SEQUENCE projekty_meratelne_ukazovatele_id_seq OWNED BY projekty_meratelne
 
 CREATE TABLE projekty_miesta_realizacie (
     id integer NOT NULL,
-    projekt_id integer,
-    miesto_realizacie_id integer
+    projekt_id integer NOT NULL,
+    miesto_realizacie_id integer NOT NULL
 );
 
 
@@ -1155,6 +1155,36 @@ CREATE SEQUENCE projekty_miesta_realizacie_id_seq
 --
 
 ALTER SEQUENCE projekty_miesta_realizacie_id_seq OWNED BY projekty_miesta_realizacie.id;
+
+
+--
+-- Name: projekty_miesta_realizacie_mimo_uzemia_op; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_miesta_realizacie_mimo_uzemia_op (
+    id integer NOT NULL,
+    projekt_id integer NOT NULL,
+    miesto_realizacie_id integer NOT NULL
+);
+
+
+--
+-- Name: projekty_miesta_realizacie_mimo_uzemia_op_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_miesta_realizacie_mimo_uzemia_op_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_miesta_realizacie_mimo_uzemia_op_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_miesta_realizacie_mimo_uzemia_op_id_seq OWNED BY projekty_miesta_realizacie_mimo_uzemia_op.id;
 
 
 --
@@ -6991,6 +7021,13 @@ ALTER TABLE ONLY projekty_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval(
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY projekty_miesta_realizacie_mimo_uzemia_op ALTER COLUMN id SET DEFAULT nextval('projekty_miesta_realizacie_mimo_uzemia_op_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY projekty_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('projekty_oblasti_intervencie_id_seq'::regclass);
 
 
@@ -8410,6 +8447,14 @@ ALTER TABLE ONLY projekty_intenzity
 
 ALTER TABLE ONLY projekty_meratelne_ukazovatele
     ADD CONSTRAINT projekty_meratelne_ukazovatele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_miesta_realizacie_mimo_uzemia_op_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_miesta_realizacie_mimo_uzemia_op
+    ADD CONSTRAINT projekty_miesta_realizacie_mimo_uzemia_op_pkey PRIMARY KEY (id);
 
 
 --
@@ -10337,6 +10382,20 @@ CREATE INDEX "index_itms.projekty_meratelne_ukazovatele_on_ukazovatel" ON projek
 
 
 --
+-- Name: index_itms.projekty_miesta_realizacie_mimo_uzemia_op_on_miesto; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_miesta_realizacie_mimo_uzemia_op_on_miesto" ON projekty_miesta_realizacie_mimo_uzemia_op USING btree (miesto_realizacie_id);
+
+
+--
+-- Name: index_itms.projekty_miesta_realizacie_mimo_uzemia_op_on_projekt; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_miesta_realizacie_mimo_uzemia_op_on_projekt" ON projekty_miesta_realizacie_mimo_uzemia_op USING btree (projekt_id);
+
+
+--
 -- Name: index_itms.projekty_miesta_realizacie_on_miesto_realizacie_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -10651,6 +10710,14 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_nezrovnalosti
 
 
 --
+-- Name: fk_rails_0496cc57e6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_miesta_realizacie_mimo_uzemia_op
+    ADD CONSTRAINT fk_rails_0496cc57e6 FOREIGN KEY (miesto_realizacie_id) REFERENCES miesta_realizacie(id);
+
+
+--
 -- Name: fk_rails_0529c2166a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10864,6 +10931,14 @@ ALTER TABLE ONLY projekty_ukoncene_hospodarske_cinnosti_ciele
 
 ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti
     ADD CONSTRAINT fk_rails_20e5c19bdc FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: fk_rails_2425cf6aca; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_miesta_realizacie_mimo_uzemia_op
+    ADD CONSTRAINT fk_rails_2425cf6aca FOREIGN KEY (projekt_id) REFERENCES projekty(id);
 
 
 --
