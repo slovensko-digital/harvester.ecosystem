@@ -46,7 +46,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.popis_vychodiskovej_situacie = json['popisVychodiskovejSituacie']
       p.popis_kapacity_prijimatela = json['popiskapacityprijimatela']
       p.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)
-      #TODO p.schvalena_zonfp = json['schvalenaZonfp']
+      p.schvalena_zonfp = find_or_create_nfc_request_by_json(json['schvalenaZonfp'], downloader)
       p.sekundarny_tematicky_okruh = find_or_create_codelist_values_with_goals_by_json(json['sekundarnyTematickyOkruh'], p.sekundarny_tematicky_okruh, downloader)
       p.stav = json['stav']
       p.suma_celkova_projektov_generujucich_prijem = json['sumaCelkovaProjektovGenerujucichPrijem']
@@ -193,5 +193,14 @@ class Itms::SyncProjectJob < ItmsJob
       Itms::SyncBudgetItemJob.perform_now(j['href'], downloader: downloader)
       Itms::BudgetItem.find_by!(itms_id: j['id'])
     end
+  end
+
+  def find_or_create_nfc_request_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::NfcRequest.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncNfcRequestJob.perform_now(json['href'], downloader: downloader)
+    Itms::NfcRequest.find_by!(itms_id: json['id'])
   end
 end

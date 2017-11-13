@@ -27,7 +27,7 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.string :popis_vychodiskovej_situacie
       t.string :popis_kapacity_prijimatela
       t.references :prijimatel, index: true, foreign_key: { to_table: 'itms.subjekty' }
-      #TODO t.string :schvalena_zonfp
+      t.references :schvalena_zonfp, index: true, foreign_key: { to_table: 'itms.zonfp' }
       t.string :stav
       t.decimal :suma_celkova_projektov_generujucich_prijem
       t.decimal :suma_zazmluvnena
