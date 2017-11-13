@@ -225,30 +225,13 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             Itms::ProjectInterventionArea.where_goal_and_codelist(33, 1036, 22).first!,
             Itms::ProjectInterventionArea.where_goal_and_codelist(39, 1036, 20).first!,
         ],
-        #TODO organizacne_zlozky: ,
-            # "type": "array",
-            # items: ,
-                # "$ref": "#/definitions/OrganizacnaZlozka"
-            # # },
-            # "description": "Organizačné zložky prijímateľa",
-            # "example": [
-                # {
-                    # "adresa": "Expedita laboriosam dolorum nihil eius.",
-                    # "id": 9221123029454021764,
-                    # "nazov": "Voluptas dignissimos voluptas voluptas."
-                # # },
-                # {
-                    # "adresa": "Expedita laboriosam dolorum nihil eius.",
-                    # "id": 9221123029454021764,
-                    # "nazov": "Voluptas dignissimos voluptas voluptas."
-                # # },
-                # {
-                    # "adresa": "Expedita laboriosam dolorum nihil eius.",
-                    # "id": 9221123029454021764,
-                    # "nazov": "Voluptas dignissimos voluptas voluptas."
-                # }
-            # ]
-        # },
+        organizacne_zlozky: [
+          Itms::OrganisationalUnit.find_by!(
+            itms_id: 100,
+            adresa: 'Bajkalská 27, 82799 Bratislava - mestská časť Ružinov',
+            nazov: 'Sekcia energetických činností'
+          ),
+        ],
         otvorena_zmena: false,
         otvoreny_dodatok: false,
         #TODO partneri: ,
@@ -292,8 +275,6 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
         :data_projektu,
-        :miesta_realizacie_mimo_uzemia_op,
-        :organizacne_zlozky,
         :partneri,
         :polozky_rozpoctu,
         :popis_situacie_po_realizacii,

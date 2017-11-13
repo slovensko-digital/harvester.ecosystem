@@ -42,6 +42,12 @@ class Itms::Project < ApplicationRecord
   has_many :oblasti_intervencie,
            class_name: Itms::ProjectInterventionArea,
            foreign_key: 'projekt_id'
+  has_many :projekty_organizacne_zlozky,
+           class_name: Itms::ProjectOrganisationalUnit,
+           foreign_key: 'projekt_id'
+  has_many :organizacne_zlozky,
+           through: :projekty_organizacne_zlozky,
+           source: :organizacna_zlozka
   has_many :sekundarny_tematicky_okruh,
            class_name: Itms::ProjectSecondaryThematicArea,
            foreign_key: 'projekt_id'
