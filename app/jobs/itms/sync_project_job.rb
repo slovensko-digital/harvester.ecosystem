@@ -38,7 +38,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.organizacne_zlozky = find_or_create_organisational_units_by_json(json['organizacneZlozky'])
       p.otvorena_zmena = json['otvorenaZmena']
       p.otvoreny_dodatok = json['otvorenyDodatok']
-      #TODO p.partneri = json['partneri']
+      p.partneri = find_or_create_subjects_by_json(json['partneri'], downloader)
       #TODO p.polozky_rozpoctu = json['polozkyRozpoctu']
       p.popis_projektu = json['popisProjektu']
       p.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)

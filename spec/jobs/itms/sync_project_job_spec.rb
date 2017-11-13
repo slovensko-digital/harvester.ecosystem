@@ -234,9 +234,9 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         ],
         otvorena_zmena: false,
         otvoreny_dodatok: false,
-        #TODO partneri: ,
-            # "$ref": "#/definitions/SubjektLinkCollection"
-        # },
+        partneri: [
+          Itms::Subject.find_by!(itms_id: 100003)
+        ],
         #TODO polozky_rozpoctu: ,
             # "$ref": "#/definitions/PolozkarozpoctuLinkCollection"
         # },
