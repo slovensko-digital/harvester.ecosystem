@@ -39,7 +39,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.otvorena_zmena = json['otvorenaZmena']
       p.otvoreny_dodatok = json['otvorenyDodatok']
       p.partneri = find_or_create_subjects_by_json(json['partneri'], downloader)
-      #TODO p.polozky_rozpoctu = json['polozkyRozpoctu']
+      p.polozky_rozpoctu = find_or_create_budget_items_by_json(json['polozkyRozpoctu'], downloader)
       p.popis_projektu = json['popisProjektu']
       p.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)
       #TODO p.schvalena_zonfp = json['schvalenaZonfp']
@@ -178,6 +178,16 @@ class Itms::SyncProjectJob < ItmsJob
       unit.save!
       unit
     end
+  end
 
+  def find_or_create_budget_items_by_json(json, downloader)
+    return [] if json.blank?
+    json.map do |j|
+      existing_object = Itms::BudgetItem.find_by(itms_id: j['id'])
+      return existing_object if existing_object.present?
+
+      Itms::SyncBudgetItemJob.perform_now(j['href'], downloader: downloader)
+      Itms::BudgetItem.find_by!(itms_id: j['id'])
+    end
   end
 end

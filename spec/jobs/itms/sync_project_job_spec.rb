@@ -237,9 +237,13 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         partneri: [
           Itms::Subject.find_by!(itms_id: 100003)
         ],
-        #TODO polozky_rozpoctu: ,
-            # "$ref": "#/definitions/PolozkarozpoctuLinkCollection"
-        # },
+        polozky_rozpoctu: [
+          Itms::BudgetItem.find_by!(itms_id: 204),
+          Itms::BudgetItem.find_by!(itms_id: 205),
+          Itms::BudgetItem.find_by!(itms_id: 206),
+          Itms::BudgetItem.find_by!(itms_id: 207),
+          Itms::BudgetItem.find_by!(itms_id: 208),
+        ],
         popis_projektu: "\u003cdiv\u003eCieľom\u0026nbsp;predkladan\u0026eacute;ho projektu je\u0026nbsp;zlep\u0026scaron;enie stavu odv\u0026aacute;dzania a čistenia komun\u0026aacute;lnych v\u0026ocirc;d v aglomer\u0026aacute;cii Veľk\u0026eacute; Lev\u0026aacute;re. D\u0026ocirc;vodom pre realiz\u0026aacute;ciu projektu je nevyhovuj\u0026uacute;ci stav v obciach Mal\u0026eacute; a Veľk\u0026eacute; Lev\u0026aacute;re, kde napojenosť obyvateľstva na kanalizačn\u0026uacute; sieť predstavuje len tretinu tohto obyvateľstva. Odpadov\u0026aacute; voda z uveden\u0026yacute;ch obc\u0026iacute; sa spracuv\u0026aacute;va v čistiarni odpadov\u0026yacute;ch v\u0026ocirc;d (ďalej len ČOV) v obci Gajary, ktor\u0026aacute; je kapacitne plne vyťažen\u0026aacute;. Ostatn\u0026iacute; občania zachyt\u0026aacute;vaj\u0026uacute; spla\u0026scaron;kov\u0026eacute; vody v žump\u0026aacute;ch, čo je rizikov\u0026eacute; najm\u0026auml; z pohľadu vplyvu na životn\u0026eacute; prostredie a z\u0026aacute;roveň aj na zdravie obyvateľstva.\u0026nbsp;\u003c/div\u003e\u003cdiv\u003eProjekt pozost\u0026aacute;va z nasledovn\u0026yacute;ch aktiv\u0026iacute;t:\u0026nbsp;\u003c/div\u003e\u003cdiv\u003ea. dobudovanie\u0026nbsp;kanalizačnej siete v aglomer\u0026aacute;cii Veľk\u0026eacute; Lev\u0026aacute;re\u003c/div\u003e\u003cdiv\u003eb. dobudovanie vodovodnej siete v obci Mal\u0026eacute; Lev\u0026aacute;re\u003c/div\u003e\u003cdiv\u003ec. zv\u0026yacute;\u0026scaron;enie kapacity \u003cspan style=\"background-color:rgb(255, 255, 255); color:rgb(51, 51, 51); line-height:20.8px\"\u003ečistiarne odpadov\u0026yacute;ch v\u0026ocirc;d \u003c/span\u003ev obci Gajary.\u003c/div\u003e\u003cdiv\u003eV\u0026yacute;sledkom projektu bude vybudovan\u0026aacute; kanalizačn\u0026aacute; sieť v celkovej dĺžke 22,74\u0026nbsp;km, vybudovan\u0026aacute; vodovodn\u0026aacute; sieť v dĺžke 3,62\u0026nbsp;km a zv\u0026yacute;\u0026scaron;en\u0026aacute; kapacita čistiarne odpadov\u0026yacute;ch v\u0026ocirc;d na 13 000 EO. Realizovan\u0026iacute;m projektu sa dosiahne zv\u0026yacute;\u0026scaron;en\u0026aacute; napojenosť obyvateľstva na kanalizačn\u0026eacute; siete na viac ako 90 %. Aktivity s\u0026uacute; v\u0026nbsp;s\u0026uacute;lade s\u0026nbsp;OP KŽP a s\u0026nbsp;Pl\u0026aacute;nom rozvoja verejn\u0026yacute;ch kanaliz\u0026aacute;ci\u0026iacute; v\u0026nbsp;SR. Cieľovou skupinou projektu s\u0026uacute; obyvatelia obc\u0026iacute; Veľk\u0026eacute; Lev\u0026aacute;re, Mal\u0026eacute; Lev\u0026aacute;re a Gajary.\u003c/div\u003e",
 
         prijimatel: Itms::Subject.find_by!(itms_id: 100062),
@@ -275,7 +279,6 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
         :data_projektu,
-        :partneri,
         :polozky_rozpoctu,
         :popis_situacie_po_realizacii,
         :popis_sposobu_realizacie,

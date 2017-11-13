@@ -53,7 +53,13 @@ class Itms::Project < ApplicationRecord
            foreign_key: 'projekt_id'
   has_many :partneri,
            through: :projekty_partneri,
-           source: :partner
+           source: :partner  
+  has_many :projekty_polozky_rozpoctu,
+           class_name: Itms::ProjectBudgetItem,
+           foreign_key: 'projekt_id'
+  has_many :polozky_rozpoctu,
+           through: :projekty_polozky_rozpoctu,
+           source: :polozka_rozpoctu
   has_many :sekundarny_tematicky_okruh,
            class_name: Itms::ProjectSecondaryThematicArea,
            foreign_key: 'projekt_id'
