@@ -18,17 +18,14 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.integer :dlzka_celkova_hlavnych_aktivit
       t.integer :dlzka_celkova_projektu
       t.string :kod
-      #TODO t.string :meratelne_ukazovatele
-      #TODO t.string :miesta_realizacie
-      #TODO t.string :monitorovacie_terminy
       t.string :nazov
-      #TODO t.string :oblasti_intervencie
-      #TODO t.string :organizacne_zlozky
       t.boolean :otvorena_zmena
       t.boolean :otvoreny_dodatok
-      #TODO t.string :partneri
-      #TODO t.string :polozky_rozpoctu
       t.string :popis_projektu
+      t.string :popis_situacie_po_realizacii
+      t.string :popis_sposobu_realizacie
+      t.string :popis_vychodiskovej_situacie
+      t.string :popis_kapacity_prijimatela
       t.references :prijimatel, index: true, foreign_key: { to_table: 'itms.subjekty' }
       #TODO t.string :schvalena_zonfp
       t.string :stav
