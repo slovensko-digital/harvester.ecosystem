@@ -41,6 +41,10 @@ class Itms::SyncProjectJob < ItmsJob
       p.partneri = find_or_create_subjects_by_json(json['partneri'], downloader)
       p.polozky_rozpoctu = find_or_create_budget_items_by_json(json['polozkyRozpoctu'], downloader)
       p.popis_projektu = json['popisProjektu']
+      p.popis_situacie_po_realizacii = json['popisSituaciePoRealizacii']
+      p.popis_sposobu_realizacie = json['popisSposobuRealizacie']
+      p.popis_vychodiskovej_situacie = json['popisVychodiskovejSituacie']
+      p.popis_kapacity_prijimatela = json['popiskapacityprijimatela']
       p.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)
       #TODO p.schvalena_zonfp = json['schvalenaZonfp']
       p.sekundarny_tematicky_okruh = find_or_create_codelist_values_with_goals_by_json(json['sekundarnyTematickyOkruh'], p.sekundarny_tematicky_okruh, downloader)
