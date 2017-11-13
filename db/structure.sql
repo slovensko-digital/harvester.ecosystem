@@ -796,6 +796,37 @@ ALTER SEQUENCE pohladavkove_doklady_id_seq OWNED BY pohladavkove_doklady.id;
 
 
 --
+-- Name: polozky_rozpoctu; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE polozky_rozpoctu (
+    id integer NOT NULL,
+    itms_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: polozky_rozpoctu_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE polozky_rozpoctu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: polozky_rozpoctu_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE polozky_rozpoctu_id_seq OWNED BY polozky_rozpoctu.id;
+
+
+--
 -- Name: prioritne_osi; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -1315,6 +1346,38 @@ CREATE SEQUENCE projekty_partneri_id_seq
 --
 
 ALTER SEQUENCE projekty_partneri_id_seq OWNED BY projekty_partneri.id;
+
+
+--
+-- Name: projekty_polozky_rozpoctu; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE projekty_polozky_rozpoctu (
+    id integer NOT NULL,
+    projekt_id integer NOT NULL,
+    polozka_rozpoctu_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: projekty_polozky_rozpoctu_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE projekty_polozky_rozpoctu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projekty_polozky_rozpoctu_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE projekty_polozky_rozpoctu_id_seq OWNED BY projekty_polozky_rozpoctu.id;
 
 
 --
@@ -7048,6 +7111,13 @@ ALTER TABLE ONLY pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('pohla
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('polozky_rozpoctu_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY prioritne_osi ALTER COLUMN id SET DEFAULT nextval('prioritne_osi_id_seq'::regclass);
 
 
@@ -7147,6 +7217,13 @@ ALTER TABLE ONLY projekty_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval
 --
 
 ALTER TABLE ONLY projekty_partneri ALTER COLUMN id SET DEFAULT nextval('projekty_partneri_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('projekty_polozky_rozpoctu_id_seq'::regclass);
 
 
 --
@@ -8504,6 +8581,14 @@ ALTER TABLE ONLY pohladavkove_doklady
 
 
 --
+-- Name: polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY polozky_rozpoctu
+    ADD CONSTRAINT polozky_rozpoctu_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: prioritne_osi_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8621,6 +8706,14 @@ ALTER TABLE ONLY projekty_partneri
 
 ALTER TABLE ONLY projekty
     ADD CONSTRAINT projekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projekty_polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_polozky_rozpoctu
+    ADD CONSTRAINT projekty_polozky_rozpoctu_pkey PRIMARY KEY (id);
 
 
 --
@@ -10370,6 +10463,13 @@ CREATE INDEX "index_itms.pohladavkove_doklady_on_zodpovedny_subjekt" ON pohladav
 
 
 --
+-- Name: index_itms.polozky_rozpoctu_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.polozky_rozpoctu_on_itms_id" ON polozky_rozpoctu USING btree (itms_id);
+
+
+--
 -- Name: index_itms.prioritne_osi_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -10633,6 +10733,20 @@ CREATE INDEX "index_itms.projekty_partneri_on_projekt_id" ON projekty_partneri U
 --
 
 CREATE UNIQUE INDEX "index_itms.projekty_partneri_on_projekt_id_and_partner_id" ON projekty_partneri USING btree (projekt_id, partner_id);
+
+
+--
+-- Name: index_itms.projekty_polozky_rozpoctu_on_polozka_rozpoctu_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_polozky_rozpoctu_on_polozka_rozpoctu_id" ON projekty_polozky_rozpoctu USING btree (polozka_rozpoctu_id);
+
+
+--
+-- Name: index_itms.projekty_polozky_rozpoctu_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.projekty_polozky_rozpoctu_on_projekt_id" ON projekty_polozky_rozpoctu USING btree (projekt_id);
 
 
 --
@@ -11446,6 +11560,14 @@ ALTER TABLE ONLY zonfp_schvalene_miesta_realizacie_units
 
 
 --
+-- Name: fk_rails_4fc331a058; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_polozky_rozpoctu
+    ADD CONSTRAINT fk_rails_4fc331a058 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
 -- Name: fk_rails_512e1ff920; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -12182,6 +12304,14 @@ ALTER TABLE ONLY pohladavkove_doklady
 
 
 --
+-- Name: fk_rails_c27d7f2c80; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY projekty_polozky_rozpoctu
+    ADD CONSTRAINT fk_rails_c27d7f2c80 FOREIGN KEY (polozka_rozpoctu_id) REFERENCES polozky_rozpoctu(id);
+
+
+--
 -- Name: fk_rails_c2e0f43203; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -12773,6 +12903,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171017171650'),
 ('20171017182931'),
 ('20171113145824'),
-('20171113180259');
+('20171113180259'),
+('20171113185839');
 
 
