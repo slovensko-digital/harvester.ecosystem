@@ -181,6 +181,25 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             stat: Itms::CodelistValue.where_codelist_and_value(1012, 210).first!
           ),
         ],
+        miesta_realizacie_mimo_uzemia_op: [
+          Itms::ImplementationPlace.find_by!(
+            nuts_3: Itms::NutsCode.find_by!(
+              gps_lat: 48.147648.to_d,
+              gps_lon: 17.109832.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 9).first!
+            ),
+            nuts_4: Itms::NutsCode.find_by!(
+              gps_lat: 48.436091.to_d,
+              gps_lon: 17.019968.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 23).first!
+            ),
+            nuts_5: Itms::NutsCode.find_by!(
+              gps_lat: 48.503181.to_d,
+              gps_lon: 17.001698.to_d,
+              hodnota_nuts: Itms::CodelistValue.where_codelist_and_value(1006, 123).first!
+            ),
+          ),
+        ],
         monitorovacie_terminy: [
           Itms::MonitoringDate.find_by!(
             datum_predlozenia_najneskorsi: Date.parse('2018-01-31'),

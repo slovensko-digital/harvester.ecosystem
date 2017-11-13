@@ -91,8 +91,19 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
               unique: true
 
     create_table 'itms.projekty_miesta_realizacie' do |t|
-      t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
-      t.references :miesto_realizacie, index: true, foreign_key: { to_table: 'itms.miesta_realizacie' }
+      t.references :projekt, null: false, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :miesto_realizacie, null: false, index: true, foreign_key: { to_table: 'itms.miesta_realizacie' }
+    end
+
+    create_table 'itms.projekty_miesta_realizacie_mimo_uzemia_op' do |t|
+      t.references :projekt,
+                   null: false,
+                   index: { name: 'index_itms.projekty_miesta_realizacie_mimo_uzemia_op_on_projekt' },
+                   foreign_key: { to_table: 'itms.projekty' }
+      t.references :miesto_realizacie,
+                   null: false,
+                   index: { name: 'index_itms.projekty_miesta_realizacie_mimo_uzemia_op_on_miesto' },
+                   foreign_key: { to_table: 'itms.miesta_realizacie' }
     end
 
     create_table 'itms.projekty_oblasti_intervencie' do |t|

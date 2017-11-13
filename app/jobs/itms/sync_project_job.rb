@@ -31,6 +31,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.kod = json['kod']
       p.meratelne_ukazovatele = find_or_create_measurable_indicators_by_json(json['meratelneUkazovatele'], p.meratelne_ukazovatele, downloader)
       p.miesta_realizacie = find_or_create_implementation_places_by_json(json['miestaRealizacie'], downloader)
+      p.miesta_realizacie_mimo_uzemia_op = find_or_create_implementation_places_by_json(json['miestaRealizacieMimoUzemiaOP'], downloader)
       p.monitorovacie_terminy = find_or_create_monitoring_dates_by_json(json['monitorovacieTerminy'], p.monitorovacie_terminy)
       p.nazov = json['nazov']
       p.oblasti_intervencie = find_or_create_codelist_values_with_goals_by_json(json['oblastiIntervencie'], p.oblasti_intervencie, downloader)

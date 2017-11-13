@@ -29,6 +29,12 @@ class Itms::Project < ApplicationRecord
   has_many :miesta_realizacie,
            through: :projekty_miesta_realizacie,
            source: :miesto_realizacie
+  has_many :projekty_miesta_realizacie_mimo_uzemia_op,
+           class_name: Itms::ProjectImplementationPlaceOutsideOpArea,
+           foreign_key: 'projekt_id'
+  has_many :miesta_realizacie_mimo_uzemia_op,
+           through: :projekty_miesta_realizacie_mimo_uzemia_op,
+           source: :miesto_realizacie
   has_many :monitorovacie_terminy,
            class_name: Itms::MonitoringDate,
            foreign_key: 'projekt_id',
