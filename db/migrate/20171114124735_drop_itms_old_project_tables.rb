@@ -1,0 +1,54 @@
+class DropItmsOldProjectTables < ActiveRecord::Migration[5.0]
+  def change
+    drop_table 'itms.projekty_ukoncene', force: :cascade
+    drop_table 'itms.projekty_ukoncene_aktivity', force: :cascade
+    drop_table 'itms.projekty_ukoncene_aktivity_subjekty', force: :cascade
+    drop_table 'itms.projekty_ukoncene_formy_financovania', force: :cascade
+    drop_table 'itms.projekty_ukoncene_formy_financovania_ciele', force: :cascade
+    drop_table 'itms.projekty_ukoncene_hospodarske_cinnosti', force: :cascade
+    drop_table 'itms.projekty_ukoncene_hospodarske_cinnosti_ciele', force: :cascade
+    drop_table 'itms.projekty_ukoncene_intenzity', force: :cascade
+    drop_table 'itms.projekty_ukoncene_intenzity_subjekty', force: :cascade
+    drop_table 'itms.projekty_ukoncene_intenzity_zdroje', force: :cascade
+    drop_table 'itms.projekty_ukoncene_meratelne_ukazovatele', force: :cascade
+    drop_table 'itms.projekty_ukoncene_miesta_realizacie', force: :cascade
+    drop_table 'itms.projekty_ukoncene_miesta_realizacie_units', force: :cascade
+    drop_table 'itms.projekty_ukoncene_monitorovacie_terminy', force: :cascade
+    drop_table 'itms.projekty_ukoncene_oblasti_intervencie', force: :cascade
+    drop_table 'itms.projekty_ukoncene_oblasti_intervencie_ciele', force: :cascade
+    drop_table 'itms.projekty_ukoncene_organizacne_zlozky', force: :cascade
+    drop_table 'itms.projekty_ukoncene_partneri', force: :cascade
+    drop_table 'itms.projekty_ukoncene_prijimatel', force: :cascade
+    drop_table 'itms.projekty_ukoncene_schvalene_zonfp', force: :cascade
+    drop_table 'itms.projekty_ukoncene_typy_uzemia', force: :cascade
+    drop_table 'itms.projekty_ukoncene_typy_uzemia_ciele', force: :cascade
+    drop_table 'itms.projekty_ukoncene_uzemne_mechanizmy', force: :cascade
+    drop_table 'itms.projekty_ukoncene_uzemne_mechanizmy_ciele', force: :cascade
+    drop_table 'itms.projekty_ukoncene_vyzva', force: :cascade
+    drop_table 'itms.projekty_vrealizacii', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_aktivity', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_aktivity_subjekty', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_formy_financovania', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_formy_financovania_ciele', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_hospodarske_cinnosti', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_hospodarske_cinnosti_ciele', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_intenzity', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_intenzity_subjekty', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_intenzity_zdroje', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_meratelne_ukazovatele', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_miesta_realizacie', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_miesta_realizacie_units', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_monitorovacie_terminy', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_oblasti_intervencie', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_oblasti_intervencie_ciele', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_organizacne_zlozky', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_partneri', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_prijimatel', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_schvalene_zonfp', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_typy_uzemia', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_typy_uzemia_ciele', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_uzemne_mechanizmy', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_uzemne_mechanizmy_ciele', force: :cascade
+    drop_table 'itms.projekty_vrealizacii_vyzva', force: :cascade
+  end
+end
