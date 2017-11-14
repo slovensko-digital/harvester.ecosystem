@@ -33,7 +33,7 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.decimal :suma_zazmluvnena
       t.decimal :suma_zazmluvnena_povodna
       t.string :url_adresa_zmluva
-      #TODO t.string :vyzva
+      t.references :vyzva, index: true, foreign_key: { to_table: 'itms.vyzvy' }
       t.string :zameranie_projektu
 
       t.timestamps

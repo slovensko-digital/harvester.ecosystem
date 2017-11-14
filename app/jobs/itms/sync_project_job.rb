@@ -55,7 +55,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.typy_uzemia = find_or_create_codelist_values_with_goals_by_json(json['typyUzemia'], p.typy_uzemia, downloader)
       p.url_adresa_zmluva = json['urlAdresaZmluva']
       p.uzemne_mechanizmy = find_or_create_codelist_values_with_goals_by_json(json['uzemneMechanizmy'], p.uzemne_mechanizmy, downloader)
-      #TODO p.vyzva = json['vyzva']
+      p.vyzva = find_or_create_proposal_call_by_json(json['vyzva'], downloader)
       p.zameranie_projektu = json['zameranieProjektu']
 
       p.save!
@@ -202,5 +202,14 @@ class Itms::SyncProjectJob < ItmsJob
 
     Itms::SyncNfcRequestJob.perform_now(json['href'], downloader: downloader)
     Itms::NfcRequest.find_by!(itms_id: json['id'])
+  end
+
+  def find_or_create_proposal_call_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::ProposalCall.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncProposalCallJob.perform_now(json['href'], downloader: downloader)
+    Itms::ProposalCall.find_by!(itms_id: json['id'])
   end
 end
