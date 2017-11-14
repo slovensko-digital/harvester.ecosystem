@@ -269,9 +269,7 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         uzemne_mechanizmy: [
             Itms::ProjectTerritorialMechanism.where_goal_and_codelist(24, 1043, 7).first!,
         ],
-        #TODO vyzva: ,
-            # "$ref": "#/definitions/VyhlasenavyzvaLink"
-        # },
+        vyzva: Itms::ProposalCall.find_by!(itms_id: 1),
         zameranie_projektu: 'Dopytovo-orientovaný projekt',
       )
     end
@@ -281,8 +279,6 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
         :data_projektu,
-        :schvalena_zonfp,
-        :vyzva,
       )
     end
   end

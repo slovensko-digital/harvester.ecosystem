@@ -70,4 +70,5 @@ class Itms::Project < ApplicationRecord
   has_many :uzemne_mechanizmy,
            class_name: Itms::ProjectTerritorialMechanism,
            foreign_key: 'projekt_id'
+  belongs_to :vyzva, class_name: Itms::ProposalCall
 end
