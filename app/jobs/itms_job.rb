@@ -40,6 +40,11 @@ class ItmsJob < ApplicationJob
     Itms::Discrepancy.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_operational_programs_by_json(json, downloader)
+    return [] if json.blank?
+    json.map { |j| find_or_create_operational_program_by_json(j, downloader) }
+  end
+
   def find_or_create_operational_program_by_json(json, downloader)
     return if json.blank?
     operational_program = Itms::OperationalProgram.find_by(itms_id: json['id'])
