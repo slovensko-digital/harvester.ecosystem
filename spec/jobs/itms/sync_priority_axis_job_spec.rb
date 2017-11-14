@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncPriorityAxisJob, type: :job do
-  let(:downloader) { double(:downloader) }
+  include_context "itms_downloader"
 
   context '#perform' do
     it 'syncs subject and all its attributes' do
@@ -9,16 +9,6 @@ RSpec.describe Itms::SyncPriorityAxisJob, type: :job do
           .to receive(:get)
           .with('https://opendata.itms2014.sk/v2/prioritnaOs/33')
           .and_return(double(body: itms_file_fixture('prioritna_os_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/operacneProgramy/'))
-          .and_return(double(body: itms_file_fixture('operacny_program_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
-          .and_return(double(body: itms_file_fixture('subjekt_item.json')))
 
       subject.perform(33, downloader: downloader)
 

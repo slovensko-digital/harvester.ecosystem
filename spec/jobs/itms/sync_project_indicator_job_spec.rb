@@ -1,20 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncProjectIndicatorJob, type: :job do
-  let(:downloader) { double(:downloader) }
+  include_context "itms_downloader"
 
   context '#perform' do
     it 'syncs discrepancy and all of its attributes' do
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
-          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/ciselniky')
-          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
-
       expect(downloader)
           .to receive(:get)
           .with('https://opendata.itms2014.sk/v2/projektovyUkazovatel/1')

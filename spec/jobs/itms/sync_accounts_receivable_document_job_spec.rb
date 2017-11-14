@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncAccountsReceivableDocumentJob, type: :job do
-  let(:downloader) { double(:downloader) }
+  include_context "itms_downloader"
 
   context '#perform' do
     it 'syncs accounts receivable document and all of its attributes' do
@@ -9,36 +9,6 @@ RSpec.describe Itms::SyncAccountsReceivableDocumentJob, type: :job do
           .to receive(:get)
           .with('https://opendata.itms2014.sk/v2/pohladavkovyDoklad/2')
           .and_return(double(body: itms_file_fixture('pohladavkovy_doklad_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
-          .and_return(double(body: itms_file_fixture('subjekt_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/konkretnyCiel/'))
-          .and_return(double(body: itms_file_fixture('konkretny_ciel_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/nezrovnalost/'))
-          .and_return(double(body: itms_file_fixture('nezrovnalost_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/prioritnaOs/'))
-          .and_return(double(body: itms_file_fixture('prioritna_os_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
-          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/ciselniky')
-          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
 
       subject.perform(2, downloader: downloader)
 
@@ -52,7 +22,7 @@ RSpec.describe Itms::SyncAccountsReceivableDocumentJob, type: :job do
         datum_vzniku: DateTime.parse('2016-11-11T00:00:00Z'),
         dlznik: Itms::Subject.find_by!(itms_id: 100140),
         dopad_na_rozpocet_eu: 'S_DOPADOM_NA_ROZPOCET_EU',
-        dovod_vratenia: Itms::CodelistValue.where_codelist_and_value!(1082, 7).first!,
+        dovod_vratenia: Itms::CodelistValue.where_codelist_and_value(1082, 7).first!,
         druh: 'PD_K_PROJEKTU',
         kod: '312041A136Z001',
         konkretny_ciel: Itms::SpecificGoal.find_by!(itms_id: 8),
