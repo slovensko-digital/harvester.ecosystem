@@ -126,13 +126,9 @@ ALTER SEQUENCE ciselniky_id_seq OWNED BY ciselniky.id;
 
 CREATE TABLE dodavatelia (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    dic character varying,
-    ico character varying,
-    ine_identifikacne_cislo character varying,
-    nazov character varying,
-    updated_at timestamp without time zone,
-    created_at timestamp without time zone
+    itms_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -1573,49 +1569,10 @@ ALTER SEQUENCE typy_aktivit_id_seq OWNED BY typy_aktivit.id;
 
 CREATE TABLE uctovne_doklady (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    celkova_vyska_dokladu numeric,
-    cislo_dokladu character varying,
-    cislo_zmluvy_s_dodavatelom_bez_vo character varying,
-    nazov character varying,
-    typ character varying,
-    datum_uhrady timestamp without time zone,
-    datum_vyhotovenia timestamp without time zone,
-    updated_at timestamp without time zone,
-    created_at timestamp without time zone
+    itms_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
-
-
---
--- Name: uctovne_doklady_dodavatel; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE uctovne_doklady_dodavatel (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    uctovne_doklady_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: uctovne_doklady_dodavatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE uctovne_doklady_dodavatel_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: uctovne_doklady_dodavatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE uctovne_doklady_dodavatel_id_seq OWNED BY uctovne_doklady_dodavatel.id;
 
 
 --
@@ -1638,179 +1595,66 @@ ALTER SEQUENCE uctovne_doklady_id_seq OWNED BY uctovne_doklady.id;
 
 
 --
--- Name: uctovne_doklady_polozky_dokladu; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE uctovne_doklady_polozky_dokladu (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    uctovne_doklady_id bigint NOT NULL,
-    dph numeric,
-    jednotkova_cena numeric,
-    mnozstvo numeric,
-    sadzba_dph numeric,
-    suma_bez_dph numeric,
-    suma_opravnena numeric,
-    suma_spolu numeric,
-    suma_ziadana numeric,
-    suma_zrealizovanych_vydavkov numeric,
-    nazov character varying,
-    poradove_cislo bigint
-);
-
-
---
--- Name: uctovne_doklady_polozky_dokladu_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE uctovne_doklady_polozky_dokladu_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: uctovne_doklady_polozky_dokladu_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE uctovne_doklady_polozky_dokladu_id_seq OWNED BY uctovne_doklady_polozky_dokladu.id;
-
-
---
--- Name: uctovne_doklady_projekty; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE uctovne_doklady_projekty (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    uctovne_doklady_id bigint NOT NULL
-);
-
-
---
--- Name: uctovne_doklady_projekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE uctovne_doklady_projekty_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: uctovne_doklady_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE uctovne_doklady_projekty_id_seq OWNED BY uctovne_doklady_projekty.id;
-
-
---
--- Name: uctovne_doklady_verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE uctovne_doklady_verejne_obstaravania (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    uctovne_doklady_id bigint NOT NULL
-);
-
-
---
--- Name: uctovne_doklady_verejne_obstaravania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE uctovne_doklady_verejne_obstaravania_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: uctovne_doklady_verejne_obstaravania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE uctovne_doklady_verejne_obstaravania_id_seq OWNED BY uctovne_doklady_verejne_obstaravania.id;
-
-
---
--- Name: uctovne_doklady_vlastnik_dokladu; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE uctovne_doklady_vlastnik_dokladu (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    uctovne_doklady_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: uctovne_doklady_vlastnik_dokladu_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE uctovne_doklady_vlastnik_dokladu_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: uctovne_doklady_vlastnik_dokladu_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE uctovne_doklady_vlastnik_dokladu_id_seq OWNED BY uctovne_doklady_vlastnik_dokladu.id;
-
-
---
 -- Name: verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
 --
 
 CREATE TABLE verejne_obstaravania (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    centralne_obstaravanie boolean,
     cislo_vestnika character varying,
     cislo_zverejnenia_vo_vestniku character varying,
-    kod character varying,
-    nazov character varying,
-    stav character varying,
-    url_odkaz_oznamenie character varying,
-    pocet_prijatych_ponuk bigint,
-    pocet_vylucenych_ponuk bigint,
-    predpokladana_hodnota_zakazky numeric,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
     datum_zverejnenia_vo_vestniku timestamp without time zone,
-    zverejnene_vo_vestniku_eu boolean
+    druh_zakazky_id integer,
+    hlavny_predmet_hlavny_slovnik_id integer,
+    kod character varying,
+    kriterium_na_vyhodnotenie_ponuk character varying,
+    lehota_na_predkladanie_ponuk timestamp without time zone,
+    lehota_na_predkladanie_ziadosti_o_ucast timestamp without time zone,
+    metoda_vo_id integer,
+    nazov character varying,
+    obmedzenie_poctu_uchadzacov boolean,
+    obstaravatel_dodavatel_obstaravatel_id integer,
+    obstaravatel_subjekt_id integer,
+    pocet_prijatych_ponuk integer,
+    pocet_vylucenych_ponuk integer,
+    postup_obstaravania_id integer,
+    predchadzajuce_oznamenie boolean,
+    predpokladana_hodnota_zakazky numeric,
+    stav character varying,
+    trvanie_zakazky_hodnota numeric,
+    trvanie_zakazky_merna_jednotka character varying,
+    url_odkaz_oznamenie character varying,
+    zadavanie_zakazky_v_mene_inych_obstaravatelov boolean,
+    zadavatel_id integer,
+    zakazka_rozdelena_na_viac_casti boolean,
+    zverejnene_vo_vestniku_eu boolean,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: verejne_obstaravania_druh_zakazky; Type: TABLE; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE verejne_obstaravania_druh_zakazky (
+CREATE TABLE verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL,
-    kod_zdroj character varying,
-    nazov character varying
+    verejne_obstaravanie_id integer NOT NULL,
+    predmet_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: verejne_obstaravania_druh_zakazky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovn_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE verejne_obstaravania_druh_zakazky_id_seq
+CREATE SEQUENCE verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovn_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1819,30 +1663,30 @@ CREATE SEQUENCE verejne_obstaravania_druh_zakazky_id_seq
 
 
 --
--- Name: verejne_obstaravania_druh_zakazky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovn_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE verejne_obstaravania_druh_zakazky_id_seq OWNED BY verejne_obstaravania_druh_zakazky.id;
+ALTER SEQUENCE verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovn_id_seq OWNED BY verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik.id;
 
 
 --
--- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky; Type: TABLE; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky (
+CREATE TABLE verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL,
-    kod_zdroj character varying,
-    nazov character varying
+    verejne_obstaravanie_id integer NOT NULL,
+    predmet_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq
+CREATE SEQUENCE verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1851,30 +1695,30 @@ CREATE SEQUENCE verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq
 
 
 --
--- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq OWNED BY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky.id;
+ALTER SEQUENCE verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_id_seq OWNED BY verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik.id;
 
 
 --
--- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky; Type: TABLE; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE verejne_obstaravania_hlavny_predmet_hlavny_slovniky (
+CREATE TABLE verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL,
-    kod_zdroj character varying,
-    nazov character varying
+    verejne_obstaravanie_id integer NOT NULL,
+    predmet_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq
+CREATE SEQUENCE verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1883,10 +1727,10 @@ CREATE SEQUENCE verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq
 
 
 --
--- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq OWNED BY verejne_obstaravania_hlavny_predmet_hlavny_slovniky.id;
+ALTER SEQUENCE verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_id_seq OWNED BY verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik.id;
 
 
 --
@@ -1909,77 +1753,15 @@ ALTER SEQUENCE verejne_obstaravania_id_seq OWNED BY verejne_obstaravania.id;
 
 
 --
--- Name: verejne_obstaravania_metody_vo; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE verejne_obstaravania_metody_vo (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL,
-    kod_zdroj character varying,
-    nazov character varying
-);
-
-
---
--- Name: verejne_obstaravania_metody_vo_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE verejne_obstaravania_metody_vo_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: verejne_obstaravania_metody_vo_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE verejne_obstaravania_metody_vo_id_seq OWNED BY verejne_obstaravania_metody_vo.id;
-
-
---
--- Name: verejne_obstaravania_obstaravatel; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE verejne_obstaravania_obstaravatel (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: verejne_obstaravania_obstaravatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE verejne_obstaravania_obstaravatel_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: verejne_obstaravania_obstaravatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE verejne_obstaravania_obstaravatel_id_seq OWNED BY verejne_obstaravania_obstaravatel.id;
-
-
---
 -- Name: verejne_obstaravania_operacne_programy; Type: TABLE; Schema: itms; Owner: -
 --
 
 CREATE TABLE verejne_obstaravania_operacne_programy (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL
+    verejne_obstaravanie_id integer NOT NULL,
+    operacny_program_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -2003,45 +1785,15 @@ ALTER SEQUENCE verejne_obstaravania_operacne_programy_id_seq OWNED BY verejne_ob
 
 
 --
--- Name: verejne_obstaravania_postup_obstaravania; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE verejne_obstaravania_postup_obstaravania (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL,
-    kod_zdroj character varying,
-    nazov character varying
-);
-
-
---
--- Name: verejne_obstaravania_postup_obstaravania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE verejne_obstaravania_postup_obstaravania_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: verejne_obstaravania_postup_obstaravania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE verejne_obstaravania_postup_obstaravania_id_seq OWNED BY verejne_obstaravania_postup_obstaravania.id;
-
-
---
 -- Name: verejne_obstaravania_projekty; Type: TABLE; Schema: itms; Owner: -
 --
 
 CREATE TABLE verejne_obstaravania_projekty (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL
+    verejne_obstaravanie_id integer NOT NULL,
+    projekt_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -2070,8 +1822,10 @@ ALTER SEQUENCE verejne_obstaravania_projekty_id_seq OWNED BY verejne_obstaravani
 
 CREATE TABLE verejne_obstaravania_uctovne_doklady (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL
+    verejne_obstaravanie_id integer NOT NULL,
+    uctovny_doklad_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -2092,38 +1846,6 @@ CREATE SEQUENCE verejne_obstaravania_uctovne_doklady_id_seq
 --
 
 ALTER SEQUENCE verejne_obstaravania_uctovne_doklady_id_seq OWNED BY verejne_obstaravania_uctovne_doklady.id;
-
-
---
--- Name: verejne_obstaravania_zadavatel; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE verejne_obstaravania_zadavatel (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: verejne_obstaravania_zadavatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE verejne_obstaravania_zadavatel_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: verejne_obstaravania_zadavatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE verejne_obstaravania_zadavatel_id_seq OWNED BY verejne_obstaravania_zadavatel.id;
 
 
 --
@@ -5720,41 +5442,6 @@ ALTER TABLE ONLY uctovne_doklady ALTER COLUMN id SET DEFAULT nextval('uctovne_do
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY uctovne_doklady_dodavatel ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_dodavatel_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_polozky_dokladu ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_polozky_dokladu_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_projekty ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_projekty_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_verejne_obstaravania_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_vlastnik_dokladu ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_vlastnik_dokladu_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
 ALTER TABLE ONLY verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_id_seq'::regclass);
 
 
@@ -5762,35 +5449,21 @@ ALTER TABLE ONLY verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('verej
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY verejne_obstaravania_druh_zakazky ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_druh_zakazky_id_seq'::regclass);
+ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovn_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_id_seq'::regclass);
+ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_hlavny_slovniky ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_hlavny_predmet_hlavny_slovniky_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_metody_vo ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_metody_vo_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_obstaravatel ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_obstaravatel_id_seq'::regclass);
+ALTER TABLE ONLY verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_id_seq'::regclass);
 
 
 --
@@ -5798,13 +5471,6 @@ ALTER TABLE ONLY verejne_obstaravania_obstaravatel ALTER COLUMN id SET DEFAULT n
 --
 
 ALTER TABLE ONLY verejne_obstaravania_operacne_programy ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_operacne_programy_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_postup_obstaravania ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_postup_obstaravania_id_seq'::regclass);
 
 
 --
@@ -5819,13 +5485,6 @@ ALTER TABLE ONLY verejne_obstaravania_projekty ALTER COLUMN id SET DEFAULT nextv
 --
 
 ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_uctovne_doklady_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_zadavatel ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_zadavatel_id_seq'::regclass);
 
 
 --
@@ -6869,14 +6528,6 @@ ALTER TABLE ONLY typy_aktivit
 
 
 --
--- Name: uctovne_doklady_dodavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_dodavatel
-    ADD CONSTRAINT uctovne_doklady_dodavatel_pkey PRIMARY KEY (id);
-
-
---
 -- Name: uctovne_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6885,75 +6536,27 @@ ALTER TABLE ONLY uctovne_doklady
 
 
 --
--- Name: uctovne_doklady_polozky_dokladu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY uctovne_doklady_polozky_dokladu
-    ADD CONSTRAINT uctovne_doklady_polozky_dokladu_pkey PRIMARY KEY (id);
-
-
---
--- Name: uctovne_doklady_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_projekty
-    ADD CONSTRAINT uctovne_doklady_projekty_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
+    ADD CONSTRAINT verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik_pkey PRIMARY KEY (id);
 
 
 --
--- Name: uctovne_doklady_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY uctovne_doklady_verejne_obstaravania
-    ADD CONSTRAINT uctovne_doklady_verejne_obstaravania_pkey PRIMARY KEY (id);
-
-
---
--- Name: uctovne_doklady_vlastnik_dokladu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_vlastnik_dokladu
-    ADD CONSTRAINT uctovne_doklady_vlastnik_dokladu_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
+    ADD CONSTRAINT verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_pkey PRIMARY KEY (id);
 
 
 --
--- Name: verejne_obstaravania_druh_zakazky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY verejne_obstaravania_druh_zakazky
-    ADD CONSTRAINT verejne_obstaravania_druh_zakazky_pkey PRIMARY KEY (id);
-
-
---
--- Name: verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky
-    ADD CONSTRAINT verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky_pkey PRIMARY KEY (id);
-
-
---
--- Name: verejne_obstaravania_hlavny_predmet_hlavny_slovniky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_hlavny_slovniky
-    ADD CONSTRAINT verejne_obstaravania_hlavny_predmet_hlavny_slovniky_pkey PRIMARY KEY (id);
-
-
---
--- Name: verejne_obstaravania_metody_vo_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_metody_vo
-    ADD CONSTRAINT verejne_obstaravania_metody_vo_pkey PRIMARY KEY (id);
-
-
---
--- Name: verejne_obstaravania_obstaravatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_obstaravatel
-    ADD CONSTRAINT verejne_obstaravania_obstaravatel_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
+    ADD CONSTRAINT verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_pkey PRIMARY KEY (id);
 
 
 --
@@ -6973,14 +6576,6 @@ ALTER TABLE ONLY verejne_obstaravania
 
 
 --
--- Name: verejne_obstaravania_postup_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_postup_obstaravania
-    ADD CONSTRAINT verejne_obstaravania_postup_obstaravania_pkey PRIMARY KEY (id);
-
-
---
 -- Name: verejne_obstaravania_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6994,14 +6589,6 @@ ALTER TABLE ONLY verejne_obstaravania_projekty
 
 ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
     ADD CONSTRAINT verejne_obstaravania_uctovne_doklady_pkey PRIMARY KEY (id);
-
-
---
--- Name: verejne_obstaravania_zadavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_zadavatel
-    ADD CONSTRAINT verejne_obstaravania_zadavatel_pkey PRIMARY KEY (id);
 
 
 --
@@ -7855,6 +7442,13 @@ CREATE UNIQUE INDEX "index_itms.ciselniky_on_ciselnik_kod" ON ciselniky USING bt
 
 
 --
+-- Name: index_itms.dodavatelia_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.dodavatelia_on_itms_id" ON dodavatelia USING btree (itms_id);
+
+
+--
 -- Name: index_itms.hodnoty_ciselnikov_on_ciselnik_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -8590,31 +8184,192 @@ CREATE UNIQUE INDEX "index_itms.typy_aktivit_on_itms_id" ON typy_aktivit USING b
 
 
 --
--- Name: index_itms.uctovne_doklady_dodavatel_on_uctovne_doklady_id; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.uctovne_doklady_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.uctovne_doklady_dodavatel_on_uctovne_doklady_id" ON uctovne_doklady_dodavatel USING btree (uctovne_doklady_id);
-
-
---
--- Name: index_itms.uctovne_doklady_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE UNIQUE INDEX "index_itms.uctovne_doklady_on_itms_identifier" ON uctovne_doklady USING btree (itms_identifier);
+CREATE UNIQUE INDEX "index_itms.uctovne_doklady_on_itms_id" ON uctovne_doklady USING btree (itms_id);
 
 
 --
--- Name: index_itms.uctovne_doklady_projekty_on_uctovne_doklady_id; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.verejne_obstaravania_on_druh_zakazky_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.uctovne_doklady_projekty_on_uctovne_doklady_id" ON uctovne_doklady_projekty USING btree (uctovne_doklady_id);
+CREATE INDEX "index_itms.verejne_obstaravania_on_druh_zakazky_id" ON verejne_obstaravania USING btree (druh_zakazky_id);
 
 
 --
--- Name: index_itms.verejne_obstaravania_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.verejne_obstaravania_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.verejne_obstaravania_on_itms_identifier" ON verejne_obstaravania USING btree (itms_identifier);
+CREATE UNIQUE INDEX "index_itms.verejne_obstaravania_on_itms_id" ON verejne_obstaravania USING btree (itms_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_on_metoda_vo_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_on_metoda_vo_id" ON verejne_obstaravania USING btree (metoda_vo_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_on_obstaravatel_subjekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_on_obstaravatel_subjekt_id" ON verejne_obstaravania USING btree (obstaravatel_subjekt_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_on_postup_obstaravania_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_on_postup_obstaravania_id" ON verejne_obstaravania USING btree (postup_obstaravania_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_on_zadavatel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_on_zadavatel_id" ON verejne_obstaravania USING btree (zadavatel_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_operacne_programy_on_op; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_operacne_programy_on_op" ON verejne_obstaravania_operacne_programy USING btree (operacny_program_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_operacne_programy_on_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_operacne_programy_on_vo" ON verejne_obstaravania_operacne_programy USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_operacne_programy_on_vo_and_op; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.verejne_obstaravania_operacne_programy_on_vo_and_op" ON verejne_obstaravania_operacne_programy USING btree (verejne_obstaravanie_id, operacny_program_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_projekty_on_p; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_projekty_on_p" ON verejne_obstaravania_projekty USING btree (projekt_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_projekty_on_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_projekty_on_vo" ON verejne_obstaravania_projekty USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_projekty_on_vo_and_p; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.verejne_obstaravania_projekty_on_vo_and_p" ON verejne_obstaravania_projekty USING btree (verejne_obstaravanie_id, projekt_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_uctovne_doklady_on_ud; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_uctovne_doklady_on_ud" ON verejne_obstaravania_uctovne_doklady USING btree (uctovny_doklad_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_uctovne_doklady_on_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.verejne_obstaravania_uctovne_doklady_on_vo" ON verejne_obstaravania_uctovne_doklady USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.verejne_obstaravania_uctovne_doklady_on_vo_and_ud; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.verejne_obstaravania_uctovne_doklady_on_vo_and_ud" ON verejne_obstaravania_uctovne_doklady USING btree (verejne_obstaravanie_id, uctovny_doklad_id);
+
+
+--
+-- Name: index_itms.vo_doplnujuce_predmety_doplnkovy_slovnik_predmet; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vo_doplnujuce_predmety_doplnkovy_slovnik_predmet" ON verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik USING btree (predmet_id);
+
+
+--
+-- Name: index_itms.vo_doplnujuce_predmety_doplnkovy_slovnik_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vo_doplnujuce_predmety_doplnkovy_slovnik_vo" ON verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.vo_doplnujuce_predmety_doplnkovy_slovnik_vo_predmet; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.vo_doplnujuce_predmety_doplnkovy_slovnik_vo_predmet" ON verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik USING btree (verejne_obstaravanie_id, predmet_id);
+
+
+--
+-- Name: index_itms.vo_doplnujuce_predmety_hlavny_slovnik_predmet; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vo_doplnujuce_predmety_hlavny_slovnik_predmet" ON verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik USING btree (predmet_id);
+
+
+--
+-- Name: index_itms.vo_doplnujuce_predmety_hlavny_slovnik_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vo_doplnujuce_predmety_hlavny_slovnik_vo" ON verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.vo_doplnujuce_predmety_hlavny_slovnik_vo_predmet; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.vo_doplnujuce_predmety_hlavny_slovnik_vo_predmet" ON verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik USING btree (verejne_obstaravanie_id, predmet_id);
+
+
+--
+-- Name: index_itms.vo_hlavne_predmety_doplnkovy_slovnik_predmet; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vo_hlavne_predmety_doplnkovy_slovnik_predmet" ON verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik USING btree (predmet_id);
+
+
+--
+-- Name: index_itms.vo_hlavne_predmety_doplnkovy_slovnik_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vo_hlavne_predmety_doplnkovy_slovnik_vo" ON verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.vo_hlavne_predmety_doplnkovy_slovnik_vo_predmet; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.vo_hlavne_predmety_doplnkovy_slovnik_vo_predmet" ON verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik USING btree (verejne_obstaravanie_id, predmet_id);
+
+
+--
+-- Name: index_itms.vo_on_hlavny_predmet_hlavny_slovnik; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vo_on_hlavny_predmet_hlavny_slovnik" ON verejne_obstaravania USING btree (hlavny_predmet_hlavny_slovnik_id);
+
+
+--
+-- Name: index_itms.vo_on_obstaravatel_dodavatel_obstaravatel; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vo_on_obstaravatel_dodavatel_obstaravatel" ON verejne_obstaravania USING btree (obstaravatel_dodavatel_obstaravatel_id);
 
 
 --
@@ -8692,27 +8447,6 @@ CREATE UNIQUE INDEX "index_itms.zop_uhradene_on_itms_identifier" ON zop_uhradene
 --
 
 CREATE UNIQUE INDEX "index_itms.zop_zamietnute_on_itms_identifier" ON zop_zamietnute USING btree (itms_identifier);
-
-
---
--- Name: itms.ud_pd_id; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE INDEX "itms.ud_pd_id" ON uctovne_doklady_polozky_dokladu USING btree (uctovne_doklady_id);
-
-
---
--- Name: itms.ud_vd_id; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE INDEX "itms.ud_vd_id" ON uctovne_doklady_vlastnik_dokladu USING btree (uctovne_doklady_id);
-
-
---
--- Name: itms.ud_vo_id; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE INDEX "itms.ud_vo_id" ON uctovne_doklady_verejne_obstaravania USING btree (uctovne_doklady_id);
 
 
 SET search_path = upvs, pg_catalog;
@@ -8854,14 +8588,6 @@ ALTER TABLE ONLY pohladavkove_doklady
 
 
 --
--- Name: fk_rails_1469c50b9c; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_operacne_programy
-    ADD CONSTRAINT fk_rails_1469c50b9c FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
-
-
---
 -- Name: fk_rails_169af2760b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8886,6 +8612,14 @@ ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
 
 
 --
+-- Name: fk_rails_18381644cd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania
+    ADD CONSTRAINT fk_rails_18381644cd FOREIGN KEY (druh_zakazky_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_1ba901166f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8899,6 +8633,14 @@ ALTER TABLE ONLY zonfp_zamietnute_formy_financovania
 
 ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy_ciele
     ADD CONSTRAINT fk_rails_1baa81f3f7 FOREIGN KEY (zonfp_zamietnute_uzemne_mechanizmy_id) REFERENCES zonfp_zamietnute_uzemne_mechanizmy(id);
+
+
+--
+-- Name: fk_rails_1c274e13bb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania
+    ADD CONSTRAINT fk_rails_1c274e13bb FOREIGN KEY (hlavny_predmet_hlavny_slovnik_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -8934,11 +8676,27 @@ ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti
 
 
 --
+-- Name: fk_rails_225a5db0b4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
+    ADD CONSTRAINT fk_rails_225a5db0b4 FOREIGN KEY (predmet_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_2425cf6aca; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_miesta_realizacie_mimo_uzemia_op
     ADD CONSTRAINT fk_rails_2425cf6aca FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
+-- Name: fk_rails_24965b7679; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
+    ADD CONSTRAINT fk_rails_24965b7679 FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
 
 
 --
@@ -8955,6 +8713,14 @@ ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti
 
 ALTER TABLE ONLY nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
     ADD CONSTRAINT fk_rails_25c3a95ab7 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
+-- Name: fk_rails_25e3a0891d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_projekty
+    ADD CONSTRAINT fk_rails_25e3a0891d FOREIGN KEY (projekt_id) REFERENCES projekty(id);
 
 
 --
@@ -9014,14 +8780,6 @@ ALTER TABLE ONLY intenzity
 
 
 --
--- Name: fk_rails_3475e6ed37; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_postup_obstaravania
-    ADD CONSTRAINT fk_rails_3475e6ed37 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
-
-
---
 -- Name: fk_rails_350aad395f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9046,14 +8804,6 @@ ALTER TABLE ONLY zonfp_schvalene_ziadatel
 
 
 --
--- Name: fk_rails_385db36ba3; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_zadavatel
-    ADD CONSTRAINT fk_rails_385db36ba3 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
-
-
---
 -- Name: fk_rails_38bac79fdc; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9067,14 +8817,6 @@ ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy
 
 ALTER TABLE ONLY nezrovnalosti
     ADD CONSTRAINT fk_rails_3980438432 FOREIGN KEY (financny_stav_id) REFERENCES hodnoty_ciselnikov(id);
-
-
---
--- Name: fk_rails_3bb36e4382; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_projekty
-    ADD CONSTRAINT fk_rails_3bb36e4382 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
 
 
 --
@@ -9150,14 +8892,6 @@ ALTER TABLE ONLY konkretne_ciele
 
 
 --
--- Name: fk_rails_46a417cc77; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_verejne_obstaravania
-    ADD CONSTRAINT fk_rails_46a417cc77 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
-
-
---
 -- Name: fk_rails_47b7955fdd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9198,11 +8932,27 @@ ALTER TABLE ONLY pohladavkove_doklady
 
 
 --
+-- Name: fk_rails_4da2ae7a20; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
+    ADD CONSTRAINT fk_rails_4da2ae7a20 FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
+
+
+--
 -- Name: fk_rails_4e304a144d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_typy_uzemia
     ADD CONSTRAINT fk_rails_4e304a144d FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
+-- Name: fk_rails_4f0c3f949a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania
+    ADD CONSTRAINT fk_rails_4f0c3f949a FOREIGN KEY (obstaravatel_dodavatel_obstaravatel_id) REFERENCES dodavatelia(id);
 
 
 --
@@ -9235,6 +8985,14 @@ ALTER TABLE ONLY projekty_polozky_rozpoctu
 
 ALTER TABLE ONLY projekty_hospodarske_cinnosti
     ADD CONSTRAINT fk_rails_512e1ff920 FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_542918dbe1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
+    ADD CONSTRAINT fk_rails_542918dbe1 FOREIGN KEY (predmet_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -9302,11 +9060,11 @@ ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia
 
 
 --
--- Name: fk_rails_600b82bfc3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_60f63bc7e2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY verejne_obstaravania_projekty
-    ADD CONSTRAINT fk_rails_600b82bfc3 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
+ALTER TABLE ONLY verejne_obstaravania
+    ADD CONSTRAINT fk_rails_60f63bc7e2 FOREIGN KEY (postup_obstaravania_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -9323,6 +9081,14 @@ ALTER TABLE ONLY zop_uhradene_projekt
 
 ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia
     ADD CONSTRAINT fk_rails_6364309b83 FOREIGN KEY (kod_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_666b79ae9b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_projekty
+    ADD CONSTRAINT fk_rails_666b79ae9b FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
 
 
 --
@@ -9454,14 +9220,6 @@ ALTER TABLE ONLY intenzity
 
 
 --
--- Name: fk_rails_819fc2ce24; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_polozky_dokladu
-    ADD CONSTRAINT fk_rails_819fc2ce24 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
-
-
---
 -- Name: fk_rails_8389e158be; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9518,14 +9276,6 @@ ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
 
 
 --
--- Name: fk_rails_87a68d09a7; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_hlavny_slovniky
-    ADD CONSTRAINT fk_rails_87a68d09a7 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
-
-
---
 -- Name: fk_rails_88302c96ad; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9558,6 +9308,14 @@ ALTER TABLE ONLY zonfp_schvalene_hospodarske_cinnosti_ciele
 
 
 --
+-- Name: fk_rails_89fad4de08; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
+    ADD CONSTRAINT fk_rails_89fad4de08 FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
+
+
+--
 -- Name: fk_rails_8a9cbb93cb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9574,14 +9332,6 @@ ALTER TABLE ONLY projekty_organizacne_zlozky
 
 
 --
--- Name: fk_rails_8abe3aac03; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_hlavny_predmet_doplnkovy_slovniky
-    ADD CONSTRAINT fk_rails_8abe3aac03 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
-
-
---
 -- Name: fk_rails_8ad08ae289; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9590,11 +9340,27 @@ ALTER TABLE ONLY vyzvy_planovane_ciele
 
 
 --
+-- Name: fk_rails_8bb220c518; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_operacne_programy
+    ADD CONSTRAINT fk_rails_8bb220c518 FOREIGN KEY (operacny_program_id) REFERENCES operacne_programy(id);
+
+
+--
 -- Name: fk_rails_8d000a95b1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
     ADD CONSTRAINT fk_rails_8d000a95b1 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
+-- Name: fk_rails_8e51e82a4a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
+    ADD CONSTRAINT fk_rails_8e51e82a4a FOREIGN KEY (uctovny_doklad_id) REFERENCES uctovne_doklady(id);
 
 
 --
@@ -9611,6 +9377,14 @@ ALTER TABLE ONLY hodnoty_ciselnikov
 
 ALTER TABLE ONLY projekty_oblasti_intervencie
     ADD CONSTRAINT fk_rails_9286d58589 FOREIGN KEY (hodnota_ciselnika_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_94aa9b848a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_operacne_programy
+    ADD CONSTRAINT fk_rails_94aa9b848a FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
 
 
 --
@@ -9638,27 +9412,11 @@ ALTER TABLE ONLY zonfp_zamietnute_vyzvy
 
 
 --
--- Name: fk_rails_9e848b2700; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_obstaravatel
-    ADD CONSTRAINT fk_rails_9e848b2700 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
-
-
---
 -- Name: fk_rails_9f12cb21f5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_miesta_realizacie
     ADD CONSTRAINT fk_rails_9f12cb21f5 FOREIGN KEY (miesto_realizacie_id) REFERENCES miesta_realizacie(id);
-
-
---
--- Name: fk_rails_9fc80cbae3; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_vlastnik_dokladu
-    ADD CONSTRAINT fk_rails_9fc80cbae3 FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
 
 
 --
@@ -9902,6 +9660,14 @@ ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel
 
 
 --
+-- Name: fk_rails_cbc060088a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania
+    ADD CONSTRAINT fk_rails_cbc060088a FOREIGN KEY (metoda_vo_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_cc33bd1188; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9934,14 +9700,6 @@ ALTER TABLE ONLY vzvy_vyhlasene_planovane_vyzvy
 
 
 --
--- Name: fk_rails_ce4600c8f2; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie
-    ADD CONSTRAINT fk_rails_ce4600c8f2 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
-
-
---
 -- Name: fk_rails_d50f9dbb57; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9955,22 +9713,6 @@ ALTER TABLE ONLY zonfp_prijate_partneri
 
 ALTER TABLE ONLY zonfp_schvalene_partneri
     ADD CONSTRAINT fk_rails_d75aef9463 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
-
-
---
--- Name: fk_rails_d7faf83117; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_metody_vo
-    ADD CONSTRAINT fk_rails_d7faf83117 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
-
-
---
--- Name: fk_rails_d845918157; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
-    ADD CONSTRAINT fk_rails_d845918157 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
 
 
 --
@@ -10003,6 +9745,14 @@ ALTER TABLE ONLY nezrovnalosti
 
 ALTER TABLE ONLY zonfp_prijate_typy_uzemia
     ADD CONSTRAINT fk_rails_dd066eede4 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
+
+
+--
+-- Name: fk_rails_dd29737b6c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania
+    ADD CONSTRAINT fk_rails_dd29737b6c FOREIGN KEY (zadavatel_id) REFERENCES subjekty(id);
 
 
 --
@@ -10043,6 +9793,14 @@ ALTER TABLE ONLY nezrovnalosti
 
 ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy_ciele
     ADD CONSTRAINT fk_rails_e4f9b6a174 FOREIGN KEY (zonfp_schvalene_uzemne_mechanizmy_id) REFERENCES zonfp_schvalene_uzemne_mechanizmy(id);
+
+
+--
+-- Name: fk_rails_e6d4131836; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania
+    ADD CONSTRAINT fk_rails_e6d4131836 FOREIGN KEY (obstaravatel_subjekt_id) REFERENCES subjekty(id);
 
 
 --
@@ -10102,6 +9860,14 @@ ALTER TABLE ONLY intenzity
 
 
 --
+-- Name: fk_rails_e96ea796f7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
+    ADD CONSTRAINT fk_rails_e96ea796f7 FOREIGN KEY (predmet_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_e9c0519acf; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10158,11 +9924,11 @@ ALTER TABLE ONLY projekty_oblasti_intervencie
 
 
 --
--- Name: fk_rails_f2aa972bf9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_f529907463; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY verejne_obstaravania_druh_zakazky
-    ADD CONSTRAINT fk_rails_f2aa972bf9 FOREIGN KEY (verejne_obstaravania_id) REFERENCES verejne_obstaravania(id);
+ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
+    ADD CONSTRAINT fk_rails_f529907463 FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
 
 
 --
@@ -10195,14 +9961,6 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_nezrovnalosti
 
 ALTER TABLE ONLY zonfp_prijate_typy_uzemia_ciele
     ADD CONSTRAINT fk_rails_f927319243 FOREIGN KEY (zonfp_prijate_typy_uzemia_id) REFERENCES zonfp_prijate_typy_uzemia(id);
-
-
---
--- Name: fk_rails_f9a65c182f; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY uctovne_doklady_dodavatel
-    ADD CONSTRAINT fk_rails_f9a65c182f FOREIGN KEY (uctovne_doklady_id) REFERENCES uctovne_doklady(id);
 
 
 --
@@ -10264,6 +10022,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170718083436'),
 ('20171005080348'),
 ('20171005104049'),
+('20171005104149'),
+('20171005104249'),
 ('20171005105044'),
 ('20171005110144'),
 ('20171005115835'),
@@ -10281,6 +10041,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171113145824'),
 ('20171113180259'),
 ('20171113185839'),
-('20171114124735');
+('20171114124735'),
+('20171114143548');
 
 

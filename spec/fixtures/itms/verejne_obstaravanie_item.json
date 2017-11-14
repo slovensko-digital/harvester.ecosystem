@@ -1,0 +1,106 @@
+{
+  "centralneObstaravanie": false,
+  "cisloVestnika": "39/2014",
+  "cisloZverejneniaVoVestniku": "2506-WYP",
+  "createdAt": "2015-11-23T19:25:28.679Z",
+  "datumZverejneniaVoVestniku": "2014-02-25T00:00:00Z",
+  "doplnujucePredmetyDoplnkovySlovnik": [
+    {
+      "ciselnikKod": 1049,
+      "href": "/v2/hodnotaCiselnika/1049/hodnota/6940",
+      "id": 6941
+    }
+  ],
+  "doplnujucePredmetyHlavnySlovnik": [
+    {
+      "ciselnikKod": 1049,
+      "href": "/v2/hodnotaCiselnika/1049/hodnota/6940",
+      "id": 6940
+    }
+  ],
+  "druhZakazky": {
+    "ciselnikKod": 1048,
+    "href": "/v2/hodnotaCiselnika/1048/hodnota/3",
+    "id": 3
+  },
+  "hlavnyPredmetDoplnkovySlovnik": [
+    {
+      "ciselnikKod": 1049,
+      "href": "/v2/hodnotaCiselnika/1049/hodnota/6902",
+      "id": 6905
+    },
+    {
+      "ciselnikKod": 1049,
+      "href": "/v2/hodnotaCiselnika/1049/hodnota/6902",
+      "id": 6906
+    }
+  ],
+  "hlavnyPredmetHlavnySlovnik": {
+    "ciselnikKod": 1049,
+    "href": "/v2/hodnotaCiselnika/1049/hodnota/6902",
+    "id": 6902
+  },
+  "href": "/v2/verejneObstaravania/2",
+  "id": 2,
+  "kod": "VO66152197",
+  "kriteriumNaVyhodnoteniePonuk": "NAJNIZSIA_CENA",
+  "lehotaNaPredkladaniePonuk": "2014-03-14T09:30:00Z",
+  "lehotaNaPredkladanieZiadostiOUcast": "2014-03-14T09:30:00Z",
+  "metodaVo": {
+    "ciselnikKod": 1041,
+    "href": "/v2/hodnotaCiselnika/1041/hodnota/2",
+    "id": 2
+  },
+  "nazov": "Rozšírenie kapacity ČOV Lozorno",
+  "obmedzeniePoctuUchadzacov": false,
+  "obstaravatelDodavatelObstaravatel": {
+    "href": "/v2/dodavatelia/229",
+    "ico": "00151513",
+    "id": 229
+  },
+  "obstaravatelSubjekt": {
+    "href": "/v2/subjekty/100184",
+    "id": 100184
+  },
+  "operacneProgramy": [
+    {
+      "href": "/v2/operacneProgramy/1",
+      "id": 1
+    }
+  ],
+  "pocetPrijatychPonuk": 3,
+  "pocetVylucenychPonuk": 0,
+  "postupObstaravania": {
+    "ciselnikKod": 1042,
+    "href": "/v2/hodnotaCiselnika/1042/hodnota/9",
+    "id": 9
+  },
+  "predchadzajuceOznamenie": false,
+  "predpokladanaHodnotaZakazky": 328405,
+  "projekty": [
+    {
+      "href": "/v2/projekty/ukoncene/70",
+      "id": 70
+    }
+  ],
+  "stav": "Ukončené",
+  "trvanieZakazkyHodnota": 2,
+  "trvanieZakazkyMernaJednotka": "MESIAC",
+  "uctovneDoklady": [
+    {
+      "href": "/v2/uctovneDoklady/3172",
+      "id": 3172
+    }
+  ],
+  "updatedAt": "2016-11-14T11:22:23.307Z",
+  "urlOdkazOznamenie": "https://www2.uvo.gov.sk/evestnik/-/vestnik/234016",
+  "zadavanieZakazkyVMeneInychObstaravatelov": false,
+  "zadavatel": {
+    "dic": "2020643669",
+    "href": "/v2/subjekty/100184",
+    "ico": "00304905",
+    "id": 100184
+  },
+  "zakazkaRozdelenaNaViacCasti": false,
+  "zverejneneVoVestnikuEU": false
+}

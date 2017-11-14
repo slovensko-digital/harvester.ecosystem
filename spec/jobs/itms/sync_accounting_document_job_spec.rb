@@ -12,6 +12,6 @@ RSpec.describe Itms::SyncAccountingDocumentJob, type: :job do
       )
     end
 
-    pending 'syncs non-repayable financial contribution request and all of its attributes'
+    pending 'syncs accounting document and all of its attributes'
   end
 end
