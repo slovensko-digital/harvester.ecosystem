@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncProjectActivityJob, type: :job do
-  let(:downloader) { double(:downloader) }
+  include_context "itms_downloader"
 
   context '#perform' do
     it 'syncs subject and all its attributes' do
@@ -9,16 +9,6 @@ RSpec.describe Itms::SyncProjectActivityJob, type: :job do
           .to receive(:get)
           .with('https://opendata.itms2014.sk/v2/aktivita/122')
           .and_return(double(body: itms_file_fixture('aktivita_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
-          .and_return(double(body: itms_file_fixture('subjekt_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/typyAktivit/'))
-          .and_return(double(body: itms_file_fixture('typ_aktivity_item.json')))
 
       subject.perform('/v2/aktivita/122', downloader: downloader)
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncIntensityJob, type: :job do
-  let(:downloader) { double(:downloader) }
+  include_context "itms_downloader"
 
   context '#perform' do
     it 'syncs intensity and all of its attributes' do
@@ -10,21 +10,6 @@ RSpec.describe Itms::SyncIntensityJob, type: :job do
           .with(include('https://opendata.itms2014.sk/v2/intenzita/1'))
           .and_return(double(body: itms_file_fixture('intenzita_item.json')))
           .at_least(:once)
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
-          .and_return(double(body: itms_file_fixture('subjekt_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/hodnotaCiselnika/'))
-          .and_return(double(body: itms_file_fixture('hodnota_ciselnika_item.json')))
-
-      allow(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/ciselniky')
-          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
 
       subject.perform('/v2/intenzita/1', downloader: downloader)
 
