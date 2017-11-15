@@ -128,8 +128,8 @@ CREATE TABLE dodavatelia (
     id integer NOT NULL,
     itms_id integer NOT NULL,
     itms_href character varying,
-    itms_created_at character varying,
-    itms_updated_at character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
     dic character varying,
     ico character varying,
     ine_identifikacne_cislo character varying,
@@ -1547,8 +1547,8 @@ CREATE TABLE subjekty (
     id integer NOT NULL,
     itms_id integer NOT NULL,
     itms_href character varying,
-    itms_created_at character varying,
-    itms_updated_at character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
     dic character varying,
     ico character varying,
     ine_identifikacne_cislo character varying,
@@ -1626,6 +1626,16 @@ ALTER SEQUENCE typy_aktivit_id_seq OWNED BY typy_aktivit.id;
 CREATE TABLE uctovne_doklady (
     id integer NOT NULL,
     itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    datum_uhrady timestamp without time zone,
+    datum_vyhotovenia timestamp without time zone,
+    dodavatel_dodavatel_obstaravatel_id integer,
+    dodavatel_subjekt_id integer,
+    nazov character varying,
+    typ character varying,
+    vlastnik_dokladu_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1648,6 +1658,49 @@ CREATE SEQUENCE uctovne_doklady_id_seq
 --
 
 ALTER SEQUENCE uctovne_doklady_id_seq OWNED BY uctovne_doklady.id;
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE uctovne_doklady_polozky_dokladu (
+    id integer NOT NULL,
+    uctovny_doklad_id integer,
+    itms_id integer NOT NULL,
+    dph numeric,
+    jednotkova_cena numeric,
+    mnozstvo numeric,
+    nazov character varying,
+    poradove_cislo integer,
+    sadzba_dph numeric,
+    suma_bez_dph numeric,
+    suma_opravnena numeric,
+    suma_spolu numeric,
+    suma_ziadana numeric,
+    suma_zrealizovanych_vydavkov numeric,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE uctovne_doklady_polozky_dokladu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE uctovne_doklady_polozky_dokladu_id_seq OWNED BY uctovne_doklady_polozky_dokladu.id;
 
 
 --
@@ -5373,6 +5426,13 @@ ALTER TABLE ONLY uctovne_doklady ALTER COLUMN id SET DEFAULT nextval('uctovne_do
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY uctovne_doklady_polozky_dokladu ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_polozky_dokladu_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_id_seq'::regclass);
 
 
@@ -6437,6 +6497,14 @@ ALTER TABLE ONLY typy_aktivit
 
 ALTER TABLE ONLY uctovne_doklady
     ADD CONSTRAINT uctovne_doklady_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uctovne_doklady_polozky_dokladu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_polozky_dokladu
+    ADD CONSTRAINT uctovne_doklady_polozky_dokladu_pkey PRIMARY KEY (id);
 
 
 --
@@ -8132,10 +8200,45 @@ CREATE UNIQUE INDEX "index_itms.typy_aktivit_on_itms_id" ON typy_aktivit USING b
 
 
 --
+-- Name: index_itms.uctovne_doklady_on_ddo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.uctovne_doklady_on_ddo" ON uctovne_doklady USING btree (dodavatel_dodavatel_obstaravatel_id);
+
+
+--
+-- Name: index_itms.uctovne_doklady_on_dodavatel_subjekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.uctovne_doklady_on_dodavatel_subjekt_id" ON uctovne_doklady USING btree (dodavatel_subjekt_id);
+
+
+--
 -- Name: index_itms.uctovne_doklady_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE UNIQUE INDEX "index_itms.uctovne_doklady_on_itms_id" ON uctovne_doklady USING btree (itms_id);
+
+
+--
+-- Name: index_itms.uctovne_doklady_on_vlastnik_dokladu_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.uctovne_doklady_on_vlastnik_dokladu_id" ON uctovne_doklady USING btree (vlastnik_dokladu_id);
+
+
+--
+-- Name: index_itms.uctovne_doklady_polozky_dokladu_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.uctovne_doklady_polozky_dokladu_on_itms_id" ON uctovne_doklady_polozky_dokladu USING btree (itms_id);
+
+
+--
+-- Name: index_itms.uctovne_doklady_polozky_dokladu_on_uctovny_doklad_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.uctovne_doklady_polozky_dokladu_on_uctovny_doklad_id" ON uctovne_doklady_polozky_dokladu USING btree (uctovny_doklad_id);
 
 
 --
@@ -8981,6 +9084,14 @@ ALTER TABLE ONLY zonfp_zamietnute_uzemne_mechanizmy
 
 
 --
+-- Name: fk_rails_390d8ee387; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_polozky_dokladu
+    ADD CONSTRAINT fk_rails_390d8ee387 FOREIGN KEY (uctovny_doklad_id) REFERENCES uctovne_doklady(id);
+
+
+--
 -- Name: fk_rails_3980438432; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9709,6 +9820,14 @@ ALTER TABLE ONLY projektove_ukazovatele_fondy
 
 
 --
+-- Name: fk_rails_a3e6b23ab9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady
+    ADD CONSTRAINT fk_rails_a3e6b23ab9 FOREIGN KEY (dodavatel_dodavatel_obstaravatel_id) REFERENCES dodavatelia(id);
+
+
+--
 -- Name: fk_rails_a446ffcc6a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9933,6 +10052,14 @@ ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy
 
 
 --
+-- Name: fk_rails_c88d29d579; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady
+    ADD CONSTRAINT fk_rails_c88d29d579 FOREIGN KEY (vlastnik_dokladu_id) REFERENCES subjekty(id);
+
+
+--
 -- Name: fk_rails_c91e683028; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9986,6 +10113,14 @@ ALTER TABLE ONLY zmluvy_verejne_obstaravania_dalsie_url
 
 ALTER TABLE ONLY zonfp_prijate_partneri
     ADD CONSTRAINT fk_rails_d50f9dbb57 FOREIGN KEY (zonfp_prijate_id) REFERENCES zonfp_prijate(id);
+
+
+--
+-- Name: fk_rails_d6b4b75adf; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady
+    ADD CONSTRAINT fk_rails_d6b4b75adf FOREIGN KEY (dodavatel_subjekt_id) REFERENCES subjekty(id);
 
 
 --

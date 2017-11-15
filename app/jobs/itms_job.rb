@@ -114,7 +114,7 @@ class ItmsJob < ApplicationJob
     unit = Itms::Subject.find_by(itms_id: json['id'])
     return unit if unit.present?
 
-    Itms::SyncSubjectJob.perform_now(json['id'], downloader: downloader)
+    Itms::SyncSubjectJob.perform_now(json['href'], downloader: downloader)
     Itms::Subject.find_by!(itms_id: json['id'])
   end
 
