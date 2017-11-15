@@ -127,6 +127,19 @@ ALTER SEQUENCE ciselniky_id_seq OWNED BY ciselniky.id;
 CREATE TABLE dodavatelia (
     id integer NOT NULL,
     itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at character varying,
+    itms_updated_at character varying,
+    dic character varying,
+    ico character varying,
+    ine_identifikacne_cislo character varying,
+    nazov character varying,
+    obec_id integer,
+    psc character varying,
+    stat_id integer,
+    typ_ineho_identifikacneho_cisla_id integer,
+    ulica character varying,
+    ulica_cislo character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -7302,6 +7315,27 @@ CREATE UNIQUE INDEX "index_itms.dodavatelia_on_itms_id" ON dodavatelia USING btr
 
 
 --
+-- Name: index_itms.dodavatelia_on_obec_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.dodavatelia_on_obec_id" ON dodavatelia USING btree (obec_id);
+
+
+--
+-- Name: index_itms.dodavatelia_on_stat_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.dodavatelia_on_stat_id" ON dodavatelia USING btree (stat_id);
+
+
+--
+-- Name: index_itms.dodavatelia_on_typ_ineho_identifikacneho_cisla_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.dodavatelia_on_typ_ineho_identifikacneho_cisla_id" ON dodavatelia USING btree (typ_ineho_identifikacneho_cisla_id);
+
+
+--
 -- Name: index_itms.hodnoty_ciselnikov_on_ciselnik_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -8704,6 +8738,14 @@ ALTER TABLE ONLY vyzvy_vyhlasene
 
 
 --
+-- Name: fk_rails_17b4b919d8; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY dodavatelia
+    ADD CONSTRAINT fk_rails_17b4b919d8 FOREIGN KEY (typ_ineho_identifikacneho_cisla_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_17faad18e6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9576,6 +9618,14 @@ ALTER TABLE ONLY zonfp_zamietnute_partneri
 
 
 --
+-- Name: fk_rails_97435e089d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY dodavatelia
+    ADD CONSTRAINT fk_rails_97435e089d FOREIGN KEY (obec_id) REFERENCES nuts_kody(id);
+
+
+--
 -- Name: fk_rails_985f46756c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9597,6 +9647,14 @@ ALTER TABLE ONLY zonfp_zamietnute_vyzvy
 
 ALTER TABLE ONLY vyzvy_vyhlasene_vyzvy_planovane
     ADD CONSTRAINT fk_rails_9ea2c85d7e FOREIGN KEY (vyhlasena_vyzva_id) REFERENCES vyzvy_vyhlasene(id);
+
+
+--
+-- Name: fk_rails_9ea404b7ef; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY dodavatelia
+    ADD CONSTRAINT fk_rails_9ea404b7ef FOREIGN KEY (stat_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -10225,6 +10283,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170718063739'),
 ('20170718083436'),
 ('20171005080348'),
+('20171005094049'),
 ('20171005104049'),
 ('20171005104149'),
 ('20171005104249'),

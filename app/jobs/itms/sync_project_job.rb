@@ -133,14 +133,6 @@ class Itms::SyncProjectJob < ItmsJob
     end
   end
 
-  def find_or_create_nuts_code_by_json(json, downloader)
-    Itms::NutsCode.find_or_create_by(
-      gps_lat: json['gpsLat'].to_d,
-      gps_lon: json['gpsLon'].to_d,
-      hodnota_nuts: find_or_create_codelist_value_by_json(json['hodnotaNuts'], downloader)
-    )
-  end
-
   def find_or_create_monitoring_dates_by_json(json, scope)
     return [] if json.blank?
 

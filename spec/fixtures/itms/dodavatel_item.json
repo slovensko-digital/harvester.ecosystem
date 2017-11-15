@@ -1,0 +1,32 @@
+{
+  "createdAt": "2016-11-02T09:19:15.117Z",
+  "dic": "2020845057",
+  "href": "/v2/dodavatelia/229",
+  "ico": "00151513",
+  "id": 229,
+  "ineIdentifikacneCislo": "41076659",
+  "nazov": "Úrad vlády SR",
+  "obec": {
+    "gpsLat": 48.148598,
+    "gpsLon": 17.107747,
+    "hodnotaNuts": {
+      "ciselnikKod": 1006,
+      "href": "/v2/hodnotaCiselnika/1006/hodnota/99",
+      "id": 99
+    }
+  },
+  "psc": "81370",
+  "stat": {
+    "ciselnikKod": 1012,
+    "href": "/v2/hodnotaCiselnika/1012/hodnota/210",
+    "id": 210
+  },
+  "typInehoIdentifikacnehoCisla": {
+    "ciselnikKod": 1081,
+    "href": "/v2/hodnotaCiselnika/1081/hodnota/200003",
+    "id": 200003
+  },
+  "ulica": "Námestie slobody",
+  "ulicaCislo": "1",
+  "updatedAt": "2016-11-02T09:19:15.125Z"
+}
