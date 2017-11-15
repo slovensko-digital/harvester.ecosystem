@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 9.5.6
--- Dumped by pg_dump version 9.5.8
+-- Dumped by pg_dump version 9.5.10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2377,44 +2377,49 @@ ALTER SEQUENCE zdroje_intenzit_id_seq OWNED BY zdroje_intenzit.id;
 
 
 --
--- Name: zmluvy_verejne_obstaravanie; Type: TABLE; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zmluvy_verejne_obstaravanie (
+CREATE TABLE zmluvy_verejne_obstaravania (
     id integer NOT NULL,
-    verejne_obstaravania_id bigint NOT NULL,
-    itms_identifier bigint NOT NULL,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    celkova_suma_zmluvy numeric,
     cislo_zmluvy character varying,
+    datum_platnosti timestamp without time zone,
+    datum_ucinnosti timestamp without time zone,
+    hlavny_dodavatel_dodavatel_obstaravatel_id integer,
+    hlavny_dodavatel_subjekt_id integer,
     kod character varying,
     nazov character varying,
     predmet_zmluvy character varying,
-    url_odkaz_na_zmluvu character varying,
-    celkova_suma_zmluvy numeric,
     suma_bez_dph numeric,
-    datum_platnosti timestamp without time zone,
-    datum_ucinnosti timestamp without time zone,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    url_odkaz_na_zmluvu character varying,
+    verejne_obstaravanie_id integer
 );
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dalsie_url; Type: TABLE; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dalsie_url; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zmluvy_verejne_obstaravanie_dalsie_url (
+CREATE TABLE zmluvy_verejne_obstaravania_dalsie_url (
     id integer NOT NULL,
-    zmluvy_verejne_obstaravanie_id bigint NOT NULL,
+    zmluva_verejne_obstaravanie_id integer NOT NULL,
     nazov character varying,
-    url character varying
+    url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dalsie_url_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dalsie_url_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE zmluvy_verejne_obstaravanie_dalsie_url_id_seq
+CREATE SEQUENCE zmluvy_verejne_obstaravania_dalsie_url_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2423,41 +2428,32 @@ CREATE SEQUENCE zmluvy_verejne_obstaravanie_dalsie_url_id_seq
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dalsie_url_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dalsie_url_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zmluvy_verejne_obstaravanie_dalsie_url_id_seq OWNED BY zmluvy_verejne_obstaravanie_dalsie_url.id;
+ALTER SEQUENCE zmluvy_verejne_obstaravania_dalsie_url_id_seq OWNED BY zmluvy_verejne_obstaravania_dalsie_url.id;
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dodavatelia; Type: TABLE; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zmluvy_verejne_obstaravanie_dodavatelia (
+CREATE TABLE zmluvy_verejne_obstaravania_dodavatelia (
     id integer NOT NULL,
-    zmluvy_verejne_obstaravanie_id bigint NOT NULL,
-    je_hlavny_dodavatel boolean
+    zmluva_verejne_obstaravanie_id integer NOT NULL,
+    dodavatel_dodavatel_obstaravatel_id integer,
+    dodavatel_subjekt_id integer,
+    je_hlavny_dodavatel boolean,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel; Type: TABLE; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zmluvy_verejne_obstaravanie_dodavatelia_dodavatel (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zmluvy_verejne_obstaravanie_dodavatelia_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq
+CREATE SEQUENCE zmluvy_verejne_obstaravania_dodavatelia_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2466,17 +2462,17 @@ CREATE SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq OWNED BY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel.id;
+ALTER SEQUENCE zmluvy_verejne_obstaravania_dodavatelia_id_seq OWNED BY zmluvy_verejne_obstaravania_dodavatelia.id;
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dodavatelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_id_seq
+CREATE SEQUENCE zmluvy_verejne_obstaravania_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2485,61 +2481,10 @@ CREATE SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_id_seq
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dodavatelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zmluvy_verejne_obstaravanie_dodavatelia_id_seq OWNED BY zmluvy_verejne_obstaravanie_dodavatelia.id;
-
-
---
--- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zmluvy_verejne_obstaravanie_hlavny_dodavatel (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zmluvy_verejne_obstaravanie_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq OWNED BY zmluvy_verejne_obstaravanie_hlavny_dodavatel.id;
-
-
---
--- Name: zmluvy_verejne_obstaravanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zmluvy_verejne_obstaravanie_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zmluvy_verejne_obstaravanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zmluvy_verejne_obstaravanie_id_seq OWNED BY zmluvy_verejne_obstaravanie.id;
+ALTER SEQUENCE zmluvy_verejne_obstaravania_id_seq OWNED BY zmluvy_verejne_obstaravania.id;
 
 
 --
@@ -5603,35 +5548,21 @@ ALTER TABLE ONLY zdroje_intenzit ALTER COLUMN id SET DEFAULT nextval('zdroje_int
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_id_seq'::regclass);
+ALTER TABLE ONLY zmluvy_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravania_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dalsie_url ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_dalsie_url_id_seq'::regclass);
+ALTER TABLE ONLY zmluvy_verejne_obstaravania_dalsie_url ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravania_dalsie_url_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_dodavatelia_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_hlavny_dodavatel ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravanie_hlavny_dodavatel_id_seq'::regclass);
+ALTER TABLE ONLY zmluvy_verejne_obstaravania_dodavatelia ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravania_dodavatelia_id_seq'::regclass);
 
 
 --
@@ -6720,43 +6651,27 @@ ALTER TABLE ONLY zdroje_intenzit
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dalsie_url_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dalsie_url_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dalsie_url
-    ADD CONSTRAINT zmluvy_verejne_obstaravanie_dalsie_url_pkey PRIMARY KEY (id);
-
-
---
--- Name: zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel
-    ADD CONSTRAINT zmluvy_verejne_obstaravanie_dodavatelia_dodavatel_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY zmluvy_verejne_obstaravania_dalsie_url
+    ADD CONSTRAINT zmluvy_verejne_obstaravania_dalsie_url_pkey PRIMARY KEY (id);
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia
-    ADD CONSTRAINT zmluvy_verejne_obstaravanie_dodavatelia_pkey PRIMARY KEY (id);
-
-
---
--- Name: zmluvy_verejne_obstaravanie_hlavny_dodavatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_hlavny_dodavatel
-    ADD CONSTRAINT zmluvy_verejne_obstaravanie_hlavny_dodavatel_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY zmluvy_verejne_obstaravania_dodavatelia
+    ADD CONSTRAINT zmluvy_verejne_obstaravania_dodavatelia_pkey PRIMARY KEY (id);
 
 
 --
--- Name: zmluvy_verejne_obstaravanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie
-    ADD CONSTRAINT zmluvy_verejne_obstaravanie_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY zmluvy_verejne_obstaravania
+    ADD CONSTRAINT zmluvy_verejne_obstaravania_pkey PRIMARY KEY (id);
 
 
 --
@@ -8401,6 +8316,62 @@ CREATE INDEX "index_itms.zdroje_intenzit_on_zdroj_id" ON zdroje_intenzit USING b
 
 
 --
+-- Name: index_itms.zmluvy_verejne_obstaravania_dalsie_url_zvo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zmluvy_verejne_obstaravania_dalsie_url_zvo" ON zmluvy_verejne_obstaravania_dalsie_url USING btree (zmluva_verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.zmluvy_verejne_obstaravania_dodavatelia_ddo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zmluvy_verejne_obstaravania_dodavatelia_ddo" ON zmluvy_verejne_obstaravania_dodavatelia USING btree (dodavatel_dodavatel_obstaravatel_id);
+
+
+--
+-- Name: index_itms.zmluvy_verejne_obstaravania_dodavatelia_ds; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zmluvy_verejne_obstaravania_dodavatelia_ds" ON zmluvy_verejne_obstaravania_dodavatelia USING btree (dodavatel_subjekt_id);
+
+
+--
+-- Name: index_itms.zmluvy_verejne_obstaravania_dodavatelia_zvo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zmluvy_verejne_obstaravania_dodavatelia_zvo" ON zmluvy_verejne_obstaravania_dodavatelia USING btree (zmluva_verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.zmluvy_verejne_obstaravania_hddo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zmluvy_verejne_obstaravania_hddo" ON zmluvy_verejne_obstaravania USING btree (hlavny_dodavatel_dodavatel_obstaravatel_id);
+
+
+--
+-- Name: index_itms.zmluvy_verejne_obstaravania_hds; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zmluvy_verejne_obstaravania_hds" ON zmluvy_verejne_obstaravania USING btree (hlavny_dodavatel_subjekt_id);
+
+
+--
+-- Name: index_itms.zmluvy_verejne_obstaravania_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.zmluvy_verejne_obstaravania_on_itms_id" ON zmluvy_verejne_obstaravania USING btree (itms_id);
+
+
+--
+-- Name: index_itms.zmluvy_verejne_obstaravania_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zmluvy_verejne_obstaravania_vo" ON zmluvy_verejne_obstaravania USING btree (verejne_obstaravanie_id);
+
+
+--
 -- Name: index_itms.zonfp_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -8481,6 +8452,22 @@ ALTER TABLE ONLY projekty_oblasti_intervencie
 
 ALTER TABLE ONLY nezrovnalosti_suvisiace_nezrovnalosti
     ADD CONSTRAINT fk_rails_03702170c9 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
+-- Name: fk_rails_039600fef2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravania
+    ADD CONSTRAINT fk_rails_039600fef2 FOREIGN KEY (hlavny_dodavatel_dodavatel_obstaravatel_id) REFERENCES dodavatelia(id);
+
+
+--
+-- Name: fk_rails_03ced0a1cb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravania_dodavatelia
+    ADD CONSTRAINT fk_rails_03ced0a1cb FOREIGN KEY (dodavatel_dodavatel_obstaravatel_id) REFERENCES dodavatelia(id);
 
 
 --
@@ -8932,6 +8919,14 @@ ALTER TABLE ONLY pohladavkove_doklady
 
 
 --
+-- Name: fk_rails_4da1c132e1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravania_dodavatelia
+    ADD CONSTRAINT fk_rails_4da1c132e1 FOREIGN KEY (zmluva_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravania(id);
+
+
+--
 -- Name: fk_rails_4da2ae7a20; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9052,14 +9047,6 @@ ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
 
 
 --
--- Name: fk_rails_600510ad00; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia
-    ADD CONSTRAINT fk_rails_600510ad00 FOREIGN KEY (zmluvy_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravanie(id);
-
-
---
 -- Name: fk_rails_60f63bc7e2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9097,14 +9084,6 @@ ALTER TABLE ONLY verejne_obstaravania_projekty
 
 ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti_ciele
     ADD CONSTRAINT fk_rails_66f817d32a FOREIGN KEY (zonfp_zamietnute_hospodarske_cinnosti_id) REFERENCES zonfp_zamietnute_hospodarske_cinnosti(id);
-
-
---
--- Name: fk_rails_67194c25e9; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dalsie_url
-    ADD CONSTRAINT fk_rails_67194c25e9 FOREIGN KEY (zmluvy_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravanie(id);
 
 
 --
@@ -9564,14 +9543,6 @@ ALTER TABLE ONLY zonfp_prijate_aktivity_projekt_subjekty
 
 
 --
--- Name: fk_rails_be079d854a; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_hlavny_dodavatel
-    ADD CONSTRAINT fk_rails_be079d854a FOREIGN KEY (zmluvy_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravanie(id);
-
-
---
 -- Name: fk_rails_bea5988603; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9652,14 +9623,6 @@ ALTER TABLE ONLY vzvy_vyhlasene_posudzovane_obdobia
 
 
 --
--- Name: fk_rails_caa56b5235; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zmluvy_verejne_obstaravanie_dodavatelia_dodavatel
-    ADD CONSTRAINT fk_rails_caa56b5235 FOREIGN KEY (zmluvy_verejne_obstaravanie_dodavatelia_id) REFERENCES zmluvy_verejne_obstaravanie_dodavatelia(id);
-
-
---
 -- Name: fk_rails_cbc060088a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9700,6 +9663,14 @@ ALTER TABLE ONLY vzvy_vyhlasene_planovane_vyzvy
 
 
 --
+-- Name: fk_rails_d40543fb1d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravania_dalsie_url
+    ADD CONSTRAINT fk_rails_d40543fb1d FOREIGN KEY (zmluva_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravania(id);
+
+
+--
 -- Name: fk_rails_d50f9dbb57; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9713,6 +9684,14 @@ ALTER TABLE ONLY zonfp_prijate_partneri
 
 ALTER TABLE ONLY zonfp_schvalene_partneri
     ADD CONSTRAINT fk_rails_d75aef9463 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
+
+--
+-- Name: fk_rails_d8681305e0; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravania_dodavatelia
+    ADD CONSTRAINT fk_rails_d8681305e0 FOREIGN KEY (dodavatel_subjekt_id) REFERENCES subjekty(id);
 
 
 --
@@ -9785,6 +9764,14 @@ ALTER TABLE ONLY projekty_organizacne_zlozky
 
 ALTER TABLE ONLY nezrovnalosti
     ADD CONSTRAINT fk_rails_e281735595 FOREIGN KEY (dlznik_id) REFERENCES subjekty(id);
+
+
+--
+-- Name: fk_rails_e472fdc8b1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravania
+    ADD CONSTRAINT fk_rails_e472fdc8b1 FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
 
 
 --
@@ -9940,6 +9927,14 @@ ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie
 
 
 --
+-- Name: fk_rails_f6565b6e80; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zmluvy_verejne_obstaravania
+    ADD CONSTRAINT fk_rails_f6565b6e80 FOREIGN KEY (hlavny_dodavatel_subjekt_id) REFERENCES subjekty(id);
+
+
+--
 -- Name: fk_rails_f74d2d4574; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10042,6 +10037,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171113180259'),
 ('20171113185839'),
 ('20171114124735'),
-('20171114143548');
+('20171114143548'),
+('20171115092048');
 
 

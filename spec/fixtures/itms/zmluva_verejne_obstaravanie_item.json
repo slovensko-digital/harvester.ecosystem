@@ -1,0 +1,49 @@
+{
+  "celkovaSumaZmluvy": 341774.34,
+  "cisloZmluvy": "Objednávka č.122",
+  "createdAt": "0001-01-01T00:00:00Z",
+  "dalsieUrl": [
+    {
+      "nazov": "Dodatok č. 1",
+      "url": "http://www.crz.gov.sk/index.php?ID=1249239\u0026l=sk"
+    },
+    {
+      "nazov": "Dodtok č. 2",
+      "url": "http://www.crz.gov.sk/index.php?ID=1487203\u0026l=sk"
+    }
+  ],
+  "datumPlatnosti": "2014-04-24T00:00:00Z",
+  "datumUcinnosti": "2014-04-28T00:00:00Z",
+  "dodavatelia": [
+    {
+      "dodavatelDodavatelObstaravatel": {
+        "href": "/v2/dodavatelia/260",
+        "id": 260
+      },
+      "jeHlavnyDodavatel": true
+    },
+    {
+      "dodavatelSubjekt": {
+        "href": "/v2/subjekty/101027",
+        "id": 101027
+      },
+      "jeHlavnyDodavatel": false
+    }
+  ],
+  "hlavnyDodavatelDodavatelObstaravatel": {
+    "href": "/v2/dodavatelia/260",
+    "id": 260
+  },
+  "hlavnyDodavatelSubjekt": {
+    "href": "/v2/subjekty/101027",
+    "id": 101027
+  },
+  "href": "/v2/zmluvaVerejneObstaravanie/342",
+  "id": 342,
+  "kod": "VO66152197001",
+  "nazov": "Zmluva o dielo",
+  "predmetZmluvy": "\u003cdiv\u003eZmluva o dielo \u0026quot;Roz\u0026scaron;\u0026iacute;renie kapacity ČOV Lozorno\u0026quot;, predmetom ktorej je:\u003c/div\u003e\u003cdiv\u003e- realizačn\u0026yacute; projekt technologickej časti\u003c/div\u003e\u003cdiv\u003e- dod\u0026aacute;vka strojnotechnologick\u0026eacute;ho a elektrick\u0026eacute;ho zariadenia\u003c/div\u003e\u003cdiv\u003e- v\u0026yacute;stavba a mont\u0026aacute;ž kompletn\u0026eacute;ho strojnotechnologick\u0026eacute;ho a elektrick\u0026eacute;ho zariadenia vr\u0026aacute;tane vykonania individu\u0026aacute;lnych a komplexn\u0026yacute;ch sk\u0026uacute;\u0026scaron;ok\u003c/div\u003e\u003cdiv\u003e- služby po mont\u0026aacute;ži: vypracovanie projektu skutočn\u0026eacute;ho vyhotovenia, vypracovanie doplnku prev\u0026aacute;dzkov\u0026eacute;ho poriadku, vypracovanie v\u0026yacute;chodiskovej spr\u0026aacute;vy o odbornej prehliadke a sk\u0026uacute;\u0026scaron;ke elektrick\u0026eacute;ho zariadenia\u003c/div\u003e\u003cdiv\u003e- z\u0026aacute;ručn\u0026yacute; servis počas 24 mesiacov od ukončenia mont\u0026aacute;že.\u003c/div\u003e\u003cdiv\u003e\u0026nbsp;\u003c/div\u003e",
+  "sumaBezDph": 284811.95,
+  "updatedAt": "0001-01-01T00:00:00Z",
+  "urlOdkazNaZmluvu": "http://www.lozorno.sk/documents/dokumenty24//zmluva-o-dielo-hydrotech-as-2014-04-24.pdf"
+}

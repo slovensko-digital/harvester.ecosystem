@@ -85,4 +85,13 @@ class ItmsJob < ApplicationJob
     Itms::SyncSubjectJob.perform_now(json['id'], downloader: downloader)
     Itms::Subject.find_by!(itms_id: json['id'])
   end
+
+  def find_or_create_supplier_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::Supplier.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncSupplierJob.perform_now(json['href'], downloader: downloader)
+    Itms::Supplier.find_by!(itms_id: json['id'])
+  end
 end
