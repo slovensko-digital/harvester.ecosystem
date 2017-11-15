@@ -5,8 +5,8 @@ class CreateItmsSubjectsV2 < ActiveRecord::Migration[5.0]
     create_table 'itms.subjekty' do |t|
       t.integer :itms_id, null: false, index: { unique: true}
       t.string :itms_href
-      t.string :itms_created_at
-      t.string :itms_updated_at
+      t.datetime :itms_created_at
+      t.datetime :itms_updated_at
 
       t.string :dic
       t.string :ico
