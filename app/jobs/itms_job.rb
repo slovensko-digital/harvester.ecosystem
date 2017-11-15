@@ -99,4 +99,11 @@ class ItmsJob < ApplicationJob
     Itms::SyncSupplierJob.perform_now(json['href'], downloader: downloader)
     Itms::Supplier.find_by!(itms_id: json['id'])
   end
+
+  def find_or_create_additional_info_by_json(json, scope)
+    return [] if json.blank?
+    json.map do |j|
+      scope.find_or_create_by!(nazov: j['nazov'], url: j['url'])
+    end
+  end
 end

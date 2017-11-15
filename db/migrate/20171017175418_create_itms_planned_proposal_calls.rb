@@ -24,7 +24,7 @@ class CreateItmsPlannedProposalCalls < ActiveRecord::Migration[5.0]
       t.string :stav
       t.string :typ_1_kolo
       t.string :typ_2_kolo
-      t.references :vyhlasovatel, index: true, foreign_key: { to_table: 'itms.subjekty' }
+      t.references :vyhlasovatel, foreign_key: { to_table: 'itms.subjekty' }
 
       t.timestamps
     end
@@ -44,7 +44,7 @@ class CreateItmsPlannedProposalCalls < ActiveRecord::Migration[5.0]
 
     create_table 'itms.vyzvy_planovane_poskytovatelia' do |t|
       t.references :vyzva, null: false, foreign_key: { to_table: 'itms.vyzvy_planovane' }
-      t.references :poskytovatel, null: false, index: true, foreign_key: { to_table: 'itms.subjekty' }
+      t.references :poskytovatel, null: false, foreign_key: { to_table: 'itms.subjekty' }
       t.timestamps
     end
   end
