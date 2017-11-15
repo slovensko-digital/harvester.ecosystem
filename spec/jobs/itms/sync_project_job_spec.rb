@@ -229,7 +229,7 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         uzemne_mechanizmy: [
             Itms::ProjectTerritorialMechanism.where_goal_and_codelist(24, 1043, 7).first!,
         ],
-        vyzva: Itms::ProposalCall.find_by!(itms_id: 1),
+        vyzva: Itms::PlannedProposalCall.find_by!(itms_id: 1),
         zameranie_projektu: 'Dopytovo-orientovaný projekt',
       )
     end
