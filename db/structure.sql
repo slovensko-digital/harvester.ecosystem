@@ -834,6 +834,15 @@ ALTER SEQUENCE pohladavkove_doklady_id_seq OWNED BY pohladavkove_doklady.id;
 CREATE TABLE polozky_rozpoctu (
     id integer NOT NULL,
     itms_id integer NOT NULL,
+    itms_href character varying,
+    aktivita_id integer,
+    intenzita_id integer,
+    skupina_vydavkov_id integer,
+    subjekt_id integer,
+    viazana_suma numeric,
+    volne_prostriedky numeric,
+    vratena_suma numeric,
+    zazmluvnena_suma numeric,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -7636,10 +7645,38 @@ CREATE INDEX "index_itms.pohladavkove_doklady_on_zodpovedny_subjekt" ON pohladav
 
 
 --
+-- Name: index_itms.polozky_rozpoctu_on_aktivita_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.polozky_rozpoctu_on_aktivita_id" ON polozky_rozpoctu USING btree (aktivita_id);
+
+
+--
+-- Name: index_itms.polozky_rozpoctu_on_intenzita_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.polozky_rozpoctu_on_intenzita_id" ON polozky_rozpoctu USING btree (intenzita_id);
+
+
+--
 -- Name: index_itms.polozky_rozpoctu_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE UNIQUE INDEX "index_itms.polozky_rozpoctu_on_itms_id" ON polozky_rozpoctu USING btree (itms_id);
+
+
+--
+-- Name: index_itms.polozky_rozpoctu_on_skupina_vydavkov_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.polozky_rozpoctu_on_skupina_vydavkov_id" ON polozky_rozpoctu USING btree (skupina_vydavkov_id);
+
+
+--
+-- Name: index_itms.polozky_rozpoctu_on_subjekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.polozky_rozpoctu_on_subjekt_id" ON polozky_rozpoctu USING btree (subjekt_id);
 
 
 --
@@ -7920,6 +7957,13 @@ CREATE INDEX "index_itms.projekty_partneri_on_projekt_id" ON projekty_partneri U
 --
 
 CREATE UNIQUE INDEX "index_itms.projekty_partneri_on_projekt_id_and_partner_id" ON projekty_partneri USING btree (projekt_id, partner_id);
+
+
+--
+-- Name: index_itms.projekty_polozky_rozpoctu_on_p_and_pr; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.projekty_polozky_rozpoctu_on_p_and_pr" ON projekty_polozky_rozpoctu USING btree (projekt_id, polozka_rozpoctu_id);
 
 
 --
@@ -8972,6 +9016,14 @@ ALTER TABLE ONLY konkretne_ciele
 
 
 --
+-- Name: fk_rails_466d6c5443; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY polozky_rozpoctu
+    ADD CONSTRAINT fk_rails_466d6c5443 FOREIGN KEY (skupina_vydavkov_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_47b7955fdd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9148,6 +9200,14 @@ ALTER TABLE ONLY zop_zamietnute_projekt
 
 
 --
+-- Name: fk_rails_5bea80ee4e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY polozky_rozpoctu
+    ADD CONSTRAINT fk_rails_5bea80ee4e FOREIGN KEY (aktivita_id) REFERENCES aktivity(id);
+
+
+--
 -- Name: fk_rails_5e3e3373cd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9217,6 +9277,14 @@ ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti_ciele
 
 ALTER TABLE ONLY zop_predlozene_predfinancovanie
     ADD CONSTRAINT fk_rails_6756f57485 FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
+
+
+--
+-- Name: fk_rails_6837e22c76; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY polozky_rozpoctu
+    ADD CONSTRAINT fk_rails_6837e22c76 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
 
 
 --
@@ -9457,6 +9525,14 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
 
 ALTER TABLE ONLY verejne_obstaravania_uctovne_doklady
     ADD CONSTRAINT fk_rails_8e51e82a4a FOREIGN KEY (uctovny_doklad_id) REFERENCES uctovne_doklady(id);
+
+
+--
+-- Name: fk_rails_8ed1a0f859; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY polozky_rozpoctu
+    ADD CONSTRAINT fk_rails_8ed1a0f859 FOREIGN KEY (intenzita_id) REFERENCES intenzity(id);
 
 
 --
@@ -10167,10 +10243,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171017175318'),
 ('20171017175418'),
 ('20171017175518'),
+('20171017182731'),
 ('20171017182931'),
 ('20171113145824'),
 ('20171113180259'),
-('20171113185839'),
 ('20171114124735'),
 ('20171114143548'),
 ('20171115092048');
