@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Itms::SyncProjectActivityJob, type: :job do
+RSpec.describe Itms::SyncActivityJob, type: :job do
   include_context "itms_downloader"
 
   context '#perform' do
@@ -12,7 +12,7 @@ RSpec.describe Itms::SyncProjectActivityJob, type: :job do
 
       subject.perform('/v2/aktivita/122', downloader: downloader)
 
-      expect(Itms::ProjectActivity.first).to have_attributes(
+      expect(Itms::Activity.first).to have_attributes(
         itms_id: 122,
         itms_href: '/v2/aktivita/122',
 

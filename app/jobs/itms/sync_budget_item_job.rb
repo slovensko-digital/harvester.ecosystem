@@ -22,15 +22,4 @@ class Itms::SyncBudgetItemJob < ItmsJob
       bi.save!
     end
   end
-
-  private
-
-  def find_or_create_activity_by_json(json, downloader)
-    return if json.blank?
-    existing_object = Itms::ProjectActivity.find_by(itms_id: json['id'])
-    return existing_object if existing_object.present?
-
-    Itms::SyncProjectActivityJob.perform_now(json['href'], downloader: downloader)
-    Itms::ProjectActivity.find_by!(itms_id: json['id'])
-  end
 end

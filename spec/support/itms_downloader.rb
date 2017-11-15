@@ -81,5 +81,15 @@ RSpec.shared_context "itms_downloader", :shared_context => :metadata do
         .to receive(:get)
         .with(include('https://opendata.itms2014.sk/v2/vyzvy/planovane'))
         .and_return(double(body: itms_file_fixture('vyzva_planovana_item.json')))
+
+    allow(downloader)
+        .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/vyzvy/vyhlasene'))
+        .and_return(double(body: itms_file_fixture('vyzva_vyhlasena_item.json')))
+
+    allow(downloader)
+        .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/polozkaRozpoctu/'))
+        .and_return(double(body: itms_file_fixture('polozka_rozpoctu_item.json')))
   end
 end
