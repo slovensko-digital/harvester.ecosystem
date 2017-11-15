@@ -1,12 +1,12 @@
 require 'harvester_utils/downloader'
 
-class Itms::SyncProjectActivityJob < ItmsJob
+class Itms::SyncActivityJob < ItmsJob
   def perform(itms_href, downloader: HarvesterUtils::Downloader)
     response = downloader.get("https://opendata.itms2014.sk#{itms_href}")
     json = JSON.parse(response.body)
     _, _, _, itms_id = itms_href.split('/')
 
-    pa = Itms::ProjectActivity.find_or_initialize_by(itms_id: itms_id)
+    pa = Itms::Activity.find_or_initialize_by(itms_id: itms_id)
     pa.itms_href = json['href']
     pa.save!
 

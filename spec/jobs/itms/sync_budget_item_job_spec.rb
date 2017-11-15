@@ -17,7 +17,7 @@ RSpec.describe Itms::SyncBudgetItemJob, type: :job do
         itms_id: 1,
         itms_href: '/v2/polozkaRozpoctu/1',
 
-        aktivita: Itms::ProjectActivity.find_by!(itms_id: 1),
+        aktivita: Itms::Activity.find_by!(itms_id: 1),
         intenzita: Itms::Intensity.find_by!(itms_id: 1),
         skupina_vydavkov: Itms::CodelistValue.where_codelist_and_value(1040, 10).first!,
         subjekt: Itms::Subject.find_by!(itms_id: 100077),

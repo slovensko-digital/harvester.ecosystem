@@ -3,7 +3,7 @@ class Itms::Project < ApplicationRecord
 
   belongs_to :prijimatel, class_name: Itms::Subject
   has_many :projekty_aktivity,
-           class_name: Itms::ProjectProjectActivity,
+           class_name: Itms::ProjectActivity,
            foreign_key: 'projekt_id'
   has_many :aktivity,
            through: :projekty_aktivity,
@@ -70,5 +70,5 @@ class Itms::Project < ApplicationRecord
   has_many :uzemne_mechanizmy,
            class_name: Itms::ProjectTerritorialMechanism,
            foreign_key: 'projekt_id'
-  belongs_to :vyzva, class_name: Itms::PlannedProposalCall
+  belongs_to :vyzva, class_name: Itms::AnnouncedProposalCall
 end

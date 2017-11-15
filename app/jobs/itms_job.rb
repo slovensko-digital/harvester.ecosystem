@@ -13,6 +13,15 @@ class ItmsJob < ApplicationJob
     json.map { |codelist_value_json| find_or_create_codelist_value_by_json(codelist_value_json, downloader) }
   end
 
+  def find_or_create_activity_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::Activity.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncActivityJob.perform_now(json['href'], downloader: downloader)
+    Itms::Activity.find_by!(itms_id: json['id'])
+  end
+
   def find_or_create_activity_type_by_json(json, downloader)
     return if json.blank?
     unit = Itms::ActivityType.find_by(itms_id: json['id'])

@@ -21,10 +21,10 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
 
         akronym: 'MET OPII',
         aktivity: [
-            Itms::ProjectActivity.find_by!(itms_id: 122),
-            Itms::ProjectActivity.find_by!(itms_id: 123),
-            Itms::ProjectActivity.find_by!(itms_id: 121),
-            Itms::ProjectActivity.find_by!(itms_id: 120),
+            Itms::Activity.find_by!(itms_id: 122),
+            Itms::Activity.find_by!(itms_id: 123),
+            Itms::Activity.find_by!(itms_id: 121),
+            Itms::Activity.find_by!(itms_id: 120),
         ],
         cislo_zmluvy: 'OPKZPPO1SC121/1222015/04',
         #TODO data_projektu: ,
@@ -229,7 +229,7 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         uzemne_mechanizmy: [
             Itms::ProjectTerritorialMechanism.where_goal_and_codelist(24, 1043, 7).first!,
         ],
-        vyzva: Itms::PlannedProposalCall.find_by!(itms_id: 1),
+        vyzva: Itms::AnnouncedProposalCall.find_by!(itms_id: 1),
         zameranie_projektu: 'Dopytovo-orientovaný projekt',
       )
     end

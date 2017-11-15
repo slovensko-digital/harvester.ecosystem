@@ -14,7 +14,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.save!
 
       p.akronym = json['akronym']
-      p.aktivity = find_or_create_project_activities_by_json(json['aktivity'], downloader)
+      p.aktivity = find_or_create_activities_by_json(json['aktivity'], downloader)
       p.cislo_zmluvy = json['cisloZmluvy']
       #TODO p.data_projektu = json['dataProjektu']
       p.datum_konca_hlavnych_aktivit = json['datumKoncaHlavnychAktivit']
@@ -55,7 +55,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.typy_uzemia = find_or_create_codelist_values_with_goals_by_json(json['typyUzemia'], p.typy_uzemia, downloader)
       p.url_adresa_zmluva = json['urlAdresaZmluva']
       p.uzemne_mechanizmy = find_or_create_codelist_values_with_goals_by_json(json['uzemneMechanizmy'], p.uzemne_mechanizmy, downloader)
-      p.vyzva = find_or_create_planned_proposal_call_by_json(json['vyzva'], downloader)
+      p.vyzva = find_or_create_announced_proposal_call_by_json(json['vyzva'], downloader)
       p.zameranie_projektu = json['zameranieProjektu']
 
       p.save!
@@ -69,18 +69,9 @@ class Itms::SyncProjectJob < ItmsJob
     json.map { |json| find_or_create_intensity_by_json(json, downloader) }
   end
 
-  def find_or_create_project_activities_by_json(json, downloader)
+  def find_or_create_activities_by_json(json, downloader)
     return [] if json.blank?
-    json.map { |json| find_or_create_project_activity_by_json(json, downloader) }
-  end
-
-  def find_or_create_project_activity_by_json(json, downloader)
-    return if json.blank?
-    project_activity = Itms::ProjectActivity.find_by(itms_id: json['id'])
-    return project_activity if project_activity.present?
-
-    Itms::SyncProjectActivityJob.perform_now(json['href'], downloader: downloader)
-    Itms::ProjectActivity.find_by!(itms_id: json['id'])
+    json.map { |json| find_or_create_activity_by_json(json, downloader) }
   end
 
   def find_or_create_codelist_values_with_goals_by_json(json, scope, downloader)
@@ -195,12 +186,12 @@ class Itms::SyncProjectJob < ItmsJob
     Itms::NfcRequest.find_by!(itms_id: json['id'])
   end
 
-  def find_or_create_planned_proposal_call_by_json(json, downloader)
+  def find_or_create_announced_proposal_call_by_json(json, downloader)
     return if json.blank?
-    existing_object = Itms::PlannedProposalCall.find_by(itms_id: json['id'])
+    existing_object = Itms::AnnouncedProposalCall.find_by(itms_id: json['id'])
     return existing_object if existing_object.present?
 
-    Itms::SyncPlannedProposalCallJob.perform_now(json['href'], downloader: downloader)
-    Itms::PlannedProposalCall.find_by!(itms_id: json['id'])
+    Itms::SyncAnnouncedProposalCallJob.perform_now(json['href'], downloader: downloader)
+    Itms::AnnouncedProposalCall.find_by!(itms_id: json['id'])
   end
 end
