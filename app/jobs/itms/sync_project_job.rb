@@ -69,15 +69,6 @@ class Itms::SyncProjectJob < ItmsJob
     json.map { |json| find_or_create_intensity_by_json(json, downloader) }
   end
 
-  def find_or_create_intensity_by_json(json, downloader)
-    return if json.blank?
-    intensity = Itms::Intensity.find_by(itms_id: json['id'])
-    return intensity if intensity.present?
-
-    Itms::SyncIntensityJob.perform_now(json['href'], downloader: downloader)
-    Itms::Intensity.find_by!(itms_id: json['id'])
-  end
-
   def find_or_create_project_activities_by_json(json, downloader)
     return [] if json.blank?
     json.map { |json| find_or_create_project_activity_by_json(json, downloader) }

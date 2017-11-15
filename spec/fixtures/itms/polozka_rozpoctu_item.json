@@ -1,0 +1,27 @@
+{
+  "aktivita": {
+    "href": "/v2/aktivita/1",
+    "id": 1
+  },
+  "href": "/v2/polozkaRozpoctu/1",
+  "id": 1,
+  "intenzita": {
+    "href": "/v2/intenzita/1",
+    "id": 1
+  },
+  "skupinaVydavkov": {
+    "ciselnikKod": 1040,
+    "href": "/v2/hodnotaCiselnika/1040/hodnota/10",
+    "id": 10
+  },
+  "subjekt": {
+    "dic": "2021777780",
+    "href": "/v2/subjekty/100077",
+    "ico": "30794536",
+    "id": 100077
+  },
+  "viazanaSuma": 7002729.1,
+  "volneProstriedky": 25278444.49,
+  "vratenaSuma": 0,
+  "zazmluvnenaSuma": 32281173.59
+}

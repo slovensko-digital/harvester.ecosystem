@@ -121,6 +121,16 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
     end
     add_index 'itms.projekty_partneri', [:projekt_id, :partner_id], unique: true
 
+    create_table 'itms.projekty_polozky_rozpoctu' do |t|
+      t.references :projekt, null: false, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :polozka_rozpoctu, null: false, index: true, foreign_key: { to_table: 'itms.polozky_rozpoctu' }
+      t.timestamps
+    end
+    add_index 'itms.projekty_polozky_rozpoctu',
+              [:projekt_id, :polozka_rozpoctu_id],
+              name: 'index_itms.projekty_polozky_rozpoctu_on_p_and_pr',
+              unique: true
+
     create_table 'itms.projekty_sekundarne_tematicke_okruhy' do |t|
       t.references :projekt, index: true, foreign_key: { to_table: 'itms.projekty' }
       t.references :konkretny_ciel, index: { name: 'index_itms.projekty_sekundarne_tematicke_okruhy_on_kc' }, foreign_key: { to_table: 'itms.konkretne_ciele' }

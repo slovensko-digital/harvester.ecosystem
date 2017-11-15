@@ -40,6 +40,15 @@ class ItmsJob < ApplicationJob
     Itms::Discrepancy.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_intensity_by_json(json, downloader)
+    return if json.blank?
+    intensity = Itms::Intensity.find_by(itms_id: json['id'])
+    return intensity if intensity.present?
+
+    Itms::SyncIntensityJob.perform_now(json['href'], downloader: downloader)
+    Itms::Intensity.find_by!(itms_id: json['id'])
+  end
+
   def find_or_create_operational_programs_by_json(json, downloader)
     return [] if json.blank?
     json.map { |j| find_or_create_operational_program_by_json(j, downloader) }
