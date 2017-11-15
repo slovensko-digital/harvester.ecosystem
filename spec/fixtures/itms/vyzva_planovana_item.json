@@ -1,0 +1,44 @@
+{
+  "alokaciaEU": 100000000,
+  "alokaciaSR": 7447059,
+  "createdAt": "2015-05-27T10:17:40.163Z",
+  "datumUzavretia1Kolo": "2018-01-01T00:00:00Z",
+  "datumUzavretia2Kolo": "2018-05-01T00:00:00Z",
+  "datumVyhlasenia1Kolo": "2017-11-01T00:00:00Z",
+  "datumVyhlasenia2Kolo": "2018-02-01T00:00:00Z",
+  "doplnujuceInfo": [
+    {
+      "nazov": "Webová stránka Operačného programu Kvalita životného prostredia",
+      "url": "http://www.op-kzp.sk"
+    }
+  ],
+  "druh": "VYZVA",
+  "href": "/v2/vyzvy/planovane/2",
+  "id": 2,
+  "kod": "2015/00002",
+  "konkretneCiele": [
+    {
+      "href": "/v2/konkretnyCiel/38",
+      "id": 38
+    }
+  ],
+  "nazov": "výzva na predkladanie žiadostí o NFP - príprava na opätovné použitie a zhodnocovanie nie nebezpečného odpadu, triedený zber a predchádzanie vzniku BRKO – schéma regionálnej štátnej pomoci",
+  "poskytovatelia": [
+    {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    }
+  ],
+  "stav": "Vyhlásená výzva",
+  "typ1Kolo": "UZAVRETA",
+  "typ2Kolo": "UZAVRETA",
+  "updatedAt": "2016-10-26T19:41:26.605Z",
+  "vyhlasovatel": {
+    "dic": "2023106679",
+    "href": "/v2/subjekty/100002",
+    "ico": "42181810",
+    "id": 100002
+  }
+}

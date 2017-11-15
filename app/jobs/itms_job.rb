@@ -63,6 +63,11 @@ class ItmsJob < ApplicationJob
     Itms::PriorityAxis.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_specific_goals_by_json(json, downloader)
+    return [] if json.blank?
+    json.map { |j| find_or_create_specific_goal_by_json(j, downloader) }
+  end
+
   def find_or_create_specific_goal_by_json(json, downloader)
     return if json.blank?
     specific_goal = Itms::SpecificGoal.find_by(itms_id: json['id'])
