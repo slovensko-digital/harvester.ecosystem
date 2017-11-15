@@ -58,6 +58,15 @@ class ItmsJob < ApplicationJob
     Itms::Intensity.find_by!(itms_id: json['id'])
   end
 
+
+  def find_or_create_nuts_code_by_json(json, downloader)
+    Itms::NutsCode.find_or_create_by!(
+        gps_lat: json['gpsLat'] ? json['gpsLat'].to_d : nil,
+        gps_lon: json['gpsLon'] ? json['gpsLon'].to_d : nil,
+        hodnota_nuts: find_or_create_codelist_value_by_json(json['hodnotaNuts'], downloader)
+    )
+  end
+
   def find_or_create_operational_programs_by_json(json, downloader)
     return [] if json.blank?
     json.map { |j| find_or_create_operational_program_by_json(j, downloader) }
