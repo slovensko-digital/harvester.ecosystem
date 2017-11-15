@@ -1,0 +1,95 @@
+{
+  "alokaciaEU": 60531000,
+  "alokaciaSR": 7500000,
+  "createdAt": "2017-02-06T09:25:03.371Z",
+  "datumUzavretia": "2015-11-10T00:00:00Z",
+  "datumVyhlasenia": "2015-09-11T00:00:00Z",
+  "doplnujuceInfo": [
+    {
+      "nazov": "Webová stránka Operačného programu Kvalita životného prostredia",
+      "url": "http://www.op-kzp.sk"
+    }
+  ],
+  "druh": "VYZVA",
+  "fondy": [
+    {
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/1",
+      "id": 1
+    }
+  ],
+  "href": "/v2/vyzvy/vyhlasene/2",
+  "id": 2,
+  "kod": "OPKZP-PO3-SC313-2015-2",
+  "konkretneCieleTypyAktivit": [
+    {
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/44",
+        "id": 44
+      },
+      "typyAktivit": [
+        {
+          "href": "/v2/typyAktivit/333",
+          "id": 333
+        },
+        {
+          "href": "/v2/typyAktivit/719",
+          "id": 719
+        }
+      ]
+    }
+  ],
+  "kontaktneOsoby": [
+    {
+      "email": "lubos.rudohradsky@minv.sk",
+      "id": 189,
+      "meno": "Ľuboš",
+      "menoUplne": "Mgr. Ľuboš Rudohradský",
+      "priezvisko": "Rudohradský",
+      "telefon": "02/50945088"
+    }
+  ],
+  "nazov": "2. VÝZVA NA PREDKLADANIE ŽIADOSTÍ O NENÁVRATNÝ FINANČNÝ PRÍSPEVOK zameraná na vybudovanie technickej a inštitucionálnej podpory špecializovaných záchranných modulov",
+  "planovaneVyzvy": [
+    {
+      "href": "/v2/vyzvy/planovane/27",
+      "id": 27
+    }
+  ],
+  "poskytovatelia": [
+    {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    }
+  ],
+  "posudzovaneObdobia": [
+    {
+      "datumUzavierky": "2016-09-30",
+      "poradoveCislo": 1
+    },
+    {
+      "datumUzavierky": "2016-11-30",
+      "poradoveCislo": 2
+    },
+    {
+      "datumUzavierky": "2017-01-31",
+      "poradoveCislo": 3
+    },
+    {
+      "datumUzavierky": "2017-05-15",
+      "poradoveCislo": 4
+    }
+  ],
+  "stav": "Vyhlásená",
+  "technickaAsistencia": false,
+  "typ": "OTVORENA",
+  "updatedAt": "2017-02-06T13:01:09.263Z",
+  "vyhlasovatel": {
+    "dic": "2020571520",
+    "href": "/v2/subjekty/100004",
+    "ico": "00151866",
+    "id": 100004
+  }
+}

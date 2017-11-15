@@ -736,6 +736,42 @@ ALTER SEQUENCE organizacne_zlozky_id_seq OWNED BY organizacne_zlozky.id;
 
 
 --
+-- Name: osoby; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE osoby (
+    id integer NOT NULL,
+    itms_id integer NOT NULL,
+    email character varying,
+    meno character varying,
+    meno_uplne character varying,
+    priezvisko character varying,
+    telefon character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: osoby_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE osoby_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: osoby_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE osoby_id_seq OWNED BY osoby.id;
+
+
+--
 -- Name: pohladavkove_doklady; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -1998,50 +2034,24 @@ ALTER SEQUENCE vyzvy_planovane_poskytovatelia_id_seq OWNED BY vyzvy_planovane_po
 
 CREATE TABLE vyzvy_vyhlasene (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
+    alokacia_eu numeric,
+    alokacia_sr numeric,
+    datum_uzavretia timestamp without time zone,
+    datum_vyhlasenia timestamp without time zone,
     druh character varying,
     kod character varying,
     nazov character varying,
     stav character varying,
-    typ character varying,
-    alokacia_eu numeric,
-    alokacia_sr numeric,
-    updated_at timestamp without time zone,
-    created_at timestamp without time zone,
     technicka_asistencia boolean,
-    datum_uzavretia timestamp without time zone,
-    datum_vyhlasenia timestamp without time zone
+    typ character varying,
+    vyhlasovatel_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
-
-
---
--- Name: vyzvy_vyhlasene_ciele; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE vyzvy_vyhlasene_ciele (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    vyzvy_vyhlasene_id bigint NOT NULL
-);
-
-
---
--- Name: vyzvy_vyhlasene_ciele_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE vyzvy_vyhlasene_ciele_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: vyzvy_vyhlasene_ciele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE vyzvy_vyhlasene_ciele_id_seq OWNED BY vyzvy_vyhlasene_ciele.id;
 
 
 --
@@ -2050,9 +2060,11 @@ ALTER SEQUENCE vyzvy_vyhlasene_ciele_id_seq OWNED BY vyzvy_vyhlasene_ciele.id;
 
 CREATE TABLE vyzvy_vyhlasene_doplnujuce_info (
     id integer NOT NULL,
-    vyzvy_vyhlasene_id bigint NOT NULL,
+    vyzva_id integer NOT NULL,
     nazov character varying,
-    url character varying
+    url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -2081,8 +2093,10 @@ ALTER SEQUENCE vyzvy_vyhlasene_doplnujuce_info_id_seq OWNED BY vyzvy_vyhlasene_d
 
 CREATE TABLE vyzvy_vyhlasene_fondy (
     id integer NOT NULL,
-    vyzvy_vyhlasene_id bigint NOT NULL,
-    nazov character varying
+    vyzva_id integer NOT NULL,
+    fond_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -2125,15 +2139,80 @@ ALTER SEQUENCE vyzvy_vyhlasene_id_seq OWNED BY vyzvy_vyhlasene.id;
 
 
 --
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_vyhlasene_konkretne_ciele_typy_aktivit (
+    id integer NOT NULL,
+    vyzva_id integer NOT NULL,
+    konkretny_ciel_id integer NOT NULL,
+    typ_aktivity_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_id_seq OWNED BY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit.id;
+
+
+--
+-- Name: vyzvy_vyhlasene_kontaktne_osoby; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE vyzvy_vyhlasene_kontaktne_osoby (
+    id integer NOT NULL,
+    vyzva_id integer NOT NULL,
+    osoba_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: vyzvy_vyhlasene_kontaktne_osoby_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE vyzvy_vyhlasene_kontaktne_osoby_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vyzvy_vyhlasene_kontaktne_osoby_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE vyzvy_vyhlasene_kontaktne_osoby_id_seq OWNED BY vyzvy_vyhlasene_kontaktne_osoby.id;
+
+
+--
 -- Name: vyzvy_vyhlasene_poskytovatelia; Type: TABLE; Schema: itms; Owner: -
 --
 
 CREATE TABLE vyzvy_vyhlasene_poskytovatelia (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    vyzvy_vyhlasene_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
+    vyzva_id integer NOT NULL,
+    poskytovatel_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -2157,23 +2236,24 @@ ALTER SEQUENCE vyzvy_vyhlasene_poskytovatelia_id_seq OWNED BY vyzvy_vyhlasene_po
 
 
 --
--- Name: vyzvy_vyhlasene_vyhlasovatel; Type: TABLE; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_posudzovane_obdobia; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE vyzvy_vyhlasene_vyhlasovatel (
+CREATE TABLE vyzvy_vyhlasene_posudzovane_obdobia (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    vyzvy_vyhlasene_id bigint NOT NULL,
-    ico character varying,
-    ine_identifikacne_cislo character varying
+    vyzva_id integer NOT NULL,
+    datum_uzavierky timestamp without time zone,
+    poradove_cislo integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: vyzvy_vyhlasene_vyhlasovatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_posudzovane_obdobia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE vyzvy_vyhlasene_vyhlasovatel_id_seq
+CREATE SEQUENCE vyzvy_vyhlasene_posudzovane_obdobia_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2182,33 +2262,30 @@ CREATE SEQUENCE vyzvy_vyhlasene_vyhlasovatel_id_seq
 
 
 --
--- Name: vyzvy_vyhlasene_vyhlasovatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_posudzovane_obdobia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE vyzvy_vyhlasene_vyhlasovatel_id_seq OWNED BY vyzvy_vyhlasene_vyhlasovatel.id;
+ALTER SEQUENCE vyzvy_vyhlasene_posudzovane_obdobia_id_seq OWNED BY vyzvy_vyhlasene_posudzovane_obdobia.id;
 
 
 --
--- Name: vzvy_vyhlasene_kontaktne_osoby; Type: TABLE; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_vyzvy_planovane; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE vzvy_vyhlasene_kontaktne_osoby (
+CREATE TABLE vyzvy_vyhlasene_vyzvy_planovane (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    vyzvy_vyhlasene_id bigint NOT NULL,
-    email character varying,
-    meno character varying,
-    meno_uplne character varying,
-    priezvisko character varying,
-    telefon character varying
+    vyhlasena_vyzva_id integer NOT NULL,
+    planovana_vyzva_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: vzvy_vyhlasene_kontaktne_osoby_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_vyzvy_planovane_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE vzvy_vyhlasene_kontaktne_osoby_id_seq
+CREATE SEQUENCE vyzvy_vyhlasene_vyzvy_planovane_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2217,71 +2294,10 @@ CREATE SEQUENCE vzvy_vyhlasene_kontaktne_osoby_id_seq
 
 
 --
--- Name: vzvy_vyhlasene_kontaktne_osoby_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_vyzvy_planovane_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE vzvy_vyhlasene_kontaktne_osoby_id_seq OWNED BY vzvy_vyhlasene_kontaktne_osoby.id;
-
-
---
--- Name: vzvy_vyhlasene_planovane_vyzvy; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE vzvy_vyhlasene_planovane_vyzvy (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    vyzvy_vyhlasene_id bigint NOT NULL
-);
-
-
---
--- Name: vzvy_vyhlasene_planovane_vyzvy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE vzvy_vyhlasene_planovane_vyzvy_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: vzvy_vyhlasene_planovane_vyzvy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE vzvy_vyhlasene_planovane_vyzvy_id_seq OWNED BY vzvy_vyhlasene_planovane_vyzvy.id;
-
-
---
--- Name: vzvy_vyhlasene_posudzovane_obdobia; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE vzvy_vyhlasene_posudzovane_obdobia (
-    id integer NOT NULL,
-    vyzvy_vyhlasene_id bigint NOT NULL,
-    datum_uzavierky character varying,
-    poradove_cislo bigint
-);
-
-
---
--- Name: vzvy_vyhlasene_posudzovane_obdobia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE vzvy_vyhlasene_posudzovane_obdobia_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: vzvy_vyhlasene_posudzovane_obdobia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE vzvy_vyhlasene_posudzovane_obdobia_id_seq OWNED BY vzvy_vyhlasene_posudzovane_obdobia.id;
+ALTER SEQUENCE vyzvy_vyhlasene_vyzvy_planovane_id_seq OWNED BY vyzvy_vyhlasene_vyzvy_planovane.id;
 
 
 --
@@ -5162,6 +5178,13 @@ ALTER TABLE ONLY organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('organiz
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY osoby ALTER COLUMN id SET DEFAULT nextval('osoby_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('pohladavkove_doklady_id_seq'::regclass);
 
 
@@ -5414,13 +5437,6 @@ ALTER TABLE ONLY vyzvy_vyhlasene ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhl
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vyzvy_vyhlasene_ciele ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_ciele_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
 ALTER TABLE ONLY vyzvy_vyhlasene_doplnujuce_info ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_doplnujuce_info_id_seq'::regclass);
 
 
@@ -5435,6 +5451,20 @@ ALTER TABLE ONLY vyzvy_vyhlasene_fondy ALTER COLUMN id SET DEFAULT nextval('vyzv
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_kontaktne_osoby ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_kontaktne_osoby_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_poskytovatelia_id_seq'::regclass);
 
 
@@ -5442,28 +5472,14 @@ ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia ALTER COLUMN id SET DEFAULT next
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vyzvy_vyhlasene_vyhlasovatel ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_vyhlasovatel_id_seq'::regclass);
+ALTER TABLE ONLY vyzvy_vyhlasene_posudzovane_obdobia ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_posudzovane_obdobia_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vzvy_vyhlasene_kontaktne_osoby ALTER COLUMN id SET DEFAULT nextval('vzvy_vyhlasene_kontaktne_osoby_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vzvy_vyhlasene_planovane_vyzvy ALTER COLUMN id SET DEFAULT nextval('vzvy_vyhlasene_planovane_vyzvy_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vzvy_vyhlasene_posudzovane_obdobia ALTER COLUMN id SET DEFAULT nextval('vzvy_vyhlasene_posudzovane_obdobia_id_seq'::regclass);
+ALTER TABLE ONLY vyzvy_vyhlasene_vyzvy_planovane ALTER COLUMN id SET DEFAULT nextval('vyzvy_vyhlasene_vyzvy_planovane_id_seq'::regclass);
 
 
 --
@@ -6204,6 +6220,14 @@ ALTER TABLE ONLY organizacne_zlozky
 
 
 --
+-- Name: osoby_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY osoby
+    ADD CONSTRAINT osoby_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6484,14 +6508,6 @@ ALTER TABLE ONLY vyzvy_planovane_poskytovatelia
 
 
 --
--- Name: vyzvy_vyhlasene_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vyzvy_vyhlasene_ciele
-    ADD CONSTRAINT vyzvy_vyhlasene_ciele_pkey PRIMARY KEY (id);
-
-
---
 -- Name: vyzvy_vyhlasene_doplnujuce_info_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6505,6 +6521,22 @@ ALTER TABLE ONLY vyzvy_vyhlasene_doplnujuce_info
 
 ALTER TABLE ONLY vyzvy_vyhlasene_fondy
     ADD CONSTRAINT vyzvy_vyhlasene_fondy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
+    ADD CONSTRAINT vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vyzvy_vyhlasene_kontaktne_osoby_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_kontaktne_osoby
+    ADD CONSTRAINT vyzvy_vyhlasene_kontaktne_osoby_pkey PRIMARY KEY (id);
 
 
 --
@@ -6524,35 +6556,19 @@ ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
 
 
 --
--- Name: vyzvy_vyhlasene_vyhlasovatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_posudzovane_obdobia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vyzvy_vyhlasene_vyhlasovatel
-    ADD CONSTRAINT vyzvy_vyhlasene_vyhlasovatel_pkey PRIMARY KEY (id);
-
-
---
--- Name: vzvy_vyhlasene_kontaktne_osoby_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vzvy_vyhlasene_kontaktne_osoby
-    ADD CONSTRAINT vzvy_vyhlasene_kontaktne_osoby_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY vyzvy_vyhlasene_posudzovane_obdobia
+    ADD CONSTRAINT vyzvy_vyhlasene_posudzovane_obdobia_pkey PRIMARY KEY (id);
 
 
 --
--- Name: vzvy_vyhlasene_planovane_vyzvy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_vyzvy_planovane_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vzvy_vyhlasene_planovane_vyzvy
-    ADD CONSTRAINT vzvy_vyhlasene_planovane_vyzvy_pkey PRIMARY KEY (id);
-
-
---
--- Name: vzvy_vyhlasene_posudzovane_obdobia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vzvy_vyhlasene_posudzovane_obdobia
-    ADD CONSTRAINT vzvy_vyhlasene_posudzovane_obdobia_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY vyzvy_vyhlasene_vyzvy_planovane
+    ADD CONSTRAINT vyzvy_vyhlasene_vyzvy_planovane_pkey PRIMARY KEY (id);
 
 
 --
@@ -7564,6 +7580,13 @@ CREATE UNIQUE INDEX "index_itms.organizacne_zlozky_on_itms_id" ON organizacne_zl
 
 
 --
+-- Name: index_itms.osoby_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.osoby_on_itms_id" ON osoby USING btree (itms_id);
+
+
+--
 -- Name: index_itms.pohladavkove_doklady_on_dlznik_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -8250,10 +8273,108 @@ CREATE INDEX "index_itms.vyzvy_planovane_poskytovatelia_on_vyzva_id" ON vyzvy_pl
 
 
 --
--- Name: index_itms.vyzvy_vyhlasene_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.vyzvy_vyhlasene_doplnujuce_info_on_vyzva_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.vyzvy_vyhlasene_on_itms_identifier" ON vyzvy_vyhlasene USING btree (itms_identifier);
+CREATE INDEX "index_itms.vyzvy_vyhlasene_doplnujuce_info_on_vyzva_id" ON vyzvy_vyhlasene_doplnujuce_info USING btree (vyzva_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_fondy_on_fond_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_fondy_on_fond_id" ON vyzvy_vyhlasene_fondy USING btree (fond_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_fondy_on_vyzva_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_fondy_on_vyzva_id" ON vyzvy_vyhlasene_fondy USING btree (vyzva_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_on_kc; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_on_kc" ON vyzvy_vyhlasene_konkretne_ciele_typy_aktivit USING btree (konkretny_ciel_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_on_ta; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_on_ta" ON vyzvy_vyhlasene_konkretne_ciele_typy_aktivit USING btree (typ_aktivity_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_on_v; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_on_v" ON vyzvy_vyhlasene_konkretne_ciele_typy_aktivit USING btree (vyzva_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_kontaktne_osoby_on_osoba_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_kontaktne_osoby_on_osoba_id" ON vyzvy_vyhlasene_kontaktne_osoby USING btree (osoba_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_kontaktne_osoby_on_vyzva_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_kontaktne_osoby_on_vyzva_id" ON vyzvy_vyhlasene_kontaktne_osoby USING btree (vyzva_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.vyzvy_vyhlasene_on_itms_id" ON vyzvy_vyhlasene USING btree (itms_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_on_vyhlasovatel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_on_vyhlasovatel_id" ON vyzvy_vyhlasene USING btree (vyhlasovatel_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_poskytovatelia_on_poskytovatel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_poskytovatelia_on_poskytovatel_id" ON vyzvy_vyhlasene_poskytovatelia USING btree (poskytovatel_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_poskytovatelia_on_vyzva_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_poskytovatelia_on_vyzva_id" ON vyzvy_vyhlasene_poskytovatelia USING btree (vyzva_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_posudzovane_obdobia_on_vyzva_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_posudzovane_obdobia_on_vyzva_id" ON vyzvy_vyhlasene_posudzovane_obdobia USING btree (vyzva_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_vyzvy_planovane_on_pv; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_vyzvy_planovane_on_pv" ON vyzvy_vyhlasene_vyzvy_planovane USING btree (planovana_vyzva_id);
+
+
+--
+-- Name: index_itms.vyzvy_vyhlasene_vyzvy_planovane_on_vv; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.vyzvy_vyhlasene_vyzvy_planovane_on_vv" ON vyzvy_vyhlasene_vyzvy_planovane USING btree (vyhlasena_vyzva_id);
 
 
 --
@@ -8531,6 +8652,14 @@ ALTER TABLE ONLY zonfp_schvalene_typy_uzemia_ciele
 
 
 --
+-- Name: fk_rails_1792cc9243; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene
+    ADD CONSTRAINT fk_rails_1792cc9243 FOREIGN KEY (vyhlasovatel_id) REFERENCES subjekty(id);
+
+
+--
 -- Name: fk_rails_17faad18e6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8544,6 +8673,14 @@ ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
 
 ALTER TABLE ONLY verejne_obstaravania
     ADD CONSTRAINT fk_rails_18381644cd FOREIGN KEY (druh_zakazky_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_19863b7ff4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
+    ADD CONSTRAINT fk_rails_19863b7ff4 FOREIGN KEY (poskytovatel_id) REFERENCES subjekty(id);
 
 
 --
@@ -8592,6 +8729,14 @@ ALTER TABLE ONLY zop_predlozene_predkladana_za
 
 ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti
     ADD CONSTRAINT fk_rails_20e5c19bdc FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: fk_rails_2137cdd4b6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
+    ADD CONSTRAINT fk_rails_2137cdd4b6 FOREIGN KEY (vyzva_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
@@ -8648,14 +8793,6 @@ ALTER TABLE ONLY verejne_obstaravania_projekty
 
 ALTER TABLE ONLY projekty
     ADD CONSTRAINT fk_rails_262be0aab1 FOREIGN KEY (prijimatel_id) REFERENCES subjekty(id);
-
-
---
--- Name: fk_rails_26775dc4be; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vyzvy_vyhlasene_doplnujuce_info
-    ADD CONSTRAINT fk_rails_26775dc4be FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
@@ -8819,6 +8956,14 @@ ALTER TABLE ONLY zop_predlozene_prijimatel
 
 
 --
+-- Name: fk_rails_43ac458ef5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_fondy
+    ADD CONSTRAINT fk_rails_43ac458ef5 FOREIGN KEY (vyzva_id) REFERENCES vyzvy_vyhlasene(id);
+
+
+--
 -- Name: fk_rails_44f150d5d8; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8840,14 +8985,6 @@ ALTER TABLE ONLY aktivity
 
 ALTER TABLE ONLY vyzvy_planovane_konkretne_ciele
     ADD CONSTRAINT fk_rails_47bea54338 FOREIGN KEY (konkretny_ciel_id) REFERENCES konkretne_ciele(id);
-
-
---
--- Name: fk_rails_48bf1b5ec9; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vyzvy_vyhlasene_ciele
-    ADD CONSTRAINT fk_rails_48bf1b5ec9 FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
@@ -8939,6 +9076,14 @@ ALTER TABLE ONLY projekty_polozky_rozpoctu
 
 
 --
+-- Name: fk_rails_50b7fceecd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
+    ADD CONSTRAINT fk_rails_50b7fceecd FOREIGN KEY (konkretny_ciel_id) REFERENCES konkretne_ciele(id);
+
+
+--
 -- Name: fk_rails_512e1ff920; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8968,6 +9113,14 @@ ALTER TABLE ONLY projekty_meratelne_ukazovatele
 
 ALTER TABLE ONLY zop_zamietnute_prijimatel
     ADD CONSTRAINT fk_rails_5473ddf63b FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
+
+
+--
+-- Name: fk_rails_548236611b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_vyzvy_planovane
+    ADD CONSTRAINT fk_rails_548236611b FOREIGN KEY (planovana_vyzva_id) REFERENCES vyzvy_planovane(id);
 
 
 --
@@ -9008,6 +9161,14 @@ ALTER TABLE ONLY projekty_typy_uzemia
 
 ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
     ADD CONSTRAINT fk_rails_5f723e1acd FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
+-- Name: fk_rails_5f8bc02fae; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_fondy
+    ADD CONSTRAINT fk_rails_5f8bc02fae FOREIGN KEY (fond_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
@@ -9072,6 +9233,14 @@ ALTER TABLE ONLY zonfp_schvalene_organizacne_zlozky
 
 ALTER TABLE ONLY operacne_programy
     ADD CONSTRAINT fk_rails_69da6acee6 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
+
+
+--
+-- Name: fk_rails_6c4cefed09; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_kontaktne_osoby
+    ADD CONSTRAINT fk_rails_6c4cefed09 FOREIGN KEY (osoba_id) REFERENCES osoby(id);
 
 
 --
@@ -9211,14 +9380,6 @@ ALTER TABLE ONLY zonfp_schvalene_hospodarske_cinnosti
 
 
 --
--- Name: fk_rails_86bdea70cc; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
-    ADD CONSTRAINT fk_rails_86bdea70cc FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
-
-
---
 -- Name: fk_rails_88302c96ad; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9315,6 +9476,14 @@ ALTER TABLE ONLY projekty_oblasti_intervencie
 
 
 --
+-- Name: fk_rails_940d7db37d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
+    ADD CONSTRAINT fk_rails_940d7db37d FOREIGN KEY (vyzva_id) REFERENCES vyzvy_vyhlasene(id);
+
+
+--
 -- Name: fk_rails_94aa9b848a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9344,6 +9513,14 @@ ALTER TABLE ONLY miesta_realizacie
 
 ALTER TABLE ONLY zonfp_zamietnute_vyzvy
     ADD CONSTRAINT fk_rails_9bee500755 FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: fk_rails_9ea2c85d7e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_vyzvy_planovane
+    ADD CONSTRAINT fk_rails_9ea2c85d7e FOREIGN KEY (vyhlasena_vyzva_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
@@ -9427,11 +9604,11 @@ ALTER TABLE ONLY zonfp_zamietnute_ziadatel
 
 
 --
--- Name: fk_rails_aeec9f40a3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_b0d1bbc3a6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY vzvy_vyhlasene_kontaktne_osoby
-    ADD CONSTRAINT fk_rails_aeec9f40a3 FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
+ALTER TABLE ONLY vyzvy_vyhlasene_doplnujuce_info
+    ADD CONSTRAINT fk_rails_b0d1bbc3a6 FOREIGN KEY (vyzva_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
@@ -9464,6 +9641,14 @@ ALTER TABLE ONLY zonfp_prijate_miesta_realizacie_units
 
 ALTER TABLE ONLY intenzity
     ADD CONSTRAINT fk_rails_b607ab30e5 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
+
+
+--
+-- Name: fk_rails_ba7c143782; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
+    ADD CONSTRAINT fk_rails_ba7c143782 FOREIGN KEY (typ_aktivity_id) REFERENCES typy_aktivit(id);
 
 
 --
@@ -9579,19 +9764,19 @@ ALTER TABLE ONLY zonfp_zamietnute_aktivity_projekty
 
 
 --
--- Name: fk_rails_c99d21522a; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vzvy_vyhlasene_posudzovane_obdobia
-    ADD CONSTRAINT fk_rails_c99d21522a FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
-
-
---
 -- Name: fk_rails_cbc060088a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY verejne_obstaravania
     ADD CONSTRAINT fk_rails_cbc060088a FOREIGN KEY (metoda_vo_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_cbe8943658; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_kontaktne_osoby
+    ADD CONSTRAINT fk_rails_cbe8943658 FOREIGN KEY (vyzva_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
@@ -9603,27 +9788,11 @@ ALTER TABLE ONLY intenzity
 
 
 --
--- Name: fk_rails_cc9d9e9d3c; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vyzvy_vyhlasene_vyhlasovatel
-    ADD CONSTRAINT fk_rails_cc9d9e9d3c FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
-
-
---
 -- Name: fk_rails_ccb963193d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projekty_formy_financovania
     ADD CONSTRAINT fk_rails_ccb963193d FOREIGN KEY (projekt_id) REFERENCES projekty(id);
-
-
---
--- Name: fk_rails_cddb29730e; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vzvy_vyhlasene_planovane_vyzvy
-    ADD CONSTRAINT fk_rails_cddb29730e FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
@@ -9883,6 +10052,14 @@ ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
 
 
 --
+-- Name: fk_rails_f52dc2f93f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY vyzvy_vyhlasene_posudzovane_obdobia
+    ADD CONSTRAINT fk_rails_f52dc2f93f FOREIGN KEY (vyzva_id) REFERENCES vyzvy_vyhlasene(id);
+
+
+--
 -- Name: fk_rails_f55d944621; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9896,14 +10073,6 @@ ALTER TABLE ONLY zonfp_zamietnute_miesta_realizacie
 
 ALTER TABLE ONLY zmluvy_verejne_obstaravania
     ADD CONSTRAINT fk_rails_f6565b6e80 FOREIGN KEY (hlavny_dodavatel_subjekt_id) REFERENCES subjekty(id);
-
-
---
--- Name: fk_rails_f74d2d4574; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY vyzvy_vyhlasene_fondy
-    ADD CONSTRAINT fk_rails_f74d2d4574 FOREIGN KEY (vyzvy_vyhlasene_id) REFERENCES vyzvy_vyhlasene(id);
 
 
 --
@@ -9995,7 +10164,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171017111719'),
 ('20171017171650'),
 ('20171017175218'),
+('20171017175318'),
 ('20171017175418'),
+('20171017175518'),
 ('20171017182931'),
 ('20171113145824'),
 ('20171113180259'),
