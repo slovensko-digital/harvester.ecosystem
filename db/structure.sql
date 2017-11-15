@@ -1547,18 +1547,16 @@ CREATE TABLE subjekty (
     id integer NOT NULL,
     itms_id integer NOT NULL,
     itms_href character varying,
-    itms_created_at timestamp without time zone,
-    itms_updated_at timestamp without time zone,
+    itms_created_at character varying,
+    itms_updated_at character varying,
     dic character varying,
-    gps_lat numeric,
-    gps_lon numeric,
     ico character varying,
     ine_identifikacne_cislo character varying,
     nazov character varying,
-    obec character varying,
+    obec_id integer,
     psc character varying,
-    stat character varying,
-    typ_ineho_identifikacneho_cisla character varying,
+    stat_id integer,
+    typ_ineho_identifikacneho_cisla_id integer,
     ulica character varying,
     ulica_cislo character varying,
     created_at timestamp without time zone NOT NULL,
@@ -8106,6 +8104,27 @@ CREATE UNIQUE INDEX "index_itms.subjekty_on_itms_id" ON subjekty USING btree (it
 
 
 --
+-- Name: index_itms.subjekty_on_obec_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.subjekty_on_obec_id" ON subjekty USING btree (obec_id);
+
+
+--
+-- Name: index_itms.subjekty_on_stat_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.subjekty_on_stat_id" ON subjekty USING btree (stat_id);
+
+
+--
+-- Name: index_itms.subjekty_on_typ_ineho_identifikacneho_cisla_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.subjekty_on_typ_ineho_identifikacneho_cisla_id" ON subjekty USING btree (typ_ineho_identifikacneho_cisla_id);
+
+
+--
 -- Name: index_itms.typy_aktivit_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -9098,6 +9117,14 @@ ALTER TABLE ONLY zonfp_schvalene_vyzvy
 
 
 --
+-- Name: fk_rails_4c898ab9c7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY subjekty
+    ADD CONSTRAINT fk_rails_4c898ab9c7 FOREIGN KEY (stat_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_4ceaac61ef; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9375,6 +9402,14 @@ ALTER TABLE ONLY nezrovnalosti
 
 ALTER TABLE ONLY zop_uhradene_predfinancovanie
     ADD CONSTRAINT fk_rails_6f36ab41e1 FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
+
+
+--
+-- Name: fk_rails_77623d0edc; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY subjekty
+    ADD CONSTRAINT fk_rails_77623d0edc FOREIGN KEY (obec_id) REFERENCES nuts_kody(id);
 
 
 --
@@ -9791,6 +9826,14 @@ ALTER TABLE ONLY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
 
 ALTER TABLE ONLY zonfp_schvalene_hodnotitelia
     ADD CONSTRAINT fk_rails_bb32b68e7f FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
+
+--
+-- Name: fk_rails_bb3b9af5f0; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY subjekty
+    ADD CONSTRAINT fk_rails_bb3b9af5f0 FOREIGN KEY (typ_ineho_identifikacneho_cisla_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --

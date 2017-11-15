@@ -1,16 +1,32 @@
 {
   "createdAt": "2015-09-10T12:35:30.615Z",
   "dic": "2021777780",
-  "gpsLat": 48.148598,
-  "gpsLon": 17.107747,
   "href": "/v2/subjekty/100077",
   "ico": "30794536",
   "id": 100077,
+  "ineIdentifikacneCislo": "41076659",
   "nazov": "Ústredie práce, sociálnych vecí a rodiny",
-  "obec": "Bratislava - mestská časť Staré Mesto",
+  "obec": {
+    "gpsLat": 48.148598,
+    "gpsLon": 17.107747,
+    "hodnotaNuts": {
+      "ciselnikKod": 1006,
+      "href": "/v2/hodnotaCiselnika/1006/hodnota/99",
+      "id": 99
+    }
+  },
   "psc": "81267",
-  "stat": "Slovensko",
+  "stat": {
+    "ciselnikKod": 1012,
+    "href": "/v2/hodnotaCiselnika/1012/hodnota/210",
+    "id": 210
+  },
+  "typInehoIdentifikacnehoCisla": {
+    "ciselnikKod": 1081,
+    "href": "/v2/hodnotaCiselnika/1081/hodnota/200003",
+    "id": 200003
+  },
   "ulica": "Špitálska",
   "ulicaCislo": "8",
-  "updatedAt": "2017-06-06T10:32:35.274Z"
+  "updatedAt": "2017-11-02T08:09:49.713Z"
 }
