@@ -11,6 +11,7 @@ class Itms::SyncProcurementJob < ItmsJob
       p.itms_href = json['href']
       p.itms_created_at = json['createdAt']
       p.itms_updated_at = json['updatedAt']
+      p.save!
 
       p.centralne_obstaravanie = json['centralneObstaravanie']
       p.cislo_vestnika = json['cisloVestnika']
@@ -51,15 +52,6 @@ class Itms::SyncProcurementJob < ItmsJob
   end
 
   private
-
-  def find_or_create_supplier_by_json(json, downloader)
-    return if json.blank?
-    existing_object = Itms::Supplier.find_by(itms_id: json['id'])
-    return existing_object if existing_object.present?
-
-    Itms::SyncSupplierJob.perform_now(json['href'], downloader: downloader)
-    Itms::Supplier.find_by!(itms_id: json['id'])
-  end
 
   def find_or_create_projects_by_json(json, downloader)
     return [] if json.blank?
