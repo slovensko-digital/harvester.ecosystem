@@ -9,6 +9,11 @@ RSpec.shared_context "itms_downloader", :shared_context => :metadata do
 
     allow(downloader)
         .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/dodavatelia/'))
+        .and_return(double(body: itms_file_fixture('dodavatel_item.json')))
+
+    allow(downloader)
+        .to receive(:get)
         .with(include('https://opendata.itms2014.sk/v2/typyAktivit/'))
         .and_return(double(body: itms_file_fixture('typ_aktivity_item.json')))
 

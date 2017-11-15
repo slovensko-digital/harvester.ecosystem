@@ -1,0 +1,72 @@
+{
+  "celkovaVyskaDokladu": 174750.66,
+  "cisloDokladu": "31600139",
+  "cisloZmluvySDodavatelomBezVo": "1063/2010",
+  "createdAt": "2016-11-16T11:40:55.739Z",
+  "datumUhrady": "2016-11-21T00:00:00Z",
+  "datumVyhotovenia": "2016-10-27T00:00:00Z",
+  "dodavatelDodavatelObstaravatel": {
+    "href": "/v2/dodavatelia/260",
+    "ico": "17315395",
+    "id": 260
+  },
+  "dodavatelSubjekt": {
+    "dic": "2021777780",
+    "href": "/v2/subjekty/100077",
+    "ico": "30794536",
+    "id": 100077
+  },
+  "href": "/v2/uctovneDoklady/3172",
+  "id": 3172,
+  "nazov": "Faktúra",
+  "polozkyDokladu": [
+    {
+      "dph": 4500,
+      "id": 9354,
+      "jednotkovaCena": 22500,
+      "mnozstvo": 0,
+      "nazov": "montážne práce",
+      "poradoveCislo": 1,
+      "sadzbaDph": 20,
+      "sumaBezDph": 22500,
+      "sumaOpravnena": 27000,
+      "sumaSpolu": 27000,
+      "sumaZiadana": 27000,
+      "sumaZrealizovanychVydavkov": 27000
+    },
+    {
+      "dph": 339,
+      "id": 9355,
+      "jednotkovaCena": 1695,
+      "mnozstvo": 0,
+      "nazov": "ponorné kalové čerpadlo",
+      "poradoveCislo": 2,
+      "sadzbaDph": 20,
+      "sumaBezDph": 1695,
+      "sumaOpravnena": 2034,
+      "sumaSpolu": 2034,
+      "sumaZiadana": 2034,
+      "sumaZrealizovanychVydavkov": 2034
+    }
+  ],
+  "projekty": [
+    {
+      "href": "/v2/projekty/ukoncene/70",
+      "id": 70
+    }
+  ],
+  "typ": "EXTERNY",
+  "updatedAt": "2016-11-17T11:40:55.739Z",
+  "verejneObstaravania": [
+    {
+      "href": "/v2/verejneObstaravania/2",
+      "id": 2
+    }
+  ],
+  "vlastnikDokladu": {
+    "dic": "2020643669",
+    "href": "/v2/subjekty/100184",
+    "ico": "00304905",
+    "id": 100184
+  }
+}
