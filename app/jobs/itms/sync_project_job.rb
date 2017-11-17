@@ -158,17 +158,6 @@ class Itms::SyncProjectJob < ItmsJob
     end
   end
 
-  def find_or_create_budget_items_by_json(json, downloader)
-    return [] if json.blank?
-    json.map do |j|
-      existing_object = Itms::BudgetItem.find_by(itms_id: j['id'])
-      return existing_object if existing_object.present?
-
-      Itms::SyncBudgetItemJob.perform_now(j['href'], downloader: downloader)
-      Itms::BudgetItem.find_by!(itms_id: j['id'])
-    end
-  end
-
   def find_or_create_nfc_request_by_json(json, downloader)
     return if json.blank?
     existing_object = Itms::NfcRequest.find_by(itms_id: json['id'])

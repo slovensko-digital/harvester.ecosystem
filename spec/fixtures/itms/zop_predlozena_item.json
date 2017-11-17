@@ -1,0 +1,78 @@
+{
+  "createdAt": "2016-04-27T09:49:30.26Z",
+  "datumPrijatia": "2016-05-09T00:00:00Z",
+  "hlavnyCehranicnyPartner": {
+    "dic": "2020571520",
+    "href": "/v2/subjekty/100004",
+    "ico": "00151866",
+    "id": 100004
+  },
+  "href": "/v2/zop/predlozene/123",
+  "id": 123,
+  "kod": "311071A268300101",
+  "narokovanaSuma": 822394.8,
+  "predfinancovanie": {
+    "href": "/v2/zop/predlozena/123",
+    "id": 123
+  },
+  "predkladanaZa": {
+    "dic": "2020571520",
+    "href": "/v2/subjekty/100004",
+    "ico": "00151866",
+    "id": 100004
+  },
+  "predlozeneDeklarovaneVydavky": [
+    {
+      "datumUhrady": "2017-04-07",
+      "dph": 24000,
+      "druhVydavku": "BEZNY",
+      "ekonomickaKlasifikacia": "637001",
+      "funkcnaKlasifikacia": "0360",
+      "id": 45775,
+      "idPolozkyDokladu": 1539,
+      "investicnaAkciaPrijimatela": "33323",
+      "nazov": "Organizácia školení a tréningov",
+      "polozkaRozpoctu": {
+        "href": "/v2/polozkaRozpoctu/356",
+        "id": 356
+      },
+      "poradoveCislo": 3,
+      "sumaNeziadanaNaPreplatenie": [
+        {
+          "druhNeziadanejSumy": "INE_DOVODY",
+          "sumaNeziadana": 511872.01
+        }
+      ],
+      "sumaZiadanaNaPreplatenie": 144000,
+      "typVydavku": "INE",
+      "uctovnyDoklad": {
+        "href": "/v2/uctovneDoklady/1085",
+        "id": 1085
+      },
+      "verejneObstaravanie": {
+        "href": "/v2/verejneObstaravania/259",
+        "id": 259
+      },
+      "vyskaBezDph": 120000,
+      "zmluvaVerejneObstaravanie": {
+        "href": "/v2/zmluvaVerejneObstaravanie/75",
+        "id": 75
+      }
+    }
+  ],
+  "prijimatel": {
+    "dic": "2020571520",
+    "href": "/v2/subjekty/100004",
+    "ico": "00151866",
+    "id": 100004
+  },
+  "projekt": {
+    "href": "/v2/projekty/vrealizacii/61",
+    "id": 61
+  },
+  "typ": "PREDFINANCOVANIE",
+  "updatedAt": "2016-12-13T15:31:38.975Z",
+  "vyplacaSaPartnerovi": false,
+  "zopJeZaverecna": false,
+  "zopPredlozenaZaViacSubjektov": false
+}

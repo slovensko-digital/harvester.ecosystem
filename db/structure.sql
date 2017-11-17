@@ -121,6 +121,83 @@ ALTER SEQUENCE ciselniky_id_seq OWNED BY ciselniky.id;
 
 
 --
+-- Name: deklarovane_vydavky; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE deklarovane_vydavky (
+    id integer NOT NULL,
+    itms_id integer NOT NULL,
+    zop_id integer NOT NULL,
+    datum_uhrady timestamp without time zone,
+    dph numeric,
+    druh_vydavku character varying,
+    ekonomicka_klasifikacia character varying,
+    funkcna_klasifikacia character varying,
+    id_polozky_dokladu integer,
+    investicna_akcia_prijimatela character varying,
+    nazov character varying,
+    polozka_rozpoctu_id integer,
+    poradove_cislo integer,
+    suma_ziadana_na_preplatenie numeric,
+    typ_vydavku character varying,
+    uctovny_doklad_id integer,
+    verejne_obstaravanie_id integer,
+    vyska_bez_dph numeric,
+    zmluva_verejne_obstaravanie_id integer
+);
+
+
+--
+-- Name: deklarovane_vydavky_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE deklarovane_vydavky_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: deklarovane_vydavky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE deklarovane_vydavky_id_seq OWNED BY deklarovane_vydavky.id;
+
+
+--
+-- Name: deklarovane_vydavky_sumy_neziadane_na_preplatenie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE deklarovane_vydavky_sumy_neziadane_na_preplatenie (
+    id integer NOT NULL,
+    deklarovany_vydavok_id integer NOT NULL,
+    druh_neziadanej_sumy character varying,
+    suma_neziadana numeric
+);
+
+
+--
+-- Name: deklarovane_vydavky_sumy_neziadane_na_preplatenie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE deklarovane_vydavky_sumy_neziadane_na_preplatenie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: deklarovane_vydavky_sumy_neziadane_na_preplatenie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE deklarovane_vydavky_sumy_neziadane_na_preplatenie_id_seq OWNED BY deklarovane_vydavky_sumy_neziadane_na_preplatenie.id;
+
+
+--
 -- Name: dodavatelia; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -4560,193 +4637,35 @@ ALTER SEQUENCE zonfp_zamietnute_ziadatel_id_seq OWNED BY zonfp_zamietnute_ziadat
 
 
 --
--- Name: zop_predlozene; Type: TABLE; Schema: itms; Owner: -
+-- Name: zop; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zop_predlozene (
+CREATE TABLE zop (
     id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    kod character varying,
-    typ character varying,
-    narokovana_suma numeric,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
+    itms_id integer NOT NULL,
+    itms_href character varying,
+    itms_created_at timestamp without time zone,
+    itms_updated_at timestamp without time zone,
     datum_prijatia timestamp without time zone,
-    vyplaca_sa_partnerovi boolean,
-    zop_je_zaverecna boolean
-);
-
-
---
--- Name: zop_predlozene_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_predlozene_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_predlozene_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_predlozene_id_seq OWNED BY zop_predlozene.id;
-
-
---
--- Name: zop_predlozene_predfinancovanie; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_predlozene_predfinancovanie (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_predlozene_id bigint NOT NULL
-);
-
-
---
--- Name: zop_predlozene_predfinancovanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_predlozene_predfinancovanie_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_predlozene_predfinancovanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_predlozene_predfinancovanie_id_seq OWNED BY zop_predlozene_predfinancovanie.id;
-
-
---
--- Name: zop_predlozene_predkladana_za; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_predlozene_predkladana_za (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_predlozene_id bigint NOT NULL,
-    ico character varying,
-    dic character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: zop_predlozene_predkladana_za_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_predlozene_predkladana_za_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_predlozene_predkladana_za_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_predlozene_predkladana_za_id_seq OWNED BY zop_predlozene_predkladana_za.id;
-
-
---
--- Name: zop_predlozene_prijimatel; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_predlozene_prijimatel (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_predlozene_id bigint NOT NULL,
-    ico character varying,
-    dic character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: zop_predlozene_prijimatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_predlozene_prijimatel_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_predlozene_prijimatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_predlozene_prijimatel_id_seq OWNED BY zop_predlozene_prijimatel.id;
-
-
---
--- Name: zop_predlozene_projekt; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_predlozene_projekt (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_predlozene_id bigint NOT NULL
-);
-
-
---
--- Name: zop_predlozene_projekt_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_predlozene_projekt_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_predlozene_projekt_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_predlozene_projekt_id_seq OWNED BY zop_predlozene_projekt.id;
-
-
---
--- Name: zop_uhradene; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_uhradene (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
+    hlavny_cehranicny_partner_id integer,
     kod character varying,
-    typ character varying,
     narokovana_suma numeric,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    datum_prijatia timestamp without time zone,
+    predfinancovanie_id integer,
+    predkladana_za_id integer,
+    prijimatel_id integer,
+    projekt_id integer,
+    typ character varying,
     vyplaca_sa_partnerovi boolean,
     zop_je_zaverecna boolean,
-    datum_uhrady timestamp without time zone,
-    schvalena_suma integer
+    zop_predlozena_za_viac_subjektov boolean
 );
 
 
 --
--- Name: zop_uhradene_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+-- Name: zop_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
-CREATE SEQUENCE zop_uhradene_id_seq
+CREATE SEQUENCE zop_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4755,299 +4674,10 @@ CREATE SEQUENCE zop_uhradene_id_seq
 
 
 --
--- Name: zop_uhradene_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+-- Name: zop_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zop_uhradene_id_seq OWNED BY zop_uhradene.id;
-
-
---
--- Name: zop_uhradene_predfinancovanie; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_uhradene_predfinancovanie (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_uhradene_id bigint NOT NULL
-);
-
-
---
--- Name: zop_uhradene_predfinancovanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_uhradene_predfinancovanie_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_uhradene_predfinancovanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_uhradene_predfinancovanie_id_seq OWNED BY zop_uhradene_predfinancovanie.id;
-
-
---
--- Name: zop_uhradene_predkladana_za; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_uhradene_predkladana_za (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_uhradene_id bigint NOT NULL,
-    ico character varying,
-    dic character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: zop_uhradene_predkladana_za_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_uhradene_predkladana_za_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_uhradene_predkladana_za_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_uhradene_predkladana_za_id_seq OWNED BY zop_uhradene_predkladana_za.id;
-
-
---
--- Name: zop_uhradene_prijimatel; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_uhradene_prijimatel (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_uhradene_id bigint NOT NULL,
-    ico character varying,
-    dic character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: zop_uhradene_prijimatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_uhradene_prijimatel_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_uhradene_prijimatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_uhradene_prijimatel_id_seq OWNED BY zop_uhradene_prijimatel.id;
-
-
---
--- Name: zop_uhradene_projekt; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_uhradene_projekt (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_uhradene_id bigint NOT NULL
-);
-
-
---
--- Name: zop_uhradene_projekt_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_uhradene_projekt_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_uhradene_projekt_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_uhradene_projekt_id_seq OWNED BY zop_uhradene_projekt.id;
-
-
---
--- Name: zop_zamietnute; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_zamietnute (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    kod character varying,
-    typ character varying,
-    narokovana_suma numeric,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    datum_prijatia timestamp without time zone,
-    vyplaca_sa_partnerovi boolean,
-    zop_je_zaverecna boolean
-);
-
-
---
--- Name: zop_zamietnute_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_zamietnute_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_zamietnute_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_zamietnute_id_seq OWNED BY zop_zamietnute.id;
-
-
---
--- Name: zop_zamietnute_predfinancovanie; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_zamietnute_predfinancovanie (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_zamietnute_id bigint NOT NULL
-);
-
-
---
--- Name: zop_zamietnute_predfinancovanie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_zamietnute_predfinancovanie_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_zamietnute_predfinancovanie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_zamietnute_predfinancovanie_id_seq OWNED BY zop_zamietnute_predfinancovanie.id;
-
-
---
--- Name: zop_zamietnute_predkladana_za; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_zamietnute_predkladana_za (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_zamietnute_id bigint NOT NULL,
-    ico character varying,
-    dic character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: zop_zamietnute_predkladana_za_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_zamietnute_predkladana_za_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_zamietnute_predkladana_za_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_zamietnute_predkladana_za_id_seq OWNED BY zop_zamietnute_predkladana_za.id;
-
-
---
--- Name: zop_zamietnute_prijimatel; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_zamietnute_prijimatel (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_zamietnute_id bigint NOT NULL,
-    ico character varying,
-    dic character varying,
-    ine_identifikacne_cislo character varying
-);
-
-
---
--- Name: zop_zamietnute_prijimatel_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_zamietnute_prijimatel_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_zamietnute_prijimatel_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_zamietnute_prijimatel_id_seq OWNED BY zop_zamietnute_prijimatel.id;
-
-
---
--- Name: zop_zamietnute_projekt; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zop_zamietnute_projekt (
-    id integer NOT NULL,
-    itms_identifier bigint NOT NULL,
-    zop_zamietnute_id bigint NOT NULL
-);
-
-
---
--- Name: zop_zamietnute_projekt_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zop_zamietnute_projekt_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zop_zamietnute_projekt_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zop_zamietnute_projekt_id_seq OWNED BY zop_zamietnute_projekt.id;
+ALTER SEQUENCE zop_id_seq OWNED BY zop.id;
 
 
 SET search_path = public, pg_catalog;
@@ -5126,6 +4756,20 @@ ALTER TABLE ONLY aktivity ALTER COLUMN id SET DEFAULT nextval('aktivity_id_seq':
 --
 
 ALTER TABLE ONLY ciselniky ALTER COLUMN id SET DEFAULT nextval('ciselniky_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky ALTER COLUMN id SET DEFAULT nextval('deklarovane_vydavky_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky_sumy_neziadane_na_preplatenie ALTER COLUMN id SET DEFAULT nextval('deklarovane_vydavky_sumy_neziadane_na_preplatenie_id_seq'::regclass);
 
 
 --
@@ -6035,105 +5679,7 @@ ALTER TABLE ONLY zonfp_zamietnute_ziadatel ALTER COLUMN id SET DEFAULT nextval('
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zop_predlozene ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_predfinancovanie ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_predfinancovanie_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_predkladana_za ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_predkladana_za_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_prijimatel ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_prijimatel_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_projekt ALTER COLUMN id SET DEFAULT nextval('zop_predlozene_projekt_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_predfinancovanie ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_predfinancovanie_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_predkladana_za ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_predkladana_za_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_prijimatel ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_prijimatel_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_projekt ALTER COLUMN id SET DEFAULT nextval('zop_uhradene_projekt_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_predfinancovanie ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_predfinancovanie_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_predkladana_za ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_predkladana_za_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_prijimatel ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_prijimatel_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_projekt ALTER COLUMN id SET DEFAULT nextval('zop_zamietnute_projekt_id_seq'::regclass);
+ALTER TABLE ONLY zop ALTER COLUMN id SET DEFAULT nextval('zop_id_seq'::regclass);
 
 
 SET search_path = upvs, pg_catalog;
@@ -6161,6 +5707,22 @@ ALTER TABLE ONLY aktivity
 
 ALTER TABLE ONLY ciselniky
     ADD CONSTRAINT ciselniky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: deklarovane_vydavky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky
+    ADD CONSTRAINT deklarovane_vydavky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: deklarovane_vydavky_sumy_neziadane_na_preplatenie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky_sumy_neziadane_na_preplatenie
+    ADD CONSTRAINT deklarovane_vydavky_sumy_neziadane_na_preplatenie_pkey PRIMARY KEY (id);
 
 
 --
@@ -7196,123 +6758,11 @@ ALTER TABLE ONLY zonfp_zamietnute_ziadatel
 
 
 --
--- Name: zop_predlozene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zop_predlozene
-    ADD CONSTRAINT zop_predlozene_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_predlozene_predfinancovanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_predfinancovanie
-    ADD CONSTRAINT zop_predlozene_predfinancovanie_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_predlozene_predkladana_za_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_predkladana_za
-    ADD CONSTRAINT zop_predlozene_predkladana_za_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_predlozene_prijimatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_prijimatel
-    ADD CONSTRAINT zop_predlozene_prijimatel_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_predlozene_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_projekt
-    ADD CONSTRAINT zop_predlozene_projekt_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_uhradene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene
-    ADD CONSTRAINT zop_uhradene_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_uhradene_predfinancovanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_predfinancovanie
-    ADD CONSTRAINT zop_uhradene_predfinancovanie_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_uhradene_predkladana_za_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_predkladana_za
-    ADD CONSTRAINT zop_uhradene_predkladana_za_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_uhradene_prijimatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_prijimatel
-    ADD CONSTRAINT zop_uhradene_prijimatel_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_uhradene_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_projekt
-    ADD CONSTRAINT zop_uhradene_projekt_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_zamietnute_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute
-    ADD CONSTRAINT zop_zamietnute_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_zamietnute_predfinancovanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_predfinancovanie
-    ADD CONSTRAINT zop_zamietnute_predfinancovanie_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_zamietnute_predkladana_za_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_predkladana_za
-    ADD CONSTRAINT zop_zamietnute_predkladana_za_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_zamietnute_prijimatel_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_prijimatel
-    ADD CONSTRAINT zop_zamietnute_prijimatel_pkey PRIMARY KEY (id);
-
-
---
--- Name: zop_zamietnute_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_projekt
-    ADD CONSTRAINT zop_zamietnute_projekt_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY zop
+    ADD CONSTRAINT zop_pkey PRIMARY KEY (id);
 
 
 SET search_path = public, pg_catalog;
@@ -7371,6 +6821,69 @@ CREATE INDEX "index_itms.aktivity_on_typ_aktivity_id" ON aktivity USING btree (t
 --
 
 CREATE UNIQUE INDEX "index_itms.ciselniky_on_ciselnik_kod" ON ciselniky USING btree (ciselnik_kod);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.deklarovane_vydavky_on_itms_id" ON deklarovane_vydavky USING btree (itms_id);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_on_polozka_rozpoctu_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_on_polozka_rozpoctu_id" ON deklarovane_vydavky USING btree (polozka_rozpoctu_id);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_on_uctovny_doklad_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_on_uctovny_doklad_id" ON deklarovane_vydavky USING btree (uctovny_doklad_id);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_on_verejne_obstaravanie_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_on_verejne_obstaravanie_id" ON deklarovane_vydavky USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_on_zmluva_vo_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_on_zmluva_vo_id" ON deklarovane_vydavky USING btree (zmluva_verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_on_zop_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_on_zop_id" ON deklarovane_vydavky USING btree (zop_id);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_sumy_neziadane_dns; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neziadane_dns" ON deklarovane_vydavky_sumy_neziadane_na_preplatenie USING btree (druh_neziadanej_sumy);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie_dv; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie_dv" ON deklarovane_vydavky_sumy_neziadane_na_preplatenie USING btree (deklarovany_vydavok_id);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_sumy_neziadane_sn; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neziadane_sn" ON deklarovane_vydavky_sumy_neziadane_na_preplatenie USING btree (suma_neziadana);
 
 
 --
@@ -8669,24 +8182,45 @@ CREATE UNIQUE INDEX "index_itms.zonfp_zamietnute_on_itms_identifier" ON zonfp_za
 
 
 --
--- Name: index_itms.zop_predlozene_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.zop_on_hlavny_cehranicny_partner_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zop_predlozene_on_itms_identifier" ON zop_predlozene USING btree (itms_identifier);
-
-
---
--- Name: index_itms.zop_uhradene_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE UNIQUE INDEX "index_itms.zop_uhradene_on_itms_identifier" ON zop_uhradene USING btree (itms_identifier);
+CREATE INDEX "index_itms.zop_on_hlavny_cehranicny_partner_id" ON zop USING btree (hlavny_cehranicny_partner_id);
 
 
 --
--- Name: index_itms.zop_zamietnute_on_itms_identifier; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.zop_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zop_zamietnute_on_itms_identifier" ON zop_zamietnute USING btree (itms_identifier);
+CREATE UNIQUE INDEX "index_itms.zop_on_itms_id" ON zop USING btree (itms_id);
+
+
+--
+-- Name: index_itms.zop_on_predfinancovanie_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zop_on_predfinancovanie_id" ON zop USING btree (predfinancovanie_id);
+
+
+--
+-- Name: index_itms.zop_on_predkladana_za_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zop_on_predkladana_za_id" ON zop USING btree (predkladana_za_id);
+
+
+--
+-- Name: index_itms.zop_on_prijimatel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zop_on_prijimatel_id" ON zop USING btree (prijimatel_id);
+
+
+--
+-- Name: index_itms.zop_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zop_on_projekt_id" ON zop USING btree (projekt_id);
 
 
 SET search_path = upvs, pg_catalog;
@@ -8706,6 +8240,14 @@ CREATE UNIQUE INDEX "index_upvs.public_authority_edesks_on_uri" ON public_author
 
 
 SET search_path = itms, pg_catalog;
+
+--
+-- Name: fk_rails_01546df3bb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky
+    ADD CONSTRAINT fk_rails_01546df3bb FOREIGN KEY (zmluva_verejne_obstaravanie_id) REFERENCES zmluvy_verejne_obstaravania(id);
+
 
 --
 -- Name: fk_rails_0299640ff3; Type: FK CONSTRAINT; Schema: itms; Owner: -
@@ -8924,14 +8466,6 @@ ALTER TABLE ONLY zonfp_zamietnute_typy_uzemia_ciele
 
 
 --
--- Name: fk_rails_1ff2f777dc; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_predkladana_za
-    ADD CONSTRAINT fk_rails_1ff2f777dc FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
-
-
---
 -- Name: fk_rails_20e5c19bdc; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9004,14 +8538,6 @@ ALTER TABLE ONLY projekty
 
 
 --
--- Name: fk_rails_276ee63a5d; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_predkladana_za
-    ADD CONSTRAINT fk_rails_276ee63a5d FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
-
-
---
 -- Name: fk_rails_2826c1e619; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9076,6 +8602,14 @@ ALTER TABLE ONLY zonfp_schvalene_ziadatel
 
 
 --
+-- Name: fk_rails_382fc42473; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop
+    ADD CONSTRAINT fk_rails_382fc42473 FOREIGN KEY (hlavny_cehranicny_partner_id) REFERENCES subjekty(id);
+
+
+--
 -- Name: fk_rails_38bac79fdc; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9097,6 +8631,14 @@ ALTER TABLE ONLY uctovne_doklady_polozky_dokladu
 
 ALTER TABLE ONLY nezrovnalosti
     ADD CONSTRAINT fk_rails_3980438432 FOREIGN KEY (financny_stav_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_3a22dd6f01; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky
+    ADD CONSTRAINT fk_rails_3a22dd6f01 FOREIGN KEY (polozka_rozpoctu_id) REFERENCES polozky_rozpoctu(id);
 
 
 --
@@ -9132,11 +8674,11 @@ ALTER TABLE ONLY zonfp_prijate_formy_financovania
 
 
 --
--- Name: fk_rails_3f7de3afd6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_3eff3ae857; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zop_uhradene_prijimatel
-    ADD CONSTRAINT fk_rails_3f7de3afd6 FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
+ALTER TABLE ONLY zop
+    ADD CONSTRAINT fk_rails_3eff3ae857 FOREIGN KEY (predkladana_za_id) REFERENCES subjekty(id);
 
 
 --
@@ -9161,14 +8703,6 @@ ALTER TABLE ONLY projekty_formy_financovania
 
 ALTER TABLE ONLY projekty_aktivity
     ADD CONSTRAINT fk_rails_41d0028c9d FOREIGN KEY (projekt_id) REFERENCES projekty(id);
-
-
---
--- Name: fk_rails_42a6c1da2a; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_prijimatel
-    ADD CONSTRAINT fk_rails_42a6c1da2a FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
 
 
 --
@@ -9340,14 +8874,6 @@ ALTER TABLE ONLY projekty_meratelne_ukazovatele
 
 
 --
--- Name: fk_rails_5473ddf63b; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_prijimatel
-    ADD CONSTRAINT fk_rails_5473ddf63b FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
-
-
---
 -- Name: fk_rails_548236611b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9369,14 +8895,6 @@ ALTER TABLE ONLY projekty_hospodarske_cinnosti
 
 ALTER TABLE ONLY projekty_hospodarske_cinnosti
     ADD CONSTRAINT fk_rails_5827b58bb9 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
-
-
---
--- Name: fk_rails_5979b8f53a; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_projekt
-    ADD CONSTRAINT fk_rails_5979b8f53a FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
 
 
 --
@@ -9420,19 +8938,19 @@ ALTER TABLE ONLY verejne_obstaravania
 
 
 --
--- Name: fk_rails_6347bcec2b; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_projekt
-    ADD CONSTRAINT fk_rails_6347bcec2b FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
-
-
---
 -- Name: fk_rails_6364309b83; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia
     ADD CONSTRAINT fk_rails_6364309b83 FOREIGN KEY (kod_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_65cd02ab8f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky_sumy_neziadane_na_preplatenie
+    ADD CONSTRAINT fk_rails_65cd02ab8f FOREIGN KEY (deklarovany_vydavok_id) REFERENCES deklarovane_vydavky(id);
 
 
 --
@@ -9452,11 +8970,11 @@ ALTER TABLE ONLY zonfp_zamietnute_hospodarske_cinnosti_ciele
 
 
 --
--- Name: fk_rails_6756f57485; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: fk_rails_677e49b6d4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zop_predlozene_predfinancovanie
-    ADD CONSTRAINT fk_rails_6756f57485 FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
+ALTER TABLE ONLY zop
+    ADD CONSTRAINT fk_rails_677e49b6d4 FOREIGN KEY (prijimatel_id) REFERENCES subjekty(id);
 
 
 --
@@ -9484,6 +9002,14 @@ ALTER TABLE ONLY operacne_programy
 
 
 --
+-- Name: fk_rails_6af1d0518f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky
+    ADD CONSTRAINT fk_rails_6af1d0518f FOREIGN KEY (uctovny_doklad_id) REFERENCES uctovne_doklady(id);
+
+
+--
 -- Name: fk_rails_6c4cefed09; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9505,14 +9031,6 @@ ALTER TABLE ONLY nuts_kody
 
 ALTER TABLE ONLY nezrovnalosti
     ADD CONSTRAINT fk_rails_6e7c1b8881 FOREIGN KEY (prioritna_os_id) REFERENCES prioritne_osi(id);
-
-
---
--- Name: fk_rails_6f36ab41e1; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_predfinancovanie
-    ADD CONSTRAINT fk_rails_6f36ab41e1 FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
 
 
 --
@@ -9660,6 +9178,14 @@ ALTER TABLE ONLY zonfp_zamietnute_oblasti_intervencie
 
 
 --
+-- Name: fk_rails_899422ef35; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop
+    ADD CONSTRAINT fk_rails_899422ef35 FOREIGN KEY (predfinancovanie_id) REFERENCES zop(id);
+
+
+--
 -- Name: fk_rails_899f745c2a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9761,6 +9287,14 @@ ALTER TABLE ONLY verejne_obstaravania_operacne_programy
 
 ALTER TABLE ONLY zonfp_zamietnute_partneri
     ADD CONSTRAINT fk_rails_94bff2dc1a FOREIGN KEY (zonfp_zamietnute_id) REFERENCES zonfp_zamietnute(id);
+
+
+--
+-- Name: fk_rails_94f260648c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky
+    ADD CONSTRAINT fk_rails_94f260648c FOREIGN KEY (zop_id) REFERENCES zop(id);
 
 
 --
@@ -9956,14 +9490,6 @@ ALTER TABLE ONLY subjekty
 
 
 --
--- Name: fk_rails_bb8efda835; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_zamietnute_predfinancovanie
-    ADD CONSTRAINT fk_rails_bb8efda835 FOREIGN KEY (zop_zamietnute_id) REFERENCES zop_zamietnute(id);
-
-
---
 -- Name: fk_rails_bbef4e8041; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10049,6 +9575,14 @@ ALTER TABLE ONLY projekty
 
 ALTER TABLE ONLY zonfp_schvalene_uzemne_mechanizmy
     ADD CONSTRAINT fk_rails_c7cc60fd51 FOREIGN KEY (zonfp_schvalene_id) REFERENCES zonfp_schvalene(id);
+
+
+--
+-- Name: fk_rails_c7d92e1dac; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop
+    ADD CONSTRAINT fk_rails_c7d92e1dac FOREIGN KEY (projekt_id) REFERENCES projekty(id);
 
 
 --
@@ -10180,14 +9714,6 @@ ALTER TABLE ONLY verejne_obstaravania
 
 
 --
--- Name: fk_rails_de5d60c98a; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_uhradene_predkladana_za
-    ADD CONSTRAINT fk_rails_de5d60c98a FOREIGN KEY (zop_uhradene_id) REFERENCES zop_uhradene(id);
-
-
---
 -- Name: fk_rails_de79713a9b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10292,14 +9818,6 @@ ALTER TABLE ONLY verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
 
 
 --
--- Name: fk_rails_e9c0519acf; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zop_predlozene_projekt
-    ADD CONSTRAINT fk_rails_e9c0519acf FOREIGN KEY (zop_predlozene_id) REFERENCES zop_predlozene(id);
-
-
---
 -- Name: fk_rails_ea79d69beb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -10337,6 +9855,14 @@ ALTER TABLE ONLY projekty_typy_uzemia
 
 ALTER TABLE ONLY projekty_uzemne_mechanizmy
     ADD CONSTRAINT fk_rails_eef7449abc FOREIGN KEY (konkretny_ciel_id) REFERENCES konkretne_ciele(id);
+
+
+--
+-- Name: fk_rails_efa9344803; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky
+    ADD CONSTRAINT fk_rails_efa9344803 FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
 
 
 --
@@ -10486,6 +10012,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171113180259'),
 ('20171114124735'),
 ('20171114143548'),
-('20171115092048');
+('20171115092048'),
+('20171117102940');
 
 
