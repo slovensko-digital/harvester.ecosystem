@@ -31,6 +31,20 @@ class ItmsJob < ApplicationJob
     Itms::ActivityType.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_accounting_documents_by_json(json, downloader)
+    return [] if json.blank?
+    json.map { |j| find_or_create_accounting_document_by_json(j, downloader) }
+  end
+
+  def find_or_create_accounting_document_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::AccountingDocument.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncAccountingDocumentJob.perform_now(json['href'], downloader: downloader)
+    Itms::AccountingDocument.find_by!(itms_id: json['id'])
+  end
+
   def find_or_create_accounts_receivable_document_by_json(json, downloader)
     return if json.blank?
     unit = Itms::AccountsReceivableDocument.find_by(itms_id: json['id'])
@@ -38,6 +52,20 @@ class ItmsJob < ApplicationJob
 
     Itms::SyncAccountsReceivableDocumentJob.perform_now(json['id'], downloader: downloader)
     Itms::AccountsReceivableDocument.find_by!(itms_id: json['id'])
+  end
+
+  def find_or_create_budget_items_by_json(json, downloader)
+    return [] if json.blank?
+    json.map { |j| find_or_create_budget_item_by_json(j, downloader) }
+  end
+
+  def find_or_create_budget_item_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::BudgetItem.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncBudgetItemJob.perform_now(json['href'], downloader: downloader)
+    Itms::BudgetItem.find_by!(itms_id: json['id'])
   end
 
   def find_or_create_discrepancy_by_json(json, downloader)
@@ -88,6 +116,15 @@ class ItmsJob < ApplicationJob
 
     Itms::SyncPriorityAxisJob.perform_now(json['id'], downloader: downloader)
     Itms::PriorityAxis.find_by!(itms_id: json['id'])
+  end
+
+  def find_or_create_project_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::Project.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncProjectJob.perform_now(json['href'], downloader: downloader)
+    Itms::Project.find_by!(itms_id: json['id'])
   end
 
   def find_or_create_specific_goals_by_json(json, downloader)

@@ -1,0 +1,77 @@
+require 'rails_helper'
+
+RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
+  include_context 'itms_downloader'
+  let(:payment_claim) { Itms::PaymentClaim.find_by!(itms_id: 123) }
+
+  context '#perform' do
+    it 'syncs payment claim and all of its attributes' do
+      expect(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/zop/predlozene/123')
+          .and_return(double(body: itms_file_fixture('zop_predlozena_item.json')))
+          .once
+
+      subject.perform('/v2/zop/predlozene/123', downloader: downloader)
+
+      expect(payment_claim).to have_attributes(
+        itms_id: 123,
+        itms_href: '/v2/zop/predlozene/123',
+        itms_created_at: DateTime.parse('2016-04-27T09:49:30.26Z'),
+        itms_updated_at: DateTime.parse('2016-12-13T15:31:38.975Z'),
+
+        datum_prijatia: DateTime.parse('2016-05-09T00:00:00Z'),
+        hlavny_cehranicny_partner: Itms::Subject.find_by!(itms_id: 100004),
+        kod: "311071A268300101",
+        narokovana_suma: 822394.8,
+        predfinancovanie: Itms::PaymentClaim.find_by!(itms_id: 123),
+        predkladana_za: Itms::Subject.find_by!(itms_id: 100004),
+        predlozene_deklarovane_vydavky: [
+            Itms::DeclaredExpense.find_by!(
+                datum_uhrady: DateTime.parse('2017-04-07'),
+                dph: 24000,
+                druh_vydavku: "BEZNY",
+                ekonomicka_klasifikacia: "637001",
+                funkcna_klasifikacia: "0360",
+                itms_id: 45775,
+                id_polozky_dokladu: 1539,
+                investicna_akcia_prijimatela: "33323",
+                nazov: "Organizácia školení a tréningov",
+                polozka_rozpoctu: Itms::BudgetItem.find_by!(itms_id: 356),
+                poradove_cislo: 3,
+                suma_ziadana_na_preplatenie: 144000,
+                typ_vydavku: "INE",
+                uctovny_doklad: Itms::AccountingDocument.find_by!(itms_id: 1085),
+                verejne_obstaravanie: Itms::Procurement.find_by!(itms_id: 259),
+                vyska_bez_dph: 120000,
+                zmluva_verejne_obstaravanie: Itms::ProcurementContract.find_by!(itms_id: 75),
+            )
+        ],
+        prijimatel: Itms::Subject.find_by!(itms_id: 100004),
+        projekt: Itms::Project.find_by!(itms_id: 61),
+        typ: "PREDFINANCOVANIE",
+        vyplaca_sa_partnerovi: false,
+        zop_je_zaverecna: false,
+        zop_predlozena_za_viac_subjektov: false,
+      )
+
+      expect(payment_claim.predlozene_deklarovane_vydavky.first).to have_attributes(
+          suma_neziadana_na_preplatenie: [
+              Itms::DeclaredExpenseUnclaimedSum.find_by!(
+                  druh_neziadanej_sumy: "INE_DOVODY",
+                  suma_neziadana: 511872.01.to_d
+              )
+          ],
+      )
+    end
+
+    pending 'sync approved'
+    pending 'sync rejected'
+
+    pending 'attributes with lacking examples' do
+      expect(Itms::PaymentClaim.first).to respond_to(
+        :predkladana_za_subjekty,
+      )
+    end
+  end
+end
