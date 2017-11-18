@@ -134,11 +134,13 @@ CREATE TABLE deklarovane_vydavky (
     ekonomicka_klasifikacia character varying,
     funkcna_klasifikacia character varying,
     id_polozky_dokladu integer,
+    investicna_akcia_pj character varying,
     investicna_akcia_prijimatela character varying,
     nazov character varying,
     polozka_rozpoctu_id integer,
     poradove_cislo integer,
     suma_ziadana_na_preplatenie numeric,
+    suma_schvalena_na_preplatenie numeric,
     typ_vydavku character varying,
     uctovny_doklad_id integer,
     verejne_obstaravanie_id integer,
@@ -164,6 +166,37 @@ CREATE SEQUENCE deklarovane_vydavky_id_seq
 --
 
 ALTER SEQUENCE deklarovane_vydavky_id_seq OWNED BY deklarovane_vydavky.id;
+
+
+--
+-- Name: deklarovane_vydavky_sumy_neschvalene_na_preplatenie; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE deklarovane_vydavky_sumy_neschvalene_na_preplatenie (
+    id integer NOT NULL,
+    deklarovany_vydavok_id integer NOT NULL,
+    druh_neschvalenej_sumy character varying,
+    suma_neschvalena numeric
+);
+
+
+--
+-- Name: deklarovane_vydavky_sumy_neschvalene_na_preplatenie_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE deklarovane_vydavky_sumy_neschvalene_na_preplatenie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: deklarovane_vydavky_sumy_neschvalene_na_preplatenie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE deklarovane_vydavky_sumy_neschvalene_na_preplatenie_id_seq OWNED BY deklarovane_vydavky_sumy_neschvalene_na_preplatenie.id;
 
 
 --
@@ -4647,6 +4680,7 @@ CREATE TABLE zop (
     itms_created_at timestamp without time zone,
     itms_updated_at timestamp without time zone,
     datum_prijatia timestamp without time zone,
+    datum_uhrady timestamp without time zone,
     hlavny_cehranicny_partner_id integer,
     kod character varying,
     narokovana_suma numeric,
@@ -4654,6 +4688,7 @@ CREATE TABLE zop (
     predkladana_za_id integer,
     prijimatel_id integer,
     projekt_id integer,
+    schvalena_suma numeric,
     typ character varying,
     vyplaca_sa_partnerovi boolean,
     zop_je_zaverecna boolean,
@@ -4763,6 +4798,13 @@ ALTER TABLE ONLY ciselniky ALTER COLUMN id SET DEFAULT nextval('ciselniky_id_seq
 --
 
 ALTER TABLE ONLY deklarovane_vydavky ALTER COLUMN id SET DEFAULT nextval('deklarovane_vydavky_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky_sumy_neschvalene_na_preplatenie ALTER COLUMN id SET DEFAULT nextval('deklarovane_vydavky_sumy_neschvalene_na_preplatenie_id_seq'::regclass);
 
 
 --
@@ -5715,6 +5757,14 @@ ALTER TABLE ONLY ciselniky
 
 ALTER TABLE ONLY deklarovane_vydavky
     ADD CONSTRAINT deklarovane_vydavky_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: deklarovane_vydavky_sumy_neschvalene_na_preplatenie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky_sumy_neschvalene_na_preplatenie
+    ADD CONSTRAINT deklarovane_vydavky_sumy_neschvalene_na_preplatenie_pkey PRIMARY KEY (id);
 
 
 --
@@ -6866,6 +6916,27 @@ CREATE INDEX "index_itms.deklarovane_vydavky_on_zop_id" ON deklarovane_vydavky U
 
 
 --
+-- Name: index_itms.deklarovane_vydavky_sumy_neschvalene_dns; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neschvalene_dns" ON deklarovane_vydavky_sumy_neschvalene_na_preplatenie USING btree (druh_neschvalenej_sumy);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_sumy_neschvalene_dv; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neschvalene_dv" ON deklarovane_vydavky_sumy_neschvalene_na_preplatenie USING btree (deklarovany_vydavok_id);
+
+
+--
+-- Name: index_itms.deklarovane_vydavky_sumy_neschvalene_sn; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neschvalene_sn" ON deklarovane_vydavky_sumy_neschvalene_na_preplatenie USING btree (suma_neschvalena);
+
+
+--
 -- Name: index_itms.deklarovane_vydavky_sumy_neziadane_dns; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -6873,10 +6944,10 @@ CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neziadane_dns" ON deklarovane_
 
 
 --
--- Name: index_itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie_dv; Type: INDEX; Schema: itms; Owner: -
+-- Name: index_itms.deklarovane_vydavky_sumy_neziadane_dv; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie_dv" ON deklarovane_vydavky_sumy_neziadane_na_preplatenie USING btree (deklarovany_vydavok_id);
+CREATE INDEX "index_itms.deklarovane_vydavky_sumy_neziadane_dv" ON deklarovane_vydavky_sumy_neziadane_na_preplatenie USING btree (deklarovany_vydavok_id);
 
 
 --
@@ -8679,6 +8750,14 @@ ALTER TABLE ONLY zonfp_prijate_formy_financovania
 
 ALTER TABLE ONLY zop
     ADD CONSTRAINT fk_rails_3eff3ae857 FOREIGN KEY (predkladana_za_id) REFERENCES subjekty(id);
+
+
+--
+-- Name: fk_rails_3fb64d1f6a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY deklarovane_vydavky_sumy_neschvalene_na_preplatenie
+    ADD CONSTRAINT fk_rails_3fb64d1f6a FOREIGN KEY (deklarovany_vydavok_id) REFERENCES deklarovane_vydavky(id);
 
 
 --
