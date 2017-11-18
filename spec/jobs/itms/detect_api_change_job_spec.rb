@@ -12,5 +12,14 @@ RSpec.describe Itms::DetectApiChangeJob, type: :job do
 
       expect { subject.perform(downloader: downloader) }.to raise_error(described_class::ApiChangeDetectedException)
     end
+
+    it "does not raise when the API hasn't changed" do
+      expect(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/swagger.json')
+          .and_return(double(body: File.read(described_class::LAST_KNOWN_SWAGGER_PATH)))
+
+      expect { subject.perform(downloader: downloader) }.not_to raise_error
+    end
   end
 end
