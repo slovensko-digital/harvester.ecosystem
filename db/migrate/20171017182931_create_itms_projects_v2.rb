@@ -8,7 +8,6 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
 
       t.string :akronym
       t.string :cislo_zmluvy
-      #TODO t.string :data_projektu
       t.datetime :datum_konca_hlavnych_aktivit
       t.datetime :datum_konca_realizacie
       t.datetime :datum_platnosti_zmluvy
@@ -113,6 +112,15 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
               [:projekt_id, :konkretny_ciel_id, :hodnota_ciselnika_id],
               name: 'index_itms.projekty_oblasti_intervencie_on_p_kc_hc',
               unique: true
+
+    create_table 'itms.projekty_organizacne_zlozky' do |t|
+      t.references :projekt, null: false, index: true, foreign_key: { to_table: 'itms.projekty' }
+      t.references :organizacna_zlozka,
+                   null: false,
+                   index: { name: 'index_itms.projekty_organizacne_zlozky_on_zlozka' },
+                   foreign_key: { to_table: 'itms.organizacne_zlozky' }
+      t.timestamps
+    end
 
     create_table 'itms.projekty_partneri' do |t|
       t.references :projekt, null: false, index: true, foreign_key: { to_table: 'itms.projekty' }

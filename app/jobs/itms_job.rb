@@ -54,6 +54,15 @@ class ItmsJob < ApplicationJob
     Itms::AccountsReceivableDocument.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_announced_proposal_call_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::AnnouncedProposalCall.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncAnnouncedProposalCallJob.perform_now(json['href'], downloader: downloader)
+    Itms::AnnouncedProposalCall.find_by!(itms_id: json['id'])
+  end
+
   def find_or_create_budget_items_by_json(json, downloader)
     return [] if json.blank?
     json.map { |j| find_or_create_budget_item_by_json(j, downloader) }
@@ -77,6 +86,18 @@ class ItmsJob < ApplicationJob
     Itms::Discrepancy.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_implementation_places_by_json(json, downloader)
+    return [] if json.blank?
+    json.map do |j|
+      Itms::ImplementationPlace.find_or_create_by(
+          nuts_3: find_or_create_nuts_code_by_json(j['nuts3'], downloader),
+          nuts_4: find_or_create_nuts_code_by_json(j['nuts4'], downloader),
+          nuts_5: find_or_create_nuts_code_by_json(j['nuts5'], downloader),
+          stat: find_or_create_codelist_value_by_json(j['stat'], downloader)
+      )
+    end
+  end
+
   def find_or_create_intensity_by_json(json, downloader)
     return if json.blank?
     intensity = Itms::Intensity.find_by(itms_id: json['id'])
@@ -86,6 +107,21 @@ class ItmsJob < ApplicationJob
     Itms::Intensity.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_measurable_indicators_by_json(json_list, scope, downloader)
+    return [] if json_list.blank?
+
+    json_list.map do |json|
+      project_indicator = find_or_create_project_indicator_by_json(json['projektovyUkazovatel'], downloader)
+      mi = scope.find_or_initialize_by(projektovy_ukazovatel: project_indicator)
+      mi.aktualny_skutocny_stav = json['aktualnySkutocnyStav'] ? json['aktualnySkutocnyStav'].to_d : nil
+      mi.datum_posledneho_merania = json['datumPoslednehoMerania']
+      mi.hodnota_cielova_celkova = json['hodnotaCielovaCelkova'] ? json['hodnotaCielovaCelkova'].to_d : nil
+      mi.priznak_rizika = json['priznakRizika']
+      mi.save!
+
+      mi
+    end
+  end
 
   def find_or_create_nuts_code_by_json(json, downloader)
     Itms::NutsCode.find_or_create_by!(
@@ -109,6 +145,18 @@ class ItmsJob < ApplicationJob
     Itms::OperationalProgram.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_organisational_units_by_json(json)
+    return [] if json.blank?
+
+    json.map do |j|
+      unit = Itms::OrganisationalUnit.find_or_create_by!(itms_id: j['id'])
+      unit.adresa = j['adresa']
+      unit.nazov = j['nazov']
+      unit.save!
+      unit
+    end
+  end
+
   def find_or_create_priority_axis_by_json(json, downloader)
     return if json.blank?
     priority_axis = Itms::PriorityAxis.find_by(itms_id: json['id'])
@@ -127,6 +175,15 @@ class ItmsJob < ApplicationJob
     Itms::Project.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_project_indicator_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::ProjectIndicator.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncProjectIndicatorJob.perform_now(json['href'], downloader: downloader)
+    Itms::ProjectIndicator.find_by!(itms_id: json['id'])
+  end
+
   def find_or_create_specific_goals_by_json(json, downloader)
     return [] if json.blank?
     json.map { |j| find_or_create_specific_goal_by_json(j, downloader) }
@@ -139,6 +196,25 @@ class ItmsJob < ApplicationJob
 
     Itms::SyncSpecificGoalJob.perform_now(json['id'], downloader: downloader)
     Itms::SpecificGoal.find_by!(itms_id: json['id'])
+  end
+
+  def find_or_create_specific_goals_with_codelist_values_by_json(json_list, scope, downloader)
+    return [] if json_list.blank?
+    json_list.map { |json| find_or_create_specific_goal_with_codelist_value_by_json(json, scope, downloader) }
+  end
+
+  def find_or_create_specific_goal_with_codelist_value_by_json(json, scope, downloader)
+    return if json.blank?
+    existing_object = scope.where_goal_and_codelist(
+        json['konkretnyCiel']['id'],
+        json['hodnotaCiselnika']['ciselnikKod'],
+        json['hodnotaCiselnika']['id'],
+    ).first
+    return existing_object if existing_object.present?
+
+    codelist_value = find_or_create_codelist_value_by_json(json['hodnotaCiselnika'], downloader)
+    specific_goal = find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader)
+    scope.create!(hodnota_ciselnika: codelist_value, konkretny_ciel: specific_goal)
   end
 
   def find_or_create_subjects_by_json(json, downloader)
