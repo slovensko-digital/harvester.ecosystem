@@ -60,7 +60,7 @@ class Itms::Project < ApplicationRecord
   has_many :polozky_rozpoctu,
            through: :projekty_polozky_rozpoctu,
            source: :polozka_rozpoctu
-  belongs_to :schvalena_zonfp, class_name: Itms::NfcRequest
+  belongs_to :schvalena_zonfp, class_name: Itms::NrfcApplication
   has_many :sekundarny_tematicky_okruh,
            class_name: Itms::ProjectSecondaryThematicArea,
            foreign_key: 'projekt_id'
