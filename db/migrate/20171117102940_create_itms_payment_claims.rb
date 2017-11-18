@@ -24,6 +24,7 @@ class CreateItmsPaymentClaims < ActiveRecord::Migration[5.0]
 
       t.datetime :datum_prijatia
       t.datetime :datum_uhrady
+      t.datetime :datum_zamietnutia
       t.references :hlavny_cehranicny_partner, foreign_key: { to_table: 'itms.subjekty' }
       t.string :kod
       t.decimal :narokovana_suma
@@ -32,6 +33,7 @@ class CreateItmsPaymentClaims < ActiveRecord::Migration[5.0]
       t.references :prijimatel, foreign_key: { to_table: 'itms.subjekty' }
       t.references :projekt, foreign_key: { to_table: 'itms.projekty' }
       t.decimal :schvalena_suma
+      t.string :stav_zamietnutej_zop
       t.string :typ
       t.boolean :vyplaca_sa_partnerovi
       t.boolean :zop_je_zaverecna
