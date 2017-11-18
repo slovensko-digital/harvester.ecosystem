@@ -72,7 +72,7 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
           .with('https://opendata.itms2014.sk/v2/zop/zamietnute/123')
           .and_return(false)
 
-      subject.perform('/v2/zop/predlozene/123', downloader: downloader)
+      subject.perform('/v2/zop/uhradene/123', downloader: downloader)
 
       expect_submitted_attributes(payment_claim)
       expect(payment_claim).to have_attributes(
@@ -124,7 +124,38 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
         )
     end
 
-    pending 'sync rejected'
+    it 'syncs rejected payment claim and all of its attributes' do
+      expect(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/zop/predlozene/123')
+          .and_return(double(body: itms_file_fixture('zop_predlozena_item.json')))
+          .once
+
+      expect(downloader)
+          .to receive(:url_exists?)
+          .with('https://opendata.itms2014.sk/v2/zop/uhradene/123')
+          .and_return(false)
+
+      expect(downloader)
+          .to receive(:url_exists?)
+          .with('https://opendata.itms2014.sk/v2/zop/zamietnute/123')
+          .and_return(true)
+
+      expect(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/zop/zamietnute/123')
+          .and_return(double(body: itms_file_fixture('zop_zamietnuta_item.json')))
+
+      subject.perform('/v2/zop/zamietnute/123', downloader: downloader)
+
+      expect_submitted_attributes(payment_claim)
+
+      expect(payment_claim).to have_attributes(
+        itms_href: '/v2/zop/zamietnute/123',
+        datum_zamietnutia: DateTime.parse('2016-02-17T13:43:26.732Z'),
+        stav_zamietnutej_zop: 'Stiahnutá prijímateľom (K)'
+      )
+    end
 
     pending 'attributes with lacking examples' do
       expect(Itms::PaymentClaim.first).to respond_to(

@@ -61,6 +61,10 @@ class Itms::SyncPaymentClaimJob < ItmsJob
 
     response = downloader.get(url)
     json = JSON.parse(response.body)
+
+    pc.itms_href = json['href']
+    pc.datum_zamietnutia = json['datumZamietnutia']
+    pc.stav_zamietnutej_zop = json['stavZamietnutejZop']
   end
 
   def find_or_create_payment_claim_by_json(json, downloader)
