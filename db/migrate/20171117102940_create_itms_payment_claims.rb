@@ -23,6 +23,7 @@ class CreateItmsPaymentClaims < ActiveRecord::Migration[5.0]
       t.datetime :itms_updated_at
 
       t.datetime :datum_prijatia
+      t.datetime :datum_uhrady
       t.references :hlavny_cehranicny_partner, foreign_key: { to_table: 'itms.subjekty' }
       t.string :kod
       t.decimal :narokovana_suma
@@ -30,6 +31,7 @@ class CreateItmsPaymentClaims < ActiveRecord::Migration[5.0]
       t.references :predkladana_za, foreign_key: { to_table: 'itms.subjekty' }
       t.references :prijimatel, foreign_key: { to_table: 'itms.subjekty' }
       t.references :projekt, foreign_key: { to_table: 'itms.projekty' }
+      t.decimal :schvalena_suma
       t.string :typ
       t.boolean :vyplaca_sa_partnerovi
       t.boolean :zop_je_zaverecna
@@ -46,11 +48,13 @@ class CreateItmsPaymentClaims < ActiveRecord::Migration[5.0]
       t.string :ekonomicka_klasifikacia
       t.string :funkcna_klasifikacia
       t.integer :id_polozky_dokladu
+      t.string :investicna_akcia_pj
       t.string :investicna_akcia_prijimatela
       t.string :nazov
       t.references :polozka_rozpoctu, foreign_key: { to_table: 'itms.polozky_rozpoctu' }
       t.integer :poradove_cislo
       t.decimal :suma_ziadana_na_preplatenie
+      t.decimal :suma_schvalena_na_preplatenie
       t.string :typ_vydavku
       t.references :uctovny_doklad, foreign_key: { to_table: 'itms.uctovne_doklady' }
       t.references :verejne_obstaravanie,
@@ -65,10 +69,20 @@ class CreateItmsPaymentClaims < ActiveRecord::Migration[5.0]
       t.references :deklarovany_vydavok,
                    null: false,
                    foreign_key: { to_table: 'itms.deklarovane_vydavky' },
-                   index: { name: 'index_itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie_dv'}
+                   index: { name: 'index_itms.deklarovane_vydavky_sumy_neziadane_dv'}
 
       t.string :druh_neziadanej_sumy, index: { name: 'index_itms.deklarovane_vydavky_sumy_neziadane_dns'}
       t.decimal :suma_neziadana, index: { name: 'index_itms.deklarovane_vydavky_sumy_neziadane_sn'}
+    end
+
+    create_table 'itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie' do |t|
+      t.references :deklarovany_vydavok,
+                   null: false,
+                   foreign_key: { to_table: 'itms.deklarovane_vydavky' },
+                   index: { name: 'index_itms.deklarovane_vydavky_sumy_neschvalene_dv'}
+
+      t.string :druh_neschvalenej_sumy, index: { name: 'index_itms.deklarovane_vydavky_sumy_neschvalene_dns'}
+      t.decimal :suma_neschvalena, index: { name: 'index_itms.deklarovane_vydavky_sumy_neschvalene_sn'}
     end
   end
 end

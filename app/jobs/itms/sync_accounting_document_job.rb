@@ -11,6 +11,7 @@ class Itms::SyncAccountingDocumentJob < ItmsJob
       ad.itms_href = json['href']
       ad.itms_created_at = json['createdAt']
       ad.itms_updated_at = json['updatedAt']
+      ad.save!
 
       ad.datum_uhrady = json['datumUhrady']
       ad.datum_vyhotovenia = json['datumVyhotovenia']
