@@ -157,6 +157,20 @@ class ItmsJob < ApplicationJob
     end
   end
 
+  def find_or_create_payment_claims_by_json(json_list, downloader)
+    return [] if json_list.blank?
+    json_list.map { |json| find_or_create_payment_claim_by_json(json, downloader) }
+  end
+
+  def find_or_create_payment_claim_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::PaymentClaim.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncPaymentClaimJob.perform_now(json['href'], downloader: downloader)
+    Itms::PaymentClaim.find_by!(itms_id: json['id'])
+  end
+
   def find_or_create_persons_by_json(json_list)
     return [] if json_list.blank?
 
@@ -180,6 +194,20 @@ class ItmsJob < ApplicationJob
 
     Itms::SyncPriorityAxisJob.perform_now(json['id'], downloader: downloader)
     Itms::PriorityAxis.find_by!(itms_id: json['id'])
+  end
+
+  def find_or_create_procurements_by_json(json_list, downloader)
+    return [] if json_list.blank?
+    json_list.map { |json| find_or_create_procurement_by_json(json, downloader) }
+  end
+
+  def find_or_create_procurement_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::Procurement.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncProcurementJob.perform_now(json['href'], downloader: downloader)
+    Itms::Procurement.find_by!(itms_id: json['id'])
   end
 
   def find_or_create_project_by_json(json, downloader)

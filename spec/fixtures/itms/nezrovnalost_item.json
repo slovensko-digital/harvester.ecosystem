@@ -83,10 +83,16 @@
       "id": 2
     }
   ],
+  "suvisiaceVerejneObstaravania": [
+    {
+      "href": "/v2/verejneObstaravania/219",
+      "id": 219
+    }
+  ],
   "suvisiaceZop": [
     {
-      "href": "/v2/zop/uhradene/18",
-      "id": 18
+      "href": "/v2/zop/uhradene/123",
+      "id": 123
     }
   ],
   "typyNezrovnalosti": [

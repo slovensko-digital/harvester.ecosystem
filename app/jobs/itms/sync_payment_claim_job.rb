@@ -67,24 +67,6 @@ class Itms::SyncPaymentClaimJob < ItmsJob
     pc.stav_zamietnutej_zop = json['stavZamietnutejZop']
   end
 
-  def find_or_create_payment_claim_by_json(json, downloader)
-    return if json.blank?
-    existing_object = Itms::PaymentClaim.find_by(itms_id: json['id'])
-    return existing_object if existing_object.present?
-
-    Itms::SyncPaymentClaimJob.perform_now(json['href'], downloader: downloader)
-    Itms::PaymentClaim.find_by!(itms_id: json['id'])
-  end
-
-  def find_or_create_procurement_by_json(json, downloader)
-    return if json.blank?
-    existing_object = Itms::Procurement.find_by(itms_id: json['id'])
-    return existing_object if existing_object.present?
-
-    Itms::SyncProcurementJob.perform_now(json['href'], downloader: downloader)
-    Itms::Procurement.find_by!(itms_id: json['id'])
-  end
-  
   def find_or_create_procurement_contract_by_json(json, procurement, downloader)
     return if json.blank?
     existing_object = Itms::ProcurementContract.find_by(itms_id: json['id'])
@@ -98,8 +80,7 @@ class Itms::SyncPaymentClaimJob < ItmsJob
     return [] if json_list.blank?
 
     json_list.map do |json|
-      de = scope.find_or_initialize_by(itms_id: json['id'])
-      de.save!
+      de = scope.find_or_create_by!(itms_id: json['id'])
 
       de.datum_uhrady = json['datumUhrady']
       de.dph = json['dph']

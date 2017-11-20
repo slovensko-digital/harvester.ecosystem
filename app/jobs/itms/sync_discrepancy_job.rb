@@ -33,7 +33,7 @@ class Itms::SyncDiscrepancyJob < ItmsJob
       d.popis = json['popis']
       d.pouzite_praktiky = json['pouzitePraktiky']
       d.prioritna_os = find_or_create_priority_axis_by_json(json['prioritnaOs'], downloader)
-      #TODO :projekt
+      d.projekt = find_or_create_project_by_json(json['projekt'], downloader)
       d.projekt_v_priprave_alebo_nerealizovany = json['projektVPripraveAleboNerealizovany']
       d.stanovisko_dlznika = json['stanoviskoDlznika']
       d.stanovisko_organu = json['stanoviskoOrganu']
@@ -47,8 +47,8 @@ class Itms::SyncDiscrepancyJob < ItmsJob
       d.suma_na_vymahanie_zdroj_sr = json['sumaNaVymahanieZdrojSR']
       d.suvisiace_nezrovnalosti = find_or_create_discrepancies_by_json(json['suvisiaceNezrovnalosti'], downloader)
       d.suvisiace_pohladavkove_doklady = find_or_create_accounts_receivable_documents_by_json(json['suvisiacePohladavkoveDoklady'], downloader)
-      # TODO :suvisiace_verejne_obstaravania
-      # TODO :suvisiace_zop
+      d.suvisiace_verejne_obstaravania = find_or_create_procurements_by_json(json['suvisiaceVerejneObstaravania'], downloader)
+      d.suvisiace_zop = find_or_create_payment_claims_by_json(json['suvisiaceZop'], downloader)
       d.typy_nezrovnalosti = find_or_create_codelist_values_by_json(json['typyNezrovnalosti'], downloader)
       d.vratena_suma = json['vratenaSuma']
       d.vratena_suma_zdroj_eu = json['vratenaSumaZdrojEU']
