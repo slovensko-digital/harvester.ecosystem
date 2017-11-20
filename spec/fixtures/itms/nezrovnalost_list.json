@@ -1,0 +1,5588 @@
+[
+  {
+    "celkovaSumaNezrovnalosti": 23.68,
+    "createdAt": "2016-05-26T14:19:38.598Z",
+    "datumZistenia": "2016-01-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/2",
+      "id": 2
+    },
+    "href": "/v2/nezrovnalost/1",
+    "id": 1,
+    "jeSystemova": false,
+    "kod": "312IP160001",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 23.68,
+    "updatedAt": "2016-12-01T00:00:00Z",
+    "vratenaSuma": 23.68
+  },
+  {
+    "celkovaSumaNezrovnalosti": 757168.93,
+    "createdAt": "2016-06-02T11:03:29.012Z",
+    "datumZistenia": "2016-08-02T00:00:00Z",
+    "dlznik": {
+      "dic": "2021937775",
+      "href": "/v2/subjekty/100748",
+      "ico": "35919001",
+      "id": 100748
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/4",
+      "id": 4
+    },
+    "href": "/v2/nezrovnalost/2",
+    "id": 2,
+    "jeSystemova": false,
+    "kod": "311IP160001",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 757168.93,
+    "updatedAt": "2017-03-03T00:00:00Z",
+    "vratenaSuma": 757168.93
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4211.06,
+    "createdAt": "2016-09-07T13:34:30.955Z",
+    "datumZistenia": "2016-06-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/434",
+      "id": 434
+    },
+    "href": "/v2/nezrovnalost/3",
+    "id": 3,
+    "jeSystemova": false,
+    "kod": "312IP160002",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 4211.06,
+    "updatedAt": "2017-10-24T00:00:00Z",
+    "vratenaSuma": 4211.06
+  },
+  {
+    "celkovaSumaNezrovnalosti": 773.79,
+    "createdAt": "2016-10-13T15:28:36.244Z",
+    "datumZistenia": "2016-06-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/5",
+      "id": 5
+    },
+    "href": "/v2/nezrovnalost/4",
+    "id": 4,
+    "jeSystemova": false,
+    "kod": "312IP160003",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 773.79,
+    "updatedAt": "2017-02-10T00:00:00Z",
+    "vratenaSuma": 773.79
+  },
+  {
+    "celkovaSumaNezrovnalosti": 928.53,
+    "createdAt": "2016-11-08T15:12:49.593Z",
+    "datumZistenia": "2016-04-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/7",
+      "id": 7
+    },
+    "href": "/v2/nezrovnalost/5",
+    "id": 5,
+    "jeSystemova": false,
+    "kod": "312IP160004",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 928.53,
+    "updatedAt": "2016-12-13T00:00:00Z",
+    "vratenaSuma": 928.53
+  },
+  {
+    "celkovaSumaNezrovnalosti": 19.43,
+    "createdAt": "2016-11-11T09:08:26.387Z",
+    "datumZistenia": "2016-10-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/15",
+      "id": 15
+    },
+    "href": "/v2/nezrovnalost/6",
+    "id": 6,
+    "jeSystemova": false,
+    "kod": "312IP160005",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 19.43,
+    "updatedAt": "2016-12-13T00:00:00Z",
+    "vratenaSuma": 19.43
+  },
+  {
+    "celkovaSumaNezrovnalosti": 24434768.71,
+    "createdAt": "2016-11-21T15:35:43.741Z",
+    "datumZistenia": "2016-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/745",
+      "id": 745
+    },
+    "href": "/v2/nezrovnalost/9",
+    "id": 9,
+    "jeSystemova": false,
+    "kod": "311IP160003",
+    "stav": "Nepotvrdené podozrenie",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 193198.8,
+    "createdAt": "2016-11-23T08:11:43.202Z",
+    "datumZistenia": "2016-09-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/680",
+      "id": 680
+    },
+    "href": "/v2/nezrovnalost/10",
+    "id": 10,
+    "jeSystemova": false,
+    "kod": "311IP160004",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 193198.8,
+    "updatedAt": "2017-10-20T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 8485.96,
+    "createdAt": "2016-11-23T11:48:18.583Z",
+    "datumZistenia": "2016-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/21",
+      "id": 21
+    },
+    "href": "/v2/nezrovnalost/12",
+    "id": 12,
+    "jeSystemova": false,
+    "kod": "312IP160006",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 8485.96,
+    "updatedAt": "2017-01-20T00:00:00Z",
+    "vratenaSuma": 8485.96
+  },
+  {
+    "celkovaSumaNezrovnalosti": 202.55,
+    "createdAt": "2016-11-25T13:58:06.912Z",
+    "datumZistenia": "2016-04-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/32",
+      "id": 32
+    },
+    "href": "/v2/nezrovnalost/17",
+    "id": 17,
+    "jeSystemova": false,
+    "kod": "312IP160007",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 202.55,
+    "updatedAt": "2016-12-13T00:00:00Z",
+    "vratenaSuma": 202.55
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3045.14,
+    "createdAt": "2016-11-29T14:27:17.025Z",
+    "datumZistenia": "2016-04-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/47",
+      "id": 47
+    },
+    "href": "/v2/nezrovnalost/18",
+    "id": 18,
+    "jeSystemova": false,
+    "kod": "312IP160008",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 3045.14,
+    "updatedAt": "2017-01-26T00:00:00Z",
+    "vratenaSuma": 3045.14
+  },
+  {
+    "celkovaSumaNezrovnalosti": 486.1,
+    "createdAt": "2016-11-30T11:11:53.019Z",
+    "datumZistenia": "2016-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/48",
+      "id": 48
+    },
+    "href": "/v2/nezrovnalost/19",
+    "id": 19,
+    "jeSystemova": false,
+    "kod": "312IP160009",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 486.1,
+    "updatedAt": "2017-01-20T00:00:00Z",
+    "vratenaSuma": 486.1
+  },
+  {
+    "celkovaSumaNezrovnalosti": 12.55,
+    "createdAt": "2016-12-02T12:28:17.433Z",
+    "datumZistenia": "2016-03-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/53",
+      "id": 53
+    },
+    "href": "/v2/nezrovnalost/20",
+    "id": 20,
+    "jeSystemova": false,
+    "kod": "312IP160010",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 12.55,
+    "updatedAt": "2017-01-26T00:00:00Z",
+    "vratenaSuma": 12.55
+  },
+  {
+    "celkovaSumaNezrovnalosti": 856.9,
+    "createdAt": "2016-12-02T13:33:20.495Z",
+    "datumZistenia": "2016-04-26T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/54",
+      "id": 54
+    },
+    "href": "/v2/nezrovnalost/21",
+    "id": 21,
+    "jeSystemova": false,
+    "kod": "312IP160011",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 856.9,
+    "updatedAt": "2017-01-20T00:00:00Z",
+    "vratenaSuma": 856.9
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4763.17,
+    "createdAt": "2016-12-16T10:14:36.972Z",
+    "datumZistenia": "2016-11-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "NEZROVNALOST_K_PS",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/59",
+      "id": 59
+    },
+    "href": "/v2/nezrovnalost/22",
+    "id": 22,
+    "jeSystemova": true,
+    "kod": "301PO160001",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 4763.17,
+    "updatedAt": "2016-12-16T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0,
+    "createdAt": "2016-12-21T13:54:27.093Z",
+    "datumZistenia": "2016-06-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/65",
+      "id": 65
+    },
+    "href": "/v2/nezrovnalost/23",
+    "id": 23,
+    "jeSystemova": false,
+    "kod": "310IP160001",
+    "stav": "Nepotvrdené podozrenie",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2016-12-22T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 572.23,
+    "createdAt": "2016-12-21T14:11:54.504Z",
+    "datumZistenia": "2016-08-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/64",
+      "id": 64
+    },
+    "href": "/v2/nezrovnalost/24",
+    "id": 24,
+    "jeSystemova": false,
+    "kod": "312IP160012",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 572.23,
+    "updatedAt": "2017-02-10T00:00:00Z",
+    "vratenaSuma": 572.23
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4633.81,
+    "createdAt": "2016-12-22T13:42:23.187Z",
+    "datumZistenia": "2016-10-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/66",
+      "id": 66
+    },
+    "href": "/v2/nezrovnalost/25",
+    "id": 25,
+    "jeSystemova": false,
+    "kod": "312IP160013",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 4633.81,
+    "updatedAt": "2017-02-10T00:00:00Z",
+    "vratenaSuma": 4633.81
+  },
+  {
+    "celkovaSumaNezrovnalosti": 560,
+    "createdAt": "2016-12-22T15:19:22.638Z",
+    "datumZistenia": "2016-04-05T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/68",
+      "id": 68
+    },
+    "href": "/v2/nezrovnalost/26",
+    "id": 26,
+    "jeSystemova": false,
+    "kod": "312IP160014",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 560,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 560
+  },
+  {
+    "celkovaSumaNezrovnalosti": 39.35,
+    "createdAt": "2016-12-22T15:29:08.62Z",
+    "datumZistenia": "2016-07-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/67",
+      "id": 67
+    },
+    "href": "/v2/nezrovnalost/27",
+    "id": 27,
+    "jeSystemova": false,
+    "kod": "312IP160015",
+    "stav": "Nehospodárne vymáhanie",
+    "sumaNaVymahanie": 39.35,
+    "updatedAt": "2016-12-22T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 310.32,
+    "createdAt": "2016-12-27T15:59:45.66Z",
+    "datumZistenia": "2016-05-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/70",
+      "id": 70
+    },
+    "href": "/v2/nezrovnalost/28",
+    "id": 28,
+    "jeSystemova": false,
+    "kod": "312IP160016",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 310.32,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 310.32
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5129.17,
+    "createdAt": "2016-12-28T15:57:29.76Z",
+    "datumZistenia": "2016-05-26T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/72",
+      "id": 72
+    },
+    "href": "/v2/nezrovnalost/29",
+    "id": 29,
+    "jeSystemova": false,
+    "kod": "312IP160017",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 5129.17,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 5129.17
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1194.16,
+    "createdAt": "2017-01-02T12:08:40.413Z",
+    "datumZistenia": "2016-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/74",
+      "id": 74
+    },
+    "href": "/v2/nezrovnalost/30",
+    "id": 30,
+    "jeSystemova": false,
+    "kod": "312IP170001",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1194.16,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 1194.16
+  },
+  {
+    "celkovaSumaNezrovnalosti": 66.77,
+    "createdAt": "2017-01-02T14:38:26.554Z",
+    "datumZistenia": "2016-05-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/75",
+      "id": 75
+    },
+    "href": "/v2/nezrovnalost/31",
+    "id": 31,
+    "jeSystemova": false,
+    "kod": "312IP170002",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 66.77,
+    "updatedAt": "2017-03-14T00:00:00Z",
+    "vratenaSuma": 66.77
+  },
+  {
+    "celkovaSumaNezrovnalosti": 883.87,
+    "createdAt": "2017-01-03T12:31:13.355Z",
+    "datumZistenia": "2016-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/77",
+      "id": 77
+    },
+    "href": "/v2/nezrovnalost/32",
+    "id": 32,
+    "jeSystemova": false,
+    "kod": "312IP170003",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 883.87,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 883.87
+  },
+  {
+    "celkovaSumaNezrovnalosti": 8.52,
+    "createdAt": "2017-01-04T09:35:26.672Z",
+    "datumZistenia": "2016-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/78",
+      "id": 78
+    },
+    "href": "/v2/nezrovnalost/33",
+    "id": 33,
+    "jeSystemova": false,
+    "kod": "312IP170004",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 8.52,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 8.52
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5302.59,
+    "createdAt": "2017-01-04T14:11:12.162Z",
+    "datumZistenia": "2016-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/79",
+      "id": 79
+    },
+    "href": "/v2/nezrovnalost/34",
+    "id": 34,
+    "jeSystemova": false,
+    "kod": "312IP170005",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 5302.59,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 5302.59
+  },
+  {
+    "celkovaSumaNezrovnalosti": 31.34,
+    "createdAt": "2017-01-05T11:05:15.397Z",
+    "datumZistenia": "2016-11-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/80",
+      "id": 80
+    },
+    "href": "/v2/nezrovnalost/35",
+    "id": 35,
+    "jeSystemova": false,
+    "kod": "312IP170006",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 31.34,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 31.34
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3352.01,
+    "createdAt": "2017-01-09T11:04:14.016Z",
+    "datumZistenia": "2016-11-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/81",
+      "id": 81
+    },
+    "href": "/v2/nezrovnalost/36",
+    "id": 36,
+    "jeSystemova": false,
+    "kod": "312IP170007",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 3352.01,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 3352.01
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4658.27,
+    "createdAt": "2017-01-09T14:04:02.035Z",
+    "datumZistenia": "2016-11-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/82",
+      "id": 82
+    },
+    "href": "/v2/nezrovnalost/37",
+    "id": 37,
+    "jeSystemova": false,
+    "kod": "312IP170008",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 4658.27,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 4658.27
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2147.25,
+    "createdAt": "2017-01-11T14:36:37.954Z",
+    "datumZistenia": "2016-09-26T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/83",
+      "id": 83
+    },
+    "href": "/v2/nezrovnalost/38",
+    "id": 38,
+    "jeSystemova": false,
+    "kod": "312IP170009",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2147.25,
+    "updatedAt": "2017-09-22T00:00:00Z",
+    "vratenaSuma": 2147.25
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7787.95,
+    "createdAt": "2017-01-13T13:20:05.017Z",
+    "datumZistenia": "2016-07-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/85",
+      "id": 85
+    },
+    "href": "/v2/nezrovnalost/39",
+    "id": 39,
+    "jeSystemova": false,
+    "kod": "312IP170010",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 7787.95,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 7787.95
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4409483.65,
+    "createdAt": "2017-01-16T09:11:36.091Z",
+    "datumZistenia": "2017-01-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/86",
+      "id": 86
+    },
+    "href": "/v2/nezrovnalost/40",
+    "id": 40,
+    "jeSystemova": false,
+    "kod": "311IP170001",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 4409483.65,
+    "updatedAt": "2017-01-16T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5483.04,
+    "createdAt": "2017-01-16T13:50:19.021Z",
+    "datumZistenia": "2016-07-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/88",
+      "id": 88
+    },
+    "href": "/v2/nezrovnalost/41",
+    "id": 41,
+    "jeSystemova": false,
+    "kod": "312IP170011",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 5483.04,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 5483.04
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7675.71,
+    "createdAt": "2017-01-16T15:25:10.915Z",
+    "datumZistenia": "2016-11-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/89",
+      "id": 89
+    },
+    "href": "/v2/nezrovnalost/42",
+    "id": 42,
+    "jeSystemova": false,
+    "kod": "312IP170012",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 7675.71,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 7675.71
+  },
+  {
+    "celkovaSumaNezrovnalosti": 32.06,
+    "createdAt": "2017-01-17T08:21:03.422Z",
+    "datumZistenia": "2016-07-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/90",
+      "id": 90
+    },
+    "href": "/v2/nezrovnalost/43",
+    "id": 43,
+    "jeSystemova": false,
+    "kod": "312IP170013",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 32.06,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 32.06
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4875.49,
+    "createdAt": "2017-01-17T11:38:30.357Z",
+    "datumZistenia": "2016-08-15T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/91",
+      "id": 91
+    },
+    "href": "/v2/nezrovnalost/44",
+    "id": 44,
+    "jeSystemova": false,
+    "kod": "312IP170014",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 4875.49,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 4875.49
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5283.12,
+    "createdAt": "2017-01-17T13:17:18.557Z",
+    "datumZistenia": "2016-11-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/92",
+      "id": 92
+    },
+    "href": "/v2/nezrovnalost/45",
+    "id": 45,
+    "jeSystemova": false,
+    "kod": "312IP170015",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 5283.12,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 5283.12
+  },
+  {
+    "celkovaSumaNezrovnalosti": 754.82,
+    "createdAt": "2017-01-18T09:48:30.439Z",
+    "datumZistenia": "2016-10-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/93",
+      "id": 93
+    },
+    "href": "/v2/nezrovnalost/46",
+    "id": 46,
+    "jeSystemova": false,
+    "kod": "312IP170016",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 754.82,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 754.82
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2179.53,
+    "createdAt": "2017-01-18T13:39:54.283Z",
+    "datumZistenia": "2016-10-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/94",
+      "id": 94
+    },
+    "href": "/v2/nezrovnalost/47",
+    "id": 47,
+    "jeSystemova": false,
+    "kod": "312IP170017",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2179.53,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 2179.53
+  },
+  {
+    "celkovaSumaNezrovnalosti": 118.53,
+    "createdAt": "2017-01-18T14:01:58.798Z",
+    "datumZistenia": "2016-11-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/95",
+      "id": 95
+    },
+    "href": "/v2/nezrovnalost/48",
+    "id": 48,
+    "jeSystemova": false,
+    "kod": "312IP170018",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 118.53,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 118.53
+  },
+  {
+    "celkovaSumaNezrovnalosti": 926.42,
+    "createdAt": "2017-01-19T09:04:39.786Z",
+    "datumZistenia": "2016-10-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/96",
+      "id": 96
+    },
+    "href": "/v2/nezrovnalost/49",
+    "id": 49,
+    "jeSystemova": false,
+    "kod": "312IP170019",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 926.42,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 926.42
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1317.99,
+    "createdAt": "2017-01-20T10:48:42.742Z",
+    "datumZistenia": "2016-10-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/97",
+      "id": 97
+    },
+    "href": "/v2/nezrovnalost/50",
+    "id": 50,
+    "jeSystemova": false,
+    "kod": "312IP170020",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1317.99,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 1317.99
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4071.69,
+    "createdAt": "2017-01-23T09:59:41.317Z",
+    "datumZistenia": "2016-10-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/102",
+      "id": 102
+    },
+    "href": "/v2/nezrovnalost/51",
+    "id": 51,
+    "jeSystemova": false,
+    "kod": "312IP170021",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 4071.69,
+    "updatedAt": "2017-02-16T00:00:00Z",
+    "vratenaSuma": 4071.69
+  },
+  {
+    "celkovaSumaNezrovnalosti": 49.1,
+    "createdAt": "2017-02-08T12:48:36.901Z",
+    "datumZistenia": "2017-02-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021056818",
+      "href": "/v2/subjekty/100009",
+      "ico": "00686832",
+      "id": 100009
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/107",
+      "id": 107
+    },
+    "href": "/v2/nezrovnalost/52",
+    "id": 52,
+    "jeSystemova": false,
+    "kod": "313IP170001",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 49.1,
+    "updatedAt": "2017-03-23T00:00:00Z",
+    "vratenaSuma": 49.1
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0,
+    "createdAt": "2017-02-08T13:00:57.753Z",
+    "datumZistenia": "2017-01-26T00:00:00Z",
+    "dlznik": {
+      "dic": "2021171328",
+      "href": "/v2/subjekty/100988",
+      "ico": "00319244",
+      "id": 100988
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/685",
+      "id": 685
+    },
+    "href": "/v2/nezrovnalost/53",
+    "id": 53,
+    "jeSystemova": false,
+    "kod": "310IP170001",
+    "stav": "Nepotvrdené podozrenie",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-18T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7503.46,
+    "createdAt": "2017-02-20T12:00:55.359Z",
+    "datumZistenia": "2017-03-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2020589538",
+      "href": "/v2/subjekty/101512",
+      "ico": "00315095",
+      "id": 101512
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/385",
+      "id": 385
+    },
+    "href": "/v2/nezrovnalost/54",
+    "id": 54,
+    "jeSystemova": false,
+    "kod": "310IP170002",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-21T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2158.82,
+    "createdAt": "2017-03-09T12:03:56.892Z",
+    "datumZistenia": "2017-02-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/148",
+      "id": 148
+    },
+    "href": "/v2/nezrovnalost/55",
+    "id": 55,
+    "jeSystemova": false,
+    "kod": "312IP170022",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2158.82,
+    "updatedAt": "2017-03-30T00:00:00Z",
+    "vratenaSuma": 2158.82
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1218,
+    "createdAt": "2017-03-13T12:35:55.969Z",
+    "datumZistenia": "2017-03-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/149",
+      "id": 149
+    },
+    "href": "/v2/nezrovnalost/56",
+    "id": 56,
+    "jeSystemova": false,
+    "kod": "310IP170003",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1218,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 1218
+  },
+  {
+    "celkovaSumaNezrovnalosti": 992.7,
+    "createdAt": "2017-03-15T15:06:19.684Z",
+    "datumZistenia": "2016-06-15T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/193",
+      "id": 193
+    },
+    "href": "/v2/nezrovnalost/57",
+    "id": 57,
+    "jeSystemova": false,
+    "kod": "312IP170023",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 992.7,
+    "updatedAt": "2017-05-22T00:00:00Z",
+    "vratenaSuma": 992.7
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3308.36,
+    "createdAt": "2017-03-16T16:18:08.257Z",
+    "datumZistenia": "2015-03-26T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/156",
+      "id": 156
+    },
+    "href": "/v2/nezrovnalost/58",
+    "id": 58,
+    "jeSystemova": false,
+    "kod": "312IP170024",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 3308.36,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 3308.36
+  },
+  {
+    "celkovaSumaNezrovnalosti": 252221.11,
+    "createdAt": "2017-03-17T12:32:03.86Z",
+    "datumZistenia": "2016-11-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021291382",
+      "href": "/v2/subjekty/100012",
+      "ico": "00156621",
+      "id": 100012
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/159",
+      "id": 159
+    },
+    "href": "/v2/nezrovnalost/59",
+    "id": 59,
+    "jeSystemova": false,
+    "kod": "302IP170001",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 252221.11,
+    "updatedAt": "2017-05-22T00:00:00Z",
+    "vratenaSuma": 252221.11
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0.06,
+    "createdAt": "2017-03-20T13:28:39.088Z",
+    "datumZistenia": "2017-02-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/162",
+      "id": 162
+    },
+    "href": "/v2/nezrovnalost/60",
+    "id": 60,
+    "jeSystemova": false,
+    "kod": "312IP170025",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 0.06,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 0.06
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1592.43,
+    "createdAt": "2017-03-20T17:28:59.074Z",
+    "datumZistenia": "2016-08-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/163",
+      "id": 163
+    },
+    "href": "/v2/nezrovnalost/61",
+    "id": 61,
+    "jeSystemova": false,
+    "kod": "312IP170026",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1592.43,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 1592.43
+  },
+  {
+    "celkovaSumaNezrovnalosti": 779.12,
+    "createdAt": "2017-03-20T18:56:42.81Z",
+    "datumZistenia": "2016-08-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/165",
+      "id": 165
+    },
+    "href": "/v2/nezrovnalost/62",
+    "id": 62,
+    "jeSystemova": false,
+    "kod": "312IP170027",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 779.12,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 779.12
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1018.52,
+    "createdAt": "2017-03-21T07:54:29.46Z",
+    "datumZistenia": "2017-02-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/167",
+      "id": 167
+    },
+    "href": "/v2/nezrovnalost/63",
+    "id": 63,
+    "jeSystemova": false,
+    "kod": "312IP170028",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1018.52,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 1018.52
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7.54,
+    "createdAt": "2017-03-21T09:59:20.663Z",
+    "datumZistenia": "2017-02-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/168",
+      "id": 168
+    },
+    "href": "/v2/nezrovnalost/64",
+    "id": 64,
+    "jeSystemova": false,
+    "kod": "312IP170029",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 7.54,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 7.54
+  },
+  {
+    "celkovaSumaNezrovnalosti": 680.1,
+    "createdAt": "2017-03-21T10:02:27.204Z",
+    "datumZistenia": "2016-08-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/169",
+      "id": 169
+    },
+    "href": "/v2/nezrovnalost/65",
+    "id": 65,
+    "jeSystemova": false,
+    "kod": "312IP170030",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 680.1,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 680.1
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1399.91,
+    "createdAt": "2017-03-21T13:37:49.94Z",
+    "datumZistenia": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/171",
+      "id": 171
+    },
+    "href": "/v2/nezrovnalost/66",
+    "id": 66,
+    "jeSystemova": false,
+    "kod": "312IP170031",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1399.91,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 1399.91
+  },
+  {
+    "celkovaSumaNezrovnalosti": 877.7,
+    "createdAt": "2017-03-21T15:20:55.769Z",
+    "datumZistenia": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/173",
+      "id": 173
+    },
+    "href": "/v2/nezrovnalost/67",
+    "id": 67,
+    "jeSystemova": false,
+    "kod": "312IP170032",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 877.7,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 877.7
+  },
+  {
+    "celkovaSumaNezrovnalosti": 267.9,
+    "createdAt": "2017-03-21T16:32:09.423Z",
+    "datumZistenia": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/175",
+      "id": 175
+    },
+    "href": "/v2/nezrovnalost/68",
+    "id": 68,
+    "jeSystemova": false,
+    "kod": "312IP170033",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 267.9,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 267.9
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5884.98,
+    "createdAt": "2017-03-21T19:00:19.294Z",
+    "datumZistenia": "2016-12-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/177",
+      "id": 177
+    },
+    "href": "/v2/nezrovnalost/69",
+    "id": 69,
+    "jeSystemova": false,
+    "kod": "312IP170034",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 5884.98,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 5884.98
+  },
+  {
+    "celkovaSumaNezrovnalosti": 10621.06,
+    "createdAt": "2017-03-22T08:12:03.325Z",
+    "datumZistenia": "2017-02-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/179",
+      "id": 179
+    },
+    "href": "/v2/nezrovnalost/70",
+    "id": 70,
+    "jeSystemova": false,
+    "kod": "312IP170035",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 10621.06,
+    "updatedAt": "2017-04-18T00:00:00Z",
+    "vratenaSuma": 10621.06
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0,
+    "createdAt": "2017-03-22T13:43:25.401Z",
+    "datumZistenia": "2017-03-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/181",
+      "id": 181
+    },
+    "href": "/v2/nezrovnalost/71",
+    "id": 71,
+    "jeSystemova": false,
+    "kod": "311IP170002",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-04-10T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0,
+    "createdAt": "2017-03-22T14:42:22.65Z",
+    "datumZistenia": "2017-03-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/183",
+      "id": 183
+    },
+    "href": "/v2/nezrovnalost/72",
+    "id": 72,
+    "jeSystemova": false,
+    "kod": "311IP170003",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-04-10T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0,
+    "createdAt": "2017-03-22T14:43:03.427Z",
+    "datumZistenia": "2017-03-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/185",
+      "id": 185
+    },
+    "href": "/v2/nezrovnalost/73",
+    "id": 73,
+    "jeSystemova": false,
+    "kod": "311IP170004",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-04-10T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3987.97,
+    "createdAt": "2017-03-31T09:42:01.602Z",
+    "datumZistenia": "2017-01-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/190",
+      "id": 190
+    },
+    "href": "/v2/nezrovnalost/74",
+    "id": 74,
+    "jeSystemova": false,
+    "kod": "312IP170036",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 3987.97,
+    "updatedAt": "2017-05-11T00:00:00Z",
+    "vratenaSuma": 3987.97
+  },
+  {
+    "celkovaSumaNezrovnalosti": 9420.16,
+    "createdAt": "2017-04-11T09:07:06.359Z",
+    "datumZistenia": "2017-01-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/191",
+      "id": 191
+    },
+    "href": "/v2/nezrovnalost/75",
+    "id": 75,
+    "jeSystemova": false,
+    "kod": "312IP170037",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 9420.16,
+    "updatedAt": "2017-04-28T00:00:00Z",
+    "vratenaSuma": 9420.16
+  },
+  {
+    "celkovaSumaNezrovnalosti": 14794.36,
+    "createdAt": "2017-04-13T09:21:45.346Z",
+    "datumZistenia": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/194",
+      "id": 194
+    },
+    "href": "/v2/nezrovnalost/76",
+    "id": 76,
+    "jeSystemova": false,
+    "kod": "312IP170038",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 14794.36,
+    "updatedAt": "2017-05-11T00:00:00Z",
+    "vratenaSuma": 14794.36
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3415.91,
+    "createdAt": "2017-04-20T12:39:51.094Z",
+    "datumZistenia": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/216",
+      "id": 216
+    },
+    "href": "/v2/nezrovnalost/77",
+    "id": 77,
+    "jeSystemova": false,
+    "kod": "312IP170039",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 3415.91,
+    "updatedAt": "2017-05-17T00:00:00Z",
+    "vratenaSuma": 3415.91
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4777.57,
+    "createdAt": "2017-04-24T09:39:29.303Z",
+    "datumZistenia": "2016-12-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "NEZROVNALOST_K_PS",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/219",
+      "id": 219
+    },
+    "href": "/v2/nezrovnalost/78",
+    "id": 78,
+    "jeSystemova": true,
+    "kod": "301PO170001",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 4777.57,
+    "updatedAt": "2017-04-24T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 8895.75,
+    "createdAt": "2017-04-24T14:09:55.554Z",
+    "datumZistenia": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/221",
+      "id": 221
+    },
+    "href": "/v2/nezrovnalost/79",
+    "id": 79,
+    "jeSystemova": false,
+    "kod": "312IP170040",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 8895.75,
+    "updatedAt": "2017-05-11T00:00:00Z",
+    "vratenaSuma": 8895.75
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1001.41,
+    "createdAt": "2017-04-25T12:49:52.359Z",
+    "datumZistenia": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/223",
+      "id": 223
+    },
+    "href": "/v2/nezrovnalost/80",
+    "id": 80,
+    "jeSystemova": false,
+    "kod": "312IP170041",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1001.41,
+    "updatedAt": "2017-05-22T00:00:00Z",
+    "vratenaSuma": 1001.41
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1003.14,
+    "createdAt": "2017-04-25T15:43:26.541Z",
+    "datumZistenia": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/225",
+      "id": 225
+    },
+    "href": "/v2/nezrovnalost/81",
+    "id": 81,
+    "jeSystemova": false,
+    "kod": "312IP170042",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1003.14,
+    "updatedAt": "2017-05-22T00:00:00Z",
+    "vratenaSuma": 1003.14
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4213.42,
+    "createdAt": "2017-04-26T10:42:19.935Z",
+    "datumZistenia": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/232",
+      "id": 232
+    },
+    "href": "/v2/nezrovnalost/82",
+    "id": 82,
+    "jeSystemova": false,
+    "kod": "312IP170043",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 4213.42,
+    "updatedAt": "2017-05-22T00:00:00Z",
+    "vratenaSuma": 4213.42
+  },
+  {
+    "celkovaSumaNezrovnalosti": 8624.47,
+    "createdAt": "2017-04-26T15:36:08.829Z",
+    "datumZistenia": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/234",
+      "id": 234
+    },
+    "href": "/v2/nezrovnalost/83",
+    "id": 83,
+    "jeSystemova": false,
+    "kod": "312IP170044",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 8624.47,
+    "updatedAt": "2017-05-22T00:00:00Z",
+    "vratenaSuma": 8624.47
+  },
+  {
+    "celkovaSumaNezrovnalosti": 6726.08,
+    "createdAt": "2017-04-27T13:38:07.945Z",
+    "datumZistenia": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/236",
+      "id": 236
+    },
+    "href": "/v2/nezrovnalost/84",
+    "id": 84,
+    "jeSystemova": false,
+    "kod": "312IP170045",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 6726.08,
+    "updatedAt": "2017-05-22T00:00:00Z",
+    "vratenaSuma": 6726.08
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3366.09,
+    "createdAt": "2017-04-27T14:38:48.47Z",
+    "datumZistenia": "2017-04-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021186904",
+      "href": "/v2/subjekty/100016",
+      "ico": "00691135",
+      "id": 100016
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/364",
+      "id": 364
+    },
+    "href": "/v2/nezrovnalost/85",
+    "id": 85,
+    "jeSystemova": false,
+    "kod": "312IP170046",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-14T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 15953.37,
+    "createdAt": "2017-04-28T12:38:47.156Z",
+    "datumZistenia": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/240",
+      "id": 240
+    },
+    "href": "/v2/nezrovnalost/86",
+    "id": 86,
+    "jeSystemova": false,
+    "kod": "312IP170047",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 15953.37,
+    "updatedAt": "2017-05-22T00:00:00Z",
+    "vratenaSuma": 15953.37
+  },
+  {
+    "celkovaSumaNezrovnalosti": 23295.66,
+    "createdAt": "2017-05-02T10:52:20.142Z",
+    "datumZistenia": "2017-04-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/273",
+      "id": 273
+    },
+    "href": "/v2/nezrovnalost/119",
+    "id": 119,
+    "jeSystemova": false,
+    "kod": "312IP170048",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 23295.66,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 23295.66
+  },
+  {
+    "celkovaSumaNezrovnalosti": 10461.65,
+    "createdAt": "2017-05-02T14:37:51.395Z",
+    "datumZistenia": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/274",
+      "id": 274
+    },
+    "href": "/v2/nezrovnalost/120",
+    "id": 120,
+    "jeSystemova": false,
+    "kod": "312IP170049",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 10461.65,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 10461.65
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2139.72,
+    "createdAt": "2017-05-04T14:52:12.595Z",
+    "datumZistenia": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/276",
+      "id": 276
+    },
+    "href": "/v2/nezrovnalost/121",
+    "id": 121,
+    "jeSystemova": false,
+    "kod": "312IP170050",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2139.72,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 2139.72
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3679.73,
+    "createdAt": "2017-05-05T12:38:05.283Z",
+    "datumZistenia": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/278",
+      "id": 278
+    },
+    "href": "/v2/nezrovnalost/122",
+    "id": 122,
+    "jeSystemova": false,
+    "kod": "312IP170051",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 3679.73,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 3679.73
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1284.8,
+    "createdAt": "2017-05-09T09:29:14.995Z",
+    "datumZistenia": "2017-04-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/280",
+      "id": 280
+    },
+    "href": "/v2/nezrovnalost/123",
+    "id": 123,
+    "jeSystemova": false,
+    "kod": "312IP170052",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1284.8,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 1284.8
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7972.57,
+    "createdAt": "2017-05-09T13:38:09.743Z",
+    "datumZistenia": "2017-04-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/282",
+      "id": 282
+    },
+    "href": "/v2/nezrovnalost/124",
+    "id": 124,
+    "jeSystemova": false,
+    "kod": "312IP170053",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 7972.57,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 7972.57
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1967.83,
+    "createdAt": "2017-05-09T13:38:27.045Z",
+    "datumZistenia": "2017-04-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/281",
+      "id": 281
+    },
+    "href": "/v2/nezrovnalost/125",
+    "id": 125,
+    "jeSystemova": false,
+    "kod": "312IP170054",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1967.83,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 1967.83
+  },
+  {
+    "celkovaSumaNezrovnalosti": 6858.98,
+    "createdAt": "2017-05-10T08:34:56.796Z",
+    "datumZistenia": "2017-04-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/283",
+      "id": 283
+    },
+    "href": "/v2/nezrovnalost/126",
+    "id": 126,
+    "jeSystemova": false,
+    "kod": "312IP170055",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 6858.98,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 6858.98
+  },
+  {
+    "celkovaSumaNezrovnalosti": 264.55,
+    "createdAt": "2017-05-10T13:35:54.727Z",
+    "datumZistenia": "2017-04-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/284",
+      "id": 284
+    },
+    "href": "/v2/nezrovnalost/127",
+    "id": 127,
+    "jeSystemova": false,
+    "kod": "312IP170056",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 264.55,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 264.55
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4876.5,
+    "createdAt": "2017-05-11T10:22:58.684Z",
+    "datumZistenia": "2017-04-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/285",
+      "id": 285
+    },
+    "href": "/v2/nezrovnalost/128",
+    "id": 128,
+    "jeSystemova": false,
+    "kod": "312IP170057",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 4876.5,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 4876.5
+  },
+  {
+    "celkovaSumaNezrovnalosti": 228.14,
+    "createdAt": "2017-05-11T14:30:10.394Z",
+    "datumZistenia": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/291",
+      "id": 291
+    },
+    "href": "/v2/nezrovnalost/129",
+    "id": 129,
+    "jeSystemova": false,
+    "kod": "312IP170058",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 228.14,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 228.14
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7366.86,
+    "createdAt": "2017-05-11T14:47:08.716Z",
+    "datumZistenia": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/293",
+      "id": 293
+    },
+    "href": "/v2/nezrovnalost/130",
+    "id": 130,
+    "jeSystemova": false,
+    "kod": "312IP170059",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 7366.86,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 7366.86
+  },
+  {
+    "celkovaSumaNezrovnalosti": 610845.19,
+    "createdAt": "2017-05-12T14:20:15.991Z",
+    "datumZistenia": "2016-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2020799209",
+      "href": "/v2/subjekty/100008",
+      "ico": "30416094",
+      "id": 100008
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/553",
+      "id": 553
+    },
+    "href": "/v2/nezrovnalost/131",
+    "id": 131,
+    "jeSystemova": false,
+    "kod": "311IP170005",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 610845.19,
+    "updatedAt": "2017-11-15T00:00:00Z",
+    "vratenaSuma": 610845.19
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3095,
+    "createdAt": "2017-05-15T13:26:24.461Z",
+    "datumZistenia": "2017-05-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2020711605",
+      "href": "/v2/subjekty/102410",
+      "ico": "00327433",
+      "id": 102410
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/352",
+      "id": 352
+    },
+    "href": "/v2/nezrovnalost/132",
+    "id": 132,
+    "jeSystemova": false,
+    "kod": "312IP170060",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-14T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1278.36,
+    "createdAt": "2017-05-16T11:07:24.825Z",
+    "datumZistenia": "2017-05-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2020719646",
+      "href": "/v2/subjekty/100560",
+      "ico": "31753604",
+      "id": 100560
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/297",
+      "id": 297
+    },
+    "href": "/v2/nezrovnalost/133",
+    "id": 133,
+    "jeSystemova": false,
+    "kod": "310IP170004",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-05-16T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1942.51,
+    "createdAt": "2017-05-16T12:33:33.094Z",
+    "datumZistenia": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/298",
+      "id": 298
+    },
+    "href": "/v2/nezrovnalost/134",
+    "id": 134,
+    "jeSystemova": false,
+    "kod": "312IP170061",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1942.51,
+    "updatedAt": "2017-05-26T00:00:00Z",
+    "vratenaSuma": 1942.51
+  },
+  {
+    "celkovaSumaNezrovnalosti": 326.64,
+    "createdAt": "2017-05-18T13:20:29.022Z",
+    "datumZistenia": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/303",
+      "id": 303
+    },
+    "href": "/v2/nezrovnalost/136",
+    "id": 136,
+    "jeSystemova": false,
+    "kod": "312IP170062",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 326.64,
+    "updatedAt": "2017-06-15T00:00:00Z",
+    "vratenaSuma": 326.64
+  },
+  {
+    "celkovaSumaNezrovnalosti": 19954.09,
+    "createdAt": "2017-05-18T14:52:58.813Z",
+    "datumZistenia": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/305",
+      "id": 305
+    },
+    "href": "/v2/nezrovnalost/137",
+    "id": 137,
+    "jeSystemova": false,
+    "kod": "312IP170063",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 19954.09,
+    "updatedAt": "2017-06-15T00:00:00Z",
+    "vratenaSuma": 19954.09
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1037.02,
+    "createdAt": "2017-05-25T09:01:14.724Z",
+    "datumZistenia": "2017-05-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2020719646",
+      "href": "/v2/subjekty/100560",
+      "ico": "31753604",
+      "id": 100560
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/324",
+      "id": 324
+    },
+    "href": "/v2/nezrovnalost/138",
+    "id": 138,
+    "jeSystemova": false,
+    "kod": "310IP170006",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-21T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7542.18,
+    "createdAt": "2017-05-30T15:25:20.138Z",
+    "datumZistenia": "2017-04-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/345",
+      "id": 345
+    },
+    "href": "/v2/nezrovnalost/139",
+    "id": 139,
+    "jeSystemova": false,
+    "kod": "312IP170064",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 7542.18,
+    "updatedAt": "2017-06-23T00:00:00Z",
+    "vratenaSuma": 7542.18
+  },
+  {
+    "celkovaSumaNezrovnalosti": 120.66,
+    "createdAt": "2017-05-30T16:39:32.818Z",
+    "datumZistenia": "2017-04-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/348",
+      "id": 348
+    },
+    "href": "/v2/nezrovnalost/140",
+    "id": 140,
+    "jeSystemova": false,
+    "kod": "312IP170065",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 120.66,
+    "updatedAt": "2017-06-26T00:00:00Z",
+    "vratenaSuma": 120.66
+  },
+  {
+    "celkovaSumaNezrovnalosti": 672.45,
+    "createdAt": "2017-05-31T16:37:36.911Z",
+    "datumZistenia": "2017-04-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/355",
+      "id": 355
+    },
+    "href": "/v2/nezrovnalost/141",
+    "id": 141,
+    "jeSystemova": false,
+    "kod": "312IP170066",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 672.45,
+    "updatedAt": "2017-06-26T00:00:00Z",
+    "vratenaSuma": 672.45
+  },
+  {
+    "celkovaSumaNezrovnalosti": 24602.55,
+    "createdAt": "2017-05-31T18:10:27.47Z",
+    "datumZistenia": "2017-04-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/354",
+      "id": 354
+    },
+    "href": "/v2/nezrovnalost/143",
+    "id": 143,
+    "jeSystemova": false,
+    "kod": "312IP170068",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 24602.55,
+    "updatedAt": "2017-06-23T00:00:00Z",
+    "vratenaSuma": 24602.55
+  },
+  {
+    "celkovaSumaNezrovnalosti": 280,
+    "createdAt": "2017-05-31T18:11:30.092Z",
+    "datumZistenia": "2017-04-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/356",
+      "id": 356
+    },
+    "href": "/v2/nezrovnalost/144",
+    "id": 144,
+    "jeSystemova": false,
+    "kod": "312IP170069",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 280,
+    "updatedAt": "2017-06-23T00:00:00Z",
+    "vratenaSuma": 280
+  },
+  {
+    "celkovaSumaNezrovnalosti": 474.53,
+    "createdAt": "2017-05-31T18:12:17.695Z",
+    "datumZistenia": "2017-04-24T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/357",
+      "id": 357
+    },
+    "href": "/v2/nezrovnalost/145",
+    "id": 145,
+    "jeSystemova": false,
+    "kod": "312IP170070",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 474.53,
+    "updatedAt": "2017-06-23T00:00:00Z",
+    "vratenaSuma": 474.53
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5015.76,
+    "createdAt": "2017-05-31T18:12:57.216Z",
+    "datumZistenia": "2017-04-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/358",
+      "id": 358
+    },
+    "href": "/v2/nezrovnalost/146",
+    "id": 146,
+    "jeSystemova": false,
+    "kod": "312IP170071",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 5015.76,
+    "updatedAt": "2017-06-26T00:00:00Z",
+    "vratenaSuma": 5015.76
+  },
+  {
+    "celkovaSumaNezrovnalosti": 6303.94,
+    "createdAt": "2017-05-31T18:13:52.641Z",
+    "datumZistenia": "2017-04-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/361",
+      "id": 361
+    },
+    "href": "/v2/nezrovnalost/147",
+    "id": 147,
+    "jeSystemova": false,
+    "kod": "312IP170072",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 6303.94,
+    "updatedAt": "2017-06-26T00:00:00Z",
+    "vratenaSuma": 6303.94
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1705.44,
+    "createdAt": "2017-06-01T09:28:31.335Z",
+    "datumZistenia": "2017-02-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/351",
+      "id": 351
+    },
+    "href": "/v2/nezrovnalost/148",
+    "id": 148,
+    "jeSystemova": false,
+    "kod": "312IP170073",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1705.44,
+    "updatedAt": "2017-07-03T00:00:00Z",
+    "vratenaSuma": 1705.44
+  },
+  {
+    "celkovaSumaNezrovnalosti": 193.67,
+    "createdAt": "2017-06-01T22:33:13.51Z",
+    "datumZistenia": "2017-04-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/375",
+      "id": 375
+    },
+    "href": "/v2/nezrovnalost/149",
+    "id": 149,
+    "jeSystemova": false,
+    "kod": "312IP170074",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 193.67,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 193.67
+  },
+  {
+    "celkovaSumaNezrovnalosti": 16500,
+    "createdAt": "2017-06-06T12:14:29.699Z",
+    "datumZistenia": "2017-06-05T00:00:00Z",
+    "dlznik": {
+      "dic": "2021060712",
+      "href": "/v2/subjekty/100339",
+      "ico": "00308935",
+      "id": 100339
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/363",
+      "id": 363
+    },
+    "href": "/v2/nezrovnalost/150",
+    "id": 150,
+    "jeSystemova": false,
+    "kod": "310IP170007",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-06T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 11459532.64,
+    "createdAt": "2017-06-13T10:55:57.383Z",
+    "datumZistenia": "2016-09-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/365",
+      "id": 365
+    },
+    "href": "/v2/nezrovnalost/151",
+    "id": 151,
+    "jeSystemova": false,
+    "kod": "310IP170008",
+    "stav": "Nepotvrdené podozrenie",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-21T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1555,
+    "createdAt": "2017-06-14T16:34:34.72Z",
+    "datumZistenia": "2017-05-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021002181",
+      "href": "/v2/subjekty/100090",
+      "ico": "00305740",
+      "id": 100090
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/378",
+      "id": 378
+    },
+    "href": "/v2/nezrovnalost/152",
+    "id": 152,
+    "jeSystemova": false,
+    "kod": "310IP170009",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-21T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 15355341.06,
+    "createdAt": "2017-06-15T10:54:36.712Z",
+    "datumZistenia": "2016-08-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/368",
+      "id": 368
+    },
+    "href": "/v2/nezrovnalost/153",
+    "id": 153,
+    "jeSystemova": false,
+    "kod": "310IP170010",
+    "stav": "Nepotvrdené podozrenie",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-21T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 9.08,
+    "createdAt": "2017-06-15T15:54:12.432Z",
+    "datumZistenia": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/371",
+      "id": 371
+    },
+    "href": "/v2/nezrovnalost/154",
+    "id": 154,
+    "jeSystemova": false,
+    "kod": "312IP170075",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 9.08,
+    "updatedAt": "2017-07-03T00:00:00Z",
+    "vratenaSuma": 9.08
+  },
+  {
+    "celkovaSumaNezrovnalosti": 10976910.12,
+    "createdAt": "2017-06-21T10:13:15.222Z",
+    "datumZistenia": "2016-08-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/377",
+      "id": 377
+    },
+    "href": "/v2/nezrovnalost/156",
+    "id": 156,
+    "jeSystemova": false,
+    "kod": "310IP170012",
+    "stav": "Nepotvrdené podozrenie",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-21T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 94942.56,
+    "createdAt": "2017-06-21T14:50:04.52Z",
+    "datumZistenia": "2016-12-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/428",
+      "id": 428
+    },
+    "href": "/v2/nezrovnalost/157",
+    "id": 157,
+    "jeSystemova": false,
+    "kod": "312IP170076",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 94942.56,
+    "updatedAt": "2017-06-29T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 176769.11,
+    "createdAt": "2017-06-21T14:54:32.854Z",
+    "datumZistenia": "2016-12-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/429",
+      "id": 429
+    },
+    "href": "/v2/nezrovnalost/158",
+    "id": 158,
+    "jeSystemova": false,
+    "kod": "312IP170077",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-29T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 11509.42,
+    "createdAt": "2017-06-22T08:20:47.69Z",
+    "datumZistenia": "2017-05-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/403",
+      "id": 403
+    },
+    "href": "/v2/nezrovnalost/159",
+    "id": 159,
+    "jeSystemova": false,
+    "kod": "312IP170078",
+    "stav": "Nezrovnalosť bez finančného dopadu ukončená",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-28T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2304,
+    "createdAt": "2017-06-22T09:48:55.464Z",
+    "datumZistenia": "2017-05-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/402",
+      "id": 402
+    },
+    "href": "/v2/nezrovnalost/160",
+    "id": 160,
+    "jeSystemova": false,
+    "kod": "312IP170079",
+    "stav": "Nezrovnalosť bez finančného dopadu ukončená",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-28T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 20409.32,
+    "createdAt": "2017-06-22T12:00:26.531Z",
+    "datumZistenia": "2017-05-02T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/404",
+      "id": 404
+    },
+    "href": "/v2/nezrovnalost/161",
+    "id": 161,
+    "jeSystemova": false,
+    "kod": "312IP170080",
+    "stav": "Nezrovnalosť bez finančného dopadu ukončená",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-06-28T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0,
+    "createdAt": "2017-06-23T08:24:13.033Z",
+    "datumZistenia": "2017-06-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021250979",
+      "href": "/v2/subjekty/100954",
+      "ico": "00316393",
+      "id": 100954
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/575",
+      "id": 575
+    },
+    "href": "/v2/nezrovnalost/162",
+    "id": 162,
+    "jeSystemova": false,
+    "kod": "310IP170013",
+    "stav": "Nepotvrdené podozrenie",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-23T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 26619.03,
+    "createdAt": "2017-06-28T18:04:54.743Z",
+    "datumZistenia": "2017-05-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/439",
+      "id": 439
+    },
+    "href": "/v2/nezrovnalost/183",
+    "id": 183,
+    "jeSystemova": false,
+    "kod": "312IP170081",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 26619.03,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 26619.03
+  },
+  {
+    "celkovaSumaNezrovnalosti": 21540.8,
+    "createdAt": "2017-06-28T18:06:00.141Z",
+    "datumZistenia": "2017-05-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/443",
+      "id": 443
+    },
+    "href": "/v2/nezrovnalost/184",
+    "id": 184,
+    "jeSystemova": false,
+    "kod": "312IP170082",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 21540.8,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 21540.8
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2410.73,
+    "createdAt": "2017-06-28T18:06:56.296Z",
+    "datumZistenia": "2017-05-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/444",
+      "id": 444
+    },
+    "href": "/v2/nezrovnalost/185",
+    "id": 185,
+    "jeSystemova": false,
+    "kod": "312IP170083",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2410.73,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 2410.73
+  },
+  {
+    "celkovaSumaNezrovnalosti": 13856,
+    "createdAt": "2017-06-28T18:08:07.433Z",
+    "datumZistenia": "2017-05-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/441",
+      "id": 441
+    },
+    "href": "/v2/nezrovnalost/186",
+    "id": 186,
+    "jeSystemova": false,
+    "kod": "312IP170084",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 13856,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 13856
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1316.71,
+    "createdAt": "2017-06-28T18:09:06.461Z",
+    "datumZistenia": "2017-05-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/440",
+      "id": 440
+    },
+    "href": "/v2/nezrovnalost/187",
+    "id": 187,
+    "jeSystemova": false,
+    "kod": "312IP170085",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1316.71,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 1316.71
+  },
+  {
+    "celkovaSumaNezrovnalosti": 38.37,
+    "createdAt": "2017-06-29T15:19:09.904Z",
+    "datumZistenia": "2017-02-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/437",
+      "id": 437
+    },
+    "href": "/v2/nezrovnalost/193",
+    "id": 193,
+    "jeSystemova": false,
+    "kod": "312IP170086",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 38.37,
+    "updatedAt": "2017-08-24T00:00:00Z",
+    "vratenaSuma": 38.37
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7749.88,
+    "createdAt": "2017-06-30T16:19:38.949Z",
+    "datumZistenia": "2017-05-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/449",
+      "id": 449
+    },
+    "href": "/v2/nezrovnalost/196",
+    "id": 196,
+    "jeSystemova": false,
+    "kod": "312IP170087",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 7749.88,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 7749.88
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5151.29,
+    "createdAt": "2017-07-03T15:39:39.122Z",
+    "datumZistenia": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/453",
+      "id": 453
+    },
+    "href": "/v2/nezrovnalost/198",
+    "id": 198,
+    "jeSystemova": false,
+    "kod": "312IP170088",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 5151.29,
+    "updatedAt": "2017-07-28T00:00:00Z",
+    "vratenaSuma": 5151.29
+  },
+  {
+    "celkovaSumaNezrovnalosti": 280,
+    "createdAt": "2017-07-11T13:27:04.617Z",
+    "datumZistenia": "2017-04-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/458",
+      "id": 458
+    },
+    "href": "/v2/nezrovnalost/201",
+    "id": 201,
+    "jeSystemova": false,
+    "kod": "312IP170089",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 280,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 280
+  },
+  {
+    "celkovaSumaNezrovnalosti": 216,
+    "createdAt": "2017-07-11T14:46:34.184Z",
+    "datumZistenia": "2017-04-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/460",
+      "id": 460
+    },
+    "href": "/v2/nezrovnalost/202",
+    "id": 202,
+    "jeSystemova": false,
+    "kod": "312IP170090",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 216,
+    "updatedAt": "2017-07-24T00:00:00Z",
+    "vratenaSuma": 216
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1188.13,
+    "createdAt": "2017-07-12T10:04:27.384Z",
+    "datumZistenia": "2017-04-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/462",
+      "id": 462
+    },
+    "href": "/v2/nezrovnalost/203",
+    "id": 203,
+    "jeSystemova": false,
+    "kod": "312IP170091",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1188.13,
+    "updatedAt": "2017-08-25T00:00:00Z",
+    "vratenaSuma": 1188.13
+  },
+  {
+    "celkovaSumaNezrovnalosti": 88.8,
+    "createdAt": "2017-07-14T08:19:50.792Z",
+    "datumZistenia": "2017-03-23T00:00:00Z",
+    "dlznik": {
+      "dic": "2020961360",
+      "href": "/v2/subjekty/101918",
+      "ico": "00328332",
+      "id": 101918
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/471",
+      "id": 471
+    },
+    "href": "/v2/nezrovnalost/205",
+    "id": 205,
+    "jeSystemova": false,
+    "kod": "310IP170045",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-07-14T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 48.01,
+    "createdAt": "2017-07-20T12:47:32.271Z",
+    "datumZistenia": "2017-06-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/499",
+      "id": 499
+    },
+    "href": "/v2/nezrovnalost/207",
+    "id": 207,
+    "jeSystemova": false,
+    "kod": "313IP170002",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 48.01,
+    "updatedAt": "2017-08-30T00:00:00Z",
+    "vratenaSuma": 48.01
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2305.85,
+    "createdAt": "2017-07-21T07:33:53.077Z",
+    "datumZistenia": "2017-09-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/474",
+      "id": 474
+    },
+    "href": "/v2/nezrovnalost/208",
+    "id": 208,
+    "jeSystemova": false,
+    "kod": "310IP170046",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2305.85,
+    "updatedAt": "2017-09-29T00:00:00Z",
+    "vratenaSuma": 2305.85
+  },
+  {
+    "celkovaSumaNezrovnalosti": 226608.84,
+    "createdAt": "2017-07-21T14:44:01.602Z",
+    "datumZistenia": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021067785",
+      "href": "/v2/subjekty/100223",
+      "ico": "00003328",
+      "id": 100223
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/546",
+      "id": 546
+    },
+    "href": "/v2/nezrovnalost/209",
+    "id": 209,
+    "jeSystemova": false,
+    "kod": "311IP170006",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 226608.84,
+    "updatedAt": "2017-11-09T00:00:00Z",
+    "vratenaSuma": 226608.84
+  },
+  {
+    "celkovaSumaNezrovnalosti": 214.8,
+    "createdAt": "2017-07-26T13:27:47.888Z",
+    "datumZistenia": "2017-07-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/500",
+      "id": 500
+    },
+    "href": "/v2/nezrovnalost/212",
+    "id": 212,
+    "jeSystemova": false,
+    "kod": "312IP170092",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 214.8,
+    "updatedAt": "2017-08-30T00:00:00Z",
+    "vratenaSuma": 214.8
+  },
+  {
+    "celkovaSumaNezrovnalosti": 303390.04,
+    "createdAt": "2017-08-01T13:22:52.482Z",
+    "datumZistenia": "2016-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2020799209",
+      "href": "/v2/subjekty/100008",
+      "ico": "30416094",
+      "id": 100008
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/492",
+      "id": 492
+    },
+    "href": "/v2/nezrovnalost/215",
+    "id": 215,
+    "jeSystemova": false,
+    "kod": "311IP170007",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 303390.04,
+    "updatedAt": "2017-11-15T00:00:00Z",
+    "vratenaSuma": 303390.04
+  },
+  {
+    "celkovaSumaNezrovnalosti": 15756.6,
+    "createdAt": "2017-08-02T08:37:04.102Z",
+    "datumZistenia": "2017-05-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/583",
+      "id": 583
+    },
+    "href": "/v2/nezrovnalost/216",
+    "id": 216,
+    "jeSystemova": false,
+    "kod": "312IP170093",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 15756.6,
+    "updatedAt": "2017-09-27T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 30114.44,
+    "createdAt": "2017-08-02T09:03:24.714Z",
+    "datumZistenia": "2017-05-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/494",
+      "id": 494
+    },
+    "href": "/v2/nezrovnalost/217",
+    "id": 217,
+    "jeSystemova": false,
+    "kod": "312IP170094",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 30114.44,
+    "updatedAt": "2017-08-02T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 327,
+    "createdAt": "2017-08-08T10:27:50.949Z",
+    "datumZistenia": "2017-04-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020639005",
+      "href": "/v2/subjekty/100388",
+      "ico": "00648906",
+      "id": 100388
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/513",
+      "id": 513
+    },
+    "href": "/v2/nezrovnalost/219",
+    "id": 219,
+    "jeSystemova": false,
+    "kod": "310IP170049",
+    "stav": "Nezrovnalosť bez finančného dopadu ukončená",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-11-08T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 37774.41,
+    "createdAt": "2017-08-08T10:39:52.23Z",
+    "datumZistenia": "2017-01-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2020697261",
+      "href": "/v2/subjekty/100347",
+      "ico": "00326488",
+      "id": 100347
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/514",
+      "id": 514
+    },
+    "href": "/v2/nezrovnalost/220",
+    "id": 220,
+    "jeSystemova": false,
+    "kod": "310IP170050",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 573.22,
+    "createdAt": "2017-08-08T15:25:43.989Z",
+    "datumZistenia": "2017-07-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/522",
+      "id": 522
+    },
+    "href": "/v2/nezrovnalost/221",
+    "id": 221,
+    "jeSystemova": false,
+    "kod": "312IP170095",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 25.88,
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 578.13,
+    "createdAt": "2017-08-08T15:28:14.52Z",
+    "datumZistenia": "2017-07-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/523",
+      "id": 523
+    },
+    "href": "/v2/nezrovnalost/222",
+    "id": 222,
+    "jeSystemova": false,
+    "kod": "312IP170096",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 30.79,
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 710,
+    "createdAt": "2017-08-08T15:28:40.988Z",
+    "datumZistenia": "2017-07-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/524",
+      "id": 524
+    },
+    "href": "/v2/nezrovnalost/223",
+    "id": 223,
+    "jeSystemova": false,
+    "kod": "312IP170097",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 162.66,
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 780.63,
+    "createdAt": "2017-08-08T15:29:25.436Z",
+    "datumZistenia": "2017-07-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/525",
+      "id": 525
+    },
+    "href": "/v2/nezrovnalost/224",
+    "id": 224,
+    "jeSystemova": false,
+    "kod": "312IP170098",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 233.29,
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3225,
+    "createdAt": "2017-08-09T09:17:08.184Z",
+    "datumZistenia": "2017-05-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2021171328",
+      "href": "/v2/subjekty/100988",
+      "ico": "00319244",
+      "id": 100988
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/516",
+      "id": 516
+    },
+    "href": "/v2/nezrovnalost/225",
+    "id": 225,
+    "jeSystemova": false,
+    "kod": "310IP170051",
+    "stav": "Nezrovnalosť bez finančného dopadu ukončená",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-11-09T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0,
+    "createdAt": "2017-08-09T13:27:24.855Z",
+    "datumZistenia": "2017-02-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2020626454",
+      "href": "/v2/subjekty/100439",
+      "ico": "00321389",
+      "id": 100439
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/517",
+      "id": 517
+    },
+    "href": "/v2/nezrovnalost/226",
+    "id": 226,
+    "jeSystemova": false,
+    "kod": "310IP170052",
+    "stav": "Nezrovnalosť bez finančného dopadu ukončená",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-26T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 786.6,
+    "createdAt": "2017-08-15T12:25:01.454Z",
+    "datumZistenia": "2017-07-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/530",
+      "id": 530
+    },
+    "href": "/v2/nezrovnalost/231",
+    "id": 231,
+    "jeSystemova": false,
+    "kod": "312IP170103",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-09-07T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 0,
+    "createdAt": "2017-08-17T10:11:42.852Z",
+    "datumZistenia": "2017-08-15T00:00:00Z",
+    "dlznik": {
+      "dic": "2020830196",
+      "href": "/v2/subjekty/100037",
+      "ico": "00166073",
+      "id": 100037
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/535",
+      "id": 535
+    },
+    "href": "/v2/nezrovnalost/233",
+    "id": 233,
+    "jeSystemova": false,
+    "kod": "311IP170009",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-08-18T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 119820.01,
+    "createdAt": "2017-08-22T13:50:11.68Z",
+    "datumZistenia": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/570",
+      "id": 570
+    },
+    "href": "/v2/nezrovnalost/234",
+    "id": 234,
+    "jeSystemova": false,
+    "kod": "313IP170004",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 119820.01,
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 19810.46,
+    "createdAt": "2017-08-28T10:31:49.314Z",
+    "datumZistenia": "2017-07-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/543",
+      "id": 543
+    },
+    "href": "/v2/nezrovnalost/236",
+    "id": 236,
+    "jeSystemova": false,
+    "kod": "312IP170104",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 19810.46,
+    "updatedAt": "2017-09-29T00:00:00Z",
+    "vratenaSuma": 19810.46
+  },
+  {
+    "celkovaSumaNezrovnalosti": 269.31,
+    "createdAt": "2017-08-31T08:35:13.219Z",
+    "datumZistenia": "2017-07-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/547",
+      "id": 547
+    },
+    "href": "/v2/nezrovnalost/237",
+    "id": 237,
+    "jeSystemova": false,
+    "kod": "312IP170105",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 269.31,
+    "updatedAt": "2017-09-26T00:00:00Z",
+    "vratenaSuma": 269.31
+  },
+  {
+    "celkovaSumaNezrovnalosti": 964.08,
+    "createdAt": "2017-08-31T09:43:45.93Z",
+    "datumZistenia": "2017-08-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/548",
+      "id": 548
+    },
+    "href": "/v2/nezrovnalost/238",
+    "id": 238,
+    "jeSystemova": false,
+    "kod": "312IP170106",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 964.08,
+    "updatedAt": "2017-09-29T00:00:00Z",
+    "vratenaSuma": 964.08
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3216.05,
+    "createdAt": "2017-08-31T10:53:56.034Z",
+    "datumZistenia": "2017-07-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/579",
+      "id": 579
+    },
+    "href": "/v2/nezrovnalost/239",
+    "id": 239,
+    "jeSystemova": false,
+    "kod": "312IP170107",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 3216.05,
+    "updatedAt": "2017-10-16T00:00:00Z",
+    "vratenaSuma": 3216.05
+  },
+  {
+    "celkovaSumaNezrovnalosti": 16.88,
+    "createdAt": "2017-09-08T10:27:37.132Z",
+    "datumZistenia": "2017-09-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/556",
+      "id": 556
+    },
+    "href": "/v2/nezrovnalost/241",
+    "id": 241,
+    "jeSystemova": false,
+    "kod": "312IP170108",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 16.88,
+    "updatedAt": "2017-10-10T00:00:00Z",
+    "vratenaSuma": 16.88
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2540.98,
+    "createdAt": "2017-09-08T11:43:33.192Z",
+    "datumZistenia": "2017-07-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/557",
+      "id": 557
+    },
+    "href": "/v2/nezrovnalost/242",
+    "id": 242,
+    "jeSystemova": false,
+    "kod": "312IP170109",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2540.98,
+    "updatedAt": "2017-10-24T00:00:00Z",
+    "vratenaSuma": 2540.98
+  },
+  {
+    "celkovaSumaNezrovnalosti": 13899.53,
+    "createdAt": "2017-09-13T09:40:04.054Z",
+    "datumZistenia": "2017-07-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/562",
+      "id": 562
+    },
+    "href": "/v2/nezrovnalost/244",
+    "id": 244,
+    "jeSystemova": false,
+    "kod": "312IP170110",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 13899.53,
+    "updatedAt": "2017-10-10T00:00:00Z",
+    "vratenaSuma": 13899.53
+  },
+  {
+    "celkovaSumaNezrovnalosti": 66227.19,
+    "createdAt": "2017-09-13T15:23:32.954Z",
+    "datumZistenia": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/565",
+      "id": 565
+    },
+    "href": "/v2/nezrovnalost/246",
+    "id": 246,
+    "jeSystemova": false,
+    "kod": "310IP170054",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 66227.19,
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 15151.22,
+    "createdAt": "2017-09-13T15:54:49.859Z",
+    "datumZistenia": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/566",
+      "id": 566
+    },
+    "href": "/v2/nezrovnalost/247",
+    "id": 247,
+    "jeSystemova": false,
+    "kod": "310IP170055",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 15151.22,
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 121679.8,
+    "createdAt": "2017-09-13T15:55:12.9Z",
+    "datumZistenia": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/567",
+      "id": 567
+    },
+    "href": "/v2/nezrovnalost/248",
+    "id": 248,
+    "jeSystemova": false,
+    "kod": "310IP170056",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1127.85,
+    "createdAt": "2017-09-18T10:49:46.223Z",
+    "datumZistenia": "2017-07-24T00:00:00Z",
+    "dlznik": {
+      "dic": "2021197244",
+      "href": "/v2/subjekty/101852",
+      "ico": "00306096",
+      "id": 101852
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/571",
+      "id": 571
+    },
+    "href": "/v2/nezrovnalost/249",
+    "id": 249,
+    "jeSystemova": false,
+    "kod": "310IP170057",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-09-18T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5874,
+    "createdAt": "2017-09-18T12:48:07.076Z",
+    "datumZistenia": "2017-08-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/573",
+      "id": 573
+    },
+    "href": "/v2/nezrovnalost/250",
+    "id": 250,
+    "jeSystemova": false,
+    "kod": "312IP170111",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-11T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 121.19,
+    "createdAt": "2017-09-18T13:18:02.544Z",
+    "datumZistenia": "2017-09-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798593",
+      "href": "/v2/subjekty/100625",
+      "ico": "00156850",
+      "id": 100625
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/574",
+      "id": 574
+    },
+    "href": "/v2/nezrovnalost/251",
+    "id": 251,
+    "jeSystemova": false,
+    "kod": "310IP170058",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 121.19,
+    "updatedAt": "2017-10-03T00:00:00Z",
+    "vratenaSuma": 121.19
+  },
+  {
+    "celkovaSumaNezrovnalosti": 298.9,
+    "createdAt": "2017-09-19T14:55:55.988Z",
+    "datumZistenia": "2017-05-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/577",
+      "id": 577
+    },
+    "href": "/v2/nezrovnalost/252",
+    "id": 252,
+    "jeSystemova": false,
+    "kod": "312IP170112",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 298.9,
+    "updatedAt": "2017-10-16T00:00:00Z",
+    "vratenaSuma": 298.9
+  },
+  {
+    "celkovaSumaNezrovnalosti": 21.68,
+    "createdAt": "2017-09-19T14:56:43.173Z",
+    "datumZistenia": "2017-05-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/576",
+      "id": 576
+    },
+    "href": "/v2/nezrovnalost/253",
+    "id": 253,
+    "jeSystemova": false,
+    "kod": "312IP170113",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 21.68,
+    "updatedAt": "2017-10-16T00:00:00Z",
+    "vratenaSuma": 21.68
+  },
+  {
+    "celkovaSumaNezrovnalosti": 15256.41,
+    "createdAt": "2017-09-26T10:50:35.216Z",
+    "datumZistenia": "2017-06-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2120287004",
+      "href": "/v2/subjekty/102012",
+      "ico": "50349287",
+      "id": 102012
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/584",
+      "id": 584
+    },
+    "href": "/v2/nezrovnalost/257",
+    "id": 257,
+    "jeSystemova": false,
+    "kod": "301IP170007",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 15256.41,
+    "updatedAt": "2017-09-27T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 14926.51,
+    "createdAt": "2017-09-26T15:18:29.679Z",
+    "datumZistenia": "2017-08-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/589",
+      "id": 589
+    },
+    "href": "/v2/nezrovnalost/258",
+    "id": 258,
+    "jeSystemova": false,
+    "kod": "301IP170008",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 14926.51,
+    "updatedAt": "2017-09-29T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 610.76,
+    "createdAt": "2017-09-27T09:22:46.136Z",
+    "datumZistenia": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/590",
+      "id": 590
+    },
+    "href": "/v2/nezrovnalost/260",
+    "id": 260,
+    "jeSystemova": false,
+    "kod": "312IP170114",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 610.76,
+    "updatedAt": "2017-10-10T00:00:00Z",
+    "vratenaSuma": 610.76
+  },
+  {
+    "celkovaSumaNezrovnalosti": 280,
+    "createdAt": "2017-09-27T10:45:19.839Z",
+    "datumZistenia": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/595",
+      "id": 595
+    },
+    "href": "/v2/nezrovnalost/261",
+    "id": 261,
+    "jeSystemova": false,
+    "kod": "312IP170115",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 280,
+    "updatedAt": "2017-11-02T00:00:00Z",
+    "vratenaSuma": 280
+  },
+  {
+    "celkovaSumaNezrovnalosti": 600,
+    "createdAt": "2017-09-27T11:31:59.705Z",
+    "datumZistenia": "2017-09-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2020561939",
+      "href": "/v2/subjekty/100422",
+      "ico": "00315052",
+      "id": 100422
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/597",
+      "id": 597
+    },
+    "href": "/v2/nezrovnalost/262",
+    "id": 262,
+    "jeSystemova": false,
+    "kod": "310IP170059",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-09-27T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 392.84,
+    "createdAt": "2017-09-27T14:02:15.778Z",
+    "datumZistenia": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/598",
+      "id": 598
+    },
+    "href": "/v2/nezrovnalost/263",
+    "id": 263,
+    "jeSystemova": false,
+    "kod": "312IP170116",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 392.84,
+    "updatedAt": "2017-10-10T00:00:00Z",
+    "vratenaSuma": 392.84
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1825.46,
+    "createdAt": "2017-09-28T10:13:35.042Z",
+    "datumZistenia": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/600",
+      "id": 600
+    },
+    "href": "/v2/nezrovnalost/264",
+    "id": 264,
+    "jeSystemova": false,
+    "kod": "312IP170117",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 1825.46,
+    "updatedAt": "2017-10-16T00:00:00Z",
+    "vratenaSuma": 1825.46
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5802.52,
+    "createdAt": "2017-09-28T14:56:28.319Z",
+    "datumZistenia": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/602",
+      "id": 602
+    },
+    "href": "/v2/nezrovnalost/265",
+    "id": 265,
+    "jeSystemova": false,
+    "kod": "312IP170118",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 5802.52,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 5802.52
+  },
+  {
+    "celkovaSumaNezrovnalosti": 14746.89,
+    "createdAt": "2017-10-03T09:40:53.142Z",
+    "datumZistenia": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/611",
+      "id": 611
+    },
+    "href": "/v2/nezrovnalost/267",
+    "id": 267,
+    "jeSystemova": false,
+    "kod": "312IP170119",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 14746.89,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 14746.89
+  },
+  {
+    "celkovaSumaNezrovnalosti": 728.17,
+    "createdAt": "2017-10-03T10:21:13.929Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/613",
+      "id": 613
+    },
+    "href": "/v2/nezrovnalost/268",
+    "id": 268,
+    "jeSystemova": false,
+    "kod": "312IP170120",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 728.17,
+    "updatedAt": "2017-10-18T00:00:00Z",
+    "vratenaSuma": 728.17
+  },
+  {
+    "celkovaSumaNezrovnalosti": 361.9,
+    "createdAt": "2017-10-03T12:56:37.47Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/614",
+      "id": 614
+    },
+    "href": "/v2/nezrovnalost/269",
+    "id": 269,
+    "jeSystemova": false,
+    "kod": "312IP170121",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 361.9,
+    "updatedAt": "2017-11-02T00:00:00Z",
+    "vratenaSuma": 361.9
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1990.09,
+    "createdAt": "2017-10-04T10:13:36.43Z",
+    "datumZistenia": "2017-05-23T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/653",
+      "id": 653
+    },
+    "href": "/v2/nezrovnalost/270",
+    "id": 270,
+    "jeSystemova": false,
+    "kod": "313IP170007",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 1990.09,
+    "updatedAt": "2017-10-13T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1427.52,
+    "createdAt": "2017-10-04T13:03:28.063Z",
+    "datumZistenia": "2017-10-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/624",
+      "id": 624
+    },
+    "href": "/v2/nezrovnalost/271",
+    "id": 271,
+    "jeSystemova": false,
+    "kod": "313IP170008",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 1427.52,
+    "updatedAt": "2017-10-04T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 298.57,
+    "createdAt": "2017-10-04T15:35:59.137Z",
+    "datumZistenia": "2017-06-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/631",
+      "id": 631
+    },
+    "href": "/v2/nezrovnalost/272",
+    "id": 272,
+    "jeSystemova": false,
+    "kod": "312IP170122",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 298.57,
+    "updatedAt": "2017-10-24T00:00:00Z",
+    "vratenaSuma": 298.57
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2499.66,
+    "createdAt": "2017-10-04T15:37:08.834Z",
+    "datumZistenia": "2017-06-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/630",
+      "id": 630
+    },
+    "href": "/v2/nezrovnalost/273",
+    "id": 273,
+    "jeSystemova": false,
+    "kod": "312IP170123",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2499.66,
+    "updatedAt": "2017-10-24T00:00:00Z",
+    "vratenaSuma": 2499.66
+  },
+  {
+    "celkovaSumaNezrovnalosti": 18116.71,
+    "createdAt": "2017-10-05T12:18:58.975Z",
+    "datumZistenia": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/628",
+      "id": 628
+    },
+    "href": "/v2/nezrovnalost/274",
+    "id": 274,
+    "jeSystemova": false,
+    "kod": "312IP170124",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 18116.71,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 18116.71
+  },
+  {
+    "celkovaSumaNezrovnalosti": 3276826.8,
+    "createdAt": "2017-10-06T09:40:28.172Z",
+    "datumZistenia": "2017-05-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/633",
+      "id": 633
+    },
+    "href": "/v2/nezrovnalost/275",
+    "id": 275,
+    "jeSystemova": false,
+    "kod": "314IP170001",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-06T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 125.98,
+    "createdAt": "2017-10-06T10:16:40.562Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/632",
+      "id": 632
+    },
+    "href": "/v2/nezrovnalost/276",
+    "id": 276,
+    "jeSystemova": false,
+    "kod": "312IP170125",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 125.98,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 125.98
+  },
+  {
+    "celkovaSumaNezrovnalosti": 57.12,
+    "createdAt": "2017-10-06T11:08:40.188Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/634",
+      "id": 634
+    },
+    "href": "/v2/nezrovnalost/277",
+    "id": 277,
+    "jeSystemova": false,
+    "kod": "312IP170126",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 57.12,
+    "updatedAt": "2017-11-15T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 840,
+    "createdAt": "2017-10-06T11:31:16.783Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/635",
+      "id": 635
+    },
+    "href": "/v2/nezrovnalost/278",
+    "id": 278,
+    "jeSystemova": false,
+    "kod": "312IP170127",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 840,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 840
+  },
+  {
+    "celkovaSumaNezrovnalosti": 185181.6,
+    "createdAt": "2017-10-09T09:17:18.503Z",
+    "datumZistenia": "2017-05-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/636",
+      "id": 636
+    },
+    "href": "/v2/nezrovnalost/279",
+    "id": 279,
+    "jeSystemova": false,
+    "kod": "314IP170002",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-09T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 6231.03,
+    "createdAt": "2017-10-09T11:19:00.29Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/637",
+      "id": 637
+    },
+    "href": "/v2/nezrovnalost/280",
+    "id": 280,
+    "jeSystemova": false,
+    "kod": "312IP170128",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 6231.03,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 6231.03
+  },
+  {
+    "celkovaSumaNezrovnalosti": 14991.25,
+    "createdAt": "2017-10-09T14:08:37.212Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/638",
+      "id": 638
+    },
+    "href": "/v2/nezrovnalost/281",
+    "id": 281,
+    "jeSystemova": false,
+    "kod": "312IP170129",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 14991.25,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 14991.25
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2527.29,
+    "createdAt": "2017-10-11T10:45:33.06Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/645",
+      "id": 645
+    },
+    "href": "/v2/nezrovnalost/282",
+    "id": 282,
+    "jeSystemova": false,
+    "kod": "312IP170130",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 2527.29,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 2527.29
+  },
+  {
+    "celkovaSumaNezrovnalosti": 22246.81,
+    "createdAt": "2017-10-11T12:56:21.589Z",
+    "datumZistenia": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/650",
+      "id": 650
+    },
+    "href": "/v2/nezrovnalost/283",
+    "id": 283,
+    "jeSystemova": false,
+    "kod": "312IP170131",
+    "stav": "Vysporiadaná",
+    "sumaNaVymahanie": 22246.81,
+    "updatedAt": "2017-10-26T00:00:00Z",
+    "vratenaSuma": 22246.81
+  },
+  {
+    "celkovaSumaNezrovnalosti": 762.09,
+    "createdAt": "2017-10-13T14:55:31.312Z",
+    "datumZistenia": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/657",
+      "id": 657
+    },
+    "href": "/v2/nezrovnalost/284",
+    "id": 284,
+    "jeSystemova": false,
+    "kod": "312IP170132",
+    "stav": "Nezrovnalosť bez finančného dopadu ukončená",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-13T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4860,
+    "createdAt": "2017-10-13T15:46:53.177Z",
+    "datumZistenia": "2017-09-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021079896",
+      "href": "/v2/subjekty/100069",
+      "ico": "00311928",
+      "id": 100069
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/656",
+      "id": 656
+    },
+    "href": "/v2/nezrovnalost/285",
+    "id": 285,
+    "jeSystemova": false,
+    "kod": "310IP170060",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-13T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 19235.7,
+    "createdAt": "2017-10-16T13:30:03.385Z",
+    "datumZistenia": "2017-10-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2021067785",
+      "href": "/v2/subjekty/100223",
+      "ico": "00003328",
+      "id": 100223
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/675",
+      "id": 675
+    },
+    "href": "/v2/nezrovnalost/286",
+    "id": 286,
+    "jeSystemova": false,
+    "kod": "311IP170011",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 19235.7,
+    "updatedAt": "2017-10-18T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 29605.5,
+    "createdAt": "2017-10-16T14:08:16.485Z",
+    "datumZistenia": "2017-10-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2021067785",
+      "href": "/v2/subjekty/100223",
+      "ico": "00003328",
+      "id": 100223
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/676",
+      "id": 676
+    },
+    "href": "/v2/nezrovnalost/287",
+    "id": 287,
+    "jeSystemova": false,
+    "kod": "311IP170012",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 29605.5,
+    "updatedAt": "2017-10-18T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5295,
+    "createdAt": "2017-10-17T14:15:58.927Z",
+    "datumZistenia": "2017-08-10T00:00:00Z",
+    "dlznik": {
+      "dic": "2021023708",
+      "href": "/v2/subjekty/100073",
+      "ico": "00307548",
+      "id": 100073
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/674",
+      "id": 674
+    },
+    "href": "/v2/nezrovnalost/288",
+    "id": 288,
+    "jeSystemova": false,
+    "kod": "310IP170061",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-17T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 7940,
+    "createdAt": "2017-10-18T07:57:48.97Z",
+    "datumZistenia": "2017-08-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/677",
+      "id": 677
+    },
+    "href": "/v2/nezrovnalost/289",
+    "id": 289,
+    "jeSystemova": false,
+    "kod": "312IP170133",
+    "stav": "Nezrovnalosť bez finančného dopadu ukončená",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-19T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 16500,
+    "createdAt": "2017-10-18T10:30:53.286Z",
+    "datumZistenia": "2016-09-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/681",
+      "id": 681
+    },
+    "href": "/v2/nezrovnalost/290",
+    "id": 290,
+    "jeSystemova": false,
+    "kod": "311IP170013",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 16500,
+    "updatedAt": "2017-10-20T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 191400,
+    "createdAt": "2017-10-18T17:21:11.685Z",
+    "datumZistenia": "2016-09-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2020830196",
+      "href": "/v2/subjekty/100037",
+      "ico": "00166073",
+      "id": 100037
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/699",
+      "id": 699
+    },
+    "href": "/v2/nezrovnalost/298",
+    "id": 298,
+    "jeSystemova": false,
+    "kod": "311IP170021",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 191400,
+    "updatedAt": "2017-10-20T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4545350,
+    "createdAt": "2017-10-18T17:25:55.915Z",
+    "datumZistenia": "2016-09-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/701",
+      "id": 701
+    },
+    "href": "/v2/nezrovnalost/299",
+    "id": 299,
+    "jeSystemova": false,
+    "kod": "311IP170022",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 4545350,
+    "updatedAt": "2017-11-08T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 277812,
+    "createdAt": "2017-10-18T17:39:29.302Z",
+    "datumZistenia": "2016-09-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/703",
+      "id": 703
+    },
+    "href": "/v2/nezrovnalost/300",
+    "id": 300,
+    "jeSystemova": false,
+    "kod": "311IP170023",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 277812,
+    "updatedAt": "2017-10-20T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 13127.98,
+    "createdAt": "2017-10-19T10:06:35.984Z",
+    "datumZistenia": "2017-10-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/760",
+      "id": 760
+    },
+    "href": "/v2/nezrovnalost/301",
+    "id": 301,
+    "jeSystemova": false,
+    "kod": "311IP170024",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 13127.98,
+    "updatedAt": "2017-11-08T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 65999.56,
+    "createdAt": "2017-10-19T11:29:42.958Z",
+    "datumZistenia": "2017-10-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/757",
+      "id": 757
+    },
+    "href": "/v2/nezrovnalost/303",
+    "id": 303,
+    "jeSystemova": false,
+    "kod": "311IP170025",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 65999.56,
+    "updatedAt": "2017-11-08T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 90,
+    "createdAt": "2017-10-23T09:13:18.536Z",
+    "datumZistenia": "2017-09-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021230156",
+      "href": "/v2/subjekty/100072",
+      "ico": "00318744",
+      "id": 100072
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/707",
+      "id": 707
+    },
+    "href": "/v2/nezrovnalost/304",
+    "id": 304,
+    "jeSystemova": false,
+    "kod": "310IP170062",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-23T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 21217.54,
+    "createdAt": "2017-10-24T15:22:17.38Z",
+    "datumZistenia": "2017-09-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/733",
+      "id": 733
+    },
+    "href": "/v2/nezrovnalost/305",
+    "id": 305,
+    "jeSystemova": false,
+    "kod": "312IP170134",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 21217.54,
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 2127.04,
+    "createdAt": "2017-10-24T15:23:32.259Z",
+    "datumZistenia": "2017-09-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/739",
+      "id": 739
+    },
+    "href": "/v2/nezrovnalost/306",
+    "id": 306,
+    "jeSystemova": false,
+    "kod": "312IP170135",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 2127.04,
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 5472.59,
+    "createdAt": "2017-10-24T15:24:35.226Z",
+    "datumZistenia": "2017-09-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/740",
+      "id": 740
+    },
+    "href": "/v2/nezrovnalost/307",
+    "id": 307,
+    "jeSystemova": false,
+    "kod": "312IP170136",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 5472.59,
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 15097.8,
+    "createdAt": "2017-10-24T15:25:34.36Z",
+    "datumZistenia": "2017-09-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/742",
+      "id": 742
+    },
+    "href": "/v2/nezrovnalost/308",
+    "id": 308,
+    "jeSystemova": false,
+    "kod": "312IP170137",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 15097.8,
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 6430.73,
+    "createdAt": "2017-10-24T15:26:37.541Z",
+    "datumZistenia": "2017-09-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/749",
+      "id": 749
+    },
+    "href": "/v2/nezrovnalost/309",
+    "id": 309,
+    "jeSystemova": false,
+    "kod": "312IP170138",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 6430.73,
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 567.6,
+    "createdAt": "2017-10-24T15:27:43.375Z",
+    "datumZistenia": "2017-09-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/751",
+      "id": 751
+    },
+    "href": "/v2/nezrovnalost/310",
+    "id": 310,
+    "jeSystemova": false,
+    "kod": "312IP170139",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 567.6,
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 4100,
+    "createdAt": "2017-10-26T11:36:12.545Z",
+    "datumZistenia": "2017-08-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/728",
+      "id": 728
+    },
+    "href": "/v2/nezrovnalost/311",
+    "id": 311,
+    "jeSystemova": false,
+    "kod": "312IP170140",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-26T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 44075.6,
+    "createdAt": "2017-10-26T16:37:34.045Z",
+    "datumZistenia": "2017-07-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/730",
+      "id": 730
+    },
+    "href": "/v2/nezrovnalost/312",
+    "id": 312,
+    "jeSystemova": false,
+    "kod": "312IP170141",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-10-27T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 798,
+    "createdAt": "2017-10-31T09:56:28.528Z",
+    "datumZistenia": "2017-10-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021278028",
+      "href": "/v2/subjekty/100766",
+      "ico": "00310905",
+      "id": 100766
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/734",
+      "id": 734
+    },
+    "href": "/v2/nezrovnalost/313",
+    "id": 313,
+    "jeSystemova": false,
+    "kod": "310IP170063",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-11-16T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 9169816.01,
+    "createdAt": "2017-11-06T14:54:28.568Z",
+    "datumZistenia": "2017-10-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021029274",
+      "href": "/v2/subjekty/100060",
+      "ico": "00306436",
+      "id": 100060
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/752",
+      "id": 752
+    },
+    "href": "/v2/nezrovnalost/314",
+    "id": 314,
+    "jeSystemova": false,
+    "kod": "310IP170064",
+    "stav": "Odoslané na posúdenie",
+    "sumaNaVymahanie": 6654208.6,
+    "updatedAt": "2017-11-06T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 773.15,
+    "createdAt": "2017-11-09T10:29:49.8Z",
+    "datumZistenia": "2017-10-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/762",
+      "id": 762
+    },
+    "href": "/v2/nezrovnalost/316",
+    "id": 316,
+    "jeSystemova": false,
+    "kod": "312IP170142",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 773.15,
+    "updatedAt": "2017-11-09T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 1328.3,
+    "createdAt": "2017-11-13T10:59:19.281Z",
+    "datumZistenia": "2017-11-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/765",
+      "id": 765
+    },
+    "href": "/v2/nezrovnalost/317",
+    "id": 317,
+    "jeSystemova": true,
+    "kod": "313IP170010",
+    "stav": "Podozrenie z nezrovnalosti",
+    "sumaNaVymahanie": 1328.3,
+    "updatedAt": "2017-11-16T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 12372.53,
+    "createdAt": "2017-11-15T12:55:42.578Z",
+    "datumZistenia": "2017-06-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571619",
+      "href": "/v2/subjekty/100838",
+      "ico": "00314412",
+      "id": 100838
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/766",
+      "id": 766
+    },
+    "href": "/v2/nezrovnalost/318",
+    "id": 318,
+    "jeSystemova": false,
+    "kod": "310IP170065",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-11-15T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 6166.45,
+    "createdAt": "2017-11-15T14:40:25.76Z",
+    "datumZistenia": "2017-05-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/767",
+      "id": 767
+    },
+    "href": "/v2/nezrovnalost/319",
+    "id": 319,
+    "jeSystemova": false,
+    "kod": "312IP170143",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-11-15T00:00:00Z"
+  },
+  {
+    "celkovaSumaNezrovnalosti": 11839.8,
+    "createdAt": "2017-11-20T13:38:58.549Z",
+    "datumZistenia": "2017-07-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "druhNezrovnalosti": "INDIVIDUALNA_NEZROVNALOST",
+    "hlavnyTypNezrovnalosti": {
+      "ciselnikKod": 1075,
+      "href": "/v2/hodnotaCiselnika/1075/hodnota/771",
+      "id": 771
+    },
+    "href": "/v2/nezrovnalost/322",
+    "id": 322,
+    "jeSystemova": false,
+    "kod": "312IP170146",
+    "stav": "Bez finančného dopadu",
+    "sumaNaVymahanie": 0,
+    "updatedAt": "2017-11-20T00:00:00Z"
+  }
+]
