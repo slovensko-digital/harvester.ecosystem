@@ -11,6 +11,12 @@ class Itms::NrfcApplication < ApplicationRecord
                           association_foreign_key: :forma_financovania_id,
                           foreign_key: :zonfp_id
 
+  has_and_belongs_to_many :hodnotitelia,
+                          class_name: Itms::Person,
+                          join_table: 'itms.zonfp_hodnotitelia',
+                          association_foreign_key: :hodnotitel_id,
+                          foreign_key: :zonfp_id
+
   has_and_belongs_to_many :hospodarske_cinnosti,
                           class_name: Itms::SpecificGoalCodelistValue,
                           join_table: 'itms.zonfp_hospodarske_cinnosti',

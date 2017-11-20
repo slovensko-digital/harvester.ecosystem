@@ -54,22 +54,6 @@ class Itms::SyncAnnouncedProposalCallJob < ItmsJob
     end.flatten
   end
 
-  def find_or_create_persons_by_json(json_list)
-    return [] if json_list.blank?
-
-    json_list.map do |json|
-      p = Itms::Person.find_or_initialize_by(itms_id: json['id'])
-      p.email = json['email']
-      p.meno = json['meno']
-      p.meno_uplne = json['menoUplne']
-      p.priezvisko = json['priezvisko']
-      p.telefon = json['telefon']
-      p.save!
-
-      p
-    end
-  end
-
   def find_or_create_planned_proposal_calls_by_json(json_list, downloader)
     return [] if json_list.blank?
 

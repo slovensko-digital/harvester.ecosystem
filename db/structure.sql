@@ -2673,14 +2673,29 @@ CREATE TABLE zonfp (
     itms_updated_at timestamp without time zone,
     akronym character varying,
     datum_predlozenia timestamp without time zone,
+    datum_schvalenia timestamp without time zone,
+    datum_schvaleny_konca_hlavnych_aktivit timestamp without time zone,
+    datum_schvaleny_konca_realizacie timestamp without time zone,
+    datum_schvaleny_zaciatku_hlavnych_aktivit timestamp without time zone,
+    datum_schvaleny_zaciatku_realizacie timestamp without time zone,
     datum_ziadany_konca_hlavnych_aktivit timestamp without time zone,
     datum_ziadany_konca_realizacie timestamp without time zone,
     datum_ziadany_zaciatku_hlavnych_aktivit timestamp without time zone,
     datum_ziadany_zaciatku_realizacie timestamp without time zone,
     kod character varying,
     nazov character varying,
+    percento_schvalene_spolufinancovania numeric,
     percento_ziadane_spolufinancovania numeric,
+    pocet_bodov_hodnotenia_celkovy numeric,
+    popis_kapacity_ziadatela character varying,
     popis_projektu character varying,
+    popis_situacie_po_realizacii character varying,
+    popis_sposobu_realizacie character varying,
+    popis_vychodiskovej_situacie character varying,
+    suma_schvalena_celkova numeric,
+    suma_schvalena_celkova_projektov_generujucich_prijem numeric,
+    suma_schvalena_nfp numeric,
+    suma_schvalena_vlastnych_zdrojov numeric,
     suma_ziadana_celkova numeric,
     suma_ziadana_celkova_projektov_generujucich_prijem numeric,
     suma_ziadana_nfp numeric,
@@ -2762,6 +2777,38 @@ CREATE SEQUENCE zonfp_formy_financovania_id_seq
 --
 
 ALTER SEQUENCE zonfp_formy_financovania_id_seq OWNED BY zonfp_formy_financovania.id;
+
+
+--
+-- Name: zonfp_hodnotitelia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_hodnotitelia (
+    id integer NOT NULL,
+    zonfp_id integer NOT NULL,
+    hodnotitel_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: zonfp_hodnotitelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_hodnotitelia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_hodnotitelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_hodnotitelia_id_seq OWNED BY zonfp_hodnotitelia.id;
 
 
 --
@@ -3747,6 +3794,13 @@ ALTER TABLE ONLY zonfp_formy_financovania ALTER COLUMN id SET DEFAULT nextval('z
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY zonfp_hodnotitelia ALTER COLUMN id SET DEFAULT nextval('zonfp_hodnotitelia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY zonfp_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('zonfp_hospodarske_cinnosti_id_seq'::regclass);
 
 
@@ -4421,6 +4475,14 @@ ALTER TABLE ONLY zonfp_aktivity_projekt
 
 ALTER TABLE ONLY zonfp_formy_financovania
     ADD CONSTRAINT zonfp_formy_financovania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_hodnotitelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_hodnotitelia
+    ADD CONSTRAINT zonfp_hodnotitelia_pkey PRIMARY KEY (id);
 
 
 --
@@ -5992,6 +6054,27 @@ CREATE INDEX "index_itms.zonfp_formy_financovania_on_zonfp_id" ON zonfp_formy_fi
 
 
 --
+-- Name: index_itms.zonfp_hodnotitelia_on_hodnotitel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zonfp_hodnotitelia_on_hodnotitel_id" ON zonfp_hodnotitelia USING btree (hodnotitel_id);
+
+
+--
+-- Name: index_itms.zonfp_hodnotitelia_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zonfp_hodnotitelia_on_zonfp_id" ON zonfp_hodnotitelia USING btree (zonfp_id);
+
+
+--
+-- Name: index_itms.zonfp_hodnotitelia_on_zonfp_id_and_hodnotitel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.zonfp_hodnotitelia_on_zonfp_id_and_hodnotitel_id" ON zonfp_hodnotitelia USING btree (zonfp_id, hodnotitel_id);
+
+
+--
 -- Name: index_itms.zonfp_hospodarske_cinnosti_on_hospodarska_cinnost_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -6675,6 +6758,14 @@ ALTER TABLE ONLY projekty_aktivity
 
 
 --
+-- Name: fk_rails_42d321084b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_hodnotitelia
+    ADD CONSTRAINT fk_rails_42d321084b FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+
+
+--
 -- Name: fk_rails_43ac458ef5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6792,6 +6883,14 @@ ALTER TABLE ONLY projekty_typy_uzemia
 
 ALTER TABLE ONLY verejne_obstaravania
     ADD CONSTRAINT fk_rails_4f0c3f949a FOREIGN KEY (obstaravatel_dodavatel_obstaravatel_id) REFERENCES dodavatelia(id);
+
+
+--
+-- Name: fk_rails_4f280e9b20; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_hodnotitelia
+    ADD CONSTRAINT fk_rails_4f280e9b20 FOREIGN KEY (hodnotitel_id) REFERENCES osoby(id);
 
 
 --
@@ -7805,8 +7904,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171013180259'),
 ('20171017111719'),
 ('20171017171650'),
-('20171017175218'),
 ('20171017175318'),
+('20171017175408'),
 ('20171017175418'),
 ('20171017175518'),
 ('20171017182731'),

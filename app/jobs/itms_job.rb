@@ -157,6 +157,22 @@ class ItmsJob < ApplicationJob
     end
   end
 
+  def find_or_create_persons_by_json(json_list)
+    return [] if json_list.blank?
+
+    json_list.map do |json|
+      p = Itms::Person.find_or_initialize_by(itms_id: json['id'])
+      p.email = json['email']
+      p.meno = json['meno']
+      p.meno_uplne = json['menoUplne']
+      p.priezvisko = json['priezvisko']
+      p.telefon = json['telefon']
+      p.save!
+
+      p
+    end
+  end
+
   def find_or_create_priority_axis_by_json(json, downloader)
     return if json.blank?
     priority_axis = Itms::PriorityAxis.find_by(itms_id: json['id'])
