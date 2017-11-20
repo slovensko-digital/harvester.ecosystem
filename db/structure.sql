@@ -589,6 +589,7 @@ CREATE TABLE nezrovnalosti (
     popis character varying,
     pouzite_praktiky character varying,
     prioritna_os_id integer,
+    projekt_id integer,
     projekt_v_priprave_alebo_nerealizovany character varying,
     stanovisko_dlznika character varying,
     stanovisko_organu character varying,
@@ -783,6 +784,70 @@ CREATE SEQUENCE nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq
 --
 
 ALTER SEQUENCE nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq OWNED BY nezrovnalosti_suvisiace_pohladavkove_doklady.id;
+
+
+--
+-- Name: nezrovnalosti_suvisiace_verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nezrovnalosti_suvisiace_verejne_obstaravania (
+    id integer NOT NULL,
+    nezrovnalost_id integer,
+    verejne_obstaravanie_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nezrovnalosti_suvisiace_verejne_obstaravania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nezrovnalosti_suvisiace_verejne_obstaravania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nezrovnalosti_suvisiace_verejne_obstaravania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nezrovnalosti_suvisiace_verejne_obstaravania_id_seq OWNED BY nezrovnalosti_suvisiace_verejne_obstaravania.id;
+
+
+--
+-- Name: nezrovnalosti_suvisiace_zop; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE nezrovnalosti_suvisiace_zop (
+    id integer NOT NULL,
+    nezrovnalost_id integer,
+    zop_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nezrovnalosti_suvisiace_zop_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE nezrovnalosti_suvisiace_zop_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nezrovnalosti_suvisiace_zop_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE nezrovnalosti_suvisiace_zop_id_seq OWNED BY nezrovnalosti_suvisiace_zop.id;
 
 
 --
@@ -3411,6 +3476,20 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady ALTER COLUMN id SE
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY nezrovnalosti_suvisiace_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_suvisiace_verejne_obstaravania_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_zop ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_suvisiace_zop_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY nezrovnalosti_typy_nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('nezrovnalosti_typy_nezrovnalosti_id_seq'::regclass);
 
 
@@ -4045,6 +4124,22 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_nezrovnalosti
 
 ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
     ADD CONSTRAINT nezrovnalosti_suvisiace_pohladavkove_doklady_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nezrovnalosti_suvisiace_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_verejne_obstaravania
+    ADD CONSTRAINT nezrovnalosti_suvisiace_verejne_obstaravania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nezrovnalosti_suvisiace_zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_zop
+    ADD CONSTRAINT nezrovnalosti_suvisiace_zop_pkey PRIMARY KEY (id);
 
 
 --
@@ -4957,6 +5052,13 @@ CREATE INDEX "index_itms.nezrovnalosti_on_prioritna_os_id" ON nezrovnalosti USIN
 
 
 --
+-- Name: index_itms.nezrovnalosti_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_on_projekt_id" ON nezrovnalosti USING btree (projekt_id);
+
+
+--
 -- Name: index_itms.nezrovnalosti_pohladavkove_doklady_doklad; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -5024,6 +5126,48 @@ CREATE INDEX "index_itms.nezrovnalosti_suvisiace_nezrovnalosti_nezrovnalost" ON 
 --
 
 CREATE INDEX "index_itms.nezrovnalosti_suvisiace_nezrovnalosti_suvisiaca" ON nezrovnalosti_suvisiace_nezrovnalosti USING btree (suvisiaca_nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_suvisiace_verejne_obstaravania_on_n; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_suvisiace_verejne_obstaravania_on_n" ON nezrovnalosti_suvisiace_verejne_obstaravania USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_suvisiace_verejne_obstaravania_on_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_suvisiace_verejne_obstaravania_on_vo" ON nezrovnalosti_suvisiace_verejne_obstaravania USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_suvisiace_vo_on_n_and_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.nezrovnalosti_suvisiace_vo_on_n_and_vo" ON nezrovnalosti_suvisiace_verejne_obstaravania USING btree (nezrovnalost_id, verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_suvisiace_zop_on_nezrovnalost_and_zop; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.nezrovnalosti_suvisiace_zop_on_nezrovnalost_and_zop" ON nezrovnalosti_suvisiace_zop USING btree (nezrovnalost_id, zop_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_suvisiace_zop_on_nezrovnalost_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_suvisiace_zop_on_nezrovnalost_id" ON nezrovnalosti_suvisiace_zop USING btree (nezrovnalost_id);
+
+
+--
+-- Name: index_itms.nezrovnalosti_suvisiace_zop_on_zop_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.nezrovnalosti_suvisiace_zop_on_zop_id" ON nezrovnalosti_suvisiace_zop USING btree (zop_id);
 
 
 --
@@ -6735,6 +6879,14 @@ ALTER TABLE ONLY deklarovane_vydavky
 
 
 --
+-- Name: fk_rails_3ab8350341; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_zop
+    ADD CONSTRAINT fk_rails_3ab8350341 FOREIGN KEY (zop_id) REFERENCES zop(id);
+
+
+--
 -- Name: fk_rails_3cad360dd7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6959,6 +7111,14 @@ ALTER TABLE ONLY zonfp
 
 
 --
+-- Name: fk_rails_53091b9df9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_verejne_obstaravania
+    ADD CONSTRAINT fk_rails_53091b9df9 FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
+
+
+--
 -- Name: fk_rails_542918dbe1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -7143,6 +7303,14 @@ ALTER TABLE ONLY nuts_kody
 
 
 --
+-- Name: fk_rails_6e331313aa; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_zop
+    ADD CONSTRAINT fk_rails_6e331313aa FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
 -- Name: fk_rails_6e7c1b8881; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -7300,6 +7468,14 @@ ALTER TABLE ONLY verejne_obstaravania_operacne_programy
 
 ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
     ADD CONSTRAINT fk_rails_8d000a95b1 FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
+
+
+--
+-- Name: fk_rails_8d1b1169fa; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti_suvisiace_verejne_obstaravania
+    ADD CONSTRAINT fk_rails_8d1b1169fa FOREIGN KEY (nezrovnalost_id) REFERENCES nezrovnalosti(id);
 
 
 --
@@ -7476,6 +7652,14 @@ ALTER TABLE ONLY vyzvy_planovane_poskytovatelia
 
 ALTER TABLE ONLY intenzity
     ADD CONSTRAINT fk_rails_b607ab30e5 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
+
+
+--
+-- Name: fk_rails_b88db6d3d7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY nezrovnalosti
+    ADD CONSTRAINT fk_rails_b88db6d3d7 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
 
 
 --
@@ -7931,6 +8115,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171114124735'),
 ('20171114143548'),
 ('20171115092048'),
-('20171117102940');
+('20171117102940'),
+('20171120133917');
 
 

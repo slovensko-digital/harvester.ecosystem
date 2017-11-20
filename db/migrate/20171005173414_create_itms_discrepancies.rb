@@ -13,21 +13,21 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.decimal :celkova_suma_nezrovnalosti_zdroj_sr
       t.datetime :datum_prvej_informacie
       t.datetime :datum_zistenia
-      t.references :dlznik, index: true, foreign_key: { to_table: 'itms.subjekty' }
+      t.references :dlznik, foreign_key: { to_table: 'itms.subjekty' }
       t.string :dopad_na_rozpocet_eu
       t.string :druh_nezrovnalosti
-      t.references :financny_stav, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
-      t.references :hlavny_typ_nezrovnalosti, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
+      t.references :financny_stav, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
+      t.references :hlavny_typ_nezrovnalosti, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.boolean :je_systemova
       t.string :kod
-      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
-      t.references :operacny_program, index: true, foreign_key: { to_table: 'itms.operacne_programy' }
+      t.references :konkretny_ciel, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :operacny_program, foreign_key: { to_table: 'itms.operacne_programy' }
       t.decimal :penale
       t.decimal :pokuty
       t.string :popis
       t.string :pouzite_praktiky
-      t.references :prioritna_os, index: true, foreign_key: { to_table: 'itms.prioritne_osi' }
-      #TODO :projekt
+      t.references :prioritna_os, foreign_key: { to_table: 'itms.prioritne_osi' }
+      t.references :projekt # Foreign key in 20171120133917
       t.string :projekt_v_priprave_alebo_nerealizovany
       t.string :stanovisko_dlznika
       t.string :stanovisko_organu
@@ -36,8 +36,6 @@ class CreateItmsDiscrepancies < ActiveRecord::Migration[5.0]
       t.decimal :suma_na_vymahanie_zdroj_eu
       t.decimal :suma_na_vymahanie_zdroj_pr
       t.decimal :suma_na_vymahanie_zdroj_sr
-      # TODO :suvisiace_verejne_obstaravania
-      # TODO :suvisiace_zop
       t.decimal :vratena_suma
       t.decimal :vratena_suma_zdroj_eu
       t.decimal :vratena_suma_zdroj_pr

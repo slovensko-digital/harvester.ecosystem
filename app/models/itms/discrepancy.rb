@@ -8,40 +8,53 @@ class Itms::Discrepancy < ApplicationRecord
   belongs_to :konkretny_ciel, class_name: Itms::SpecificGoal
   belongs_to :operacny_program, class_name: Itms::OperationalProgram
   belongs_to :prioritna_os, class_name: Itms::PriorityAxis
-  has_many :nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost,
-           class_name: Itms::DiscrepancyCauserSubject,
-           foreign_key: 'nezrovnalost_id'
-  has_many :subjekty_ktore_sposobili_nezrovnalost,
-           through: :nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost,
-           source: :subjekt
-  has_many :nezrovnalosti_subjekty_ktore_zistili_nezrovnalost,
-           class_name: Itms::DiscrepancyDiscovererSubject,
-           foreign_key: 'nezrovnalost_id'
-  has_many :subjekty_ktore_zistili_nezrovnalost,
-           through: :nezrovnalosti_subjekty_ktore_zistili_nezrovnalost,
-           source: :subjekt
-  has_many :nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie,
-           class_name: Itms::DiscrepancyResponsibleSubject,
-           foreign_key: 'nezrovnalost_id'
-  has_many :subjekty_zodpovedne_za_nasledne_konanie,
-           through: :nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie,
-           source: :subjekt
-  has_many :nezrovnalosti_suvisiace_nezrovnalosti,
-           class_name: Itms::DiscrepancyRelatedDiscrepancy,
-           foreign_key: 'nezrovnalost_id'
-  has_many :suvisiace_nezrovnalosti,
-           through: :nezrovnalosti_suvisiace_nezrovnalosti,
-           source: :suvisiaca_nezrovnalost
-  has_many :nezrovnalosti_suvisiace_pohladavkove_doklady,
-           class_name: Itms::DiscrepancyRelatedAccountsReceivableDocument,
-           foreign_key: 'nezrovnalost_id'
-  has_many :suvisiace_pohladavkove_doklady,
-           through: :nezrovnalosti_suvisiace_pohladavkove_doklady,
-           source: :pohladavkovy_doklad
-  has_many :nezrovnalosti_typy_nezrovnalosti,
-           class_name: Itms::DiscrepancyDiscrepancyType,
-           foreign_key: 'nezrovnalost_id'
-  has_many :typy_nezrovnalosti,
-           through: :nezrovnalosti_typy_nezrovnalosti,
-           source: :kod
+  belongs_to :projekt, class_name: Itms::Project
+
+  has_and_belongs_to_many :subjekty_ktore_sposobili_nezrovnalost,
+                          class_name: Itms::Subject,
+                          join_table: 'itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost',
+                          association_foreign_key: :subjekt_id,
+                          foreign_key: :nezrovnalost_id
+
+  has_and_belongs_to_many :subjekty_ktore_zistili_nezrovnalost,
+                          class_name: Itms::Subject,
+                          join_table: 'itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost',
+                          association_foreign_key: :subjekt_id,
+                          foreign_key: :nezrovnalost_id
+
+  has_and_belongs_to_many :subjekty_zodpovedne_za_nasledne_konanie,
+                          class_name: Itms::Subject,
+                          join_table: 'itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie',
+                          association_foreign_key: :subjekt_id,
+                          foreign_key: :nezrovnalost_id
+
+  has_and_belongs_to_many :suvisiace_nezrovnalosti,
+                          class_name: Itms::Discrepancy,
+                          join_table: 'itms.nezrovnalosti_suvisiace_nezrovnalosti',
+                          association_foreign_key: :suvisiaca_nezrovnalost_id,
+                          foreign_key: :nezrovnalost_id
+
+  has_and_belongs_to_many :suvisiace_pohladavkove_doklady,
+                          class_name: Itms::AccountsReceivableDocument,
+                          join_table: 'itms.nezrovnalosti_suvisiace_pohladavkove_doklady',
+                          association_foreign_key: :pohladavkovy_doklad_id,
+                          foreign_key: :nezrovnalost_id
+
+  has_and_belongs_to_many :suvisiace_verejne_obstaravania,
+                          class_name: Itms::Procurement,
+                          join_table: 'itms.nezrovnalosti_suvisiace_verejne_obstaravania',
+                          association_foreign_key: :verejne_obstaravanie_id,
+                          foreign_key: :nezrovnalost_id
+
+  has_and_belongs_to_many :suvisiace_zop,
+                          class_name: Itms::PaymentClaim,
+                          join_table: 'itms.nezrovnalosti_suvisiace_zop',
+                          association_foreign_key: :zop_id,
+                          foreign_key: :nezrovnalost_id
+
+  has_and_belongs_to_many :typy_nezrovnalosti,
+                          class_name: Itms::CodelistValue,
+                          join_table: 'itms.nezrovnalosti_typy_nezrovnalosti',
+                          association_foreign_key: :kod_id,
+                          foreign_key: :nezrovnalost_id
 end

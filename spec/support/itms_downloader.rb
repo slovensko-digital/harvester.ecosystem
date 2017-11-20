@@ -2,6 +2,8 @@ RSpec.shared_context "itms_downloader", :shared_context => :metadata do
   let(:downloader) { double(:downloader) }
 
   before do
+    allow(downloader).to receive(:url_exists?).and_return(true)
+
     allow(downloader)
       .to receive(:get)
       .with(include('https://opendata.itms2014.sk/v2/subjekty/'))
@@ -106,7 +108,38 @@ RSpec.shared_context "itms_downloader", :shared_context => :metadata do
       .to receive(:get)
       .with(include('https://opendata.itms2014.sk/v2/uctovneDoklady/')) do |url|
         id_specific_accounting_document_fixture(url)
-      end
+    end
+
+
+    allow(downloader)
+        .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/zop/predlozene/'))
+        .and_return(double(body: itms_file_fixture('zop_predlozena_item.json')))
+
+    allow(downloader)
+        .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/zop/uhradene/'))
+        .and_return(double(body: itms_file_fixture('zop_uhradena_item.json')))
+
+    allow(downloader)
+        .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/zop/zamietnute/'))
+        .and_return(double(body: itms_file_fixture('zop_zamietnuta_item.json')))
+
+    allow(downloader)
+        .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/zonfp/prijate/'))
+        .and_return(double(body: itms_file_fixture('zonfp_prijata_item.json')))
+
+    allow(downloader)
+        .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/zonfp/schvalene/'))
+        .and_return(double(body: itms_file_fixture('zonfp_schvalena_item.json')))
+
+    allow(downloader)
+        .to receive(:get)
+        .with(include('https://opendata.itms2014.sk/v2/zonfp/zamietnute/'))
+        .and_return(double(body: itms_file_fixture('zonfp_zamietnuta_item.json')))
   end
 
   def id_specific_accounting_document_fixture(url)
