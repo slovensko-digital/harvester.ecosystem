@@ -76,20 +76,11 @@ class CreateItmsNrfcApplications < ActiveRecord::Migration[5.0]
       t.datetime :datum_schvaleny_konca_realizacie
       t.datetime :datum_schvaleny_zaciatku_hlavnych_aktivit
       t.datetime :datum_schvaleny_zaciatku_realizacie
+      t.datetime :datum_zamietnutia
       t.datetime :datum_ziadany_konca_hlavnych_aktivit
       t.datetime :datum_ziadany_konca_realizacie
       t.datetime :datum_ziadany_zaciatku_hlavnych_aktivit
       t.datetime :datum_ziadany_zaciatku_realizacie
-
-
-
-
-
-
-
-
-
-
       t.string :kod
       t.string :nazov
       t.decimal :percento_schvalene_spolufinancovania
@@ -108,6 +99,7 @@ class CreateItmsNrfcApplications < ActiveRecord::Migration[5.0]
       t.decimal :suma_ziadana_celkova_projektov_generujucich_prijem
       t.decimal :suma_ziadana_nfp
       t.decimal :suma_ziadana_vlastnych_zdrojov
+      t.references :vysledok_konania, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.references :vyzva, foreign_key: { to_table: 'itms.vyzvy_vyhlasene' }
       t.string :zameranie_projektu
       t.references :ziadatel, foreign_key: { to_table: 'itms.subjekty' }

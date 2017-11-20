@@ -2678,6 +2678,7 @@ CREATE TABLE zonfp (
     datum_schvaleny_konca_realizacie timestamp without time zone,
     datum_schvaleny_zaciatku_hlavnych_aktivit timestamp without time zone,
     datum_schvaleny_zaciatku_realizacie timestamp without time zone,
+    datum_zamietnutia timestamp without time zone,
     datum_ziadany_konca_hlavnych_aktivit timestamp without time zone,
     datum_ziadany_konca_realizacie timestamp without time zone,
     datum_ziadany_zaciatku_hlavnych_aktivit timestamp without time zone,
@@ -2700,6 +2701,7 @@ CREATE TABLE zonfp (
     suma_ziadana_celkova_projektov_generujucich_prijem numeric,
     suma_ziadana_nfp numeric,
     suma_ziadana_vlastnych_zdrojov numeric,
+    vysledok_konania_id integer,
     vyzva_id integer,
     zameranie_projektu character varying,
     ziadatel_id integer,
@@ -6187,6 +6189,13 @@ CREATE UNIQUE INDEX "index_itms.zonfp_on_itms_id" ON zonfp USING btree (itms_id)
 
 
 --
+-- Name: index_itms.zonfp_on_vysledok_konania_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zonfp_on_vysledok_konania_id" ON zonfp USING btree (vysledok_konania_id);
+
+
+--
 -- Name: index_itms.zonfp_on_vyzva_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -6563,6 +6572,14 @@ ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
 
 ALTER TABLE ONLY verejne_obstaravania
     ADD CONSTRAINT fk_rails_1c274e13bb FOREIGN KEY (hlavny_predmet_hlavny_slovnik_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_1c418e1dd9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp
+    ADD CONSTRAINT fk_rails_1c418e1dd9 FOREIGN KEY (vysledok_konania_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --
