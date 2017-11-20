@@ -25,8 +25,8 @@ class Itms::SyncProjectJob < ItmsJob
       p.datum_zaciatku_realizacie = json['datumZaciatkuRealizacie']
       p.dlzka_celkova_hlavnych_aktivit = json['dlzkaCelkovaHlavnychAktivit']
       p.dlzka_celkova_projektu = json['dlzkaCelkovaProjektu']
-      p.formy_financovania = find_or_create_specific_goals_with_codelist_values_by_json(json['formyFinancovania'], p.formy_financovania, downloader)
-      p.hospodarske_cinnosti = find_or_create_specific_goals_with_codelist_values_by_json(json['hospodarskeCinnosti'], p.hospodarske_cinnosti, downloader)
+      p.formy_financovania = find_or_create_specific_goals_with_codelist_values_by_json(json['formyFinancovania'], downloader)
+      p.hospodarske_cinnosti = find_or_create_specific_goals_with_codelist_values_by_json(json['hospodarskeCinnosti'], downloader)
       p.intenzity = find_or_create_intensities_by_json(json['intenzity'], downloader)
       p.kod = json['kod']
       p.meratelne_ukazovatele = find_or_create_measurable_indicators_by_json(json['meratelneUkazovatele'], p.meratelne_ukazovatele, downloader)
@@ -34,7 +34,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.miesta_realizacie_mimo_uzemia_op = find_or_create_implementation_places_by_json(json['miestaRealizacieMimoUzemiaOP'], downloader)
       p.monitorovacie_terminy = find_or_create_monitoring_dates_by_json(json['monitorovacieTerminy'], p.monitorovacie_terminy)
       p.nazov = json['nazov']
-      p.oblasti_intervencie = find_or_create_specific_goals_with_codelist_values_by_json(json['oblastiIntervencie'], p.oblasti_intervencie, downloader)
+      p.oblasti_intervencie = find_or_create_specific_goals_with_codelist_values_by_json(json['oblastiIntervencie'], downloader)
       p.organizacne_zlozky = find_or_create_organisational_units_by_json(json['organizacneZlozky'])
       p.otvorena_zmena = json['otvorenaZmena']
       p.otvoreny_dodatok = json['otvorenyDodatok']
@@ -47,14 +47,14 @@ class Itms::SyncProjectJob < ItmsJob
       p.popis_kapacity_prijimatela = json['popiskapacityprijimatela']
       p.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)
       p.schvalena_zonfp = find_or_create_nrfc_application_by_json(json['schvalenaZonfp'], downloader)
-      p.sekundarny_tematicky_okruh = find_or_create_specific_goals_with_codelist_values_by_json(json['sekundarnyTematickyOkruh'], p.sekundarny_tematicky_okruh, downloader)
+      p.sekundarny_tematicky_okruh = find_or_create_specific_goals_with_codelist_values_by_json(json['sekundarnyTematickyOkruh'], downloader)
       p.stav = json['stav']
       p.suma_celkova_projektov_generujucich_prijem = json['sumaCelkovaProjektovGenerujucichPrijem']
       p.suma_zazmluvnena = json['sumaZazmluvnena']
       p.suma_zazmluvnena_povodna = json['sumaZazmluvnenaPovodna']
-      p.typy_uzemia = find_or_create_specific_goals_with_codelist_values_by_json(json['typyUzemia'], p.typy_uzemia, downloader)
+      p.typy_uzemia = find_or_create_specific_goals_with_codelist_values_by_json(json['typyUzemia'], downloader)
       p.url_adresa_zmluva = json['urlAdresaZmluva']
-      p.uzemne_mechanizmy = find_or_create_specific_goals_with_codelist_values_by_json(json['uzemneMechanizmy'], p.uzemne_mechanizmy, downloader)
+      p.uzemne_mechanizmy = find_or_create_specific_goals_with_codelist_values_by_json(json['uzemneMechanizmy'], downloader)
       p.vyzva = find_or_create_announced_proposal_call_by_json(json['vyzva'], downloader)
       p.zameranie_projektu = json['zameranieProjektu']
 

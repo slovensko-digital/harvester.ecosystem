@@ -37,12 +37,12 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         dlzka_celkova_hlavnych_aktivit: 18,
         dlzka_celkova_projektu: 18,
         formy_financovania: [
-            Itms::ProjectFinancingForm.where_goal_and_codelist(33, 1037, 1).first!,
-            Itms::ProjectFinancingForm.where_goal_and_codelist(39, 1037, 1).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(33, 1037, 1).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(39, 1037, 1).first!,
         ],
         hospodarske_cinnosti: [
-            Itms::ProjectEconomicActivity.where_goal_and_codelist(33, 1038, 22).first!,
-            Itms::ProjectEconomicActivity.where_goal_and_codelist(39, 1038, 22).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(33, 1038, 22).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(39, 1038, 22).first!,
         ],
         intenzity: [
             Itms::Intensity.find_by!(itms_id: 46)
@@ -161,29 +161,29 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
           ),
         ],
         monitorovacie_terminy: [
-          Itms::MonitoringDate.find_by!(
-            datum_predlozenia_najneskorsi: Date.parse('2018-01-31'),
-            poradove_cislo: 2,
-            termin_monitorovania: Date.parse('2017-12-31'),
-            typ_monitorovacej_spravy: 'VYROCNA',
-          ),
-          Itms::MonitoringDate.find_by!(
-            datum_predlozenia_najneskorsi: Date.parse('2018-08-13'),
-            poradove_cislo: 3,
-            termin_monitorovania: Date.parse('2018-06-30'),
-            typ_monitorovacej_spravy: 'ZAVERECNA',
-          ),
-          Itms::MonitoringDate.find_by!(
-            datum_predlozenia_najneskorsi: Date.parse('2017-01-31'),
-            poradove_cislo: 1,
-            termin_monitorovania: Date.parse('2016-12-31'),
-            typ_monitorovacej_spravy: 'VYROCNA',
-          ),
+            Itms::MonitoringDate.find_by!(
+              datum_predlozenia_najneskorsi: Date.parse('2018-01-31'),
+              poradove_cislo: 2,
+              termin_monitorovania: Date.parse('2017-12-31'),
+              typ_monitorovacej_spravy: 'VYROCNA',
+            ),
+            Itms::MonitoringDate.find_by!(
+              datum_predlozenia_najneskorsi: Date.parse('2018-08-13'),
+              poradove_cislo: 3,
+              termin_monitorovania: Date.parse('2018-06-30'),
+              typ_monitorovacej_spravy: 'ZAVERECNA',
+            ),
+            Itms::MonitoringDate.find_by!(
+              datum_predlozenia_najneskorsi: Date.parse('2017-01-31'),
+              poradove_cislo: 1,
+              termin_monitorovania: Date.parse('2016-12-31'),
+              typ_monitorovacej_spravy: 'VYROCNA',
+            ),
         ],
         nazov: 'Dobudovanie kanalizačnej siete v aglomerácii Veľké Leváre a rozšírenie ČOV Gajary',
         oblasti_intervencie: [
-            Itms::ProjectInterventionArea.where_goal_and_codelist(33, 1036, 22).first!,
-            Itms::ProjectInterventionArea.where_goal_and_codelist(39, 1036, 20).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(33, 1036, 22).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(39, 1036, 20).first!,
         ],
         organizacne_zlozky: [
             Itms::OrganisationalUnit.find_by!(
@@ -195,14 +195,14 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         otvorena_zmena: false,
         otvoreny_dodatok: false,
         partneri: [
-          Itms::Subject.find_by!(itms_id: 100003)
+            Itms::Subject.find_by!(itms_id: 100003)
         ],
         polozky_rozpoctu: [
-          Itms::BudgetItem.find_by!(itms_id: 204),
-          Itms::BudgetItem.find_by!(itms_id: 205),
-          Itms::BudgetItem.find_by!(itms_id: 206),
-          Itms::BudgetItem.find_by!(itms_id: 207),
-          Itms::BudgetItem.find_by!(itms_id: 208),
+            Itms::BudgetItem.find_by!(itms_id: 204),
+            Itms::BudgetItem.find_by!(itms_id: 205),
+            Itms::BudgetItem.find_by!(itms_id: 206),
+            Itms::BudgetItem.find_by!(itms_id: 207),
+            Itms::BudgetItem.find_by!(itms_id: 208),
         ],
         popis_projektu: "\u003cdiv\u003eCieľom\u0026nbsp;predkladan\u0026eacute;ho projektu je\u0026nbsp;zlep\u0026scaron;enie stavu odv\u0026aacute;dzania a čistenia komun\u0026aacute;lnych v\u0026ocirc;d v aglomer\u0026aacute;cii Veľk\u0026eacute; Lev\u0026aacute;re. D\u0026ocirc;vodom pre realiz\u0026aacute;ciu projektu je nevyhovuj\u0026uacute;ci stav v obciach Mal\u0026eacute; a Veľk\u0026eacute; Lev\u0026aacute;re, kde napojenosť obyvateľstva na kanalizačn\u0026uacute; sieť predstavuje len tretinu tohto obyvateľstva. Odpadov\u0026aacute; voda z uveden\u0026yacute;ch obc\u0026iacute; sa spracuv\u0026aacute;va v čistiarni odpadov\u0026yacute;ch v\u0026ocirc;d (ďalej len ČOV) v obci Gajary, ktor\u0026aacute; je kapacitne plne vyťažen\u0026aacute;. Ostatn\u0026iacute; občania zachyt\u0026aacute;vaj\u0026uacute; spla\u0026scaron;kov\u0026eacute; vody v žump\u0026aacute;ch, čo je rizikov\u0026eacute; najm\u0026auml; z pohľadu vplyvu na životn\u0026eacute; prostredie a z\u0026aacute;roveň aj na zdravie obyvateľstva.\u0026nbsp;\u003c/div\u003e\u003cdiv\u003eProjekt pozost\u0026aacute;va z nasledovn\u0026yacute;ch aktiv\u0026iacute;t:\u0026nbsp;\u003c/div\u003e\u003cdiv\u003ea. dobudovanie\u0026nbsp;kanalizačnej siete v aglomer\u0026aacute;cii Veľk\u0026eacute; Lev\u0026aacute;re\u003c/div\u003e\u003cdiv\u003eb. dobudovanie vodovodnej siete v obci Mal\u0026eacute; Lev\u0026aacute;re\u003c/div\u003e\u003cdiv\u003ec. zv\u0026yacute;\u0026scaron;enie kapacity \u003cspan style=\"background-color:rgb(255, 255, 255); color:rgb(51, 51, 51); line-height:20.8px\"\u003ečistiarne odpadov\u0026yacute;ch v\u0026ocirc;d \u003c/span\u003ev obci Gajary.\u003c/div\u003e\u003cdiv\u003eV\u0026yacute;sledkom projektu bude vybudovan\u0026aacute; kanalizačn\u0026aacute; sieť v celkovej dĺžke 22,74\u0026nbsp;km, vybudovan\u0026aacute; vodovodn\u0026aacute; sieť v dĺžke 3,62\u0026nbsp;km a zv\u0026yacute;\u0026scaron;en\u0026aacute; kapacita čistiarne odpadov\u0026yacute;ch v\u0026ocirc;d na 13 000 EO. Realizovan\u0026iacute;m projektu sa dosiahne zv\u0026yacute;\u0026scaron;en\u0026aacute; napojenosť obyvateľstva na kanalizačn\u0026eacute; siete na viac ako 90 %. Aktivity s\u0026uacute; v\u0026nbsp;s\u0026uacute;lade s\u0026nbsp;OP KŽP a s\u0026nbsp;Pl\u0026aacute;nom rozvoja verejn\u0026yacute;ch kanaliz\u0026aacute;ci\u0026iacute; v\u0026nbsp;SR. Cieľovou skupinou projektu s\u0026uacute; obyvatelia obc\u0026iacute; Veľk\u0026eacute; Lev\u0026aacute;re, Mal\u0026eacute; Lev\u0026aacute;re a Gajary.\u003c/div\u003e",
         popis_situacie_po_realizacii: "\u003cdiv\u003eSyst\u0026eacute;m kanaliz\u0026aacute;cie bude založen\u0026yacute; na prečerp\u0026aacute;van\u0026iacute; spla\u0026scaron;kovej vody z\u0026nbsp;obce Veľk\u0026eacute; Lev\u0026aacute;re\u0026nbsp;cez\u0026nbsp;sieť v obci Mal\u0026eacute; Lev\u0026aacute;re a n\u0026aacute;sledne do existuj\u0026uacute;cej ČOV Gajary, kde d\u0026ocirc;jde k jej čisteniu a vypusteniu do rieky Morava. Realiz\u0026aacute;cia a prev\u0026aacute;dzka ČOV bude zabezpečen\u0026aacute; samotn\u0026yacute;m žiadateľom i\u0026nbsp;extern\u0026yacute;m subjektom s\u0026nbsp;\u003cspan style=\"line-height:20.8px\"\u003eodbornou\u0026nbsp;sp\u0026ocirc;sobilosťou, b\u003c/span\u003eude dosiahnut\u0026aacute;\u0026nbsp;vysok\u0026aacute; kvalitat\u0026iacute;vna \u0026uacute;roveň t\u0026yacute;chto\u0026nbsp;procesov. Bud\u0026uacute; naplnen\u0026eacute; hodnoty merateľn\u0026yacute;ch ukazovateľov bez pr\u0026iacute;znaku, čo bude predpokladom pre dosiahnutie hodn\u0026ocirc;t merateľn\u0026yacute;ch ukazovateľov s pr\u0026iacute;znakom, a to\u0026nbsp;zv\u0026yacute;\u0026scaron;en\u0026yacute; počet EO so zlep\u0026scaron;en\u0026yacute;m čisten\u0026iacute;m komun\u0026aacute;lnych odpadov\u0026yacute;ch v\u0026ocirc;d a zv\u0026yacute;\u0026scaron;en\u0026yacute; počet EO so zlep\u0026scaron;enou dod\u0026aacute;vkou pitnej vody. Rie\u0026scaron;enie je najv\u0026yacute;hodnej\u0026scaron;\u0026iacute;m variantom z\u0026nbsp;hľadiska hospod\u0026aacute;rnosti i efekt\u0026iacute;vnosti. Vplyv diela na životn\u0026eacute; prostredie bude pozit\u0026iacute;vny. Dobudovan\u0026iacute;m kanaliz\u0026aacute;cie, ČOV,\u0026nbsp;vodovodu sa vytvoria podmienky na nez\u0026aacute;vadn\u0026eacute; čistenie odpadov\u0026yacute;ch v\u0026ocirc;d, č\u0026iacute;m sa negat\u0026iacute;vne dopady na životn\u0026eacute; prostredie eliminuj\u0026uacute; a d\u0026ocirc;jde k odstr\u0026aacute;neniu znečisťovania podzemn\u0026yacute;ch v\u0026ocirc;d, miera napojenia obyvateľstva st\u0026uacute;pne na viac ako 85%.\u0026nbsp;Zo socio-ekonomick\u0026eacute;ho hľadiska sa zv\u0026yacute;\u0026scaron;i životn\u0026aacute; \u0026uacute;roveň obyvateľov, nez\u0026aacute;vadn\u0026eacute; spracov\u0026aacute;vanie odpadov\u0026yacute;ch v\u0026ocirc;d\u0026nbsp;bude predpokladom\u0026nbsp;pre zv\u0026yacute;\u0026scaron;en\u0026yacute; z\u0026aacute;ujem o individu\u0026aacute;lnu\u0026nbsp;bytov\u0026uacute;\u0026nbsp;v\u0026yacute;stavbu i\u0026nbsp;realiz\u0026aacute;ciu investičn\u0026yacute;ch z\u0026aacute;merov.\u0026nbsp;\u003c/div\u003e",
@@ -213,21 +213,21 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
         prijimatel: Itms::Subject.find_by!(itms_id: 100062),
         schvalena_zonfp: Itms::NrfcApplication.find_by!(itms_id: 48),
         sekundarny_tematicky_okruh: [
-            Itms::ProjectSecondaryThematicArea.where_goal_and_codelist(24, 1044, 7).first!,
-            Itms::ProjectSecondaryThematicArea.where_goal_and_codelist(24, 1044, 6).first!,
-            Itms::ProjectSecondaryThematicArea.where_goal_and_codelist(24, 1044, 2).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(24, 1044, 7).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(24, 1044, 6).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(24, 1044, 2).first!,
         ],
         stav: 'Projekt mimoriadne ukončený - neprispel k cieľom OP (K)',
         suma_celkova_projektov_generujucich_prijem: 16165937.74,
         suma_zazmluvnena: 16165937.74,
         suma_zazmluvnena_povodna: 16165937.74,
         typy_uzemia: [
-            Itms::ProjectTerritoryType.where_goal_and_codelist(33, 1034, 3).first!,
-            Itms::ProjectTerritoryType.where_goal_and_codelist(39, 1034, 3).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(33, 1034, 3).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(39, 1034, 3).first!,
         ],
         url_adresa_zmluva: 'http://www.crz.gov.sk/index.php?ID=3144219&l=sk',
         uzemne_mechanizmy: [
-            Itms::ProjectTerritorialMechanism.where_goal_and_codelist(24, 1043, 7).first!,
+            Itms::SpecificGoalCodelistValue.where_goal_and_codelist(24, 1043, 7).first!,
         ],
         vyzva: Itms::AnnouncedProposalCall.find_by!(itms_id: 1),
         zameranie_projektu: 'Dopytovo-orientovaný projekt',
