@@ -351,6 +351,41 @@ ALTER SEQUENCE intenzity_id_seq OWNED BY intenzity.id;
 
 
 --
+-- Name: intenzity_zdroje; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE intenzity_zdroje (
+    id integer NOT NULL,
+    cerpanie_eu numeric,
+    cerpanie_ro numeric,
+    percento numeric,
+    suma_zazmluvnena numeric,
+    zdroj_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: intenzity_zdroje_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE intenzity_zdroje_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: intenzity_zdroje_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE intenzity_zdroje_id_seq OWNED BY intenzity_zdroje.id;
+
+
+--
 -- Name: kody; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -2516,41 +2551,6 @@ ALTER SEQUENCE vyzvy_vyhlasene_vyzvy_planovane_id_seq OWNED BY vyzvy_vyhlasene_v
 
 
 --
--- Name: zdroje_intenzit; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zdroje_intenzit (
-    id integer NOT NULL,
-    cerpanie_eu numeric,
-    cerpanie_ro numeric,
-    percento numeric,
-    suma_zazmluvnena numeric,
-    zdroj_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: zdroje_intenzit_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zdroje_intenzit_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zdroje_intenzit_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zdroje_intenzit_id_seq OWNED BY zdroje_intenzit.id;
-
-
---
 -- Name: zmluvy_verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -3327,6 +3327,13 @@ ALTER TABLE ONLY intenzity ALTER COLUMN id SET DEFAULT nextval('intenzity_id_seq
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY intenzity_zdroje ALTER COLUMN id SET DEFAULT nextval('intenzity_zdroje_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY kody ALTER COLUMN id SET DEFAULT nextval('kody_id_seq'::regclass);
 
 
@@ -3747,13 +3754,6 @@ ALTER TABLE ONLY vyzvy_vyhlasene_vyzvy_planovane ALTER COLUMN id SET DEFAULT nex
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zdroje_intenzit ALTER COLUMN id SET DEFAULT nextval('zdroje_intenzit_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
 ALTER TABLE ONLY zmluvy_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('zmluvy_verejne_obstaravania_id_seq'::regclass);
 
 
@@ -3949,6 +3949,14 @@ ALTER TABLE ONLY hodnoty_ciselnikov
 
 ALTER TABLE ONLY intenzity
     ADD CONSTRAINT intenzity_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: intenzity_zdroje_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY intenzity_zdroje
+    ADD CONSTRAINT intenzity_zdroje_pkey PRIMARY KEY (id);
 
 
 --
@@ -4432,14 +4440,6 @@ ALTER TABLE ONLY vyzvy_vyhlasene_vyzvy_planovane
 
 
 --
--- Name: zdroje_intenzit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zdroje_intenzit
-    ADD CONSTRAINT zdroje_intenzit_pkey PRIMARY KEY (id);
-
-
---
 -- Name: zmluvy_verejne_obstaravania_dalsie_url_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -4821,6 +4821,13 @@ CREATE INDEX "index_itms.intenzity_on_zdroj_vz_id" ON intenzity USING btree (zdr
 --
 
 CREATE INDEX "index_itms.intenzity_on_zdroj_yei_id" ON intenzity USING btree (zdroj_yei_id);
+
+
+--
+-- Name: index_itms.intenzity_zdroje_on_zdroj_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.intenzity_zdroje_on_zdroj_id" ON intenzity_zdroje USING btree (zdroj_id);
 
 
 --
@@ -5951,13 +5958,6 @@ CREATE INDEX "index_itms.vyzvy_vyhlasene_vyzvy_planovane_on_vv" ON vyzvy_vyhlase
 
 
 --
--- Name: index_itms.zdroje_intenzit_on_zdroj_id; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE INDEX "index_itms.zdroje_intenzit_on_zdroj_id" ON zdroje_intenzit USING btree (zdroj_id);
-
-
---
 -- Name: index_itms.zmluvy_verejne_obstaravania_dalsie_url_zvo; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -6567,6 +6567,14 @@ ALTER TABLE ONLY vyzvy_vyhlasene_poskytovatelia
 
 
 --
+-- Name: fk_rails_1aede24bdd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY intenzity_zdroje
+    ADD CONSTRAINT fk_rails_1aede24bdd FOREIGN KEY (zdroj_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
 -- Name: fk_rails_1c274e13bb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -6675,7 +6683,7 @@ ALTER TABLE ONLY prioritne_osi
 --
 
 ALTER TABLE ONLY intenzity
-    ADD CONSTRAINT fk_rails_342c83d880 FOREIGN KEY (zdroj_vz_id) REFERENCES zdroje_intenzit(id);
+    ADD CONSTRAINT fk_rails_342c83d880 FOREIGN KEY (zdroj_vz_id) REFERENCES intenzity_zdroje(id);
 
 
 --
@@ -7195,7 +7203,7 @@ ALTER TABLE ONLY nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
 --
 
 ALTER TABLE ONLY intenzity
-    ADD CONSTRAINT fk_rails_818c3c0e61 FOREIGN KEY (zdroj_eu_id) REFERENCES zdroje_intenzit(id);
+    ADD CONSTRAINT fk_rails_818c3c0e61 FOREIGN KEY (zdroj_eu_id) REFERENCES intenzity_zdroje(id);
 
 
 --
@@ -7587,7 +7595,7 @@ ALTER TABLE ONLY vyzvy_vyhlasene_kontaktne_osoby
 --
 
 ALTER TABLE ONLY intenzity
-    ADD CONSTRAINT fk_rails_cc33bd1188 FOREIGN KEY (zdroj_pr_id) REFERENCES zdroje_intenzit(id);
+    ADD CONSTRAINT fk_rails_cc33bd1188 FOREIGN KEY (zdroj_pr_id) REFERENCES intenzity_zdroje(id);
 
 
 --
@@ -7671,14 +7679,6 @@ ALTER TABLE ONLY verejne_obstaravania
 
 
 --
--- Name: fk_rails_de79713a9b; Type: FK CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zdroje_intenzit
-    ADD CONSTRAINT fk_rails_de79713a9b FOREIGN KEY (zdroj_id) REFERENCES hodnoty_ciselnikov(id);
-
-
---
 -- Name: fk_rails_df9a9ead9a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -7739,7 +7739,7 @@ ALTER TABLE ONLY projekty_aktivity
 --
 
 ALTER TABLE ONLY intenzity
-    ADD CONSTRAINT fk_rails_e965354053 FOREIGN KEY (zdroj_yei_id) REFERENCES zdroje_intenzit(id);
+    ADD CONSTRAINT fk_rails_e965354053 FOREIGN KEY (zdroj_yei_id) REFERENCES intenzity_zdroje(id);
 
 
 --
@@ -7875,7 +7875,7 @@ ALTER TABLE ONLY pohladavkove_doklady
 --
 
 ALTER TABLE ONLY intenzity
-    ADD CONSTRAINT fk_rails_ffc31e6216 FOREIGN KEY (zdroj_sr_id) REFERENCES zdroje_intenzit(id);
+    ADD CONSTRAINT fk_rails_ffc31e6216 FOREIGN KEY (zdroj_sr_id) REFERENCES intenzity_zdroje(id);
 
 
 --
