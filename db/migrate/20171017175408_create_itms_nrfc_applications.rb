@@ -71,14 +71,39 @@ class CreateItmsNrfcApplications < ActiveRecord::Migration[5.0]
 
       t.string :akronym
       t.datetime :datum_predlozenia
+      t.datetime :datum_schvalenia
+      t.datetime :datum_schvaleny_konca_hlavnych_aktivit
+      t.datetime :datum_schvaleny_konca_realizacie
+      t.datetime :datum_schvaleny_zaciatku_hlavnych_aktivit
+      t.datetime :datum_schvaleny_zaciatku_realizacie
       t.datetime :datum_ziadany_konca_hlavnych_aktivit
       t.datetime :datum_ziadany_konca_realizacie
       t.datetime :datum_ziadany_zaciatku_hlavnych_aktivit
       t.datetime :datum_ziadany_zaciatku_realizacie
+
+
+
+
+
+
+
+
+
+
       t.string :kod
       t.string :nazov
+      t.decimal :percento_schvalene_spolufinancovania
       t.decimal :percento_ziadane_spolufinancovania
+      t.decimal :pocet_bodov_hodnotenia_celkovy
+      t.string :popis_kapacity_ziadatela
       t.string :popis_projektu
+      t.string :popis_situacie_po_realizacii
+      t.string :popis_sposobu_realizacie
+      t.string :popis_vychodiskovej_situacie
+      t.decimal :suma_schvalena_celkova
+      t.decimal :suma_schvalena_celkova_projektov_generujucich_prijem
+      t.decimal :suma_schvalena_nfp
+      t.decimal :suma_schvalena_vlastnych_zdrojov
       t.decimal :suma_ziadana_celkova
       t.decimal :suma_ziadana_celkova_projektov_generujucich_prijem
       t.decimal :suma_ziadana_nfp
@@ -87,6 +112,8 @@ class CreateItmsNrfcApplications < ActiveRecord::Migration[5.0]
       t.string :zameranie_projektu
       t.references :ziadatel, foreign_key: { to_table: 'itms.subjekty' }
       t.timestamps
+
+
     end
 
     create_table 'itms.zonfp_aktivity_projekt' do |t|
@@ -109,6 +136,13 @@ class CreateItmsNrfcApplications < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index 'itms.zonfp_formy_financovania', [:zonfp_id, :forma_financovania_id], unique: true, name: 'index_itms.zonfp_formy_financovania_on_z_and_ff'
+
+    create_table 'itms.zonfp_hodnotitelia' do |t|
+      t.references :zonfp, null: false, foreign_key: { to_table: 'itms.zonfp' }, index: true
+      t.references :hodnotitel, null: false, foreign_key: { to_table: 'itms.osoby' }, index: true
+      t.timestamps
+    end
+    add_index 'itms.zonfp_hodnotitelia', [:zonfp_id, :hodnotitel_id], unique: true
 
     create_table 'itms.zonfp_hospodarske_cinnosti' do |t|
       t.references :zonfp, index: true, null: false, foreign_key: { to_table: 'itms.zonfp' }
