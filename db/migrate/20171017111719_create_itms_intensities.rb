@@ -1,6 +1,6 @@
 class CreateItmsIntensities < ActiveRecord::Migration[5.0]
   def change
-    create_table 'itms.zdroje_intenzit' do |t|
+    create_table 'itms.intenzity_zdroje' do |t|
       t.decimal :cerpanie_eu
       t.decimal :cerpanie_ro
       t.decimal :percento
@@ -16,11 +16,11 @@ class CreateItmsIntensities < ActiveRecord::Migration[5.0]
 
       t.string :nazov
       t.references :subjekt, index: true, foreign_key: { to_table: 'itms.subjekty' }
-      t.references :zdroj_eu, index: true, foreign_key: { to_table: 'itms.zdroje_intenzit' }
-      t.references :zdroj_pr, index: true, foreign_key: { to_table: 'itms.zdroje_intenzit' }
-      t.references :zdroj_sr, index: true, foreign_key: { to_table: 'itms.zdroje_intenzit' }
-      t.references :zdroj_vz, index: true, foreign_key: { to_table: 'itms.zdroje_intenzit' }
-      t.references :zdroj_yei, index: true, foreign_key: { to_table: 'itms.zdroje_intenzit' }
+      t.references :zdroj_eu, index: true, foreign_key: { to_table: 'itms.intenzity_zdroje' }
+      t.references :zdroj_pr, index: true, foreign_key: { to_table: 'itms.intenzity_zdroje' }
+      t.references :zdroj_sr, index: true, foreign_key: { to_table: 'itms.intenzity_zdroje' }
+      t.references :zdroj_vz, index: true, foreign_key: { to_table: 'itms.intenzity_zdroje' }
+      t.references :zdroj_yei, index: true, foreign_key: { to_table: 'itms.intenzity_zdroje' }
 
       t.timestamps
     end
