@@ -73,6 +73,7 @@ class Itms::NrfcApplication < ApplicationRecord
                           association_foreign_key: :typ_uzemia_id,
                           foreign_key: :zonfp_id
 
+  belongs_to :vysledok_konania, class_name: Itms::CodelistValue
   belongs_to :vyzva, class_name: Itms::AnnouncedProposalCall
   belongs_to :ziadatel, class_name: Itms::Subject
 end

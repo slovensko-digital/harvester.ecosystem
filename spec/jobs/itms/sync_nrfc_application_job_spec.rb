@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
   include_context 'itms_downloader'
+  let(:nrfc_application) { Itms::NrfcApplication.first }
 
   context '#perform' do
     def expect_received_attributes(nrfc_application)
@@ -245,8 +246,6 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
 
       subject.perform('/v2/zonfp/prijate/1', downloader: downloader)
 
-      nrfc_application = Itms::NrfcApplication.first
-
       expect_received_attributes(nrfc_application)
       expect(nrfc_application).to have_attributes(
         itms_href: "/v2/zonfp/prijate/1",
@@ -275,8 +274,6 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
           .and_return(false)
 
       subject.perform('/v2/zonfp/schvalene/1', downloader: downloader)
-
-      nrfc_application = Itms::NrfcApplication.first
 
       expect_received_attributes(nrfc_application)
       expect(nrfc_application).to have_attributes(
@@ -335,6 +332,36 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
       )
     end
 
-    pending 'syncs rejected'
+    it 'syncs rejected nrfc application and all of its attributes' do
+      expect(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/zonfp/prijate/1')
+          .and_return(double(body: itms_file_fixture('zonfp_prijata_item.json')))
+
+      expect(downloader)
+          .to receive(:url_exists?)
+          .with('https://opendata.itms2014.sk/v2/zonfp/schvalene/1')
+          .and_return(false)
+
+      expect(downloader)
+          .to receive(:url_exists?)
+          .with('https://opendata.itms2014.sk/v2/zonfp/zamietnute/1')
+          .and_return(true)
+
+      expect(downloader)
+          .to receive(:get)
+          .with('https://opendata.itms2014.sk/v2/zonfp/zamietnute/1')
+          .and_return(double(body: itms_file_fixture('zonfp_zamietnuta_item.json')))
+
+      subject.perform('/v2/zonfp/zamietnute/1', downloader: downloader)
+
+      expect_received_attributes(nrfc_application)
+      expect(nrfc_application).to have_attributes(
+        itms_href: "/v2/zonfp/zamietnute/1",
+
+        datum_zamietnutia: DateTime.parse('2015-11-24T00:00:00Z'),
+        vysledok_konania: Itms::CodelistValue.where_codelist_and_value(1062, 1).first!,
+      )
+    end
   end
 end
