@@ -124,6 +124,7 @@ class ItmsJob < ApplicationJob
   end
 
   def find_or_create_nuts_code_by_json(json, downloader)
+    return if json.blank?
     Itms::NutsCode.find_or_create_by!(
         gps_lat: json['gpsLat'] ? json['gpsLat'].to_d : nil,
         gps_lon: json['gpsLon'] ? json['gpsLon'].to_d : nil,
@@ -242,14 +243,14 @@ class ItmsJob < ApplicationJob
     Itms::SpecificGoal.find_by!(itms_id: json['id'])
   end
 
-  def find_or_create_specific_goals_with_codelist_values_by_json(json_list, scope, downloader)
+  def find_or_create_specific_goals_with_codelist_values_by_json(json_list, downloader)
     return [] if json_list.blank?
-    json_list.map { |json| find_or_create_specific_goal_with_codelist_value_by_json(json, scope, downloader) }
+    json_list.map { |json| find_or_create_specific_goal_with_codelist_value_by_json(json, downloader) }
   end
 
-  def find_or_create_specific_goal_with_codelist_value_by_json(json, scope, downloader)
+  def find_or_create_specific_goal_with_codelist_value_by_json(json, downloader)
     return if json.blank?
-    existing_object = scope.where_goal_and_codelist(
+    existing_object = Itms::SpecificGoalCodelistValue.where_goal_and_codelist(
         json['konkretnyCiel']['id'],
         json['hodnotaCiselnika']['ciselnikKod'],
         json['hodnotaCiselnika']['id'],
@@ -258,7 +259,7 @@ class ItmsJob < ApplicationJob
 
     codelist_value = find_or_create_codelist_value_by_json(json['hodnotaCiselnika'], downloader)
     specific_goal = find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader)
-    scope.create!(hodnota_ciselnika: codelist_value, konkretny_ciel: specific_goal)
+    Itms::SpecificGoalCodelistValue.find_or_create_by!(hodnota_ciselnika: codelist_value, konkretny_ciel: specific_goal)
   end
 
   def find_or_create_subjects_by_json(json, downloader)
