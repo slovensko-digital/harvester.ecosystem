@@ -792,8 +792,8 @@ ALTER SEQUENCE nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq OWNED BY nezr
 
 CREATE TABLE nezrovnalosti_suvisiace_verejne_obstaravania (
     id integer NOT NULL,
-    nezrovnalost_id integer,
-    verejne_obstaravanie_id integer,
+    nezrovnalost_id integer NOT NULL,
+    verejne_obstaravanie_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -824,8 +824,8 @@ ALTER SEQUENCE nezrovnalosti_suvisiace_verejne_obstaravania_id_seq OWNED BY nezr
 
 CREATE TABLE nezrovnalosti_suvisiace_zop (
     id integer NOT NULL,
-    nezrovnalost_id integer,
-    zop_id integer,
+    nezrovnalost_id integer NOT NULL,
+    zop_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

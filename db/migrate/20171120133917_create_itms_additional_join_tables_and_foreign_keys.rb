@@ -3,8 +3,8 @@ class CreateItmsAdditionalJoinTablesAndForeignKeys < ActiveRecord::Migration[5.0
     add_foreign_key 'itms.nezrovnalosti', 'itms.projekty', column: :projekt_id
 
     create_table 'itms.nezrovnalosti_suvisiace_verejne_obstaravania' do |t|
-      t.references :nezrovnalost, foreign_key: { to_table: 'itms.nezrovnalosti' }, index: { name: 'index_itms.nezrovnalosti_suvisiace_verejne_obstaravania_on_n' }
-      t.references :verejne_obstaravanie, foreign_key: { to_table: 'itms.verejne_obstaravania' }, index: { name: 'index_itms.nezrovnalosti_suvisiace_verejne_obstaravania_on_vo' }
+      t.references :nezrovnalost, null: false, foreign_key: { to_table: 'itms.nezrovnalosti' }, index: { name: 'index_itms.nezrovnalosti_suvisiace_verejne_obstaravania_on_n' }
+      t.references :verejne_obstaravanie, null: false, foreign_key: { to_table: 'itms.verejne_obstaravania' }, index: { name: 'index_itms.nezrovnalosti_suvisiace_verejne_obstaravania_on_vo' }
       t.timestamps
     end
     add_index 'itms.nezrovnalosti_suvisiace_verejne_obstaravania',
@@ -13,8 +13,8 @@ class CreateItmsAdditionalJoinTablesAndForeignKeys < ActiveRecord::Migration[5.0
               unique: true
 
     create_table 'itms.nezrovnalosti_suvisiace_zop' do |t|
-      t.references :nezrovnalost, foreign_key: { to_table: 'itms.nezrovnalosti' }, index: true
-      t.references :zop, foreign_key: { to_table: 'itms.zop' }, index: true
+      t.references :nezrovnalost, null: false, foreign_key: { to_table: 'itms.nezrovnalosti' }, index: true
+      t.references :zop, null: false, foreign_key: { to_table: 'itms.zop' }, index: true
       t.timestamps
     end
     add_index 'itms.nezrovnalosti_suvisiace_zop',

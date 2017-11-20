@@ -82,7 +82,7 @@ class ItmsJob < ApplicationJob
     unit = Itms::Discrepancy.find_by(itms_id: json['id'])
     return unit if unit.present?
 
-    Itms::SyncDiscrepancyJob.perform_now(json['id'], downloader: downloader)
+    Itms::SyncDiscrepancyJob.perform_now(json['href'], downloader: downloader)
     Itms::Discrepancy.find_by!(itms_id: json['id'])
   end
 
@@ -132,9 +132,9 @@ class ItmsJob < ApplicationJob
     )
   end
 
-  def find_or_create_operational_programs_by_json(json, downloader)
-    return [] if json.blank?
-    json.map { |j| find_or_create_operational_program_by_json(j, downloader) }
+  def find_or_create_operational_programs_by_json(json_list, downloader)
+    return [] if json_list.blank?
+    json_list.map { |json| find_or_create_operational_program_by_json(json, downloader) }.uniq
   end
 
   def find_or_create_operational_program_by_json(json, downloader)
@@ -199,7 +199,7 @@ class ItmsJob < ApplicationJob
 
   def find_or_create_procurements_by_json(json_list, downloader)
     return [] if json_list.blank?
-    json_list.map { |json| find_or_create_procurement_by_json(json, downloader) }
+    json_list.map { |json| find_or_create_procurement_by_json(json, downloader) }.uniq
   end
 
   def find_or_create_procurement_by_json(json, downloader)
