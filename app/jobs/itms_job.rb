@@ -47,10 +47,10 @@ class ItmsJob < ApplicationJob
 
   def find_or_create_accounts_receivable_document_by_json(json, downloader)
     return if json.blank?
-    unit = Itms::AccountsReceivableDocument.find_by(itms_id: json['id'])
-    return unit if unit.present?
+    existing_document = Itms::AccountsReceivableDocument.find_by(itms_id: json['id'])
+    return existing_document if existing_document.present?
 
-    Itms::SyncAccountsReceivableDocumentJob.perform_now(json['id'], downloader: downloader)
+    Itms::SyncAccountsReceivableDocumentJob.perform_now(json['href'], downloader: downloader)
     Itms::AccountsReceivableDocument.find_by!(itms_id: json['id'])
   end
 
