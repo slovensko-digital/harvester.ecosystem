@@ -234,11 +234,9 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
       )
     end
 
-    pending 'deletes meratelne_ukazovatele (Itms::MeasurableIndicator) that disappear from the list'
-
     pending 'attributes to be implemented' do
       expect(Itms::Project.first).to respond_to(
-        :data_projektu,
+        :data_projektu, # Waiting on https://itms3.axonpro.sk/browse/ITMSC-11386
       )
     end
   end
