@@ -10,7 +10,7 @@ RSpec.describe Itms::SyncActivityTypeJob, type: :job do
           .with('https://opendata.itms2014.sk/v2/typyAktivit/1')
           .and_return(double(body: itms_file_fixture('typ_aktivity_item.json')))
 
-      subject.perform(1, downloader: downloader)
+      subject.perform('/v2/typyAktivit/1', downloader: downloader)
 
       expect(Itms::ActivityType.first).to have_attributes(
         itms_id: 1,
