@@ -142,7 +142,7 @@ class ItmsJob < ApplicationJob
     operational_program = Itms::OperationalProgram.find_by(itms_id: json['id'])
     return operational_program if operational_program.present?
 
-    Itms::SyncOperationalProgramJob.perform_now(json['id'], downloader: downloader)
+    Itms::SyncOperationalProgramJob.perform_now(json['href'], downloader: downloader)
     Itms::OperationalProgram.find_by!(itms_id: json['id'])
   end
 
