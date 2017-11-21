@@ -44,10 +44,16 @@
   "sumaNaVratenie": 773.79,
   "sumaNaVratenieZdrojEU": 657.72,
   "sumaNaVratenieZdrojSR": 116.07,
+  "suvisiaceVerejneObstaravania": [
+    {
+      "href": "/v2/verejneObstaravania/219",
+      "id": 219
+    }
+  ],
   "suvisiaceZop": [
     {
-      "href": "/v2/zop/uhradene/185",
-      "id": 185
+      "href": "/v2/zop/uhradene/123",
+      "id": 123
     }
   ],
   "typ": "ZOVFP",

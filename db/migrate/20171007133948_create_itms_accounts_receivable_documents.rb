@@ -8,16 +8,17 @@ class CreateItmsAccountsReceivableDocuments < ActiveRecord::Migration[5.0]
 
       t.datetime :datum_splatnosti
       t.datetime :datum_vzniku
-      t.references :dlznik, index: true, foreign_key: { to_table: 'itms.subjekty' }
+      t.references :dlznik, foreign_key: { to_table: 'itms.subjekty' }
       t.string :dopad_na_rozpocet_eu
-      t.references :dovod_vratenia, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
+      t.references :dovod_vratenia, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.string :druh
       t.string :kod
-      t.references :konkretny_ciel, index: true, foreign_key: { to_table: 'itms.konkretne_ciele' }
-      t.references :nezrovnalost, index: true, foreign_key: { to_table: 'itms.nezrovnalosti' }
-      t.references :prioritna_os, index: true, foreign_key: { to_table: 'itms.prioritne_osi' }
+      t.references :konkretny_ciel, foreign_key: { to_table: 'itms.konkretne_ciele' }
+      t.references :nezrovnalost, foreign_key: { to_table: 'itms.nezrovnalosti' }
+      t.references :prioritna_os, foreign_key: { to_table: 'itms.prioritne_osi' }
+      t.references :projekt # Foreign key index in 20171120133917
       t.string :stav
-      t.references :subjekt_zodpovedny_za_vymahanie, index: { name: 'index_itms.pohladavkove_doklady_on_zodpovedny_subjekt' }, foreign_key: { to_table: 'itms.subjekty' }
+      t.references :subjekt_zodpovedny_za_vymahanie, foreign_key: { to_table: 'itms.subjekty' }, index: { name: 'index_itms.pohladavkove_doklady_on_zodpovedny_subjekt' }
       t.decimal :suma_na_vratenie
       t.decimal :suma_na_vratenie_zdroj_eu
       t.decimal :suma_na_vratenie_zdroj_pr

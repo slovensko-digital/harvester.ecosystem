@@ -1046,6 +1046,7 @@ CREATE TABLE pohladavkove_doklady (
     konkretny_ciel_id integer,
     nezrovnalost_id integer,
     prioritna_os_id integer,
+    projekt_id integer,
     stav character varying,
     subjekt_zodpovedny_za_vymahanie_id integer,
     suma_na_vratenie numeric,
@@ -1080,6 +1081,70 @@ CREATE SEQUENCE pohladavkove_doklady_id_seq
 --
 
 ALTER SEQUENCE pohladavkove_doklady_id_seq OWNED BY pohladavkove_doklady.id;
+
+
+--
+-- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE pohladavkove_doklady_suvisiace_verejne_obstaravania (
+    id integer NOT NULL,
+    pohladavkovy_doklad_id integer NOT NULL,
+    verejne_obstaravanie_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE pohladavkove_doklady_suvisiace_verejne_obstaravania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE pohladavkove_doklady_suvisiace_verejne_obstaravania_id_seq OWNED BY pohladavkove_doklady_suvisiace_verejne_obstaravania.id;
+
+
+--
+-- Name: pohladavkove_doklady_suvisiace_zop; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE pohladavkove_doklady_suvisiace_zop (
+    id integer NOT NULL,
+    pohladavkovy_doklad_id integer NOT NULL,
+    zop_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: pohladavkove_doklady_suvisiace_zop_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE pohladavkove_doklady_suvisiace_zop_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: pohladavkove_doklady_suvisiace_zop_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE pohladavkove_doklady_suvisiace_zop_id_seq OWNED BY pohladavkove_doklady_suvisiace_zop.id;
 
 
 --
@@ -3526,6 +3591,20 @@ ALTER TABLE ONLY pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('pohla
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY pohladavkove_doklady_suvisiace_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('pohladavkove_doklady_suvisiace_verejne_obstaravania_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady_suvisiace_zop ALTER COLUMN id SET DEFAULT nextval('pohladavkove_doklady_suvisiace_zop_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('polozky_rozpoctu_id_seq'::regclass);
 
 
@@ -4182,6 +4261,22 @@ ALTER TABLE ONLY osoby
 
 ALTER TABLE ONLY pohladavkove_doklady
     ADD CONSTRAINT pohladavkove_doklady_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady_suvisiace_verejne_obstaravania
+    ADD CONSTRAINT pohladavkove_doklady_suvisiace_verejne_obstaravania_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pohladavkove_doklady_suvisiace_zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady_suvisiace_zop
+    ADD CONSTRAINT pohladavkove_doklady_suvisiace_zop_pkey PRIMARY KEY (id);
 
 
 --
@@ -5256,10 +5351,59 @@ CREATE INDEX "index_itms.pohladavkove_doklady_on_prioritna_os_id" ON pohladavkov
 
 
 --
+-- Name: index_itms.pohladavkove_doklady_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_on_projekt_id" ON pohladavkove_doklady USING btree (projekt_id);
+
+
+--
 -- Name: index_itms.pohladavkove_doklady_on_zodpovedny_subjekt; Type: INDEX; Schema: itms; Owner: -
 --
 
 CREATE INDEX "index_itms.pohladavkove_doklady_on_zodpovedny_subjekt" ON pohladavkove_doklady USING btree (subjekt_zodpovedny_za_vymahanie_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_suvisiace_vo_on_pd; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_suvisiace_vo_on_pd" ON pohladavkove_doklady_suvisiace_verejne_obstaravania USING btree (pohladavkovy_doklad_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_suvisiace_vo_on_pd_and_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.pohladavkove_doklady_suvisiace_vo_on_pd_and_vo" ON pohladavkove_doklady_suvisiace_verejne_obstaravania USING btree (pohladavkovy_doklad_id, verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_suvisiace_vo_on_vo; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_suvisiace_vo_on_vo" ON pohladavkove_doklady_suvisiace_verejne_obstaravania USING btree (verejne_obstaravanie_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_suvisiace_zop_on_pd; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_suvisiace_zop_on_pd" ON pohladavkove_doklady_suvisiace_zop USING btree (pohladavkovy_doklad_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_suvisiace_zop_on_pd_and_zop; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.pohladavkove_doklady_suvisiace_zop_on_pd_and_zop" ON pohladavkove_doklady_suvisiace_zop USING btree (pohladavkovy_doklad_id, zop_id);
+
+
+--
+-- Name: index_itms.pohladavkove_doklady_suvisiace_zop_on_zop_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.pohladavkove_doklady_suvisiace_zop_on_zop_id" ON pohladavkove_doklady_suvisiace_zop USING btree (zop_id);
 
 
 --
@@ -6919,6 +7063,14 @@ ALTER TABLE ONLY aktivity
 
 
 --
+-- Name: fk_rails_47bdf1be19; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady_suvisiace_zop
+    ADD CONSTRAINT fk_rails_47bdf1be19 FOREIGN KEY (pohladavkovy_doklad_id) REFERENCES pohladavkove_doklady(id);
+
+
+--
 -- Name: fk_rails_47bea54338; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -7092,6 +7244,14 @@ ALTER TABLE ONLY polozky_rozpoctu
 
 ALTER TABLE ONLY zonfp_hospodarske_cinnosti
     ADD CONSTRAINT fk_rails_5cac1f1c7e FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+
+
+--
+-- Name: fk_rails_5f28bffb76; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady_suvisiace_verejne_obstaravania
+    ADD CONSTRAINT fk_rails_5f28bffb76 FOREIGN KEY (pohladavkovy_doklad_id) REFERENCES pohladavkove_doklady(id);
 
 
 --
@@ -7463,6 +7623,14 @@ ALTER TABLE ONLY zonfp_sekundarne_tematicke_okruhy
 
 
 --
+-- Name: fk_rails_9d8c329615; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady
+    ADD CONSTRAINT fk_rails_9d8c329615 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
 -- Name: fk_rails_9dc2525b6b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -7527,6 +7695,14 @@ ALTER TABLE ONLY miesta_realizacie
 
 
 --
+-- Name: fk_rails_aeb46e7e58; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady_suvisiace_verejne_obstaravania
+    ADD CONSTRAINT fk_rails_aeb46e7e58 FOREIGN KEY (verejne_obstaravanie_id) REFERENCES verejne_obstaravania(id);
+
+
+--
 -- Name: fk_rails_af89f96e79; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -7588,6 +7764,14 @@ ALTER TABLE ONLY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
 
 ALTER TABLE ONLY subjekty
     ADD CONSTRAINT fk_rails_bb3b9af5f0 FOREIGN KEY (typ_ineho_identifikacneho_cisla_id) REFERENCES hodnoty_ciselnikov(id);
+
+
+--
+-- Name: fk_rails_bb988a1214; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY pohladavkove_doklady_suvisiace_zop
+    ADD CONSTRAINT fk_rails_bb988a1214 FOREIGN KEY (zop_id) REFERENCES zop(id);
 
 
 --
