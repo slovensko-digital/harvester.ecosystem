@@ -7,11 +7,10 @@ class Itms::SyncAccountsReceivableDocumentJob < ItmsJob
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
-      ard = Itms::AccountsReceivableDocument.find_or_initialize_by(itms_id: itms_id)
+      ard = Itms::AccountsReceivableDocument.find_or_create_by!(itms_id: itms_id)
       ard.itms_href = json['href']
       ard.itms_created_at = json['createdAt']
       ard.itms_updated_at = json['updatedAt']
-      ard.save!
 
       ard.datum_splatnosti = json['datumSplatnosti']
       ard.datum_vzniku = json['datumVzniku']

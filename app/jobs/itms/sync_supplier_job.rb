@@ -7,11 +7,10 @@ class Itms::SyncSupplierJob < ItmsJob
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
-      s = Itms::Supplier.find_or_initialize_by(itms_id: itms_id)
+      s = Itms::Supplier.find_or_create_by!(itms_id: itms_id)
       s.itms_href = json['href']
       s.itms_created_at = json['createdAt']
       s.itms_updated_at = json['updatedAt']
-      s.save!
 
       s.dic = json['dic']
       s.ico = json['ico']

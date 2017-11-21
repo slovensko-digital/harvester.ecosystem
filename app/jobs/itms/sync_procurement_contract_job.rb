@@ -7,11 +7,10 @@ class Itms::SyncProcurementContractJob < ItmsJob
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
-      pc = Itms::ProcurementContract.find_or_initialize_by(itms_id: itms_id)
+      pc = Itms::ProcurementContract.find_or_create_by!(itms_id: itms_id)
       pc.itms_href = json['href']
       pc.itms_created_at = json['createdAt']
       pc.itms_updated_at = json['updatedAt']
-      pc.save!
 
       pc.celkova_suma_zmluvy = json['celkovaSumaZmluvy']
       pc.cislo_zmluvy = json['cisloZmluvy']

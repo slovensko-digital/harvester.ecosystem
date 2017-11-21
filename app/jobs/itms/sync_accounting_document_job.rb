@@ -7,11 +7,10 @@ class Itms::SyncAccountingDocumentJob < ItmsJob
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
-      ad = Itms::AccountingDocument.find_or_initialize_by(itms_id: itms_id)
+      ad = Itms::AccountingDocument.find_or_create_by!(itms_id: itms_id)
       ad.itms_href = json['href']
       ad.itms_created_at = json['createdAt']
       ad.itms_updated_at = json['updatedAt']
-      ad.save!
 
       ad.datum_uhrady = json['datumUhrady']
       ad.datum_vyhotovenia = json['datumVyhotovenia']

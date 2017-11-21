@@ -7,11 +7,10 @@ class Itms::SyncDiscrepancyJob < ItmsJob
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
-      d = Itms::Discrepancy.find_or_initialize_by(itms_id: itms_id)
+      d = Itms::Discrepancy.find_or_create_by!(itms_id: itms_id)
       d.itms_href = json['href']
       d.itms_created_at = json['createdAt']
       d.itms_updated_at = json['updatedAt']
-      d.save!
 
       d.administrativny_stav = find_or_create_codelist_value_by_json(json['administrativnyStav'], downloader)
       d.celkova_suma_nezrovnalosti = json['celkovaSumaNezrovnalosti']
