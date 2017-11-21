@@ -7,7 +7,11 @@
   },
   "href": "/v2/konkretnyCiel/33",
   "id": 33,
-  "kategoriaRegionov": "menej rozvinuté regióny",
+  "kategoriaRegionov": {
+    "ciselnikKod": 1033,
+    "href": "/v2/hodnotaCiselnika/1033/hodnota/1",
+    "id": 1
+  },
   "kod": "310010020",
   "nazov": "1.2.1 Zlepšenie odvádzania a čistenia komunálnych odpadových vôd v aglomeráciách nad 2 000 EO v zmysle záväzkov SR voči EÚ",
   "prioritnaOs": {

@@ -429,7 +429,7 @@ CREATE TABLE konkretne_ciele (
     itms_created_at timestamp without time zone,
     itms_updated_at timestamp without time zone,
     fond_id integer,
-    kategoria_regionov character varying,
+    kategoria_regionov_id integer,
     kod character varying,
     nazov character varying,
     prioritna_os_id integer,
@@ -5098,6 +5098,13 @@ CREATE UNIQUE INDEX "index_itms.konkretne_ciele_on_itms_id" ON konkretne_ciele U
 
 
 --
+-- Name: index_itms.konkretne_ciele_on_kategoria_regionov_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.konkretne_ciele_on_kategoria_regionov_id" ON konkretne_ciele USING btree (kategoria_regionov_id);
+
+
+--
 -- Name: index_itms.konkretne_ciele_on_prioritna_os_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -6704,6 +6711,14 @@ ALTER TABLE ONLY zonfp_typy_uzemia
 
 ALTER TABLE ONLY zonfp_partneri
     ADD CONSTRAINT fk_rails_00c0160bcd FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+
+
+--
+-- Name: fk_rails_0115d1b95f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY konkretne_ciele
+    ADD CONSTRAINT fk_rails_0115d1b95f FOREIGN KEY (kategoria_regionov_id) REFERENCES hodnoty_ciselnikov(id);
 
 
 --

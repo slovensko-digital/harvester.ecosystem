@@ -19,7 +19,7 @@ RSpec.describe Itms::SyncSpecificGoalJob, type: :job do
         itms_updated_at: nil,
 
         fond: Itms::CodelistValue.where_codelist_and_value(1032, 3).first!,
-        kategoria_regionov: 'menej rozvinuté regióny',
+        kategoria_regionov: Itms::CodelistValue.where_codelist_and_value(1033, 1).first!,
         kod: '310010020',
         nazov: '1.2.1 Zlepšenie odvádzania a čistenia komunálnych odpadových vôd v aglomeráciách nad 2 000 EO v zmysle záväzkov SR voči EÚ',
         prioritna_os: Itms::PriorityAxis.find_by!(itms_id: 33),
