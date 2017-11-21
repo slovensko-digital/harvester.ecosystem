@@ -239,7 +239,7 @@ class ItmsJob < ApplicationJob
     specific_goal = Itms::SpecificGoal.find_by(itms_id: json['id'])
     return specific_goal if specific_goal.present?
 
-    Itms::SyncSpecificGoalJob.perform_now(json['id'], downloader: downloader)
+    Itms::SyncSpecificGoalJob.perform_now(json['href'], downloader: downloader)
     Itms::SpecificGoal.find_by!(itms_id: json['id'])
   end
 

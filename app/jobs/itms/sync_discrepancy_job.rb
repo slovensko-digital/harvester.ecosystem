@@ -71,13 +71,4 @@ class Itms::SyncDiscrepancyJob < ItmsJob
     return [] if json.blank?
     json.map { |subject_json| find_or_create_discrepancy_by_json(subject_json, downloader) }
   end
-
-  def find_or_create_specific_goal_by_json(json, downloader)
-    return if json.blank?
-    specific_goal = Itms::SpecificGoal.find_by(itms_id: json['id'])
-    return specific_goal if specific_goal.present?
-
-    Itms::SyncSpecificGoalJob.perform_now(json['id'], downloader: downloader)
-    Itms::SpecificGoal.find_by!(itms_id: json['id'])
-  end
 end
