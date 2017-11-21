@@ -10,7 +10,7 @@ RSpec.describe Itms::SyncAccountsReceivableDocumentJob, type: :job do
           .with('https://opendata.itms2014.sk/v2/pohladavkovyDoklad/2')
           .and_return(double(body: itms_file_fixture('pohladavkovy_doklad_item.json')))
 
-      subject.perform(2, downloader: downloader)
+      subject.perform('/v2/pohladavkovyDoklad/2', downloader: downloader)
 
       expect(Itms::AccountsReceivableDocument.first).to have_attributes(
         itms_id: 2,
