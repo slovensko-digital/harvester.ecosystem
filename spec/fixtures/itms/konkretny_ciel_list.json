@@ -1,0 +1,156 @@
+[
+  {
+    "createdAt": "2017-11-07T08:41:40.12Z",
+    "fond": {
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/2",
+      "id": 2
+    },
+    "href": "/v2/konkretnyCiel/1",
+    "id": 1,
+    "kategoriaRegionov": {
+      "ciselnikKod": 1033,
+      "href": "/v2/hodnotaCiselnika/1033/hodnota/1",
+      "id": 1
+    },
+    "kod": "312010011",
+    "nazov": "1.1.1  Zvýšiť inkluzívnosť a rovnaký prístup ku kvalitnému vzdelávaniu a zlepšiť výsledky a kompetencie detí a žiakov",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/1",
+      "id": 1
+    },
+    "technickaAsistencia": false
+  },
+  {
+    "createdAt": "2017-11-07T08:41:40.095Z",
+    "fond": {
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/2",
+      "id": 2
+    },
+    "href": "/v2/konkretnyCiel/2",
+    "id": 2,
+    "kategoriaRegionov": {
+      "ciselnikKod": 1033,
+      "href": "/v2/hodnotaCiselnika/1033/hodnota/2",
+      "id": 2
+    },
+    "kod": "312010012",
+    "nazov": "1.1.1  Zvýšiť inkluzívnosť a rovnaký prístup ku kvalitnému vzdelávaniu a zlepšiť výsledky a kompetencie detí a žiakov",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/1",
+      "id": 1
+    },
+    "technickaAsistencia": false
+  },
+  {
+    "createdAt": "2017-11-07T08:41:40.087Z",
+    "fond": {
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/2",
+      "id": 2
+    },
+    "href": "/v2/konkretnyCiel/3",
+    "id": 3,
+    "kategoriaRegionov": {
+      "ciselnikKod": 1033,
+      "href": "/v2/hodnotaCiselnika/1033/hodnota/1",
+      "id": 1
+    },
+    "kod": "312010021",
+    "nazov": "1.2.1 Zvýšiť kvalitu odborného vzdelávania a prípravy reflektujúc potreby trhu práce",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/1",
+      "id": 1
+    },
+    "technickaAsistencia": false
+  },
+  {
+    "createdAt": "2017-11-07T08:41:40.136Z",
+    "fond": {
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/2",
+      "id": 2
+    },
+    "href": "/v2/konkretnyCiel/4",
+    "id": 4,
+    "kategoriaRegionov": {
+      "ciselnikKod": 1033,
+      "href": "/v2/hodnotaCiselnika/1033/hodnota/2",
+      "id": 2
+    },
+    "kod": "312010022",
+    "nazov": "1.2.1 Zvýšiť kvalitu odborného vzdelávania a prípravy reflektujúc potreby trhu práce",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/1",
+      "id": 1
+    },
+    "technickaAsistencia": false
+  },
+  {
+    "createdAt": "2017-11-07T08:41:40.128Z",
+    "fond": {
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/2",
+      "id": 2
+    },
+    "href": "/v2/konkretnyCiel/5",
+    "id": 5,
+    "kategoriaRegionov": {
+      "ciselnikKod": 1033,
+      "href": "/v2/hodnotaCiselnika/1033/hodnota/1",
+      "id": 1
+    },
+    "kod": "312010031",
+    "nazov": "1.3.1 Zvýšiť kvalitu VŠ vzdelávania a rozvoj ľudských zdrojov v oblasti výskumu a vývoja s cieľom dosiahnuť prepojenie VŠ vzdelávania s potrebami trhu práce",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/1",
+      "id": 1
+    },
+    "technickaAsistencia": false
+  },
+  {
+    "createdAt": "2017-11-07T08:41:40.111Z",
+    "fond": {
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/2",
+      "id": 2
+    },
+    "href": "/v2/konkretnyCiel/6",
+    "id": 6,
+    "kategoriaRegionov": {
+      "ciselnikKod": 1033,
+      "href": "/v2/hodnotaCiselnika/1033/hodnota/2",
+      "id": 2
+    },
+    "kod": "312010032",
+    "nazov": "1.3.1 Zvýšiť kvalitu VŠ vzdelávania a rozvoj ľudských zdrojov v oblasti výskumu a vývoja s cieľom dosiahnuť prepojenie VŠ vzdelávania s potrebami trhu práce",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/1",
+      "id": 1
+    },
+    "technickaAsistencia": false
+  },
+  {
+    "createdAt": "2017-11-07T08:41:40.103Z",
+    "fond": {
+      "ciselnikKod": 1032,
+      "href": "/v2/hodnotaCiselnika/1032/hodnota/2",
+      "id": 2
+    },
+    "href": "/v2/konkretnyCiel/7",
+    "id": 7,
+    "kategoriaRegionov": {
+      "ciselnikKod": 1033,
+      "href": "/v2/hodnotaCiselnika/1033/hodnota/1",
+      "id": 1
+    },
+    "kod": "312010041",
+    "nazov": "1.4.1 Zvýšiť kvalitu a efektívnosť celoživotného vzdelávania s dôrazom na rozvoj kľúčových kompetencií, prehlbovanie a zvyšovanie kvalifikácie",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/1",
+      "id": 1
+    },
+    "technickaAsistencia": false
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "celkovaFinancnaAlokacia": 1802207501,
+    "createdAt": "2017-11-15T14:24:39.658Z",
+    "hlavnaAlokacia": 1802207501,
+    "href": "/v2/prioritnaOs/8",
+    "id": 8,
+    "kod": "310010",
+    "nazov": "1. Udržateľné využívanie prírodných zdrojov prostredníctvom rozvoja environmentálnej infraštruktúry",
+    "operacnyProgram": {
+      "href": "/v2/operacneProgramy/1",
+      "id": 1
+    },
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 493348543,
+    "createdAt": "2017-11-15T14:24:39.692Z",
+    "hlavnaAlokacia": 493348543,
+    "href": "/v2/prioritnaOs/9",
+    "id": 9,
+    "kod": "310020",
+    "nazov": "2. Adaptácia na nepriaznivé dôsledky zmeny klímy so zameraním na ochranu pred povodňami",
+    "operacnyProgram": {
+      "href": "/v2/operacneProgramy/1",
+      "id": 1
+    },
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 318976984,
+    "createdAt": "2017-11-15T14:24:39.629Z",
+    "hlavnaAlokacia": 318976984,
+    "href": "/v2/prioritnaOs/10",
+    "id": 10,
+    "kod": "310030",
+    "nazov": "3. Podpora riadenia rizík, riadenia mimoriadnych udalostí a odolnosti proti mimoriadnym udalostiam ovplyvneným zmenou klímy",
+    "operacnyProgram": {
+      "href": "/v2/operacneProgramy/1",
+      "id": 1
+    },
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 1620301023,
+    "createdAt": "2017-11-15T14:24:39.539Z",
+    "hlavnaAlokacia": 1620301023,
+    "href": "/v2/prioritnaOs/11",
+    "id": 11,
+    "kod": "310040",
+    "nazov": "4. Energeticky efektívne nízkouhlíkové hospodárstvo vo všetkých sektoroch",
+    "operacnyProgram": {
+      "href": "/v2/operacneProgramy/1",
+      "id": 1
+    },
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 92775942,
+    "createdAt": "2017-11-15T14:24:39.714Z",
+    "hlavnaAlokacia": 92775942,
+    "href": "/v2/prioritnaOs/12",
+    "id": 12,
+    "kod": "310050",
+    "nazov": "5. Technická pomoc",
+    "operacnyProgram": {
+      "href": "/v2/operacneProgramy/1",
+      "id": 1
+    },
+    "vykonnostnaRezerva": 0
+  }
+]
