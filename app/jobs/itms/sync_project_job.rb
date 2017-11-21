@@ -16,7 +16,6 @@ class Itms::SyncProjectJob < ItmsJob
       p.akronym = json['akronym']
       p.aktivity = find_or_create_activities_by_json(json['aktivity'], downloader)
       p.cislo_zmluvy = json['cisloZmluvy']
-      #TODO p.data_projektu = json['dataProjektu']
       p.datum_konca_hlavnych_aktivit = json['datumKoncaHlavnychAktivit']
       p.datum_konca_realizacie = json['datumKoncaRealizacie']
       p.datum_platnosti_zmluvy = json['datumPlatnostiZmluvy']
