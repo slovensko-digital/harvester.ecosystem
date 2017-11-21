@@ -1,0 +1,6854 @@
+[
+  {
+    "createdAt": "2016-10-17T15:37:16.521Z",
+    "datumSplatnosti": "2017-01-16T00:00:00Z",
+    "datumVzniku": "2016-11-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/2",
+    "id": 2,
+    "kod": "312041A136Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/12",
+      "id": 12
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 773.79,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-11-11T00:00:00Z",
+    "vratenaSuma": 773.79
+  },
+  {
+    "createdAt": "2016-10-24T10:14:14.322Z",
+    "datumSplatnosti": "2016-10-24T00:00:00Z",
+    "datumVzniku": "2016-12-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/3",
+    "id": 3,
+    "kod": "312031A057V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 23.68,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2016-12-01T00:00:00Z",
+    "vratenaSuma": 23.68
+  },
+  {
+    "createdAt": "2016-11-08T17:01:41.211Z",
+    "datumSplatnosti": "2017-01-16T00:00:00Z",
+    "datumVzniku": "2016-11-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/4",
+    "id": 4,
+    "kod": "312031A064Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 928.53,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-11-14T00:00:00Z",
+    "vratenaSuma": 928.53
+  },
+  {
+    "createdAt": "2016-11-25T14:46:13.576Z",
+    "datumSplatnosti": "2016-10-07T00:00:00Z",
+    "datumVzniku": "2016-08-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021937775",
+      "href": "/v2/subjekty/100748",
+      "ico": "35919001",
+      "id": 100748
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/6",
+    "id": 6,
+    "kod": "311021A425Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/87",
+      "id": 87
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 757168.93,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-08-19T00:00:00Z",
+    "vratenaSuma": 757168.93
+  },
+  {
+    "createdAt": "2016-11-25T17:39:09.525Z",
+    "datumSplatnosti": "2017-01-25T00:00:00Z",
+    "datumVzniku": "2016-11-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/7",
+    "id": 7,
+    "kod": "312031A020Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 202.55,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-11-28T00:00:00Z",
+    "vratenaSuma": 202.55
+  },
+  {
+    "createdAt": "2016-11-29T09:38:48.482Z",
+    "datumSplatnosti": "2016-12-14T00:00:00Z",
+    "datumVzniku": "2016-11-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/9",
+    "id": 9,
+    "kod": "312031A020Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 8485.96,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-11-29T00:00:00Z",
+    "vratenaSuma": 8485.96
+  },
+  {
+    "createdAt": "2016-11-29T10:26:02.21Z",
+    "datumSplatnosti": "2017-07-14T00:00:00Z",
+    "datumVzniku": "2016-11-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/10",
+    "id": 10,
+    "kod": "312031A020Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 4211.06,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-30T00:00:00Z",
+    "vratenaSuma": 4211.06
+  },
+  {
+    "createdAt": "2016-11-29T17:57:32.39Z",
+    "datumSplatnosti": "2017-01-31T00:00:00Z",
+    "datumVzniku": "2016-11-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/11",
+    "id": 11,
+    "kod": "312021A051Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 3045.14,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-11-30T00:00:00Z",
+    "vratenaSuma": 3045.14
+  },
+  {
+    "createdAt": "2016-11-30T14:10:54.155Z",
+    "datumSplatnosti": "2016-12-15T00:00:00Z",
+    "datumVzniku": "2016-11-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/12",
+    "id": 12,
+    "kod": "312031A057Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 486.1,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-11-30T00:00:00Z",
+    "vratenaSuma": 486.1
+  },
+  {
+    "createdAt": "2016-12-02T16:09:27.068Z",
+    "datumSplatnosti": "2017-02-02T00:00:00Z",
+    "datumVzniku": "2016-12-02T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/13",
+    "id": 13,
+    "kod": "312031A057Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 856.9,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-02T00:00:00Z",
+    "vratenaSuma": 856.9
+  },
+  {
+    "createdAt": "2016-12-08T08:16:33.097Z",
+    "datumSplatnosti": "2016-12-08T00:00:00Z",
+    "datumVzniku": "2016-12-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/15",
+    "id": 15,
+    "kod": "312031A064V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 19.43,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2016-12-09T00:00:00Z",
+    "vratenaSuma": 19.43
+  },
+  {
+    "createdAt": "2016-12-14T09:31:38.883Z",
+    "datumSplatnosti": "2016-12-14T00:00:00Z",
+    "datumVzniku": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/18",
+    "id": 18,
+    "kod": "312021A051V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 12.55,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2016-12-14T00:00:00Z",
+    "vratenaSuma": 12.55
+  },
+  {
+    "createdAt": "2016-12-16T15:04:06.182Z",
+    "datumSplatnosti": "2016-02-16T00:00:00Z",
+    "datumVzniku": "2016-12-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PS",
+    "href": "/v2/pohladavkovyDoklad/19",
+    "id": 19,
+    "kod": "3010100000Z001",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/35",
+      "id": 35
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 4763.17,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-16T00:00:00Z"
+  },
+  {
+    "createdAt": "2016-12-21T14:41:45.463Z",
+    "datumSplatnosti": "2017-01-05T00:00:00Z",
+    "datumVzniku": "2016-12-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/20",
+    "id": 20,
+    "kod": "312031A064Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 572.23,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-21T00:00:00Z",
+    "vratenaSuma": 572.23
+  },
+  {
+    "createdAt": "2016-12-22T14:32:17.433Z",
+    "datumSplatnosti": "2017-02-21T00:00:00Z",
+    "datumVzniku": "2016-12-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/21",
+    "id": 21,
+    "kod": "312031A057Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 4633.81,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-22T00:00:00Z",
+    "vratenaSuma": 4633.81
+  },
+  {
+    "createdAt": "2016-12-22T15:59:39.674Z",
+    "datumSplatnosti": "2017-02-22T00:00:00Z",
+    "datumVzniku": "2016-12-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/22",
+    "id": 22,
+    "kod": "312031A064Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Stiahnutý (K)",
+    "sumaNaVratenie": 39.35,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-22T00:00:00Z"
+  },
+  {
+    "createdAt": "2016-12-27T13:19:27.404Z",
+    "datumSplatnosti": "2017-02-16T00:00:00Z",
+    "datumVzniku": "2016-12-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/23",
+    "id": 23,
+    "kod": "312031A062Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/5",
+      "id": 5
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 560,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-27T00:00:00Z",
+    "vratenaSuma": 560
+  },
+  {
+    "createdAt": "2016-12-28T15:35:15.604Z",
+    "datumSplatnosti": "2017-02-28T00:00:00Z",
+    "datumVzniku": "2016-12-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/24",
+    "id": 24,
+    "kod": "312031A057Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 310.32,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-28T00:00:00Z",
+    "vratenaSuma": 310.32
+  },
+  {
+    "createdAt": "2016-12-28T16:28:05.221Z",
+    "datumSplatnosti": "2017-02-28T00:00:00Z",
+    "datumVzniku": "2016-12-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/25",
+    "id": 25,
+    "kod": "312031A064Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5129.17,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-28T00:00:00Z",
+    "vratenaSuma": 5129.17
+  },
+  {
+    "createdAt": "2017-01-02T14:10:27.349Z",
+    "datumSplatnosti": "2017-01-26T00:00:00Z",
+    "datumVzniku": "2017-01-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/26",
+    "id": 26,
+    "kod": "312021A139Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1194.16,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-11T00:00:00Z",
+    "vratenaSuma": 1194.16
+  },
+  {
+    "createdAt": "2017-01-04T09:20:16.995Z",
+    "datumSplatnosti": "2017-01-26T00:00:00Z",
+    "datumVzniku": "2017-01-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/27",
+    "id": 27,
+    "kod": "312031A127Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 883.87,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-11T00:00:00Z",
+    "vratenaSuma": 883.87
+  },
+  {
+    "createdAt": "2017-01-05T10:38:59.766Z",
+    "datumSplatnosti": "2017-01-25T00:00:00Z",
+    "datumVzniku": "2017-01-10T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/28",
+    "id": 28,
+    "kod": "312021A139Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5302.59,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-10T00:00:00Z",
+    "vratenaSuma": 5302.59
+  },
+  {
+    "createdAt": "2017-01-09T11:48:07.41Z",
+    "datumSplatnosti": "2017-01-25T00:00:00Z",
+    "datumVzniku": "2017-01-10T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/30",
+    "id": 30,
+    "kod": "312031A057Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 3352.01,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-10T00:00:00Z",
+    "vratenaSuma": 3352.01
+  },
+  {
+    "createdAt": "2017-01-10T14:04:00.997Z",
+    "datumSplatnosti": "2017-01-25T00:00:00Z",
+    "datumVzniku": "2017-01-10T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/31",
+    "id": 31,
+    "kod": "312031A064Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 4658.27,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-10T00:00:00Z",
+    "vratenaSuma": 4658.27
+  },
+  {
+    "createdAt": "2017-01-13T14:58:55.534Z",
+    "datumSplatnosti": "2017-01-28T00:00:00Z",
+    "datumVzniku": "2017-01-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/32",
+    "id": 32,
+    "kod": "312031A020Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7787.95,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-13T00:00:00Z",
+    "vratenaSuma": 7787.95
+  },
+  {
+    "createdAt": "2017-01-16T13:49:58.273Z",
+    "datumSplatnosti": "2017-04-07T00:00:00Z",
+    "datumVzniku": "2017-01-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/33",
+    "id": 33,
+    "kod": "311071A172Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/56",
+      "id": 56
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 4409483.65,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-16T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-01-16T14:37:12.746Z",
+    "datumSplatnosti": "2017-01-31T00:00:00Z",
+    "datumVzniku": "2017-01-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/34",
+    "id": 34,
+    "kod": "312031A057Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5483.04,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-16T00:00:00Z",
+    "vratenaSuma": 5483.04
+  },
+  {
+    "createdAt": "2017-01-17T11:12:48.033Z",
+    "datumSplatnosti": "2017-02-01T00:00:00Z",
+    "datumVzniku": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/35",
+    "id": 35,
+    "kod": "312031A020Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7675.71,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-17T00:00:00Z",
+    "vratenaSuma": 7675.71
+  },
+  {
+    "createdAt": "2017-01-17T14:11:39.348Z",
+    "datumSplatnosti": "2017-02-01T00:00:00Z",
+    "datumVzniku": "2017-01-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/36",
+    "id": 36,
+    "kod": "312031A064Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 4875.49,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-17T00:00:00Z",
+    "vratenaSuma": 4875.49
+  },
+  {
+    "createdAt": "2017-01-18T10:01:55.965Z",
+    "datumSplatnosti": "2017-02-02T00:00:00Z",
+    "datumVzniku": "2017-01-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/37",
+    "id": 37,
+    "kod": "312031A127Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5283.12,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-18T00:00:00Z",
+    "vratenaSuma": 5283.12
+  },
+  {
+    "createdAt": "2017-01-18T10:20:46.405Z",
+    "datumSplatnosti": "2017-02-02T00:00:00Z",
+    "datumVzniku": "2017-01-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/38",
+    "id": 38,
+    "kod": "312031A127Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 754.82,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-18T00:00:00Z",
+    "vratenaSuma": 754.82
+  },
+  {
+    "createdAt": "2017-01-18T14:14:44.613Z",
+    "datumSplatnosti": "2017-02-02T00:00:00Z",
+    "datumVzniku": "2017-01-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/39",
+    "id": 39,
+    "kod": "312021A139Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2179.53,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-18T00:00:00Z",
+    "vratenaSuma": 2179.53
+  },
+  {
+    "createdAt": "2017-01-18T14:51:34.47Z",
+    "datumSplatnosti": "2017-02-03T00:00:00Z",
+    "datumVzniku": "2017-01-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/40",
+    "id": 40,
+    "kod": "312031A148Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 118.53,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-18T00:00:00Z",
+    "vratenaSuma": 118.53
+  },
+  {
+    "createdAt": "2017-01-19T08:38:38.356Z",
+    "datumSplatnosti": "2017-05-15T00:00:00Z",
+    "datumVzniku": "2017-05-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/41",
+    "id": 41,
+    "kod": "301011C247V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/229",
+      "id": 229
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 274752,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-05-11T00:00:00Z",
+    "vratenaSuma": 274752
+  },
+  {
+    "createdAt": "2017-01-19T08:58:07.962Z",
+    "datumSplatnosti": "2017-03-15T00:00:00Z",
+    "datumVzniku": "2017-03-07T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/42",
+    "id": 42,
+    "kod": "301011A437V001",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/106",
+      "id": 106
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 108000,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-03-07T00:00:00Z",
+    "vratenaSuma": 108000
+  },
+  {
+    "createdAt": "2017-01-19T09:44:51.609Z",
+    "datumSplatnosti": "2017-02-03T00:00:00Z",
+    "datumVzniku": "2017-01-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/43",
+    "id": 43,
+    "kod": "312031A057Z008",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 926.42,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-19T00:00:00Z",
+    "vratenaSuma": 926.42
+  },
+  {
+    "createdAt": "2017-01-20T09:41:19.267Z",
+    "datumSplatnosti": "2017-03-02T00:00:00Z",
+    "datumVzniku": "2017-01-02T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/44",
+    "id": 44,
+    "kod": "312021A051Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 66.77,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-20T00:00:00Z",
+    "vratenaSuma": 66.77
+  },
+  {
+    "createdAt": "2017-01-20T11:20:04.272Z",
+    "datumSplatnosti": "2017-02-06T00:00:00Z",
+    "datumVzniku": "2017-01-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/45",
+    "id": 45,
+    "kod": "312031A064Z008",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1317.99,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-20T00:00:00Z",
+    "vratenaSuma": 1317.99
+  },
+  {
+    "createdAt": "2017-01-23T10:50:29.691Z",
+    "datumSplatnosti": "2017-02-07T00:00:00Z",
+    "datumVzniku": "2017-01-23T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/46",
+    "id": 46,
+    "kod": "312031A020Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 4071.69,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-01-23T00:00:00Z",
+    "vratenaSuma": 4071.69
+  },
+  {
+    "createdAt": "2017-02-08T08:28:17.873Z",
+    "datumSplatnosti": "2017-02-08T00:00:00Z",
+    "datumVzniku": "2017-02-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/47",
+    "id": 47,
+    "kod": "312021A051V004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 31.34,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-02-13T00:00:00Z",
+    "vratenaSuma": 31.34
+  },
+  {
+    "createdAt": "2017-02-14T12:09:48.662Z",
+    "datumSplatnosti": "2017-02-14T00:00:00Z",
+    "datumVzniku": "2017-02-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/48",
+    "id": 48,
+    "kod": "312021A017V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/1",
+      "id": 1
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 8.52,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-02-14T00:00:00Z",
+    "vratenaSuma": 8.52
+  },
+  {
+    "createdAt": "2017-02-14T12:21:52Z",
+    "datumSplatnosti": "2017-02-14T00:00:00Z",
+    "datumVzniku": "2017-02-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/49",
+    "id": 49,
+    "kod": "312031A127V004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 32.06,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-02-14T00:00:00Z",
+    "vratenaSuma": 32.06
+  },
+  {
+    "createdAt": "2017-02-17T14:20:54.177Z",
+    "datumSplatnosti": "2017-05-18T00:00:00Z",
+    "datumVzniku": "2017-02-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2021056818",
+      "href": "/v2/subjekty/100009",
+      "ico": "00686832",
+      "id": 100009
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/51",
+    "id": 51,
+    "kod": "313052B838V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/168",
+      "id": 168
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 49.1,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-02-17T00:00:00Z",
+    "vratenaSuma": 49.1
+  },
+  {
+    "createdAt": "2017-02-22T15:54:53.408Z",
+    "datumSplatnosti": "2017-04-24T00:00:00Z",
+    "datumVzniku": "2017-02-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/52",
+    "id": 52,
+    "kod": "312031A057Z009",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2147.25,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-21T00:00:00Z",
+    "vratenaSuma": 2147.25
+  },
+  {
+    "createdAt": "2017-02-28T13:54:41.706Z",
+    "datumSplatnosti": "2017-03-10T00:00:00Z",
+    "datumVzniku": "2017-02-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2020298786",
+      "href": "/v2/subjekty/100578",
+      "ico": "00492736",
+      "id": 100578
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/8",
+      "id": 8
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/53",
+    "id": 53,
+    "kod": "311031A347V001",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/60",
+      "id": 60
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 3.44,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-02-28T00:00:00Z",
+    "vratenaSuma": 3.44
+  },
+  {
+    "createdAt": "2017-03-10T09:41:20.043Z",
+    "datumSplatnosti": "2017-03-27T00:00:00Z",
+    "datumVzniku": "2017-03-10T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/54",
+    "id": 54,
+    "kod": "312021A017Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/1",
+      "id": 1
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2158.82,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-10T00:00:00Z",
+    "vratenaSuma": 2158.82
+  },
+  {
+    "createdAt": "2017-03-13T12:56:26.208Z",
+    "datumSplatnosti": "2017-05-15T00:00:00Z",
+    "datumVzniku": "2017-03-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/55",
+    "id": 55,
+    "kod": "310041A077Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/8",
+      "id": 8
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1218,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-13T00:00:00Z",
+    "vratenaSuma": 1218
+  },
+  {
+    "createdAt": "2017-03-15T12:09:11.662Z",
+    "datumSplatnosti": "2016-04-30T00:00:00Z",
+    "datumVzniku": "2016-04-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/56",
+    "id": 56,
+    "kod": "311071A092Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/10",
+      "id": 10
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 9985,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 9985
+  },
+  {
+    "createdAt": "2017-03-15T12:23:47.885Z",
+    "datumSplatnosti": "2016-11-08T00:00:00Z",
+    "datumVzniku": "2016-11-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/57",
+    "id": 57,
+    "kod": "311071A172Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/56",
+      "id": 56
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 10859.67,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 10859.67
+  },
+  {
+    "createdAt": "2017-03-15T12:33:06.011Z",
+    "datumSplatnosti": "2016-10-28T00:00:00Z",
+    "datumVzniku": "2016-10-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/58",
+    "id": 58,
+    "kod": "312021A051Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 61551.58,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 61551.58
+  },
+  {
+    "createdAt": "2017-03-15T13:06:17.777Z",
+    "datumSplatnosti": "2016-11-10T00:00:00Z",
+    "datumVzniku": "2016-11-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/59",
+    "id": 59,
+    "kod": "312041A138Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/13",
+      "id": 13
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 136944.15,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 136944.15
+  },
+  {
+    "createdAt": "2017-03-15T13:41:08.71Z",
+    "datumSplatnosti": "2016-12-15T00:00:00Z",
+    "datumVzniku": "2016-12-07T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/60",
+    "id": 60,
+    "kod": "312041A112Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/17",
+      "id": 17
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7556.77,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 7556.77
+  },
+  {
+    "createdAt": "2017-03-15T14:16:51.949Z",
+    "datumSplatnosti": "2016-12-14T00:00:00Z",
+    "datumVzniku": "2016-12-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/61",
+    "id": 61,
+    "kod": "312031A062Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/5",
+      "id": 5
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2806.65,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 2806.65
+  },
+  {
+    "createdAt": "2017-03-15T14:21:56.204Z",
+    "datumSplatnosti": "2016-12-23T00:00:00Z",
+    "datumVzniku": "2016-12-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/62",
+    "id": 62,
+    "kod": "310051A441Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/88",
+      "id": 88
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 96770.39,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 96770.39
+  },
+  {
+    "createdAt": "2017-03-15T15:03:02.166Z",
+    "datumSplatnosti": "2016-12-22T00:00:00Z",
+    "datumVzniku": "2016-12-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/63",
+    "id": 63,
+    "kod": "312072B391Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/96",
+      "id": 96
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 41437.11,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 41437.11
+  },
+  {
+    "createdAt": "2017-03-15T15:28:20.926Z",
+    "datumSplatnosti": "2016-12-21T00:00:00Z",
+    "datumVzniku": "2016-12-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/64",
+    "id": 64,
+    "kod": "312072B391Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/96",
+      "id": 96
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 680926.71,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 680926.71
+  },
+  {
+    "createdAt": "2017-03-15T15:39:31.865Z",
+    "datumSplatnosti": "2016-12-22T00:00:00Z",
+    "datumVzniku": "2016-12-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/65",
+    "id": 65,
+    "kod": "312011C789Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/245",
+      "id": 245
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7100,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-23T00:00:00Z",
+    "vratenaSuma": 7100
+  },
+  {
+    "createdAt": "2017-03-15T16:29:01.769Z",
+    "datumSplatnosti": "2016-08-31T00:00:00Z",
+    "datumVzniku": "2016-08-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/66",
+    "id": 66,
+    "kod": "313051B544Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/102",
+      "id": 102
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 752339.36,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 752339.36
+  },
+  {
+    "createdAt": "2017-03-15T16:56:28.543Z",
+    "datumSplatnosti": "2016-08-30T00:00:00Z",
+    "datumVzniku": "2016-08-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/67",
+    "id": 67,
+    "kod": "313051B544Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/102",
+      "id": 102
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 45729.34,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 45729.34
+  },
+  {
+    "createdAt": "2017-03-15T17:37:13.847Z",
+    "datumSplatnosti": "2016-12-22T00:00:00Z",
+    "datumVzniku": "2016-12-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/68",
+    "id": 68,
+    "kod": "313051B532Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/97",
+      "id": 97
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 13946.4,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 13946.4
+  },
+  {
+    "createdAt": "2017-03-15T17:45:17.01Z",
+    "datumSplatnosti": "2016-12-28T00:00:00Z",
+    "datumVzniku": "2016-12-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/69",
+    "id": 69,
+    "kod": "313051B532Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/97",
+      "id": 97
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 229199.24,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-16T00:00:00Z",
+    "vratenaSuma": 229199.24
+  },
+  {
+    "createdAt": "2017-03-15T17:50:16.615Z",
+    "datumSplatnosti": "2016-12-28T00:00:00Z",
+    "datumVzniku": "2016-12-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/70",
+    "id": 70,
+    "kod": "313051C341Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/203",
+      "id": 203
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 467484.16,
+    "typ": "ZOVFP",
+    "updatedAt": "2016-12-13T00:00:00Z",
+    "vratenaSuma": 467484.16
+  },
+  {
+    "createdAt": "2017-03-15T17:56:15.528Z",
+    "datumSplatnosti": "2016-12-21T00:00:00Z",
+    "datumVzniku": "2016-12-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/71",
+    "id": 71,
+    "kod": "313051B544Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/102",
+      "id": 102
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 254570.57,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-23T00:00:00Z",
+    "vratenaSuma": 254570.57
+  },
+  {
+    "createdAt": "2017-03-16T08:20:36.097Z",
+    "datumSplatnosti": "2017-03-21T00:00:00Z",
+    "datumVzniku": "2017-03-17T00:00:00Z",
+    "dlznik": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/72",
+    "id": 72,
+    "kod": "311071A090V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/23",
+      "id": 23
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2928,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-03-22T00:00:00Z",
+    "vratenaSuma": 2928
+  },
+  {
+    "createdAt": "2017-03-16T14:25:29.038Z",
+    "datumSplatnosti": "2017-05-15T00:00:00Z",
+    "datumVzniku": "2017-03-15T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/73",
+    "id": 73,
+    "kod": "312031A020Z008",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 992.7,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-25T00:00:00Z",
+    "vratenaSuma": 992.7
+  },
+  {
+    "createdAt": "2017-03-17T13:41:35.322Z",
+    "datumSplatnosti": "2017-05-16T00:00:00Z",
+    "datumVzniku": "2017-03-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/74",
+    "id": 74,
+    "kod": "312031A020Z009",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 3308.36,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-17T00:00:00Z",
+    "vratenaSuma": 3308.36
+  },
+  {
+    "createdAt": "2017-03-20T18:00:59.082Z",
+    "datumSplatnosti": "2017-04-10T00:00:00Z",
+    "datumVzniku": "2017-03-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/75",
+    "id": 75,
+    "kod": "312021A139Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1592.43,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-20T00:00:00Z",
+    "vratenaSuma": 1592.43
+  },
+  {
+    "createdAt": "2017-03-21T08:18:08.735Z",
+    "datumSplatnosti": "2017-04-05T00:00:00Z",
+    "datumVzniku": "2017-03-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/76",
+    "id": 76,
+    "kod": "312031A127Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1018.52,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-21T00:00:00Z",
+    "vratenaSuma": 1018.52
+  },
+  {
+    "createdAt": "2017-03-21T09:04:07.02Z",
+    "datumSplatnosti": "2017-04-11T00:00:00Z",
+    "datumVzniku": "2017-03-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/77",
+    "id": 77,
+    "kod": "312031A064Z009",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 779.12,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-21T00:00:00Z",
+    "vratenaSuma": 779.12
+  },
+  {
+    "createdAt": "2017-03-21T13:06:55.09Z",
+    "datumSplatnosti": "2017-04-11T00:00:00Z",
+    "datumVzniku": "2017-03-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/78",
+    "id": 78,
+    "kod": "312031A057Z010",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 680.1,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-21T00:00:00Z",
+    "vratenaSuma": 680.1
+  },
+  {
+    "createdAt": "2017-03-21T14:13:27.058Z",
+    "datumSplatnosti": "2017-04-11T00:00:00Z",
+    "datumVzniku": "2017-03-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/79",
+    "id": 79,
+    "kod": "312031A148Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1399.91,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-21T00:00:00Z",
+    "vratenaSuma": 1399.91
+  },
+  {
+    "createdAt": "2017-03-21T16:00:23.496Z",
+    "datumSplatnosti": "2017-04-11T00:00:00Z",
+    "datumVzniku": "2017-03-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/80",
+    "id": 80,
+    "kod": "312031A057Z011",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 877.7,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-21T00:00:00Z",
+    "vratenaSuma": 877.7
+  },
+  {
+    "createdAt": "2017-03-21T16:54:32.799Z",
+    "datumSplatnosti": "2017-04-11T00:00:00Z",
+    "datumVzniku": "2017-03-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/81",
+    "id": 81,
+    "kod": "312031B613Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/144",
+      "id": 144
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 267.9,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-21T00:00:00Z",
+    "vratenaSuma": 267.9
+  },
+  {
+    "createdAt": "2017-03-22T09:07:48.885Z",
+    "datumSplatnosti": "2017-04-06T00:00:00Z",
+    "datumVzniku": "2017-03-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/82",
+    "id": 82,
+    "kod": "312021A139Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 10621.06,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-22T00:00:00Z",
+    "vratenaSuma": 10621.06
+  },
+  {
+    "createdAt": "2017-03-22T09:32:44.217Z",
+    "datumSplatnosti": "2017-04-12T00:00:00Z",
+    "datumVzniku": "2017-03-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/83",
+    "id": 83,
+    "kod": "312031A064Z010",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5884.98,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-22T00:00:00Z",
+    "vratenaSuma": 5884.98
+  },
+  {
+    "createdAt": "2017-03-29T16:44:51.864Z",
+    "datumSplatnosti": "2017-06-22T00:00:00Z",
+    "datumVzniku": "2017-03-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021291382",
+      "href": "/v2/subjekty/100012",
+      "ico": "00156621",
+      "id": 100012
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/84",
+    "id": 84,
+    "kod": "302061C206Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/172",
+      "id": 172
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 252221.11,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-03-30T00:00:00Z",
+    "vratenaSuma": 252221.11
+  },
+  {
+    "createdAt": "2017-03-31T10:21:30.992Z",
+    "datumSplatnosti": "2017-04-17T00:00:00Z",
+    "datumVzniku": "2017-03-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/85",
+    "id": 85,
+    "kod": "312031A057Z012",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 3987.97,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-26T00:00:00Z",
+    "vratenaSuma": 3987.97
+  },
+  {
+    "createdAt": "2017-04-11T10:14:54.054Z",
+    "datumSplatnosti": "2017-04-11T00:00:00Z",
+    "datumVzniku": "2017-04-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/86",
+    "id": 86,
+    "kod": "312031B613V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/144",
+      "id": 144
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 0.06,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-04-11T00:00:00Z",
+    "vratenaSuma": 0.06
+  },
+  {
+    "createdAt": "2017-04-11T10:21:24.885Z",
+    "datumSplatnosti": "2017-04-11T00:00:00Z",
+    "datumVzniku": "2017-04-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/87",
+    "id": 87,
+    "kod": "312021A051V006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7.54,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-04-11T00:00:00Z",
+    "vratenaSuma": 7.54
+  },
+  {
+    "createdAt": "2017-04-11T11:19:42.792Z",
+    "datumSplatnosti": "2017-04-26T00:00:00Z",
+    "datumVzniku": "2017-04-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/88",
+    "id": 88,
+    "kod": "312031A020Z010",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 9420.16,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-11T00:00:00Z",
+    "vratenaSuma": 9420.16
+  },
+  {
+    "createdAt": "2017-04-13T11:22:25.589Z",
+    "datumSplatnosti": "2017-05-03T00:00:00Z",
+    "datumVzniku": "2017-04-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/89",
+    "id": 89,
+    "kod": "312021A139Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 14794.36,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-13T00:00:00Z",
+    "vratenaSuma": 14794.36
+  },
+  {
+    "createdAt": "2017-04-20T14:41:13.214Z",
+    "datumSplatnosti": "2017-05-10T00:00:00Z",
+    "datumVzniku": "2017-04-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/91",
+    "id": 91,
+    "kod": "312041A150Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/15",
+      "id": 15
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 3415.91,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-20T00:00:00Z",
+    "vratenaSuma": 3415.91
+  },
+  {
+    "createdAt": "2017-04-21T13:48:37.99Z",
+    "datumSplatnosti": "2017-05-15T00:00:00Z",
+    "datumVzniku": "2017-05-15T00:00:00Z",
+    "dlznik": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/92",
+    "id": 92,
+    "kod": "310051A441V003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/88",
+      "id": 88
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5003.42,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-05-15T00:00:00Z",
+    "vratenaSuma": 5003.42
+  },
+  {
+    "createdAt": "2017-04-24T11:00:51.838Z",
+    "datumSplatnosti": "2017-06-26T00:00:00Z",
+    "datumVzniku": "2017-04-24T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PS",
+    "href": "/v2/pohladavkovyDoklad/93",
+    "id": 93,
+    "kod": "3010100000Z002",
+    "prioritnaOs": {
+      "href": "/v2/prioritnaOs/35",
+      "id": 35
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 4777.57,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-24T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-04-24T11:04:02.216Z",
+    "datumSplatnosti": "2017-04-25T00:00:00Z",
+    "datumVzniku": "2017-04-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/94",
+    "id": 94,
+    "kod": "312031B613V003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/144",
+      "id": 144
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 206.8,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-04-25T00:00:00Z",
+    "vratenaSuma": 206.8
+  },
+  {
+    "createdAt": "2017-04-24T13:30:39.878Z",
+    "datumSplatnosti": "2017-04-25T00:00:00Z",
+    "datumVzniku": "2017-04-24T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/95",
+    "id": 95,
+    "kod": "312031B613V004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/144",
+      "id": 144
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 14.89,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-04-24T00:00:00Z",
+    "vratenaSuma": 14.89
+  },
+  {
+    "createdAt": "2017-04-24T16:38:15.685Z",
+    "datumSplatnosti": "2017-05-15T00:00:00Z",
+    "datumVzniku": "2017-04-24T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/96",
+    "id": 96,
+    "kod": "312031A020Z011",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 8895.75,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-24T00:00:00Z",
+    "vratenaSuma": 8895.75
+  },
+  {
+    "createdAt": "2017-04-25T13:23:48.159Z",
+    "datumSplatnosti": "2017-05-16T00:00:00Z",
+    "datumVzniku": "2017-04-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/98",
+    "id": 98,
+    "kod": "312031A148Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1001.41,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-25T00:00:00Z",
+    "vratenaSuma": 1001.41
+  },
+  {
+    "createdAt": "2017-04-25T16:17:47.092Z",
+    "datumSplatnosti": "2017-05-16T00:00:00Z",
+    "datumVzniku": "2017-04-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/100",
+    "id": 100,
+    "kod": "312021A017Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/1",
+      "id": 1
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1003.14,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-26T00:00:00Z",
+    "vratenaSuma": 1003.14
+  },
+  {
+    "createdAt": "2017-04-26T14:55:59.746Z",
+    "datumSplatnosti": "2017-05-17T00:00:00Z",
+    "datumVzniku": "2017-04-26T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/101",
+    "id": 101,
+    "kod": "312031A064Z011",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 4213.42,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-26T00:00:00Z",
+    "vratenaSuma": 4213.42
+  },
+  {
+    "createdAt": "2017-04-27T09:29:15.394Z",
+    "datumSplatnosti": "2017-04-27T00:00:00Z",
+    "datumVzniku": "2017-04-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/102",
+    "id": 102,
+    "kod": "312041A138V003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/13",
+      "id": 13
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 50778.64,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-04-27T00:00:00Z",
+    "vratenaSuma": 50778.64
+  },
+  {
+    "createdAt": "2017-04-27T12:50:21.199Z",
+    "datumSplatnosti": "2017-05-18T00:00:00Z",
+    "datumVzniku": "2017-04-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/103",
+    "id": 103,
+    "kod": "312021A139Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 8624.47,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-27T00:00:00Z",
+    "vratenaSuma": 8624.47
+  },
+  {
+    "createdAt": "2017-04-27T14:34:05.276Z",
+    "datumSplatnosti": "2017-05-18T00:00:00Z",
+    "datumVzniku": "2017-04-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/104",
+    "id": 104,
+    "kod": "312031A127Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 6726.08,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-27T00:00:00Z",
+    "vratenaSuma": 6726.08
+  },
+  {
+    "createdAt": "2017-04-28T09:59:18.403Z",
+    "datumSplatnosti": "2017-05-18T00:00:00Z",
+    "datumVzniku": "2017-05-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/105",
+    "id": 105,
+    "kod": "310051A423V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/86",
+      "id": 86
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 85140.35,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-05-16T00:00:00Z",
+    "vratenaSuma": 85140.35
+  },
+  {
+    "createdAt": "2017-04-28T13:42:17.268Z",
+    "datumSplatnosti": "2017-05-19T00:00:00Z",
+    "datumVzniku": "2017-04-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/107",
+    "id": 107,
+    "kod": "312031A057Z013",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 15953.37,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-04-28T00:00:00Z",
+    "vratenaSuma": 15953.37
+  },
+  {
+    "createdAt": "2017-05-03T11:00:51.009Z",
+    "datumSplatnosti": "2017-05-18T00:00:00Z",
+    "datumVzniku": "2017-05-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/140",
+    "id": 140,
+    "kod": "312031A020Z013",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 23295.66,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-03T00:00:00Z",
+    "vratenaSuma": 23295.66
+  },
+  {
+    "createdAt": "2017-05-03T14:15:26.255Z",
+    "datumSplatnosti": "2017-05-17T00:00:00Z",
+    "datumVzniku": "2017-05-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/141",
+    "id": 141,
+    "kod": "313051C341Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/203",
+      "id": 203
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2542.29,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-10T00:00:00Z",
+    "vratenaSuma": 2542.29
+  },
+  {
+    "createdAt": "2017-05-03T15:30:02.861Z",
+    "datumSplatnosti": "2017-05-24T00:00:00Z",
+    "datumVzniku": "2017-05-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/142",
+    "id": 142,
+    "kod": "312031A020Z014",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 10461.65,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-03T00:00:00Z",
+    "vratenaSuma": 10461.65
+  },
+  {
+    "createdAt": "2017-05-04T15:48:43.415Z",
+    "datumSplatnosti": "2017-05-25T00:00:00Z",
+    "datumVzniku": "2017-05-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/143",
+    "id": 143,
+    "kod": "312031A064Z012",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2139.72,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-04T00:00:00Z",
+    "vratenaSuma": 2139.72
+  },
+  {
+    "createdAt": "2017-05-05T13:19:37.178Z",
+    "datumSplatnosti": "2017-05-26T00:00:00Z",
+    "datumVzniku": "2017-05-05T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/144",
+    "id": 144,
+    "kod": "312021A139Z008",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 3679.73,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-05T00:00:00Z",
+    "vratenaSuma": 3679.73
+  },
+  {
+    "createdAt": "2017-05-09T10:32:28.403Z",
+    "datumSplatnosti": "2017-05-24T00:00:00Z",
+    "datumVzniku": "2017-05-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/145",
+    "id": 145,
+    "kod": "312031B659Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/145",
+      "id": 145
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1284.8,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-09T00:00:00Z",
+    "vratenaSuma": 1284.8
+  },
+  {
+    "createdAt": "2017-05-09T14:16:27.886Z",
+    "datumSplatnosti": "2017-05-24T00:00:00Z",
+    "datumVzniku": "2017-05-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/146",
+    "id": 146,
+    "kod": "312031A064Z013",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1967.83,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-09T00:00:00Z",
+    "vratenaSuma": 1967.83
+  },
+  {
+    "createdAt": "2017-05-10T09:45:50.392Z",
+    "datumSplatnosti": "2017-05-25T00:00:00Z",
+    "datumVzniku": "2017-05-10T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/147",
+    "id": 147,
+    "kod": "312031A057Z014",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 6858.98,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-10T00:00:00Z",
+    "vratenaSuma": 6858.98
+  },
+  {
+    "createdAt": "2017-05-10T14:52:12.001Z",
+    "datumSplatnosti": "2017-05-26T00:00:00Z",
+    "datumVzniku": "2017-05-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/148",
+    "id": 148,
+    "kod": "312021A051Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 264.55,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-10T00:00:00Z",
+    "vratenaSuma": 264.55
+  },
+  {
+    "createdAt": "2017-05-11T08:23:05.544Z",
+    "datumSplatnosti": "2017-05-11T00:00:00Z",
+    "datumVzniku": "2017-05-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/149",
+    "id": 149,
+    "kod": "312041A138V004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/13",
+      "id": 13
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 13755.94,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-05-11T00:00:00Z",
+    "vratenaSuma": 13755.94
+  },
+  {
+    "createdAt": "2017-05-11T11:24:34.196Z",
+    "datumSplatnosti": "2017-05-29T00:00:00Z",
+    "datumVzniku": "2017-05-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/150",
+    "id": 150,
+    "kod": "312031A127Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 4876.5,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-11T00:00:00Z",
+    "vratenaSuma": 4876.5
+  },
+  {
+    "createdAt": "2017-05-11T15:37:32.854Z",
+    "datumSplatnosti": "2017-06-01T00:00:00Z",
+    "datumVzniku": "2017-05-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/151",
+    "id": 151,
+    "kod": "312031A127Z008",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7366.86,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-11T00:00:00Z",
+    "vratenaSuma": 7366.86
+  },
+  {
+    "createdAt": "2017-05-12T11:37:11.919Z",
+    "datumSplatnosti": "2017-05-26T00:00:00Z",
+    "datumVzniku": "2017-05-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/155",
+    "id": 155,
+    "kod": "312021A139Z009",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7972.57,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-12T00:00:00Z",
+    "vratenaSuma": 7972.57
+  },
+  {
+    "createdAt": "2017-05-12T12:11:49.052Z",
+    "datumSplatnosti": "2017-06-02T00:00:00Z",
+    "datumVzniku": "2017-05-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/156",
+    "id": 156,
+    "kod": "312021A051Z008",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 228.14,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-12T00:00:00Z",
+    "vratenaSuma": 228.14
+  },
+  {
+    "createdAt": "2017-05-16T09:40:19.31Z",
+    "datumSplatnosti": "2017-06-15T00:00:00Z",
+    "datumVzniku": "2017-05-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021125821",
+      "href": "/v2/subjekty/100006",
+      "ico": "00626031",
+      "id": 100006
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/158",
+    "id": 158,
+    "kod": "310051A420Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/85",
+      "id": 85
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 549.09,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-17T00:00:00Z",
+    "vratenaSuma": 549.09
+  },
+  {
+    "createdAt": "2017-05-16T13:36:13.146Z",
+    "datumSplatnosti": "2017-06-06T00:00:00Z",
+    "datumVzniku": "2017-05-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/159",
+    "id": 159,
+    "kod": "312031A057Z015",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1942.51,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-16T00:00:00Z",
+    "vratenaSuma": 1942.51
+  },
+  {
+    "createdAt": "2017-05-18T13:47:36.463Z",
+    "datumSplatnosti": "2017-06-08T00:00:00Z",
+    "datumVzniku": "2017-05-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/160",
+    "id": 160,
+    "kod": "312031A148Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 326.64,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-18T00:00:00Z",
+    "vratenaSuma": 326.64
+  },
+  {
+    "createdAt": "2017-05-19T13:50:18.471Z",
+    "datumSplatnosti": "2017-06-09T00:00:00Z",
+    "datumVzniku": "2017-05-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/161",
+    "id": 161,
+    "kod": "312031A020Z015",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 19954.09,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-05-19T00:00:00Z",
+    "vratenaSuma": 19954.09
+  },
+  {
+    "createdAt": "2017-06-01T10:13:04.392Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/164",
+    "id": 164,
+    "kod": "312031A020Z016",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1705.44,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 1705.44
+  },
+  {
+    "createdAt": "2017-06-01T19:48:13.613Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/165",
+    "id": 165,
+    "kod": "312031A020Z017",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 24602.55,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 24602.55
+  },
+  {
+    "createdAt": "2017-06-01T23:33:53.794Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/166",
+    "id": 166,
+    "kod": "312031A057Z016",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7542.18,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 7542.18
+  },
+  {
+    "createdAt": "2017-06-01T23:41:00.892Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/167",
+    "id": 167,
+    "kod": "312031B613Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/144",
+      "id": 144
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 120.66,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 120.66
+  },
+  {
+    "createdAt": "2017-06-01T23:44:57.792Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/168",
+    "id": 168,
+    "kod": "312031A064Z014",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 672.45,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 672.45
+  },
+  {
+    "createdAt": "2017-06-01T23:48:21.622Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/169",
+    "id": 169,
+    "kod": "312031A062Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/5",
+      "id": 5
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 280,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 280
+  },
+  {
+    "createdAt": "2017-06-01T23:51:58.879Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/170",
+    "id": 170,
+    "kod": "312031A148Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 474.53,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 474.53
+  },
+  {
+    "createdAt": "2017-06-01T23:54:38.798Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/171",
+    "id": 171,
+    "kod": "312021A139Z010",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5015.76,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 5015.76
+  },
+  {
+    "createdAt": "2017-06-01T23:57:24.133Z",
+    "datumSplatnosti": "2017-06-16T00:00:00Z",
+    "datumVzniku": "2017-06-01T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/172",
+    "id": 172,
+    "kod": "312031A127Z009",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 6303.94,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-01T00:00:00Z",
+    "vratenaSuma": 6303.94
+  },
+  {
+    "createdAt": "2017-06-12T14:08:41.784Z",
+    "datumSplatnosti": "2017-06-27T00:00:00Z",
+    "datumVzniku": "2017-06-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2120287004",
+      "href": "/v2/subjekty/102012",
+      "ico": "50349287",
+      "id": 102012
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/173",
+    "id": 173,
+    "kod": "301021C757V001",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/231",
+      "id": 231
+    },
+    "stav": "Stiahnutý (K)",
+    "sumaNaVratenie": 76125,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-07-14T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-06-16T14:22:44.563Z",
+    "datumSplatnosti": "2017-07-03T00:00:00Z",
+    "datumVzniku": "2017-06-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/174",
+    "id": 174,
+    "kod": "312021A139Z011",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 193.67,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-16T00:00:00Z",
+    "vratenaSuma": 193.67
+  },
+  {
+    "createdAt": "2017-06-23T13:21:23.101Z",
+    "datumSplatnosti": "2017-06-26T00:00:00Z",
+    "datumVzniku": "2017-06-26T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/176",
+    "id": 176,
+    "kod": "312071C159V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/174",
+      "id": 174
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 24.5,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-06-26T00:00:00Z",
+    "vratenaSuma": 24.5
+  },
+  {
+    "createdAt": "2017-06-28T10:05:46.178Z",
+    "datumSplatnosti": "2017-06-28T00:00:00Z",
+    "datumVzniku": "2017-06-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/177",
+    "id": 177,
+    "kod": "312021A017V004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/1",
+      "id": 1
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 9.08,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-06-28T00:00:00Z",
+    "vratenaSuma": 9.08
+  },
+  {
+    "createdAt": "2017-06-29T15:06:49.11Z",
+    "datumSplatnosti": "2017-07-06T00:00:00Z",
+    "datumVzniku": "2017-06-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/178",
+    "id": 178,
+    "kod": "313052B697Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/175",
+      "id": 175
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 193515.52,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-01T00:00:00Z",
+    "vratenaSuma": 193515.52
+  },
+  {
+    "createdAt": "2017-06-29T16:30:12.03Z",
+    "datumSplatnosti": "2017-06-29T00:00:00Z",
+    "datumVzniku": "2017-06-29T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/179",
+    "id": 179,
+    "kod": "312041A137Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/14",
+      "id": 14
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 94942.56,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-29T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-06-30T17:15:44.452Z",
+    "datumSplatnosti": "2017-07-17T00:00:00Z",
+    "datumVzniku": "2017-06-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/183",
+    "id": 183,
+    "kod": "312031A020Z019",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 26619.03,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-30T00:00:00Z",
+    "vratenaSuma": 26619.03
+  },
+  {
+    "createdAt": "2017-06-30T17:23:36.055Z",
+    "datumSplatnosti": "2017-07-17T00:00:00Z",
+    "datumVzniku": "2017-06-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/186",
+    "id": 186,
+    "kod": "312031D233Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/291",
+      "id": 291
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2410.73,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-30T00:00:00Z",
+    "vratenaSuma": 2410.73
+  },
+  {
+    "createdAt": "2017-06-30T17:39:17.042Z",
+    "datumSplatnosti": "2017-07-17T00:00:00Z",
+    "datumVzniku": "2017-06-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/188",
+    "id": 188,
+    "kod": "312031A057Z019",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 21540.8,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-30T00:00:00Z",
+    "vratenaSuma": 21540.8
+  },
+  {
+    "createdAt": "2017-06-30T17:39:40.356Z",
+    "datumSplatnosti": "2017-07-17T00:00:00Z",
+    "datumVzniku": "2017-06-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/189",
+    "id": 189,
+    "kod": "312021A139Z013",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 13856,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-30T00:00:00Z",
+    "vratenaSuma": 13856
+  },
+  {
+    "createdAt": "2017-06-30T17:50:12.838Z",
+    "datumSplatnosti": "2017-07-17T00:00:00Z",
+    "datumVzniku": "2017-06-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/190",
+    "id": 190,
+    "kod": "312031A148Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1316.71,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-30T00:00:00Z",
+    "vratenaSuma": 1316.71
+  },
+  {
+    "createdAt": "2017-06-30T18:23:06.99Z",
+    "datumSplatnosti": "2017-07-17T00:00:00Z",
+    "datumVzniku": "2017-06-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/191",
+    "id": 191,
+    "kod": "312031A127Z011",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 7749.88,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-06-30T00:00:00Z",
+    "vratenaSuma": 7749.88
+  },
+  {
+    "createdAt": "2017-07-03T16:47:49.056Z",
+    "datumSplatnosti": "2017-07-24T00:00:00Z",
+    "datumVzniku": "2017-07-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/192",
+    "id": 192,
+    "kod": "312031A127Z012",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5151.29,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-07-03T00:00:00Z",
+    "vratenaSuma": 5151.29
+  },
+  {
+    "createdAt": "2017-07-07T09:55:01.401Z",
+    "datumSplatnosti": "2017-07-11T00:00:00Z",
+    "datumVzniku": "2017-07-07T00:00:00Z",
+    "dlznik": {
+      "dic": "2120287004",
+      "href": "/v2/subjekty/102012",
+      "ico": "50349287",
+      "id": 102012
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/193",
+    "id": 193,
+    "kod": "301021B936V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/185",
+      "id": 185
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 138852,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-07-07T00:00:00Z",
+    "vratenaSuma": 138852
+  },
+  {
+    "createdAt": "2017-07-11T14:13:23.678Z",
+    "datumSplatnosti": "2017-08-01T00:00:00Z",
+    "datumVzniku": "2017-07-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/194",
+    "id": 194,
+    "kod": "312031A062Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/5",
+      "id": 5
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 280,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-07-11T00:00:00Z",
+    "vratenaSuma": 280
+  },
+  {
+    "createdAt": "2017-07-11T15:05:07.473Z",
+    "datumSplatnosti": "2017-08-01T00:00:00Z",
+    "datumVzniku": "2017-07-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/195",
+    "id": 195,
+    "kod": "312031A148Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 216,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-07-11T00:00:00Z",
+    "vratenaSuma": 216
+  },
+  {
+    "createdAt": "2017-07-12T10:32:54.873Z",
+    "datumSplatnosti": "2017-08-02T00:00:00Z",
+    "datumVzniku": "2017-07-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/196",
+    "id": 196,
+    "kod": "312021A017Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/1",
+      "id": 1
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1188.13,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-07-12T00:00:00Z",
+    "vratenaSuma": 1188.13
+  },
+  {
+    "createdAt": "2017-07-21T08:44:00.971Z",
+    "datumSplatnosti": "2017-07-21T00:00:00Z",
+    "datumVzniku": "2017-07-21T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/197",
+    "id": 197,
+    "kod": "312071C159V003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/174",
+      "id": 174
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2.75,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-07-21T00:00:00Z",
+    "vratenaSuma": 2.75
+  },
+  {
+    "createdAt": "2017-07-27T10:01:58.091Z",
+    "datumSplatnosti": "2017-07-31T00:00:00Z",
+    "datumVzniku": "2017-07-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2120287004",
+      "href": "/v2/subjekty/102012",
+      "ico": "50349287",
+      "id": 102012
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/198",
+    "id": 198,
+    "kod": "301021C757V002",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/231",
+      "id": 231
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 76125,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-07-27T00:00:00Z",
+    "vratenaSuma": 76125
+  },
+  {
+    "createdAt": "2017-08-02T10:06:18.463Z",
+    "datumSplatnosti": "2017-10-02T00:00:00Z",
+    "datumVzniku": "2017-08-02T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/199",
+    "id": 199,
+    "kod": "312031B659Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/145",
+      "id": 145
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 15756.6,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-26T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-08-02T10:09:51.197Z",
+    "datumSplatnosti": "2017-10-02T00:00:00Z",
+    "datumVzniku": "2017-08-02T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/200",
+    "id": 200,
+    "kod": "312031A062Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/5",
+      "id": 5
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 30114.44,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-02T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-08-03T11:19:41.427Z",
+    "datumSplatnosti": "2017-08-11T00:00:00Z",
+    "datumVzniku": "2017-08-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/201",
+    "id": 201,
+    "kod": "313051C029Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/146",
+      "id": 146
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 48.01,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-07T00:00:00Z",
+    "vratenaSuma": 48.01
+  },
+  {
+    "createdAt": "2017-08-07T12:50:07.87Z",
+    "datumSplatnosti": "2017-08-22T00:00:00Z",
+    "datumVzniku": "2017-08-07T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/203",
+    "id": 203,
+    "kod": "312072B980Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/140",
+      "id": 140
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 214.8,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-07T00:00:00Z",
+    "vratenaSuma": 214.8
+  },
+  {
+    "createdAt": "2017-08-09T20:43:55.605Z",
+    "datumSplatnosti": "2017-10-09T00:00:00Z",
+    "datumVzniku": "2017-08-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/204",
+    "id": 204,
+    "kod": "312041A136Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/12",
+      "id": 12
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 25.88,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-08-09T20:44:30.446Z",
+    "datumSplatnosti": "2017-10-09T00:00:00Z",
+    "datumVzniku": "2017-08-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/205",
+    "id": 205,
+    "kod": "312041A137Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/14",
+      "id": 14
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 30.79,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-08-09T20:44:50.23Z",
+    "datumSplatnosti": "2017-10-09T00:00:00Z",
+    "datumVzniku": "2017-08-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/206",
+    "id": 206,
+    "kod": "312041A138Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/13",
+      "id": 13
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 162.66,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-08-09T20:45:17.102Z",
+    "datumSplatnosti": "2017-10-09T00:00:00Z",
+    "datumVzniku": "2017-08-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/207",
+    "id": 207,
+    "kod": "312071C159Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/174",
+      "id": 174
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 233.29,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-09T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-08-11T09:08:24.761Z",
+    "datumSplatnosti": "2017-08-17T00:00:00Z",
+    "datumVzniku": "2017-08-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2020796338",
+      "href": "/v2/subjekty/100003",
+      "ico": "00681156",
+      "id": 100003
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/208",
+    "id": 208,
+    "kod": "301011B461V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/208",
+      "id": 208
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1368.67,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-08-11T00:00:00Z",
+    "vratenaSuma": 1368.67
+  },
+  {
+    "createdAt": "2017-08-15T17:07:40.675Z",
+    "datumSplatnosti": "2017-08-16T00:00:00Z",
+    "datumVzniku": "2017-08-15T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/210",
+    "id": 210,
+    "kod": "312031A148V008",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1788.44,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-08-15T00:00:00Z",
+    "vratenaSuma": 1788.44
+  },
+  {
+    "createdAt": "2017-08-15T17:29:21.002Z",
+    "datumSplatnosti": "2017-08-16T00:00:00Z",
+    "datumVzniku": "2017-08-16T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/211",
+    "id": 211,
+    "kod": "312031A148V009",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 162.73,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-08-16T00:00:00Z",
+    "vratenaSuma": 162.73
+  },
+  {
+    "createdAt": "2017-08-18T13:50:55.417Z",
+    "datumSplatnosti": "2017-11-14T00:00:00Z",
+    "datumVzniku": "2017-05-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021186904",
+      "href": "/v2/subjekty/100016",
+      "ico": "00691135",
+      "id": 100016
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/212",
+    "id": 212,
+    "kod": "311031B896Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/243",
+      "id": 243
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 425921.29,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-18T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-08-18T14:45:07.096Z",
+    "datumSplatnosti": "2017-08-18T00:00:00Z",
+    "datumVzniku": "2017-08-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/213",
+    "id": 213,
+    "kod": "312031A020V020",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 38.37,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-08-18T00:00:00Z",
+    "vratenaSuma": 38.37
+  },
+  {
+    "createdAt": "2017-08-22T14:16:43.193Z",
+    "datumSplatnosti": "2017-08-31T00:00:00Z",
+    "datumVzniku": "2017-08-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/214",
+    "id": 214,
+    "kod": "301011B422V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/182",
+      "id": 182
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1675,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-08-28T00:00:00Z",
+    "vratenaSuma": 1675
+  },
+  {
+    "createdAt": "2017-08-24T10:17:48.672Z",
+    "datumSplatnosti": "2017-12-01T00:00:00Z",
+    "datumVzniku": "2017-04-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021186904",
+      "href": "/v2/subjekty/100016",
+      "ico": "00691135",
+      "id": 100016
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/215",
+    "id": 215,
+    "kod": "311031B896Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/243",
+      "id": 243
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 215776.47,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-06T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-08-28T13:25:59.779Z",
+    "datumSplatnosti": "2017-09-12T00:00:00Z",
+    "datumVzniku": "2017-08-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/216",
+    "id": 216,
+    "kod": "312031A020Z021",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 19810.46,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-28T00:00:00Z",
+    "vratenaSuma": 19810.46
+  },
+  {
+    "createdAt": "2017-08-30T12:54:10.397Z",
+    "datumSplatnosti": "2017-10-19T00:00:00Z",
+    "datumVzniku": "2017-08-30T00:00:00Z",
+    "dlznik": {
+      "dic": "2021067785",
+      "href": "/v2/subjekty/100223",
+      "ico": "00003328",
+      "id": 100223
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/217",
+    "id": 217,
+    "kod": "311061A346Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/199",
+      "id": 199
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 226608.84,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-30T00:00:00Z",
+    "vratenaSuma": 226608.84
+  },
+  {
+    "createdAt": "2017-08-31T09:10:31.423Z",
+    "datumSplatnosti": "2017-09-15T00:00:00Z",
+    "datumVzniku": "2017-08-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/218",
+    "id": 218,
+    "kod": "312031D233Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/291",
+      "id": 291
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 269.31,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-31T00:00:00Z",
+    "vratenaSuma": 269.31
+  },
+  {
+    "createdAt": "2017-08-31T10:33:13.079Z",
+    "datumSplatnosti": "2017-09-15T00:00:00Z",
+    "datumVzniku": "2017-08-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/219",
+    "id": 219,
+    "kod": "312031A064Z015",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 964.08,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-08-31T00:00:00Z",
+    "vratenaSuma": 964.08
+  },
+  {
+    "createdAt": "2017-08-31T13:58:01.681Z",
+    "datumSplatnosti": "2017-09-15T00:00:00Z",
+    "datumVzniku": "2017-08-31T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/220",
+    "id": 220,
+    "kod": "312031A127Z013",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 3216.05,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-25T00:00:00Z",
+    "vratenaSuma": 3216.05
+  },
+  {
+    "createdAt": "2017-09-06T14:42:55.155Z",
+    "datumSplatnosti": "2017-09-15T00:00:00Z",
+    "datumVzniku": "2017-09-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/221",
+    "id": 221,
+    "kod": "301011B220V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/105",
+      "id": 105
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 33651.66,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-09-06T00:00:00Z",
+    "vratenaSuma": 33651.66
+  },
+  {
+    "createdAt": "2017-09-08T12:50:00.319Z",
+    "datumSplatnosti": "2017-09-08T00:00:00Z",
+    "datumVzniku": "2017-09-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798714",
+      "href": "/v2/subjekty/102614",
+      "ico": "00164348",
+      "id": 102614
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/222",
+    "id": 222,
+    "kod": "312011D079V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/552",
+      "id": 552
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1700000,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-09-08T00:00:00Z",
+    "vratenaSuma": 1700000
+  },
+  {
+    "createdAt": "2017-09-11T12:35:11.934Z",
+    "datumSplatnosti": "2017-10-19T00:00:00Z",
+    "datumVzniku": "2017-09-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/223",
+    "id": 223,
+    "kod": "312031A057Z020",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2540.98,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-04T00:00:00Z",
+    "vratenaSuma": 2540.98
+  },
+  {
+    "createdAt": "2017-09-12T11:15:10.86Z",
+    "datumSplatnosti": "2017-12-12T00:00:00Z",
+    "datumVzniku": "2017-09-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/224",
+    "id": 224,
+    "kod": "310051A423Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/86",
+      "id": 86
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2129.2,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-12T00:00:00Z",
+    "vratenaSuma": 2129.2
+  },
+  {
+    "createdAt": "2017-09-12T11:57:08.685Z",
+    "datumSplatnosti": "2017-12-12T00:00:00Z",
+    "datumVzniku": "2017-09-12T00:00:00Z",
+    "dlznik": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/225",
+    "id": 225,
+    "kod": "310051A423Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/86",
+      "id": 86
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 176.65,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-12T00:00:00Z",
+    "vratenaSuma": 176.65
+  },
+  {
+    "createdAt": "2017-09-12T16:55:29.782Z",
+    "datumSplatnosti": "2017-12-14T00:00:00Z",
+    "datumVzniku": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/226",
+    "id": 226,
+    "kod": "313051D249Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/249",
+      "id": 249
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 119820.01,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-09-13T15:49:35.422Z",
+    "datumSplatnosti": "2017-09-28T00:00:00Z",
+    "datumVzniku": "2017-09-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/227",
+    "id": 227,
+    "kod": "312021A139Z014",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 13899.53,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-13T00:00:00Z",
+    "vratenaSuma": 13899.53
+  },
+  {
+    "createdAt": "2017-09-14T13:29:05.738Z",
+    "datumSplatnosti": "2017-12-12T00:00:00Z",
+    "datumVzniku": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/228",
+    "id": 228,
+    "kod": "310011A011Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/25",
+      "id": 25
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 52390.23,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-09-14T14:02:09.359Z",
+    "datumSplatnosti": "2017-12-12T00:00:00Z",
+    "datumVzniku": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/229",
+    "id": 229,
+    "kod": "310011A011Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/25",
+      "id": 25
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 13836.96,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-09-14T14:37:59.892Z",
+    "datumSplatnosti": "2017-12-12T00:00:00Z",
+    "datumVzniku": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/230",
+    "id": 230,
+    "kod": "310011A011Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/25",
+      "id": 25
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 3333.44,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-09-14T14:45:20.281Z",
+    "datumSplatnosti": "2017-12-12T00:00:00Z",
+    "datumVzniku": "2017-09-14T00:00:00Z",
+    "dlznik": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/231",
+    "id": 231,
+    "kod": "310011A011Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/25",
+      "id": 25
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 11817.78,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-14T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-09-18T14:15:27.075Z",
+    "datumSplatnosti": "2017-12-13T00:00:00Z",
+    "datumVzniku": "2017-09-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798593",
+      "href": "/v2/subjekty/100625",
+      "ico": "00156850",
+      "id": 100625
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/232",
+    "id": 232,
+    "kod": "310011A366Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/194",
+      "id": 194
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 121.19,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-18T00:00:00Z",
+    "vratenaSuma": 121.19
+  },
+  {
+    "createdAt": "2017-09-19T16:26:20.066Z",
+    "datumSplatnosti": "2017-11-20T00:00:00Z",
+    "datumVzniku": "2017-09-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/233",
+    "id": 233,
+    "kod": "312031A020Z022",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 298.9,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-06T00:00:00Z",
+    "vratenaSuma": 298.9
+  },
+  {
+    "createdAt": "2017-09-22T10:52:03.505Z",
+    "datumSplatnosti": "2017-11-11T00:00:00Z",
+    "datumVzniku": "2017-09-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2020799209",
+      "href": "/v2/subjekty/100008",
+      "ico": "30416094",
+      "id": 100008
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/234",
+    "id": 234,
+    "kod": "311081A959Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/117",
+      "id": 117
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 610845.19,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-26T00:00:00Z",
+    "vratenaSuma": 610845.19
+  },
+  {
+    "createdAt": "2017-09-22T12:48:38.753Z",
+    "datumSplatnosti": "2017-11-11T00:00:00Z",
+    "datumVzniku": "2017-09-22T00:00:00Z",
+    "dlznik": {
+      "dic": "2020799209",
+      "href": "/v2/subjekty/100008",
+      "ico": "30416094",
+      "id": 100008
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/235",
+    "id": 235,
+    "kod": "311081A867Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/116",
+      "id": 116
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 303390.04,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-26T00:00:00Z",
+    "vratenaSuma": 303390.04
+  },
+  {
+    "createdAt": "2017-09-26T16:02:51.313Z",
+    "datumSplatnosti": "2017-11-27T00:00:00Z",
+    "datumVzniku": "2017-09-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/236",
+    "id": 236,
+    "kod": "301011A815Z001",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/110",
+      "id": 110
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 14926.51,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-29T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-09-27T10:04:42.936Z",
+    "datumSplatnosti": "2017-10-18T00:00:00Z",
+    "datumVzniku": "2017-09-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/237",
+    "id": 237,
+    "kod": "312031D233Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/291",
+      "id": 291
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 610.76,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-27T00:00:00Z",
+    "vratenaSuma": 610.76
+  },
+  {
+    "createdAt": "2017-09-27T13:43:33.102Z",
+    "datumSplatnosti": "2017-10-18T00:00:00Z",
+    "datumVzniku": "2017-09-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/238",
+    "id": 238,
+    "kod": "312031A062Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/5",
+      "id": 5
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 280,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-16T00:00:00Z",
+    "vratenaSuma": 280
+  },
+  {
+    "createdAt": "2017-09-27T14:32:02.242Z",
+    "datumSplatnosti": "2017-10-18T00:00:00Z",
+    "datumVzniku": "2017-09-27T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/239",
+    "id": 239,
+    "kod": "312031A148Z010",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 392.84,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-27T00:00:00Z",
+    "vratenaSuma": 392.84
+  },
+  {
+    "createdAt": "2017-09-28T14:12:46.449Z",
+    "datumSplatnosti": "2017-10-19T00:00:00Z",
+    "datumVzniku": "2017-09-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/240",
+    "id": 240,
+    "kod": "312031A127Z014",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1825.46,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-28T00:00:00Z",
+    "vratenaSuma": 1825.46
+  },
+  {
+    "createdAt": "2017-09-28T17:41:42.044Z",
+    "datumSplatnosti": "2017-10-19T00:00:00Z",
+    "datumVzniku": "2017-09-28T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/241",
+    "id": 241,
+    "kod": "312031A057Z021",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 5802.52,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-09-28T00:00:00Z",
+    "vratenaSuma": 5802.52
+  },
+  {
+    "createdAt": "2017-10-02T13:26:01.036Z",
+    "datumSplatnosti": "2017-10-09T00:00:00Z",
+    "datumVzniku": "2017-10-02T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/243",
+    "id": 243,
+    "kod": "301011B220V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/105",
+      "id": 105
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 195389,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-10-02T00:00:00Z",
+    "vratenaSuma": 195389
+  },
+  {
+    "createdAt": "2017-10-03T11:08:38.568Z",
+    "datumSplatnosti": "2017-10-18T00:00:00Z",
+    "datumVzniku": "2017-10-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/244",
+    "id": 244,
+    "kod": "312031D233Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/291",
+      "id": 291
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 728.17,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-03T00:00:00Z",
+    "vratenaSuma": 728.17
+  },
+  {
+    "createdAt": "2017-10-03T13:07:12.724Z",
+    "datumSplatnosti": "2017-10-24T00:00:00Z",
+    "datumVzniku": "2017-10-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/245",
+    "id": 245,
+    "kod": "312021A139Z015",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 14746.89,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-03T00:00:00Z",
+    "vratenaSuma": 14746.89
+  },
+  {
+    "createdAt": "2017-10-03T14:12:00.766Z",
+    "datumSplatnosti": "2017-10-18T00:00:00Z",
+    "datumVzniku": "2017-10-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/246",
+    "id": 246,
+    "kod": "312021A017Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/1",
+      "id": 1
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 361.9,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-03T00:00:00Z",
+    "vratenaSuma": 361.9
+  },
+  {
+    "createdAt": "2017-10-04T13:36:02.049Z",
+    "datumSplatnosti": "2018-01-03T00:00:00Z",
+    "datumVzniku": "2017-10-04T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/248",
+    "id": 248,
+    "kod": "313051C341Z008",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/203",
+      "id": 203
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 1427.52,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-04T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-06T10:16:47.052Z",
+    "datumSplatnosti": "2017-10-27T00:00:00Z",
+    "datumVzniku": "2017-10-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/249",
+    "id": 249,
+    "kod": "312031A020Z023",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 18116.71,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-06T00:00:00Z",
+    "vratenaSuma": 18116.71
+  },
+  {
+    "createdAt": "2017-10-06T10:29:03.833Z",
+    "datumSplatnosti": "2017-12-06T00:00:00Z",
+    "datumVzniku": "2017-10-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/250",
+    "id": 250,
+    "kod": "312031A020Z024",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 298.57,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-06T00:00:00Z",
+    "vratenaSuma": 298.57
+  },
+  {
+    "createdAt": "2017-10-06T10:29:29.053Z",
+    "datumSplatnosti": "2017-12-06T00:00:00Z",
+    "datumVzniku": "2017-10-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/251",
+    "id": 251,
+    "kod": "312031A064Z016",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2499.66,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-06T00:00:00Z",
+    "vratenaSuma": 2499.66
+  },
+  {
+    "createdAt": "2017-10-06T10:43:50.193Z",
+    "datumSplatnosti": "2017-10-21T00:00:00Z",
+    "datumVzniku": "2017-10-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/252",
+    "id": 252,
+    "kod": "312031B613Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/144",
+      "id": 144
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 125.98,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-06T00:00:00Z",
+    "vratenaSuma": 125.98
+  },
+  {
+    "createdAt": "2017-10-06T12:49:57.871Z",
+    "datumSplatnosti": "2017-10-23T00:00:00Z",
+    "datumVzniku": "2017-10-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/253",
+    "id": 253,
+    "kod": "312031B659Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/145",
+      "id": 145
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 840,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-06T00:00:00Z",
+    "vratenaSuma": 840
+  },
+  {
+    "createdAt": "2017-10-06T14:07:06.496Z",
+    "datumSplatnosti": "2017-10-06T00:00:00Z",
+    "datumVzniku": "2017-10-06T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/254",
+    "id": 254,
+    "kod": "312031A148V011",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 16.88,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-10-06T00:00:00Z",
+    "vratenaSuma": 16.88
+  },
+  {
+    "createdAt": "2017-10-09T12:37:58.234Z",
+    "datumSplatnosti": "2017-10-24T00:00:00Z",
+    "datumVzniku": "2017-10-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/255",
+    "id": 255,
+    "kod": "312031A057Z022",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 6231.03,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-09T00:00:00Z",
+    "vratenaSuma": 6231.03
+  },
+  {
+    "createdAt": "2017-10-09T14:32:54.49Z",
+    "datumSplatnosti": "2018-01-11T00:00:00Z",
+    "datumVzniku": "2017-10-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021186904",
+      "href": "/v2/subjekty/100016",
+      "ico": "00691135",
+      "id": 100016
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/256",
+    "id": 256,
+    "kod": "311031B896Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/243",
+      "id": 243
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 345939.92,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-12T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-10T11:19:26.07Z",
+    "datumSplatnosti": "2017-10-10T00:00:00Z",
+    "datumVzniku": "2017-10-10T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/257",
+    "id": 257,
+    "kod": "312031A064V017",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/6",
+      "id": 6
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 21.68,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-10-10T00:00:00Z",
+    "vratenaSuma": 21.68
+  },
+  {
+    "createdAt": "2017-10-10T14:27:15.373Z",
+    "datumSplatnosti": "2017-10-25T00:00:00Z",
+    "datumVzniku": "2017-10-10T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/258",
+    "id": 258,
+    "kod": "312021A139Z016",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 14991.25,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-10T00:00:00Z",
+    "vratenaSuma": 14991.25
+  },
+  {
+    "createdAt": "2017-10-11T11:51:33.517Z",
+    "datumSplatnosti": "2018-01-11T00:00:00Z",
+    "datumVzniku": "2017-10-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021186904",
+      "href": "/v2/subjekty/100016",
+      "ico": "00691135",
+      "id": 100016
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/259",
+    "id": 259,
+    "kod": "311031B896Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/243",
+      "id": 243
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 191193.63,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-12T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-11T12:23:45.006Z",
+    "datumSplatnosti": "2018-01-11T00:00:00Z",
+    "datumVzniku": "2017-10-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021186904",
+      "href": "/v2/subjekty/100016",
+      "ico": "00691135",
+      "id": 100016
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/260",
+    "id": 260,
+    "kod": "311031B896Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/243",
+      "id": 243
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 109673.81,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-12T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-11T12:26:11.15Z",
+    "datumSplatnosti": "2017-10-26T00:00:00Z",
+    "datumVzniku": "2017-10-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/261",
+    "id": 261,
+    "kod": "312031A127Z015",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 2527.29,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-11T00:00:00Z",
+    "vratenaSuma": 2527.29
+  },
+  {
+    "createdAt": "2017-10-11T12:51:46.268Z",
+    "datumSplatnosti": "2018-01-11T00:00:00Z",
+    "datumVzniku": "2017-10-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021186904",
+      "href": "/v2/subjekty/100016",
+      "ico": "00691135",
+      "id": 100016
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/262",
+    "id": 262,
+    "kod": "311031B896Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/243",
+      "id": 243
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 106480.32,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-12T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-11T13:14:35.962Z",
+    "datumSplatnosti": "2018-01-11T00:00:00Z",
+    "datumVzniku": "2017-10-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021186904",
+      "href": "/v2/subjekty/100016",
+      "ico": "00691135",
+      "id": 100016
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/1",
+      "id": 1
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/263",
+    "id": 263,
+    "kod": "311031B896Z007",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/243",
+      "id": 243
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 53944.12,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-12T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-11T16:45:42.526Z",
+    "datumSplatnosti": "2017-10-27T00:00:00Z",
+    "datumVzniku": "2017-10-11T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/264",
+    "id": 264,
+    "kod": "312031A020Z025",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 22246.81,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-11T00:00:00Z",
+    "vratenaSuma": 22246.81
+  },
+  {
+    "createdAt": "2017-10-13T13:42:29.45Z",
+    "datumSplatnosti": "2017-12-12T00:00:00Z",
+    "datumVzniku": "2017-10-13T00:00:00Z",
+    "dlznik": {
+      "dic": "2022295539",
+      "href": "/v2/subjekty/100010",
+      "ico": "31819494",
+      "id": 100010
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/265",
+    "id": 265,
+    "kod": "313051C341Z009",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/203",
+      "id": 203
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 1990.09,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-13T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-18T11:02:41.188Z",
+    "datumSplatnosti": "2018-01-18T00:00:00Z",
+    "datumVzniku": "2017-10-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2021067785",
+      "href": "/v2/subjekty/100223",
+      "ico": "00003328",
+      "id": 100223
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/266",
+    "id": 266,
+    "kod": "311061B851Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/207",
+      "id": 207
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 29605.5,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-19T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-19T13:49:59.459Z",
+    "datumSplatnosti": "2017-10-20T00:00:00Z",
+    "datumVzniku": "2017-10-19T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/270",
+    "id": 270,
+    "kod": "312011C789V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/245",
+      "id": 245
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 198302.46,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-10-19T00:00:00Z",
+    "vratenaSuma": 198302.46
+  },
+  {
+    "createdAt": "2017-10-23T10:50:38.351Z",
+    "datumSplatnosti": "2018-01-24T00:00:00Z",
+    "datumVzniku": "2017-10-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/271",
+    "id": 271,
+    "kod": "311071A092Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/10",
+      "id": 10
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 16500,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-23T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-23T11:36:41.676Z",
+    "datumSplatnosti": "2018-01-24T00:00:00Z",
+    "datumVzniku": "2017-10-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/272",
+    "id": 272,
+    "kod": "311071A092Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/10",
+      "id": 10
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 277812,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-23T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-23T11:48:46.028Z",
+    "datumSplatnosti": "2018-01-24T00:00:00Z",
+    "datumVzniku": "2017-10-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/273",
+    "id": 273,
+    "kod": "311071A090Z002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/23",
+      "id": 23
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 193198.8,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-23T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-23T11:50:15.635Z",
+    "datumSplatnosti": "2018-01-24T00:00:00Z",
+    "datumVzniku": "2017-10-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2020830196",
+      "href": "/v2/subjekty/100037",
+      "ico": "00166073",
+      "id": 100037
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/274",
+    "id": 274,
+    "kod": "311071A134Z001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/59",
+      "id": 59
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 191400,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-23T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-23T12:36:42.284Z",
+    "datumSplatnosti": "2018-01-23T00:00:00Z",
+    "datumVzniku": "2017-10-23T00:00:00Z",
+    "dlznik": {
+      "dic": "2021067785",
+      "href": "/v2/subjekty/100223",
+      "ico": "00003328",
+      "id": 100223
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/275",
+    "id": 275,
+    "kod": "311061B833Z003",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/188",
+      "id": 188
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 19235.7,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-23T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-10-24T15:04:30.524Z",
+    "datumSplatnosti": "2017-10-27T00:00:00Z",
+    "datumVzniku": "2017-10-24T00:00:00Z",
+    "dlznik": {
+      "dic": "2120287004",
+      "href": "/v2/subjekty/102012",
+      "ico": "50349287",
+      "id": 102012
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/277",
+    "id": 277,
+    "kod": "314011M119V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/1471",
+      "id": 1471
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 6253.27,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-10-27T00:00:00Z",
+    "vratenaSuma": 6253.27
+  },
+  {
+    "createdAt": "2017-10-25T08:31:12.893Z",
+    "datumSplatnosti": "2017-12-29T00:00:00Z",
+    "datumVzniku": "2017-10-25T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/278",
+    "id": 278,
+    "kod": "312011C789Z003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/245",
+      "id": 245
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 10333.58,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-10-25T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-03T11:27:53.559Z",
+    "datumSplatnosti": "2017-11-08T00:00:00Z",
+    "datumVzniku": "2017-11-07T00:00:00Z",
+    "dlznik": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/280",
+    "id": 280,
+    "kod": "301011B687V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/183",
+      "id": 183
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 1702.91,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-11-07T00:00:00Z",
+    "vratenaSuma": 1702.91
+  },
+  {
+    "createdAt": "2017-11-03T14:58:20.548Z",
+    "datumSplatnosti": "2017-11-24T00:00:00Z",
+    "datumVzniku": "2017-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/283",
+    "id": 283,
+    "kod": "312031A020Z026",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/2",
+      "id": 2
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 21217.54,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-03T15:33:17.84Z",
+    "datumSplatnosti": "2017-11-24T00:00:00Z",
+    "datumVzniku": "2017-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/284",
+    "id": 284,
+    "kod": "312031D233Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/291",
+      "id": 291
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 2127.04,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-03T15:34:14.898Z",
+    "datumSplatnosti": "2017-11-24T00:00:00Z",
+    "datumVzniku": "2017-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/285",
+    "id": 285,
+    "kod": "312031A057Z023",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/4",
+      "id": 4
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 5472.59,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-03T15:37:25.366Z",
+    "datumSplatnosti": "2017-11-24T00:00:00Z",
+    "datumVzniku": "2017-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/286",
+    "id": 286,
+    "kod": "312021A139Z017",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 15097.8,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-03T15:40:09.342Z",
+    "datumSplatnosti": "2017-11-24T00:00:00Z",
+    "datumVzniku": "2017-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/287",
+    "id": 287,
+    "kod": "312031A127Z016",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/16",
+      "id": 16
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 6430.73,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-03T15:44:09.986Z",
+    "datumSplatnosti": "2017-11-24T00:00:00Z",
+    "datumVzniku": "2017-11-03T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/288",
+    "id": 288,
+    "kod": "312031A148Z012",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 567.6,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-03T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-07T08:25:14.756Z",
+    "datumSplatnosti": "2017-12-27T00:00:00Z",
+    "datumVzniku": "2017-11-07T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/289",
+    "id": 289,
+    "kod": "312011C789Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/245",
+      "id": 245
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 2082.19,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-07T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-07T13:08:09.789Z",
+    "datumSplatnosti": "2017-11-07T00:00:00Z",
+    "datumVzniku": "2017-11-07T00:00:00Z",
+    "dlznik": {
+      "dic": "2020796338",
+      "href": "/v2/subjekty/100003",
+      "ico": "00681156",
+      "id": 100003
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/293",
+    "id": 293,
+    "kod": "312071C203V003",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/177",
+      "id": 177
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 129800,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-11-07T00:00:00Z",
+    "vratenaSuma": 129800
+  },
+  {
+    "createdAt": "2017-11-08T11:06:28.036Z",
+    "datumSplatnosti": "2017-11-30T00:00:00Z",
+    "datumVzniku": "2017-11-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2020830196",
+      "href": "/v2/subjekty/100037",
+      "ico": "00166073",
+      "id": 100037
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/295",
+    "id": 295,
+    "kod": "314021I964V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/1287",
+      "id": 1287
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 131200,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-11-20T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-08T13:05:18.5Z",
+    "datumSplatnosti": "2018-02-05T00:00:00Z",
+    "datumVzniku": "2017-11-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/296",
+    "id": 296,
+    "kod": "311071A092Z004",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/10",
+      "id": 10
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 4545350,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-08T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-08T13:13:58.866Z",
+    "datumSplatnosti": "2018-02-05T00:00:00Z",
+    "datumVzniku": "2017-11-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/297",
+    "id": 297,
+    "kod": "311071A092Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/10",
+      "id": 10
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 13127.98,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-08T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-08T13:19:41.768Z",
+    "datumSplatnosti": "2018-02-05T00:00:00Z",
+    "datumVzniku": "2017-11-08T00:00:00Z",
+    "dlznik": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/298",
+    "id": 298,
+    "kod": "311071A092Z006",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/10",
+      "id": 10
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 65999.56,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-08T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-09T14:03:17.384Z",
+    "datumSplatnosti": "2018-02-07T00:00:00Z",
+    "datumVzniku": "2017-11-09T00:00:00Z",
+    "dlznik": {
+      "dic": "2020887715",
+      "href": "/v2/subjekty/100737",
+      "ico": "17314852",
+      "id": 100737
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/299",
+    "id": 299,
+    "kod": "312011C789Z005",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/245",
+      "id": 245
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 773.15,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-10T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-15T11:39:53.788Z",
+    "datumSplatnosti": "2017-11-30T00:00:00Z",
+    "datumVzniku": "2017-11-15T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "S_DOPADOM_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/7",
+      "id": 7
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/301",
+    "id": 301,
+    "kod": "312031A148Z013",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 57.12,
+    "typ": "ZOVFP",
+    "updatedAt": "2017-11-15T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-18T03:01:41.618Z",
+    "datumSplatnosti": "2017-11-30T00:00:00Z",
+    "datumVzniku": "2017-11-18T00:00:00Z",
+    "dlznik": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/302",
+    "id": 302,
+    "kod": "312051C909V002",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/641",
+      "id": 641
+    },
+    "stav": "Odoslaný dlžníkovi",
+    "sumaNaVratenie": 1325500,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-11-18T00:00:00Z"
+  },
+  {
+    "createdAt": "2017-11-20T14:49:17.806Z",
+    "datumSplatnosti": "2017-11-20T00:00:00Z",
+    "datumVzniku": "2017-11-20T00:00:00Z",
+    "dlznik": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "dopadNaRozpocetEU": "BEZ_DOPADU_NA_ROZPOCET_EU",
+    "dovodVratenia": {
+      "ciselnikKod": 1082,
+      "href": "/v2/hodnotaCiselnika/1082/hodnota/2",
+      "id": 2
+    },
+    "druh": "PD_K_PROJEKTU",
+    "href": "/v2/pohladavkovyDoklad/303",
+    "id": 303,
+    "kod": "312031D033V001",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/398",
+      "id": 398
+    },
+    "stav": "Vysporiadaný",
+    "sumaNaVratenie": 27756.54,
+    "typ": "VLASTNA_INICIATIVA",
+    "updatedAt": "2017-11-20T00:00:00Z",
+    "vratenaSuma": 27756.54
+  }
+]
