@@ -7,9 +7,8 @@ class Itms::SyncBudgetItemJob < ItmsJob
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
-      bi = Itms::BudgetItem.find_or_initialize_by(itms_id: itms_id)
+      bi = Itms::BudgetItem.find_or_create_by!(itms_id: itms_id)
       bi.itms_href = json['href']
-      bi.save!
 
       bi.aktivita = find_or_create_activity_by_json(json['aktivita'], downloader)
       bi.intenzita = find_or_create_intensity_by_json(json['intenzita'], downloader)

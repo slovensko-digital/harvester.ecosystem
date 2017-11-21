@@ -7,11 +7,10 @@ class Itms::SyncPlannedProposalCallJob < ItmsJob
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
-      ppc = Itms::PlannedProposalCall.find_or_initialize_by(itms_id: itms_id)
+      ppc = Itms::PlannedProposalCall.find_or_create_by!(itms_id: itms_id)
       ppc.itms_href = json['href']
       ppc.itms_created_at = json['createdAt']
       ppc.itms_updated_at = json['updatedAt']
-      ppc.save!
 
       ppc.alokacia_eu = json['alokaciaEU']
       ppc.alokacia_sr = json['alokaciaSR']

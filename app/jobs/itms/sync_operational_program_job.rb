@@ -6,11 +6,10 @@ class Itms::SyncOperationalProgramJob < ItmsJob
     json = JSON.parse(response.body)
 
     ActiveRecord::Base.transaction do
-      op = Itms::OperationalProgram.find_or_initialize_by(itms_id: itms_id)
+      op = Itms::OperationalProgram.find_or_create_by!(itms_id: itms_id)
       op.itms_href = json['href']
       op.itms_created_at = json['createdAt']
       op.itms_updated_at = json['updatedAt']
-      op.save!
 
       op.celkova_financna_alokacia = json['celkovaFinancnaAlokacia']
       op.hlavna_alokacia = json['hlavnaAlokacia']

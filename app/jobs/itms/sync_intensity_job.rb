@@ -7,9 +7,8 @@ class Itms::SyncIntensityJob < ItmsJob
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
-      i = Itms::Intensity.find_or_initialize_by(itms_id: itms_id)
+      i = Itms::Intensity.find_or_create_by!(itms_id: itms_id)
       i.itms_href = json['href']
-      i.save!
 
       i.nazov = json['nazov']
       i.subjekt = find_or_create_subject_by_json(json['subjekt'], downloader)

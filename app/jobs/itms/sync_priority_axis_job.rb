@@ -6,11 +6,10 @@ class Itms::SyncPriorityAxisJob < ItmsJob
     json = JSON.parse(response.body)
 
     ActiveRecord::Base.transaction do
-      pa = Itms::PriorityAxis.find_or_initialize_by(itms_id: itms_id)
+      pa = Itms::PriorityAxis.find_or_create_by!(itms_id: itms_id)
       pa.itms_href = json['href']
       pa.itms_created_at = json['createdAt']
       pa.itms_updated_at = json['updatedAt']
-      pa.save!
 
       pa.celkova_financna_alokacia = json['celkovaFinancnaAlokacia']
       pa.hlavna_alokacia = json['hlavnaAlokacia']

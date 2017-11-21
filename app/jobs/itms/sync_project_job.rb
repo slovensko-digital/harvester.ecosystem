@@ -7,11 +7,10 @@ class Itms::SyncProjectJob < ItmsJob
     _, _, _, _, itms_id = itms_href.split('/')
 
     ActiveRecord::Base.transaction do
-      p = Itms::Project.find_or_initialize_by(itms_id: itms_id)
+      p = Itms::Project.find_or_create_by!(itms_id: itms_id)
       p.itms_href = json['href']
       p.itms_created_at = json['createdAt']
       p.itms_updated_at = json['updatedAt']
-      p.save!
 
       p.akronym = json['akronym']
       p.aktivity = find_or_create_activities_by_json(json['aktivity'], downloader)
