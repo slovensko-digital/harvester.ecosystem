@@ -66,7 +66,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     json = JSON.parse(response.body)
 
     na.itms_href = json['href']
-    na.aktivity_projekt = find_or_create_approved_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt, downloader)
+    na.aktivity_projekt = find_or_create_approved_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt)
 
     na.datum_schvalenia = json['datumSchvalenia']
     na.datum_schvaleny_konca_hlavnych_aktivit = json['datumSchvalenyKoncaHlavnychAktivit']
@@ -103,27 +103,28 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
   def find_or_create_activities_by_json(json_list, scope, downloader)
     return [] if json_list.blank?
 
-    json_list.map do |json|
-      activity_type = find_or_create_activity_type_by_json(json['typAktivity'], downloader)
-      pa = scope.find_or_initialize_by(typ_aktivity: activity_type)
+    current_activities = scope.all
+    json_list.each_with_index.map do |json, index|
+      pa = current_activities[index] || scope.new
 
       pa.datum_konca_planovany = json['datumKoncaPlanovany']
       pa.datum_zaciatku_planovany = json['datumZaciatkuPlanovany']
       pa.kod = json['kod']
       pa.nazov = json['nazov']
       pa.subjekt = find_or_create_subject_by_json(json['subjekt'], downloader)
+      pa.typ_aktivity = find_or_create_activity_type_by_json(json['typAktivity'], downloader)
       pa.save!
 
       pa
     end
   end
 
-  def find_or_create_approved_activities_by_json(json_list, scope, downloader)
+  def find_or_create_approved_activities_by_json(json_list, scope)
     return [] if json_list.blank?
 
-    json_list.map do |json|
-      activity_type = find_or_create_activity_type_by_json(json['typAktivity'], downloader)
-      pa = scope.find_or_initialize_by(typ_aktivity: activity_type)
+    current_activities = scope.all
+    json_list.each_with_index.map do |json, index|
+      pa = current_activities[index]
 
       pa.datum_konca_schvaleny = json['datumKoncaSchvaleny']
       pa.datum_zaciatku_schvaleny = json['datumZaciatkuSchvaleny']
