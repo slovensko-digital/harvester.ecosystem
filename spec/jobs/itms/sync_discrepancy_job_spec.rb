@@ -11,7 +11,7 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
           .and_return(double(body: itms_file_fixture('nezrovnalost_item.json')))
           .at_least(:once)
 
-      subject.perform(1, downloader: downloader)
+      subject.perform('/v2/nezrovnalost/1', downloader: downloader)
 
       expect(Itms::Discrepancy.first).to have_attributes(
         itms_id: 1,

@@ -10,7 +10,7 @@ RSpec.describe Itms::SyncSpecificGoalJob, type: :job do
           .with('https://opendata.itms2014.sk/v2/konkretnyCiel/33')
           .and_return(double(body: itms_file_fixture('konkretny_ciel_item.json')))
 
-      subject.perform(33, downloader: downloader)
+      subject.perform('/v2/konkretnyCiel/33', downloader: downloader)
 
       expect(Itms::SpecificGoal.first).to have_attributes(
         itms_id: 33,
