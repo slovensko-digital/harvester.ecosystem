@@ -6,7 +6,7 @@ RSpec.describe Itms::SyncAllDiscrepanciesJob, type: :job do
   context '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
-    it 'syncs all projects' do
+    it 'syncs all discrepancies' do
       expect(downloader)
           .to receive(:get)
           .with('https://opendata.itms2014.sk/v2/nezrovnalost')
