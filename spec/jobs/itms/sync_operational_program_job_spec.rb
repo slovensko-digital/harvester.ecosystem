@@ -10,7 +10,7 @@ RSpec.describe Itms::SyncOperationalProgramJob, type: :job do
           .with('https://opendata.itms2014.sk/v2/operacneProgramy/1')
           .and_return(double(body: itms_file_fixture('operacny_program_item.json')))
 
-      subject.perform(1, downloader: downloader)
+      subject.perform('/v2/operacneProgramy/1', downloader: downloader)
 
       expect(Itms::OperationalProgram.first).to have_attributes(
         itms_id: 1,

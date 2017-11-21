@@ -1,0 +1,192 @@
+[
+  {
+    "celkovaFinancnaAlokacia": 4327609993,
+    "createdAt": "2017-11-15T14:24:39.538Z",
+    "hlavnaAlokacia": 4327609993,
+    "href": "/v2/operacneProgramy/1",
+    "id": 1,
+    "kod": "310000",
+    "kodCCI": "2014SK16M1OP002",
+    "nazov": "Operačný program Kvalita životného prostredia",
+    "skratka": "OP KZP",
+    "subjekt": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "updatedAt": "2017-11-15T14:24:39.838Z",
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 2519053890,
+    "createdAt": "2017-11-07T08:41:39.43Z",
+    "hlavnaAlokacia": 2519053890,
+    "href": "/v2/operacneProgramy/2",
+    "id": 2,
+    "kod": "312000",
+    "kodCCI": "2014SK05M0OP001",
+    "nazov": "Operačný program Ľudské zdroje",
+    "skratka": "OP LZ",
+    "subjekt": {
+      "dic": "2020796338",
+      "href": "/v2/subjekty/100003",
+      "ico": "00681156",
+      "id": 100003
+    },
+    "updatedAt": "2017-11-07T08:41:40.307Z",
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 4510973737,
+    "createdAt": "2017-02-02T16:08:41.151Z",
+    "hlavnaAlokacia": 4510973737,
+    "href": "/v2/operacneProgramy/3",
+    "id": 3,
+    "kod": "311000",
+    "kodCCI": "2014SK16M1OP001",
+    "nazov": "Operačný program Integrovaná infraštruktúra",
+    "skratka": "OPII",
+    "subjekt": {
+      "dic": "2020799209",
+      "href": "/v2/subjekty/100008",
+      "ico": "30416094",
+      "id": 100008
+    },
+    "updatedAt": "2017-02-02T16:08:41.509Z",
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 3738328415,
+    "createdAt": "2017-02-23T18:09:00.818Z",
+    "hlavnaAlokacia": 3509257609,
+    "href": "/v2/operacneProgramy/4",
+    "id": 4,
+    "kod": "313000",
+    "kodCCI": "2014SK16RFOP001",
+    "nazov": "Operačný program Výskum a inovácie",
+    "skratka": "OP VaI",
+    "subjekt": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "updatedAt": "2017-02-23T18:09:04.73Z",
+    "vykonnostnaRezerva": 229070806
+  },
+  {
+    "celkovaFinancnaAlokacia": 1992761723,
+    "createdAt": "2017-10-18T08:15:56.405Z",
+    "hlavnaAlokacia": 1992761723,
+    "href": "/v2/operacneProgramy/5",
+    "id": 5,
+    "kod": "302000",
+    "kodCCI": "2014SK16RFOP002",
+    "nazov": "Integrovaný regionálny operačný program",
+    "skratka": "OP IROP",
+    "subjekt": {
+      "dic": "2021291382",
+      "href": "/v2/subjekty/100012",
+      "ico": "00156621",
+      "id": 100012
+    },
+    "updatedAt": "2017-10-18T08:15:56.935Z",
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 335381024,
+    "createdAt": "2016-03-21T14:09:13.859Z",
+    "hlavnaAlokacia": 335381024,
+    "href": "/v2/operacneProgramy/6",
+    "id": 6,
+    "kod": "314000",
+    "kodCCI": "2014SK05SFOP001",
+    "nazov": "Operačný program Efektívna verejná správa",
+    "skratka": "OP EVS",
+    "subjekt": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    },
+    "updatedAt": "2016-03-21T14:09:14.243Z",
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 193830582,
+    "createdAt": "2017-03-20T13:49:17.18Z",
+    "hlavnaAlokacia": 193830582,
+    "href": "/v2/operacneProgramy/7",
+    "id": 7,
+    "kod": "301000",
+    "kodCCI": "2014SK16RFTA001",
+    "nazov": "Operačný program Technická pomoc",
+    "skratka": "OP TP",
+    "subjekt": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "updatedAt": "2017-03-20T13:49:18.706Z",
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 20832779,
+    "createdAt": "2016-08-04T12:06:23.871Z",
+    "hlavnaAlokacia": 20832779,
+    "href": "/v2/operacneProgramy/8",
+    "id": 8,
+    "kod": "303000",
+    "kodCCI": "2014SK14MFOP001",
+    "nazov": "Operačný program Rybné hospodárstvo 2014-2020",
+    "skratka": "OP RH",
+    "subjekt": {
+      "dic": "2021291382",
+      "href": "/v2/subjekty/100012",
+      "ico": "00156621",
+      "id": 100012
+    },
+    "updatedAt": "2016-08-04T12:06:24.133Z",
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 106046429,
+    "createdAt": "2016-04-20T11:34:17.477Z",
+    "hlavnaAlokacia": 106046429,
+    "href": "/v2/operacneProgramy/9",
+    "id": 9,
+    "kod": "304000",
+    "kodCCI": "2014TC16RFCB030",
+    "nazov": "Interreg V-A Slovenská republika - Česká republika 2014-2020",
+    "skratka": "IRR SK CZ",
+    "subjekt": {
+      "dic": "2021291382",
+      "href": "/v2/subjekty/100012",
+      "ico": "00156621",
+      "id": 100012
+    },
+    "updatedAt": "2016-04-20T11:34:17.776Z",
+    "vykonnostnaRezerva": 0
+  },
+  {
+    "celkovaFinancnaAlokacia": 89285509,
+    "createdAt": "2016-07-21T09:27:54.721Z",
+    "hlavnaAlokacia": 89285509,
+    "href": "/v2/operacneProgramy/10",
+    "id": 10,
+    "kod": "305000",
+    "kodCCI": "2014TC16RFCB003",
+    "nazov": "Interreg V-A Slovenská republika - Rakúsko",
+    "skratka": "IRR SK AT",
+    "subjekt": {
+      "dic": "2021291382",
+      "href": "/v2/subjekty/100012",
+      "ico": "00156621",
+      "id": 100012
+    },
+    "updatedAt": "2016-09-12T14:47:30.579Z",
+    "vykonnostnaRezerva": 0
+  }
+]
