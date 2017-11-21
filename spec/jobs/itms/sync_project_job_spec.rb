@@ -27,7 +27,6 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
             Itms::Activity.find_by!(itms_id: 120),
         ],
         cislo_zmluvy: 'OPKZPPO1SC121/1222015/04',
-        #TODO data_projektu: ,
         datum_konca_hlavnych_aktivit: DateTime.parse('2018-06-01T00:00:00Z'),
         datum_konca_realizacie: DateTime.parse('2018-06-01T00:00:00Z'),
         datum_platnosti_zmluvy: DateTime.parse('2016-03-11T00:00:00Z'),

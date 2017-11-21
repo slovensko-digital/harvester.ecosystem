@@ -29,7 +29,8 @@ class Itms::Project < ApplicationRecord
 
   has_many :meratelne_ukazovatele,
            class_name: Itms::MeasurableIndicator,
-           foreign_key: 'projekt_id'
+           foreign_key: 'projekt_id',
+           dependent: :destroy
 
   has_and_belongs_to_many :miesta_realizacie,
                           class_name: Itms::ImplementationPlace,
