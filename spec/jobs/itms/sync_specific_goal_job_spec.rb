@@ -22,14 +22,14 @@ RSpec.describe Itms::SyncSpecificGoalJob, type: :job do
         kategoria_regionov: 'menej rozvinuté regióny',
         kod: '310010020',
         nazov: '1.2.1 Zlepšenie odvádzania a čistenia komunálnych odpadových vôd v aglomeráciách nad 2 000 EO v zmysle záväzkov SR voči EÚ',
+        prioritna_os: Itms::PriorityAxis.find_by!(itms_id: 33),
         technicka_asistencia: false,
-      )
-    end
-
-    pending 'syncs other attributes' do
-      expect(Itms::SpecificGoal.first).to respond_to(
-        :prioritna_os,
-        :typy_aktivit,
+        typy_aktivit: [
+            Itms::ActivityType.find_by!(itms_id: 217),
+            Itms::ActivityType.find_by!(itms_id: 218),
+            Itms::ActivityType.find_by!(itms_id: 796),
+            Itms::ActivityType.find_by!(itms_id: 1268),
+        ]
       )
     end
   end

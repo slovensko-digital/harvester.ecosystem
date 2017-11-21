@@ -22,12 +22,17 @@ class ItmsJob < ApplicationJob
     Itms::Activity.find_by!(itms_id: json['id'])
   end
 
+  def find_or_create_activity_types_by_json(json_list, downloader)
+    return [] if json_list.blank?
+    json_list.map { |json| find_or_create_activity_type_by_json(json, downloader) }.uniq
+  end
+
   def find_or_create_activity_type_by_json(json, downloader)
     return if json.blank?
-    unit = Itms::ActivityType.find_by(itms_id: json['id'])
-    return unit if unit.present?
+    existing_object = Itms::ActivityType.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
 
-    Itms::SyncActivityTypeJob.perform_now(json['id'], downloader: downloader)
+    Itms::SyncActivityTypeJob.perform_now(json['href'], downloader: downloader)
     Itms::ActivityType.find_by!(itms_id: json['id'])
   end
 
@@ -190,10 +195,10 @@ class ItmsJob < ApplicationJob
 
   def find_or_create_priority_axis_by_json(json, downloader)
     return if json.blank?
-    priority_axis = Itms::PriorityAxis.find_by(itms_id: json['id'])
-    return priority_axis if priority_axis.present?
+    existing_object = Itms::PriorityAxis.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
 
-    Itms::SyncPriorityAxisJob.perform_now(json['id'], downloader: downloader)
+    Itms::SyncPriorityAxisJob.perform_now(json['href'], downloader: downloader)
     Itms::PriorityAxis.find_by!(itms_id: json['id'])
   end
 

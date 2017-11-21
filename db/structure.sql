@@ -432,6 +432,7 @@ CREATE TABLE konkretne_ciele (
     kategoria_regionov character varying,
     kod character varying,
     nazov character varying,
+    prioritna_os_id integer,
     technicka_asistencia boolean,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -487,6 +488,38 @@ CREATE SEQUENCE konkretne_ciele_id_seq
 --
 
 ALTER SEQUENCE konkretne_ciele_id_seq OWNED BY konkretne_ciele.id;
+
+
+--
+-- Name: konkretne_ciele_typy_aktivit; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE konkretne_ciele_typy_aktivit (
+    id integer NOT NULL,
+    konkretny_ciel_id integer NOT NULL,
+    typ_aktivity_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: konkretne_ciele_typy_aktivit_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE konkretne_ciele_typy_aktivit_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: konkretne_ciele_typy_aktivit_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE konkretne_ciele_typy_aktivit_id_seq OWNED BY konkretne_ciele_typy_aktivit.id;
 
 
 --
@@ -3479,6 +3512,13 @@ ALTER TABLE ONLY konkretne_ciele_hodnoty_ciselnikov ALTER COLUMN id SET DEFAULT 
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY konkretne_ciele_typy_aktivit ALTER COLUMN id SET DEFAULT nextval('konkretne_ciele_typy_aktivit_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('miesta_realizacie_id_seq'::regclass);
 
 
@@ -4133,6 +4173,14 @@ ALTER TABLE ONLY konkretne_ciele_hodnoty_ciselnikov
 
 ALTER TABLE ONLY konkretne_ciele
     ADD CONSTRAINT konkretne_ciele_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: konkretne_ciele_typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY konkretne_ciele_typy_aktivit
+    ADD CONSTRAINT konkretne_ciele_typy_aktivit_pkey PRIMARY KEY (id);
 
 
 --
@@ -5047,6 +5095,34 @@ CREATE INDEX "index_itms.konkretne_ciele_on_fond_id" ON konkretne_ciele USING bt
 --
 
 CREATE UNIQUE INDEX "index_itms.konkretne_ciele_on_itms_id" ON konkretne_ciele USING btree (itms_id);
+
+
+--
+-- Name: index_itms.konkretne_ciele_on_prioritna_os_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.konkretne_ciele_on_prioritna_os_id" ON konkretne_ciele USING btree (prioritna_os_id);
+
+
+--
+-- Name: index_itms.konkretne_ciele_typy_aktivit_on_kc_and_ta; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.konkretne_ciele_typy_aktivit_on_kc_and_ta" ON konkretne_ciele_typy_aktivit USING btree (konkretny_ciel_id, typ_aktivity_id);
+
+
+--
+-- Name: index_itms.konkretne_ciele_typy_aktivit_on_konkretny_ciel_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.konkretne_ciele_typy_aktivit_on_konkretny_ciel_id" ON konkretne_ciele_typy_aktivit USING btree (konkretny_ciel_id);
+
+
+--
+-- Name: index_itms.konkretne_ciele_typy_aktivit_on_typ_aktivity_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.konkretne_ciele_typy_aktivit_on_typ_aktivity_id" ON konkretne_ciele_typy_aktivit USING btree (typ_aktivity_id);
 
 
 --
@@ -6887,6 +6963,22 @@ ALTER TABLE ONLY projekty
 
 
 --
+-- Name: fk_rails_2ce092e5a7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY konkretne_ciele_typy_aktivit
+    ADD CONSTRAINT fk_rails_2ce092e5a7 FOREIGN KEY (typ_aktivity_id) REFERENCES typy_aktivit(id);
+
+
+--
+-- Name: fk_rails_2f20a81991; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY konkretne_ciele_typy_aktivit
+    ADD CONSTRAINT fk_rails_2f20a81991 FOREIGN KEY (konkretny_ciel_id) REFERENCES konkretne_ciele(id);
+
+
+--
 -- Name: fk_rails_2f656b722b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -7428,6 +7520,14 @@ ALTER TABLE ONLY projekty_intenzity
 
 ALTER TABLE ONLY projekty_intenzity
     ADD CONSTRAINT fk_rails_7d596202b5 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
+-- Name: fk_rails_7e925d13d4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY konkretne_ciele
+    ADD CONSTRAINT fk_rails_7e925d13d4 FOREIGN KEY (prioritna_os_id) REFERENCES prioritne_osi(id);
 
 
 --
@@ -8187,6 +8287,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171005173414'),
 ('20171007133948'),
 ('20171008150412'),
+('20171008150512'),
 ('20171009080951'),
 ('20171009115759'),
 ('20171012201924'),
