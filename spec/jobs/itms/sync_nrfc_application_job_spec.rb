@@ -27,7 +27,7 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
                kod: "217A01100002",
                nazov: "Stoková sieť",
                subjekt: Itms::Subject.find_by!(itms_id: 100052),
-               typ_aktivity: Itms::ActivityType.find_by!(itms_id: 217),
+               typ_aktivity: Itms::ActivityType.find_by!(itms_id: 219),
            ),
            Itms::NrfcApplicationActivity.find_by!(
                datum_konca_planovany: DateTime.parse("2018-03-01"),
@@ -292,7 +292,7 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
                 kod: "217A01100002",
                 nazov: "Stoková sieť",
                 subjekt: Itms::Subject.find_by!(itms_id: 100052),
-                typ_aktivity: Itms::ActivityType.find_by!(itms_id: 217),
+                typ_aktivity: Itms::ActivityType.find_by!(itms_id: 219),
             ),
             Itms::NrfcApplicationActivity.find_by!(
                 datum_konca_schvaleny: DateTime.parse("2018-03-01"),

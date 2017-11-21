@@ -3,7 +3,8 @@ class Itms::NrfcApplication < ApplicationRecord
 
   has_many :aktivity_projekt,
            class_name: Itms::NrfcApplicationActivity,
-           foreign_key: :zonfp_id
+           foreign_key: :zonfp_id,
+           dependent: :destroy
 
   has_and_belongs_to_many :formy_financovania,
                           class_name: Itms::SpecificGoalCodelistValue,
@@ -25,7 +26,8 @@ class Itms::NrfcApplication < ApplicationRecord
 
   has_many :meratelne_ukazovatele,
            class_name: Itms::NrfcApplicationMeasurableIndicator,
-           foreign_key: :zonfp_id
+           foreign_key: :zonfp_id,
+           dependent: :destroy
 
   has_and_belongs_to_many :miesta_realizacie,
                           class_name: Itms::ImplementationPlace,
@@ -59,7 +61,8 @@ class Itms::NrfcApplication < ApplicationRecord
 
   has_many :polozky_rozpoctu,
            class_name: Itms::NrfcApplicationBudgetItem,
-           foreign_key: :zonfp_id
+           foreign_key: :zonfp_id,
+           dependent: :destroy
 
   has_and_belongs_to_many :sekundarny_tematicky_okruh,
                           class_name: Itms::SpecificGoalCodelistValue,
