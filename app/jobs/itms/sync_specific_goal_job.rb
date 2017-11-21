@@ -13,10 +13,12 @@ class Itms::SyncSpecificGoalJob < ItmsJob
       sg.itms_updated_at = json['updatedAt']
 
       sg.fond = find_or_create_codelist_value_by_json(json['fond'], downloader)
-      sg.kategoria_regionov = json ['kategoriaRegionov']
-      sg.kod = json ['kod']
-      sg.nazov = json ['nazov']
-      sg.technicka_asistencia = json ['technickaAsistencia']
+      sg.kategoria_regionov = json['kategoriaRegionov']
+      sg.kod = json['kod']
+      sg.nazov = json['nazov']
+      sg.prioritna_os = find_or_create_priority_axis_by_json(json['prioritnaOs'], downloader)
+      sg.technicka_asistencia = json['technickaAsistencia']
+      sg.typy_aktivit = find_or_create_activity_types_by_json(json['typyAktivit'], downloader)
 
       sg.save!
     end

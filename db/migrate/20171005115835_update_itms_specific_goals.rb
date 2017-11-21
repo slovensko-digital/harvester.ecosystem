@@ -9,15 +9,24 @@ class UpdateItmsSpecificGoals < ActiveRecord::Migration[5.0]
       t.datetime :itms_created_at
       t.datetime :itms_updated_at
 
-      t.references :fond, index: true, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
+      t.references :fond, foreign_key: { to_table: 'itms.hodnoty_ciselnikov' }
       t.string :kategoria_regionov
       t.string :kod
       t.string :nazov
-      # TODO prioritna_os,
+      t.references :prioritna_os, foreign_key: { to_table: 'itms.prioritne_osi' }
       t.boolean :technicka_asistencia
-      # TODO typy_aktivit,
 
       t.timestamps
     end
+
+    create_table 'itms.konkretne_ciele_typy_aktivit' do |t|
+      t.references :konkretny_ciel, null: false, foreign_key: { to_table: 'itms.konkretne_ciele' }, index: true
+      t.references :typ_aktivity, null: false, index: true # Foreign key in 20171008150512
+      t.timestamps
+    end
+    add_index 'itms.konkretne_ciele_typy_aktivit',
+              [:konkretny_ciel_id, :typ_aktivity_id],
+              name: 'index_itms.konkretne_ciele_typy_aktivit_on_kc_and_ta',
+              unique: true
   end
 end

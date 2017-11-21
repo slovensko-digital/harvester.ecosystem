@@ -10,7 +10,7 @@ RSpec.describe Itms::SyncPriorityAxisJob, type: :job do
           .with('https://opendata.itms2014.sk/v2/prioritnaOs/33')
           .and_return(double(body: itms_file_fixture('prioritna_os_item.json')))
 
-      subject.perform(33, downloader: downloader)
+      subject.perform('/v2/prioritnaOs/33', downloader: downloader)
 
       expect(Itms::PriorityAxis.first).to have_attributes(
         itms_id: 33,

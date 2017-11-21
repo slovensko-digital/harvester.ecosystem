@@ -1,4 +1,4 @@
-class CreateItmsProjectAktivityTypes < ActiveRecord::Migration[5.0]
+class CreateItmsProjectActivityTypes < ActiveRecord::Migration[5.0]
   def change
     create_table 'itms.typy_aktivit' do |t|
       t.integer :itms_id, null: false, index: { unique: true}
