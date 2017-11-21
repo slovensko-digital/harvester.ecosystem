@@ -58,12 +58,14 @@ class Itms::SyncAnnouncedProposalCallJob < ItmsJob
     return [] if json_list.blank?
 
     json_list.map do |json|
+      next if json['id'] == 0 # workaround for https://itms3.axonpro.sk/browse/ITMSC-11444
+
       existing_object = Itms::PlannedProposalCall.find_by(itms_id: json['id'])
-      return existing_object if existing_object.present?
+      next existing_object if existing_object.present?
 
       Itms::SyncPlannedProposalCallJob.perform_now(json['href'], downloader: downloader)
       Itms::PlannedProposalCall.find_by!(itms_id: json['id'])
-    end
+    end.compact
   end
 
   def find_or_create_evaluation_periods_by_json(json_list, scope)
