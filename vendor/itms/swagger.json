@@ -4332,6 +4332,14 @@
         {
           "href": "Quibusdam eum quisquam.",
           "id": 6772679569347129954
+        },
+        {
+          "href": "Quibusdam eum quisquam.",
+          "id": 6772679569347129954
+        },
+        {
+          "href": "Quibusdam eum quisquam.",
+          "id": 6772679569347129954
         }
       ]
     },
@@ -6847,14 +6855,6 @@
       },
       "description": "PolozkarozpoctuLinkCollection is the media type for an array of PolozkarozpoctuLink (default view)",
       "example": [
-        {
-          "href": "Distinctio aliquam ab et.",
-          "id": 1013892082015187098
-        },
-        {
-          "href": "Distinctio aliquam ab et.",
-          "id": 1013892082015187098
-        },
         {
           "href": "Distinctio aliquam ab et.",
           "id": 1013892082015187098
