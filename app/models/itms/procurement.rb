@@ -9,45 +9,39 @@ class Itms::Procurement < ApplicationRecord
   belongs_to :postup_obstaravania, class_name: Itms::CodelistValue
   belongs_to :zadavatel, class_name: Itms::Subject
 
-  has_many :verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik,
-           class_name: Itms::ProcurementAdditionalSubjectAdditionalDictionary,
-           foreign_key: 'verejne_obstaravanie_id'
-  has_many :doplnujuce_predmety_doplnkovy_slovnik,
-           through: :verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik,
-           source: :predmet
+  has_and_belongs_to_many :doplnujuce_predmety_doplnkovy_slovnik,
+                          class_name: Itms::CodelistValue,
+                          join_table: 'itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik',
+                          association_foreign_key: :predmet_id,
+                          foreign_key: :verejne_obstaravanie_id
 
-  has_many :verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik,
-           class_name: Itms::ProcurementAdditionalSubjectMainDictionary,
-           foreign_key: 'verejne_obstaravanie_id'
-  has_many :doplnujuce_predmety_hlavny_slovnik,
-           through: :verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik,
-           source: :predmet
+  has_and_belongs_to_many :doplnujuce_predmety_hlavny_slovnik,
+                          class_name: Itms::CodelistValue,
+                          join_table: 'itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik',
+                          association_foreign_key: :predmet_id,
+                          foreign_key: :verejne_obstaravanie_id
 
-  has_many :verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik,
-           class_name: Itms::ProcurementMainSubjectAdditionalDictionary,
-           foreign_key: 'verejne_obstaravanie_id'
-  has_many :hlavny_predmet_doplnkovy_slovnik,
-           through: :verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik,
-           source: :predmet
+  has_and_belongs_to_many :hlavny_predmet_doplnkovy_slovnik,
+                          class_name: Itms::CodelistValue,
+                          join_table: 'itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik',
+                          association_foreign_key: :predmet_id,
+                          foreign_key: :verejne_obstaravanie_id
 
-  has_many :verejne_obstaravania_operacne_programy,
-           class_name: Itms::ProcurementOperationalProgram,
-           foreign_key: 'verejne_obstaravanie_id'
-  has_many :operacne_programy,
-           through: :verejne_obstaravania_operacne_programy,
-           source: :operacny_program
+  has_and_belongs_to_many :operacne_programy,
+                          class_name: Itms::OperationalProgram,
+                          join_table: 'itms.verejne_obstaravania_operacne_programy',
+                          association_foreign_key: :operacny_program_id,
+                          foreign_key: :verejne_obstaravanie_id
 
-  has_many :verejne_obstaravania_projekty,
-           class_name: Itms::ProcurementProject,
-           foreign_key: 'verejne_obstaravanie_id'
-  has_many :projekty,
-           through: :verejne_obstaravania_projekty,
-           source: :projekt
+  has_and_belongs_to_many :projekty,
+                          class_name: Itms::Project,
+                          join_table: 'itms.verejne_obstaravania_projekty',
+                          association_foreign_key: :projekt_id,
+                          foreign_key: :verejne_obstaravanie_id
 
-  has_many :verejne_obstaravania_uctovne_doklady,
-           class_name: Itms::ProcurementAccountingDocument,
-           foreign_key: 'verejne_obstaravanie_id'
-  has_many :uctovne_doklady,
-           through: :verejne_obstaravania_uctovne_doklady,
-           source: :uctovny_doklad
+  has_and_belongs_to_many :uctovne_doklady,
+                          class_name: Itms::AccountingDocument,
+                          join_table: 'itms.verejne_obstaravania_uctovne_doklady',
+                          association_foreign_key: :uctovny_doklad_id,
+                          foreign_key: :verejne_obstaravanie_id
 end
