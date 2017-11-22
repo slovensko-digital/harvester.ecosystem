@@ -1,0 +1,43 @@
+[
+  {
+    "celkovaVyskaDokladu": 26863.2,
+    "cisloDokladu": "02-1-12/2015-NP Podpora ZP",
+    "createdAt": "2016-01-25T08:03:02.015Z",
+    "dodavatelSubjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "href": "/v2/uctovneDoklady/3",
+    "id": 3,
+    "typ": "INTERNY",
+    "updatedAt": "2016-01-25T08:43:41.685Z",
+    "vlastnikDokladu": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    }
+  },
+  {
+    "celkovaVyskaDokladu": 604.42,
+    "cisloDokladu": "NV -1",
+    "createdAt": "2016-01-25T08:04:44.692Z",
+    "dodavatelSubjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "href": "/v2/uctovneDoklady/4",
+    "id": 4,
+    "typ": "INTERNY",
+    "vlastnikDokladu": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    }
+  }
+]
