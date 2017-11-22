@@ -9,8 +9,11 @@ class Itms::ProcurementContract < ApplicationRecord
 
   has_many :dalsie_url,
            class_name: Itms::ProcurementContractAdditionalUrl,
-           foreign_key: 'zmluva_verejne_obstaravanie_id'
+           foreign_key: 'zmluva_verejne_obstaravanie_id',
+           dependent: :destroy
+
   has_many :dodavatelia,
            class_name: Itms::ProcurementContractSupplier,
-           foreign_key: 'zmluva_verejne_obstaravanie_id'
+           foreign_key: 'zmluva_verejne_obstaravanie_id',
+           dependent: :destroy
 end
