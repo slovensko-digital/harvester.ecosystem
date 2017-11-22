@@ -1,0 +1,15 @@
+[
+  {
+    "celkovaSumaZmluvy": 341774.34,
+    "createdAt": "0001-01-01T00:00:00Z",
+    "datumUcinnosti": "2014-04-28T00:00:00Z",
+    "hlavnyDodavatelDodavatelObstaravatel": {
+      "href": "/v2/dodavatelia/260",
+      "ico": "17315395",
+      "id": 260
+    },
+    "href": "/v2/zmluvaVerejneObstaravanie/342",
+    "id": 342,
+    "kod": "VO66152197001"
+  }
+]
