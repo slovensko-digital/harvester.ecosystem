@@ -49,11 +49,4 @@ class Itms::SyncProcurementJob < ItmsJob
       p.save!
     end
   end
-
-  private
-
-  def find_or_create_projects_by_json(json, downloader)
-    return [] if json.blank?
-    json.map { |j| find_or_create_project_by_json(j, downloader) }
-  end
 end

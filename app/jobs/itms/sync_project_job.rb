@@ -62,16 +62,6 @@ class Itms::SyncProjectJob < ItmsJob
 
   private
 
-  def find_or_create_intensities_by_json(json, downloader)
-    return [] if json.blank?
-    json.map { |json| find_or_create_intensity_by_json(json, downloader) }
-  end
-
-  def find_or_create_activities_by_json(json, downloader)
-    return [] if json.blank?
-    json.map { |json| find_or_create_activity_by_json(json, downloader) }
-  end
-
   def find_or_create_monitoring_dates_by_json(json, scope)
     return [] if json.blank?
 
@@ -83,14 +73,5 @@ class Itms::SyncProjectJob < ItmsJob
         typ_monitorovacej_spravy: j['typMonitorovacejSpravy'],
       )
     end
-  end
-
-  def find_or_create_nrfc_application_by_json(json, downloader)
-    return if json.blank?
-    existing_object = Itms::NrfcApplication.find_by(itms_id: json['id'])
-    return existing_object if existing_object.present?
-
-    Itms::SyncNrfcApplicationJob.perform_now(json['href'], downloader: downloader)
-    Itms::NrfcApplication.find_by!(itms_id: json['id'])
   end
 end
