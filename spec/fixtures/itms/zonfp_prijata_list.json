@@ -1,0 +1,68 @@
+[
+  {
+    "createdAt": "2015-09-25T08:08:04.391Z",
+    "datumPredlozenia": "2015-09-29T00:00:00Z",
+    "href": "/v2/zonfp/prijate/1",
+    "id": 1,
+    "kod": "NFP310010A011",
+    "nazov": "Turčiansky Peter, Košťany nad Turcom - odkanalizovanie",
+    "sumaZiadanaCelkova": 4095203.15,
+    "sumaZiadanaNFP": 3685682.83,
+    "updatedAt": "2017-11-20T09:41:38.244136Z",
+    "vyzva": {
+      "href": "/v2/vyzvy/vyhlasene/1",
+      "id": 1
+    },
+    "zameranieProjektu": "Dopytovo-orientovaný projekt",
+    "ziadatel": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    }
+  },
+  {
+    "createdAt": "2015-09-26T13:17:17.78Z",
+    "datumPredlozenia": "2015-09-26T00:00:00Z",
+    "href": "/v2/zonfp/prijate/2",
+    "id": 2,
+    "kod": "NFP310010A025",
+    "nazov": "Dobudovanie kanalizácie a intenzifikácia ČOV v Dvoroch nad Žitavou",
+    "sumaZiadanaCelkova": 6283004.27,
+    "sumaZiadanaNFP": 5968854.06,
+    "updatedAt": "2017-11-20T09:41:38.244136Z",
+    "vyzva": {
+      "href": "/v2/vyzvy/vyhlasene/1",
+      "id": 1
+    },
+    "zameranieProjektu": "Dopytovo-orientovaný projekt",
+    "ziadatel": {
+      "dic": "2021060701",
+      "href": "/v2/subjekty/100083",
+      "ico": "00308897",
+      "id": 100083
+    }
+  },
+  {
+    "createdAt": "2015-09-28T09:13:15.758Z",
+    "datumPredlozenia": "2015-09-30T00:00:00Z",
+    "href": "/v2/zonfp/prijate/3",
+    "id": 3,
+    "kod": "NFP310010A009",
+    "nazov": "Šoporňa - rozšírenie kanalizácie a ČOV",
+    "sumaZiadanaCelkova": 10428382.15,
+    "sumaZiadanaNFP": 9906963.04,
+    "updatedAt": "2017-11-20T09:41:38.244136Z",
+    "vyzva": {
+      "href": "/v2/vyzvy/vyhlasene/1",
+      "id": 1
+    },
+    "zameranieProjektu": "Dopytovo-orientovaný projekt",
+    "ziadatel": {
+      "dic": "2021000938",
+      "href": "/v2/subjekty/100075",
+      "ico": "00306207",
+      "id": 100075
+    }
+  }
+]
