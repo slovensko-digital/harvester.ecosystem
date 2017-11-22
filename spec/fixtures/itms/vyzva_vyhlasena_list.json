@@ -1,0 +1,86 @@
+[
+  {
+    "alokaciaEU": 400000000,
+    "createdAt": "2015-07-02T14:18:28.103Z",
+    "datumUzavretia": "2016-02-29T00:00:00Z",
+    "datumVyhlasenia": "2015-07-03T00:00:00Z",
+    "druh": "VYZVA",
+    "href": "/v2/vyzvy/vyhlasene/1",
+    "id": 1,
+    "kod": "OPKZP-PO1-SC121/122-2015",
+    "konkretneCiele": [
+      {
+        "href": "/v2/konkretnyCiel/33",
+        "id": 33
+      },
+      {
+        "href": "/v2/konkretnyCiel/39",
+        "id": 39
+      }
+    ],
+    "nazov": "1. VÝZVA NA PREDKLADANIE ŽIADOSTÍ O NENÁVRATNÝ FINANČNÝ PRÍSPEVOK zameraná na kanalizácie, ČOV a vodovody",
+    "stav": "Uzavretá",
+    "typ": "OTVORENA",
+    "updatedAt": "2016-02-29T14:50:13.019Z",
+    "vyhlasovatel": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    }
+  },
+  {
+    "alokaciaEU": 60531000,
+    "createdAt": "2015-08-04T16:34:57.629Z",
+    "datumVyhlasenia": "2015-08-19T00:00:00Z",
+    "druh": "VYZVA",
+    "href": "/v2/vyzvy/vyhlasene/2",
+    "id": 2,
+    "kod": "OPKZP-PO3-SC313-2015-2",
+    "konkretneCiele": [
+      {
+        "href": "/v2/konkretnyCiel/44",
+        "id": 44
+      },
+      {
+        "href": "/v2/konkretnyCiel/44",
+        "id": 44
+      }
+    ],
+    "nazov": "2. VÝZVA NA PREDKLADANIE ŽIADOSTÍ O NENÁVRATNÝ FINANČNÝ PRÍSPEVOK zameraná na vybudovanie technickej a inštitucionálnej podpory špecializovaných záchranných modulov",
+    "stav": "Vyhlásená",
+    "typ": "OTVORENA",
+    "updatedAt": "2017-02-06T13:01:09.274Z",
+    "vyhlasovatel": {
+      "dic": "2020571520",
+      "href": "/v2/subjekty/100004",
+      "ico": "00151866",
+      "id": 100004
+    }
+  },
+  {
+    "alokaciaEU": 23000000,
+    "createdAt": "2015-09-07T12:45:38.144Z",
+    "datumVyhlasenia": "2015-09-11T00:00:00Z",
+    "druh": "VYZVA",
+    "href": "/v2/vyzvy/vyhlasene/3",
+    "id": 3,
+    "kod": "OPKZP-PO1-SC142-2015-3",
+    "konkretneCiele": [
+      {
+        "href": "/v2/konkretnyCiel/37",
+        "id": 37
+      }
+    ],
+    "nazov": "3. VÝZVA NA PREDKLADANIE ŽIADOSTÍ O NENÁVRATNÝ FINANČNÝ PRÍSPEVOK zameraná na prieskum environmentálnych záťaží",
+    "stav": "Vyhlásená",
+    "typ": "OTVORENA",
+    "updatedAt": "2015-09-11T14:46:36.084Z",
+    "vyhlasovatel": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    }
+  }
+]
