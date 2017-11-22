@@ -5,41 +5,40 @@ class Itms::AnnouncedProposalCall < ApplicationRecord
 
   has_many :doplnujuce_info,
            class_name: Itms::AnnouncedProposalCallAdditionalInfo,
-           foreign_key: 'vyzva_id'
+           foreign_key: 'vyzva_id',
+           dependent: :destroy
 
-  has_many :vyzvy_vyhlasene_fondy,
-           class_name: Itms::AnnouncedProposalCallFund,
-           foreign_key: 'vyzva_id'
-  has_many :fondy,
-           through: :vyzvy_vyhlasene_fondy,
-           source: :fond
+  has_and_belongs_to_many :fondy,
+                          class_name: Itms::CodelistValue,
+                          join_table: 'itms.vyzvy_vyhlasene_fondy',
+                          association_foreign_key: :fond_id,
+                          foreign_key: :vyzva_id
 
   has_many :konkretne_ciele_typy_aktivit,
            class_name: Itms::AnnouncedProposalCallSpecificGoalActivityType,
-           foreign_key: 'vyzva_id'
+           foreign_key: 'vyzva_id',
+           dependent: :destroy
 
-  has_many :vyzvy_vyhlasene_kontaktne_osoby,
-           class_name: Itms::AnnouncedProposalCallContactPerson,
-           foreign_key: 'vyzva_id'
-  has_many :kontaktne_osoby,
-           through: :vyzvy_vyhlasene_kontaktne_osoby,
-           source: :osoba
+  has_and_belongs_to_many :kontaktne_osoby,
+                          class_name: Itms::Person,
+                          join_table: 'itms.vyzvy_vyhlasene_kontaktne_osoby',
+                          association_foreign_key: :osoba_id,
+                          foreign_key: :vyzva_id
 
-  has_many :vyzvy_vyhlasene_vyzvy_planovane,
-           class_name: Itms::AnnouncedProposalCallPlannedProposalCall,
-           foreign_key: 'vyhlasena_vyzva_id'
-  has_many :planovane_vyzvy,
-           through: :vyzvy_vyhlasene_vyzvy_planovane,
-           source: :planovana_vyzva
+  has_and_belongs_to_many :planovane_vyzvy,
+                          class_name: Itms::PlannedProposalCall,
+                          join_table: 'itms.vyzvy_vyhlasene_vyzvy_planovane',
+                          association_foreign_key: :planovana_vyzva_id,
+                          foreign_key: :vyhlasena_vyzva_id
 
-  has_many :vyzvy_vyhlasene_poskytovatelia,
-           class_name: Itms::AnnouncedProposalCallProvider,
-           foreign_key: 'vyzva_id'
-  has_many :poskytovatelia,
-           through: :vyzvy_vyhlasene_poskytovatelia,
-           source: :poskytovatel
+  has_and_belongs_to_many :poskytovatelia,
+                          class_name: Itms::Subject,
+                          join_table: 'itms.vyzvy_vyhlasene_poskytovatelia',
+                          association_foreign_key: :poskytovatel_id,
+                          foreign_key: :vyzva_id
 
   has_many :posudzovane_obdobia,
            class_name: Itms::AnnouncedProposalCallEvaluationPeriod,
-           foreign_key: 'vyzva_id'
+           foreign_key: 'vyzva_id',
+           dependent: :destroy
 end
