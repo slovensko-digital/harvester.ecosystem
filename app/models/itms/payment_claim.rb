@@ -6,5 +6,8 @@ class Itms::PaymentClaim < ApplicationRecord
   belongs_to :predkladana_za, class_name: Itms::Subject
   belongs_to :prijimatel, class_name: Itms::Subject
   belongs_to :projekt, class_name: Itms::Project
-  has_many :deklarovane_vydavky, class_name: Itms::DeclaredExpense, foreign_key: 'zop_id'
+  has_many :deklarovane_vydavky,
+           class_name: Itms::DeclaredExpense,
+           foreign_key: 'zop_id',
+           dependent: :destroy
 end

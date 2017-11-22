@@ -1,0 +1,83 @@
+[
+  {
+    "createdAt": "2015-11-25T15:59:03.998Z",
+    "datumPrijatia": "2015-11-27T00:00:00Z",
+    "href": "/v2/zop/predlozene/2",
+    "id": 2,
+    "kod": "310041A077100101",
+    "narokovanaSuma": 4000000,
+    "predkladanaZa": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "prijimatel": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/8",
+      "id": 8
+    },
+    "typ": "ZALOHA",
+    "updatedAt": "2016-04-20T10:54:44.57Z",
+    "zopPredlozenaZaViacSubjektov": false
+  },
+  {
+    "createdAt": "2015-12-14T09:52:03.814Z",
+    "datumPrijatia": "2015-12-14T00:00:00Z",
+    "href": "/v2/zop/predlozene/3",
+    "id": 3,
+    "kod": "311071A092100101",
+    "narokovanaSuma": 7177500,
+    "predkladanaZa": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "prijimatel": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/10",
+      "id": 10
+    },
+    "typ": "ZALOHA",
+    "updatedAt": "2016-01-12T09:31:44.652Z",
+    "zopPredlozenaZaViacSubjektov": false
+  },
+  {
+    "createdAt": "2016-01-13T14:01:40.645Z",
+    "datumPrijatia": "2016-01-18T00:00:00Z",
+    "href": "/v2/zop/predlozene/4",
+    "id": 4,
+    "kod": "312041A136100101",
+    "narokovanaSuma": 500000,
+    "predkladanaZa": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "prijimatel": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/12",
+      "id": 12
+    },
+    "typ": "ZALOHA",
+    "updatedAt": "2016-02-09T11:31:11.519Z",
+    "zopPredlozenaZaViacSubjektov": false
+  }
+]
