@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncAllProcurementContractsJob, type: :job do
-  let(:downloader) { double(:downloader) }
+  include_context 'itms_downloader'
+  let(:procurement) { }
 
   context '#perform' do
     ActiveJob::Base.queue_adapter = :test
@@ -21,7 +22,9 @@ RSpec.describe Itms::SyncAllProcurementContractsJob, type: :job do
       subject.perform(downloader: downloader)
 
       expect(Itms::SyncProcurementContractJob).to have_been_enqueued.exactly(3).times
-      expect(Itms::SyncProcurementContractJob).to have_been_enqueued.with('/v2/zmluvaVerejneObstaravanie/342').at_least(:once)
+      expect(Itms::SyncProcurementContractJob).to have_been_enqueued.with('/v2/zmluvaVerejneObstaravanie/342', Itms::Procurement.find_by!(itms_id: 2))
+      expect(Itms::SyncProcurementContractJob).to have_been_enqueued.with('/v2/zmluvaVerejneObstaravanie/342', Itms::Procurement.find_by!(itms_id: 5))
+      expect(Itms::SyncProcurementContractJob).to have_been_enqueued.with('/v2/zmluvaVerejneObstaravanie/342', Itms::Procurement.find_by!(itms_id: 10))
     end
   end
 end

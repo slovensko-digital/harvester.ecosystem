@@ -5,14 +5,25 @@ class Itms::SyncAllProcurementContractsJob < ItmsJob
     response = downloader.get('https://opendata.itms2014.sk/v2/verejneObstaravania')
     procurements_ids = JSON.parse(response.body).map { |json| json['id'] }
 
-    procurement_contracts_hrefs = []
-    procurements_ids.map do |op_id|
-      response = downloader.get("https://opendata.itms2014.sk/v2/verejneObstaravania/#{op_id}/zmluvyVerejneObstaravanie")
-      procurement_contracts_hrefs.concat(JSON.parse(response.body).map { |json| json['href'] })
-    end
+    procurements_ids.map do |procurement_itms_id|
+      procurement = find_or_create_procurement_by_itms_id(procurement_itms_id, downloader)
 
-    procurement_contracts_hrefs.map do |href|
-      Itms::SyncProcurementContractJob.perform_later(href)
+      response = downloader.get("https://opendata.itms2014.sk/v2/verejneObstaravania/#{procurement_itms_id}/zmluvyVerejneObstaravanie")
+      procurement_contracts_hrefs = JSON.parse(response.body).map { |json| json['href'] }
+
+      procurement_contracts_hrefs.map do |href|
+        Itms::SyncProcurementContractJob.perform_later(href, procurement)
+      end
     end
+  end
+
+  private
+
+  def find_or_create_procurement_by_itms_id(procurement_itms_id, downloader)
+    existing_object = Itms::Procurement.find_by(itms_id: procurement_itms_id)
+    return existing_object if existing_object.present?
+
+    Itms::SyncProcurementJob.perform_now("/v2/verejneObstaravania/#{procurement_itms_id}", downloader: downloader)
+    Itms::Procurement.find_by!(itms_id: procurement_itms_id)
   end
 end
