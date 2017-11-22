@@ -1,0 +1,75 @@
+[
+  {
+    "alokaciaEU": 10000000,
+    "createdAt": "2015-05-25T13:24:21.95Z",
+    "datumUzavretia1Kolo": "2015-12-01T00:00:00Z",
+    "datumVyhlasenia1Kolo": "2015-09-01T00:00:00Z",
+    "druh": "VYZVA",
+    "href": "/v2/vyzvy/planovane/1",
+    "id": 1,
+    "kod": "2015/00001",
+    "konkretneCiele": [
+      {
+        "href": "/v2/konkretnyCiel/8",
+        "id": 8
+      }
+    ],
+    "nazov": "Start-up pre mladých vo vidieckych oblastiach",
+    "stav": "Zrušená",
+    "updatedAt": "2015-05-25T13:31:50.694Z",
+    "vyhlasovatel": {
+      "dic": "2020796338",
+      "href": "/v2/subjekty/100003",
+      "ico": "00681156",
+      "id": 100003
+    }
+  },
+  {
+    "alokaciaEU": 100000000,
+    "createdAt": "2015-05-27T10:17:40.163Z",
+    "datumVyhlasenia1Kolo": "2016-10-01T00:00:00Z",
+    "druh": "VYZVA",
+    "href": "/v2/vyzvy/planovane/2",
+    "id": 2,
+    "kod": "2015/00002",
+    "konkretneCiele": [
+      {
+        "href": "/v2/konkretnyCiel/38",
+        "id": 38
+      }
+    ],
+    "nazov": "výzva na predkladanie žiadostí o NFP - príprava na opätovné použitie a zhodnocovanie nie nebezpečného odpadu, triedený zber a predchádzanie vzniku BRKO – schéma regionálnej štátnej pomoci",
+    "stav": "Vyhlásená výzva",
+    "updatedAt": "2016-10-26T19:41:26.605Z",
+    "vyhlasovatel": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    }
+  },
+  {
+    "alokaciaEU": 40000000,
+    "createdAt": "2015-05-27T15:23:32.252Z",
+    "datumVyhlasenia1Kolo": "2016-10-01T00:00:00Z",
+    "druh": "VYZVA",
+    "href": "/v2/vyzvy/planovane/3",
+    "id": 3,
+    "kod": "2015/00003",
+    "konkretneCiele": [
+      {
+        "href": "/v2/konkretnyCiel/38",
+        "id": 38
+      }
+    ],
+    "nazov": "výzva na predkladanie žiadostí o NFP - príprava na opätovné použitie a recyklácia nebezpečného odpadu - schéma regionálnej štátnej pomoci",
+    "stav": "Vyhlásená výzva",
+    "updatedAt": "2016-10-26T19:46:17.257Z",
+    "vyhlasovatel": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    }
+  }
+]
