@@ -1,0 +1,41 @@
+[
+  {
+    "createdAt": "2015-11-23T19:25:28.679Z",
+    "href": "/v2/verejneObstaravania/2",
+    "id": 2,
+    "kod": "VO66152197",
+    "obstaravatelSubjekt": {
+      "href": "/v2/subjekty/100184",
+      "id": 100184
+    },
+    "predpokladanaHodnotaZakazky": 328405,
+    "stav": "Ukončené",
+    "updatedAt": "2016-11-14T11:22:23.307Z"
+  },
+  {
+    "createdAt": "2015-11-26T12:37:18.111Z",
+    "href": "/v2/verejneObstaravania/5",
+    "id": 5,
+    "kod": "VO52480737",
+    "obstaravatelSubjekt": {
+      "href": "/v2/subjekty/100090",
+      "id": 100090
+    },
+    "predpokladanaHodnotaZakazky": 11500574.61,
+    "stav": "Ukončené",
+    "updatedAt": "2017-01-25T10:26:39.109Z"
+  },
+  {
+    "createdAt": "2015-12-16T15:38:52.035Z",
+    "href": "/v2/verejneObstaravania/10",
+    "id": 10,
+    "kod": "VO93319725",
+    "obstaravatelSubjekt": {
+      "href": "/v2/subjekty/100009",
+      "id": 100009
+    },
+    "predpokladanaHodnotaZakazky": 550000,
+    "stav": "Ukončené",
+    "updatedAt": "2016-11-07T15:49:00.707Z"
+  }
+]
