@@ -57,8 +57,8 @@ RSpec.describe Itms::SyncDiscrepancyJob, type: :job do
         suvisiace_verejne_obstaravania: [Itms::Procurement.find_by!(itms_id: 219)],
         suvisiace_zop: [Itms::PaymentClaim.find_by!(itms_id: 123)],
         typy_nezrovnalosti: [
-          Itms::CodelistValue.where_codelist_and_value(1075, 113).first!,
-          Itms::CodelistValue.where_codelist_and_value(1075, 105).first!,
+            Itms::CodelistValue.where_codelist_and_value(1075, 113).first!,
+            Itms::CodelistValue.where_codelist_and_value(1075, 105).first!,
         ],
         vratena_suma: 23.68,
         vratena_suma_zdroj_eu: 20.13,
