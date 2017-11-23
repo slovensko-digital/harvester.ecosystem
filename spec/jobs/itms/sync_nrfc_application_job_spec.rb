@@ -249,6 +249,7 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
       expect_received_attributes(nrfc_application)
       expect(nrfc_application).to have_attributes(
         itms_href: "/v2/zonfp/prijate/1",
+        ekosystem_stav: 'prijate',
       )
     end
     
@@ -278,6 +279,7 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
       expect_received_attributes(nrfc_application)
       expect(nrfc_application).to have_attributes(
         itms_href: "/v2/zonfp/schvalene/1",
+        ekosystem_stav: 'schvalene',
 
         aktivity_projekt: [
             Itms::NrfcApplicationActivity.find_by!(
@@ -358,6 +360,7 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
       expect_received_attributes(nrfc_application)
       expect(nrfc_application).to have_attributes(
         itms_href: "/v2/zonfp/zamietnute/1",
+        ekosystem_stav: 'zamietnute',
 
         datum_zamietnutia: DateTime.parse('2015-11-24T00:00:00Z'),
         vysledok_konania: Itms::CodelistValue.where_codelist_and_value(1062, 1).first!,

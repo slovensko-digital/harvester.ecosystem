@@ -5,6 +5,7 @@ class CreateItmsProjectsV2 < ActiveRecord::Migration[5.0]
       t.string :itms_href
       t.datetime :itms_created_at
       t.datetime :itms_updated_at
+      t.string :ekosystem_stav
 
       t.string :akronym
       t.string :cislo_zmluvy

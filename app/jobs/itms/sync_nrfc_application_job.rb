@@ -22,6 +22,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     na.itms_href = json['href']
     na.itms_created_at = json['createdAt']
     na.itms_updated_at = json['updatedAt']
+    na.ekosystem_stav = json['href'].split('/')[3]
 
     na.akronym = json['akronym']
     na.aktivity_projekt = find_or_create_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt, downloader)
@@ -61,6 +62,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     json = downloader.get_json_from_href(href)
 
     na.itms_href = json['href']
+    na.ekosystem_stav = json['href'].split('/')[3]
     na.aktivity_projekt = find_or_create_approved_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt)
 
     na.datum_schvalenia = json['datumSchvalenia']
@@ -88,6 +90,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     json = downloader.get_json_from_href(href)
 
     na.itms_href = json['href']
+    na.ekosystem_stav = json['href'].split('/')[3]
 
     na.datum_zamietnutia = json['datumZamietnutia']
     na.vysledok_konania = find_or_create_codelist_value_by_json(json['vysledokKonania'], downloader)

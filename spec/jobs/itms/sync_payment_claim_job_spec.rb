@@ -84,6 +84,7 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
       expect_submitted_attributes(payment_claim)
       expect(payment_claim).to have_attributes(
          itms_href: '/v2/zop/predlozene/123',
+         ekosystem_stav: 'predlozene',
       )
     end
 
@@ -115,6 +116,7 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
 
       expect(payment_claim).to have_attributes(
         itms_href: '/v2/zop/uhradene/123',
+        ekosystem_stav: 'uhradene',
         datum_uhrady: DateTime.parse('2016-12-14T00:00:00Z'),
         schvalena_suma: 822394.8
       )
@@ -159,14 +161,9 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
 
       expect(payment_claim).to have_attributes(
         itms_href: '/v2/zop/zamietnute/123',
+        ekosystem_stav: 'zamietnute',
         datum_zamietnutia: DateTime.parse('2016-02-17T13:43:26.732Z'),
         stav_zamietnutej_zop: 'Stiahnutá prijímateľom (K)'
-      )
-    end
-
-    pending 'attributes with lacking examples' do
-      expect(Itms::PaymentClaim.first).to respond_to(
-        :predkladana_za_subjekty,
       )
     end
   end

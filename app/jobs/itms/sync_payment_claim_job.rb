@@ -22,6 +22,8 @@ class Itms::SyncPaymentClaimJob < ItmsJob
     pc.itms_href = json['href']
     pc.itms_created_at = json['createdAt']
     pc.itms_updated_at = json['updatedAt']
+    pc.ekosystem_stav = json['href'].split('/')[3]
+
     pc.datum_prijatia = json['datumPrijatia']
     pc.hlavny_cehranicny_partner = find_or_create_subject_by_json(json['hlavnyCehranicnyPartner'], downloader)
     pc.kod = json['kod']
@@ -45,6 +47,8 @@ class Itms::SyncPaymentClaimJob < ItmsJob
     json = downloader.get_json_from_href(href)
 
     pc.itms_href = json['href']
+    pc.ekosystem_stav = json['href'].split('/')[3]
+
     pc.datum_uhrady = json['datumUhrady']
     pc.deklarovane_vydavky = find_or_create_declared_expenses_by_json(json['schvaleneDeklarovaneVydavky'], pc.deklarovane_vydavky, downloader)
     pc.schvalena_suma = json['schvalenaSuma']
@@ -57,6 +61,8 @@ class Itms::SyncPaymentClaimJob < ItmsJob
     json = downloader.get_json_from_href(href)
 
     pc.itms_href = json['href']
+    pc.ekosystem_stav = json['href'].split('/')[3]
+
     pc.datum_zamietnutia = json['datumZamietnutia']
     pc.stav_zamietnutej_zop = json['stavZamietnutejZop']
   end

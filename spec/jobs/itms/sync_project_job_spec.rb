@@ -4,19 +4,22 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
   include_context "itms_downloader"
 
   context '#perform' do
-    it 'syncs project and all of its attributes' do
+    before(:each) do
       expect(downloader)
           .to receive(:get_json_from_href)
           .with('/v2/projekty/ukoncene/31')
           .and_return(itms_json_fixture('projekt_item.json'))
 
       subject.perform('/v2/projekty/ukoncene/31', downloader: downloader)
+    end
 
+    it 'syncs project and all of its attributes' do
       expect(Itms::Project.first).to have_attributes(
         itms_id: 31,
         itms_href: '/v2/projekty/ukoncene/31',
         itms_created_at: DateTime.parse('2016-02-19T09:15:40.868Z'),
         itms_updated_at: DateTime.parse('2017-06-30T09:32:14.961Z'),
+        ekosystem_stav: 'ukoncene',
 
         akronym: 'MET OPII',
         aktivity: [
@@ -232,9 +235,10 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
       )
     end
 
-    pending 'attributes to be implemented' do
+    it 'syncs dataProjektu' do
+      pending 'waiting on https://itms3.axonpro.sk/browse/ITMSC-11386'
       expect(Itms::Project.first).to respond_to(
-        :data_projektu, # Waiting on https://itms3.axonpro.sk/browse/ITMSC-11386
+        :data_projektu,
       )
     end
   end

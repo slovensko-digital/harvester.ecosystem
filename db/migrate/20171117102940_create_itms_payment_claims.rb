@@ -21,6 +21,7 @@ class CreateItmsPaymentClaims < ActiveRecord::Migration[5.0]
       t.string :itms_href
       t.datetime :itms_created_at
       t.datetime :itms_updated_at
+      t.string :ekosystem_stav
 
       t.datetime :datum_prijatia
       t.datetime :datum_uhrady
