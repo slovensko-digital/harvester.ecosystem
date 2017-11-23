@@ -40,6 +40,14 @@ class CreateItmsPaymentClaims < ActiveRecord::Migration[5.0]
       t.boolean :zop_predlozena_za_viac_subjektov
     end
 
+    create_table 'itms.zop_predkladane_za_subjekty' do |t|
+      t.references :zop, null: false, foreign_key: { to_table: 'itms.zop' }
+
+      t.boolean :plati_sa_priamo_subjektu
+      t.references :subjekt, foreign_key: { to_table: 'itms.subjekty' }
+      t.string :typ_subjektu_na_projekte
+    end
+
     create_table 'itms.deklarovane_vydavky' do |t|
       t.integer :itms_id, null: false, index: { unique: true}
       t.references :zop, null: false, foreign_key: { to_table: 'itms.zop' }

@@ -12,6 +12,18 @@
     "ico": "00151866",
     "id": 100004
   },
+  "predkladanaZaSubjekty": [
+    {
+      "platiSaPriamoSubjektu": false,
+      "subjekt": {
+        "dic": "2020571520",
+        "href": "/v2/subjekty/100004",
+        "ico": "00151866",
+        "id": 100004
+      },
+      "typSubjektuNaProjekte": "Cupiditate commodi minus."
+    }
+  ],
   "prijimatel": {
     "dic": "2020571520",
     "href": "/v2/subjekty/100004",

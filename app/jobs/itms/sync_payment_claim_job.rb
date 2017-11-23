@@ -28,6 +28,7 @@ class Itms::SyncPaymentClaimJob < ItmsJob
     pc.narokovana_suma = json['narokovanaSuma']
     pc.predfinancovanie = find_or_create_payment_claim_by_json(json['predfinancovanie'], downloader)
     pc.predkladana_za = find_or_create_subject_by_json(json['predkladanaZa'], downloader)
+    pc.predkladana_za_subjekty = find_or_create_submitting_subjects_by_json(json['predkladanaZaSubjekty'], pc.predkladana_za_subjekty, downloader)
     pc.deklarovane_vydavky = find_or_create_declared_expenses_by_json(json['predlozeneDeklarovaneVydavky'], pc.deklarovane_vydavky, downloader)
     pc.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)
     pc.projekt = find_or_create_project_by_json(json['projekt'], downloader)
@@ -120,6 +121,18 @@ class Itms::SyncPaymentClaimJob < ItmsJob
           druh_neschvalenej_sumy: json['druhNeziadanejSumy'],
           suma_neschvalena: json['sumaNeziadana'],
       )
+    end
+  end
+
+  def find_or_create_submitting_subjects_by_json(json_list, scope, downloader)
+    return [] if json_list.blank?
+
+    json_list.map do |json|
+      scope.find_or_create_by!(
+          plati_sa_priamo_subjektu: json['platiSaPriamoSubjektu'],
+          subjekt: find_or_create_subject_by_json(json['subjekt'], downloader),
+          typ_subjektu_na_projekte: json['typSubjektuNaProjekte'],
+          )
     end
   end
 end

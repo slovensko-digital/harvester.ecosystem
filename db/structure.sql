@@ -386,39 +386,6 @@ ALTER SEQUENCE intenzity_zdroje_id_seq OWNED BY intenzity_zdroje.id;
 
 
 --
--- Name: kody; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE kody (
-    id integer NOT NULL,
-    kod_id integer,
-    kod_zdroj character varying,
-    nazov character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: kody_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE kody_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: kody_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE kody_id_seq OWNED BY kody.id;
-
-
---
 -- Name: konkretne_ciele; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -3360,6 +3327,38 @@ CREATE SEQUENCE zop_id_seq
 ALTER SEQUENCE zop_id_seq OWNED BY zop.id;
 
 
+--
+-- Name: zop_predkladane_za_subjekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zop_predkladane_za_subjekty (
+    id integer NOT NULL,
+    zop_id integer NOT NULL,
+    plati_sa_priamo_subjektu boolean,
+    subjekt_id integer,
+    typ_subjektu_na_projekte character varying
+);
+
+
+--
+-- Name: zop_predkladane_za_subjekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zop_predkladane_za_subjekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zop_predkladane_za_subjekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zop_predkladane_za_subjekty_id_seq OWNED BY zop_predkladane_za_subjekty.id;
+
+
 SET search_path = public, pg_catalog;
 
 --
@@ -3485,13 +3484,6 @@ ALTER TABLE ONLY intenzity ALTER COLUMN id SET DEFAULT nextval('intenzity_id_seq
 --
 
 ALTER TABLE ONLY intenzity_zdroje ALTER COLUMN id SET DEFAULT nextval('intenzity_zdroje_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY kody ALTER COLUMN id SET DEFAULT nextval('kody_id_seq'::regclass);
 
 
 --
@@ -4068,6 +4060,13 @@ ALTER TABLE ONLY zonfp_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('zonfp_ty
 ALTER TABLE ONLY zop ALTER COLUMN id SET DEFAULT nextval('zop_id_seq'::regclass);
 
 
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predkladane_za_subjekty ALTER COLUMN id SET DEFAULT nextval('zop_predkladane_za_subjekty_id_seq'::regclass);
+
+
 SET search_path = upvs, pg_catalog;
 
 --
@@ -4149,14 +4148,6 @@ ALTER TABLE ONLY intenzity
 
 ALTER TABLE ONLY intenzity_zdroje
     ADD CONSTRAINT intenzity_zdroje_pkey PRIMARY KEY (id);
-
-
---
--- Name: kody_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY kody
-    ADD CONSTRAINT kody_pkey PRIMARY KEY (id);
 
 
 --
@@ -4813,6 +4804,14 @@ ALTER TABLE ONLY zonfp_typy_uzemia
 
 ALTER TABLE ONLY zop
     ADD CONSTRAINT zop_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zop_predkladane_za_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predkladane_za_subjekty
+    ADD CONSTRAINT zop_predkladane_za_subjekty_pkey PRIMARY KEY (id);
 
 
 SET search_path = public, pg_catalog;
@@ -6679,6 +6678,20 @@ CREATE INDEX "index_itms.zop_on_prijimatel_id" ON zop USING btree (prijimatel_id
 CREATE INDEX "index_itms.zop_on_projekt_id" ON zop USING btree (projekt_id);
 
 
+--
+-- Name: index_itms.zop_predkladane_za_subjekty_on_subjekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_subjekt_id" ON zop_predkladane_za_subjekty USING btree (subjekt_id);
+
+
+--
+-- Name: index_itms.zop_predkladane_za_subjekty_on_zop_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_zop_id" ON zop_predkladane_za_subjekty USING btree (zop_id);
+
+
 SET search_path = upvs, pg_catalog;
 
 --
@@ -6823,6 +6836,14 @@ ALTER TABLE ONLY zonfp_organizacne_zlozky
 
 ALTER TABLE ONLY zonfp_formy_financovania
     ADD CONSTRAINT fk_rails_0f3db1df5e FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+
+
+--
+-- Name: fk_rails_12b29bdafe; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predkladane_za_subjekty
+    ADD CONSTRAINT fk_rails_12b29bdafe FOREIGN KEY (zop_id) REFERENCES zop(id);
 
 
 --
@@ -6975,6 +6996,14 @@ ALTER TABLE ONLY verejne_obstaravania_projekty
 
 ALTER TABLE ONLY projekty
     ADD CONSTRAINT fk_rails_262be0aab1 FOREIGN KEY (prijimatel_id) REFERENCES subjekty(id);
+
+
+--
+-- Name: fk_rails_2c548e6f82; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zop_predkladane_za_subjekty
+    ADD CONSTRAINT fk_rails_2c548e6f82 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
 
 
 --
