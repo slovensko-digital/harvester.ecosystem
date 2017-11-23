@@ -12,9 +12,9 @@ RSpec.describe Itms::SyncAccountingDocumentJob, type: :job do
   context '#perform' do
     it 'syncs accounting document and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/uctovneDoklady/3172')
-          .and_return(double(body: itms_file_fixture('uctovny_doklad_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/uctovneDoklady/3172')
+          .and_return(itms_json_fixture('uctovny_doklad_item.json'))
           .once
 
       subject.perform('/v2/uctovneDoklady/3172', downloader: downloader)

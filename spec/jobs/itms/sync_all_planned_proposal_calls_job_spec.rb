@@ -8,9 +8,9 @@ RSpec.describe Itms::SyncAllPlannedProposalCallsJob, type: :job do
 
     it 'syncs all planned proposal calls' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/vyzvy/planovane')
-          .and_return(double(body: itms_file_fixture('vyzva_planovana_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/vyzvy/planovane')
+          .and_return(itms_json_fixture('vyzva_planovana_list.json'))
 
       subject.perform(downloader: downloader)
 

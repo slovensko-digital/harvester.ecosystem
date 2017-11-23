@@ -230,18 +230,18 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
 
     it 'syncs received nrfc application and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zonfp/prijate/1')
-          .and_return(double(body: itms_file_fixture('zonfp_prijata_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zonfp/prijate/1')
+          .and_return(itms_json_fixture('zonfp_prijata_item.json'))
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zonfp/schvalene/1')
+          .to receive(:href_exists?)
+          .with('/v2/zonfp/schvalene/1')
           .and_return(false)
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zonfp/zamietnute/1')
+          .to receive(:href_exists?)
+          .with('/v2/zonfp/zamietnute/1')
           .and_return(false)
 
       subject.perform('/v2/zonfp/prijate/1', downloader: downloader)
@@ -254,23 +254,23 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
     
     it 'syncs approved nrfc application and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zonfp/prijate/1')
-          .and_return(double(body: itms_file_fixture('zonfp_prijata_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zonfp/prijate/1')
+          .and_return(itms_json_fixture('zonfp_prijata_item.json'))
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zonfp/schvalene/1')
+          .to receive(:href_exists?)
+          .with('/v2/zonfp/schvalene/1')
           .and_return(true)
 
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zonfp/schvalene/1')
-          .and_return(double(body: itms_file_fixture('zonfp_schvalena_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zonfp/schvalene/1')
+          .and_return(itms_json_fixture('zonfp_schvalena_item.json'))
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zonfp/zamietnute/1')
+          .to receive(:href_exists?)
+          .with('/v2/zonfp/zamietnute/1')
           .and_return(false)
 
       subject.perform('/v2/zonfp/schvalene/1', downloader: downloader)
@@ -334,24 +334,24 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
 
     it 'syncs rejected nrfc application and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zonfp/prijate/1')
-          .and_return(double(body: itms_file_fixture('zonfp_prijata_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zonfp/prijate/1')
+          .and_return(itms_json_fixture('zonfp_prijata_item.json'))
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zonfp/schvalene/1')
+          .to receive(:href_exists?)
+          .with('/v2/zonfp/schvalene/1')
           .and_return(false)
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zonfp/zamietnute/1')
+          .to receive(:href_exists?)
+          .with('/v2/zonfp/zamietnute/1')
           .and_return(true)
 
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zonfp/zamietnute/1')
-          .and_return(double(body: itms_file_fixture('zonfp_zamietnuta_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zonfp/zamietnute/1')
+          .and_return(itms_json_fixture('zonfp_zamietnuta_item.json'))
 
       subject.perform('/v2/zonfp/zamietnute/1', downloader: downloader)
 

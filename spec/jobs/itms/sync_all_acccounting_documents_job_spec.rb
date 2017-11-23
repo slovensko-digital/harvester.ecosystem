@@ -8,9 +8,9 @@ RSpec.describe Itms::SyncAllAccountingDocumentsJob, type: :job do
 
     it 'syncs all accounting documents' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/uctovneDoklady')
-          .and_return(double(body: itms_file_fixture('uctovny_doklad_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/uctovneDoklady')
+          .and_return(itms_json_fixture('uctovny_doklad_list.json'))
 
       subject.perform(downloader: downloader)
 

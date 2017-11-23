@@ -1,5 +1,3 @@
-require 'harvester_utils/downloader'
-
 class Itms::SyncAllActivitiesJob < ItmsJob
   def perform
     Itms::Activity.find_each do |activity|

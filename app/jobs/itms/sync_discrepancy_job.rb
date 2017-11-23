@@ -1,13 +1,9 @@
-require 'harvester_utils/downloader'
-
 class Itms::SyncDiscrepancyJob < ItmsJob
-  def perform(itms_href, downloader: HarvesterUtils::Downloader)
-    response = downloader.get("https://opendata.itms2014.sk#{itms_href}")
-    json = JSON.parse(response.body)
-    itms_id = itms_href.split('/').last
+  def perform(itms_href, downloader: ItmsJob::Downloader)
+    json = downloader.get_json_from_href(itms_href)
 
     ActiveRecord::Base.transaction do
-      d = Itms::Discrepancy.find_or_create_by!(itms_id: itms_id)
+      d = Itms::Discrepancy.find_or_create_by!(itms_id: json['id'])
       d.itms_href = json['href']
       d.itms_created_at = json['createdAt']
       d.itms_updated_at = json['updatedAt']

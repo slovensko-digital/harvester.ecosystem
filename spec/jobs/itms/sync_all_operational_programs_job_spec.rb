@@ -8,9 +8,9 @@ RSpec.describe Itms::SyncAllOperationalProgramsJob, type: :job do
 
     it 'syncs all operational programs' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/operacneProgramy')
-          .and_return(double(body: itms_file_fixture('operacny_program_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/operacneProgramy')
+          .and_return(itms_json_fixture('operacny_program_list.json'))
 
       subject.perform(downloader: downloader)
 

@@ -1,4 +1,25 @@
+require 'harvester_utils/downloader'
+
 class ItmsJob < ApplicationJob
+  class Downloader
+    DownloadError = Class.new(StandardError)
+    API_ENDPOINT = 'https://opendata.itms2014.sk'
+
+    def self.href_exists?(href)
+      url_exists?("#{API_ENDPOINT}#{href}")
+    end
+    
+    def self.get_json_from_href(href)
+      response = get("#{API_ENDPOINT}#{href}")
+      JSON.parse(response.body)
+    end
+
+    def self.get(url)
+      response = HarvesterUtils::Downloader.get(url)
+      raise DownloadError, "Unexpected response code: #{response.code} for url: #{url}" if response.code != 200
+      response
+    end
+  end
 
   [
       Itms::Activity,

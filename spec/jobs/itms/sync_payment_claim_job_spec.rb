@@ -57,19 +57,19 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
 
     it 'syncs submitted payment claim and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zop/predlozene/123')
-          .and_return(double(body: itms_file_fixture('zop_predlozena_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zop/predlozene/123')
+          .and_return(itms_json_fixture('zop_predlozena_item.json'))
           .once
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zop/uhradene/123')
+          .to receive(:href_exists?)
+          .with('/v2/zop/uhradene/123')
           .and_return(false)
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zop/zamietnute/123')
+          .to receive(:href_exists?)
+          .with('/v2/zop/zamietnute/123')
           .and_return(false)
 
       subject.perform('/v2/zop/uhradene/123', downloader: downloader)
@@ -82,24 +82,24 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
 
     it 'syncs paid payment claim and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zop/predlozene/123')
-          .and_return(double(body: itms_file_fixture('zop_predlozena_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zop/predlozene/123')
+          .and_return(itms_json_fixture('zop_predlozena_item.json'))
           .once
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zop/uhradene/123')
+          .to receive(:href_exists?)
+          .with('/v2/zop/uhradene/123')
           .and_return(true)
 
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zop/uhradene/123')
-          .and_return(double(body: itms_file_fixture('zop_uhradena_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zop/uhradene/123')
+          .and_return(itms_json_fixture('zop_uhradena_item.json'))
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zop/zamietnute/123')
+          .to receive(:href_exists?)
+          .with('/v2/zop/zamietnute/123')
           .and_return(false)
 
       subject.perform('/v2/zop/predlozene/123', downloader: downloader)
@@ -126,25 +126,25 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
 
     it 'syncs rejected payment claim and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zop/predlozene/123')
-          .and_return(double(body: itms_file_fixture('zop_predlozena_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zop/predlozene/123')
+          .and_return(itms_json_fixture('zop_predlozena_item.json'))
           .once
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zop/uhradene/123')
+          .to receive(:href_exists?)
+          .with('/v2/zop/uhradene/123')
           .and_return(false)
 
       expect(downloader)
-          .to receive(:url_exists?)
-          .with('https://opendata.itms2014.sk/v2/zop/zamietnute/123')
+          .to receive(:href_exists?)
+          .with('/v2/zop/zamietnute/123')
           .and_return(true)
 
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zop/zamietnute/123')
-          .and_return(double(body: itms_file_fixture('zop_zamietnuta_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zop/zamietnute/123')
+          .and_return(itms_json_fixture('zop_zamietnuta_item.json'))
 
       subject.perform('/v2/zop/zamietnute/123', downloader: downloader)
 

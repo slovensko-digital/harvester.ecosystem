@@ -1,18 +1,14 @@
-require 'harvester_utils/downloader'
-
 class Itms::SyncAllProcurementContractsJob < ItmsJob
-  def perform(downloader: HarvesterUtils::Downloader)
-    response = downloader.get('https://opendata.itms2014.sk/v2/verejneObstaravania')
-    procurements_ids = JSON.parse(response.body).map { |json| json['id'] }
+  def perform(downloader: ItmsJob::Downloader)
+    procurements_json = downloader.get_json_from_href('/v2/verejneObstaravania')
+    procurements_ids = procurements_json.map { |json| json['id'] }
 
     procurements_ids.map do |procurement_itms_id|
       procurement = find_or_create_procurement_by_itms_id(procurement_itms_id, downloader)
 
-      response = downloader.get("https://opendata.itms2014.sk/v2/verejneObstaravania/#{procurement_itms_id}/zmluvyVerejneObstaravanie")
-      procurement_contracts_hrefs = JSON.parse(response.body).map { |json| json['href'] }
-
-      procurement_contracts_hrefs.map do |href|
-        Itms::SyncProcurementContractJob.perform_later(href, procurement)
+      procurement_contracts_json = downloader.get_json_from_href("/v2/verejneObstaravania/#{procurement_itms_id}/zmluvyVerejneObstaravanie")
+      procurement_contracts_json.map do |json|
+        Itms::SyncProcurementContractJob.perform_later(json['href'], procurement)
       end
     end
   end

@@ -6,9 +6,9 @@ RSpec.describe Itms::SyncBudgetItemJob, type: :job do
   context '#perform' do
     it 'syncs budget item and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/polozkaRozpoctu/1')
-          .and_return(double(body: itms_file_fixture('polozka_rozpoctu_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/polozkaRozpoctu/1')
+          .and_return(itms_json_fixture('polozka_rozpoctu_item.json'))
           .once
 
       subject.perform('/v2/polozkaRozpoctu/1', downloader: downloader)

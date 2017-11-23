@@ -6,9 +6,9 @@ RSpec.describe Itms::SyncPlannedProposalCallJob, type: :job do
   context '#perform' do
     it 'syncs planned call for proposals and all of its attributes' do
       expect(downloader)
-        .to receive(:get)
-        .with('https://opendata.itms2014.sk/v2/vyzvy/planovane/2')
-        .and_return(double(body: itms_file_fixture('vyzva_planovana_item.json')))
+        .to receive(:get_json_from_href)
+        .with('/v2/vyzvy/planovane/2')
+        .and_return(itms_json_fixture('vyzva_planovana_item.json'))
         .once
 
       subject.perform('/v2/vyzvy/planovane/2', downloader: downloader)

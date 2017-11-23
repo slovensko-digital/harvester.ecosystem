@@ -8,9 +8,9 @@ RSpec.describe Itms::SyncAllProjectIndicatorsJob, type: :job do
 
     it 'syncs all project_indicators' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/projektovyUkazovatel')
-          .and_return(double(body: itms_file_fixture('projektovy_ukazovatel_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/projektovyUkazovatel')
+          .and_return(itms_json_fixture('projektovy_ukazovatel_list.json'))
 
       subject.perform(downloader: downloader)
 

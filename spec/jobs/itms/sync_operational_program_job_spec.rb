@@ -6,9 +6,9 @@ RSpec.describe Itms::SyncOperationalProgramJob, type: :job do
   context '#perform' do
     it 'syncs subject and all its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/operacneProgramy/1')
-          .and_return(double(body: itms_file_fixture('operacny_program_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/operacneProgramy/1')
+          .and_return(itms_json_fixture('operacny_program_item.json'))
 
       subject.perform('/v2/operacneProgramy/1', downloader: downloader)
 
