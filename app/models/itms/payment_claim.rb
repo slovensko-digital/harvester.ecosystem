@@ -10,4 +10,8 @@ class Itms::PaymentClaim < ApplicationRecord
            class_name: Itms::DeclaredExpense,
            foreign_key: 'zop_id',
            dependent: :destroy
+  has_many :predkladana_za_subjekty,
+           class_name: Itms::PaymentClaimSubmittingSubject,
+           foreign_key: 'zop_id',
+           dependent: :destroy
 end

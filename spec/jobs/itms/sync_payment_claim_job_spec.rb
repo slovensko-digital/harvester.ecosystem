@@ -17,6 +17,13 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
         narokovana_suma: 822394.8,
         predfinancovanie: Itms::PaymentClaim.find_by!(itms_id: 123),
         predkladana_za: Itms::Subject.find_by!(itms_id: 100004),
+        predkladana_za_subjekty: [
+            Itms::PaymentClaimSubmittingSubject.find_by!(
+                plati_sa_priamo_subjektu: false,
+                subjekt: Itms::Subject.find_by!(itms_id: 100004),
+                typ_subjektu_na_projekte: 'Cupiditate commodi minus.'
+            )
+        ],
         deklarovane_vydavky: [
             Itms::DeclaredExpense.find_by!(itms_id: 45775),
         ],
