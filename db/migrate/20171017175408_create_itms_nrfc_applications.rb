@@ -68,6 +68,7 @@ class CreateItmsNrfcApplications < ActiveRecord::Migration[5.0]
       t.string :itms_href
       t.datetime :itms_created_at
       t.datetime :itms_updated_at
+      t.string :ekosystem_stav
 
       t.string :akronym
       t.datetime :datum_predlozenia

@@ -7,6 +7,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.itms_href = json['href']
       p.itms_created_at = json['createdAt']
       p.itms_updated_at = json['updatedAt']
+      p.ekosystem_stav = json['href'].split('/')[3]
 
       p.akronym = json['akronym']
       p.aktivity = find_or_create_activities_by_json(json['aktivity'], downloader)
