@@ -1,13 +1,9 @@
-require 'harvester_utils/downloader'
-
 class Itms::SyncActivityJob < ItmsJob
-  def perform(itms_href, downloader: HarvesterUtils::Downloader)
-    response = downloader.get("https://opendata.itms2014.sk#{itms_href}")
-    json = JSON.parse(response.body)
-    _, _, _, itms_id = itms_href.split('/')
+  def perform(itms_href, downloader: ItmsJob::Downloader)
+    json = downloader.get_json_from_href(itms_href)
 
     ActiveRecord::Base.transaction do
-      pa = Itms::Activity.find_or_create_by!(itms_id: itms_id)
+      pa = Itms::Activity.find_or_create_by!(itms_id: json['id'])
       pa.itms_href = json['href']
 
       pa.datum_konca_planovany = json['datumKoncaPlanovany']

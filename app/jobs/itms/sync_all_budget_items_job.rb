@@ -1,5 +1,3 @@
-require 'harvester_utils/downloader'
-
 class Itms::SyncAllBudgetItemsJob < ItmsJob
   def perform
     Itms::BudgetItem.find_each do |budget_item|

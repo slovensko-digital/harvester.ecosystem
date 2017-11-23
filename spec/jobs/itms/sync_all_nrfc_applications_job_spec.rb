@@ -8,9 +8,9 @@ RSpec.describe Itms::SyncAllNrfcApplicationsJob, type: :job do
 
     it 'syncs all announced proposal calls' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/zonfp/prijate')
-          .and_return(double(body: itms_file_fixture('zonfp_prijata_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/zonfp/prijate')
+          .and_return(itms_json_fixture('zonfp_prijata_list.json'))
 
       subject.perform(downloader: downloader)
 

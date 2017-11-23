@@ -8,21 +8,21 @@ RSpec.describe Itms::SyncAllSpecificGoalsJob, type: :job do
 
     it 'syncs all specific goals' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/operacneProgramy')
-          .and_return(double(body: itms_file_fixture('operacny_program_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/operacneProgramy')
+          .and_return(itms_json_fixture('operacny_program_list.json'))
           .once
 
       expect(downloader)
-          .to receive(:get)
+          .to receive(:get_json_from_href)
           .with(/\/v2\/operacneProgramy\/\d+\/prioritneOsi$/)
-          .and_return(double(body: itms_file_fixture('prioritna_os_list.json')))
+          .and_return(itms_json_fixture('prioritna_os_list.json'))
           .exactly(10).times
 
       expect(downloader)
-          .to receive(:get)
+          .to receive(:get_json_from_href)
           .with(/\/v2\/prioritnaOs\/\d+\/konkretneCiele$/)
-          .and_return(double(body: itms_file_fixture('konkretny_ciel_list.json')))
+          .and_return(itms_json_fixture('konkretny_ciel_list.json'))
           .exactly(10 * 5).times
 
       subject.perform(downloader: downloader)

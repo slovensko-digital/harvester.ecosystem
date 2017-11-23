@@ -8,9 +8,9 @@ RSpec.describe Itms::SyncCodelistJob, type: :job do
 
     it 'syncs a codelist (but not its values)' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/ciselniky')
-          .and_return(double(body: itms_file_fixture('ciselniky_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/ciselniky')
+          .and_return(itms_json_fixture('ciselniky_list.json'))
           .once
 
       subject.perform(1001, downloader: downloader)

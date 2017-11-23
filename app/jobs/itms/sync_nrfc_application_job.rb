@@ -1,9 +1,7 @@
-require 'harvester_utils/downloader'
-
 class Itms::SyncNrfcApplicationJob < ItmsJob
-  def perform(itms_href, downloader: HarvesterUtils::Downloader)
+  def perform(itms_href, downloader: ItmsJob::Downloader)
     itms_id = itms_href.split('/').last
-
+    
     ActiveRecord::Base.transaction do
       na = Itms::NrfcApplication.find_or_create_by!(itms_id: itms_id)
 
@@ -19,8 +17,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
   def sync_received_attributes(nrfc_application, downloader)
     na = nrfc_application
-    response = downloader.get("https://opendata.itms2014.sk/v2/zonfp/prijate/#{na.itms_id}")
-    json = JSON.parse(response.body)
+    json = downloader.get_json_from_href("/v2/zonfp/prijate/#{na.itms_id}")
 
     na.itms_href = json['href']
     na.itms_created_at = json['createdAt']
@@ -59,11 +56,9 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
   def sync_approved_attributes(nrfc_application, downloader)
     na = nrfc_application
-    url = "https://opendata.itms2014.sk/v2/zonfp/schvalene/#{na.itms_id}"
-    return unless downloader.url_exists?(url)
-
-    response = downloader.get(url)
-    json = JSON.parse(response.body)
+    href = "/v2/zonfp/schvalene/#{na.itms_id}"
+    return unless downloader.href_exists?(href)
+    json = downloader.get_json_from_href(href)
 
     na.itms_href = json['href']
     na.aktivity_projekt = find_or_create_approved_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt)
@@ -88,11 +83,9 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
   def sync_rejected_attributes(nrfc_application, downloader)
     na = nrfc_application
-    url = "https://opendata.itms2014.sk/v2/zonfp/zamietnute/#{na.itms_id}"
-    return unless downloader.url_exists?(url)
-
-    response = downloader.get(url)
-    json = JSON.parse(response.body)
+    href = "/v2/zonfp/zamietnute/#{na.itms_id}"
+    return unless downloader.href_exists?(href)
+    json = downloader.get_json_from_href(href)
 
     na.itms_href = json['href']
 

@@ -9,14 +9,14 @@ RSpec.describe Itms::SyncAllProcurementContractsJob, type: :job do
 
     it 'syncs all specific goals' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/verejneObstaravania')
-          .and_return(double(body: itms_file_fixture('verejne_obstaravanie_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/verejneObstaravania')
+          .and_return(itms_json_fixture('verejne_obstaravanie_list.json'))
 
       expect(downloader)
-          .to receive(:get)
+          .to receive(:get_json_from_href)
           .with(/\/v2\/verejneObstaravania\/\d+\/zmluvyVerejneObstaravanie$/)
-          .and_return(double(body: itms_file_fixture('zmluva_verejne_obstaravanie_list.json')))
+          .and_return(itms_json_fixture('zmluva_verejne_obstaravanie_list.json'))
           .exactly(3).times
 
       subject.perform(downloader: downloader)

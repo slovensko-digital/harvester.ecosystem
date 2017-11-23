@@ -1,10 +1,8 @@
-require 'harvester_utils/downloader'
-
 class Itms::SyncAllPaymentClaimsJob < ItmsJob
-  def perform(downloader: HarvesterUtils::Downloader)
-    response = downloader.get('https://opendata.itms2014.sk/v2/zop/predlozene')
-    hrefs = JSON.parse(response.body).map { |item| item['href'] }
-
-    hrefs.each { |href| Itms::SyncPaymentClaimJob.perform_later(href) }
+  def perform(downloader: ItmsJob::Downloader)
+    json_list = downloader.get_json_from_href('/v2/zop/predlozene')
+    json_list.map do |json|
+      Itms::SyncPaymentClaimJob.perform_later(json['href'])
+    end
   end
 end

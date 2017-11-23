@@ -1,13 +1,9 @@
-require 'harvester_utils/downloader'
-
 class Itms::SyncPlannedProposalCallJob < ItmsJob
-  def perform(itms_href, downloader: HarvesterUtils::Downloader)
-    response = downloader.get("https://opendata.itms2014.sk#{itms_href}")
-    json = JSON.parse(response.body)
-    itms_id = itms_href.split('/').last
+  def perform(itms_href, downloader: ItmsJob::Downloader)
+    json = downloader.get_json_from_href(itms_href)
 
     ActiveRecord::Base.transaction do
-      ppc = Itms::PlannedProposalCall.find_or_create_by!(itms_id: itms_id)
+      ppc = Itms::PlannedProposalCall.find_or_create_by!(itms_id: json['id'])
       ppc.itms_href = json['href']
       ppc.itms_created_at = json['createdAt']
       ppc.itms_updated_at = json['updatedAt']

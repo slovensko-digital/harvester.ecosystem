@@ -6,10 +6,9 @@ RSpec.describe Itms::SyncProjectJob, type: :job do
   context '#perform' do
     it 'syncs project and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with(include('https://opendata.itms2014.sk/v2/projekty/ukoncene/31'))
-          .and_return(double(body: itms_file_fixture('projekt_item.json')))
-          .at_least(:once)
+          .to receive(:get_json_from_href)
+          .with('/v2/projekty/ukoncene/31')
+          .and_return(itms_json_fixture('projekt_item.json'))
 
       subject.perform('/v2/projekty/ukoncene/31', downloader: downloader)
 

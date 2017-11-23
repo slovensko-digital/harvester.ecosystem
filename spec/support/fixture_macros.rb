@@ -10,6 +10,10 @@ module FixtureMacros
   def itms_file_fixture(file_name)
     file_fixture("fixtures/itms/#{file_name}")
   end
+
+  def itms_json_fixture(file_name)
+    JSON.parse(itms_file_fixture(file_name))
+  end
 end
 
 RSpec.configure do |config|

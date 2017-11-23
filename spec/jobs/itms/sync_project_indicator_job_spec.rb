@@ -6,9 +6,9 @@ RSpec.describe Itms::SyncProjectIndicatorJob, type: :job do
   context '#perform' do
     it 'syncs discrepancy and all of its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/projektovyUkazovatel/1')
-          .and_return(double(body: itms_file_fixture('projektovy_ukazovatel_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/projektovyUkazovatel/1')
+          .and_return(itms_json_fixture('projektovy_ukazovatel_item.json'))
 
       subject.perform('/v2/projektovyUkazovatel/1', downloader: downloader)
 

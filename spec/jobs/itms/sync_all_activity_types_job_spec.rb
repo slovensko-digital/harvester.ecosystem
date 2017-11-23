@@ -8,9 +8,9 @@ RSpec.describe Itms::SyncAllActivityTypesJob, type: :job do
 
     it 'syncs all activity types' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/typyAktivit')
-          .and_return(double(body: itms_file_fixture('typ_aktivity_list.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/typyAktivit')
+          .and_return(itms_json_fixture('typ_aktivity_list.json'))
 
       subject.perform(downloader: downloader)
 

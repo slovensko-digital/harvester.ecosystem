@@ -6,9 +6,9 @@ RSpec.describe Itms::SyncSpecificGoalJob, type: :job do
   context '#perform' do
     it 'syncs specific goal and all its attributes' do
       expect(downloader)
-          .to receive(:get)
-          .with('https://opendata.itms2014.sk/v2/konkretnyCiel/33')
-          .and_return(double(body: itms_file_fixture('konkretny_ciel_item.json')))
+          .to receive(:get_json_from_href)
+          .with('/v2/konkretnyCiel/33')
+          .and_return(itms_json_fixture('konkretny_ciel_item.json'))
 
       subject.perform('/v2/konkretnyCiel/33', downloader: downloader)
 
