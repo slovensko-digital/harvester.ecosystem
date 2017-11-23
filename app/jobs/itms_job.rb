@@ -1,6 +1,8 @@
 require 'harvester_utils/downloader'
 
 class ItmsJob < ApplicationJob
+  queue_as :itms
+
   class Downloader
     DownloadError = Class.new(StandardError)
     API_ENDPOINT = 'https://opendata.itms2014.sk'
