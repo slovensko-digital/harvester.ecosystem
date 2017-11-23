@@ -6,7 +6,7 @@ class ItmsJob < ApplicationJob
     API_ENDPOINT = 'https://opendata.itms2014.sk'
 
     def self.href_exists?(href)
-      url_exists?("#{API_ENDPOINT}#{href}")
+      HarvesterUtils::Downloader.url_exists?("#{API_ENDPOINT}#{href}")
     end
     
     def self.get_json_from_href(href)
