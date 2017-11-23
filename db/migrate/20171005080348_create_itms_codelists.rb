@@ -1,14 +1,5 @@
 class CreateItmsCodelists < ActiveRecord::Migration[5.0]
   def change
-    # TODO remove
-    create_table 'itms.kody' do |t|
-      t.integer :kod_id
-      t.string :kod_zdroj
-      t.string :nazov
-
-      t.timestamps
-    end
-
     create_table 'itms.ciselniky' do |t|
       t.integer :ciselnik_kod, null: false, index: { unique: true}
       t.string :nazov
