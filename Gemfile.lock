@@ -130,6 +130,8 @@ GEM
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
     redis (3.3.3)
+    rollbar (2.15.0)
+      multi_json
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -210,6 +212,7 @@ DEPENDENCIES
   pry
   puma
   rails (~> 5.0.2)
+  rollbar
   rspec-rails
   rspec_junit_formatter
   sidekiq

@@ -21,6 +21,7 @@ gem 'foreman'
 
 gem 'puma'
 gem 'newrelic_rpm'
+gem 'rollbar'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
