@@ -1,5 +1,5 @@
 class Itms::SyncPaymentClaimJob < ItmsJob
-  def perform(itms_href, downloader: HarvesterUtils::Downloader)
+  def perform(itms_href, downloader: ItmsJob::Downloader)
     itms_id = itms_href.split('/').last
 
     ActiveRecord::Base.transaction do
