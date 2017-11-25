@@ -1,10 +1,8 @@
-require 'harvester_utils/downloader'
-
-class Itms::DetectApiChangeJob < ApplicationJob
+class Itms::DetectApiChangeJob < ItmsJob
   LAST_KNOWN_SWAGGER_PATH = Pathname.new('vendor/itms/swagger.json')
   ApiChangeDetectedException = Class.new(RuntimeError)
 
-  def perform(downloader: HarvesterUtils::Downloader)
+  def perform(downloader: ItmsJob::Downloader)
     current_swagger = downloader.get('https://opendata.itms2014.sk/v2/swagger.json').body
     last_known_swagger = File.read(LAST_KNOWN_SWAGGER_PATH)
 
