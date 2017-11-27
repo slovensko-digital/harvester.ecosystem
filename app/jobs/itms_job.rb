@@ -79,10 +79,10 @@ class ItmsJob < ApplicationJob
     return [] if json.blank?
     json.map do |j|
       Itms::ImplementationPlace.find_or_create_by(
-          nuts_3: find_or_create_nuts_code_by_json(j['nuts3'], downloader),
-          nuts_4: find_or_create_nuts_code_by_json(j['nuts4'], downloader),
-          nuts_5: find_or_create_nuts_code_by_json(j['nuts5'], downloader),
-          stat: find_or_create_codelist_value_by_json(j['stat'], downloader)
+        nuts_3: find_or_create_nuts_code_by_json(j['nuts3'], downloader),
+        nuts_4: find_or_create_nuts_code_by_json(j['nuts4'], downloader),
+        nuts_5: find_or_create_nuts_code_by_json(j['nuts5'], downloader),
+        stat: find_or_create_codelist_value_by_json(j['stat'], downloader)
       )
     end
   end
@@ -106,9 +106,9 @@ class ItmsJob < ApplicationJob
   def find_or_create_nuts_code_by_json(json, downloader)
     return if json.blank?
     Itms::NutsCode.find_or_create_by!(
-        gps_lat: json['gpsLat'] ? json['gpsLat'].to_d : nil,
-        gps_lon: json['gpsLon'] ? json['gpsLon'].to_d : nil,
-        hodnota_nuts: find_or_create_codelist_value_by_json(json['hodnotaNuts'], downloader)
+      gps_lat: json['gpsLat'] ? json['gpsLat'].to_d : nil,
+      gps_lon: json['gpsLon'] ? json['gpsLon'].to_d : nil,
+      hodnota_nuts: find_or_create_codelist_value_by_json(json['hodnotaNuts'], downloader)
     )
   end
 
@@ -148,9 +148,9 @@ class ItmsJob < ApplicationJob
   def find_or_create_specific_goal_with_codelist_value_by_json(json, downloader)
     return if json.blank?
     existing_object = Itms::SpecificGoalCodelistValue.where_goal_and_codelist(
-        json['konkretnyCiel']['id'],
-        json['hodnotaCiselnika']['ciselnikKod'],
-        json['hodnotaCiselnika']['id'],
+      json['konkretnyCiel']['id'],
+      json['hodnotaCiselnika']['ciselnikKod'],
+      json['hodnotaCiselnika']['id'],
     ).first
     return existing_object if existing_object.present?
 

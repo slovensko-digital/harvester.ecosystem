@@ -3,11 +3,11 @@ class Itms::SyncAllProcurementContractsJob < ItmsJob
     procurements_json = downloader.get_json_from_href('/v2/verejneObstaravania')
     procurements_ids = procurements_json.map { |json| json['id'] }
 
-    procurements_ids.map do |procurement_itms_id|
+    procurements_ids.each do |procurement_itms_id|
       procurement = find_or_create_procurement_by_itms_id(procurement_itms_id, downloader)
 
       procurement_contracts_json = downloader.get_json_from_href("/v2/verejneObstaravania/#{procurement_itms_id}/zmluvyVerejneObstaravanie")
-      procurement_contracts_json.map do |json|
+      procurement_contracts_json.each do |json|
         Itms::SyncProcurementContractJob.perform_later(json['href'], procurement)
       end
     end
