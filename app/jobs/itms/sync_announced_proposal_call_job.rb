@@ -35,24 +35,24 @@ class Itms::SyncAnnouncedProposalCallJob < ItmsJob
 
   def find_or_create_specific_goals_activity_types_by_json(json_list, scope, downloader)
     return [] if json_list.blank?
-    json_list.map do |json|
+    json_list.flat_map do |json|
       specific_goal = find_or_create_specific_goal_by_json(json['konkretnyCiel'], downloader)
 
       json['typyAktivit'].map do |activity_type_json|
         activity_type = find_or_create_activity_type_by_json(activity_type_json, downloader)
 
         scope.find_or_create_by!(
-            konkretny_ciel: specific_goal,
-            typ_aktivity: activity_type
+          konkretny_ciel: specific_goal,
+          typ_aktivity: activity_type
         )
       end
-    end.flatten
+    end
   end
 
   def find_or_create_planned_proposal_calls_by_json(json_list, downloader)
     return [] if json_list.blank?
 
-    json_list.map do |json|
+    proposal_calls = json_list.map do |json|
       next if json['id'] == 0 # workaround for https://itms3.axonpro.sk/browse/ITMSC-11444
 
       existing_object = Itms::PlannedProposalCall.find_by(itms_id: json['id'])
@@ -60,7 +60,9 @@ class Itms::SyncAnnouncedProposalCallJob < ItmsJob
 
       Itms::SyncPlannedProposalCallJob.perform_now(json['href'], downloader: downloader)
       Itms::PlannedProposalCall.find_by!(itms_id: json['id'])
-    end.compact
+    end
+
+    proposal_calls.compact
   end
 
   def find_or_create_evaluation_periods_by_json(json_list, scope)
@@ -68,8 +70,8 @@ class Itms::SyncAnnouncedProposalCallJob < ItmsJob
 
     json_list.map do |json|
       scope.find_or_create_by!(
-          datum_uzavierky: json['datumUzavierky'],
-          poradove_cislo: json['poradoveCislo']
+        datum_uzavierky: json['datumUzavierky'],
+        poradove_cislo: json['poradoveCislo']
       )
     end
   end

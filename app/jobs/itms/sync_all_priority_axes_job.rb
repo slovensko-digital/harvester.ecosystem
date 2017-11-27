@@ -5,7 +5,7 @@ class Itms::SyncAllPriorityAxesJob < ItmsJob
 
     operational_programs_ids.map do |op_id|
       priority_axes_json = downloader.get_json_from_href("/v2/operacneProgramy/#{op_id}/prioritneOsi")
-      priority_axes_json.map { |json| Itms::SyncPriorityAxisJob.perform_later(json['href']) }
+      priority_axes_json.each { |json| Itms::SyncPriorityAxisJob.perform_later(json['href']) }
     end
   end
 end
