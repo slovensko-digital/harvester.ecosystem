@@ -1,8 +1,7 @@
 class Itms::SyncAllProjectIndicatorsJob < ItmsJob
   def perform(downloader: ItmsJob::Downloader)
-    json_list = downloader.get_json_from_href('/v2/projektovyUkazovatel')
-    json_list.map do |json|
-      Itms::SyncProjectIndicatorJob.perform_later(json['href'])
-    end
+    json = downloader.get_json_from_href('/v2/projektovyUkazovatel')
+    hrefs = json.map { |item| item['href'] }
+    hrefs.each { |href| Itms::SyncProjectIndicatorJob.perform_later(href) }
   end
 end
