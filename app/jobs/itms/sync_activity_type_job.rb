@@ -3,14 +3,14 @@ class Itms::SyncActivityTypeJob < ItmsJob
     json = downloader.get_json_from_href(itms_href)
 
     ActiveRecord::Base.transaction do
-      u = Itms::ActivityType.find_or_create_by!(itms_id: json['id'])
-      u.itms_href = json['href']
-      u.itms_created_at = json['createdAt']
-      u.itms_updated_at = json['updatedAt']
+      at = Itms::ActivityType.find_or_create_by!(itms_id: json['id'])
+      at.itms_href = json['href']
+      at.itms_created_at = json['createdAt']
+      at.itms_updated_at = json['updatedAt']
 
-      u.kod = json['kod']
-      u.nazov = json['nazov']
-      u.save!
+      at.kod = json['kod']
+      at.nazov = json['nazov']
+      at.save!
     end
   end
 end
