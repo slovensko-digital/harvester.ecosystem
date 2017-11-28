@@ -12388,6 +12388,10 @@
         {
           "href": "Et ipsum saepe voluptates consequatur delectus placeat.",
           "id": 7466861220827657615
+        },
+        {
+          "href": "Et ipsum saepe voluptates consequatur delectus placeat.",
+          "id": 7466861220827657615
         }
       ]
     },
@@ -15149,10 +15153,6 @@
       },
       "description": "ZopLinkCollection is the media type for an array of ZopLink (default view)",
       "example": [
-        {
-          "href": "Consectetur quidem magni.",
-          "id": 6550534480013921382
-        },
         {
           "href": "Consectetur quidem magni.",
           "id": 6550534480013921382
