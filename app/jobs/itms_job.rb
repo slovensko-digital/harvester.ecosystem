@@ -71,7 +71,10 @@ class ItmsJob < ApplicationJob
     codelist_value = Itms::CodelistValue.where_codelist_and_value(json['ciselnikKod'], json['id']).first
     return codelist_value if codelist_value.present?
 
-    Itms::SyncCodelistValueJob.perform_now(json['ciselnikKod'], json['id'], downloader: downloader)
+    Itms::SyncCodelistValueJob.perform_now(
+      "/v2/hodnotaCiselnika/#{json['ciselnikKod']}/hodnota/#{json['id']}",
+      downloader: downloader
+    )
     Itms::CodelistValue.where_codelist_and_value(json['ciselnikKod'], json['id']).first!
   end
 

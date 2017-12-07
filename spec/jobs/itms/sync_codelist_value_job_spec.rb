@@ -6,18 +6,18 @@ RSpec.describe Itms::SyncCodelistValueJob, type: :job do
   context '#perform' do
     it 'syncs values of a given codelist' do
       expect(downloader)
-          .to receive(:get_json_from_href)
-          .with('/v2/hodnotaCiselnika/1001/hodnota/1')
-          .and_return(itms_json_fixture('hodnota_ciselnika_item.json'))
-          .once
+        .to receive(:get_json_from_href)
+        .with('/v2/hodnotaCiselnika/1001/hodnota/1')
+        .and_return(itms_json_fixture('hodnota_ciselnika_item.json'))
+        .once
 
       expect(downloader)
-          .to receive(:get_json_from_href)
-          .with('/v2/ciselniky')
-          .and_return(itms_json_fixture('ciselniky_list.json'))
-          .once
+        .to receive(:get_json_from_href)
+        .with('/v2/ciselniky')
+        .and_return(itms_json_fixture('ciselniky_list.json'))
+        .once
 
-      subject.perform(1001, 1, downloader: downloader)
+      subject.perform('/v2/hodnotaCiselnika/1001/hodnota/1', downloader: downloader)
 
       expect(Itms::CodelistValue.first).to have_attributes(
         ciselnik: Itms::Codelist.find_by!(ciselnik_kod: 1001),
