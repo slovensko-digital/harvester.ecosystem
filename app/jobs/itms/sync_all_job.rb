@@ -7,6 +7,7 @@ class Itms::SyncAllJob < ItmsJob
     Itms::SyncAllAnnouncedProposalCallsJob.perform_later
     Itms::SyncAllBudgetItemsJob.perform_later
     Itms::SyncAllCodelistsJob.perform_later
+    Itms::SyncAllCodelistValuesJob.perform_later
     Itms::SyncAllDiscrepanciesJob.perform_later
     Itms::SyncAllIntensitiesJob.perform_later
     Itms::SyncAllNrfcApplicationsJob.perform_later

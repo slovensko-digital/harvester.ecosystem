@@ -1,10 +1,13 @@
 class Itms::SyncCodelistValueJob < ItmsJob
-  def perform(codelist_id, codelist_value_id, downloader: ItmsJob::Downloader)
-    json = downloader.get_json_from_href("/v2/hodnotaCiselnika/#{codelist_id}/hodnota/#{codelist_value_id}")
-    codelist = find_or_create_codelist(codelist_id, downloader)
+  def perform(itms_href, downloader: ItmsJob::Downloader)
+    json = downloader.get_json_from_href(itms_href)
+    _, _, _, codelist_id, _, itms_id = itms_href.split('/') # e.g. "/v2/hodnotaCiselnika/123/hodnota/456"
 
     ActiveRecord::Base.transaction do
-      cv = Itms::CodelistValue.find_or_create_by!(ciselnik: codelist, itms_id: codelist_value_id)
+      cv = Itms::CodelistValue.find_or_create_by!(
+        ciselnik: find_or_create_codelist(codelist_id, downloader),
+        itms_id: itms_id,
+      )
       cv.itms_href = json['href']
       cv.kod = json['kod']
       cv.kod_zdroj = json['kodZdroj']

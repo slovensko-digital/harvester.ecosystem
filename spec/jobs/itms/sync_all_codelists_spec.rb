@@ -6,7 +6,7 @@ RSpec.describe Itms::SyncAllCodelistsJob, type: :job do
   context '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
-    it 'syncs all subjects' do
+    it 'syncs all codelists' do
       Itms::Codelist.create(ciselnik_kod: 1)
       Itms::Codelist.create(ciselnik_kod: 2)
       Itms::Codelist.create(ciselnik_kod: 3)
