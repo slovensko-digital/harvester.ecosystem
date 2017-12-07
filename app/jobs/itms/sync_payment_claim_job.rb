@@ -43,25 +43,27 @@ class Itms::SyncPaymentClaimJob < ItmsJob
   def sync_paid_attributes(payment_claim, downloader)
     pc = payment_claim
     href = "/v2/zop/uhradene/#{pc.itms_id}"
-    return unless downloader.href_exists?(href)
-    json = downloader.get_json_from_href(href)
+    json = downloader.href_exists?(href) ? downloader.get_json_from_href(href) : {}
 
-    pc.itms_href = json['href']
-    pc.ekosystem_stav = json['href'].split('/')[3]
+    if json.present?
+      pc.itms_href = json['href']
+      pc.ekosystem_stav = json['href'].split('/')[3]
+      pc.deklarovane_vydavky = find_or_create_declared_expenses_by_json(json['schvaleneDeklarovaneVydavky'], pc.deklarovane_vydavky, downloader)
+    end
 
     pc.datum_uhrady = json['datumUhrady']
-    pc.deklarovane_vydavky = find_or_create_declared_expenses_by_json(json['schvaleneDeklarovaneVydavky'], pc.deklarovane_vydavky, downloader)
     pc.schvalena_suma = json['schvalenaSuma']
   end
 
   def sync_rejected_attributes(payment_claim, downloader)
     pc = payment_claim
     href = "/v2/zop/zamietnute/#{pc.itms_id}"
-    return unless downloader.href_exists?(href)
-    json = downloader.get_json_from_href(href)
+    json = downloader.href_exists?(href) ? downloader.get_json_from_href(href) : {}
 
-    pc.itms_href = json['href']
-    pc.ekosystem_stav = json['href'].split('/')[3]
+    if json.present?
+      pc.itms_href = json['href']
+      pc.ekosystem_stav = json['href'].split('/')[3]
+    end
 
     pc.datum_zamietnutia = json['datumZamietnutia']
     pc.stav_zamietnutej_zop = json['stavZamietnutejZop']
