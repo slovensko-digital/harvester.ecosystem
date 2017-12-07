@@ -58,13 +58,14 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
   def sync_approved_attributes(nrfc_application, downloader)
     na = nrfc_application
     href = "/v2/zonfp/schvalene/#{na.itms_id}"
-    return unless downloader.href_exists?(href)
-    json = downloader.get_json_from_href(href)
+    json = downloader.href_exists?(href) ? downloader.get_json_from_href(href) : {}
 
-    na.itms_href = json['href']
-    na.ekosystem_stav = json['href'].split('/')[3]
+    if json.present?
+      na.itms_href = json['href']
+      na.ekosystem_stav = json['href'].split('/')[3]
+    end
+
     na.aktivity_projekt = find_or_create_approved_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt)
-
     na.datum_schvalenia = json['datumSchvalenia']
     na.datum_schvaleny_konca_hlavnych_aktivit = json['datumSchvalenyKoncaHlavnychAktivit']
     na.datum_schvaleny_konca_realizacie = json['datumSchvalenyKoncaRealizacie']
@@ -86,11 +87,12 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
   def sync_rejected_attributes(nrfc_application, downloader)
     na = nrfc_application
     href = "/v2/zonfp/zamietnute/#{na.itms_id}"
-    return unless downloader.href_exists?(href)
-    json = downloader.get_json_from_href(href)
+    json = downloader.href_exists?(href) ? downloader.get_json_from_href(href) : {}
 
-    na.itms_href = json['href']
-    na.ekosystem_stav = json['href'].split('/')[3]
+    if json.present?
+      na.itms_href = json['href']
+      na.ekosystem_stav = json['href'].split('/')[3]
+    end
 
     na.datum_zamietnutia = json['datumZamietnutia']
     na.vysledok_konania = find_or_create_codelist_value_by_json(json['vysledokKonania'], downloader)
@@ -101,32 +103,32 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
     current_activities = scope.all
     json_list.each_with_index.map do |json, index|
-      pa = current_activities[index] || scope.new
+      ca = current_activities[index] || scope.new
 
-      pa.datum_konca_planovany = json['datumKoncaPlanovany']
-      pa.datum_zaciatku_planovany = json['datumZaciatkuPlanovany']
-      pa.kod = json['kod']
-      pa.nazov = json['nazov']
-      pa.subjekt = find_or_create_subject_by_json(json['subjekt'], downloader)
-      pa.typ_aktivity = find_or_create_activity_type_by_json(json['typAktivity'], downloader)
-      pa.save!
+      ca.datum_konca_planovany = json['datumKoncaPlanovany']
+      ca.datum_zaciatku_planovany = json['datumZaciatkuPlanovany']
+      ca.kod = json['kod']
+      ca.nazov = json['nazov']
+      ca.subjekt = find_or_create_subject_by_json(json['subjekt'], downloader)
+      ca.typ_aktivity = find_or_create_activity_type_by_json(json['typAktivity'], downloader)
+      ca.save!
 
-      pa
+      ca
     end
   end
 
   def find_or_create_approved_activities_by_json(json_list, scope)
-    return [] if json_list.blank?
-
     current_activities = scope.all
-    json_list.each_with_index.map do |json, index|
-      pa = current_activities[index]
+    json_list ||= Array.new(current_activities.count, {})
 
-      pa.datum_konca_schvaleny = json['datumKoncaSchvaleny']
-      pa.datum_zaciatku_schvaleny = json['datumZaciatkuSchvaleny']
-      pa.save!
+    current_activities.each_with_index.map do |ca, index|
+      json = json_list[index]
 
-      pa
+      ca.datum_konca_schvaleny = json['datumKoncaSchvaleny']
+      ca.datum_zaciatku_schvaleny = json['datumZaciatkuSchvaleny']
+      ca.save!
+
+      ca
     end
   end
 
