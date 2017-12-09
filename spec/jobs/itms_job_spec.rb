@@ -58,4 +58,21 @@ RSpec.describe ItmsJob, type: :job do
       :find_or_create_suppliers_by_json,
     )
   end
+
+  context 'ItmsJob::Downloader#get_json_from_href' do
+    it 'returns NotFoundError on 404' do
+      harvester_downloader_double = double(:downloader)
+
+      expect(harvester_downloader_double)
+        .to receive(:get)
+        .and_return(double(code: 404))
+
+      expect(ItmsJob::Downloader)
+        .to receive(:downloader)
+        .and_return(harvester_downloader_double)
+
+      expect { ItmsJob::Downloader.get_json_from_href('non-existent_url') }
+        .to raise_error(ItmsJob::Downloader::NotFoundError)
+    end
+  end
 end
