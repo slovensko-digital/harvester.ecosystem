@@ -119,10 +119,10 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
   def find_or_create_approved_activities_by_json(json_list, scope)
     current_activities = scope.all
-    json_list ||= Array.new(current_activities.count, {})
+    json_list ||= []
 
     current_activities.each_with_index.map do |ca, index|
-      json = json_list[index]
+      json = json_list.find { |activity| activity['kod'] == ca['kod'] } || {}
 
       ca.datum_konca_schvaleny = json['datumKoncaSchvaleny']
       ca.datum_zaciatku_schvaleny = json['datumZaciatkuSchvaleny']

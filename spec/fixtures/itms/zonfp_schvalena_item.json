@@ -17,22 +17,6 @@
       }
     },
     {
-      "datumKoncaSchvaleny": "2018-01-01",
-      "datumZaciatkuSchvaleny": "2016-04-01",
-      "kod": "217A01100002",
-      "nazov": "Stoková sieť",
-      "subjekt": {
-        "dic": "2022236502",
-        "href": "/v2/subjekty/100052",
-        "ico": "36672084",
-        "id": 100052
-      },
-      "typAktivity": {
-        "href": "/v2/typyAktivit/217",
-        "id": 219
-      }
-    },
-    {
       "datumKoncaSchvaleny": "2018-03-01",
       "datumZaciatkuSchvaleny": "2016-04-01",
       "kod": "310A011P0001",
