@@ -6,9 +6,9 @@ RSpec.describe Itms::SyncActivityJob, type: :job do
   context '#perform' do
     it 'syncs subject and all its attributes' do
       expect(downloader)
-          .to receive(:get_json_from_href)
-          .with('/v2/aktivita/122')
-          .and_return(itms_json_fixture('aktivita_item.json'))
+        .to receive(:get_json_from_href)
+        .with('/v2/aktivita/122')
+        .and_return(itms_json_fixture('aktivita_item.json'))
 
       subject.perform('/v2/aktivita/122', downloader: downloader)
 
@@ -25,6 +25,18 @@ RSpec.describe Itms::SyncActivityJob, type: :job do
         subjekt: Itms::Subject.find_by!(itms_id: 100062),
         typ_aktivity: Itms::ActivityType.find_by!(itms_id: 217),
       )
+    end
+
+    it 'destroys the record if its href returns 404' do
+      Itms::Activity.create!(itms_id: 1, itms_href: '/v2/aktivita/1')
+
+      expect(downloader)
+        .to receive(:get_json_from_href)
+        .with('/v2/aktivita/1')
+        .and_raise(ItmsJob::Downloader::NotFoundError)
+
+      expect { subject.perform('/v2/aktivita/1', downloader: downloader) }
+        .to change { Itms::Activity.count }.by(-1)
     end
   end
 end
