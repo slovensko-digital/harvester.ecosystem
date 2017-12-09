@@ -42,7 +42,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     na.organizacne_zlozky = find_or_create_organisational_units_by_json(json['organizacneZlozky'])
     na.partneri = find_or_create_subjects_by_json(json['partneri'], downloader)
     na.percento_ziadane_spolufinancovania = json['percentoZiadaneSpolufinancovania']
-    na.polozky_rozpoctu = find_or_create_nrfc_request_budget_items_by_json(json['polozkyRozpoctu'], na.polozky_rozpoctu, downloader)
+    na.polozky_rozpoctu = find_or_create_nrfc_application_budget_items_by_json(json['polozkyRozpoctu'], na.polozky_rozpoctu, downloader)
     na.popis_projektu = json['popisProjektu']
     na.sekundarny_tematicky_okruh = find_or_create_specific_goals_with_codelist_values_by_json(json['sekundarnyTematickyOkruh'], downloader)
     na.suma_ziadana_celkova = json['sumaZiadanaCelkova']
@@ -119,10 +119,10 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
   def find_or_create_approved_activities_by_json(json_list, scope)
     current_activities = scope.all
-    json_list ||= Array.new(current_activities.count, {})
+    json_list ||= []
 
     current_activities.each_with_index.map do |ca, index|
-      json = json_list[index]
+      json = json_list.find { |activity| activity['kod'] == ca['kod'] } || {}
 
       ca.datum_konca_schvaleny = json['datumKoncaSchvaleny']
       ca.datum_zaciatku_schvaleny = json['datumZaciatkuSchvaleny']
@@ -132,7 +132,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     end
   end
 
-  def find_or_create_nrfc_request_budget_items_by_json(json_list, scope, downloader)
+  def find_or_create_nrfc_application_budget_items_by_json(json_list, scope, downloader)
     return [] if json_list.blank?
 
 
