@@ -9,8 +9,12 @@ class ItmsJob < ApplicationJob
 
     API_ENDPOINT = 'https://opendata.itms2014.sk'
 
+    def self.downloader
+      HarvesterUtils::Downloader
+    end
+
     def self.href_exists?(href)
-      HarvesterUtils::Downloader.url_exists?("#{API_ENDPOINT}#{href}")
+      downloader.url_exists?("#{API_ENDPOINT}#{href}")
     end
     
     def self.get_json_from_href(href)
@@ -19,7 +23,7 @@ class ItmsJob < ApplicationJob
     end
 
     def self.get(url)
-      response = HarvesterUtils::Downloader.get(url)
+      response = downloader.get(url)
       raise NotFoundError, "Url not found: #{url}" if response.code == 404
       raise DownloadError, "Unexpected response code: #{response.code} for url: #{url}" if response.code != 200
       response
