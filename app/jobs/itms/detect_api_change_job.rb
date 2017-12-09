@@ -9,6 +9,18 @@ class Itms::DetectApiChangeJob < ItmsJob
     current_swagger_json = JSON.parse(current_swagger)
     last_known_swagger_json = JSON.parse(last_known_swagger)
 
+    # Do not compare (automatically-generated) examples
+    reject_definition_examples!(current_swagger_json)
+    reject_definition_examples!(last_known_swagger_json)
+
     raise ApiChangeDetectedException unless current_swagger_json == last_known_swagger_json
+  end
+
+  private
+
+  def reject_definition_examples!(swagger_json)
+    swagger_json['definitions'].each_value do |definition|
+      definition.except!('example')
+    end
   end
 end
