@@ -27,5 +27,17 @@ RSpec.describe Itms::SyncBudgetItemJob, type: :job do
         zazmluvnena_suma: 32281173.59,
       )
     end
+
+    it 'destroys the record if its href returns 404' do
+      Itms::BudgetItem.create!(itms_id: 1, itms_href: '/v2/polozkaRozpoctu/1')
+
+      expect(downloader)
+        .to receive(:get_json_from_href)
+        .with('/v2/polozkaRozpoctu/1')
+        .and_raise(ItmsJob::Downloader::NotFoundError)
+
+      expect { subject.perform('/v2/polozkaRozpoctu/1', downloader: downloader) }
+        .to change { Itms::BudgetItem.count }.by(-1)
+    end
   end
 end

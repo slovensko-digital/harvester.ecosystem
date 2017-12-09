@@ -17,5 +17,9 @@ class Itms::SyncActivityJob < ItmsJob
 
       a.save!
     end
+  rescue ItmsJob::Downloader::NotFoundError
+    itms_id = itms_href.split('/').last
+    a = Itms::Activity.find_by(itms_id: itms_id)
+    a.destroy! if a
   end
 end

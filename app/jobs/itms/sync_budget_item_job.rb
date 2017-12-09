@@ -16,5 +16,9 @@ class Itms::SyncBudgetItemJob < ItmsJob
       bi.zazmluvnena_suma = json['zazmluvnenaSuma']
       bi.save!
     end
+  rescue ItmsJob::Downloader::NotFoundError
+    itms_id = itms_href.split('/').last
+    bi = Itms::BudgetItem.find_by(itms_id: itms_id)
+    bi.destroy! if bi
   end
 end
