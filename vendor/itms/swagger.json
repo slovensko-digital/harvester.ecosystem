@@ -4150,6 +4150,11 @@
           "ciselnikKod": 652260622394600779,
           "href": "Placeat repellendus temporibus nam.",
           "id": 5882549692570792367
+        },
+        {
+          "ciselnikKod": 652260622394600779,
+          "href": "Placeat repellendus temporibus nam.",
+          "id": 5882549692570792367
         }
       ]
     },
@@ -12381,10 +12386,6 @@
       },
       "description": "VerejneobstaravanieLinkCollection is the media type for an array of VerejneobstaravanieLink (default view)",
       "example": [
-        {
-          "href": "Et ipsum saepe voluptates consequatur delectus placeat.",
-          "id": 7466861220827657615
-        },
         {
           "href": "Et ipsum saepe voluptates consequatur delectus placeat.",
           "id": 7466861220827657615
