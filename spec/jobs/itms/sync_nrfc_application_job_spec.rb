@@ -287,9 +287,9 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
           Itms::SpecificGoalCodelistValue.where_goal_and_codelist(33, 1034, 3).first!,
           Itms::SpecificGoalCodelistValue.where_goal_and_codelist(39, 1034, 3).first!,
         ],
-        # uzemne_mechanizmy: [
-        #   Itms::SpecificGoalCodelistValue.where_goal_and_codelist(9, 1043, 7).first!,
-        # ],
+        uzemne_mechanizmy: [
+          Itms::SpecificGoalCodelistValue.where_goal_and_codelist(9, 1043, 7).first!,
+        ],
         vyzva: Itms::AnnouncedProposalCall.find_by!(itms_id: 1),
         zameranie_projektu: "Dopytovo-orientovaný projekt",
         ziadatel: Itms::Subject.find_by!(itms_id: 100052),
