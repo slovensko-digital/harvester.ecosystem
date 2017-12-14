@@ -40,7 +40,7 @@ class ItmsJob < ApplicationJob
       Itms::CodelistValue,
       Itms::Discrepancy,
       Itms::Intensity,
-      Itms::NrfcApplication,
+      Itms::NrfcApplicationReceived,
       Itms::OperationalProgram,
       Itms::PaymentClaim,
       Itms::PriorityAxis,

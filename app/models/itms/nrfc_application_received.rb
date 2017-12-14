@@ -1,4 +1,4 @@
-class Itms::NrfcApplication < ApplicationRecord
+class Itms::NrfcApplicationReceived < ApplicationRecord
   self.table_name = 'itms.zonfp'
 
   has_many :aktivity_projekt,

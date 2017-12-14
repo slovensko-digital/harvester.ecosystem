@@ -1,28 +1,30 @@
 class Itms::SyncNrfcApplicationJob < ItmsJob
   def perform(itms_href, downloader: ItmsJob::Downloader)
     itms_id = itms_href.split('/').last
-    
-    ActiveRecord::Base.transaction do
-      na = Itms::NrfcApplication.find_or_create_by!(itms_id: itms_id)
 
-      sync_received_attributes(na, downloader)
-      sync_approved_attributes(na, downloader)
-      sync_rejected_attributes(na, downloader)
+    sync_received(itms_id, downloader)
+  end
+
+  private
+
+  def sync_received(itms_id, downloader)
+    json = downloader.get_json_from_href("/v2/zonfp/prijate/#{itms_id}")
+
+    ActiveRecord::Base.transaction do
+      na = Itms::NrfcApplicationReceived.find_or_create_by!(itms_id: itms_id)
+
+      sync_received_attributes(na, json, downloader)
 
       na.save!
     end
   end
 
-  private
-
-  def sync_received_attributes(nrfc_application, downloader)
+  def sync_received_attributes(nrfc_application, json, downloader)
     na = nrfc_application
-    json = downloader.get_json_from_href("/v2/zonfp/prijate/#{na.itms_id}")
 
     na.itms_href = json['href']
     na.itms_created_at = json['createdAt']
     na.itms_updated_at = json['updatedAt']
-    na.ekosystem_stav = json['href'].split('/')[3]
 
     na.akronym = json['akronym']
     na.aktivity_projekt = find_or_create_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt, downloader)
