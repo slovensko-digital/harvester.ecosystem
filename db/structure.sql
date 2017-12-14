@@ -3282,6 +3282,38 @@ ALTER SEQUENCE zonfp_typy_uzemia_id_seq OWNED BY zonfp_typy_uzemia.id;
 
 
 --
+-- Name: zonfp_uzemne_mechanizmy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_uzemne_mechanizmy (
+    id integer NOT NULL,
+    zonfp_id integer NOT NULL,
+    uzemny_mechanizmus_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: zonfp_uzemne_mechanizmy_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_uzemne_mechanizmy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_uzemne_mechanizmy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_uzemne_mechanizmy_id_seq OWNED BY zonfp_uzemne_mechanizmy.id;
+
+
+--
 -- Name: zop; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -4060,6 +4092,13 @@ ALTER TABLE ONLY zonfp_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('zonfp_ty
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY zonfp_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('zonfp_uzemne_mechanizmy_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY zop ALTER COLUMN id SET DEFAULT nextval('zop_id_seq'::regclass);
 
 
@@ -4799,6 +4838,14 @@ ALTER TABLE ONLY zonfp_sekundarne_tematicke_okruhy
 
 ALTER TABLE ONLY zonfp_typy_uzemia
     ADD CONSTRAINT zonfp_typy_uzemia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: zonfp_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_uzemne_mechanizmy
+    ADD CONSTRAINT zonfp_uzemne_mechanizmy_pkey PRIMARY KEY (id);
 
 
 --
@@ -6640,6 +6687,27 @@ CREATE UNIQUE INDEX "index_itms.zonfp_typy_uzemia_on_zonfp_id_and_typ_uzemia_id"
 
 
 --
+-- Name: index_itms.zonfp_uzemne_mechanizmy_on_uzemny_mechanizmus_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_uzemny_mechanizmus_id" ON zonfp_uzemne_mechanizmy USING btree (uzemny_mechanizmus_id);
+
+
+--
+-- Name: index_itms.zonfp_uzemne_mechanizmy_on_z_and_um; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_z_and_um" ON zonfp_uzemne_mechanizmy USING btree (zonfp_id, uzemny_mechanizmus_id);
+
+
+--
+-- Name: index_itms.zonfp_uzemne_mechanizmy_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_zonfp_id" ON zonfp_uzemne_mechanizmy USING btree (zonfp_id);
+
+
+--
 -- Name: index_itms.zop_on_hlavny_cehranicny_partner_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -6712,6 +6780,14 @@ CREATE UNIQUE INDEX "index_upvs.public_authority_edesks_on_uri" ON public_author
 
 
 SET search_path = itms, pg_catalog;
+
+--
+-- Name: fk_rails_00bd9064dc; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_00bd9064dc FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+
 
 --
 -- Name: fk_rails_00be24adb6; Type: FK CONSTRAINT; Schema: itms; Owner: -
@@ -7367,6 +7443,14 @@ ALTER TABLE ONLY zonfp_polozky_rozpoctu
 
 ALTER TABLE ONLY projekty_hospodarske_cinnosti
     ADD CONSTRAINT fk_rails_5827b58bb9 FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
+-- Name: fk_rails_5a9038c4f3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_5a9038c4f3 FOREIGN KEY (uzemny_mechanizmus_id) REFERENCES konkretne_ciele_hodnoty_ciselnikov(id);
 
 
 --
@@ -8352,6 +8436,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171114143548'),
 ('20171115092048'),
 ('20171117102940'),
-('20171120133917');
+('20171120133917'),
+('20171214142454');
 
 

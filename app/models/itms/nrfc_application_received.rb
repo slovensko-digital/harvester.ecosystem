@@ -76,6 +76,12 @@ class Itms::NrfcApplicationReceived < ApplicationRecord
                           association_foreign_key: :typ_uzemia_id,
                           foreign_key: :zonfp_id
 
+  has_and_belongs_to_many :uzemne_mechanizmy,
+                          class_name: 'Itms::SpecificGoalCodelistValue',
+                          join_table: 'itms.zonfp_uzemne_mechanizmy',
+                          association_foreign_key: :uzemny_mechanizmus_id,
+                          foreign_key: :zonfp_id
+
   belongs_to :vysledok_konania, class_name: 'Itms::CodelistValue'
   belongs_to :vyzva, class_name: 'Itms::AnnouncedProposalCall'
   belongs_to :ziadatel, class_name: 'Itms::Subject'

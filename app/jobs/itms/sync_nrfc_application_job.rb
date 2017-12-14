@@ -52,6 +52,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     na.suma_ziadana_nfp = json['sumaZiadanaNFP']
     na.suma_ziadana_vlastnych_zdrojov = json['sumaZiadanaVlastnychZdrojov']
     na.typy_uzemia = find_or_create_specific_goals_with_codelist_values_by_json(json['typyUzemia'], downloader)
+    na.uzemne_mechanizmy = find_or_create_specific_goals_with_codelist_values_by_json(json['uzemneMechanizmy'], downloader)
     na.vyzva = find_or_create_announced_proposal_call_by_json(json['vyzva'], downloader)
     na.zameranie_projektu = json['zameranieProjektu']
     na.ziadatel = find_or_create_subject_by_json(json['ziadatel'], downloader)

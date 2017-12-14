@@ -405,6 +405,19 @@
     }
   ],
   "updatedAt": "2017-02-28T16:51:30.730102Z",
+  "uzemneMechanizmy": [
+    {
+      "hodnotaCiselnika": {
+        "ciselnikKod": 1043,
+        "href": "/v2/hodnotaCiselnika/1043/hodnota/7",
+        "id": 7
+      },
+      "konkretnyCiel": {
+        "href": "/v2/konkretnyCiel/9",
+        "id": 9
+      }
+    }
+  ],
   "vyzva": {
     "href": "/v2/vyzvy/vyhlasene/1",
     "id": 1
