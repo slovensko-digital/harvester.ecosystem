@@ -18,7 +18,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
     CSV.foreach(file, headers: true, col_sep: separator) do |row|
       uri = row.fetch('URI')
       edesk = Upvs::PublicAuthorityEdesk.find_or_initialize_by(uri: uri)
-      edesk.cin = row['IČO'] || row.fetch('﻿IČO')
+      edesk.cin = row['IČO'] || row['﻿IČO'] || row.fetch('﻿ICO')
       edesk.name = row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV')
       edesk.street = row.fetch('ULICA')
       edesk.street_number = row.fetch('ČÍSLO')
@@ -29,6 +29,6 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
   end
 
   def detect_separator(header)
-    header.include?('IČO;') ? ';' : ','
+    header.include?(';;') ? ';' : ','
   end
 end
