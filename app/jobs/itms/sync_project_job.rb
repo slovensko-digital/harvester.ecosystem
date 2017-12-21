@@ -41,7 +41,7 @@ class Itms::SyncProjectJob < ItmsJob
       p.popis_vychodiskovej_situacie = json['popisVychodiskovejSituacie']
       p.popis_kapacity_prijimatela = json['popiskapacityprijimatela']
       p.prijimatel = find_or_create_subject_by_json(json['prijimatel'], downloader)
-      p.schvalena_zonfp = find_or_create_nrfc_application_by_json(json['schvalenaZonfp'], downloader)
+      p.schvalena_zonfp = find_or_create_processed_nrfc_application_by_json(json['schvalenaZonfp'], downloader)
       p.sekundarny_tematicky_okruh = find_or_create_specific_goals_with_codelist_values_by_json(json['sekundarnyTematickyOkruh'], downloader)
       p.stav = json['stav']
       p.suma_celkova_projektov_generujucich_prijem = json['sumaCelkovaProjektovGenerujucichPrijem']

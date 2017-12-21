@@ -27,9 +27,6 @@ RSpec.describe ItmsJob, type: :job do
       :find_or_create_intensity_by_json,
       :find_or_create_intensities_by_json,
 
-      :find_or_create_nrfc_application_by_json,
-      :find_or_create_nrfc_applications_by_json,
-
       :find_or_create_operational_program_by_json,
       :find_or_create_operational_programs_by_json,
 
