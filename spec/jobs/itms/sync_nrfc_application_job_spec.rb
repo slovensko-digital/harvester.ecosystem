@@ -5,21 +5,11 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
 
   context '#perform' do
     context 'received nrfc applications' do
-      it 'syncs received nrfc application and all of its attributes' do
+      it 'syncs received applications and their attributes' do
         expect(downloader)
           .to receive(:get_json_from_href)
           .with('/v2/zonfp/prijate/1')
           .and_return(itms_json_fixture('zonfp_prijata_item.json'))
-
-        # expect(downloader)
-        #     .to receive(:href_exists?)
-        #     .with('/v2/zonfp/schvalene/1')
-        #     .and_return(false)
-        #
-        # expect(downloader)
-        #     .to receive(:href_exists?)
-        #     .with('/v2/zonfp/zamietnute/1')
-        #     .and_return(false)
 
         subject.perform('/v2/zonfp/prijate/1', downloader: downloader)
 
@@ -31,30 +21,30 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
 
           akronym: "ZEN BSŠ SNV",
           aktivity_projekt: [
-            Itms::NrfcApplicationProcessedActivity.find_by!(
+            Itms::NrfcApplicationReceivedActivity.find_by!(
               datum_konca_planovany: DateTime.parse("2018-01-01"),
               datum_zaciatku_planovany: DateTime.parse("2016-04-01"),
               kod: "219A01100001",
               nazov: "Vodovodná sieť",
               subjekt: Itms::Subject.find_by!(itms_id: 100052),
               typ_aktivity: Itms::ActivityType.find_by!(itms_id: 219),
-              ),
-            Itms::NrfcApplicationProcessedActivity.find_by!(
+            ),
+            Itms::NrfcApplicationReceivedActivity.find_by!(
               datum_konca_planovany: DateTime.parse("2018-01-01"),
               datum_zaciatku_planovany: DateTime.parse("2016-04-01"),
               kod: "217A01100002",
               nazov: "Stoková sieť",
               subjekt: Itms::Subject.find_by!(itms_id: 100052),
               typ_aktivity: Itms::ActivityType.find_by!(itms_id: 219),
-              ),
-            Itms::NrfcApplicationProcessedActivity.find_by!(
+            ),
+            Itms::NrfcApplicationReceivedActivity.find_by!(
               datum_konca_planovany: DateTime.parse("2018-03-01"),
               datum_zaciatku_planovany: DateTime.parse("2016-04-01"),
               kod: "310A011P0001",
               nazov: "Podporné aktivity",
               subjekt: Itms::Subject.find_by!(itms_id: 100052),
               typ_aktivity: Itms::ActivityType.find_by!(itms_id: 790),
-              ),
+            ),
           ],
           datum_predlozenia: DateTime.parse("2015-09-29T00:00:00Z"),
           datum_ziadany_konca_hlavnych_aktivit: DateTime.parse("2018-01-01T00:00:00Z"),
@@ -71,27 +61,27 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
           ],
           kod: "NFP310010A011",
           meratelne_ukazovatele: [
-            Itms::NrfcApplicationMeasurableIndicator.find_by!(
+            Itms::NrfcApplicationReceivedMeasurableIndicator.find_by!(
               hodnota_cielova_celkova: 756,
               priznak_rizika: true,
               projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 218)
             ),
-            Itms::NrfcApplicationMeasurableIndicator.find_by!(
+            Itms::NrfcApplicationReceivedMeasurableIndicator.find_by!(
               hodnota_cielova_celkova: 140,
               priznak_rizika: true,
               projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 223)
             ),
-            Itms::NrfcApplicationMeasurableIndicator.find_by!(
+            Itms::NrfcApplicationReceivedMeasurableIndicator.find_by!(
               hodnota_cielova_celkova: 0,
               priznak_rizika: false,
               projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 216)
             ),
-            Itms::NrfcApplicationMeasurableIndicator.find_by!(
+            Itms::NrfcApplicationReceivedMeasurableIndicator.find_by!(
               hodnota_cielova_celkova: 6.6035.to_d,
               priznak_rizika: false,
               projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 213)
             ),
-            Itms::NrfcApplicationMeasurableIndicator.find_by!(
+            Itms::NrfcApplicationReceivedMeasurableIndicator.find_by!(
               hodnota_cielova_celkova: 2.099.to_d,
               priznak_rizika: false,
               projektovy_ukazovatel: Itms::ProjectIndicator.find_by!(itms_id: 221)
@@ -190,37 +180,37 @@ RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
           ],
           percento_ziadane_spolufinancovania: 0.9,
           polozky_rozpoctu: [
-            Itms::NrfcApplicationBudgetItem.find_by!(
+            Itms::NrfcApplicationReceivedBudgetItem.find_by!(
               itms_id: 876,
               aktivita_zonfp_kod: "219A01100001",
               skupina_vydavkov: Itms::CodelistValue.where_codelist_and_value(1040, 27).first!,
               suma_opravneneho_vydavku: 11097.88.to_d
             ),
-            Itms::NrfcApplicationBudgetItem.find_by!(
+            Itms::NrfcApplicationReceivedBudgetItem.find_by!(
               itms_id: 877,
               aktivita_zonfp_kod: "219A01100001",
               skupina_vydavkov: Itms::CodelistValue.where_codelist_and_value(1040, 4).first!,
               suma_opravneneho_vydavku: 465444.9.to_d
             ),
-            Itms::NrfcApplicationBudgetItem.find_by!(
+            Itms::NrfcApplicationReceivedBudgetItem.find_by!(
               itms_id: 878,
               aktivita_zonfp_kod: "217A01100002",
               skupina_vydavkov: Itms::CodelistValue.where_codelist_and_value(1040, 4).first!,
               suma_opravneneho_vydavku: 3499023.09.to_d
             ),
-            Itms::NrfcApplicationBudgetItem.find_by!(
+            Itms::NrfcApplicationReceivedBudgetItem.find_by!(
               itms_id: 879,
               aktivita_zonfp_kod: "217A01100002",
               skupina_vydavkov: Itms::CodelistValue.where_codelist_and_value(1040, 27).first!,
               suma_opravneneho_vydavku: 83429.26.to_d
             ),
-            Itms::NrfcApplicationBudgetItem.find_by!(
+            Itms::NrfcApplicationReceivedBudgetItem.find_by!(
               itms_id: 880,
               aktivita_zonfp_kod: "310A011P0001",
               skupina_vydavkov: Itms::CodelistValue.where_codelist_and_value(1040, 16).first!,
               suma_opravneneho_vydavku: 33435.58.to_d
             ),
-            Itms::NrfcApplicationBudgetItem.find_by!(
+            Itms::NrfcApplicationReceivedBudgetItem.find_by!(
               itms_id: 881,
               aktivita_zonfp_kod: "310A011P0001",
               skupina_vydavkov: Itms::CodelistValue.where_codelist_and_value(1040, 15).first!,

@@ -2,8 +2,7 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
   def perform(itms_href, downloader: ItmsJob::Downloader)
     itms_id = itms_href.split('/').last
 
-    # sync_received(itms_id, downloader)
-
+    sync_received(itms_id, downloader)
     sync_processed('/v2/zonfp/schvalene/', itms_id, downloader)
     sync_processed('/v2/zonfp/zamietnute/', itms_id, downloader)
   end
@@ -26,16 +25,11 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
   def sync_processed(href_root, itms_id, downloader)
     href = "#{href_root}#{itms_id}"
     return unless downloader.href_exists?(href)
-
     json = downloader.get_json_from_href(href)
 
     ActiveRecord::Base.transaction do
       na = Itms::NrfcApplicationProcessed.find_or_create_by!(itms_id: itms_id)
-
-      if json.present?
-        na.itms_href = json['href']
-        na.ekosystem_stav = json['href'].split('/')[3]
-      end
+      na.ekosystem_stav = json['href'].split('/')[3]
 
       sync_common_attributes(na, json, downloader)
       sync_processed_attributes(na, json, downloader)
@@ -113,8 +107,8 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
       ca = current_activities[index] || scope.new
 
       ca.datum_konca_planovany = json['datumKoncaPlanovany']
-      ca.datum_zaciatku_planovany = json['datumZaciatkuPlanovany']
       ca.datum_konca_schvaleny = json['datumKoncaSchvaleny']
+      ca.datum_zaciatku_planovany = json['datumZaciatkuPlanovany']
       ca.datum_zaciatku_schvaleny = json['datumZaciatkuSchvaleny']
       ca.kod = json['kod']
       ca.nazov = json['nazov']
@@ -128,7 +122,6 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
   def find_or_create_nrfc_application_budget_items_by_json(json_list, scope, downloader)
     return [] if json_list.blank?
-
 
     json_list.map do |json|
       bi = scope.find_or_initialize_by(itms_id: json['id'])
