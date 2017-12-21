@@ -74,7 +74,7 @@ class Itms::Project < ApplicationRecord
                           foreign_key: :projekt_id
 
 
-  belongs_to :schvalena_zonfp, class_name: 'Itms::NrfcApplication'
+  belongs_to :schvalena_zonfp, class_name: 'Itms::NrfcApplicationProcessed'
 
   has_and_belongs_to_many :sekundarny_tematicky_okruh,
                           class_name: 'Itms::SpecificGoalCodelistValue',

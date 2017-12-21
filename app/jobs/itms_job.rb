@@ -40,7 +40,6 @@ class ItmsJob < ApplicationJob
       Itms::CodelistValue,
       Itms::Discrepancy,
       Itms::Intensity,
-      Itms::NrfcApplicationReceived,
       Itms::OperationalProgram,
       Itms::PaymentClaim,
       Itms::PriorityAxis,
@@ -71,6 +70,15 @@ class ItmsJob < ApplicationJob
       return [] if json_list.blank?
       json_list.map { |json| public_send(find_or_create_item_by_json, json, downloader) }.uniq
     end
+  end
+
+  def find_or_create_processed_nrfc_application_by_json(json, downloader)
+    return if json.blank?
+    existing_object = Itms::NrfcApplicationProcessed.find_by(itms_id: json['id'])
+    return existing_object if existing_object.present?
+
+    Itms::SyncNrfcApplicationJob.perform_now(json['href'], downloader: downloader)
+    Itms::NrfcApplicationProcessed.find_by!(itms_id: json['id'])
   end
 
   def find_or_create_codelist_value_by_json(json, downloader)
