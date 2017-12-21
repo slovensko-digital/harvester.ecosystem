@@ -2,7 +2,10 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
   def perform(itms_href, downloader: ItmsJob::Downloader)
     itms_id = itms_href.split('/').last
 
-    sync_received(itms_id, downloader)
+    # sync_received(itms_id, downloader)
+
+    sync_processed('/v2/zonfp/schvalene/', itms_id, downloader)
+    sync_processed('/v2/zonfp/zamietnute/', itms_id, downloader)
   end
 
   private
@@ -13,13 +16,35 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     ActiveRecord::Base.transaction do
       na = Itms::NrfcApplicationReceived.find_or_create_by!(itms_id: itms_id)
 
-      sync_received_attributes(na, json, downloader)
+      sync_common_attributes(na, json, downloader)
+      na.datum_predlozenia = json['datumPredlozenia']
 
       na.save!
     end
   end
 
-  def sync_received_attributes(nrfc_application, json, downloader)
+  def sync_processed(href_root, itms_id, downloader)
+    href = "#{href_root}#{itms_id}"
+    return unless downloader.href_exists?(href)
+
+    json = downloader.get_json_from_href(href)
+
+    ActiveRecord::Base.transaction do
+      na = Itms::NrfcApplicationProcessed.find_or_create_by!(itms_id: itms_id)
+
+      if json.present?
+        na.itms_href = json['href']
+        na.ekosystem_stav = json['href'].split('/')[3]
+      end
+
+      sync_common_attributes(na, json, downloader)
+      sync_processed_attributes(na, json, downloader)
+
+      na.save!
+    end
+  end
+
+  def sync_common_attributes(nrfc_application, json, downloader)
     na = nrfc_application
 
     na.itms_href = json['href']
@@ -28,7 +53,6 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
     na.akronym = json['akronym']
     na.aktivity_projekt = find_or_create_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt, downloader)
-    na.datum_predlozenia = json['datumPredlozenia']
     na.datum_ziadany_konca_hlavnych_aktivit = json['datumZiadanyKoncaHlavnychAktivit']
     na.datum_ziadany_konca_realizacie = json['datumZiadanyKoncaRealizacie']
     na.datum_ziadany_zaciatku_hlavnych_aktivit = json['datumZiadanyZaciatkuHlavnychAktivit']
@@ -58,22 +82,15 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     na.ziadatel = find_or_create_subject_by_json(json['ziadatel'], downloader)
   end
 
-  def sync_approved_attributes(nrfc_application, downloader)
+  def sync_processed_attributes(nrfc_application, json, downloader)
     na = nrfc_application
-    href = "/v2/zonfp/schvalene/#{na.itms_id}"
-    json = downloader.href_exists?(href) ? downloader.get_json_from_href(href) : {}
 
-    if json.present?
-      na.itms_href = json['href']
-      na.ekosystem_stav = json['href'].split('/')[3]
-    end
-
-    na.aktivity_projekt = find_or_create_approved_activities_by_json(json['aktivityProjekt'], na.aktivity_projekt)
     na.datum_schvalenia = json['datumSchvalenia']
     na.datum_schvaleny_konca_hlavnych_aktivit = json['datumSchvalenyKoncaHlavnychAktivit']
     na.datum_schvaleny_konca_realizacie = json['datumSchvalenyKoncaRealizacie']
     na.datum_schvaleny_zaciatku_hlavnych_aktivit = json['datumSchvalenyZaciatkuHlavnychAktivit']
     na.datum_schvaleny_zaciatku_realizacie = json['datumSchvalenyZaciatkuRealizacie']
+    na.datum_zamietnutia = json['datumZamietnutia']
     na.hodnotitelia = find_or_create_persons_by_json(json['hodnotitelia'])
     na.percento_schvalene_spolufinancovania = json['percentoSchvaleneSpolufinancovania']
     na.pocet_bodov_hodnotenia_celkovy = json['pocetBodovHodnoteniaCelkovy']
@@ -85,19 +102,6 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
     na.suma_schvalena_celkova_projektov_generujucich_prijem = json['sumaSchvalenaCelkovaProjektovGenerujucichPrijem']
     na.suma_schvalena_nfp = json['sumaSchvalenaNFP']
     na.suma_schvalena_vlastnych_zdrojov = json['sumaSchvalenaVlastnychZdrojov']
-  end
-
-  def sync_rejected_attributes(nrfc_application, downloader)
-    na = nrfc_application
-    href = "/v2/zonfp/zamietnute/#{na.itms_id}"
-    json = downloader.href_exists?(href) ? downloader.get_json_from_href(href) : {}
-
-    if json.present?
-      na.itms_href = json['href']
-      na.ekosystem_stav = json['href'].split('/')[3]
-    end
-
-    na.datum_zamietnutia = json['datumZamietnutia']
     na.vysledok_konania = find_or_create_codelist_value_by_json(json['vysledokKonania'], downloader)
   end
 
@@ -110,25 +114,12 @@ class Itms::SyncNrfcApplicationJob < ItmsJob
 
       ca.datum_konca_planovany = json['datumKoncaPlanovany']
       ca.datum_zaciatku_planovany = json['datumZaciatkuPlanovany']
+      ca.datum_konca_schvaleny = json['datumKoncaSchvaleny']
+      ca.datum_zaciatku_schvaleny = json['datumZaciatkuSchvaleny']
       ca.kod = json['kod']
       ca.nazov = json['nazov']
       ca.subjekt = find_or_create_subject_by_json(json['subjekt'], downloader)
       ca.typ_aktivity = find_or_create_activity_type_by_json(json['typAktivity'], downloader)
-      ca.save!
-
-      ca
-    end
-  end
-
-  def find_or_create_approved_activities_by_json(json_list, scope)
-    current_activities = scope.all
-    json_list ||= []
-
-    current_activities.each_with_index.map do |ca, index|
-      json = json_list.find { |activity| activity['kod'] == ca['kod'] } || {}
-
-      ca.datum_konca_schvaleny = json['datumKoncaSchvaleny']
-      ca.datum_zaciatku_schvaleny = json['datumZaciatkuSchvaleny']
       ca.save!
 
       ca
