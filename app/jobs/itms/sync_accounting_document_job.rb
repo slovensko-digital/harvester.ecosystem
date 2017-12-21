@@ -8,6 +8,7 @@ class Itms::SyncAccountingDocumentJob < ItmsJob
       ad.itms_created_at = json['createdAt']
       ad.itms_updated_at = json['updatedAt']
 
+      ad.celkova_vyska_dokladu = json['celkovaVyskaDokladu']
       ad.datum_uhrady = json['datumUhrady']
       ad.datum_vyhotovenia = json['datumVyhotovenia']
       ad.dodavatel_dodavatel_obstaravatel = find_or_create_supplier_by_json(json['dodavatelDodavatelObstaravatel'], downloader)
