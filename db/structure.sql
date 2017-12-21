@@ -2696,7 +2696,9 @@ CREATE TABLE zmluvy_verejne_obstaravania (
     predmet_zmluvy character varying,
     suma_bez_dph numeric,
     url_odkaz_na_zmluvu character varying,
-    verejne_obstaravanie_id integer
+    verejne_obstaravanie_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -9667,6 +9669,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171214142454'),
 ('20171214151327'),
 ('20171221180201'),
-('20171221215154');
+('20171221215154'),
+('20171221222028');
 
 
