@@ -1939,7 +1939,8 @@ CREATE TABLE uctovne_doklady (
     typ character varying,
     vlastnik_dokladu_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    celkova_vyska_dokladu numeric
 );
 
 
@@ -9670,6 +9671,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171214151327'),
 ('20171221180201'),
 ('20171221215154'),
-('20171221222028');
+('20171221222028'),
+('20171221222608');
 
 
