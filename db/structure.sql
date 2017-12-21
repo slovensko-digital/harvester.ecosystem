@@ -2787,10 +2787,145 @@ ALTER SEQUENCE zmluvy_verejne_obstaravania_id_seq OWNED BY zmluvy_verejne_obstar
 
 
 --
--- Name: zonfp; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_aktivity_projekt; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp (
+CREATE TABLE zonfp_spracovane_aktivity_projekt (
+    id integer NOT NULL,
+    zonfp_id integer NOT NULL,
+    datum_konca_planovany timestamp without time zone,
+    datum_konca_schvaleny timestamp without time zone,
+    datum_zaciatku_planovany timestamp without time zone,
+    datum_zaciatku_schvaleny timestamp without time zone,
+    kod character varying,
+    nazov character varying,
+    subjekt_id integer,
+    typ_aktivity_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: zonfp_aktivity_projekt_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_aktivity_projekt_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_aktivity_projekt_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_aktivity_projekt_id_seq OWNED BY zonfp_spracovane_aktivity_projekt.id;
+
+
+--
+-- Name: zonfp_spracovane_formy_financovania; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_spracovane_formy_financovania (
+    id integer NOT NULL,
+    zonfp_id integer NOT NULL,
+    forma_financovania_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: zonfp_formy_financovania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_formy_financovania_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_formy_financovania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_formy_financovania_id_seq OWNED BY zonfp_spracovane_formy_financovania.id;
+
+
+--
+-- Name: zonfp_spracovane_hodnotitelia; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_spracovane_hodnotitelia (
+    id integer NOT NULL,
+    zonfp_id integer NOT NULL,
+    hodnotitel_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: zonfp_hodnotitelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_hodnotitelia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_hodnotitelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_hodnotitelia_id_seq OWNED BY zonfp_spracovane_hodnotitelia.id;
+
+
+--
+-- Name: zonfp_spracovane_hospodarske_cinnosti; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_spracovane_hospodarske_cinnosti (
+    id integer NOT NULL,
+    zonfp_id integer NOT NULL,
+    hospodarska_cinnost_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: zonfp_hospodarske_cinnosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE zonfp_hospodarske_cinnosti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: zonfp_hospodarske_cinnosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE zonfp_hospodarske_cinnosti_id_seq OWNED BY zonfp_spracovane_hospodarske_cinnosti.id;
+
+
+--
+-- Name: zonfp_spracovane; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_spracovane (
     id integer NOT NULL,
     itms_id integer NOT NULL,
     itms_href character varying,
@@ -2837,141 +2972,6 @@ CREATE TABLE zonfp (
 
 
 --
--- Name: zonfp_aktivity_projekt; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zonfp_aktivity_projekt (
-    id integer NOT NULL,
-    zonfp_id integer NOT NULL,
-    datum_konca_planovany timestamp without time zone,
-    datum_konca_schvaleny timestamp without time zone,
-    datum_zaciatku_planovany timestamp without time zone,
-    datum_zaciatku_schvaleny timestamp without time zone,
-    kod character varying,
-    nazov character varying,
-    subjekt_id integer,
-    typ_aktivity_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: zonfp_aktivity_projekt_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zonfp_aktivity_projekt_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zonfp_aktivity_projekt_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zonfp_aktivity_projekt_id_seq OWNED BY zonfp_aktivity_projekt.id;
-
-
---
--- Name: zonfp_formy_financovania; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zonfp_formy_financovania (
-    id integer NOT NULL,
-    zonfp_id integer NOT NULL,
-    forma_financovania_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: zonfp_formy_financovania_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zonfp_formy_financovania_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zonfp_formy_financovania_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zonfp_formy_financovania_id_seq OWNED BY zonfp_formy_financovania.id;
-
-
---
--- Name: zonfp_hodnotitelia; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zonfp_hodnotitelia (
-    id integer NOT NULL,
-    zonfp_id integer NOT NULL,
-    hodnotitel_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: zonfp_hodnotitelia_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zonfp_hodnotitelia_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zonfp_hodnotitelia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zonfp_hodnotitelia_id_seq OWNED BY zonfp_hodnotitelia.id;
-
-
---
--- Name: zonfp_hospodarske_cinnosti; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zonfp_hospodarske_cinnosti (
-    id integer NOT NULL,
-    zonfp_id integer NOT NULL,
-    hospodarska_cinnost_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: zonfp_hospodarske_cinnosti_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
---
-
-CREATE SEQUENCE zonfp_hospodarske_cinnosti_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: zonfp_hospodarske_cinnosti_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
---
-
-ALTER SEQUENCE zonfp_hospodarske_cinnosti_id_seq OWNED BY zonfp_hospodarske_cinnosti.id;
-
-
---
 -- Name: zonfp_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
 --
 
@@ -2987,14 +2987,14 @@ CREATE SEQUENCE zonfp_id_seq
 -- Name: zonfp_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_id_seq OWNED BY zonfp.id;
+ALTER SEQUENCE zonfp_id_seq OWNED BY zonfp_spracovane.id;
 
 
 --
--- Name: zonfp_meratelne_ukazovatele; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_meratelne_ukazovatele; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_meratelne_ukazovatele (
+CREATE TABLE zonfp_spracovane_meratelne_ukazovatele (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     aktualny_skutocny_stav numeric,
@@ -3021,14 +3021,14 @@ CREATE SEQUENCE zonfp_meratelne_ukazovatele_id_seq
 -- Name: zonfp_meratelne_ukazovatele_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_meratelne_ukazovatele_id_seq OWNED BY zonfp_meratelne_ukazovatele.id;
+ALTER SEQUENCE zonfp_meratelne_ukazovatele_id_seq OWNED BY zonfp_spracovane_meratelne_ukazovatele.id;
 
 
 --
--- Name: zonfp_miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_miesta_realizacie (
+CREATE TABLE zonfp_spracovane_miesta_realizacie (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     miesto_realizacie_id integer NOT NULL,
@@ -3053,14 +3053,14 @@ CREATE SEQUENCE zonfp_miesta_realizacie_id_seq
 -- Name: zonfp_miesta_realizacie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_miesta_realizacie_id_seq OWNED BY zonfp_miesta_realizacie.id;
+ALTER SEQUENCE zonfp_miesta_realizacie_id_seq OWNED BY zonfp_spracovane_miesta_realizacie.id;
 
 
 --
--- Name: zonfp_miesta_realizacie_mimo_uzemia_op; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie_mimo_uzemia_op; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_miesta_realizacie_mimo_uzemia_op (
+CREATE TABLE zonfp_spracovane_miesta_realizacie_mimo_uzemia_op (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     miesto_realizacie_id integer NOT NULL,
@@ -3085,14 +3085,14 @@ CREATE SEQUENCE zonfp_miesta_realizacie_mimo_uzemia_op_id_seq
 -- Name: zonfp_miesta_realizacie_mimo_uzemia_op_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_miesta_realizacie_mimo_uzemia_op_id_seq OWNED BY zonfp_miesta_realizacie_mimo_uzemia_op.id;
+ALTER SEQUENCE zonfp_miesta_realizacie_mimo_uzemia_op_id_seq OWNED BY zonfp_spracovane_miesta_realizacie_mimo_uzemia_op.id;
 
 
 --
--- Name: zonfp_oblasti_intervencie; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_oblasti_intervencie; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_oblasti_intervencie (
+CREATE TABLE zonfp_spracovane_oblasti_intervencie (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     oblast_intervencie_id integer NOT NULL,
@@ -3117,14 +3117,14 @@ CREATE SEQUENCE zonfp_oblasti_intervencie_id_seq
 -- Name: zonfp_oblasti_intervencie_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_oblasti_intervencie_id_seq OWNED BY zonfp_oblasti_intervencie.id;
+ALTER SEQUENCE zonfp_oblasti_intervencie_id_seq OWNED BY zonfp_spracovane_oblasti_intervencie.id;
 
 
 --
--- Name: zonfp_organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_organizacne_zlozky; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_organizacne_zlozky (
+CREATE TABLE zonfp_spracovane_organizacne_zlozky (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     organizacna_zlozka_id integer NOT NULL,
@@ -3149,14 +3149,14 @@ CREATE SEQUENCE zonfp_organizacne_zlozky_id_seq
 -- Name: zonfp_organizacne_zlozky_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_organizacne_zlozky_id_seq OWNED BY zonfp_organizacne_zlozky.id;
+ALTER SEQUENCE zonfp_organizacne_zlozky_id_seq OWNED BY zonfp_spracovane_organizacne_zlozky.id;
 
 
 --
--- Name: zonfp_partneri; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_partneri; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_partneri (
+CREATE TABLE zonfp_spracovane_partneri (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     partner_id integer NOT NULL,
@@ -3181,14 +3181,14 @@ CREATE SEQUENCE zonfp_partneri_id_seq
 -- Name: zonfp_partneri_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_partneri_id_seq OWNED BY zonfp_partneri.id;
+ALTER SEQUENCE zonfp_partneri_id_seq OWNED BY zonfp_spracovane_partneri.id;
 
 
 --
--- Name: zonfp_polozky_rozpoctu; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_polozky_rozpoctu; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_polozky_rozpoctu (
+CREATE TABLE zonfp_spracovane_polozky_rozpoctu (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     itms_id integer NOT NULL,
@@ -3214,7 +3214,7 @@ CREATE SEQUENCE zonfp_polozky_rozpoctu_id_seq
 -- Name: zonfp_polozky_rozpoctu_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_polozky_rozpoctu_id_seq OWNED BY zonfp_polozky_rozpoctu.id;
+ALTER SEQUENCE zonfp_polozky_rozpoctu_id_seq OWNED BY zonfp_spracovane_polozky_rozpoctu.id;
 
 
 --
@@ -3695,10 +3695,10 @@ ALTER SEQUENCE zonfp_prijate_uzemne_mechanizmy_id_seq OWNED BY zonfp_prijate_uze
 
 
 --
--- Name: zonfp_sekundarne_tematicke_okruhy; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_sekundarne_tematicke_okruhy; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_sekundarne_tematicke_okruhy (
+CREATE TABLE zonfp_spracovane_sekundarne_tematicke_okruhy (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     sekundarny_tematicky_okruh_id integer NOT NULL,
@@ -3723,17 +3723,30 @@ CREATE SEQUENCE zonfp_sekundarne_tematicke_okruhy_id_seq
 -- Name: zonfp_sekundarne_tematicke_okruhy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_sekundarne_tematicke_okruhy_id_seq OWNED BY zonfp_sekundarne_tematicke_okruhy.id;
+ALTER SEQUENCE zonfp_sekundarne_tematicke_okruhy_id_seq OWNED BY zonfp_spracovane_sekundarne_tematicke_okruhy.id;
 
 
 --
--- Name: zonfp_typy_uzemia; Type: TABLE; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_typy_uzemia; Type: TABLE; Schema: itms; Owner: -
 --
 
-CREATE TABLE zonfp_typy_uzemia (
+CREATE TABLE zonfp_spracovane_typy_uzemia (
     id integer NOT NULL,
     zonfp_id integer NOT NULL,
     typ_uzemia_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: zonfp_spracovane_uzemne_mechanizmy; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE zonfp_spracovane_uzemne_mechanizmy (
+    id integer NOT NULL,
+    zonfp_id integer NOT NULL,
+    uzemny_mechanizmus_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -3755,20 +3768,7 @@ CREATE SEQUENCE zonfp_typy_uzemia_id_seq
 -- Name: zonfp_typy_uzemia_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_typy_uzemia_id_seq OWNED BY zonfp_typy_uzemia.id;
-
-
---
--- Name: zonfp_uzemne_mechanizmy; Type: TABLE; Schema: itms; Owner: -
---
-
-CREATE TABLE zonfp_uzemne_mechanizmy (
-    id integer NOT NULL,
-    zonfp_id integer NOT NULL,
-    uzemny_mechanizmus_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
+ALTER SEQUENCE zonfp_typy_uzemia_id_seq OWNED BY zonfp_spracovane_typy_uzemia.id;
 
 
 --
@@ -3787,7 +3787,7 @@ CREATE SEQUENCE zonfp_uzemne_mechanizmy_id_seq
 -- Name: zonfp_uzemne_mechanizmy_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
 --
 
-ALTER SEQUENCE zonfp_uzemne_mechanizmy_id_seq OWNED BY zonfp_uzemne_mechanizmy.id;
+ALTER SEQUENCE zonfp_uzemne_mechanizmy_id_seq OWNED BY zonfp_spracovane_uzemne_mechanizmy.id;
 
 
 --
@@ -4471,90 +4471,6 @@ ALTER TABLE ONLY zmluvy_verejne_obstaravania_dodavatelia ALTER COLUMN id SET DEF
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp ALTER COLUMN id SET DEFAULT nextval('zonfp_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_aktivity_projekt ALTER COLUMN id SET DEFAULT nextval('zonfp_aktivity_projekt_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_formy_financovania ALTER COLUMN id SET DEFAULT nextval('zonfp_formy_financovania_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_hodnotitelia ALTER COLUMN id SET DEFAULT nextval('zonfp_hodnotitelia_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('zonfp_hospodarske_cinnosti_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('zonfp_meratelne_ukazovatele_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('zonfp_miesta_realizacie_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_miesta_realizacie_mimo_uzemia_op ALTER COLUMN id SET DEFAULT nextval('zonfp_miesta_realizacie_mimo_uzemia_op_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('zonfp_oblasti_intervencie_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('zonfp_organizacne_zlozky_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_partneri ALTER COLUMN id SET DEFAULT nextval('zonfp_partneri_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
-ALTER TABLE ONLY zonfp_polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('zonfp_polozky_rozpoctu_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
---
-
 ALTER TABLE ONLY zonfp_prijate ALTER COLUMN id SET DEFAULT nextval('zonfp_prijate_id_seq'::regclass);
 
 
@@ -4653,21 +4569,105 @@ ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nex
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_sekundarne_tematicke_okruhy ALTER COLUMN id SET DEFAULT nextval('zonfp_sekundarne_tematicke_okruhy_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_spracovane ALTER COLUMN id SET DEFAULT nextval('zonfp_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('zonfp_typy_uzemia_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_spracovane_aktivity_projekt ALTER COLUMN id SET DEFAULT nextval('zonfp_aktivity_projekt_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('zonfp_uzemne_mechanizmy_id_seq'::regclass);
+ALTER TABLE ONLY zonfp_spracovane_formy_financovania ALTER COLUMN id SET DEFAULT nextval('zonfp_formy_financovania_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_hodnotitelia ALTER COLUMN id SET DEFAULT nextval('zonfp_hodnotitelia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('zonfp_hospodarske_cinnosti_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('zonfp_meratelne_ukazovatele_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('zonfp_miesta_realizacie_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_miesta_realizacie_mimo_uzemia_op ALTER COLUMN id SET DEFAULT nextval('zonfp_miesta_realizacie_mimo_uzemia_op_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('zonfp_oblasti_intervencie_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('zonfp_organizacne_zlozky_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_partneri ALTER COLUMN id SET DEFAULT nextval('zonfp_partneri_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('zonfp_polozky_rozpoctu_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_sekundarne_tematicke_okruhy ALTER COLUMN id SET DEFAULT nextval('zonfp_sekundarne_tematicke_okruhy_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('zonfp_typy_uzemia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY zonfp_spracovane_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('zonfp_uzemne_mechanizmy_id_seq'::regclass);
 
 
 --
@@ -5307,7 +5307,7 @@ ALTER TABLE ONLY zmluvy_verejne_obstaravania
 -- Name: zonfp_aktivity_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_aktivity_projekt
+ALTER TABLE ONLY zonfp_spracovane_aktivity_projekt
     ADD CONSTRAINT zonfp_aktivity_projekt_pkey PRIMARY KEY (id);
 
 
@@ -5315,7 +5315,7 @@ ALTER TABLE ONLY zonfp_aktivity_projekt
 -- Name: zonfp_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_formy_financovania
+ALTER TABLE ONLY zonfp_spracovane_formy_financovania
     ADD CONSTRAINT zonfp_formy_financovania_pkey PRIMARY KEY (id);
 
 
@@ -5323,7 +5323,7 @@ ALTER TABLE ONLY zonfp_formy_financovania
 -- Name: zonfp_hodnotitelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_hodnotitelia
+ALTER TABLE ONLY zonfp_spracovane_hodnotitelia
     ADD CONSTRAINT zonfp_hodnotitelia_pkey PRIMARY KEY (id);
 
 
@@ -5331,7 +5331,7 @@ ALTER TABLE ONLY zonfp_hodnotitelia
 -- Name: zonfp_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_hospodarske_cinnosti
+ALTER TABLE ONLY zonfp_spracovane_hospodarske_cinnosti
     ADD CONSTRAINT zonfp_hospodarske_cinnosti_pkey PRIMARY KEY (id);
 
 
@@ -5339,7 +5339,7 @@ ALTER TABLE ONLY zonfp_hospodarske_cinnosti
 -- Name: zonfp_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_meratelne_ukazovatele
+ALTER TABLE ONLY zonfp_spracovane_meratelne_ukazovatele
     ADD CONSTRAINT zonfp_meratelne_ukazovatele_pkey PRIMARY KEY (id);
 
 
@@ -5347,7 +5347,7 @@ ALTER TABLE ONLY zonfp_meratelne_ukazovatele
 -- Name: zonfp_miesta_realizacie_mimo_uzemia_op_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_miesta_realizacie_mimo_uzemia_op
+ALTER TABLE ONLY zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
     ADD CONSTRAINT zonfp_miesta_realizacie_mimo_uzemia_op_pkey PRIMARY KEY (id);
 
 
@@ -5355,7 +5355,7 @@ ALTER TABLE ONLY zonfp_miesta_realizacie_mimo_uzemia_op
 -- Name: zonfp_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_miesta_realizacie
+ALTER TABLE ONLY zonfp_spracovane_miesta_realizacie
     ADD CONSTRAINT zonfp_miesta_realizacie_pkey PRIMARY KEY (id);
 
 
@@ -5363,7 +5363,7 @@ ALTER TABLE ONLY zonfp_miesta_realizacie
 -- Name: zonfp_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_oblasti_intervencie
+ALTER TABLE ONLY zonfp_spracovane_oblasti_intervencie
     ADD CONSTRAINT zonfp_oblasti_intervencie_pkey PRIMARY KEY (id);
 
 
@@ -5371,7 +5371,7 @@ ALTER TABLE ONLY zonfp_oblasti_intervencie
 -- Name: zonfp_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_organizacne_zlozky
+ALTER TABLE ONLY zonfp_spracovane_organizacne_zlozky
     ADD CONSTRAINT zonfp_organizacne_zlozky_pkey PRIMARY KEY (id);
 
 
@@ -5379,7 +5379,7 @@ ALTER TABLE ONLY zonfp_organizacne_zlozky
 -- Name: zonfp_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_partneri
+ALTER TABLE ONLY zonfp_spracovane_partneri
     ADD CONSTRAINT zonfp_partneri_pkey PRIMARY KEY (id);
 
 
@@ -5387,7 +5387,7 @@ ALTER TABLE ONLY zonfp_partneri
 -- Name: zonfp_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp
+ALTER TABLE ONLY zonfp_spracovane
     ADD CONSTRAINT zonfp_pkey PRIMARY KEY (id);
 
 
@@ -5395,7 +5395,7 @@ ALTER TABLE ONLY zonfp
 -- Name: zonfp_polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_polozky_rozpoctu
+ALTER TABLE ONLY zonfp_spracovane_polozky_rozpoctu
     ADD CONSTRAINT zonfp_polozky_rozpoctu_pkey PRIMARY KEY (id);
 
 
@@ -5515,7 +5515,7 @@ ALTER TABLE ONLY zonfp_prijate_uzemne_mechanizmy
 -- Name: zonfp_sekundarne_tematicke_okruhy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_sekundarne_tematicke_okruhy
+ALTER TABLE ONLY zonfp_spracovane_sekundarne_tematicke_okruhy
     ADD CONSTRAINT zonfp_sekundarne_tematicke_okruhy_pkey PRIMARY KEY (id);
 
 
@@ -5523,7 +5523,7 @@ ALTER TABLE ONLY zonfp_sekundarne_tematicke_okruhy
 -- Name: zonfp_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_typy_uzemia
+ALTER TABLE ONLY zonfp_spracovane_typy_uzemia
     ADD CONSTRAINT zonfp_typy_uzemia_pkey PRIMARY KEY (id);
 
 
@@ -5531,7 +5531,7 @@ ALTER TABLE ONLY zonfp_typy_uzemia
 -- Name: zonfp_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_uzemne_mechanizmy
+ALTER TABLE ONLY zonfp_spracovane_uzemne_mechanizmy
     ADD CONSTRAINT zonfp_uzemne_mechanizmy_pkey PRIMARY KEY (id);
 
 
@@ -7076,259 +7076,259 @@ CREATE INDEX "index_itms.zmluvy_verejne_obstaravania_vo" ON zmluvy_verejne_obsta
 -- Name: index_itms.zonfp_aktivity_projekt_on_subjekt_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_aktivity_projekt_on_subjekt_id" ON zonfp_aktivity_projekt USING btree (subjekt_id);
+CREATE INDEX "index_itms.zonfp_aktivity_projekt_on_subjekt_id" ON zonfp_spracovane_aktivity_projekt USING btree (subjekt_id);
 
 
 --
 -- Name: index_itms.zonfp_aktivity_projekt_on_typ_aktivity_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_aktivity_projekt_on_typ_aktivity_id" ON zonfp_aktivity_projekt USING btree (typ_aktivity_id);
+CREATE INDEX "index_itms.zonfp_aktivity_projekt_on_typ_aktivity_id" ON zonfp_spracovane_aktivity_projekt USING btree (typ_aktivity_id);
 
 
 --
 -- Name: index_itms.zonfp_aktivity_projekt_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_aktivity_projekt_on_zonfp_id" ON zonfp_aktivity_projekt USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_aktivity_projekt_on_zonfp_id" ON zonfp_spracovane_aktivity_projekt USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_formy_financovania_on_forma_financovania_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_formy_financovania_on_forma_financovania_id" ON zonfp_formy_financovania USING btree (forma_financovania_id);
+CREATE INDEX "index_itms.zonfp_formy_financovania_on_forma_financovania_id" ON zonfp_spracovane_formy_financovania USING btree (forma_financovania_id);
 
 
 --
 -- Name: index_itms.zonfp_formy_financovania_on_z_and_ff; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_formy_financovania_on_z_and_ff" ON zonfp_formy_financovania USING btree (zonfp_id, forma_financovania_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_formy_financovania_on_z_and_ff" ON zonfp_spracovane_formy_financovania USING btree (zonfp_id, forma_financovania_id);
 
 
 --
 -- Name: index_itms.zonfp_formy_financovania_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_formy_financovania_on_zonfp_id" ON zonfp_formy_financovania USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_formy_financovania_on_zonfp_id" ON zonfp_spracovane_formy_financovania USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_hodnotitelia_on_hodnotitel_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_hodnotitelia_on_hodnotitel_id" ON zonfp_hodnotitelia USING btree (hodnotitel_id);
+CREATE INDEX "index_itms.zonfp_hodnotitelia_on_hodnotitel_id" ON zonfp_spracovane_hodnotitelia USING btree (hodnotitel_id);
 
 
 --
 -- Name: index_itms.zonfp_hodnotitelia_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_hodnotitelia_on_zonfp_id" ON zonfp_hodnotitelia USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_hodnotitelia_on_zonfp_id" ON zonfp_spracovane_hodnotitelia USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_hodnotitelia_on_zonfp_id_and_hodnotitel_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_hodnotitelia_on_zonfp_id_and_hodnotitel_id" ON zonfp_hodnotitelia USING btree (zonfp_id, hodnotitel_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_hodnotitelia_on_zonfp_id_and_hodnotitel_id" ON zonfp_spracovane_hodnotitelia USING btree (zonfp_id, hodnotitel_id);
 
 
 --
 -- Name: index_itms.zonfp_hospodarske_cinnosti_on_hospodarska_cinnost_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_hospodarske_cinnosti_on_hospodarska_cinnost_id" ON zonfp_hospodarske_cinnosti USING btree (hospodarska_cinnost_id);
+CREATE INDEX "index_itms.zonfp_hospodarske_cinnosti_on_hospodarska_cinnost_id" ON zonfp_spracovane_hospodarske_cinnosti USING btree (hospodarska_cinnost_id);
 
 
 --
 -- Name: index_itms.zonfp_hospodarske_cinnosti_on_z_and_hc; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_hospodarske_cinnosti_on_z_and_hc" ON zonfp_hospodarske_cinnosti USING btree (zonfp_id, hospodarska_cinnost_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_hospodarske_cinnosti_on_z_and_hc" ON zonfp_spracovane_hospodarske_cinnosti USING btree (zonfp_id, hospodarska_cinnost_id);
 
 
 --
 -- Name: index_itms.zonfp_hospodarske_cinnosti_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_hospodarske_cinnosti_on_zonfp_id" ON zonfp_hospodarske_cinnosti USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_hospodarske_cinnosti_on_zonfp_id" ON zonfp_spracovane_hospodarske_cinnosti USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_meratelne_ukazovatele_on_ukazovatel; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_meratelne_ukazovatele_on_ukazovatel" ON zonfp_meratelne_ukazovatele USING btree (projektovy_ukazovatel_id);
+CREATE INDEX "index_itms.zonfp_meratelne_ukazovatele_on_ukazovatel" ON zonfp_spracovane_meratelne_ukazovatele USING btree (projektovy_ukazovatel_id);
 
 
 --
 -- Name: index_itms.zonfp_meratelne_ukazovatele_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_meratelne_ukazovatele_on_zonfp_id" ON zonfp_meratelne_ukazovatele USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_meratelne_ukazovatele_on_zonfp_id" ON zonfp_spracovane_meratelne_ukazovatele USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_meratelne_ukazovatele_on_zonfp_ukazovatel; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_meratelne_ukazovatele_on_zonfp_ukazovatel" ON zonfp_meratelne_ukazovatele USING btree (zonfp_id, projektovy_ukazovatel_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_meratelne_ukazovatele_on_zonfp_ukazovatel" ON zonfp_spracovane_meratelne_ukazovatele USING btree (zonfp_id, projektovy_ukazovatel_id);
 
 
 --
 -- Name: index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_mr; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_mr" ON zonfp_miesta_realizacie_mimo_uzemia_op USING btree (miesto_realizacie_id);
+CREATE INDEX "index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_mr" ON zonfp_spracovane_miesta_realizacie_mimo_uzemia_op USING btree (miesto_realizacie_id);
 
 
 --
 -- Name: index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_z_and_mr; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_z_and_mr" ON zonfp_miesta_realizacie_mimo_uzemia_op USING btree (zonfp_id, miesto_realizacie_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_z_and_mr" ON zonfp_spracovane_miesta_realizacie_mimo_uzemia_op USING btree (zonfp_id, miesto_realizacie_id);
 
 
 --
 -- Name: index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_zonfp_id" ON zonfp_miesta_realizacie_mimo_uzemia_op USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_miesta_realizacie_mimo_uzemia_op_on_zonfp_id" ON zonfp_spracovane_miesta_realizacie_mimo_uzemia_op USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_miesta_realizacie_on_miesto_realizacie_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_miesta_realizacie_on_miesto_realizacie_id" ON zonfp_miesta_realizacie USING btree (miesto_realizacie_id);
+CREATE INDEX "index_itms.zonfp_miesta_realizacie_on_miesto_realizacie_id" ON zonfp_spracovane_miesta_realizacie USING btree (miesto_realizacie_id);
 
 
 --
 -- Name: index_itms.zonfp_miesta_realizacie_on_z_and_mr; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_miesta_realizacie_on_z_and_mr" ON zonfp_miesta_realizacie USING btree (zonfp_id, miesto_realizacie_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_miesta_realizacie_on_z_and_mr" ON zonfp_spracovane_miesta_realizacie USING btree (zonfp_id, miesto_realizacie_id);
 
 
 --
 -- Name: index_itms.zonfp_miesta_realizacie_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_miesta_realizacie_on_zonfp_id" ON zonfp_miesta_realizacie USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_miesta_realizacie_on_zonfp_id" ON zonfp_spracovane_miesta_realizacie USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_oblasti_intervencie_on_oblast_intervencie_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_oblasti_intervencie_on_oblast_intervencie_id" ON zonfp_oblasti_intervencie USING btree (oblast_intervencie_id);
+CREATE INDEX "index_itms.zonfp_oblasti_intervencie_on_oblast_intervencie_id" ON zonfp_spracovane_oblasti_intervencie USING btree (oblast_intervencie_id);
 
 
 --
 -- Name: index_itms.zonfp_oblasti_intervencie_on_z_and_oi; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_oblasti_intervencie_on_z_and_oi" ON zonfp_oblasti_intervencie USING btree (zonfp_id, oblast_intervencie_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_oblasti_intervencie_on_z_and_oi" ON zonfp_spracovane_oblasti_intervencie USING btree (zonfp_id, oblast_intervencie_id);
 
 
 --
 -- Name: index_itms.zonfp_oblasti_intervencie_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_oblasti_intervencie_on_zonfp_id" ON zonfp_oblasti_intervencie USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_oblasti_intervencie_on_zonfp_id" ON zonfp_spracovane_oblasti_intervencie USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_on_itms_id" ON zonfp USING btree (itms_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_on_itms_id" ON zonfp_spracovane USING btree (itms_id);
 
 
 --
 -- Name: index_itms.zonfp_on_vysledok_konania_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_on_vysledok_konania_id" ON zonfp USING btree (vysledok_konania_id);
+CREATE INDEX "index_itms.zonfp_on_vysledok_konania_id" ON zonfp_spracovane USING btree (vysledok_konania_id);
 
 
 --
 -- Name: index_itms.zonfp_on_vyzva_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_on_vyzva_id" ON zonfp USING btree (vyzva_id);
+CREATE INDEX "index_itms.zonfp_on_vyzva_id" ON zonfp_spracovane USING btree (vyzva_id);
 
 
 --
 -- Name: index_itms.zonfp_on_ziadatel_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_on_ziadatel_id" ON zonfp USING btree (ziadatel_id);
+CREATE INDEX "index_itms.zonfp_on_ziadatel_id" ON zonfp_spracovane USING btree (ziadatel_id);
 
 
 --
 -- Name: index_itms.zonfp_organizacne_zlozky_on_organizacna_zlozka_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_organizacne_zlozky_on_organizacna_zlozka_id" ON zonfp_organizacne_zlozky USING btree (organizacna_zlozka_id);
+CREATE INDEX "index_itms.zonfp_organizacne_zlozky_on_organizacna_zlozka_id" ON zonfp_spracovane_organizacne_zlozky USING btree (organizacna_zlozka_id);
 
 
 --
 -- Name: index_itms.zonfp_organizacne_zlozky_on_z_and_oz; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_organizacne_zlozky_on_z_and_oz" ON zonfp_organizacne_zlozky USING btree (zonfp_id, organizacna_zlozka_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_organizacne_zlozky_on_z_and_oz" ON zonfp_spracovane_organizacne_zlozky USING btree (zonfp_id, organizacna_zlozka_id);
 
 
 --
 -- Name: index_itms.zonfp_organizacne_zlozky_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_organizacne_zlozky_on_zonfp_id" ON zonfp_organizacne_zlozky USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_organizacne_zlozky_on_zonfp_id" ON zonfp_spracovane_organizacne_zlozky USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_partneri_on_partner_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_partneri_on_partner_id" ON zonfp_partneri USING btree (partner_id);
+CREATE INDEX "index_itms.zonfp_partneri_on_partner_id" ON zonfp_spracovane_partneri USING btree (partner_id);
 
 
 --
 -- Name: index_itms.zonfp_partneri_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_partneri_on_zonfp_id" ON zonfp_partneri USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_partneri_on_zonfp_id" ON zonfp_spracovane_partneri USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_partneri_on_zonfp_id_and_partner_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_partneri_on_zonfp_id_and_partner_id" ON zonfp_partneri USING btree (zonfp_id, partner_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_partneri_on_zonfp_id_and_partner_id" ON zonfp_spracovane_partneri USING btree (zonfp_id, partner_id);
 
 
 --
 -- Name: index_itms.zonfp_polozky_rozpoctu_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_polozky_rozpoctu_on_itms_id" ON zonfp_polozky_rozpoctu USING btree (itms_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_polozky_rozpoctu_on_itms_id" ON zonfp_spracovane_polozky_rozpoctu USING btree (itms_id);
 
 
 --
 -- Name: index_itms.zonfp_polozky_rozpoctu_on_skupina_vydavkov_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_polozky_rozpoctu_on_skupina_vydavkov_id" ON zonfp_polozky_rozpoctu USING btree (skupina_vydavkov_id);
+CREATE INDEX "index_itms.zonfp_polozky_rozpoctu_on_skupina_vydavkov_id" ON zonfp_spracovane_polozky_rozpoctu USING btree (skupina_vydavkov_id);
 
 
 --
 -- Name: index_itms.zonfp_polozky_rozpoctu_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_polozky_rozpoctu_on_zonfp_id" ON zonfp_polozky_rozpoctu USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_polozky_rozpoctu_on_zonfp_id" ON zonfp_spracovane_polozky_rozpoctu USING btree (zonfp_id);
 
 
 --
@@ -7629,63 +7629,63 @@ CREATE INDEX "index_itms.zonfp_prijate_uzemne_mechanizmy_on_zonfp_id" ON zonfp_p
 -- Name: index_itms.zonfp_sekundarne_tematicke_okruhy_on_sto; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_sekundarne_tematicke_okruhy_on_sto" ON zonfp_sekundarne_tematicke_okruhy USING btree (sekundarny_tematicky_okruh_id);
+CREATE INDEX "index_itms.zonfp_sekundarne_tematicke_okruhy_on_sto" ON zonfp_spracovane_sekundarne_tematicke_okruhy USING btree (sekundarny_tematicky_okruh_id);
 
 
 --
 -- Name: index_itms.zonfp_sekundarne_tematicke_okruhy_on_z_and_sto; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_sekundarne_tematicke_okruhy_on_z_and_sto" ON zonfp_sekundarne_tematicke_okruhy USING btree (zonfp_id, sekundarny_tematicky_okruh_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_sekundarne_tematicke_okruhy_on_z_and_sto" ON zonfp_spracovane_sekundarne_tematicke_okruhy USING btree (zonfp_id, sekundarny_tematicky_okruh_id);
 
 
 --
 -- Name: index_itms.zonfp_sekundarne_tematicke_okruhy_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_sekundarne_tematicke_okruhy_on_zonfp_id" ON zonfp_sekundarne_tematicke_okruhy USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_sekundarne_tematicke_okruhy_on_zonfp_id" ON zonfp_spracovane_sekundarne_tematicke_okruhy USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_typy_uzemia_on_typ_uzemia_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_typy_uzemia_on_typ_uzemia_id" ON zonfp_typy_uzemia USING btree (typ_uzemia_id);
+CREATE INDEX "index_itms.zonfp_typy_uzemia_on_typ_uzemia_id" ON zonfp_spracovane_typy_uzemia USING btree (typ_uzemia_id);
 
 
 --
 -- Name: index_itms.zonfp_typy_uzemia_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_typy_uzemia_on_zonfp_id" ON zonfp_typy_uzemia USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_typy_uzemia_on_zonfp_id" ON zonfp_spracovane_typy_uzemia USING btree (zonfp_id);
 
 
 --
 -- Name: index_itms.zonfp_typy_uzemia_on_zonfp_id_and_typ_uzemia_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_typy_uzemia_on_zonfp_id_and_typ_uzemia_id" ON zonfp_typy_uzemia USING btree (zonfp_id, typ_uzemia_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_typy_uzemia_on_zonfp_id_and_typ_uzemia_id" ON zonfp_spracovane_typy_uzemia USING btree (zonfp_id, typ_uzemia_id);
 
 
 --
 -- Name: index_itms.zonfp_uzemne_mechanizmy_on_uzemny_mechanizmus_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_uzemny_mechanizmus_id" ON zonfp_uzemne_mechanizmy USING btree (uzemny_mechanizmus_id);
+CREATE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_uzemny_mechanizmus_id" ON zonfp_spracovane_uzemne_mechanizmy USING btree (uzemny_mechanizmus_id);
 
 
 --
 -- Name: index_itms.zonfp_uzemne_mechanizmy_on_z_and_um; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_z_and_um" ON zonfp_uzemne_mechanizmy USING btree (zonfp_id, uzemny_mechanizmus_id);
+CREATE UNIQUE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_z_and_um" ON zonfp_spracovane_uzemne_mechanizmy USING btree (zonfp_id, uzemny_mechanizmus_id);
 
 
 --
 -- Name: index_itms.zonfp_uzemne_mechanizmy_on_zonfp_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_zonfp_id" ON zonfp_uzemne_mechanizmy USING btree (zonfp_id);
+CREATE INDEX "index_itms.zonfp_uzemne_mechanizmy_on_zonfp_id" ON zonfp_spracovane_uzemne_mechanizmy USING btree (zonfp_id);
 
 
 --
@@ -7766,15 +7766,15 @@ SET search_path = itms, pg_catalog;
 -- Name: fk_rails_00bd9064dc; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_uzemne_mechanizmy
-    ADD CONSTRAINT fk_rails_00bd9064dc FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_uzemne_mechanizmy
+    ADD CONSTRAINT fk_rails_00bd9064dc FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
 -- Name: fk_rails_00be24adb6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_typy_uzemia
+ALTER TABLE ONLY zonfp_spracovane_typy_uzemia
     ADD CONSTRAINT fk_rails_00be24adb6 FOREIGN KEY (typ_uzemia_id) REFERENCES konkretne_ciele_hodnoty_ciselnikov(id);
 
 
@@ -7782,8 +7782,8 @@ ALTER TABLE ONLY zonfp_typy_uzemia
 -- Name: fk_rails_00c0160bcd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_partneri
-    ADD CONSTRAINT fk_rails_00c0160bcd FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_partneri
+    ADD CONSTRAINT fk_rails_00c0160bcd FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -7846,8 +7846,8 @@ ALTER TABLE ONLY projekty_miesta_realizacie_mimo_uzemia_op
 -- Name: fk_rails_05b9e9ab0a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_aktivity_projekt
-    ADD CONSTRAINT fk_rails_05b9e9ab0a FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_aktivity_projekt
+    ADD CONSTRAINT fk_rails_05b9e9ab0a FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -7862,7 +7862,7 @@ ALTER TABLE ONLY zonfp_prijate
 -- Name: fk_rails_079dc61bb0; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_hospodarske_cinnosti
+ALTER TABLE ONLY zonfp_spracovane_hospodarske_cinnosti
     ADD CONSTRAINT fk_rails_079dc61bb0 FOREIGN KEY (hospodarska_cinnost_id) REFERENCES konkretne_ciele_hodnoty_ciselnikov(id);
 
 
@@ -7870,7 +7870,7 @@ ALTER TABLE ONLY zonfp_hospodarske_cinnosti
 -- Name: fk_rails_096daa70ed; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_miesta_realizacie_mimo_uzemia_op
+ALTER TABLE ONLY zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
     ADD CONSTRAINT fk_rails_096daa70ed FOREIGN KEY (miesto_realizacie_id) REFERENCES miesta_realizacie(id);
 
 
@@ -7926,7 +7926,7 @@ ALTER TABLE ONLY nezrovnalosti_suvisiace_pohladavkove_doklady
 -- Name: fk_rails_0f2aac883b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_organizacne_zlozky
+ALTER TABLE ONLY zonfp_spracovane_organizacne_zlozky
     ADD CONSTRAINT fk_rails_0f2aac883b FOREIGN KEY (organizacna_zlozka_id) REFERENCES organizacne_zlozky(id);
 
 
@@ -7934,8 +7934,8 @@ ALTER TABLE ONLY zonfp_organizacne_zlozky
 -- Name: fk_rails_0f3db1df5e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_formy_financovania
-    ADD CONSTRAINT fk_rails_0f3db1df5e FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_formy_financovania
+    ADD CONSTRAINT fk_rails_0f3db1df5e FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8030,7 +8030,7 @@ ALTER TABLE ONLY verejne_obstaravania
 -- Name: fk_rails_1c418e1dd9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp
+ALTER TABLE ONLY zonfp_spracovane
     ADD CONSTRAINT fk_rails_1c418e1dd9 FOREIGN KEY (vysledok_konania_id) REFERENCES hodnoty_ciselnikov(id);
 
 
@@ -8174,8 +8174,8 @@ ALTER TABLE ONLY vyzvy_planovane
 -- Name: fk_rails_2f9bbaa2d6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_miesta_realizacie
-    ADD CONSTRAINT fk_rails_2f9bbaa2d6 FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_miesta_realizacie
+    ADD CONSTRAINT fk_rails_2f9bbaa2d6 FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8215,7 +8215,7 @@ ALTER TABLE ONLY miesta_realizacie
 --
 
 ALTER TABLE ONLY projekty
-    ADD CONSTRAINT fk_rails_35284387ac FOREIGN KEY (schvalena_zonfp_id) REFERENCES zonfp(id);
+    ADD CONSTRAINT fk_rails_35284387ac FOREIGN KEY (schvalena_zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8318,8 +8318,8 @@ ALTER TABLE ONLY projekty_aktivity
 -- Name: fk_rails_42d321084b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_hodnotitelia
-    ADD CONSTRAINT fk_rails_42d321084b FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_hodnotitelia
+    ADD CONSTRAINT fk_rails_42d321084b FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8342,7 +8342,7 @@ ALTER TABLE ONLY konkretne_ciele
 -- Name: fk_rails_4648a655f2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_aktivity_projekt
+ALTER TABLE ONLY zonfp_spracovane_aktivity_projekt
     ADD CONSTRAINT fk_rails_4648a655f2 FOREIGN KEY (typ_aktivity_id) REFERENCES typy_aktivit(id);
 
 
@@ -8398,7 +8398,7 @@ ALTER TABLE ONLY subjekty
 -- Name: fk_rails_4d54ad5583; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_miesta_realizacie
+ALTER TABLE ONLY zonfp_spracovane_miesta_realizacie
     ADD CONSTRAINT fk_rails_4d54ad5583 FOREIGN KEY (miesto_realizacie_id) REFERENCES miesta_realizacie(id);
 
 
@@ -8446,7 +8446,7 @@ ALTER TABLE ONLY verejne_obstaravania
 -- Name: fk_rails_4f280e9b20; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_hodnotitelia
+ALTER TABLE ONLY zonfp_spracovane_hodnotitelia
     ADD CONSTRAINT fk_rails_4f280e9b20 FOREIGN KEY (hodnotitel_id) REFERENCES osoby(id);
 
 
@@ -8478,7 +8478,7 @@ ALTER TABLE ONLY vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
 -- Name: fk_rails_512e4c4c1c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp
+ALTER TABLE ONLY zonfp_spracovane
     ADD CONSTRAINT fk_rails_512e4c4c1c FOREIGN KEY (ziadatel_id) REFERENCES subjekty(id);
 
 
@@ -8518,8 +8518,8 @@ ALTER TABLE ONLY vyzvy_vyhlasene_vyzvy_planovane
 -- Name: fk_rails_56c4e15d44; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_polozky_rozpoctu
-    ADD CONSTRAINT fk_rails_56c4e15d44 FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_polozky_rozpoctu
+    ADD CONSTRAINT fk_rails_56c4e15d44 FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8534,7 +8534,7 @@ ALTER TABLE ONLY projekty_hospodarske_cinnosti
 -- Name: fk_rails_5a9038c4f3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_uzemne_mechanizmy
+ALTER TABLE ONLY zonfp_spracovane_uzemne_mechanizmy
     ADD CONSTRAINT fk_rails_5a9038c4f3 FOREIGN KEY (uzemny_mechanizmus_id) REFERENCES konkretne_ciele_hodnoty_ciselnikov(id);
 
 
@@ -8550,8 +8550,8 @@ ALTER TABLE ONLY polozky_rozpoctu
 -- Name: fk_rails_5cac1f1c7e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_hospodarske_cinnosti
-    ADD CONSTRAINT fk_rails_5cac1f1c7e FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_hospodarske_cinnosti
+    ADD CONSTRAINT fk_rails_5cac1f1c7e FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8598,8 +8598,8 @@ ALTER TABLE ONLY projektove_ukazovatele_casy_plnenia
 -- Name: fk_rails_64ec721cb6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_miesta_realizacie_mimo_uzemia_op
-    ADD CONSTRAINT fk_rails_64ec721cb6 FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
+    ADD CONSTRAINT fk_rails_64ec721cb6 FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8638,8 +8638,8 @@ ALTER TABLE ONLY polozky_rozpoctu
 -- Name: fk_rails_68aa37fcce; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_oblasti_intervencie
-    ADD CONSTRAINT fk_rails_68aa37fcce FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_oblasti_intervencie
+    ADD CONSTRAINT fk_rails_68aa37fcce FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8782,7 +8782,7 @@ ALTER TABLE ONLY konkretne_ciele
 -- Name: fk_rails_80274e8d49; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_partneri
+ALTER TABLE ONLY zonfp_spracovane_partneri
     ADD CONSTRAINT fk_rails_80274e8d49 FOREIGN KEY (partner_id) REFERENCES subjekty(id);
 
 
@@ -8854,15 +8854,15 @@ ALTER TABLE ONLY zop
 -- Name: fk_rails_899eb09f3c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_meratelne_ukazovatele
-    ADD CONSTRAINT fk_rails_899eb09f3c FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_meratelne_ukazovatele
+    ADD CONSTRAINT fk_rails_899eb09f3c FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
 -- Name: fk_rails_89aac1cc38; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_sekundarne_tematicke_okruhy
+ALTER TABLE ONLY zonfp_spracovane_sekundarne_tematicke_okruhy
     ADD CONSTRAINT fk_rails_89aac1cc38 FOREIGN KEY (sekundarny_tematicky_okruh_id) REFERENCES konkretne_ciele_hodnoty_ciselnikov(id);
 
 
@@ -8974,8 +8974,8 @@ ALTER TABLE ONLY miesta_realizacie
 -- Name: fk_rails_9a28904f8b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_sekundarne_tematicke_okruhy
-    ADD CONSTRAINT fk_rails_9a28904f8b FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_sekundarne_tematicke_okruhy
+    ADD CONSTRAINT fk_rails_9a28904f8b FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -8998,7 +8998,7 @@ ALTER TABLE ONLY pohladavkove_doklady
 -- Name: fk_rails_9dc2525b6b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_oblasti_intervencie
+ALTER TABLE ONLY zonfp_spracovane_oblasti_intervencie
     ADD CONSTRAINT fk_rails_9dc2525b6b FOREIGN KEY (oblast_intervencie_id) REFERENCES konkretne_ciele_hodnoty_ciselnikov(id);
 
 
@@ -9062,7 +9062,7 @@ ALTER TABLE ONLY zonfp_prijate_meratelne_ukazovatele
 -- Name: fk_rails_a9cb13bf8d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_formy_financovania
+ALTER TABLE ONLY zonfp_spracovane_formy_financovania
     ADD CONSTRAINT fk_rails_a9cb13bf8d FOREIGN KEY (forma_financovania_id) REFERENCES konkretne_ciele_hodnoty_ciselnikov(id);
 
 
@@ -9094,8 +9094,8 @@ ALTER TABLE ONLY zonfp_prijate
 -- Name: fk_rails_af89f96e79; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_organizacne_zlozky
-    ADD CONSTRAINT fk_rails_af89f96e79 FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_organizacne_zlozky
+    ADD CONSTRAINT fk_rails_af89f96e79 FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -9134,8 +9134,8 @@ ALTER TABLE ONLY nezrovnalosti
 -- Name: fk_rails_b9aa6d8591; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_typy_uzemia
-    ADD CONSTRAINT fk_rails_b9aa6d8591 FOREIGN KEY (zonfp_id) REFERENCES zonfp(id);
+ALTER TABLE ONLY zonfp_spracovane_typy_uzemia
+    ADD CONSTRAINT fk_rails_b9aa6d8591 FOREIGN KEY (zonfp_id) REFERENCES zonfp_spracovane(id);
 
 
 --
@@ -9238,7 +9238,7 @@ ALTER TABLE ONLY uctovne_doklady
 -- Name: fk_rails_ca35ba4dd4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_polozky_rozpoctu
+ALTER TABLE ONLY zonfp_spracovane_polozky_rozpoctu
     ADD CONSTRAINT fk_rails_ca35ba4dd4 FOREIGN KEY (skupina_vydavkov_id) REFERENCES hodnoty_ciselnikov(id);
 
 
@@ -9286,7 +9286,7 @@ ALTER TABLE ONLY projekty_typy_uzemia
 -- Name: fk_rails_d0de622c00; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_aktivity_projekt
+ALTER TABLE ONLY zonfp_spracovane_aktivity_projekt
     ADD CONSTRAINT fk_rails_d0de622c00 FOREIGN KEY (subjekt_id) REFERENCES subjekty(id);
 
 
@@ -9358,7 +9358,7 @@ ALTER TABLE ONLY verejne_obstaravania
 -- Name: fk_rails_df9a9ead9a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
-ALTER TABLE ONLY zonfp_meratelne_ukazovatele
+ALTER TABLE ONLY zonfp_spracovane_meratelne_ukazovatele
     ADD CONSTRAINT fk_rails_df9a9ead9a FOREIGN KEY (projektovy_ukazovatel_id) REFERENCES projektove_ukazovatele(id);
 
 
@@ -9651,6 +9651,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171117102940'),
 ('20171120133917'),
 ('20171214142454'),
-('20171214151327');
+('20171214151327'),
+('20171221180201');
 
 
