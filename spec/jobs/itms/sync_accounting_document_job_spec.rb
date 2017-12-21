@@ -26,6 +26,7 @@ RSpec.describe Itms::SyncAccountingDocumentJob, type: :job do
         itms_created_at: DateTime.parse('2016-11-16T11:40:55.739Z'),
         itms_updated_at: DateTime.parse('2016-11-17T11:40:55.739Z'),
 
+        celkova_vyska_dokladu: 174750.66,
         datum_uhrady: DateTime.parse('2016-11-21T00:00:00Z'),
         datum_vyhotovenia: DateTime.parse('2016-10-27T00:00:00Z'),
         dodavatel_dodavatel_obstaravatel: Itms::Supplier.find_by!(itms_id: 260),
