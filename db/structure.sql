@@ -7311,13 +7311,6 @@ CREATE UNIQUE INDEX "index_itms.zonfp_partneri_on_zonfp_id_and_partner_id" ON zo
 
 
 --
--- Name: index_itms.zonfp_polozky_rozpoctu_on_itms_id; Type: INDEX; Schema: itms; Owner: -
---
-
-CREATE UNIQUE INDEX "index_itms.zonfp_polozky_rozpoctu_on_itms_id" ON zonfp_spracovane_polozky_rozpoctu USING btree (itms_id);
-
-
---
 -- Name: index_itms.zonfp_polozky_rozpoctu_on_skupina_vydavkov_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -7545,7 +7538,7 @@ CREATE UNIQUE INDEX "index_itms.zonfp_prijate_partneri_on_zonfp_id_and_partner_i
 -- Name: index_itms.zonfp_prijate_polozky_rozpoctu_on_itms_id; Type: INDEX; Schema: itms; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_itms.zonfp_prijate_polozky_rozpoctu_on_itms_id" ON zonfp_prijate_polozky_rozpoctu USING btree (itms_id);
+CREATE INDEX "index_itms.zonfp_prijate_polozky_rozpoctu_on_itms_id" ON zonfp_prijate_polozky_rozpoctu USING btree (itms_id);
 
 
 --
@@ -7553,6 +7546,13 @@ CREATE UNIQUE INDEX "index_itms.zonfp_prijate_polozky_rozpoctu_on_itms_id" ON zo
 --
 
 CREATE INDEX "index_itms.zonfp_prijate_polozky_rozpoctu_on_sv" ON zonfp_prijate_polozky_rozpoctu USING btree (skupina_vydavkov_id);
+
+
+--
+-- Name: index_itms.zonfp_prijate_polozky_rozpoctu_on_z_and_pr; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.zonfp_prijate_polozky_rozpoctu_on_z_and_pr" ON zonfp_prijate_polozky_rozpoctu USING btree (zonfp_id, itms_id);
 
 
 --
@@ -7644,6 +7644,20 @@ CREATE UNIQUE INDEX "index_itms.zonfp_sekundarne_tematicke_okruhy_on_z_and_sto" 
 --
 
 CREATE INDEX "index_itms.zonfp_sekundarne_tematicke_okruhy_on_zonfp_id" ON zonfp_spracovane_sekundarne_tematicke_okruhy USING btree (zonfp_id);
+
+
+--
+-- Name: index_itms.zonfp_spracovane_polozky_rozpoctu_on_itms_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.zonfp_spracovane_polozky_rozpoctu_on_itms_id" ON zonfp_spracovane_polozky_rozpoctu USING btree (itms_id);
+
+
+--
+-- Name: index_itms.zonfp_spracovane_polozky_rozpoctu_on_z_and_pr; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.zonfp_spracovane_polozky_rozpoctu_on_z_and_pr" ON zonfp_spracovane_polozky_rozpoctu USING btree (zonfp_id, itms_id);
 
 
 --
@@ -9652,6 +9666,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171120133917'),
 ('20171214142454'),
 ('20171214151327'),
-('20171221180201');
+('20171221180201'),
+('20171221215154');
 
 
