@@ -6,7 +6,7 @@ class Itms::AccountingDocument < ApplicationRecord
   has_many :polozky_dokladu,
            -> { order(:poradove_cislo) },
            class_name: 'Itms::AccountingDocumentItem',
-           foreign_key: 'uctovny_doklad_id',
+           foreign_key: :uctovny_doklad_id,
            dependent: :destroy
 
   has_and_belongs_to_many :verejne_obstaravania,
@@ -15,9 +15,11 @@ class Itms::AccountingDocument < ApplicationRecord
                           association_foreign_key: :verejne_obstaravanie_id,
                           foreign_key: :uctovny_doklad_id
 
-  belongs_to :vlastnik_dokladu, class_name: 'Itms::Subject'
+  has_and_belongs_to_many :projekty,
+                          class_name: 'Itms::Project',
+                          join_table: 'itms.uctovne_doklady_projekty',
+                          association_foreign_key: :projekt_id,
+                          foreign_key: :uctovny_doklad_id
 
-  def projekty
-    verejne_obstaravania.map(&:projekty)
-  end
+  belongs_to :vlastnik_dokladu, class_name: 'Itms::Subject'
 end
