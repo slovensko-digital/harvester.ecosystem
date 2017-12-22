@@ -12,10 +12,10 @@ RSpec.describe Itms::SyncAccountingDocumentJob, type: :job do
   context '#perform' do
     it 'syncs accounting document and all of its attributes' do
       expect(downloader)
-          .to receive(:get_json_from_href)
-          .with('/v2/uctovneDoklady/3172')
-          .and_return(itms_json_fixture('uctovny_doklad_item.json'))
-          .once
+        .to receive(:get_json_from_href)
+        .with('/v2/uctovneDoklady/3172')
+        .and_return(itms_json_fixture('uctovny_doklad_item.json'))
+        .once
 
       subject.perform('/v2/uctovneDoklady/3172', downloader: downloader)
       procurement.uctovne_doklady = [Itms::AccountingDocument.first]
@@ -33,36 +33,38 @@ RSpec.describe Itms::SyncAccountingDocumentJob, type: :job do
         dodavatel_subjekt: Itms::Subject.find_by!(itms_id: 100077),
         nazov: 'Faktúra',
         polozky_dokladu: [
-            Itms::AccountingDocumentItem.find_by!(
-                itms_id: 9354,
-                dph: 4500,
-                jednotkova_cena: 22500,
-                mnozstvo: 0,
-                nazov: 'montážne práce',
-                poradove_cislo: 1,
-                sadzba_dph: 20,
-                suma_bez_dph: 22500,
-                suma_opravnena: 27000,
-                suma_spolu: 27000,
-                suma_ziadana: 27000,
-                suma_zrealizovanych_vydavkov: 27000
-            ),
-            Itms::AccountingDocumentItem.find_by!(
-                itms_id: 9355,
-                dph: 339,
-                jednotkova_cena: 1695,
-                mnozstvo: 0,
-                nazov: "ponorné kalové čerpadlo",
-                poradove_cislo: 2,
-                sadzba_dph: 20,
-                suma_bez_dph: 1695,
-                suma_opravnena: 2034,
-                suma_spolu: 2034,
-                suma_ziadana: 2034,
-                suma_zrealizovanych_vydavkov: 2034
-            ),
+          Itms::AccountingDocumentItem.find_by!(
+            itms_id: 9354,
+            dph: 4500,
+            jednotkova_cena: 22500,
+            mnozstvo: 0,
+            nazov: 'montážne práce',
+            poradove_cislo: 1,
+            sadzba_dph: 20,
+            suma_bez_dph: 22500,
+            suma_opravnena: 27000,
+            suma_spolu: 27000,
+            suma_ziadana: 27000,
+            suma_zrealizovanych_vydavkov: 27000
+          ),
+          Itms::AccountingDocumentItem.find_by!(
+            itms_id: 9355,
+            dph: 339,
+            jednotkova_cena: 1695,
+            mnozstvo: 0,
+            nazov: "ponorné kalové čerpadlo",
+            poradove_cislo: 2,
+            sadzba_dph: 20,
+            suma_bez_dph: 1695,
+            suma_opravnena: 2034,
+            suma_spolu: 2034,
+            suma_ziadana: 2034,
+            suma_zrealizovanych_vydavkov: 2034
+          ),
         ],
-        projekty: [procurement.projekty],
+        projekty: [
+          Itms::Project.find_by!(itms_id: 70)
+        ],
         typ: 'EXTERNY',
         verejne_obstaravania: [procurement],
         vlastnik_dokladu: Itms::Subject.find_by!(itms_id: 100184)

@@ -15,6 +15,7 @@ class Itms::SyncAccountingDocumentJob < ItmsJob
       ad.dodavatel_subjekt = find_or_create_subject_by_json(json['dodavatelSubjekt'], downloader)
       ad.nazov = json['nazov']
       ad.polozky_dokladu = find_or_create_accounting_document_items_by_json(json['polozkyDokladu'], ad.polozky_dokladu)
+      ad.projekty = find_or_create_projects_by_json(json['projekty'], downloader)
       ad.typ = json['typ']
       ad.vlastnik_dokladu = find_or_create_subject_by_json(json['vlastnikDokladu'], downloader)
 

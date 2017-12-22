@@ -2007,6 +2007,38 @@ ALTER SEQUENCE uctovne_doklady_polozky_dokladu_id_seq OWNED BY uctovne_doklady_p
 
 
 --
+-- Name: uctovne_doklady_projekty; Type: TABLE; Schema: itms; Owner: -
+--
+
+CREATE TABLE uctovne_doklady_projekty (
+    id integer NOT NULL,
+    uctovny_doklad_id integer NOT NULL,
+    projekt_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: uctovne_doklady_projekty_id_seq; Type: SEQUENCE; Schema: itms; Owner: -
+--
+
+CREATE SEQUENCE uctovne_doklady_projekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: uctovne_doklady_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: itms; Owner: -
+--
+
+ALTER SEQUENCE uctovne_doklady_projekty_id_seq OWNED BY uctovne_doklady_projekty.id;
+
+
+--
 -- Name: verejne_obstaravania; Type: TABLE; Schema: itms; Owner: -
 --
 
@@ -4320,6 +4352,13 @@ ALTER TABLE ONLY uctovne_doklady_polozky_dokladu ALTER COLUMN id SET DEFAULT nex
 -- Name: id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
+ALTER TABLE ONLY uctovne_doklady_projekty ALTER COLUMN id SET DEFAULT nextval('uctovne_doklady_projekty_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+--
+
 ALTER TABLE ONLY verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('verejne_obstaravania_id_seq'::regclass);
 
 
@@ -5128,6 +5167,14 @@ ALTER TABLE ONLY uctovne_doklady
 
 ALTER TABLE ONLY uctovne_doklady_polozky_dokladu
     ADD CONSTRAINT uctovne_doklady_polozky_dokladu_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: uctovne_doklady_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_projekty
+    ADD CONSTRAINT uctovne_doklady_projekty_pkey PRIMARY KEY (id);
 
 
 --
@@ -6684,6 +6731,27 @@ CREATE INDEX "index_itms.uctovne_doklady_polozky_dokladu_on_uctovny_doklad_id" O
 
 
 --
+-- Name: index_itms.uctovne_doklady_projekty_on_projekt_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.uctovne_doklady_projekty_on_projekt_id" ON uctovne_doklady_projekty USING btree (projekt_id);
+
+
+--
+-- Name: index_itms.uctovne_doklady_projekty_on_uctovny_doklad_id; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE INDEX "index_itms.uctovne_doklady_projekty_on_uctovny_doklad_id" ON uctovne_doklady_projekty USING btree (uctovny_doklad_id);
+
+
+--
+-- Name: index_itms.uctovne_doklady_projekty_on_ud_and_p; Type: INDEX; Schema: itms; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_itms.uctovne_doklady_projekty_on_ud_and_p" ON uctovne_doklady_projekty USING btree (uctovny_doklad_id, projekt_id);
+
+
+--
 -- Name: index_itms.verejne_obstaravania_on_druh_zakazky_id; Type: INDEX; Schema: itms; Owner: -
 --
 
@@ -7828,6 +7896,14 @@ ALTER TABLE ONLY zonfp_prijate_organizacne_zlozky
 
 
 --
+-- Name: fk_rails_028b9af1eb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_projekty
+    ADD CONSTRAINT fk_rails_028b9af1eb FOREIGN KEY (uctovny_doklad_id) REFERENCES uctovne_doklady(id);
+
+
+--
 -- Name: fk_rails_03702170c9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -8756,6 +8832,14 @@ ALTER TABLE ONLY subjekty
 
 
 --
+-- Name: fk_rails_782031234c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+--
+
+ALTER TABLE ONLY uctovne_doklady_projekty
+    ADD CONSTRAINT fk_rails_782031234c FOREIGN KEY (projekt_id) REFERENCES projekty(id);
+
+
+--
 -- Name: fk_rails_7a7cdcf0c3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9672,6 +9756,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171221180201'),
 ('20171221215154'),
 ('20171221222028'),
-('20171221222608');
+('20171221222608'),
+('20171222121456');
 
 
