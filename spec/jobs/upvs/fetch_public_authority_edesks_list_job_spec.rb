@@ -46,5 +46,19 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
 
       expect(Upvs::PublicAuthorityEdesk.count).to eq(5)
     end
+
+    it 'supports semicolon separated format v4' do
+      downloader = double
+      expect(downloader).to receive(:download_file).with('https://url').and_return(fixture_filepath('jobs/upvs/fixtures/upvs-edesks-v4.csv'))
+
+      subject.perform('https://url', downloader: downloader)
+
+      expect(Upvs::PublicAuthorityEdesk.first).to have_attributes(
+        cin: 42156424,
+        name: 'Národná agentúra pre sieťové a elektronické služby: Test',
+      )
+
+      expect(Upvs::PublicAuthorityEdesk.count).to eq(5)
+    end
   end
 end
