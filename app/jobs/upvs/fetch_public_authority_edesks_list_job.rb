@@ -29,6 +29,6 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
   end
 
   def detect_separator(header)
-    header.include?(';;') ? ';' : ','
+    header.include?(';') ? ';' : ','
   end
 end
