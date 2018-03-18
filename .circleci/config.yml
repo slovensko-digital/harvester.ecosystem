@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/slovensko-digital/admin.ecosystem
+
+    docker:
+      - image: circleci/ruby:2.5.0-node-browsers
+        environment:
+          RAILS_ENV: test
+
+      - image: circleci/postgres:9.6.8-alpine-ram
+        environment:
+          POSTGRES_USER: ubuntu
+          POSTGRES_PASSWORD: ''
+
+    steps:
+      - checkout
+      - run: sudo apt-get install postgresql-client
+      - restore_cache: { keys: ['{{ checksum "Gemfile.lock" }}'] }
+      - run: bundle install --path vendor/bundle
+      - save_cache: { key: '{{ checksum "Gemfile.lock" }}', paths: [vendor/bundle] }
+      - run: dockerize -wait tcp://localhost:5432 -timeout 60s
+      - run: bundle exec rake db:create db:structure:load --trace
+      - run: bundle exec rspec
