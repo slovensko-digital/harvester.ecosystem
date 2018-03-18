@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/slovensko-digital/admin.ecosystem
+    working_directory: ~/slovensko-digital/harvester.ecosystem
 
     docker:
       - image: circleci/ruby:2.5.0-node-browsers
