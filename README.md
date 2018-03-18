@@ -2,11 +2,10 @@
 
 Harvester is an open-source application that downloads data from various public sources and pushes data to [ekosystem.slovensko.digital](https://ekosystem.slovensko.digital/). 
 
-[![CircleCI](https://circleci.com/gh/slovensko-digital/harvester.ecosystem.svg?style=shield&circle-token=4ceebb8c3fa816ecc9ab67491f55f665ea9d8661)](https://circleci.com/gh/slovensko-digital/harvester.ecosystem)
-[![Dependency Status](https://gemnasium.com/slovensko-digital/harvester.ecosystem.png)](https://gemnasium.com/slovensko-digital/harvester.ecosystem)
-[![Code Climate](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem.png)](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem)
-[![Test Coverage](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem/badges/coverage.svg)](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem/coverage)
-[![Inch CI](https://inch-ci.org/github/slovensko-digital/harvester.ecosystem.svg)](https://inch-ci.org/github/slovensko-digital/harvester.ecosystem)
+[![CircleCI](https://img.shields.io/circleci/project/github/slovensko-digital/harvester.ecosystem.svg)](https://circleci.com/gh/slovensko-digital/harvester.ecosystem)
+[![Gemnasium](https://img.shields.io/gemnasium/slovensko-digital/harvester.ecosystem.svg)](https://gemnasium.com/slovensko-digital/harvester.ecosystem)
+[![Code Climate](https://img.shields.io/codeclimate/github/slovensko-digital/harvester.ecosystem.svg)](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/github/slovensko-digital/harvester.ecosystem.svg)](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem/coverage)
 
 ## Supported data sources
 
