@@ -1,7 +1,5 @@
 version: '2'
 services:
-
-
   postgres_data:
     image: busybox
     volumes:
