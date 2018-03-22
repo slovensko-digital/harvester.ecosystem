@@ -35,8 +35,6 @@ end
 
 group :test do
   gem 'simplecov'
-  gem 'codeclimate-test-reporter', '~> 1.0.8'
-  gem 'rspec_junit_formatter'
   gem 'webmock'
 end
 
