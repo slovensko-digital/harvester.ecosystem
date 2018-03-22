@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: 737f1214f58fa1201c6500ef92592c3762f79718b2d17c581851c38ca501d0a7
+
     working_directory: ~/slovensko-digital/harvester.ecosystem
 
     docker:
@@ -15,6 +18,8 @@ jobs:
 
     steps:
       - checkout
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./test-reporter
+      - run: chmod +x ./test-reporter
       - run: sudo apt-get install postgresql-client
       - restore_cache: { keys: ['{{ checksum "Gemfile.lock" }}'] }
       - run: bundle install --path vendor/bundle
@@ -22,4 +27,6 @@ jobs:
       - run: dockerize -wait tcp://localhost:5432 -timeout 60s
       - run: mv .circleci/database.yml config/database.yml
       - run: bundle exec rake db:create db:structure:load --trace
+      - run: ./test-reporter before-build
       - run: bundle exec rspec
+      - run: ./test-reporter after-build --coverage-input-type simplecov --exit-code $?
