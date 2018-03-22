@@ -8,7 +8,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV["RAILS_MAX_THREADS"] || 5 %>
   variables:
-    statement_timeout: 5000
+    lock_timeout: 5000
 
 development:
   <<: *default
