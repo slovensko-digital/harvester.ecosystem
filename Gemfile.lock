@@ -46,8 +46,6 @@ GEM
     byebug (10.0.0)
     clockwork (2.0.3)
       tzinfo
-    codeclimate-test-reporter (1.0.8)
-      simplecov (<= 0.13)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
@@ -148,8 +146,6 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rspec_junit_formatter (0.3.0)
-      rspec-core (>= 2, < 4, != 2.12.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
     sidekiq (5.1.1)
@@ -199,7 +195,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   clockwork
-  codeclimate-test-reporter (~> 1.0.8)
   dotenv
   foreman
   jbuilder (~> 2.6)
@@ -211,7 +206,6 @@ DEPENDENCIES
   rails (~> 5.0.2)
   rollbar
   rspec-rails (~> 3.5.0)
-  rspec_junit_formatter
   sidekiq
   simplecov
   spring
