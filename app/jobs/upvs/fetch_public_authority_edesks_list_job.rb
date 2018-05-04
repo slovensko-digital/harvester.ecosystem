@@ -16,9 +16,9 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
     header = File.open(file) { |f| f.readline }
     separator = detect_separator(header)
     CSV.foreach(file, headers: true, col_sep: separator) do |row|
-      uri = row.fetch('URI')
-      edesk = Upvs::PublicAuthorityEdesk.find_or_initialize_by(uri: uri)
-      edesk.cin = row['IČO'] || row['﻿IČO'] || row.fetch('﻿ICO')
+      row = row.to_h.transform_keys(&:strip)
+      edesk = Upvs::PublicAuthorityEdesk.find_or_initialize_by(uri: row.fetch('URI'))
+      edesk.cin = row['IČO'] || row['IČO'] || row.fetch('ICO')
       edesk.name = row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV')
       edesk.street = row.fetch('ULICA')
       edesk.street_number = row.fetch('ČÍSLO')
