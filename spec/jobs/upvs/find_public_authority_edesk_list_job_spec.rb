@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Upvs::FindPublicAuthorityEdeskListJob, type: :job do
-  context '#perform' do
+  describe '#perform' do
+    let(:downloader) { double }
+
     it 'finds csv dataset url and schedules fetch job' do
-      downloader = double
       expect(downloader).to receive(:download).with('https://data.gov.sk/dataset/upvs-institucie-so-schrankou').and_return(file_fixture('jobs/upvs/fixtures/upvs-institucie-so-schrankou.html'))
 
       fetch_job = spy
@@ -14,12 +15,9 @@ RSpec.describe Upvs::FindPublicAuthorityEdeskListJob, type: :job do
     end
 
     it 'throws error when there is no csv file detected' do
-      downloader = double
       expect(downloader).to receive(:download).with('https://data.gov.sk/dataset/upvs-institucie-so-schrankou').and_return('<html></html>')
 
-      expect do
-        subject.perform(downloader: downloader)
-      end.to raise_error(Upvs::ResourceNotFoundError)
+      expect { subject.perform(downloader: downloader) }.to raise_error(Upvs::ResourceNotFoundError)
     end
   end
 end
