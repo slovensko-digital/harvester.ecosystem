@@ -7,7 +7,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
     let(:downloader) { double }
 
     it 'downloads and imports public authority eDesks in V1 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('jobs/upvs/fixtures/upvs-edesks-v1.csv'))
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('fixtures/upvs/edesks-v1.csv'))
 
       subject.perform(url, downloader: downloader)
 
@@ -25,7 +25,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
     end
 
     it 'downloads and imports public authority eDesks in V2 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('jobs/upvs/fixtures/upvs-edesks-v2.csv'))
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('fixtures/upvs/edesks-v2.csv'))
 
       subject.perform(url, downloader: downloader)
 
@@ -43,7 +43,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
     end
 
     it 'downloads and imports public authority eDesks in V3 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('jobs/upvs/fixtures/upvs-edesks-v3.csv'))
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('fixtures/upvs/edesks-v3.csv'))
 
       subject.perform(url, downloader: downloader)
 
@@ -61,7 +61,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
     end
 
     it 'downloads and imports public authority eDesks in V4 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('jobs/upvs/fixtures/upvs-edesks-v4.csv'))
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('fixtures/upvs/edesks-v4.csv'))
 
       subject.perform(url, downloader: downloader)
 
@@ -79,7 +79,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
     end
 
     it 'downloads and imports public authority eDesks in V5 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('jobs/upvs/fixtures/upvs-edesks-v5.csv'))
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('fixtures/upvs/edesks-v5.csv'))
 
       subject.perform(url, downloader: downloader)
 
