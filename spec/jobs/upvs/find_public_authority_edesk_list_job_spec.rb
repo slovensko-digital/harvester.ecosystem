@@ -5,7 +5,7 @@ RSpec.describe Upvs::FindPublicAuthorityEdeskListJob, type: :job do
     let(:downloader) { double }
 
     it 'finds csv dataset url and schedules fetch job' do
-      expect(downloader).to receive(:download).with('https://data.gov.sk/dataset/upvs-institucie-so-schrankou').and_return(file_fixture('fixtures/upvs/institucie-so-schrankou.html'))
+      expect(downloader).to receive(:download).with('https://data.gov.sk/dataset/upvs-institucie-so-schrankou').and_return(file_fixture('upvs/institucie-so-schrankou.html'))
 
       fetch_job = spy
 
