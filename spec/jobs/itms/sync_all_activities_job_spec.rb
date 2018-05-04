@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncAllActivitiesJob, type: :job do
-  context '#perform' do
+  describe '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
     it 'syncs all activities' do

@@ -4,7 +4,7 @@ RSpec.describe Itms::SyncProcurementContractJob, type: :job do
   include_context "itms_downloader"
   let(:procurement) { Itms::Procurement.create!(itms_id: 123) }
 
-  context '#perform' do
+  describe '#perform' do
     it 'syncs procurement contract and all of its attributes' do
       expect(downloader)
           .to receive(:get_json_from_href)

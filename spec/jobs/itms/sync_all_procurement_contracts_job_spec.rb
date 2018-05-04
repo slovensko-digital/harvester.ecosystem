@@ -4,7 +4,7 @@ RSpec.describe Itms::SyncAllProcurementContractsJob, type: :job do
   include_context 'itms_downloader'
   let(:procurement) { }
 
-  context '#perform' do
+  describe '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
     it 'syncs all specific goals' do

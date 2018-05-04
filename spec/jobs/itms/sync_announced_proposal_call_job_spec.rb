@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Itms::SyncAnnouncedProposalCallJob, type: :job do
   include_context 'itms_downloader'
 
-  context '#perform' do
+  describe '#perform' do
     it 'syncs planned call for proposals and all of its attributes' do
       expect(downloader)
         .to receive(:get_json_from_href)

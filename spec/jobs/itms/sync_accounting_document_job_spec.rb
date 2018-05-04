@@ -9,7 +9,7 @@ RSpec.describe Itms::SyncAccountingDocumentJob, type: :job do
     )
   end
 
-  context '#perform' do
+  describe '#perform' do
     it 'syncs accounting document and all of its attributes' do
       expect(downloader)
         .to receive(:get_json_from_href)
