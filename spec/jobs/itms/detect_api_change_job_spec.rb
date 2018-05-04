@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Itms::DetectApiChangeJob, type: :job do
   let(:downloader) { double(:downloader) }
 
-  context '#perform' do
+  describe '#perform' do
     it 'detects changes in swagger.json file' do
       expect(downloader)
         .to receive(:get)

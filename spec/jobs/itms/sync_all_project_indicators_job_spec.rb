@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Itms::SyncAllProjectIndicatorsJob, type: :job do
   let(:downloader) { double(:downloader) }
 
-  context '#perform' do
+  describe '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
     it 'syncs all project_indicators' do

@@ -4,7 +4,7 @@ RSpec.describe Itms::SyncAllCodelistValuesJob, type: :job do
   let(:downloader) { double(:downloader) }
   let(:codelist) { Itms::Codelist.first_or_create!(ciselnik_kod: 456) }
 
-  context '#perform' do
+  describe '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
     it 'syncs all codelist values' do

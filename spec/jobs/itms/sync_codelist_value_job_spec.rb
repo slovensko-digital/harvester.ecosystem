@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Itms::SyncCodelistValueJob, type: :job do
   let(:downloader) { double(:downloader) }
 
-  context '#perform' do
+  describe '#perform' do
     it 'syncs values of a given codelist' do
       expect(downloader)
         .to receive(:get_json_from_href)

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Itms::SyncActivityTypeJob, type: :job do
   let(:downloader) { double(:downloader) }
 
-  context '#perform' do
+  describe '#perform' do
     it 'syncs subject and all its attributes' do
       expect(downloader)
           .to receive(:get_json_from_href)

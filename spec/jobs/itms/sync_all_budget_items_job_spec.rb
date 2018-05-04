@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncAllBudgetItemsJob, type: :job do
-  context '#perform' do
+  describe '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
     it 'syncs all budget items' do

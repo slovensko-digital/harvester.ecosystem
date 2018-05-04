@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Itms::SyncProjectJob, type: :job do
   include_context "itms_downloader"
 
-  context '#perform' do
+  describe '#perform' do
     before(:each) do
       expect(downloader)
           .to receive(:get_json_from_href)

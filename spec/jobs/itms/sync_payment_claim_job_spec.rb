@@ -111,7 +111,7 @@ RSpec.describe Itms::SyncPaymentClaimJob, type: :job do
     )
   end
 
-  context '#perform' do
+  describe '#perform' do
     it 'syncs submitted payment claim and all of its attributes' do
       expect(downloader)
         .to receive(:get_json_from_href)

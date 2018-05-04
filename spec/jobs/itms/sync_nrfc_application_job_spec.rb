@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Itms::SyncNrfcApplicationJob, type: :job do
   include_context 'itms_downloader'
 
-  context '#perform' do
+  describe '#perform' do
     context 'received nrfc applications' do
       it 'syncs received applications and their attributes' do
         expect(downloader)

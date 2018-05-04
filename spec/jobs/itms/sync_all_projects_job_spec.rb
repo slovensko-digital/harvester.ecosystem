@@ -4,7 +4,7 @@ RSpec.describe Itms::SyncAllProjectsJob, type: :job do
   let(:downloader) { double(:downloader) }
   let(:sync_job) { class_double(Itms::SyncProjectJob) }
 
-  context '#perform' do
+  describe '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
     it 'syncs all projects' do
