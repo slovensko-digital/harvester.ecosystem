@@ -1,6 +1,6 @@
 module FixtureMacros
   def fixture_filepath(file_path)
-    Pathname.new('spec').join(file_path)
+    Pathname.new('spec').join('fixtures', file_path)
   end
 
   def file_fixture(file_path)
@@ -8,7 +8,7 @@ module FixtureMacros
   end
 
   def itms_file_fixture(file_name)
-    file_fixture("fixtures/itms/#{file_name}")
+    file_fixture(File.join('itms', file_name))
   end
 
   def itms_json_fixture(file_name)
