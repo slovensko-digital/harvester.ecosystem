@@ -132,7 +132,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
       it 'raises custom error' do
         expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-v5-not-matching.csv'))
 
-        expect { subject.perform(url, downloader: downloader) }.to raise_error('ico://sk/92156427_90000 does not match 42156424')
+        expect { subject.perform(url, downloader: downloader) }.to raise_error('ico://sk/99166260 does not match 166260')
       end
     end
   end

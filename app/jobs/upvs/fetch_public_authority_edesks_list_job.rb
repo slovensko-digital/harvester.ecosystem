@@ -34,13 +34,16 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
 
       uri = row.fetch('URI')
       cin = row['IČO'] || row['IČO'] || row.fetch('ICO')
+      name = row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV')
 
-      raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin}(_\d+)?/
+      if name !~ /TEST/i
+        raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin}(_\d+)?/
+      end
 
       yield(
         uri: uri,
         cin: cin,
-        name: row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV'),
+        name: name,
         street: row.fetch('ULICA'),
         street_number: row.fetch('ČÍSLO'),
         postal_code: row.fetch('PSČ'),
