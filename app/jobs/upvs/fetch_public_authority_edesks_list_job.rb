@@ -12,6 +12,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
       TemporaryPublicAuthorityEdesk.create_table!
 
       each_row_as_attributes(csv_file, csv_options) do |attributes|
+        check_row_attributes(attributes)
         TemporaryPublicAuthorityEdesk.find_or_initialize_by(uri: attributes[:uri]).update!(attributes)
       end
 
@@ -32,23 +33,23 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
     CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}/, '') }
 
-      uri = row.fetch('URI')
-      cin = row['IČO'] || row['IČO'] || row.fetch('ICO')
-      name = row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV')
-
-      if name !~ /TEST/i
-        raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin}(_\d+)?/
-      end
-
       yield(
-        uri: uri,
-        cin: cin,
-        name: name,
+        uri: row.fetch('URI'),
+        cin: row['IČO'] || row['IČO'] || row.fetch('ICO'),
+        name: row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV'),
         street: row.fetch('ULICA'),
         street_number: row.fetch('ČÍSLO'),
         postal_code: row.fetch('PSČ'),
         city: row.fetch('MESTO')
       )
+    end
+  end
+
+  def check_row_attributes(attributes)
+    uri, cin, name = attributes.slice(:uri, :cin, :name).values
+
+    if name !~ /TEST/i
+      raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin}(_\d+)?/
     end
   end
 end
