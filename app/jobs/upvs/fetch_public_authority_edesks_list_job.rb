@@ -12,7 +12,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
       TemporaryPublicAuthorityEdesk.create_table!
 
       each_row_as_attributes(csv_file, csv_options) do |attributes|
-        TemporaryPublicAuthorityEdesk.create!(attributes)
+        TemporaryPublicAuthorityEdesk.find_or_initialize_by(uri: attributes[:uri]).update!(attributes)
       end
 
       TemporaryPublicAuthorityEdesk.truncate_source_table!
