@@ -21,7 +21,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
         city: 'Trnava',
       )
 
-      expect(Upvs::PublicAuthorityEdesk.count).to eq(5)
+      expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
     end
 
     it 'downloads and imports public authority eDesks in V2 format' do
@@ -39,7 +39,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
         city: 'Trnava',
       )
 
-      expect(Upvs::PublicAuthorityEdesk.count).to eq(5)
+      expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
     end
 
     it 'downloads and imports public authority eDesks in V3 format' do
@@ -57,7 +57,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
         city: 'Trnava',
       )
 
-      expect(Upvs::PublicAuthorityEdesk.count).to eq(5)
+      expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
     end
 
     it 'downloads and imports public authority eDesks in V4 format' do
@@ -75,7 +75,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
         city: 'Trnava',
       )
 
-      expect(Upvs::PublicAuthorityEdesk.count).to eq(5)
+      expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
     end
 
     it 'downloads and imports public authority eDesks in V5 format' do
@@ -93,7 +93,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
         city: 'Trnava',
       )
 
-      expect(Upvs::PublicAuthorityEdesk.count).to eq(5)
+      expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
     end
 
     context 'eDesks list already imported' do
@@ -105,7 +105,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
 
         subject.perform(url, downloader: downloader)
 
-        expect(Upvs::PublicAuthorityEdesk.count).to eq(5)
+        expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
       end
     end
 

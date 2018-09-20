@@ -16,6 +16,8 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
         TemporaryPublicAuthorityEdesk.find_or_initialize_by(uri: attributes[:uri]).update!(attributes)
       end
 
+      check_repository(TemporaryPublicAuthorityEdesk)
+
       TemporaryPublicAuthorityEdesk.truncate_source_table!
       TemporaryPublicAuthorityEdesk.insert_to_source_table!
     end
@@ -51,5 +53,10 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
     if name !~ /TEST/i
       raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin}(_\d+)?/
     end
+  end
+
+  def check_repository(repository)
+    repository.find_by!(uri: 'ico://sk/00151513', cin: '151513', name: 'Úrad vlády Slovenskej republiky')
+    repository.find_by!(uri: 'ico://sk/00151513_10001', cin: '151513', name: 'Úrad vlády Slovenskej republiky - ÚPVS')
   end
 end
