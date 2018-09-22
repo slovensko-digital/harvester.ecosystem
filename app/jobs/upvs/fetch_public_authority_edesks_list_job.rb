@@ -16,7 +16,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
         TemporaryPublicAuthorityEdesk.find_or_initialize_by(uri: attributes[:uri]).update!(attributes)
       end
 
-      check_repository(TemporaryPublicAuthorityEdesk)
+      assert_known_edesks_existence!
 
       TemporaryPublicAuthorityEdesk.truncate_source_table!
       TemporaryPublicAuthorityEdesk.insert_to_source_table!
@@ -55,7 +55,8 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
     end
   end
 
-  def check_repository(repository)
+  def assert_known_edesks_existence!
+    repository = TemporaryPublicAuthorityEdesk
     repository.find_by!(uri: 'ico://sk/00151513', cin: '151513', name: 'Úrad vlády Slovenskej republiky')
     repository.find_by!(uri: 'ico://sk/00151513_10001', cin: '151513', name: 'Úrad vlády Slovenskej republiky - ÚPVS')
   end
