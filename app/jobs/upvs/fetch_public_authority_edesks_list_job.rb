@@ -2,33 +2,62 @@ require 'csv'
 require 'harvester_utils/downloader'
 
 class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
-  # TODO timeouts
   queue_as :upvs
 
   def perform(url, downloader: HarvesterUtils::Downloader)
-    file = downloader.download_file(url)
-    import_csv(file)
+    csv_file = downloader.download_file(url)
+    csv_options = { col_sep: File.open(csv_file) { |f| f.readline }.include?(';') ? ';' : ',', headers: true }
+
+    TemporaryPublicAuthorityEdesk.transaction do
+      TemporaryPublicAuthorityEdesk.create_table!
+
+      each_row_as_attributes(csv_file, csv_options) do |attributes|
+        check_row_attributes(attributes)
+        TemporaryPublicAuthorityEdesk.find_or_initialize_by(uri: attributes[:uri]).update!(attributes)
+      end
+
+      assert_known_edesks_existence!
+
+      TemporaryPublicAuthorityEdesk.truncate_source_table!
+      TemporaryPublicAuthorityEdesk.insert_to_source_table!
+    end
+  end
+
+  class TemporaryPublicAuthorityEdesk < TemporaryRecord
+    def self.source
+      Upvs::PublicAuthorityEdesk
+    end
   end
 
   private
 
-  def import_csv(file)
-    header = File.open(file) { |f| f.readline }
-    separator = detect_separator(header)
-    CSV.foreach(file, headers: true, col_sep: separator) do |row|
+  def each_row_as_attributes(csv_file, csv_options)
+    CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}/, '') }
-      edesk = Upvs::PublicAuthorityEdesk.find_or_initialize_by(uri: row.fetch('URI'))
-      edesk.cin = row['IČO'] || row['IČO'] || row.fetch('ICO')
-      edesk.name = row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV')
-      edesk.street = row.fetch('ULICA')
-      edesk.street_number = row.fetch('ČÍSLO')
-      edesk.postal_code = row.fetch('PSČ')
-      edesk.city = row.fetch('MESTO')
-      edesk.save!
+
+      yield(
+        uri: row.fetch('URI'),
+        cin: row['IČO'] || row['IČO'] || row.fetch('ICO'),
+        name: row['NAZOV INŠTITÚCIE'] || row.fetch('NÁZOV'),
+        street: row.fetch('ULICA'),
+        street_number: row.fetch('ČÍSLO'),
+        postal_code: row.fetch('PSČ'),
+        city: row.fetch('MESTO')
+      )
     end
   end
 
-  def detect_separator(header)
-    header.include?(';') ? ';' : ','
+  def check_row_attributes(attributes)
+    uri, cin, name = attributes.slice(:uri, :cin, :name).values
+
+    if name !~ /TEST/i
+      raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin}(_\d+)?/
+    end
+  end
+
+  def assert_known_edesks_existence!
+    repository = TemporaryPublicAuthorityEdesk
+    repository.find_by!(uri: 'ico://sk/00151513', cin: '151513', name: 'Úrad vlády Slovenskej republiky')
+    repository.find_by!(uri: 'ico://sk/00151513_10001', cin: '151513', name: 'Úrad vlády Slovenskej republiky - ÚPVS')
   end
 end
