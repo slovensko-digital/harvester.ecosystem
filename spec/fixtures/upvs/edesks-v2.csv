@@ -1,8 +1,8 @@
-﻿IČO;NÁZOV;ULICA;ČÍSLO;PSČ;MESTO;URI;;Dátum poslednej aktualizácie: 31.7.2017
-42156424;Národná agentúra pre sieťové a elektronické služby: Test;Kollárova;;91702;Trnava;ico://sk/42156424_90000;;
-00309591;Obec Jablonka;;51;90621;Jablonka;ico://sk/00309591;;
-00309338;Obec Tvrdošovce;;;;Tvrdošovce;ico://sk/00309338;;
-99933312;OVM_TEST_040417;;;;;ico://sk/00800112;;
-00166260;Úrad geodézie, kartografie a katastra Slovenskej republiky;Ružová dolina;27;82109;Bratislava - mestská časť Ružinov;ico://sk/00166260;;
-00151513;Úrad vlády Slovenskej republiky;Nám.Slobody;1;81370;Bratislava - mestská časť Staré Mesto;ico://sk/00151513;;
-00151513;Úrad vlády Slovenskej republiky - ÚPVS;Námestie slobody;1;81370;Bratislava - mestská časť Staré Mesto;ico://sk/00151513_10001;;
+﻿ICO,URI,Nazov,Dátum poslednej aktualizácie: 30.6.2019
+332674;;;ico://sk/00332674,"Obec Petrovce, okres Vranov nad Topľou",
+30232295;;;;ico://sk/30232295_71406,Fakulta politických vied a  medzinárodných vzťahov Univerzity Mateja Bela v Banskej Bystrici,
+399418;;;ico://sk/00399418_10001,Materská škola,
+308161;;;;ico://sk/00308161,Obec Lovce,
+327727;;;ico://sk/00327727_1,Základná škola - Ruská Nová Ves,
+151513;ico://sk/00151513,Úrad vlády Slovenskej republiky,
+151513;ico://sk/00151513_10003,Úrad vlády Slovenskej republiky - Petície,
