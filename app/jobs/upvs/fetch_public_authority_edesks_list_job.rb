@@ -6,7 +6,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
 
   def perform(url, downloader: HarvesterUtils::Downloader)
     csv_file = downloader.download_file(url)
-    csv_options = {col_sep: File.open(csv_file) {|f| f.readline}.include?(';') ? ';' : ',', headers: true}
+    csv_options = {col_sep: File.open(csv_file) { |f| f.readline }.include?(';') ? ';' : ',', headers: true }
 
     TemporaryPublicAuthorityEdesk.transaction do
       TemporaryPublicAuthorityEdesk.create_table!
@@ -33,12 +33,12 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
 
   def each_row_as_attributes(csv_file, csv_options)
     CSV.foreach(csv_file, csv_options) do |row|
-      row = row.to_h.transform_keys {|k| k.to_s.gsub(/\p{Cf}/, '')}
+      row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}/, '') }
 
       yield(
-          cin: row.fetch('ICO'),
-          uri: row.fetch('URI'),
-          name: row.fetch('Nazov')
+        cin: row.fetch('ICO'),
+        uri: row.fetch('URI'),
+        name: row.fetch('Nazov')
       )
     end
   end

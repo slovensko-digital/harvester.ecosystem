@@ -16,42 +16,9 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
         cin: 332674,
         name: 'Obec Petrovce, okres Vranov nad Topľou',
       )
-      expect(Upvs::PublicAuthorityEdesk.first.attributes.size).to eq(6)
 
       expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
     end
-=begin
-
-    it 'downloads and imports public authority eDesks in V2 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-v2.csv'))
-
-      subject.perform(url, downloader: downloader)
-
-      expect(Upvs::PublicAuthorityEdesk.first).to have_attributes(
-        uri: 'ico://sk/00332674',
-        cin: 332674,
-        name: 'Obec Petrovce, okres Vranov nad Topľou',
-      )
-      expect(Upvs::PublicAuthorityEdesk.first.attributes.size).to eq(6)
-
-      expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
-    end
-
-    it 'downloads and imports public authority eDesks in V3 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-v3.csv'))
-
-      subject.perform(url, downloader: downloader)
-
-      expect(Upvs::PublicAuthorityEdesk.first).to have_attributes(
-        uri: 'ico://sk/00332674',
-        cin: 32674,
-        name: 'Obec Petrovce, okres Vranov nad Topľou',
-      )
-      expect(Upvs::PublicAuthorityEdesk.first.attributes.size).to eq(6)
-
-      expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
-    end
-=end
 
     context 'eDesks list already imported' do
       it 'clears eDesks list, then imports eDesks' do
