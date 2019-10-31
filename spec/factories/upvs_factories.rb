@@ -4,4 +4,13 @@ FactoryBot.define do
     sequence(:uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
     sequence(:name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }
   end
+
+  factory :digital_service_and_form, class: Upvs::DigitalServiceAndForm do
+    sequence(:id_service_instance) { |n| 10_000_000 + n }
+    sequence(:uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
+    sequence(:name) { |n| "Service #{n}" }
+    sequence(:institution_name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }
+    sequence(:url) { |n| "http://example.com/#{n}" }
+    sequence(:form_url) { |n| "http://example.com/form-url/#{n}" }
+  end
 end
