@@ -3928,6 +3928,49 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: digital_services_and_forms; Type: TABLE; Schema: upvs; Owner: -
+--
+
+CREATE TABLE upvs.digital_services_and_forms (
+    id integer NOT NULL,
+    id_service_instance integer NOT NULL,
+    external_code character varying,
+    meta_code character varying,
+    name character varying,
+    service_type character varying,
+    uri character varying NOT NULL,
+    institution_name character varying,
+    valid_from timestamp without time zone,
+    valid_to timestamp without time zone,
+    url character varying NOT NULL,
+    info_url character varying,
+    form_url character varying NOT NULL,
+    last_updated timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: digital_services_and_forms_id_seq; Type: SEQUENCE; Schema: upvs; Owner: -
+--
+
+CREATE SEQUENCE upvs.digital_services_and_forms_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: digital_services_and_forms_id_seq; Type: SEQUENCE OWNED BY; Schema: upvs; Owner: -
+--
+
+ALTER SEQUENCE upvs.digital_services_and_forms_id_seq OWNED BY upvs.digital_services_and_forms.id;
+
+
+--
 -- Name: public_authority_edesks; Type: TABLE; Schema: upvs; Owner: -
 --
 
@@ -4714,6 +4757,13 @@ ALTER TABLE ONLY itms.zop ALTER COLUMN id SET DEFAULT nextval('itms.zop_id_seq':
 --
 
 ALTER TABLE ONLY itms.zop_predkladane_za_subjekty ALTER COLUMN id SET DEFAULT nextval('itms.zop_predkladane_za_subjekty_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: upvs; Owner: -
+--
+
+ALTER TABLE ONLY upvs.digital_services_and_forms ALTER COLUMN id SET DEFAULT nextval('upvs.digital_services_and_forms_id_seq'::regclass);
 
 
 --
@@ -5601,6 +5651,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: digital_services_and_forms_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
+--
+
+ALTER TABLE ONLY upvs.digital_services_and_forms
+    ADD CONSTRAINT digital_services_and_forms_pkey PRIMARY KEY (id);
 
 
 --
@@ -7810,6 +7868,13 @@ CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_zop_id" ON itms.zop_pred
 
 
 --
+-- Name: index_upvs.digital_services_and_forms_on_uri; Type: INDEX; Schema: upvs; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_upvs.digital_services_and_forms_on_uri" ON upvs.digital_services_and_forms USING btree (uri);
+
+
+--
 -- Name: index_upvs.public_authority_edesks_on_cin; Type: INDEX; Schema: upvs; Owner: -
 --
 
@@ -9734,6 +9799,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171221222028'),
 ('20171221222608'),
 ('20171222121456'),
-('20190805192655');
+('20190805192655'),
+('20191030214642');
 
 
