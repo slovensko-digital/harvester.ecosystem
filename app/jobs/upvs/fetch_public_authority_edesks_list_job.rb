@@ -1,6 +1,3 @@
-require 'csv'
-require 'harvester_utils/downloader'
-
 class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
   queue_as :upvs
 

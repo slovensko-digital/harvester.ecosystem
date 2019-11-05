@@ -3928,49 +3928,6 @@ CREATE TABLE public.schema_migrations (
 
 
 --
--- Name: digital_services_and_forms; Type: TABLE; Schema: upvs; Owner: -
---
-
-CREATE TABLE upvs.digital_services_and_forms (
-    id integer NOT NULL,
-    id_service_instance integer NOT NULL,
-    external_code character varying,
-    meta_code character varying,
-    name character varying,
-    service_type character varying,
-    uri character varying NOT NULL,
-    institution_name character varying,
-    valid_from timestamp without time zone,
-    valid_to timestamp without time zone,
-    url character varying NOT NULL,
-    info_url character varying,
-    form_url character varying NOT NULL,
-    last_updated timestamp without time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: digital_services_and_forms_id_seq; Type: SEQUENCE; Schema: upvs; Owner: -
---
-
-CREATE SEQUENCE upvs.digital_services_and_forms_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: digital_services_and_forms_id_seq; Type: SEQUENCE OWNED BY; Schema: upvs; Owner: -
---
-
-ALTER SEQUENCE upvs.digital_services_and_forms_id_seq OWNED BY upvs.digital_services_and_forms.id;
-
-
---
 -- Name: public_authority_edesks; Type: TABLE; Schema: upvs; Owner: -
 --
 
@@ -4001,6 +3958,49 @@ CREATE SEQUENCE upvs.public_authority_edesks_id_seq
 --
 
 ALTER SEQUENCE upvs.public_authority_edesks_id_seq OWNED BY upvs.public_authority_edesks.id;
+
+
+--
+-- Name: services_with_forms; Type: TABLE; Schema: upvs; Owner: -
+--
+
+CREATE TABLE upvs.services_with_forms (
+    id integer NOT NULL,
+    instance_id integer NOT NULL,
+    external_code character varying,
+    meta_is_code character varying,
+    name character varying,
+    type character varying,
+    uri character varying NOT NULL,
+    institution_name character varying,
+    valid_from timestamp without time zone,
+    valid_to timestamp without time zone,
+    url character varying NOT NULL,
+    info_url character varying,
+    form_url character varying NOT NULL,
+    changed_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: services_with_forms_id_seq; Type: SEQUENCE; Schema: upvs; Owner: -
+--
+
+CREATE SEQUENCE upvs.services_with_forms_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: services_with_forms_id_seq; Type: SEQUENCE OWNED BY; Schema: upvs; Owner: -
+--
+
+ALTER SEQUENCE upvs.services_with_forms_id_seq OWNED BY upvs.services_with_forms.id;
 
 
 --
@@ -4763,14 +4763,14 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty ALTER COLUMN id SET DEFAULT ne
 -- Name: id; Type: DEFAULT; Schema: upvs; Owner: -
 --
 
-ALTER TABLE ONLY upvs.digital_services_and_forms ALTER COLUMN id SET DEFAULT nextval('upvs.digital_services_and_forms_id_seq'::regclass);
+ALTER TABLE ONLY upvs.public_authority_edesks ALTER COLUMN id SET DEFAULT nextval('upvs.public_authority_edesks_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: upvs; Owner: -
 --
 
-ALTER TABLE ONLY upvs.public_authority_edesks ALTER COLUMN id SET DEFAULT nextval('upvs.public_authority_edesks_id_seq'::regclass);
+ALTER TABLE ONLY upvs.services_with_forms ALTER COLUMN id SET DEFAULT nextval('upvs.services_with_forms_id_seq'::regclass);
 
 
 --
@@ -5654,19 +5654,19 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
--- Name: digital_services_and_forms_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
---
-
-ALTER TABLE ONLY upvs.digital_services_and_forms
-    ADD CONSTRAINT digital_services_and_forms_pkey PRIMARY KEY (id);
-
-
---
 -- Name: public_authority_edesks_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
 --
 
 ALTER TABLE ONLY upvs.public_authority_edesks
     ADD CONSTRAINT public_authority_edesks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: services_with_forms_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
+--
+
+ALTER TABLE ONLY upvs.services_with_forms
+    ADD CONSTRAINT services_with_forms_pkey PRIMARY KEY (id);
 
 
 --
@@ -7868,13 +7868,6 @@ CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_zop_id" ON itms.zop_pred
 
 
 --
--- Name: index_upvs.digital_services_and_forms_on_uri; Type: INDEX; Schema: upvs; Owner: -
---
-
-CREATE UNIQUE INDEX "index_upvs.digital_services_and_forms_on_uri" ON upvs.digital_services_and_forms USING btree (uri);
-
-
---
 -- Name: index_upvs.public_authority_edesks_on_cin; Type: INDEX; Schema: upvs; Owner: -
 --
 
@@ -7886,6 +7879,13 @@ CREATE INDEX "index_upvs.public_authority_edesks_on_cin" ON upvs.public_authorit
 --
 
 CREATE UNIQUE INDEX "index_upvs.public_authority_edesks_on_uri" ON upvs.public_authority_edesks USING btree (uri);
+
+
+--
+-- Name: index_upvs.services_with_forms_on_uri; Type: INDEX; Schema: upvs; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_upvs.services_with_forms_on_uri" ON upvs.services_with_forms USING btree (uri);
 
 
 --

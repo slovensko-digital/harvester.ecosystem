@@ -27,3 +27,6 @@ module Harvester
     config.active_job.queue_adapter = :sidekiq
   end
 end
+
+require 'csv'
+require 'harvester_utils/downloader'

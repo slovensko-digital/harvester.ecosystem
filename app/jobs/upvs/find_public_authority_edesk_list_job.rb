@@ -1,5 +1,3 @@
-require 'harvester_utils/downloader'
-
 module Upvs
   class ResourceNotFoundError < RuntimeError
   end

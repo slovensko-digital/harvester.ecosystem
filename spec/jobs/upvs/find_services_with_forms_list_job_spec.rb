@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Upvs::FindDigitalServicesAndFormsListJob, type: :job do
+RSpec.describe Upvs::FindServicesWithFormsListJob, type: :job do
   describe '#perform' do
     let(:downloader) { double }
 

@@ -5,7 +5,7 @@ FactoryBot.define do
     sequence(:name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }
   end
 
-  factory :digital_service_and_form, class: Upvs::DigitalServiceAndForm do
+  factory :upvs_service_with_form, class: Upvs::ServiceWithForm do
     sequence(:id_service_instance) { |n| 10_000_000 + n }
     sequence(:uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
     sequence(:name) { |n| "Service #{n}" }

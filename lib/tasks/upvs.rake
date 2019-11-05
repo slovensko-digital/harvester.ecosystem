@@ -4,8 +4,8 @@ namespace :upvs do
     Upvs::FindPublicAuthorityEdeskListJob.perform_later
   end
 
-  desc 'Sync digital services and forms'
-  task 'digital_services_and_forms:sync' => :environment do
-    Upvs::FindDigitalServicesAndFormsListJob.perform_later
+  desc 'Sync ServicesWithForms list'
+  task 'services_with_forms:sync' => :environment do
+    Upvs::FindServicesWithFormsListJob.perform_later
   end
 end
