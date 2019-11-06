@@ -6,7 +6,7 @@ class CreateUpvsServicesWithForms < ActiveRecord::Migration[5.0]
       t.string :meta_is_code
       t.string :name
       t.string :type
-      t.string :uri, null: false
+      t.string :institution_uri, null: false
       t.string :institution_name
       t.datetime :valid_from
       t.datetime :valid_to
@@ -18,6 +18,6 @@ class CreateUpvsServicesWithForms < ActiveRecord::Migration[5.0]
       t.timestamps null: false
     end
 
-    add_index 'upvs.services_with_forms', :uri, unique: true
+    add_index 'upvs.services_with_forms', :instance_id, unique: true
   end
 end

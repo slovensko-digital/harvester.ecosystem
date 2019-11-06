@@ -9,7 +9,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       TemporaryServiceWithForm.create_table!
 
       each_row_as_attributes(csv_file, csv_options) do |attributes|
-        TemporaryServiceWithForm.find_or_initialize_by(uri: attributes[:uri]).update!(attributes)
+        TemporaryServiceWithForm.find_or_initialize_by(instance_id: attributes[:instance_id]).update!(attributes)
       end
 
       TemporaryServiceWithForm.truncate_source_table!
