@@ -13,7 +13,7 @@ class CreateUpvsServicesWithForms < ActiveRecord::Migration[5.0]
       t.string :url, null: false
       t.string :info_url
       t.string :form_url, null: false
-      t.timestamp :changed_at
+      t.datetime :changed_at
 
       t.timestamps null: false
     end

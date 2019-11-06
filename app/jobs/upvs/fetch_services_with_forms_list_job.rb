@@ -28,6 +28,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   def each_row_as_attributes(csv_file, csv_options)
     CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s }
+      row = row.transform_values { |v| nil if v == 'NULL' }
 
       yield(
         instance_id: row.fetch('IdServiceInstance'),
@@ -35,7 +36,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
         meta_is_code: row.fetch('MetaISCode'),
         name: row.fetch('ServiceName'),
         type: row.fetch('ServiceType'),
-        uri: row.fetch('ExtId'),
+        institution_uri: row.fetch('ExtId'),
         institution_name: row.fetch('InstitutionName'),
         valid_from: row.fetch('ValidFrom'),
         valid_to: row.fetch('ValidTo'),

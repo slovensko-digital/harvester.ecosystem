@@ -14,17 +14,40 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
       expect(Upvs::ServiceWithForm.first).to have_attributes(
         instance_id: 2107,
         external_code: 'App.GeneralAgenda',
-        meta_is_code: 'NULL',
+        meta_is_code: nil,
         name: 'Veobecná agenda',
         type: 'Formulárové sluby',
-        uri: 'ico://sk/30797764',
+        institution_uri: 'ico://sk/30797764',
         institution_name: 'Agentúra na podporu výskumu a vývoja',
         url: 'https://schranka.slovensko.sk/FormConstructor/Default.aspx?IdService=2107',
-        info_url: 'NULL',
+        info_url: nil,
         form_url: 'http://schemas.gov.sk/form/App.GeneralAgenda/1.9'
       )
 
       expect(Upvs::ServiceWithForm.count).to eq(9)
+    end
+
+    xcontext 'meta_is_code and info_url are not nil' do
+      it 'downloads and imports ServicesWithForms list in V1 format' do
+        expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v1.csv'))
+
+        subject.perform(url, downloader: downloader)
+
+        expect(Upvs::ServiceWithForm.first).to have_attributes(
+          instance_id: 2107,
+          external_code: 'App.GeneralAgenda',
+          meta_is_code: nil,
+          name: 'Veobecná agenda',
+          type: 'Formulárové sluby',
+          institution_uri: 'ico://sk/30797764',
+          institution_name: 'Agentúra na podporu výskumu a vývoja',
+          url: 'https://schranka.slovensko.sk/FormConstructor/Default.aspx?IdService=2107',
+          info_url: nil,
+          form_url: 'http://schemas.gov.sk/form/App.GeneralAgenda/1.9'
+        )
+
+        expect(Upvs::ServiceWithForm.count).to eq(9)
+      end
     end
 
     context 'ServicesWithForms list already imported' do

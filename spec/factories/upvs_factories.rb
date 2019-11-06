@@ -7,7 +7,7 @@ FactoryBot.define do
 
   factory :upvs_service_with_form, class: Upvs::ServiceWithForm do
     sequence(:instance_id) { |n| 10_000_000 + n }
-    sequence(:uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
+    sequence(:institution_uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
     sequence(:name) { |n| "Service #{n}" }
     sequence(:institution_name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }
     sequence(:url) { |n| "http://example.com/#{n}" }
