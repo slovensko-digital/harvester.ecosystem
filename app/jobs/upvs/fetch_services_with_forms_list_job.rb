@@ -28,7 +28,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   def each_row_as_attributes(csv_file, csv_options)
     CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s }
-      row = row.transform_values { |v| nil if v == 'NULL' }
+      row = row.transform_values { |v| v == 'NULL' ? nil : v }
 
       yield(
         instance_id: row.fetch('IdServiceInstance'),

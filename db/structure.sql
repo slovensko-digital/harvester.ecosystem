@@ -3971,7 +3971,7 @@ CREATE TABLE upvs.services_with_forms (
     meta_is_code character varying,
     name character varying,
     type character varying,
-    uri character varying NOT NULL,
+    institution_uri character varying NOT NULL,
     institution_name character varying,
     valid_from timestamp without time zone,
     valid_to timestamp without time zone,
@@ -7882,10 +7882,10 @@ CREATE UNIQUE INDEX "index_upvs.public_authority_edesks_on_uri" ON upvs.public_a
 
 
 --
--- Name: index_upvs.services_with_forms_on_uri; Type: INDEX; Schema: upvs; Owner: -
+-- Name: index_upvs.services_with_forms_on_instance_id; Type: INDEX; Schema: upvs; Owner: -
 --
 
-CREATE UNIQUE INDEX "index_upvs.services_with_forms_on_uri" ON upvs.services_with_forms USING btree (uri);
+CREATE UNIQUE INDEX "index_upvs.services_with_forms_on_instance_id" ON upvs.services_with_forms USING btree (instance_id);
 
 
 --
