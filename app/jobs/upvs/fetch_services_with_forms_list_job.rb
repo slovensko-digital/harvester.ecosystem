@@ -42,7 +42,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
         valid_to: row.fetch('ValidTo'),
         url: row.fetch('ServiceUrl'),
         info_url: row.fetch('ServiceInfoURL'),
-        form_url: row.fetch('FormURL'),
+        schema_url: row.fetch('FormURL'),
         changed_at: row.fetch('LastUpdated')
       )
     end

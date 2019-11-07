@@ -10,14 +10,15 @@ class CreateUpvsServicesWithForms < ActiveRecord::Migration[5.0]
       t.string :institution_name
       t.datetime :valid_from
       t.datetime :valid_to
-      t.string :url, null: false
+      t.string :url
       t.string :info_url
-      t.string :form_url, null: false
+      t.string :schema_url
       t.datetime :changed_at
 
       t.timestamps null: false
     end
 
     add_index 'upvs.services_with_forms', :instance_id, unique: true
+    add_index 'upvs.services_with_forms', :institution_uri
   end
 end

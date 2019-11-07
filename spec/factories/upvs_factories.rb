@@ -11,6 +11,6 @@ FactoryBot.define do
     sequence(:name) { |n| "Service #{n}" }
     sequence(:institution_name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }
     sequence(:url) { |n| "http://example.com/#{n}" }
-    sequence(:form_url) { |n| "http://example.com/form-url/#{n}" }
+    sequence(:schema_url) { |n| "http://example.com/schema-url/#{n}" }
   end
 end
