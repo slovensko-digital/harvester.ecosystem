@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.19
--- Dumped by pg_dump version 9.5.19
+-- Dumped from database version 9.5.14
+-- Dumped by pg_dump version 9.5.14
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -11,7 +11,6 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
-SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -7896,6 +7895,13 @@ CREATE INDEX "index_upvs.services_with_forms_on_institution_uri" ON upvs.service
 
 
 --
+-- Name: index_upvs.services_with_forms_on_schema_url; Type: INDEX; Schema: upvs; Owner: -
+--
+
+CREATE INDEX "index_upvs.services_with_forms_on_schema_url" ON upvs.services_with_forms USING btree (schema_url);
+
+
+--
 -- Name: fk_rails_00bd9064dc; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
@@ -9807,6 +9813,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171221222608'),
 ('20171222121456'),
 ('20190805192655'),
-('20191030214642');
+('20191030214642'),
+('20191107112524');
 
 
