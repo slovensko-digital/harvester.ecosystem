@@ -14,7 +14,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         instance_id: 2107,
         external_code: 'App.GeneralAgenda',
         meta_is_code: nil,
-        # TO DO repair file character encoding
+        # TODO repair file character encoding
         # name: 'Všeobecná agenda',
         # type: 'Formulárové služby',
         institution_uri: 'ico://sk/30797764',
