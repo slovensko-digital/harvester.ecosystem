@@ -3,7 +3,8 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
 
   def perform(url, downloader: HarvesterUtils::Downloader)
     csv_file = downloader.download_file(url)
-    csv_options = { col_sep: File.open(csv_file) { |f| f.readline }.include?(';') ? ';' : ',', headers: true }
+    #csv_options = { col_sep: ';', headers: true, encoding: "windows-1250" }
+    csv_options = { col_sep: File.open(csv_file) { |f| f.readline }.include?(';') ? ';' : ',', headers: true, encoding: "windows-1250" }
 
     TemporaryServiceWithForm.transaction do
       TemporaryServiceWithForm.create_table!
