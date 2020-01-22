@@ -23,7 +23,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         schema_url: 'http://schemas.gov.sk/form/App.GeneralAgenda/1.9'
       )
 
-      expect(Upvs::ServiceWithForm.count).to eq(20)
+      expect(Upvs::ServiceWithForm.count).to eq(28)
     end
 
     xcontext 'meta_is_code and info_url attributes not nil' do
@@ -40,7 +40,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
 
         subject.perform(url, downloader: downloader)
 
-        expect(Upvs::ServiceWithForm.count).to eq(20)
+        expect(Upvs::ServiceWithForm.count).to eq(28)
       end
     end
   end
