@@ -1,4 +1,4 @@
-require_relative 'config/application'
+require_relative 'application'
 
 Rails.application.load_tasks
 
