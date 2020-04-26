@@ -16,7 +16,7 @@ class ItmsJob < ApplicationJob
     def self.href_exists?(href)
       downloader.url_exists?("#{API_ENDPOINT}#{href}")
     end
-    
+
     def self.get_json_from_href(href)
       response = get("#{API_ENDPOINT}#{href}")
       JSON.parse(response.body)
@@ -31,24 +31,24 @@ class ItmsJob < ApplicationJob
   end
 
   [
-      Itms::Activity,
-      Itms::ActivityType,
-      Itms::AccountingDocument,
-      Itms::AccountsReceivableDocument,
-      Itms::AnnouncedProposalCall,
-      Itms::BudgetItem,
-      Itms::CodelistValue,
-      Itms::Discrepancy,
-      Itms::Intensity,
-      Itms::OperationalProgram,
-      Itms::PaymentClaim,
-      Itms::PriorityAxis,
-      Itms::Procurement,
-      Itms::Project,
-      Itms::ProjectIndicator,
-      Itms::SpecificGoal,
-      Itms::Subject,
-      Itms::Supplier,
+    Itms::Activity,
+    Itms::ActivityType,
+    Itms::AccountingDocument,
+    Itms::AccountsReceivableDocument,
+    Itms::AnnouncedProposalCall,
+    Itms::BudgetItem,
+    Itms::CodelistValue,
+    Itms::Discrepancy,
+    Itms::Intensity,
+    Itms::OperationalProgram,
+    Itms::PaymentClaim,
+    Itms::PriorityAxis,
+    Itms::Procurement,
+    Itms::Project,
+    Itms::ProjectIndicator,
+    Itms::SpecificGoal,
+    Itms::Subject,
+    Itms::Supplier,
 
   ].each do |model_class|
     base_name = model_class.name.split('::').last
@@ -181,6 +181,13 @@ class ItmsJob < ApplicationJob
     return [] if json.blank?
     json.map do |j|
       scope.find_or_create_by!(nazov: j['nazov'], url: j['url'])
+    end
+  end
+
+  def recent_data(days: 3)
+    Proc.new do |raw_record|
+      date = raw_record.key?('updatedAt') ? raw_record['updatedAt'] : raw_record['createdAt']
+      date && date.to_date > days.days.ago
     end
   end
 end
