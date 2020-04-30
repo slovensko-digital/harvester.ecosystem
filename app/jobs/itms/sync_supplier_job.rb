@@ -28,6 +28,6 @@ class Itms::SyncSupplierJob < ItmsJob
   end
 
   def parse_id(href)
-    Integer(href.split('/').last)
+    Integer(href.split('/').last, 10)
   end
 end
