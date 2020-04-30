@@ -1,20 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncAllActivitiesJob, type: :job do
+  let(:downloader) { double(:downloader) }
+
   describe '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
     it 'syncs all activities' do
-      Itms::Activity.create!(itms_id: 1, itms_href: '/v2/aktivita/1')
-      Itms::Activity.create!(itms_id: 2, itms_href: '/v2/aktivita/2')
-      Itms::Activity.create!(itms_id: 3, itms_href: '/v2/aktivita/3')
+      expect(downloader)
+        .to receive(:get_json_from_href)
+          .with('/v2/aktivita')
+          .and_return(itms_json_fixture('aktivita_list.json'))
 
-      subject.perform
+      subject.perform(downloader: downloader)
 
-      expect(Itms::SyncActivityJob).to have_been_enqueued.exactly(3).times
+      expect(Itms::SyncActivityJob).to have_been_enqueued.exactly(101).times
       expect(Itms::SyncActivityJob).to have_been_enqueued.with('/v2/aktivita/1')
-      expect(Itms::SyncActivityJob).to have_been_enqueued.with('/v2/aktivita/2')
-      expect(Itms::SyncActivityJob).to have_been_enqueued.with('/v2/aktivita/3')
     end
   end
 end
