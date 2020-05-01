@@ -17,8 +17,11 @@ class ItmsJob < ApplicationJob
       downloader.url_exists?("#{API_ENDPOINT}#{href}")
     end
 
-    def self.get_json_from_href(href)
-      response = get("#{API_ENDPOINT}#{href}")
+    def self.get_json_from_href(href, params = {})
+      params.reject! { |_, v| v.blank? }
+      query = params.present? ? "?#{params.to_query}" : ''
+
+      response = get("#{API_ENDPOINT}#{href}#{query}")
       JSON.parse(response.body)
     end
 
@@ -184,10 +187,10 @@ class ItmsJob < ApplicationJob
     end
   end
 
-  def recent_data(days: 3)
-    Proc.new do |raw_record|
-      date = raw_record.key?('updatedAt') ? raw_record['updatedAt'] : raw_record['createdAt']
-      date && date.to_date > days.days.ago
-    end
+  def latest_timestamp
+    matches = self.class.name.match(/(?<module>.*)SyncAll(?<entity>.*)Job/)
+    base_class = (matches[:module] + matches[:entity].singularize).constantize
+
+    base_class.order(:updated_at).last&.updated_at&.to_i
   end
 end
