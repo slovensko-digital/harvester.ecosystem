@@ -18,10 +18,7 @@ class ItmsJob < ApplicationJob
     end
 
     def self.get_json_from_href(href, params = {})
-      params.reject! { |_, v| v.blank? }
-      query = params.present? ? "?#{params.to_query}" : ''
-
-      response = get("#{API_ENDPOINT}#{href}#{query}")
+      response = get("#{API_ENDPOINT}#{href}#{format_query(params)}")
       JSON.parse(response.body)
     end
 
@@ -30,6 +27,13 @@ class ItmsJob < ApplicationJob
       raise NotFoundError, "Url not found: #{url}" if response.code == 404
       raise DownloadError, "Unexpected response code: #{response.code} for url: #{url}" if response.code != 200
       response
+    end
+
+    private
+
+    def self.format_query(params)
+      params.reject! { |_, v| v.blank? }
+      "?#{params.to_query}" if params.present?
     end
   end
 
@@ -61,6 +65,8 @@ class ItmsJob < ApplicationJob
 
     define_method find_or_create_item_by_json do |json, downloader|
       return if json.blank?
+      json = fix_invalid_nesting(json, model_class)
+
       existing_object = model_class.find_by(itms_id: json['id'])
       return existing_object if existing_object.present?
 
@@ -73,6 +79,12 @@ class ItmsJob < ApplicationJob
       return [] if json_list.blank?
       json_list.map { |json| public_send(find_or_create_item_by_json, json, downloader) }.uniq
     end
+  end
+
+  # TODO hotfix - input is considered unstable
+  def fix_invalid_nesting(json, klass)
+    return json['subjekt'] if klass == Itms::Subject && !json.key?('id') && json.key?('subjekt')
+    json
   end
 
   def find_or_create_processed_nrfc_application_by_json(json, downloader)
