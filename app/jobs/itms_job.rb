@@ -18,7 +18,7 @@ class ItmsJob < ApplicationJob
     end
 
     def self.get_json_from_href(href, params = {})
-      response = get("#{API_ENDPOINT}#{href}#{format_query(params)}")
+      response = get("#{API_ENDPOINT}#{build_href(href, params)}")
       JSON.parse(response.body)
     end
 
@@ -31,9 +31,9 @@ class ItmsJob < ApplicationJob
 
     private
 
-    def self.format_query(params)
+    def self.build_href(href, params)
       params.reject! { |_, v| v.blank? }
-      "?#{params.to_query}" if params.present?
+      URI(href).tap { |url| url.query = [url.query, params.to_query].compact.join('&') }.to_s
     end
   end
 
