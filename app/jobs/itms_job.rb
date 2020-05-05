@@ -62,6 +62,7 @@ class ItmsJob < ApplicationJob
 
     find_or_create_item_by_json = "find_or_create_#{base_name.underscore}_by_json"
     find_or_create_list_by_json = "find_or_create_#{base_name.pluralize.underscore}_by_json"
+    latest_record_timestamp = "latest_#{base_name.underscore}_timestamp"
 
     define_method find_or_create_item_by_json do |json, downloader|
       return if json.blank?
@@ -80,6 +81,10 @@ class ItmsJob < ApplicationJob
     define_method find_or_create_list_by_json do |json_list, downloader|
       return [] if json_list.blank?
       json_list.map { |json| public_send(find_or_create_item_by_json, json, downloader) }.uniq
+    end
+
+    define_method latest_record_timestamp do
+      model_class.order(:updated_at).last&.updated_at&.to_i
     end
   end
 
@@ -193,12 +198,5 @@ class ItmsJob < ApplicationJob
     json.map do |j|
       scope.find_or_create_by!(nazov: j['nazov'], url: j['url'])
     end
-  end
-
-  def latest_timestamp
-    matches = self.class.name.match(/(?<module>.*)SyncAll(?<entity>.*)Job/)
-    base_class = (matches[:module] + matches[:entity].singularize).constantize
-
-    base_class.order(:updated_at).last&.updated_at&.to_i
   end
 end
