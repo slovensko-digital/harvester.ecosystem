@@ -3850,7 +3850,9 @@ CREATE TABLE itms.zop (
     typ character varying,
     vyplaca_sa_partnerovi boolean,
     zop_je_zaverecna boolean,
-    zop_predlozena_za_viac_subjektov boolean
+    zop_predlozena_za_viac_subjektov boolean,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -9814,6 +9816,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171222121456'),
 ('20190805192655'),
 ('20191030214642'),
-('20191107112524');
+('20191107112524'),
+('20200505182013');
 
 
