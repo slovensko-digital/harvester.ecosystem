@@ -1,7 +1,6 @@
 class Itms::SyncAllActivitiesJob < ItmsJob
   def perform(downloader: ItmsJob::Downloader)
-    json = downloader.get_json_from_href('/v2/aktivita', modifiedSince: latest_timestamp)
-    hrefs = json.map { |item| item['href'] }
-    hrefs.each { |href| Itms::SyncActivityJob.perform_later(href) }
+    json = downloader.get_json_from_href('/v2/aktivita', modifiedSince: latest_activity_timestamp)
+    json.each { |item| Itms::SyncActivityJob.perform_later(item['href']) }
   end
 end
