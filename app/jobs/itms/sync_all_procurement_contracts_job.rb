@@ -1,12 +1,13 @@
 class Itms::SyncAllProcurementContractsJob < ItmsJob
   def perform(downloader: ItmsJob::Downloader)
-    procurements_json = downloader.get_json_from_href('/v2/verejneObstaravania')
-    procurements_ids = procurements_json.map { |json| json['id'] }
+    procurements_json = downloader.get_json_from_href('/v2/verejneObstaravania', modifiedSince: latest_procurement_timestamp)
 
-    procurements_ids.each do |procurement_itms_id|
-      procurement = find_or_create_procurement_by_itms_id(procurement_itms_id, downloader)
+    procurements_json.each do |procurement_item|
+      procurement = find_or_create_procurement_by_itms_id(procurement_item['id'], downloader)
 
-      procurement_contracts_json = downloader.get_json_from_href("/v2/verejneObstaravania/#{procurement_itms_id}/zmluvyVerejneObstaravanie")
+      procurement_contracts_json = downloader.get_json_from_href("/v2/verejneObstaravania/#{procurement_item['id']}/zmluvyVerejneObstaravanie",
+        modifiedSince: Itms::ProcurementContract.where(verejne_obstaravanie: procurement).latest&.updated_at&.to_i)
+
       procurement_contracts_json.each do |json|
         Itms::SyncProcurementContractJob.perform_later(json['href'], procurement)
       end
