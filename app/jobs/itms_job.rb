@@ -84,7 +84,7 @@ class ItmsJob < ApplicationJob
     end
 
     define_method latest_record_timestamp do
-      model_class.order(:updated_at).last&.updated_at&.to_i
+      model_class.latest&.updated_at&.to_i
     end
   end
 

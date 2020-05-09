@@ -1,7 +1,10 @@
 class Itms::SyncAllNrfcApplicationsJob < ItmsJob
   def perform(downloader: ItmsJob::Downloader)
-    json = downloader.get_json_from_href('/v2/zonfp/prijate')
-    hrefs = json.map { |item| item['href'] }
-    hrefs.each { |href| Itms::SyncNrfcApplicationJob.perform_later(href) }
+    json = downloader.get_json_from_href('/v2/zonfp/prijate', modifiedSince: latest_nrfc_application_timestamp)
+    json.each { |item| Itms::SyncNrfcApplicationJob.perform_later(item['href']) }
+  end
+
+  def latest_nrfc_application_timestamp
+    [Itms::NrfcApplicationReceived.latest&.updated_at, Itms::NrfcApplicationProcessed.latest&.updated_at].min&.to_i
   end
 end
