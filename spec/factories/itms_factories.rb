@@ -11,7 +11,7 @@ FactoryBot.define do
     psc { '81370' }
     ulica { 'Námestie slobody' }
     ulica_cislo { '1' }
-    deleted_at { }
+    deleted_at { nil }
   end
 end
 

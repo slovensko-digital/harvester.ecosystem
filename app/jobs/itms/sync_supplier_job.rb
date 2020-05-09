@@ -26,8 +26,4 @@ class Itms::SyncSupplierJob < ItmsJob
       s.save!
     end
   end
-
-  def parse_id(href)
-    Integer(href.split('/').last, 10)
-  end
 end
