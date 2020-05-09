@@ -35,19 +35,19 @@ RSpec.describe Itms::SyncSupplierJob, type: :job do
       )
     end
 
-    context 'with supplier url not found' do
+    context 'with supplier URL not found' do
       before(:example) do
         allow(downloader).to receive(:href_exists?).and_return(false)
         expect(downloader).not_to receive(:get_json_from_href)
       end
 
-      it 'marks supplier as deleted if exists' do
+      it 'marks supplier as deleted if it exists' do
         supplier = create(:itms_supplier)
 
         expect { subject.perform('/v2/dodavatelia/229', downloader: downloader) }.to change { supplier.reload.deleted_at }.from(nil).to(kind_of(Time))
       end
 
-      it 'does not create supplier if does not exist' do
+      it 'does not create supplier if it does not exist' do
         expect(Itms::Supplier.count).to eq(0)
 
         expect { subject.perform('/v2/dodavatelia/229', downloader: downloader) }.not_to change { Itms::Supplier.count }
