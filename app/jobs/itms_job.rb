@@ -18,7 +18,7 @@ class ItmsJob < ApplicationJob
     end
 
     def self.get_json_from_href(href, params = {})
-      response = get("#{API_ENDPOINT}#{build_href(href, params)}")
+      response = get("#{API_ENDPOINT}#{URI(href).tap { |url| url.query = [url.query, params.reject { |_, v| v.blank? }.to_query].compact.join('&') }.to_s}")
       JSON.parse(response.body)
     end
 
@@ -27,13 +27,6 @@ class ItmsJob < ApplicationJob
       raise NotFoundError, "Url not found: #{url}" if response.code == 404
       raise DownloadError, "Unexpected response code: #{response.code} for url: #{url}" if response.code != 200
       response
-    end
-
-    private
-
-    def self.build_href(href, params)
-      params.reject! { |_, v| v.blank? }
-      URI(href).tap { |url| url.query = [url.query, params.to_query].compact.join('&') }.to_s
     end
   end
 
