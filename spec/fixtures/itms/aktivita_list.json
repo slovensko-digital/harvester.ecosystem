@@ -1,0 +1,2337 @@
+[
+  {
+    "datumKoncaPlanovany": "2019-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-08-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-09-07T00:00:00Z",
+    "href": "/v2/aktivita/1",
+    "id": 1,
+    "kod": "831A01700001",
+    "nazov": "Poskytovanie príspevkov na mentorované zapracovanie a prax",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/1",
+      "id": 1
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/8",
+      "id": 8
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-08-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-08-01T00:00:00Z",
+    "href": "/v2/aktivita/2",
+    "id": 2,
+    "kod": "312A017P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/1",
+      "id": 1
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/800",
+      "id": 800
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/3",
+    "id": 3,
+    "kod": "143A02000001",
+    "nazov": "Poskytovanie príspevkov",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/2",
+      "id": 2
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/14",
+      "id": 14
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-12-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-01T00:00:00Z",
+    "href": "/v2/aktivita/4",
+    "id": 4,
+    "kod": "143A02000002",
+    "nazov": "Príspevok na rekvalifikáciu (RE-PAS)",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/2",
+      "id": 2
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/14",
+      "id": 14
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/5",
+    "id": 5,
+    "kod": "312A020P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/2",
+      "id": 2
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/810",
+      "id": 810
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-11-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-08-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-09-01T00:00:00Z",
+    "href": "/v2/aktivita/6",
+    "id": 6,
+    "kod": "831A05100001",
+    "nazov": "Zabezpečenie absolventa školy na účely vykonávania absolventskej praxe pre zamestnávateľa a poskytovanie finančného príspevku na vykonávanie absolventskej praxe",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/8",
+      "id": 8
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-11-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-08-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-09-01T00:00:00Z",
+    "href": "/v2/aktivita/7",
+    "id": 7,
+    "kod": "331A05100002",
+    "nazov": "Poskytovanie finančného príspevku na podporu vytvárania pracovných miest",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/3",
+      "id": 3
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-11-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-08-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-08-01T00:00:00Z",
+    "href": "/v2/aktivita/8",
+    "id": 8,
+    "kod": "312A051P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/3",
+      "id": 3
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/800",
+      "id": 800
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/9",
+    "id": 9,
+    "kod": "153A05700001",
+    "nazov": "Poskytovanie príspevkov podľa zákona o službách zamestnanosti na podporu zamestnávania občanov so zdravotným postihnutím",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/4",
+      "id": 4
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/15",
+      "id": 15
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/10",
+    "id": 10,
+    "kod": "312A057P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/4",
+      "id": 4
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/810",
+      "id": 810
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2022-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/11",
+    "id": 11,
+    "kod": "463A06200001",
+    "nazov": "Poskytovanie  príspevku na starostlivosť o dieťa",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/5",
+      "id": 5
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/46",
+      "id": 46
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2022-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/12",
+    "id": 12,
+    "kod": "312A062P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/5",
+      "id": 5
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/812",
+      "id": 812
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/13",
+    "id": 13,
+    "kod": "183A06400001",
+    "nazov": "Poskytovanie finančného príspevku na podporu vytvorenia pracovného miesta pre znevýhodnených UoZ prostredníctvom AOTP podľa § 54 zákona o službách zamestnanosti.",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/6",
+      "id": 6
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/18",
+      "id": 18
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/14",
+    "id": 14,
+    "kod": "312A064P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/6",
+      "id": 6
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/810",
+      "id": 810
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/15",
+    "id": 15,
+    "kod": "302A075P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/747",
+      "id": 747
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/16",
+    "id": 16,
+    "kod": "302A075P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/748",
+      "id": 748
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/17",
+    "id": 17,
+    "kod": "302A07500001",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/833",
+      "id": 833
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/18",
+    "id": 18,
+    "kod": "302A07500002",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/832",
+      "id": 832
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/19",
+    "id": 19,
+    "kod": "302A07500003",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/831",
+      "id": 831
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/20",
+    "id": 20,
+    "kod": "302A07500004",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/830",
+      "id": 830
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/21",
+    "id": 21,
+    "kod": "302A07500005",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/829",
+      "id": 829
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/22",
+    "id": 22,
+    "kod": "302A07500006",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/828",
+      "id": 828
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/23",
+    "id": 23,
+    "kod": "302A07500007",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/827",
+      "id": 827
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/24",
+    "id": 24,
+    "kod": "302A07500008",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/826",
+      "id": 826
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/25",
+    "id": 25,
+    "kod": "302A07500009",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/824",
+      "id": 824
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "href": "/v2/aktivita/26",
+    "id": 26,
+    "kod": "302A07500010",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/7",
+      "id": 7
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/823",
+      "id": 823
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/27",
+    "id": 27,
+    "kod": "336A07700001",
+    "nazov": "Podpora inštalácií zariadení OZE mimo BSK",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/8",
+      "id": 8
+    },
+    "subjekt": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/336",
+      "id": 336
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/28",
+    "id": 28,
+    "kod": "310A077P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/8",
+      "id": 8
+    },
+    "subjekt": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/727",
+      "id": 727
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/29",
+    "id": 29,
+    "kod": "310A077P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/8",
+      "id": 8
+    },
+    "subjekt": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/726",
+      "id": 726
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-01-01T00:00:00Z",
+    "href": "/v2/aktivita/30",
+    "id": 30,
+    "kod": "337A07700002",
+    "nazov": "Podpora inštalácií zariadení OZE v BSK",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/8",
+      "id": 8
+    },
+    "subjekt": {
+      "dic": "2020877749",
+      "href": "/v2/subjekty/100005",
+      "ico": "00002801",
+      "id": 100005
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/337",
+      "id": 337
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-04-01T00:00:00Z",
+    "href": "/v2/aktivita/31",
+    "id": 31,
+    "kod": "471A12900001",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/9",
+      "id": 9
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/471",
+      "id": 471
+    }
+  },
+  {
+    "href": "/v2/aktivita/32",
+    "id": 32,
+    "kod": "311A129P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/9",
+      "id": 9
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/712",
+      "id": 712
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2016-04-01T00:00:00Z",
+    "datumKoncaSkutocny": "2016-04-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-02-01T00:00:00Z",
+    "href": "/v2/aktivita/33",
+    "id": 33,
+    "kod": "311A092P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/10",
+      "id": 10
+    },
+    "subjekt": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/696",
+      "id": 696
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2015-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2015-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-02-01T00:00:00Z",
+    "href": "/v2/aktivita/34",
+    "id": 34,
+    "kod": "416A09200001",
+    "nazov": "Testovanie IS",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/10",
+      "id": 10
+    },
+    "subjekt": {
+      "dic": "2020798725",
+      "href": "/v2/subjekty/100007",
+      "ico": "00164381",
+      "id": 100007
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/416",
+      "id": 416
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2015-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2015-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-02-01T00:00:00Z",
+    "href": "/v2/aktivita/35",
+    "id": 35,
+    "kod": "416A09200002",
+    "nazov": "Nasadenie IS",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/10",
+      "id": 10
+    },
+    "subjekt": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/416",
+      "id": 416
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2015-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2015-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-02-01T00:00:00Z",
+    "href": "/v2/aktivita/36",
+    "id": 36,
+    "kod": "416A09200003",
+    "nazov": "Implementácia IS - Realizácia",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/10",
+      "id": 10
+    },
+    "subjekt": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/416",
+      "id": 416
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2015-12-01T00:00:00Z",
+    "datumKoncaSkutocny": "2015-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-02-01T00:00:00Z",
+    "href": "/v2/aktivita/37",
+    "id": 37,
+    "kod": "416A09200004",
+    "nazov": "Obstaranie a nasadenie HW a SW licencii - Lokálna infraštruktúra",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/10",
+      "id": 10
+    },
+    "subjekt": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/416",
+      "id": 416
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2016-04-01T00:00:00Z",
+    "datumKoncaSkutocny": "2016-04-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-02-01T00:00:00Z",
+    "href": "/v2/aktivita/38",
+    "id": 38,
+    "kod": "311A092P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/10",
+      "id": 10
+    },
+    "subjekt": {
+      "dic": "2020845057",
+      "href": "/v2/subjekty/100000",
+      "ico": "00151513",
+      "id": 100000
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/696",
+      "id": 696
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2022-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-18T00:00:00Z",
+    "href": "/v2/aktivita/39",
+    "id": 39,
+    "kod": "312A139P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/800",
+      "id": 800
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2022-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-18T00:00:00Z",
+    "href": "/v2/aktivita/40",
+    "id": 40,
+    "kod": "131A13900001",
+    "nazov": "Aktivita č. 2: Poskytovanie finančného príspevku na podporu vytvorenia pracovného miesta prostredníctvom samozamestnania",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/1",
+      "id": 1
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2022-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-18T00:00:00Z",
+    "href": "/v2/aktivita/41",
+    "id": 41,
+    "kod": "331A13900002",
+    "nazov": "Aktivita č. 1: Poskytovanie finančného príspevku na podporu vytvorenia pracovného miesta v prvom pravidelne platenom zamestnaní",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/11",
+      "id": 11
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/3",
+      "id": 3
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/42",
+    "id": 42,
+    "kod": "238A13600001",
+    "nazov": "Rozvoj a podpora činnosti siete sociálnych služieb krízovej intervencie na komunitnej úrovni",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/12",
+      "id": 12
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/238",
+      "id": 238
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/43",
+    "id": 43,
+    "kod": "221A13600002",
+    "nazov": "Rozvoj a podpora činnosti siete sociálnych služieb krízovej intervencie na komunitnej úrovni",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/12",
+      "id": 12
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/221",
+      "id": 221
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/44",
+    "id": 44,
+    "kod": "312A136P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/12",
+      "id": 12
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/817",
+      "id": 817
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/45",
+    "id": 45,
+    "kod": "312A136P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/12",
+      "id": 12
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/816",
+      "id": 816
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/46",
+    "id": 46,
+    "kod": "238A13800001",
+    "nazov": "Systematická podpora a podpora inovácií TSP",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/13",
+      "id": 13
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/238",
+      "id": 238
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/47",
+    "id": 47,
+    "kod": "221A13800002",
+    "nazov": "Systematická podpora a podpora inovácií TSP",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/13",
+      "id": 13
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/221",
+      "id": 221
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/48",
+    "id": 48,
+    "kod": "312A138P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/13",
+      "id": 13
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/817",
+      "id": 817
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-09-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-09-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-10-01T00:00:00Z",
+    "href": "/v2/aktivita/49",
+    "id": 49,
+    "kod": "312A138P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/13",
+      "id": 13
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/816",
+      "id": 816
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-07-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-07-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-11-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-11-01T00:00:00Z",
+    "href": "/v2/aktivita/50",
+    "id": 50,
+    "kod": "302A13700001",
+    "nazov": "Podpora výkonu opatrovateľskej služby",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/14",
+      "id": 14
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/302",
+      "id": 302
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-07-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-07-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-11-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-11-01T00:00:00Z",
+    "href": "/v2/aktivita/51",
+    "id": 51,
+    "kod": "289A13700002",
+    "nazov": "Podpora výkonu opatrovateľskej služby",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/14",
+      "id": 14
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/289",
+      "id": 289
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-07-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-07-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-11-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-11-01T00:00:00Z",
+    "href": "/v2/aktivita/52",
+    "id": 52,
+    "kod": "312A137P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/14",
+      "id": 14
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/820",
+      "id": 820
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-07-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-07-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-11-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-11-01T00:00:00Z",
+    "href": "/v2/aktivita/53",
+    "id": 53,
+    "kod": "312A137P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/14",
+      "id": 14
+    },
+    "subjekt": {
+      "dic": "2021846299",
+      "href": "/v2/subjekty/100140",
+      "ico": "30854687",
+      "id": 100140
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/821",
+      "id": 821
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-01-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-12-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-01T00:00:00Z",
+    "href": "/v2/aktivita/54",
+    "id": 54,
+    "kod": "289A15000001",
+    "nazov": "Podpora práce s rodinou",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/15",
+      "id": 15
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/289",
+      "id": 289
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-01-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-12-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-12-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-01T00:00:00Z",
+    "href": "/v2/aktivita/55",
+    "id": 55,
+    "kod": "302A15000002",
+    "nazov": "Podpora práce s rodinou",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/15",
+      "id": 15
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/302",
+      "id": 302
+    }
+  },
+  {
+    "href": "/v2/aktivita/56",
+    "id": 56,
+    "kod": "312A150P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/15",
+      "id": 15
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/820",
+      "id": 820
+    }
+  },
+  {
+    "href": "/v2/aktivita/57",
+    "id": 57,
+    "kod": "312A150P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/15",
+      "id": 15
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/821",
+      "id": 821
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-10-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-10-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-18T00:00:00Z",
+    "href": "/v2/aktivita/58",
+    "id": 58,
+    "kod": "312A127P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/16",
+      "id": 16
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/810",
+      "id": 810
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-10-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-10-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-10-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-18T00:00:00Z",
+    "href": "/v2/aktivita/59",
+    "id": 59,
+    "kod": "143A12700001",
+    "nazov": "Poskytovanie finančných príspevkov na podporu vytvorenia pracovného miesta pre dlhodobo nezamestnaných UoZ",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/16",
+      "id": 16
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/14",
+      "id": 14
+    }
+  },
+  {
+    "datumZaciatkuSkutocny": "2015-12-01T00:00:00Z",
+    "href": "/v2/aktivita/60",
+    "id": 60,
+    "kod": "312A112P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/17",
+      "id": 17
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/816",
+      "id": 816
+    }
+  },
+  {
+    "datumZaciatkuSkutocny": "2015-12-01T00:00:00Z",
+    "href": "/v2/aktivita/61",
+    "id": 61,
+    "kod": "312A112P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/17",
+      "id": 17
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/817",
+      "id": 817
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-12-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-01T00:00:00Z",
+    "href": "/v2/aktivita/62",
+    "id": 62,
+    "kod": "225A11200001",
+    "nazov": "Rozvoj sociálnej práce s klientami v ich prirodzenom rodinom prostredí",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/17",
+      "id": 17
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/225",
+      "id": 225
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-12-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-01T00:00:00Z",
+    "href": "/v2/aktivita/63",
+    "id": 63,
+    "kod": "242A11200002",
+    "nazov": "Rozvoj sociálnej práce s klientmi v ich prirodzenom rodinnom prostredí",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/17",
+      "id": 17
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/242",
+      "id": 242
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-12-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-18T00:00:00Z",
+    "href": "/v2/aktivita/64",
+    "id": 64,
+    "kod": "143A14800001",
+    "nazov": "Poskytovanie finančného príspevku na podporu vytvorenia pracovného miesta pre znevýhodneného UoZ vo veku 50 rokov a viac",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/14",
+      "id": 14
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-12-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-12-18T00:00:00Z",
+    "href": "/v2/aktivita/65",
+    "id": 65,
+    "kod": "312A148P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/18",
+      "id": 18
+    },
+    "subjekt": {
+      "dic": "2021777780",
+      "href": "/v2/subjekty/100077",
+      "ico": "30794536",
+      "id": 100077
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/810",
+      "id": 810
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-04-01T00:00:00Z",
+    "href": "/v2/aktivita/66",
+    "id": 66,
+    "kod": "215A28000001",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/19",
+      "id": 19
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/215",
+      "id": 215
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-04-01T00:00:00Z",
+    "href": "/v2/aktivita/67",
+    "id": 67,
+    "kod": "214A28000002",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/19",
+      "id": 19
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/214",
+      "id": 214
+    }
+  },
+  {
+    "href": "/v2/aktivita/68",
+    "id": 68,
+    "kod": "310A280P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/19",
+      "id": 19
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/791",
+      "id": 791
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-04-01T00:00:00Z",
+    "href": "/v2/aktivita/69",
+    "id": 69,
+    "kod": "335A27900001",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/20",
+      "id": 20
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/335",
+      "id": 335
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-04-01T00:00:00Z",
+    "href": "/v2/aktivita/70",
+    "id": 70,
+    "kod": "334A27900002",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/20",
+      "id": 20
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/334",
+      "id": 334
+    }
+  },
+  {
+    "href": "/v2/aktivita/71",
+    "id": 71,
+    "kod": "310A279P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/20",
+      "id": 20
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/727",
+      "id": 727
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-04-01T00:00:00Z",
+    "href": "/v2/aktivita/72",
+    "id": 72,
+    "kod": "339A28100001",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/21",
+      "id": 21
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/339",
+      "id": 339
+    }
+  },
+  {
+    "href": "/v2/aktivita/73",
+    "id": 73,
+    "kod": "310A281P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/21",
+      "id": 21
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/725",
+      "id": 725
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2023-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-04-01T00:00:00Z",
+    "href": "/v2/aktivita/74",
+    "id": 74,
+    "kod": "340A28200001",
+    "nazov": "Vykonávanie finančných nástrojov",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/22",
+      "id": 22
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/340",
+      "id": 340
+    }
+  },
+  {
+    "href": "/v2/aktivita/75",
+    "id": 75,
+    "kod": "310A282P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/22",
+      "id": 22
+    },
+    "subjekt": {
+      "dic": "2024091784",
+      "href": "/v2/subjekty/100142",
+      "ico": "47759097",
+      "id": 100142
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/724",
+      "id": 724
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2017-02-01T00:00:00Z",
+    "datumKoncaSkutocny": "2017-02-28T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-01-01T00:00:00Z",
+    "href": "/v2/aktivita/76",
+    "id": 76,
+    "kod": "311A090P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/23",
+      "id": 23
+    },
+    "subjekt": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/696",
+      "id": 696
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2017-02-01T00:00:00Z",
+    "datumKoncaSkutocny": "2017-02-28T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-01-01T00:00:00Z",
+    "href": "/v2/aktivita/77",
+    "id": 77,
+    "kod": "311A090P0002",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/23",
+      "id": 23
+    },
+    "subjekt": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/697",
+      "id": 697
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2016-04-01T00:00:00Z",
+    "datumKoncaSkutocny": "2016-04-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-02-01T00:00:00Z",
+    "href": "/v2/aktivita/78",
+    "id": 78,
+    "kod": "411A09000001",
+    "nazov": "Testovanie riešenia",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/23",
+      "id": 23
+    },
+    "subjekt": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/411",
+      "id": 411
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2016-07-01T00:00:00Z",
+    "datumKoncaSkutocny": "2016-07-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-02-01T00:00:00Z",
+    "href": "/v2/aktivita/79",
+    "id": 79,
+    "kod": "416A09000002",
+    "nazov": "Nasadenie riešenia",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/23",
+      "id": 23
+    },
+    "subjekt": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/416",
+      "id": 416
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2016-01-01T00:00:00Z",
+    "datumKoncaSkutocny": "2016-01-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-02-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-02-01T00:00:00Z",
+    "href": "/v2/aktivita/80",
+    "id": 80,
+    "kod": "411A09000003",
+    "nazov": "Implementácia riešenia",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/23",
+      "id": 23
+    },
+    "subjekt": {
+      "dic": "2023106679",
+      "href": "/v2/subjekty/100002",
+      "ico": "42181810",
+      "id": 100002
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/411",
+      "id": 411
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-03-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-03-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-04-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-06-02T00:00:00Z",
+    "href": "/v2/aktivita/87",
+    "id": 87,
+    "kod": "310A011P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/25",
+      "id": 25
+    },
+    "subjekt": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/790",
+      "id": 790
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-01-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-01-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-04-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-05-12T00:00:00Z",
+    "href": "/v2/aktivita/88",
+    "id": 88,
+    "kod": "217A01100001",
+    "nazov": "Stoková sieť",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/25",
+      "id": 25
+    },
+    "subjekt": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-01-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-01-31T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-04-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-05-12T00:00:00Z",
+    "href": "/v2/aktivita/89",
+    "id": 89,
+    "kod": "219A01100002",
+    "nazov": "Vodovodná sieť",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/25",
+      "id": 25
+    },
+    "subjekt": {
+      "dic": "2022236502",
+      "href": "/v2/subjekty/100052",
+      "ico": "36672084",
+      "id": 100052
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/219",
+      "id": 219
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-01-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-01-25T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-05-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-03-14T00:00:00Z",
+    "href": "/v2/aktivita/90",
+    "id": 90,
+    "kod": "310A014P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/26",
+      "id": 26
+    },
+    "subjekt": {
+      "dic": "2021225646",
+      "href": "/v2/subjekty/100033",
+      "ico": "00327603",
+      "id": 100033
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/796",
+      "id": 796
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-01-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-01-14T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-05-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-05-09T00:00:00Z",
+    "href": "/v2/aktivita/91",
+    "id": 91,
+    "kod": "217A01400001",
+    "nazov": "Čistiareň odpadových vôd",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/26",
+      "id": 26
+    },
+    "subjekt": {
+      "dic": "2021225646",
+      "href": "/v2/subjekty/100033",
+      "ico": "00327603",
+      "id": 100033
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-01-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-01-14T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-05-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-05-09T00:00:00Z",
+    "href": "/v2/aktivita/92",
+    "id": 92,
+    "kod": "217A01400002",
+    "nazov": "Stoková sieť",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/26",
+      "id": 26
+    },
+    "subjekt": {
+      "dic": "2021225646",
+      "href": "/v2/subjekty/100033",
+      "ico": "00327603",
+      "id": 100033
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-08-01T00:00:00Z",
+    "datumKoncaSkutocny": "2017-08-28T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-09-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-08-22T00:00:00Z",
+    "href": "/v2/aktivita/93",
+    "id": 93,
+    "kod": "310A034P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/27",
+      "id": 27
+    },
+    "subjekt": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/796",
+      "id": 796
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-08-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-08-28T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-09-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-08-22T00:00:00Z",
+    "href": "/v2/aktivita/94",
+    "id": 94,
+    "kod": "217A03400001",
+    "nazov": "Čistiareň odpadových vôd",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/27",
+      "id": 27
+    },
+    "subjekt": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-08-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-08-28T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-09-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-08-22T00:00:00Z",
+    "href": "/v2/aktivita/95",
+    "id": 95,
+    "kod": "217A03400002",
+    "nazov": "Stokova sieť",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/27",
+      "id": 27
+    },
+    "subjekt": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-04-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-04-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-03-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-03-31T00:00:00Z",
+    "href": "/v2/aktivita/96",
+    "id": 96,
+    "kod": "310A030P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/28",
+      "id": 28
+    },
+    "subjekt": {
+      "dic": "2021081491",
+      "href": "/v2/subjekty/100084",
+      "ico": "00309745",
+      "id": 100084
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/796",
+      "id": 796
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-04-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-04-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2015-05-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2015-05-11T00:00:00Z",
+    "href": "/v2/aktivita/97",
+    "id": 97,
+    "kod": "217A03000001",
+    "nazov": "Stoková sieť",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/28",
+      "id": 28
+    },
+    "subjekt": {
+      "dic": "2021081491",
+      "href": "/v2/subjekty/100084",
+      "ico": "00309745",
+      "id": 100084
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-08-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-08-30T00:00:00Z",
+    "href": "/v2/aktivita/98",
+    "id": 98,
+    "kod": "217A00600001",
+    "nazov": "Výstavba a rozšírenie splaškovej kanalizácie v aglomeráciách Očová a Zvolenská Slatina",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/29",
+      "id": 29
+    },
+    "subjekt": {
+      "dic": "2020095726",
+      "href": "/v2/subjekty/100064",
+      "ico": "36056006",
+      "id": 100064
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-08-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-08-30T00:00:00Z",
+    "href": "/v2/aktivita/99",
+    "id": 99,
+    "kod": "217A00600002",
+    "nazov": "Vybudovanie novej ČOV v Očovej a rozšírenie kapacity ČOV vo Zvolenskej Slatine",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/29",
+      "id": 29
+    },
+    "subjekt": {
+      "dic": "2020095726",
+      "href": "/v2/subjekty/100064",
+      "ico": "36056006",
+      "id": 100064
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2020-12-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-03-01T00:00:00Z",
+    "href": "/v2/aktivita/100",
+    "id": 100,
+    "kod": "310A006P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/29",
+      "id": 29
+    },
+    "subjekt": {
+      "dic": "2020095726",
+      "href": "/v2/subjekty/100064",
+      "ico": "36056006",
+      "id": 100064
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/796",
+      "id": 796
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-11-01T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-01-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-04-20T00:00:00Z",
+    "href": "/v2/aktivita/101",
+    "id": 101,
+    "kod": "310A016P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/30",
+      "id": 30
+    },
+    "subjekt": {
+      "dic": "2021079896",
+      "href": "/v2/subjekty/100069",
+      "ico": "00311928",
+      "id": 100069
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/796",
+      "id": 796
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-02-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-02-28T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-04-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-04-20T00:00:00Z",
+    "href": "/v2/aktivita/102",
+    "id": 102,
+    "kod": "217A01600001",
+    "nazov": "Stoková sieť",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/30",
+      "id": 30
+    },
+    "subjekt": {
+      "dic": "2021079896",
+      "href": "/v2/subjekty/100069",
+      "ico": "00311928",
+      "id": 100069
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-06-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-06-27T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-09-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-09-27T00:00:00Z",
+    "href": "/v2/aktivita/124",
+    "id": 124,
+    "kod": "217A03300001",
+    "nazov": "Stoková sieť",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/32",
+      "id": 32
+    },
+    "subjekt": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-06-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-06-27T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-09-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-09-27T00:00:00Z",
+    "href": "/v2/aktivita/125",
+    "id": 125,
+    "kod": "217A03300002",
+    "nazov": "Čistiareň odpadových vôd",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/32",
+      "id": 32
+    },
+    "subjekt": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2019-06-01T00:00:00Z",
+    "datumKoncaSkutocny": "2019-06-27T00:00:00Z",
+    "datumZaciatkuPlanovany": "2017-09-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2017-09-18T00:00:00Z",
+    "href": "/v2/aktivita/126",
+    "id": 126,
+    "kod": "310A033P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/vrealizacii/32",
+      "id": 32
+    },
+    "subjekt": {
+      "dic": "2020063518",
+      "href": "/v2/subjekty/100089",
+      "ico": "36570460",
+      "id": 100089
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/796",
+      "id": 796
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-11-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-11-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-04-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-09-01T00:00:00Z",
+    "href": "/v2/aktivita/127",
+    "id": 127,
+    "kod": "310A008P0001",
+    "nazov": "Podporné aktivity",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/33",
+      "id": 33
+    },
+    "subjekt": {
+      "dic": "2022269326",
+      "href": "/v2/subjekty/100059",
+      "ico": "36682888",
+      "id": 100059
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/796",
+      "id": 796
+    }
+  },
+  {
+    "datumKoncaPlanovany": "2018-11-01T00:00:00Z",
+    "datumKoncaSkutocny": "2018-11-30T00:00:00Z",
+    "datumZaciatkuPlanovany": "2016-09-01T00:00:00Z",
+    "datumZaciatkuSkutocny": "2016-09-25T00:00:00Z",
+    "href": "/v2/aktivita/128",
+    "id": 128,
+    "kod": "217A00800001",
+    "nazov": "Stoková sieť",
+    "projekt": {
+      "href": "/v2/projekty/ukoncene/33",
+      "id": 33
+    },
+    "subjekt": {
+      "dic": "2022269326",
+      "href": "/v2/subjekty/100059",
+      "ico": "36682888",
+      "id": 100059
+    },
+    "typAktivity": {
+      "href": "/v2/typyAktivit/217",
+      "id": 217
+    }
+  }
+]

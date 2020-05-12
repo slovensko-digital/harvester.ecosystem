@@ -9,7 +9,7 @@ RSpec.describe Itms::SyncAllAnnouncedProposalCallsJob, type: :job do
     it 'syncs all announced proposal calls' do
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with('/v2/vyzvy/vyhlasene')
+          .with('/v2/vyzvy/vyhlasene', modifiedSince: nil)
           .and_return(itms_json_fixture('vyzva_vyhlasena_list.json'))
 
       subject.perform(downloader: downloader)

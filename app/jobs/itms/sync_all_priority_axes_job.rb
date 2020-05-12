@@ -1,10 +1,9 @@
 class Itms::SyncAllPriorityAxesJob < ItmsJob
   def perform(downloader: ItmsJob::Downloader)
     operational_programs_json = downloader.get_json_from_href('/v2/operacneProgramy')
-    operational_programs_ids = operational_programs_json.map { |json| json['id'] }
 
-    operational_programs_ids.each do |op_id|
-      priority_axes_json = downloader.get_json_from_href("/v2/operacneProgramy/#{op_id}/prioritneOsi")
+    operational_programs_json.each do |item|
+      priority_axes_json = downloader.get_json_from_href("/v2/operacneProgramy/#{item['id']}/prioritneOsi", modifiedSince: latest_priority_axis_timestamp)
       priority_axes_json.each { |json| Itms::SyncPriorityAxisJob.perform_later(json['href']) }
     end
   end

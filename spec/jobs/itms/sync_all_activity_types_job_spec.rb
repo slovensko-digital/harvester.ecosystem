@@ -9,7 +9,7 @@ RSpec.describe Itms::SyncAllActivityTypesJob, type: :job do
     it 'syncs all activity types' do
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with('/v2/typyAktivit')
+          .with('/v2/typyAktivit', modifiedSince: nil)
           .and_return(itms_json_fixture('typ_aktivity_list.json'))
 
       subject.perform(downloader: downloader)

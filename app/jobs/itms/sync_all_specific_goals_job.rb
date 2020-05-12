@@ -9,7 +9,7 @@ class Itms::SyncAllSpecificGoalsJob < ItmsJob
     end
 
     priority_axes_ids.each do |pa_id|
-      specific_goals_json = downloader.get_json_from_href("/v2/prioritnaOs/#{pa_id}/konkretneCiele")
+      specific_goals_json = downloader.get_json_from_href("/v2/prioritnaOs/#{pa_id}/konkretneCiele", modifiedSince: latest_specific_goal_timestamp)
       specific_goals_json.each { |json| Itms::SyncSpecificGoalJob.perform_later(json['href']) }
     end
   end

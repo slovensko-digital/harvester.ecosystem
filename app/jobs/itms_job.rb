@@ -16,9 +16,10 @@ class ItmsJob < ApplicationJob
     def self.href_exists?(href)
       downloader.url_exists?("#{API_ENDPOINT}#{href}")
     end
-    
-    def self.get_json_from_href(href)
-      response = get("#{API_ENDPOINT}#{href}")
+
+    def self.get_json_from_href(href, params = {})
+      location = URI(href).tap { |u| u.query = URI.encode_www_form(URI.decode_www_form(u.query.to_s) + params.reject { |_, v| v.blank? }.to_a)}
+      response = get("#{API_ENDPOINT}#{location}")
       JSON.parse(response.body)
     end
 
@@ -31,33 +32,38 @@ class ItmsJob < ApplicationJob
   end
 
   [
-      Itms::Activity,
-      Itms::ActivityType,
-      Itms::AccountingDocument,
-      Itms::AccountsReceivableDocument,
-      Itms::AnnouncedProposalCall,
-      Itms::BudgetItem,
-      Itms::CodelistValue,
-      Itms::Discrepancy,
-      Itms::Intensity,
-      Itms::OperationalProgram,
-      Itms::PaymentClaim,
-      Itms::PriorityAxis,
-      Itms::Procurement,
-      Itms::Project,
-      Itms::ProjectIndicator,
-      Itms::SpecificGoal,
-      Itms::Subject,
-      Itms::Supplier,
+    Itms::Activity,
+    Itms::ActivityType,
+    Itms::AccountingDocument,
+    Itms::AccountsReceivableDocument,
+    Itms::AnnouncedProposalCall,
+    Itms::BudgetItem,
+    Itms::CodelistValue,
+    Itms::Discrepancy,
+    Itms::Intensity,
+    Itms::OperationalProgram,
+    Itms::PaymentClaim,
+    Itms::PriorityAxis,
+    Itms::Procurement,
+    Itms::Project,
+    Itms::ProjectIndicator,
+    Itms::SpecificGoal,
+    Itms::Subject,
+    Itms::Supplier,
 
   ].each do |model_class|
     base_name = model_class.name.split('::').last
 
     find_or_create_item_by_json = "find_or_create_#{base_name.underscore}_by_json"
     find_or_create_list_by_json = "find_or_create_#{base_name.pluralize.underscore}_by_json"
+    latest_record_timestamp = "latest_#{base_name.underscore}_timestamp"
 
     define_method find_or_create_item_by_json do |json, downloader|
       return if json.blank?
+
+      # JSON for Itms::Subject sometimes contain data wrapped inside nested 'subjekt' property
+      json = json['subjekt'] if model_class == Itms::Subject && !json.key?('id') && json.key?('subjekt')
+
       existing_object = model_class.find_by(itms_id: json['id'])
       return existing_object if existing_object.present?
 
@@ -69,6 +75,10 @@ class ItmsJob < ApplicationJob
     define_method find_or_create_list_by_json do |json_list, downloader|
       return [] if json_list.blank?
       json_list.map { |json| public_send(find_or_create_item_by_json, json, downloader) }.uniq
+    end
+
+    define_method latest_record_timestamp do
+      model_class.latest&.updated_at&.to_i
     end
   end
 

@@ -9,7 +9,7 @@ RSpec.describe Itms::SyncAllDiscrepanciesJob, type: :job do
     it 'syncs all discrepancies' do
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with('/v2/nezrovnalost')
+          .with('/v2/nezrovnalost', modifiedSince: nil)
           .and_return(itms_json_fixture('nezrovnalost_list.json'))
 
       subject.perform(downloader: downloader)

@@ -10,13 +10,13 @@ RSpec.describe Itms::SyncAllProjectsJob, type: :job do
     it 'syncs all projects' do
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with(include('/v2/projekty/ukoncene'))
+          .with(include('/v2/projekty/ukoncene'), modifiedSince: nil)
           .and_return(itms_json_fixture('projekty_ukoncene_list.json'))
           .at_least(:once)
 
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with(include('/v2/projekty/vrealizacii'))
+          .with(include('/v2/projekty/vrealizacii'), modifiedSince: nil)
           .and_return(itms_json_fixture('projekty_vrealizacii_list.json'))
           .at_least(:once)
 
