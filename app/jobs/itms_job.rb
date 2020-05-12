@@ -193,4 +193,8 @@ class ItmsJob < ApplicationJob
       scope.find_or_create_by!(nazov: j['nazov'], url: j['url'])
     end
   end
+
+  def parse_id(href)
+    Integer(href.split('/').last, 10)
+  end
 end

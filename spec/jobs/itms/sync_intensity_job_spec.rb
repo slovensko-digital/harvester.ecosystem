@@ -56,5 +56,24 @@ RSpec.describe Itms::SyncIntensityJob, type: :job do
         ),
       )
     end
+
+    context 'with intensity url not found' do
+      before(:example) do
+        allow(downloader).to receive(:href_exists?).and_return(false)
+        expect(downloader).not_to receive(:get_json_from_href)
+      end
+
+      it 'marks intensity as deleted if exists' do
+        intensity = create(:itms_intensity)
+
+        expect { subject.perform('/v2/intenzita/1', downloader: downloader) }.to change { intensity.reload.deleted_at }.from(nil).to(kind_of(Time))
+      end
+
+      it 'does not create intensity if does not exist' do
+        expect(Itms::Intensity.count).to eq(0)
+
+        expect { subject.perform('/v2/intenzita/1', downloader: downloader) }.not_to change { Itms::Intensity.count }
+      end
+    end
   end
 end
