@@ -327,7 +327,8 @@ CREATE TABLE itms.intenzity (
     zdroj_vz_id integer,
     zdroj_yei_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -9816,6 +9817,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190805192655'),
 ('20191030214642'),
 ('20191107112524'),
+('20200424153823'),
 ('20200424134824');
-
-
