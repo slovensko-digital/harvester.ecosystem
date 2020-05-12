@@ -9,7 +9,7 @@ RSpec.describe Itms::SyncAllAccountsReceivableDocumentsJob, type: :job do
     it 'syncs all projects' do
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with('/v2/pohladavkovyDoklad')
+          .with('/v2/pohladavkovyDoklad', modifiedSince: nil)
           .and_return(itms_json_fixture('pohladavkovy_doklad_list.json'))
 
       subject.perform(downloader: downloader)

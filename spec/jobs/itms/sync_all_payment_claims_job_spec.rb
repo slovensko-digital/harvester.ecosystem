@@ -9,7 +9,7 @@ RSpec.describe Itms::SyncAllPaymentClaimsJob, type: :job do
     it 'syncs all payment claims' do
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with('/v2/zop/predlozene')
+          .with('/v2/zop/predlozene', modifiedSince: nil)
           .and_return(itms_json_fixture('zop_predlozena_list.json'))
 
       subject.perform(downloader: downloader)

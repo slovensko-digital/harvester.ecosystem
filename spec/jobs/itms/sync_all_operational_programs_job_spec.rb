@@ -9,7 +9,7 @@ RSpec.describe Itms::SyncAllOperationalProgramsJob, type: :job do
     it 'syncs all operational programs' do
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with('/v2/operacneProgramy')
+          .with('/v2/operacneProgramy', modifiedSince: nil)
           .and_return(itms_json_fixture('operacny_program_list.json'))
 
       subject.perform(downloader: downloader)
