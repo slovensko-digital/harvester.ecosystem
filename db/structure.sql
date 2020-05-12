@@ -3850,9 +3850,7 @@ CREATE TABLE itms.zop (
     typ character varying,
     vyplaca_sa_partnerovi boolean,
     zop_je_zaverecna boolean,
-    zop_predlozena_za_viac_subjektov boolean,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    zop_predlozena_za_viac_subjektov boolean
 );
 
 
