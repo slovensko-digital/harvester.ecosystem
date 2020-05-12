@@ -4,6 +4,7 @@ FactoryBot.define do
     itms_href { '/v2/intenzita/1' }
     nazov { 'Intenzita 312020/7170/LDR/30794536' }
     deleted_at { nil }
+  end
 
   factory :itms_supplier, class: Itms::Supplier do
     itms_id { 229 }
