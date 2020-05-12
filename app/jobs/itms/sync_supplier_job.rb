@@ -1,5 +1,10 @@
 class Itms::SyncSupplierJob < ItmsJob
   def perform(itms_href, downloader: ItmsJob::Downloader)
+    unless downloader.href_exists?(itms_href)
+      Itms::Supplier.find_by(itms_id: parse_id(itms_href))&.touch(:deleted_at)
+      return
+    end
+
     json = downloader.get_json_from_href(itms_href)
 
     ActiveRecord::Base.transaction do
