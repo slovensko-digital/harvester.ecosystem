@@ -28,16 +28,23 @@ RSpec.describe Itms::SyncBudgetItemJob, type: :job do
       )
     end
 
-    it 'destroys the record if its href returns 404' do
-      Itms::BudgetItem.create!(itms_id: 1, itms_href: '/v2/polozkaRozpoctu/1')
+    context 'with budget item URL not found' do
+      before(:example) do
+        allow(downloader).to receive(:href_exists?).and_return(false)
+        expect(downloader).not_to receive(:get_json_from_href)
+      end
 
-      expect(downloader)
-        .to receive(:get_json_from_href)
-        .with('/v2/polozkaRozpoctu/1')
-        .and_raise(ItmsJob::Downloader::NotFoundError)
+      it 'marks budget item as deleted if it exists' do
+        budget_item = create(:itms_budget_item)
 
-      expect { subject.perform('/v2/polozkaRozpoctu/1', downloader: downloader) }
-        .to change { Itms::BudgetItem.count }.by(-1)
+        expect { subject.perform('/v2/polozkaRozpoctu/1', downloader: downloader) }.to change { budget_item.reload.deleted_at }.from(nil).to(kind_of(Time))
+      end
+
+      it 'does not create budget item if it does not exist' do
+        expect(Itms::BudgetItem.count).to eq(0)
+
+        expect { subject.perform('/v2/polozkaRozpoctu/1', downloader: downloader) }.not_to change { Itms::BudgetItem.count }
+      end
     end
   end
 end
