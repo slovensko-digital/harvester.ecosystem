@@ -1,6 +1,6 @@
 class Itms::SyncAllProcurementContractsJob < ItmsJob
   def perform(downloader: ItmsJob::Downloader)
-    procurements_json = downloader.get_json_from_href('/v2/verejneObstaravania', modifiedSince: latest_procurement_timestamp)
+    procurements_json = downloader.get_json_from_href('/v2/verejneObstaravania')
 
     procurements_json.each do |procurement_item|
       procurement = find_or_create_procurement_by_itms_id(procurement_item['id'], downloader)
