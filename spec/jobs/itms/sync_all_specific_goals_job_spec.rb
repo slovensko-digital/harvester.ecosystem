@@ -21,7 +21,7 @@ RSpec.describe Itms::SyncAllSpecificGoalsJob, type: :job do
 
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with(/\/v2\/prioritnaOs\/\d+\/konkretneCiele$/, modifiedSince: nil)
+          .with(/\/v2\/prioritnaOs\/\d+\/konkretneCiele$/)
           .and_return(itms_json_fixture('konkretny_ciel_list.json'))
           .exactly(10 * 5).times
 
