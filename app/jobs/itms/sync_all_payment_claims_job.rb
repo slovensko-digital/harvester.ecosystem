@@ -5,6 +5,6 @@ class Itms::SyncAllPaymentClaimsJob < ItmsJob
   end
 
   def latest_payment_claim_timestamp
-    [Itms::PaymentClaim.where.not(itms_updated_at: nil).order(:itms_updated_at).last&.itms_updated_at, Itms::PaymentClaim.where.not(itms_created_at: nil).order(:itms_created_at).last.&itms_created_at].max&.to_i
+    [Itms::PaymentClaim.where.not(itms_updated_at: nil).order(:itms_updated_at).last&.itms_updated_at, Itms::PaymentClaim.where.not(itms_created_at: nil).order(:itms_created_at).last&.itms_created_at].max&.to_i
   end
 end
