@@ -1,5 +1,10 @@
 class Itms::SyncCodelistValueJob < ItmsJob
   def perform(itms_href, downloader: ItmsJob::Downloader)
+    unless downloader.href_exists?(itms_href)
+      Itms::CodelistValue.find_by(itms_id: parse_id(itms_href))&.touch(:deleted_at)
+      return
+    end
+
     json = downloader.get_json_from_href(itms_href)
     _, _, _, codelist_id, _, itms_id = itms_href.split('/') # e.g. "/v2/hodnotaCiselnika/123/hodnota/456"
 
