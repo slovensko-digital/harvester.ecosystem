@@ -15,7 +15,7 @@ RSpec.describe Itms::SyncAllPriorityAxesJob, type: :job do
 
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with(/\/v2\/operacneProgramy\/\d+\/prioritneOsi$/, modifiedSince: nil)
+          .with(/\/v2\/operacneProgramy\/\d+\/prioritneOsi$/)
           .and_return(itms_json_fixture('prioritna_os_list.json'))
           .exactly(10).times
 

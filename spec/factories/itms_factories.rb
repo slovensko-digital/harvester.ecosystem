@@ -20,4 +20,14 @@ FactoryBot.define do
     ulica_cislo { '1' }
     deleted_at { nil }
   end
+
+  factory :itms_budget_item, class: Itms::BudgetItem do
+    itms_id { 1 }
+    itms_href { '/v2/polozkaRozpoctu/1' }
+    viazana_suma { 7002729.1 }
+    volne_prostriedky { 25278444.49 }
+    vratena_suma { 0 }
+    zazmluvnena_suma { 32281173.59 }
+    deleted_at { nil }
+  end
 end

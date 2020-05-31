@@ -1,5 +1,10 @@
 class Itms::SyncBudgetItemJob < ItmsJob
   def perform(itms_href, downloader: ItmsJob::Downloader)
+    unless downloader.href_exists?(itms_href)
+      Itms::BudgetItem.find_by(itms_id: parse_id(itms_href))&.touch(:deleted_at)
+      return
+    end
+
     json = downloader.get_json_from_href(itms_href)
 
     ActiveRecord::Base.transaction do
@@ -16,9 +21,5 @@ class Itms::SyncBudgetItemJob < ItmsJob
       bi.zazmluvnena_suma = json['zazmluvnenaSuma']
       bi.save!
     end
-  rescue ItmsJob::Downloader::NotFoundError
-    itms_id = itms_href.split('/').last
-    bi = Itms::BudgetItem.find_by(itms_id: itms_id)
-    bi.destroy! if bi
   end
 end

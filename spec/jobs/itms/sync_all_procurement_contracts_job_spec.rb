@@ -10,7 +10,7 @@ RSpec.describe Itms::SyncAllProcurementContractsJob, type: :job do
     it 'syncs all specific goals' do
       expect(downloader)
           .to receive(:get_json_from_href)
-          .with('/v2/verejneObstaravania', modifiedSince: nil)
+          .with('/v2/verejneObstaravania')
           .and_return(itms_json_fixture('verejne_obstaravanie_list.json'))
 
       expect(downloader)

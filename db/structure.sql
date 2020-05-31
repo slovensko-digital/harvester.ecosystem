@@ -1165,7 +1165,8 @@ CREATE TABLE itms.polozky_rozpoctu (
     vratena_suma numeric,
     zazmluvnena_suma numeric,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -9817,6 +9818,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190805192655'),
 ('20191030214642'),
 ('20191107112524'),
-('20200424153823'),
+('20191111093609'),
+('20200115163549'),
 ('20200424134824'),
-('20200505182013');
+('20200424153823'),
+('20200518225601');
