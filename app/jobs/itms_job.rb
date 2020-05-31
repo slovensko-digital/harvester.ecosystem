@@ -18,9 +18,12 @@ class ItmsJob < ApplicationJob
     end
 
     def self.get_json_from_href(href, params = {})
-      location = URI(href).tap { |u| u.query = URI.encode_www_form(URI.decode_www_form(u.query.to_s) + params.reject { |_, v| v.blank? }.to_a)}
-      response = get("#{API_ENDPOINT}#{location}")
+      response = get("#{API_ENDPOINT}#{format_query(href, params)}")
       JSON.parse(response.body)
+    end
+
+    def self.format_query(href, params)
+      URI(href).tap { |u| u.query = URI.encode_www_form(URI.decode_www_form(u.query.to_s) + params.reject { |_, v| v.blank? }.to_a).presence }.to_s
     end
 
     def self.get(url)

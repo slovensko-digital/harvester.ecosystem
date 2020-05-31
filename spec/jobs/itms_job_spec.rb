@@ -56,7 +56,7 @@ RSpec.describe ItmsJob, type: :job do
     )
   end
 
-  context 'ItmsJob::Downloader#get_json_from_href' do
+  describe 'ItmsJob::Downloader#get_json_from_href' do
     it 'returns NotFoundError on 404' do
       harvester_downloader_double = double(:downloader)
 
@@ -70,6 +70,34 @@ RSpec.describe ItmsJob, type: :job do
 
       expect { ItmsJob::Downloader.get_json_from_href('non-existent_url') }
         .to raise_error(ItmsJob::Downloader::NotFoundError)
+    end
+  end
+
+  describe 'ItmsJob::Downloader#format_query' do
+    let(:params) { { 'p1' => 'abc', 'p2' => 'def', 'param_nil' => nil, 'param_empty' => '' } }
+
+    context 'with input URL containing query params' do
+      let(:href) { '/v2/hodnotaCiselnika/1006/hodnota/25850?q1=value&q2=101' }
+
+      it 'builds correct URL with params hash provided' do
+        expect(ItmsJob::Downloader.format_query(href, params)).to eq('/v2/hodnotaCiselnika/1006/hodnota/25850?q1=value&q2=101&p1=abc&p2=def')
+      end
+
+      it 'builds correct URL without params hash provided' do
+        expect(ItmsJob::Downloader.format_query(href, {})).to eq('/v2/hodnotaCiselnika/1006/hodnota/25850?q1=value&q2=101')
+      end
+    end
+
+    context 'with input URL without query params' do
+      let(:href) { '/v2/hodnotaCiselnika/1006/hodnota/25850' }
+
+      it 'builds correct URL with params hash provided' do
+        expect(ItmsJob::Downloader.format_query(href, params)).to eq('/v2/hodnotaCiselnika/1006/hodnota/25850?p1=abc&p2=def')
+      end
+
+      it 'build correct URL without params hash provided' do
+        expect(ItmsJob::Downloader.format_query(href, {})).to eq('/v2/hodnotaCiselnika/1006/hodnota/25850')
+      end
     end
   end
 end
