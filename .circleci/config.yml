@@ -7,7 +7,7 @@ jobs:
     working_directory: ~/slovensko-digital/harvester.ecosystem
 
     docker:
-      - image: circleci/ruby:2.5.0-node-browsers
+      - image: circleci/ruby:2.6.6-node-browsers
         environment:
           RAILS_ENV: test
 
