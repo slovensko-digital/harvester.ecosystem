@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncCodelistValueJob, type: :job do
-  let(:downloader) { double(:downloader) }
+  include_context 'itms_downloader'
 
   describe '#perform' do
     it 'syncs values of a given codelist' do
@@ -31,6 +31,25 @@ RSpec.describe Itms::SyncCodelistValueJob, type: :job do
         platnost_od: DateTime.parse('1993-01-01T00:00:00Z'),
         popis: 'Všeobecná úverová banka, a.s.',
       )
+    end
+
+    context 'with codelist value url not found' do
+      before(:example) do
+        allow(downloader).to receive(:href_exists?).and_return(false)
+        expect(downloader).not_to receive(:get_json_from_href)
+      end
+
+      it 'marks codelist value as deleted if exists' do
+        codelist_value = create(:itms_codelist_value)
+
+        expect { subject.perform('/v2/hodnotaCiselnika/1006/hodnota/1', downloader: downloader) }.to change { codelist_value.reload.deleted_at }.from(nil).to(kind_of(Time))
+      end
+
+      it 'does not create codelist value if does not exist' do
+        expect(Itms::CodelistValue.count).to eq(0)
+
+        expect { subject.perform('/v2/hodnotaCiselnika/1006/hodnota/1', downloader: downloader) }.not_to change { Itms::CodelistValue.count }
+      end
     end
   end
 end
