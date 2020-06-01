@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.14
--- Dumped by pg_dump version 9.5.14
+-- Dumped from database version 9.5.22
+-- Dumped by pg_dump version 9.5.22
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -11,6 +11,7 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -288,7 +289,8 @@ CREATE TABLE itms.hodnoty_ciselnikov (
     nazov character varying,
     platnost_do timestamp without time zone,
     platnost_od timestamp without time zone,
-    popis character varying
+    popis character varying,
+    deleted_at timestamp without time zone
 );
 
 
@@ -9822,4 +9824,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200115163549'),
 ('20200424134824'),
 ('20200424153823'),
-('20200518225601');
+('20200518225601'),
+('20200531222054');
+
+

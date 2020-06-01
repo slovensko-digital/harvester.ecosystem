@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Itms::SyncIntensityJob, type: :job do
-  include_context "itms_downloader"
+  include_context 'itms_downloader'
 
   describe '#perform' do
     it 'syncs intensity and all of its attributes' do
