@@ -8351,7 +8351,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
 --
 
 ALTER TABLE ONLY itms.intenzity
-    ADD CONSTRAINT fk_rails_342c83d880 FOREIGN KEY (zdroj_vz_id) REFERENCES itms.intenzity_zdroje(id);
+    ADD CONSTRAINT fk_rails_342c83d880 FOREIGN KEY (zdroj_vz_id) REFERENCES itms.intenzity_zdroje(id) ON DELETE SET NULL;
 
 
 --
@@ -8959,7 +8959,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
 --
 
 ALTER TABLE ONLY itms.intenzity
-    ADD CONSTRAINT fk_rails_818c3c0e61 FOREIGN KEY (zdroj_eu_id) REFERENCES itms.intenzity_zdroje(id);
+    ADD CONSTRAINT fk_rails_818c3c0e61 FOREIGN KEY (zdroj_eu_id) REFERENCES itms.intenzity_zdroje(id) ON DELETE SET NULL;
 
 
 --
@@ -9423,7 +9423,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_kontaktne_osoby
 --
 
 ALTER TABLE ONLY itms.intenzity
-    ADD CONSTRAINT fk_rails_cc33bd1188 FOREIGN KEY (zdroj_pr_id) REFERENCES itms.intenzity_zdroje(id);
+    ADD CONSTRAINT fk_rails_cc33bd1188 FOREIGN KEY (zdroj_pr_id) REFERENCES itms.intenzity_zdroje(id) ON DELETE SET NULL;
 
 
 --
@@ -9583,7 +9583,7 @@ ALTER TABLE ONLY itms.projekty_aktivity
 --
 
 ALTER TABLE ONLY itms.intenzity
-    ADD CONSTRAINT fk_rails_e965354053 FOREIGN KEY (zdroj_yei_id) REFERENCES itms.intenzity_zdroje(id);
+    ADD CONSTRAINT fk_rails_e965354053 FOREIGN KEY (zdroj_yei_id) REFERENCES itms.intenzity_zdroje(id) ON DELETE SET NULL;
 
 
 --
@@ -9751,7 +9751,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 --
 
 ALTER TABLE ONLY itms.intenzity
-    ADD CONSTRAINT fk_rails_ffc31e6216 FOREIGN KEY (zdroj_sr_id) REFERENCES itms.intenzity_zdroje(id);
+    ADD CONSTRAINT fk_rails_ffc31e6216 FOREIGN KEY (zdroj_sr_id) REFERENCES itms.intenzity_zdroje(id) ON DELETE SET NULL;
 
 
 --
@@ -9824,7 +9824,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200115163549'),
 ('20200424134824'),
 ('20200424153823'),
+('20200507163446'),
 ('20200518225601'),
-('20200531222054');
-
-
+('20200531222054'),
+('20200601163242');
