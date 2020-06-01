@@ -11,7 +11,7 @@ jobs:
         environment:
           RAILS_ENV: test
 
-      - image: circleci/postgres:10-alpine-ram
+      - image: circleci/postgres:12-alpine-ram
         environment:
           POSTGRES_USER: ubuntu
           POSTGRES_HOST_AUTH_METHOD: trust
