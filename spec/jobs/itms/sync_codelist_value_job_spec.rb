@@ -33,7 +33,7 @@ RSpec.describe Itms::SyncCodelistValueJob, type: :job do
       )
     end
 
-    context 'with codelist value url not found' do
+    context 'with codelist value URL not found' do
       before(:example) do
         allow(downloader).to receive(:href_exists?).and_return(false)
         expect(downloader).not_to receive(:get_json_from_href)
