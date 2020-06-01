@@ -26,9 +26,8 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
       expect(Upvs::ServiceWithForm.count).to eq(28)
     end
 
-    xcontext 'meta_is_code and info_url attributes not nil' do
-      it 'downloads and imports ServicesWithForms list in V1 format' do
-      end
+    context 'meta_is_code and info_url attributes not nil' do
+      pending 'downloads and imports ServicesWithForms list in V1 format'
     end
 
     context 'ServicesWithForms list already imported' do
