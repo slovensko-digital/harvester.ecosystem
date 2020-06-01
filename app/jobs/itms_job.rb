@@ -18,11 +18,11 @@ class ItmsJob < ApplicationJob
     end
 
     def self.get_json_from_href(href, params = {})
-      response = get("#{API_ENDPOINT}#{format_query(href, params)}")
+      response = get("#{API_ENDPOINT}#{append_query_params(href, params)}")
       JSON.parse(response.body)
     end
 
-    def self.format_query(href, params)
+    def self.append_query_params(href, params)
       URI(href).tap { |u| u.query = URI.encode_www_form(URI.decode_www_form(u.query.to_s) + params.reject { |_, v| v.blank? }.to_a).presence }.to_s
     end
 
