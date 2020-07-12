@@ -1,6 +1,6 @@
 require_relative 'boot'
 
-require "rails"
+# require "rails/all"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -8,7 +8,6 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
-require "action_cable/engine"
 require "action_cable/engine"
 require "active_storage/engine"
 require "sprockets/railtie"
@@ -21,7 +20,7 @@ Bundler.require(*Rails.groups)
 module Harvester
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    # config.load_defaults 5.2
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
