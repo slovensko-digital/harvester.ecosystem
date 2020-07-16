@@ -1,5 +1,3 @@
-require 'csv'
-
 class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
   queue_as :upvs
 

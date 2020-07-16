@@ -1,10 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.5.22
--- Dumped by pg_dump version 9.5.22
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -9827,4 +9820,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200507163446'),
 ('20200518225601'),
 ('20200531222054'),
-('20200601163242');
+('20200601163242'),
+('20200716141809');
+
+
