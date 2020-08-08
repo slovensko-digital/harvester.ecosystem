@@ -1,3 +1,5 @@
+# TODO remove this in favor of Rails 5 file_fixture helper
+
 module FixtureMacros
   def fixture_filepath(file_path)
     Pathname.new('spec').join('fixtures', file_path)
