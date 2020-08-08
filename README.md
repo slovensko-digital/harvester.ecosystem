@@ -3,8 +3,8 @@
 Harvester is an open-source application that downloads data from various public sources and pushes data to [ekosystem.slovensko.digital](https://ekosystem.slovensko.digital/). 
 
 [![CircleCI](https://img.shields.io/circleci/build/github/slovensko-digital/harvester.ecosystem)](https://circleci.com/gh/slovensko-digital/harvester.ecosystem)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/slovensko-digital/harvester.ecosystem)](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem)
 [![Test Coverage](https://img.shields.io/codeclimate/coverage/slovensko-digital/harvester.ecosystem)](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem/coverage)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/slovensko-digital/harvester.ecosystem)](https://codeclimate.com/github/slovensko-digital/harvester.ecosystem)
 
 ## Supported data sources
 
