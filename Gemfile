@@ -12,7 +12,7 @@ gem 'foreman'
 gem 'dotenv'
 gem 'typhoeus'
 gem 'clockwork'
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.2.9' # Unlock when we migrate to Redis 4+
 
 gem 'newrelic_rpm'
 gem 'rollbar'
