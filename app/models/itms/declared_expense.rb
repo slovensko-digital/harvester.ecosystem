@@ -1,7 +1,7 @@
 class Itms::DeclaredExpense < ApplicationRecord
   self.table_name = 'itms.deklarovane_vydavky'
 
-  belongs_to :zop, class_name: 'Itms::PaymentClaim', optional: true
+  belongs_to :zop, class_name: 'Itms::PaymentClaim'
   belongs_to :polozka_rozpoctu, class_name: 'Itms::BudgetItem', optional: true
   has_many :suma_neschvalena_na_preplatenie,
            class_name: 'Itms::DeclaredExpenseUnpaidSum',
