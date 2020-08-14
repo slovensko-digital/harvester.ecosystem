@@ -1,7 +1,7 @@
 class Itms::Project < ApplicationRecord
   self.table_name = 'itms.projekty'
 
-  belongs_to :prijimatel, class_name: 'Itms::Subject'
+  belongs_to :prijimatel, class_name: 'Itms::Subject', optional: true
 
   has_and_belongs_to_many :aktivity,
                           class_name: 'Itms::Activity',
@@ -74,7 +74,7 @@ class Itms::Project < ApplicationRecord
                           foreign_key: :projekt_id
 
 
-  belongs_to :schvalena_zonfp, class_name: 'Itms::NrfcApplicationProcessed'
+  belongs_to :schvalena_zonfp, class_name: 'Itms::NrfcApplicationProcessed', optional: true
 
   has_and_belongs_to_many :sekundarny_tematicky_okruh,
                           class_name: 'Itms::SpecificGoalCodelistValue',
@@ -94,5 +94,5 @@ class Itms::Project < ApplicationRecord
                           association_foreign_key: :uzemny_mechanizmus_id,
                           foreign_key: :projekt_id
 
-  belongs_to :vyzva, class_name: 'Itms::AnnouncedProposalCall'
+  belongs_to :vyzva, class_name: 'Itms::AnnouncedProposalCall', optional: true
 end

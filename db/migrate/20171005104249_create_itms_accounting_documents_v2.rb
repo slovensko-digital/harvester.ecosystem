@@ -8,7 +8,7 @@ class CreateItmsAccountingDocumentsV2 < ActiveRecord::Migration[5.0]
     drop_table 'itms.uctovne_doklady_vlastnik_dokladu', force: :cascade
     
     create_table 'itms.uctovne_doklady' do |t|
-      t.integer :itms_id, null: false, index: { unique: true}
+      t.integer :itms_id, null: false, index: { unique: true }
       t.string :itms_href
       t.datetime :itms_created_at
       t.datetime :itms_updated_at
@@ -28,7 +28,7 @@ class CreateItmsAccountingDocumentsV2 < ActiveRecord::Migration[5.0]
 
     create_table 'itms.uctovne_doklady_polozky_dokladu' do |t|
       t.references :uctovny_doklad, foreign_key: { to_table: 'itms.uctovne_doklady' }
-      t.integer :itms_id, null: false, index: { unique: true}
+      t.integer :itms_id, null: false, index: { unique: true }
       t.decimal :dph
       t.decimal :jednotkova_cena
       t.decimal :mnozstvo

@@ -82,7 +82,7 @@ class Itms::NrfcApplicationProcessed < ApplicationRecord
                           association_foreign_key: :uzemny_mechanizmus_id,
                           foreign_key: :zonfp_id
 
-  belongs_to :vysledok_konania, class_name: 'Itms::CodelistValue'
-  belongs_to :vyzva, class_name: 'Itms::AnnouncedProposalCall'
-  belongs_to :ziadatel, class_name: 'Itms::Subject'
+  belongs_to :vysledok_konania, class_name: 'Itms::CodelistValue', optional: true
+  belongs_to :vyzva, class_name: 'Itms::AnnouncedProposalCall', optional: true
+  belongs_to :ziadatel, class_name: 'Itms::Subject', optional: true
 end

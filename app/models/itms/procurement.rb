@@ -1,13 +1,13 @@
 class Itms::Procurement < ApplicationRecord
   self.table_name = 'itms.verejne_obstaravania'
 
-  belongs_to :druh_zakazky, class_name: 'Itms::CodelistValue'
-  belongs_to :hlavny_predmet_hlavny_slovnik, class_name: 'Itms::CodelistValue'
-  belongs_to :metoda_vo, class_name: 'Itms::CodelistValue'
-  belongs_to :obstaravatel_dodavatel_obstaravatel, class_name: 'Itms::Supplier'
-  belongs_to :obstaravatel_subjekt, class_name: 'Itms::Subject'
-  belongs_to :postup_obstaravania, class_name: 'Itms::CodelistValue'
-  belongs_to :zadavatel, class_name: 'Itms::Subject'
+  belongs_to :druh_zakazky, class_name: 'Itms::CodelistValue', optional: true
+  belongs_to :hlavny_predmet_hlavny_slovnik, class_name: 'Itms::CodelistValue', optional: true
+  belongs_to :metoda_vo, class_name: 'Itms::CodelistValue', optional: true
+  belongs_to :obstaravatel_dodavatel_obstaravatel, class_name: 'Itms::Supplier', optional: true
+  belongs_to :obstaravatel_subjekt, class_name: 'Itms::Subject', optional: true
+  belongs_to :postup_obstaravania, class_name: 'Itms::CodelistValue', optional: true
+  belongs_to :zadavatel, class_name: 'Itms::Subject', optional: true
 
   has_and_belongs_to_many :doplnujuce_predmety_doplnkovy_slovnik,
                           class_name: 'Itms::CodelistValue',

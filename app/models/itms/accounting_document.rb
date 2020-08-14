@@ -1,8 +1,8 @@
 class Itms::AccountingDocument < ApplicationRecord
   self.table_name = 'itms.uctovne_doklady'
 
-  belongs_to :dodavatel_dodavatel_obstaravatel, class_name: 'Itms::Supplier'
-  belongs_to :dodavatel_subjekt, class_name: 'Itms::Subject'
+  belongs_to :dodavatel_dodavatel_obstaravatel, class_name: 'Itms::Supplier', optional: true
+  belongs_to :dodavatel_subjekt, class_name: 'Itms::Subject', optional: true
   has_many :polozky_dokladu,
            -> { order(:poradove_cislo) },
            class_name: 'Itms::AccountingDocumentItem',
@@ -21,5 +21,5 @@ class Itms::AccountingDocument < ApplicationRecord
                           association_foreign_key: :projekt_id,
                           foreign_key: :uctovny_doklad_id
 
-  belongs_to :vlastnik_dokladu, class_name: 'Itms::Subject'
+  belongs_to :vlastnik_dokladu, class_name: 'Itms::Subject', optional: true
 end
