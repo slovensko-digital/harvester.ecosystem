@@ -1,7 +1,7 @@
 class Itms::PlannedProposalCall < ApplicationRecord
   self.table_name = 'itms.vyzvy_planovane'
 
-  belongs_to :vyhlasovatel, class_name: 'Itms::Subject'
+  belongs_to :vyhlasovatel, class_name: 'Itms::Subject', optional: true
 
   has_many :doplnujuce_info,
            class_name: 'Itms::PlannedProposalCallAdditionalInfo',
