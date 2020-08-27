@@ -9,18 +9,19 @@ gem 'pg', '~> 0.20'
 gem 'puma'
 gem 'foreman'
 
-gem 'dotenv'
-gem 'typhoeus'
 gem 'clockwork'
+gem 'dotenv'
 gem 'sidekiq', '~> 5.2.9' # Unlock when we migrate to Redis 4+
+gem 'typhoeus'
 
 gem 'newrelic_rpm'
 gem 'rollbar'
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :test do
