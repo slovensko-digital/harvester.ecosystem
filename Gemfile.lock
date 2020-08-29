@@ -107,6 +107,8 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
@@ -205,6 +207,7 @@ DEPENDENCIES
   newrelic_rpm
   pg (~> 0.20)
   pry
+  pry-rails
   puma
   rails (~> 6.0.3.2)
   rollbar
