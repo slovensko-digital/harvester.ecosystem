@@ -62,7 +62,7 @@ RSpec.describe ItmsJob, type: :job do
 
       expect(harvester_downloader_double)
         .to receive(:get)
-        .and_return(double(code: 404))
+        .and_return(double(status: 404))
 
       expect(ItmsJob::Downloader)
         .to receive(:downloader)

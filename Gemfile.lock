@@ -72,14 +72,13 @@ GEM
     docile (1.3.2)
     dotenv (2.7.6)
     erubi (1.9.0)
-    ethon (0.12.0)
-      ffi (>= 1.3.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    ffi (1.13.1)
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
     foreman (0.87.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -99,6 +98,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
+    multipart-post (2.1.1)
     newrelic_rpm (6.12.0.367)
     nio4r (2.5.2)
     nokogiri (1.10.10)
@@ -183,8 +183,6 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
-    typhoeus (1.4.0)
-      ethon (>= 0.9.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     webmock (3.8.3)
@@ -203,6 +201,7 @@ DEPENDENCIES
   clockwork
   dotenv
   factory_bot_rails
+  faraday
   foreman
   newrelic_rpm
   pg (~> 0.20)
@@ -214,7 +213,6 @@ DEPENDENCIES
   rspec-rails
   sidekiq (~> 5.2.9)
   simplecov (~> 0.10, < 0.18)
-  typhoeus
   webmock
 
 RUBY VERSION
