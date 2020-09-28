@@ -28,7 +28,7 @@ class ItmsJob < ApplicationJob
 
     def self.get(url)
       response = downloader.get(url)
-      raise NotFoundError, "Url not found: #{url}" if response.status == 404
+      raise NotFoundError, "URL not found: #{url}" if response.status == 404
       raise DownloadError, "Unexpected response status: #{response.status} for url: #{url}" if response.status != 200
       response
     end
