@@ -43,5 +43,6 @@ jobs:
           fetch-depth: 0
       - uses: dokku/github-action@master
         with:
+          git_push_flags: '--force'
           git_remote_url: ssh://dokku@${{secrets.STAGING_HOST}}/${{github.event.repository.name}}
           ssh_private_key: ${{secrets.STAGING_KEY}}
