@@ -46,6 +46,8 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
     if name !~ /TEST/i
       raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin}(_\d+)?/
     end
+
+    raise "Incorrect encoding" if name =~ /.*\\u.*/
   end
 
   def assert_known_edesks_existence!
