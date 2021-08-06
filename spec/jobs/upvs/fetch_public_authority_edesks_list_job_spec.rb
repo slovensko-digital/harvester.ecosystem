@@ -58,6 +58,12 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
 
         expect { subject.perform(url, downloader: downloader) }.to raise_error('ico://sk/99166260 does not match 166260')
       end
+
+      it 'raises custom error' do
+        expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-v1-incorrect-encoding.csv'))
+
+        expect { subject.perform(url, downloader: downloader) }.to raise_error('Incorrect encoding')
+      end
     end
   end
 end
