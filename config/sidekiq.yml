@@ -2,7 +2,8 @@
 staging:
   :concurrency: 8
 production:
-  :concurrency: 24
+  :concurrency: 8
 :queues:
   - [upvs, 1]
   - [itms, 1]
+  -
