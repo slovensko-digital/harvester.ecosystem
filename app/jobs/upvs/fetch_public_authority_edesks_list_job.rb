@@ -43,8 +43,10 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
   def check_row_attributes(attributes)
     cin, uri, name = attributes.slice(:cin, :uri, :name).values
 
+    cin_without_leading_zeros = cin.sub(/^[0]+/,'')
+
     if name !~ /TEST/i
-      raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin}(_\d+)?/
+      raise "#{uri} does not match #{cin}" if uri !~ /ico:\/\/sk\/(0*)#{cin_without_leading_zeros}(_\d+)?/
     end
 
     raise "Incorrect encoding" if name =~ /.*\\u.*/
