@@ -106,6 +106,9 @@ GEM
     nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    paper_trail (12.3.0)
+      activerecord (>= 5.2)
+      request_store (~> 1.1)
     pg (0.21.0)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -149,6 +152,8 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rake (13.0.1)
     redis (4.1.4)
+    request_store (1.5.1)
+      rack (>= 1.4)
     rollbar (2.27.0)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
@@ -208,6 +213,7 @@ DEPENDENCIES
   faraday
   foreman
   newrelic_rpm
+  paper_trail
   pg (~> 0.20)
   pry
   pry-rails
