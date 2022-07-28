@@ -12,33 +12,32 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.string :uuid, null: false
       t.string :nazov
       t.text :popis
-      t.datetime :datum_zaciatku
-      t.datetime :datum_ukoncenia
+      t.datetime :datum_zacatia
+      t.datetime :termin_ukoncenia
       t.string :schvalovaci_proces
       t.string :kod_metais
       t.string :typ_investicie
       t.string :zdroj
       t.string :financna_skupina
       t.string :prijimatel
-      t.string :faza
-      t.decimal :naklady_spolu
-      t.decimal :prevadzka_rocne
+      t.string :faza_projektu
+      t.decimal :suma_vydavkov
+      t.decimal :rocne_naklady
       t.string :ref_id
       t.string :program
       t.string :status
 
-      t.datetime :datum_zmeny_stavu_projektu
-      t.decimal :schvalena_prevadzka_rocne
-      t.decimal :schvalene_naklady_spolu
-      t.datetime :datum_ucinnosti_zmluvy_nfp
-      t.string :link_nfp_v_crz
-      t.datetime :datum_zverejnenia_vo
-      t.string :link_vvo
-      t.datetime :datum_ucinnosti_zmluvy_dielo
-      t.string :link_dielo_v_crz
+      t.datetime :zmena_stavu
+      t.decimal :schvalene_rocne_naklady
+      t.decimal :schvaleny_rozpocet
+      t.datetime :datum_nfp
+      t.string :link_nfp
+      t.datetime :vyhlasenie_vo
+      t.string :vo
+      t.datetime :zmluva_o_dielo
+      t.string :zmluva_o_dielo_crz
 
       t.text :raw_data
-      t.boolean :parsed, default: false
       t.timestamps
     end
 
@@ -59,7 +58,6 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       
       t.text :raw_data
       t.text :raw_meta
-      t.boolean :parsed, default: false
       t.timestamps
     end
 
@@ -68,7 +66,6 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.belongs_to :projekt, foreign_key: { to_table: 'metais.projekty' }
 
       t.text :raw_data
-      t.boolean :parsed, default: false
       t.timestamps
     end
   end

@@ -8,17 +8,16 @@ class Metais::SyncProjectsIsvsJob < ApplicationJob
   def perform(project)
     conn = Faraday.new(url: API_ENDPOINT)
     page_number = 1
-    isvs = []
 
-    loop do
+    begin
       response = conn.get('%{uuid}?ciTypes=ISVS&page=1&perPage=5' % {uuid: project.uuid}, 'Content-Type' => 'application/json')
-      isvs.concat(JSON.parse(response.body)&.dig('ciWithRels'))
+      isvs = JSON.parse(response.body)&.dig('ciWithRels')
 
-      page_number >= JSON.parse(response.body)['pagination']['totalPages'] ? break : page_number += 1
-    end
+      isvs.each do |i|
+        Metais::SyncIsvsJob.perform_later(project, i)
+      end
 
-    isvs.each do |i|
-      Metais::SyncIsvsJob.perform_later(project, i)
-    end
+      page_number += 1
+    end while page_number <= JSON.parse(response.body)['pagination']['totalPages']
   end
 end

@@ -9,16 +9,15 @@ class Metais::SyncAllProjectsJob < ApplicationJob
     conn = Faraday.new(url: API_ENDPOINT)
     page_number = 1
 
-    loop do
-      projects = []
+    begin
       response = conn.post('', '{"filter":{"type":["Projekt"],"metaAttributes":{"state":["DRAFT"]}},"page":%{page},"perpage":5}' % {page: page_number}, 'Content-Type' => 'application/json')
       projects = JSON.parse(response.body)&.dig('configurationItemSet')
-
-      page_number >= JSON.parse(response.body)['pagination']['totalPages'] ? break : page_number += 1
 
       projects.each do |project|
         Metais::SyncProjectJob.perform_later(project)
       end
-    end
+
+      page_number += 1
+    end while page_number <= JSON.parse(response.body)['pagination']['totalPages']
   end
 end
