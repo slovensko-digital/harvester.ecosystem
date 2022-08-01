@@ -4512,7 +4512,6 @@ CREATE TABLE metais.dokumenty (
     attachable_id bigint,
     raw_data text,
     raw_meta text,
-    parsed boolean DEFAULT false,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -4546,7 +4545,6 @@ CREATE TABLE metais.isvs (
     uuid character varying NOT NULL,
     projekt_id bigint,
     raw_data text,
-    parsed boolean DEFAULT false,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -4580,31 +4578,30 @@ CREATE TABLE metais.projekty (
     uuid character varying NOT NULL,
     nazov character varying,
     popis text,
-    datum_zaciatku timestamp without time zone,
-    datum_ukoncenia timestamp without time zone,
+    datum_zacatia timestamp without time zone,
+    termin_ukoncenia timestamp without time zone,
     schvalovaci_proces character varying,
     kod_metais character varying,
     typ_investicie character varying,
     zdroj character varying,
     financna_skupina character varying,
     prijimatel character varying,
-    faza character varying,
-    naklady_spolu numeric,
-    prevadzka_rocne numeric,
+    faza_projektu character varying,
+    suma_vydavkov numeric,
+    rocne_naklady numeric,
     ref_id character varying,
     program character varying,
     status character varying,
-    datum_zmeny_stavu_projektu timestamp without time zone,
-    schvalena_prevadzka_rocne numeric,
-    schvalene_naklady_spolu numeric,
-    datum_ucinnosti_zmluvy_nfp timestamp without time zone,
-    link_nfp_v_crz character varying,
-    datum_zverejnenia_vo timestamp without time zone,
-    link_vvo character varying,
-    datum_ucinnosti_zmluvy_dielo timestamp without time zone,
-    link_dielo_v_crz character varying,
+    zmena_stavu timestamp without time zone,
+    schvalene_rocne_naklady numeric,
+    schvaleny_rozpocet numeric,
+    datum_nfp timestamp without time zone,
+    link_nfp character varying,
+    vyhlasenie_vo timestamp without time zone,
+    vo character varying,
+    zmluva_o_dielo timestamp without time zone,
+    zmluva_o_dielo_crz character varying,
     raw_data text,
-    parsed boolean DEFAULT false,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -15980,6 +15977,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220412204356'),
 ('20220702123618'),
 ('20220727093837'),
-('20220727093838');
+('20220727093838'),
+('20220728101613');
 
 

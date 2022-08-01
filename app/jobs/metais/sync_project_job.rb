@@ -10,10 +10,10 @@ class Metais::SyncProjectJob < ApplicationJob
       project.raw_data = json.to_json
       parse_project(project, json)
       project.save!
-    end
 
-    Metais::SyncProjectsIsvsJob.perform_later(project)
-    Metais::SyncRelatedDocumentsJob.perform_later(project)
+      Metais::SyncProjectsIsvsJob.perform_later(project)
+      Metais::SyncRelatedDocumentsJob.perform_later(project)
+    end
   end
 
   private
