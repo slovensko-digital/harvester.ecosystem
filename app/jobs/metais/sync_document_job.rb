@@ -22,6 +22,21 @@ class Metais::SyncDocumentJob < ApplicationJob
   private
 
   def parse_document(document, json, meta)
-    # TODO: parse document
+    document.nazov = get_document_attribute(json, 'Gen_Profil_nazov')
+    document.poznamka = get_document_attribute(json, 'Gen_Profil_poznamka')
+    document.typ = get_document_attribute(json, 'Profil_Dokument_Projekt_typ_dokumentu')
+    document.kod_metais = get_document_attribute(json, 'Gen_Profil_kod_metais')
+    document.ref_id = get_document_attribute(json, 'Gen_Profil_ref_id')
+
+    document.filename = meta['filename']
+    document.mimetype = meta['mimeType']
+    document.size = meta['contentLength']
+    document.stav_evidencie = meta['status']
+    document.metais_created_at = meta['created']
+    document.metais_updated_at = meta['lastModified']
+  end
+
+  def get_document_attribute(json, key)
+    return json['attributes'].find { |a| a['name'] == key }&.dig('value')
   end
 end

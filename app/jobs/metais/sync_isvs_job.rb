@@ -7,7 +7,7 @@ class Metais::SyncIsvsJob < ApplicationJob
     ActiveRecord::Base.transaction do
       isvs = project.isvs.find_or_create_by(uuid: isvs_uuid)
       isvs.raw_data = json.to_json
-      parse_isvs(isvs)
+      parse_isvs(isvs, json)
       isvs.save!
 
       Metais::SyncRelatedDocumentsJob.perform_later(isvs)
@@ -16,7 +16,7 @@ class Metais::SyncIsvsJob < ApplicationJob
 
   private
 
-  def parse_isvs(isvs)
+  def parse_isvs(isvs, json)
     # TODO: parse isvs
   end
 end
