@@ -11,7 +11,7 @@ class Metais::SyncDocumentJob < ApplicationJob
     meta = JSON.parse(response.body)
 
     ActiveRecord::Base.transaction do
-      document = Metais::Document.find_or_create_by(uuid: json['uuid'], :attachable => parent)
+      document = parent.dokumenty.find_or_initialize_by(uuid: json['uuid'])
       document.raw_data = json.to_json
       document.raw_meta = meta.to_json
       parse_document(document, json, meta)

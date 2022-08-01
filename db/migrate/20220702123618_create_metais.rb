@@ -41,7 +41,7 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    create_table 'metais.dokumenty' do |t|
+    create_table 'metais.dokumenty_projekty' do |t|
       t.string :uuid, null: false
       t.string :nazov
       t.text :poznamka
@@ -54,8 +54,28 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.string :stav_evidencie
       t.datetime :metais_created_at
       t.datetime :metais_updated_at
-      t.references :attachable, polymorphic: true
-      
+      t.belongs_to :projekt, class_name: 'Metais::Project'
+
+      t.text :raw_data
+      t.text :raw_meta
+      t.timestamps
+    end
+
+    create_table 'metais.dokumenty_isvs' do |t|
+      t.string :uuid, null: false
+      t.string :nazov
+      t.text :poznamka
+      t.string :typ
+      t.string :kod_metais
+      t.string :ref_id
+      t.string :filename
+      t.string :mimetype
+      t.string :size
+      t.string :stav_evidencie
+      t.datetime :metais_created_at
+      t.datetime :metais_updated_at
+      t.belongs_to :isvs, class_name: 'Metais::Isvs'
+
       t.text :raw_data
       t.text :raw_meta
       t.timestamps

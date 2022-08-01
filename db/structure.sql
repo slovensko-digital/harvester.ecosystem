@@ -4491,10 +4491,10 @@ ALTER SEQUENCE itms.zop_predkladane_za_subjekty_id_seq OWNED BY itms.zop_predkla
 
 
 --
--- Name: dokumenty; Type: TABLE; Schema: metais; Owner: -
+-- Name: dokumenty_isvs; Type: TABLE; Schema: metais; Owner: -
 --
 
-CREATE TABLE metais.dokumenty (
+CREATE TABLE metais.dokumenty_isvs (
     id bigint NOT NULL,
     uuid character varying NOT NULL,
     nazov character varying,
@@ -4508,8 +4508,7 @@ CREATE TABLE metais.dokumenty (
     stav_evidencie character varying,
     metais_created_at timestamp without time zone,
     metais_updated_at timestamp without time zone,
-    attachable_type character varying,
-    attachable_id bigint,
+    isvs_id bigint,
     raw_data text,
     raw_meta text,
     created_at timestamp(6) without time zone NOT NULL,
@@ -4518,10 +4517,10 @@ CREATE TABLE metais.dokumenty (
 
 
 --
--- Name: dokumenty_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+-- Name: dokumenty_isvs_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
 --
 
-CREATE SEQUENCE metais.dokumenty_id_seq
+CREATE SEQUENCE metais.dokumenty_isvs_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4530,10 +4529,55 @@ CREATE SEQUENCE metais.dokumenty_id_seq
 
 
 --
--- Name: dokumenty_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+-- Name: dokumenty_isvs_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
 --
 
-ALTER SEQUENCE metais.dokumenty_id_seq OWNED BY metais.dokumenty.id;
+ALTER SEQUENCE metais.dokumenty_isvs_id_seq OWNED BY metais.dokumenty_isvs.id;
+
+
+--
+-- Name: dokumenty_projekty; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.dokumenty_projekty (
+    id bigint NOT NULL,
+    uuid character varying NOT NULL,
+    nazov character varying,
+    poznamka text,
+    typ character varying,
+    kod_metais character varying,
+    ref_id character varying,
+    filename character varying,
+    mimetype character varying,
+    size character varying,
+    stav_evidencie character varying,
+    metais_created_at timestamp without time zone,
+    metais_updated_at timestamp without time zone,
+    projekt_id bigint,
+    raw_data text,
+    raw_meta text,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: dokumenty_projekty_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.dokumenty_projekty_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: dokumenty_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.dokumenty_projekty_id_seq OWNED BY metais.dokumenty_projekty.id;
 
 
 --
@@ -7937,10 +7981,17 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty ALTER COLUMN id SET DEFAULT ne
 
 
 --
--- Name: dokumenty id; Type: DEFAULT; Schema: metais; Owner: -
+-- Name: dokumenty_isvs id; Type: DEFAULT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.dokumenty ALTER COLUMN id SET DEFAULT nextval('metais.dokumenty_id_seq'::regclass);
+ALTER TABLE ONLY metais.dokumenty_isvs ALTER COLUMN id SET DEFAULT nextval('metais.dokumenty_isvs_id_seq'::regclass);
+
+
+--
+-- Name: dokumenty_projekty id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.dokumenty_projekty ALTER COLUMN id SET DEFAULT nextval('metais.dokumenty_projekty_id_seq'::regclass);
 
 
 --
@@ -9396,11 +9447,19 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
 
 
 --
--- Name: dokumenty dokumenty_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+-- Name: dokumenty_isvs dokumenty_isvs_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.dokumenty
-    ADD CONSTRAINT dokumenty_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY metais.dokumenty_isvs
+    ADD CONSTRAINT dokumenty_isvs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dokumenty_projekty dokumenty_projekty_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.dokumenty_projekty
+    ADD CONSTRAINT dokumenty_projekty_pkey PRIMARY KEY (id);
 
 
 --
@@ -12332,10 +12391,17 @@ CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_zop_id" ON itms.zop_pred
 
 
 --
--- Name: index_metais.dokumenty_on_attachable_type_and_attachable_id; Type: INDEX; Schema: metais; Owner: -
+-- Name: index_metais.dokumenty_isvs_on_isvs_id; Type: INDEX; Schema: metais; Owner: -
 --
 
-CREATE INDEX "index_metais.dokumenty_on_attachable_type_and_attachable_id" ON metais.dokumenty USING btree (attachable_type, attachable_id);
+CREATE INDEX "index_metais.dokumenty_isvs_on_isvs_id" ON metais.dokumenty_isvs USING btree (isvs_id);
+
+
+--
+-- Name: index_metais.dokumenty_projekty_on_projekt_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.dokumenty_projekty_on_projekt_id" ON metais.dokumenty_projekty USING btree (projekt_id);
 
 
 --
