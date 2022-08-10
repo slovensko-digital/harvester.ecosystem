@@ -5,7 +5,7 @@ class Metais::SyncIsvsJob < ApplicationJob
     isvs_uuid = json['ci']['uuid']
 
     ActiveRecord::Base.transaction do
-      isvs = project.isvs.find_or_create_by(uuid: isvs_uuid)
+      isvs = project.isvs.find_or_initialize_by(uuid: isvs_uuid)
       isvs.raw_data = json.to_json
       parse_isvs(isvs, json)
       isvs.save!

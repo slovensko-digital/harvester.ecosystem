@@ -3,10 +3,12 @@ require 'faraday'
 class Metais::SyncDocumentJob < ApplicationJob
   queue_as :metais
 
+  API_ENDPOINT = 'https://metais.vicepremier.gov.sk/dms/file/meta/'
+
   def perform(parent, json)
     json = json['configurationItem']
     
-    conn = Faraday.new(url: 'https://metais.vicepremier.gov.sk/dms/file/meta/')
+    conn = Faraday.new(url: API_ENDPOINT)
     response = conn.get(json['uuid'], 'Content-Type' => 'application/json')
     meta = JSON.parse(response.body)
 

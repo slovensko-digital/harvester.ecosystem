@@ -4,22 +4,22 @@ class CreateMetais < ActiveRecord::Migration[6.0]
 
     create_table 'metais.projekty' do |t|
       t.string :uuid, null: false
-      t.string :nazov
+      t.string :nazov, null: false
+      t.string :schvalovaci_proces, null: false
+      t.string :kod_metais, null: false
+      t.string :typ_investicie, null: false
+      t.string :prijimatel, null: false
+      t.string :faza_projektu, null: false
+      t.string :program, null: false
       t.text :popis
       t.datetime :datum_zacatia
       t.datetime :termin_ukoncenia
-      t.string :schvalovaci_proces
-      t.string :kod_metais
-      t.string :typ_investicie
       t.string :zdroj
       t.string :financna_skupina
-      t.string :prijimatel
-      t.string :faza_projektu
       t.decimal :suma_vydavkov
       t.decimal :rocne_naklady
       t.string :ref_id
-      t.string :program
-      t.string :status
+      t.string :stav
   
       t.datetime :zmena_stavu
       t.decimal :schvalene_rocne_naklady
@@ -31,47 +31,47 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.datetime :zmluva_o_dielo
       t.string :zmluva_o_dielo_crz
   
-      t.text :raw_data
+      t.text :raw_data, null: false
       t.timestamps
     end
   
     create_table 'metais.dokumenty_projekty' do |t|
       t.string :uuid, null: false
-      t.string :nazov
+      t.string :nazov, null: false
+      t.string :typ, null: false
+      t.string :kod_metais, null: false
+      t.string :ref_id, null: false
+      t.string :filename, null: false
+      t.string :mimetype, null: false
+      t.string :size, null: false
+      t.string :stav_evidencie, null: false
       t.text :poznamka
-      t.string :typ
-      t.string :kod_metais
-      t.string :ref_id
-      t.string :filename
-      t.string :mimetype
-      t.string :size
-      t.string :stav_evidencie
       t.datetime :metais_created_at
       t.datetime :metais_updated_at
       t.belongs_to :projekt, class_name: 'Metais::Project'
   
-      t.text :raw_data
-      t.text :raw_meta
+      t.text :raw_data, null: false
+      t.text :raw_meta, null: false
       t.timestamps
     end
   
     create_table 'metais.dokumenty_isvs' do |t|
       t.string :uuid, null: false
-      t.string :nazov
+      t.string :nazov, null: false
+      t.string :typ, null: false
+      t.string :kod_metais, null: false
+      t.string :ref_id, null: false
+      t.string :filename, null: false
+      t.string :mimetype, null: false
+      t.string :size, null: false
+      t.string :stav_evidencie, null: false
       t.text :poznamka
-      t.string :typ
-      t.string :kod_metais
-      t.string :ref_id
-      t.string :filename
-      t.string :mimetype
-      t.string :size
-      t.string :stav_evidencie
       t.datetime :metais_created_at
       t.datetime :metais_updated_at
       t.belongs_to :isvs, class_name: 'Metais::Isvs'
   
-      t.text :raw_data
-      t.text :raw_meta
+      t.text :raw_data, null: false
+      t.text :raw_meta, null: false
       t.timestamps
     end
   
@@ -79,7 +79,7 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.string :uuid, null: false
       t.belongs_to :projekt, foreign_key: { to_table: 'metais.projekty' }
   
-      t.text :raw_data
+      t.text :raw_data, null: false
       t.timestamps
     end
   end

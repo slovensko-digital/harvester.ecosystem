@@ -11,13 +11,14 @@ class Metais::SyncAllProjectsJob < ApplicationJob
 
     begin
       response = conn.post('', '{"filter":{"type":["Projekt"],"metaAttributes":{"state":["DRAFT"]}},"page":%{page},"perpage":5}' % {page: page_number}, 'Content-Type' => 'application/json')
-      projects = JSON.parse(response.body)&.dig('configurationItemSet')
+      parsed_json = JSON.parse(response.body)
+      projects = parsed_json&.dig('configurationItemSet')
 
       projects.each do |project|
         Metais::SyncProjectJob.perform_later(project)
       end
 
       page_number += 1
-    end while page_number <= JSON.parse(response.body)['pagination']['totalPages']
+    end while page_number <= parsed_json['pagination']['totalPages']
   end
 end
