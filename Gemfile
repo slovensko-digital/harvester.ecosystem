@@ -13,7 +13,6 @@ gem 'clockwork'
 gem 'dotenv'
 gem 'sidekiq', '~> 5.2.9' # Unlock when we migrate to Redis 4+
 gem 'faraday'
-gem 'paper_trail'
 
 gem 'newrelic_rpm'
 gem 'rollbar'

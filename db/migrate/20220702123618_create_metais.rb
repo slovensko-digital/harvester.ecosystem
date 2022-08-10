@@ -3,6 +3,31 @@ class CreateMetais < ActiveRecord::Migration[6.0]
     execute 'CREATE SCHEMA metais'
 
     create_table 'metais.projekty' do |t|
+      t.references :latest_version, null: false, foreign_key: { to_table: 'metais.verzie_projekty' }
+      t.timestamps
+    end
+
+    create_table 'metais.isvs' do |t|
+      t.belongs_to :projekt, foreign_key: { to_table: 'metais.projekty' }
+      t.references :latest_version, null: false, foreign_key: { to_table: 'metais.verzie_isvs' }
+      t.timestamps
+    end
+
+    create_table 'metais.dokumenty_projekty' do |t|
+      t.belongs_to :projekt, class_name: 'Metais::Project'
+      t.references :latest_version, null: false, foreign_key: { to_table: 'metais.verzie_dokumenty_projekty' }
+      t.timestamps
+    end
+
+    create_table 'metais.dokumenty_isvs' do |t|
+      t.belongs_to :isvs, class_name: 'Metais::Isvs'
+      t.references :latest_version, null: false, foreign_key: { to_table: 'metais.verzie_dokumenty_isvs' }
+      t.timestamps
+    end
+
+    create_table 'metais.verzie_projekty' do |t|
+      t.belongs_to :projekt, null: false, foreign_key: { to_table: 'metais.projekty' }
+
       t.string :uuid, null: false
       t.string :nazov, null: false
       t.string :schvalovaci_proces, null: false
@@ -34,8 +59,19 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.text :raw_data, null: false
       t.timestamps
     end
-  
-    create_table 'metais.dokumenty_projekty' do |t|
+
+
+    create_table 'metais.verzie_isvs' do |t|
+      t.belongs_to :projekt, null: false, foreign_key: { to_table: 'metais.isvs' }
+
+      t.string :uuid, null: false
+      t.text :raw_data, null: false
+      t.timestamps
+    end
+
+    create_table 'metais.verzie_dokumenty_projekty' do |t|
+      t.belongs_to :projekt, null: false, foreign_key: { to_table: 'metais.dokumenty_projekty' }
+
       t.string :uuid, null: false
       t.string :nazov, null: false
       t.string :typ, null: false
@@ -48,14 +84,15 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.text :poznamka
       t.datetime :metais_created_at
       t.datetime :metais_updated_at
-      t.belongs_to :projekt, class_name: 'Metais::Project'
   
       t.text :raw_data, null: false
       t.text :raw_meta, null: false
       t.timestamps
     end
-  
-    create_table 'metais.dokumenty_isvs' do |t|
+
+    create_table 'metais.verzie_dokumenty_isvs' do |t|
+      t.belongs_to :projekt, null: false, foreign_key: { to_table: 'metais.dokumenty_isvs' }
+
       t.string :uuid, null: false
       t.string :nazov, null: false
       t.string :typ, null: false
@@ -68,18 +105,9 @@ class CreateMetais < ActiveRecord::Migration[6.0]
       t.text :poznamka
       t.datetime :metais_created_at
       t.datetime :metais_updated_at
-      t.belongs_to :isvs, class_name: 'Metais::Isvs'
   
       t.text :raw_data, null: false
       t.text :raw_meta, null: false
-      t.timestamps
-    end
-  
-    create_table 'metais.isvs' do |t|
-      t.string :uuid, null: false
-      t.belongs_to :projekt, foreign_key: { to_table: 'metais.projekty' }
-  
-      t.text :raw_data, null: false
       t.timestamps
     end
   end
