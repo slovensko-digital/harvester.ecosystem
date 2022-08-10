@@ -14,9 +14,12 @@ class Metais::SyncDocumentJob < ApplicationJob
 
     ActiveRecord::Base.transaction do
       document = parent.dokumenty.find_or_initialize_by(uuid: json['uuid'])
-      document.raw_data = json.to_json
-      document.raw_meta = meta.to_json
+      return unless document.latest_version.nil? || document.latest_version.raw_data != json.to_json || document.latest_version.meta_data != meta.to_json
+
+      version = document.versions.build(raw_data: json.to_json, meta_data: meta.to_json)
       parse_document(document, json, meta)
+      version.save!
+      document.latest_version = version
       document.save!
     end
   end

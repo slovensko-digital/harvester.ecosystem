@@ -4,17 +4,25 @@ class Metais::SyncIsvsJob < ApplicationJob
   def perform(project, json)
     isvs_uuid = json['ci']['uuid']
 
-    ActiveRecord::Base.transaction do
-      isvs = project.isvs.find_or_initialize_by(uuid: isvs_uuid)
-      isvs.raw_data = json.to_json
-      parse_isvs(isvs, json)
-      isvs.save!
+    process_isvs(isvs_uuid, json)
 
-      Metais::SyncRelatedDocumentsJob.perform_later(isvs)
-    end
+    Metais::SyncRelatedDocumentsJob.perform_later(isvs)
   end
 
   private
+
+  def process_isvs(isvs_uuid, json)
+    ActiveRecord::Base.transaction do
+      isvs = project.isvs.find_or_initialize_by(uuid: isvs_uuid)
+      return unless isvs.latest_version.nil? || isvs.latest_version.raw_data != json.to_json
+      
+      version = isvs.versions.build(raw_data: json.to_json)
+      parse_isvs(isvs, json)
+      version.save!
+      isvs.latest_version = version
+      isvs.save!
+    end
+  end
 
   def parse_isvs(isvs, json)
     # TODO: parse isvs
