@@ -4006,6 +4006,178 @@ ALTER SEQUENCE itms.zop_predkladane_za_subjekty_id_seq OWNED BY itms.zop_predkla
 
 
 --
+-- Name: codelist_investment_type; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_investment_type (
+    id bigint NOT NULL,
+    code character varying NOT NULL,
+    nazov character varying NOT NULL,
+    order_list integer NOT NULL,
+    popis character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_investment_type_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_investment_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_investment_type_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_investment_type_id_seq OWNED BY metais.codelist_investment_type.id;
+
+
+--
+-- Name: codelist_program; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_program (
+    id bigint NOT NULL,
+    kod_metais character varying NOT NULL,
+    nazov character varying NOT NULL,
+    nazov_en character varying,
+    ref_id character varying,
+    zdroj character varying,
+    raw_data text,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_program_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_program_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_program_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_program_id_seq OWNED BY metais.codelist_program.id;
+
+
+--
+-- Name: codelist_project_phase; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_project_phase (
+    id bigint NOT NULL,
+    code character varying NOT NULL,
+    nazov character varying NOT NULL,
+    order_list integer NOT NULL,
+    popis character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_project_phase_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_project_phase_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_project_phase_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_project_phase_id_seq OWNED BY metais.codelist_project_phase.id;
+
+
+--
+-- Name: codelist_project_state; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_project_state (
+    id bigint NOT NULL,
+    code character varying NOT NULL,
+    nazov character varying NOT NULL,
+    order_list integer NOT NULL,
+    popis character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_project_state_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_project_state_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_project_state_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_project_state_id_seq OWNED BY metais.codelist_project_state.id;
+
+
+--
+-- Name: codelist_source; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_source (
+    id bigint NOT NULL,
+    code character varying NOT NULL,
+    nazov character varying NOT NULL,
+    order_list integer NOT NULL,
+    popis character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_source_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_source_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_source_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_source_id_seq OWNED BY metais.codelist_source.id;
+
+
+--
 -- Name: isvs; Type: TABLE; Schema: metais; Owner: -
 --
 
@@ -5178,6 +5350,41 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty ALTER COLUMN id SET DEFAULT ne
 
 
 --
+-- Name: codelist_investment_type id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_investment_type ALTER COLUMN id SET DEFAULT nextval('metais.codelist_investment_type_id_seq'::regclass);
+
+
+--
+-- Name: codelist_program id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_program ALTER COLUMN id SET DEFAULT nextval('metais.codelist_program_id_seq'::regclass);
+
+
+--
+-- Name: codelist_project_phase id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_project_phase ALTER COLUMN id SET DEFAULT nextval('metais.codelist_project_phase_id_seq'::regclass);
+
+
+--
+-- Name: codelist_project_state id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_project_state ALTER COLUMN id SET DEFAULT nextval('metais.codelist_project_state_id_seq'::regclass);
+
+
+--
+-- Name: codelist_source id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_source ALTER COLUMN id SET DEFAULT nextval('metais.codelist_source_id_seq'::regclass);
+
+
+--
 -- Name: isvs id; Type: DEFAULT; Schema: metais; Owner: -
 --
 
@@ -6109,6 +6316,46 @@ ALTER TABLE ONLY itms.zop
 
 ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
     ADD CONSTRAINT zop_predkladane_za_subjekty_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_investment_type codelist_investment_type_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_investment_type
+    ADD CONSTRAINT codelist_investment_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_program codelist_program_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_program
+    ADD CONSTRAINT codelist_program_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_project_phase codelist_project_phase_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_project_phase
+    ADD CONSTRAINT codelist_project_phase_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_project_state codelist_project_state_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_project_state
+    ADD CONSTRAINT codelist_project_state_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_source codelist_source_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_source
+    ADD CONSTRAINT codelist_source_pkey PRIMARY KEY (id);
 
 
 --
@@ -10528,6 +10775,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220702123618'),
 ('20220810120123'),
 ('20220810120320'),
-('20220810120510');
+('20220810120510'),
+('20220811192959');
 
 
