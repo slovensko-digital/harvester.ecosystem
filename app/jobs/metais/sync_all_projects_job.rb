@@ -14,6 +14,7 @@ class Metais::SyncAllProjectsJob < ApplicationJob
       response = conn.post('', PROJECTS_REQUEST_TEMPLATE % {page: page_number}, 'Content-Type' => 'application/json')
       parsed_json = JSON.parse(response.body)
       projects = parsed_json&.dig('configurationItemSet')
+      return unless projects
 
       projects.each do |project|
         Metais::SyncProjectJob.perform_later(project)

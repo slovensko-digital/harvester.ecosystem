@@ -19,7 +19,7 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.decimal :rocne_naklady
       t.string :ref_id
       t.string :stav
-  
+
       t.datetime :zmena_stavu
       t.decimal :schvalene_rocne_naklady
       t.decimal :schvaleny_rozpocet
@@ -37,6 +37,16 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
 
     create_table 'metais.verzie_isvs' do |t|
       t.belongs_to :isvs, null: false, foreign_key: { to_table: 'metais.isvs' }
+
+      t.string :nazov, null: false
+      t.string :kod_metais, null: false
+      t.string :ref_id
+      t.text :popis
+      t.text :popis_as_is
+      t.text :poznamka
+      t.string :zdroj
+      t.string :stav
+      t.string :typ
 
       t.text :raw_data, null: false
       t.timestamps

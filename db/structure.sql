@@ -4231,6 +4231,15 @@ ALTER SEQUENCE metais.verzie_dokumenty_projekty_id_seq OWNED BY metais.verzie_do
 CREATE TABLE metais.verzie_isvs (
     id bigint NOT NULL,
     isvs_id bigint NOT NULL,
+    nazov character varying NOT NULL,
+    kod_metais character varying NOT NULL,
+    ref_id character varying,
+    popis text,
+    popis_as_is text,
+    poznamka text,
+    zdroj character varying,
+    stav character varying,
+    typ character varying,
     raw_data text NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
