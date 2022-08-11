@@ -1,7 +1,7 @@
 class CreateMetaisVersions < ActiveRecord::Migration[6.0]
   def change
-    create_table 'metais.verzie_projekty' do |t|
-      t.belongs_to :projekt, null: false, foreign_key: { to_table: 'metais.projekty' }
+    create_table 'metais.project_versions' do |t|
+      t.belongs_to :project, null: false, foreign_key: { to_table: 'metais.projects' }
 
       t.string :nazov, null: false
       t.string :kod_metais, null: false
@@ -35,7 +35,7 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
     end
 
 
-    create_table 'metais.verzie_isvs' do |t|
+    create_table 'metais.isvs_versions' do |t|
       t.belongs_to :isvs, null: false, foreign_key: { to_table: 'metais.isvs' }
 
       t.string :nazov, null: false
@@ -52,8 +52,8 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    create_table 'metais.verzie_dokumenty_projekty' do |t|
-      t.belongs_to :dokument, null: false, foreign_key: { to_table: 'metais.dokumenty_projekty' }
+    create_table 'metais.project_document_versions' do |t|
+      t.belongs_to :document, null: false, foreign_key: { to_table: 'metais.project_documents' }
 
       t.string :nazov, null: false
       t.string :kod_metais, null: false
@@ -72,8 +72,8 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    create_table 'metais.verzie_dokumenty_isvs' do |t|
-      t.belongs_to :dokument, null: false, foreign_key: { to_table: 'metais.dokumenty_isvs' }
+    create_table 'metais.isvs_document_versions' do |t|
+      t.belongs_to :document, null: false, foreign_key: { to_table: 'metais.isvs_documents' }
 
       t.string :nazov, null: false
       t.string :kod_metais, null: false

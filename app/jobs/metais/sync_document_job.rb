@@ -13,7 +13,7 @@ class Metais::SyncDocumentJob < ApplicationJob
     meta = JSON.parse(response.body)
 
     ActiveRecord::Base.transaction do
-      document = parent.dokumenty.find_or_initialize_by(uuid: json['uuid'])
+      document = parent.documents.find_or_initialize_by(uuid: json['uuid'])
       return unless document.latest_version.nil? || 
         document.latest_version.raw_data != json.to_json ||
         (document.latest_version.raw_meta != meta.to_json &&

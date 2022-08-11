@@ -1,5 +1,5 @@
 class Metais::ProjectVersion < ApplicationRecord
-  self.table_name = 'metais.verzie_projekty'
+  self.table_name = 'metais.project_versions'
 
-  belongs_to :projekt, class_name: 'Metais::Project', foreign_key: 'projekt_id'
+  belongs_to :project, class_name: 'Metais::Project', foreign_key: 'project_id'
 end

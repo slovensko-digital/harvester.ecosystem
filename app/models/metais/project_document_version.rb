@@ -1,5 +1,5 @@
 class Metais::ProjectDocumentVersion < ApplicationRecord
-  self.table_name = 'metais.verzie_dokumenty_projekty'
+  self.table_name = 'metais.project_document_versions'
 
-  belongs_to :dokument, class_name: 'Metais::ProjectDocument', foreign_key: 'dokument_id'
+  belongs_to :document, class_name: 'Metais::ProjectDocument', foreign_key: 'document_id'
 end

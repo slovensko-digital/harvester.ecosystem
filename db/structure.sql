@@ -4006,10 +4006,68 @@ ALTER SEQUENCE itms.zop_predkladane_za_subjekty_id_seq OWNED BY itms.zop_predkla
 
 
 --
--- Name: dokumenty_isvs; Type: TABLE; Schema: metais; Owner: -
+-- Name: isvs; Type: TABLE; Schema: metais; Owner: -
 --
 
-CREATE TABLE metais.dokumenty_isvs (
+CREATE TABLE metais.isvs (
+    id bigint NOT NULL,
+    project_id bigint,
+    uuid character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    latest_version_id bigint
+);
+
+
+--
+-- Name: isvs_document_versions; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.isvs_document_versions (
+    id bigint NOT NULL,
+    document_id bigint NOT NULL,
+    nazov character varying NOT NULL,
+    kod_metais character varying NOT NULL,
+    ref_id character varying NOT NULL,
+    mimetype character varying,
+    size character varying,
+    stav_evidencie character varying,
+    poznamka text,
+    typ character varying,
+    filename character varying,
+    metais_created_at timestamp without time zone,
+    metais_updated_at timestamp without time zone,
+    raw_data text NOT NULL,
+    raw_meta text NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: isvs_document_versions_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.isvs_document_versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: isvs_document_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.isvs_document_versions_id_seq OWNED BY metais.isvs_document_versions.id;
+
+
+--
+-- Name: isvs_documents; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.isvs_documents (
     id bigint NOT NULL,
     isvs_id bigint,
     uuid character varying NOT NULL,
@@ -4020,10 +4078,10 @@ CREATE TABLE metais.dokumenty_isvs (
 
 
 --
--- Name: dokumenty_isvs_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+-- Name: isvs_documents_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
 --
 
-CREATE SEQUENCE metais.dokumenty_isvs_id_seq
+CREATE SEQUENCE metais.isvs_documents_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4032,57 +4090,10 @@ CREATE SEQUENCE metais.dokumenty_isvs_id_seq
 
 
 --
--- Name: dokumenty_isvs_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+-- Name: isvs_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
 --
 
-ALTER SEQUENCE metais.dokumenty_isvs_id_seq OWNED BY metais.dokumenty_isvs.id;
-
-
---
--- Name: dokumenty_projekty; Type: TABLE; Schema: metais; Owner: -
---
-
-CREATE TABLE metais.dokumenty_projekty (
-    id bigint NOT NULL,
-    projekt_id bigint,
-    uuid character varying NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    latest_version_id bigint
-);
-
-
---
--- Name: dokumenty_projekty_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
---
-
-CREATE SEQUENCE metais.dokumenty_projekty_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: dokumenty_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
---
-
-ALTER SEQUENCE metais.dokumenty_projekty_id_seq OWNED BY metais.dokumenty_projekty.id;
-
-
---
--- Name: isvs; Type: TABLE; Schema: metais; Owner: -
---
-
-CREATE TABLE metais.isvs (
-    id bigint NOT NULL,
-    projekt_id bigint,
-    uuid character varying NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    latest_version_id bigint
-);
+ALTER SEQUENCE metais.isvs_documents_id_seq OWNED BY metais.isvs_documents.id;
 
 
 --
@@ -4105,130 +4116,10 @@ ALTER SEQUENCE metais.isvs_id_seq OWNED BY metais.isvs.id;
 
 
 --
--- Name: projekty; Type: TABLE; Schema: metais; Owner: -
+-- Name: isvs_versions; Type: TABLE; Schema: metais; Owner: -
 --
 
-CREATE TABLE metais.projekty (
-    id bigint NOT NULL,
-    uuid character varying NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    latest_version_id bigint
-);
-
-
---
--- Name: projekty_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
---
-
-CREATE SEQUENCE metais.projekty_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
---
-
-ALTER SEQUENCE metais.projekty_id_seq OWNED BY metais.projekty.id;
-
-
---
--- Name: verzie_dokumenty_isvs; Type: TABLE; Schema: metais; Owner: -
---
-
-CREATE TABLE metais.verzie_dokumenty_isvs (
-    id bigint NOT NULL,
-    dokument_id bigint NOT NULL,
-    nazov character varying NOT NULL,
-    kod_metais character varying NOT NULL,
-    ref_id character varying NOT NULL,
-    mimetype character varying,
-    size character varying,
-    stav_evidencie character varying,
-    poznamka text,
-    typ character varying,
-    filename character varying,
-    metais_created_at timestamp without time zone,
-    metais_updated_at timestamp without time zone,
-    raw_data text NOT NULL,
-    raw_meta text NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: verzie_dokumenty_isvs_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
---
-
-CREATE SEQUENCE metais.verzie_dokumenty_isvs_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: verzie_dokumenty_isvs_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
---
-
-ALTER SEQUENCE metais.verzie_dokumenty_isvs_id_seq OWNED BY metais.verzie_dokumenty_isvs.id;
-
-
---
--- Name: verzie_dokumenty_projekty; Type: TABLE; Schema: metais; Owner: -
---
-
-CREATE TABLE metais.verzie_dokumenty_projekty (
-    id bigint NOT NULL,
-    dokument_id bigint NOT NULL,
-    nazov character varying NOT NULL,
-    kod_metais character varying NOT NULL,
-    ref_id character varying NOT NULL,
-    mimetype character varying,
-    size character varying,
-    stav_evidencie character varying,
-    poznamka text,
-    typ character varying,
-    filename character varying,
-    metais_created_at timestamp without time zone,
-    metais_updated_at timestamp without time zone,
-    raw_data text NOT NULL,
-    raw_meta text NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: verzie_dokumenty_projekty_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
---
-
-CREATE SEQUENCE metais.verzie_dokumenty_projekty_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: verzie_dokumenty_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
---
-
-ALTER SEQUENCE metais.verzie_dokumenty_projekty_id_seq OWNED BY metais.verzie_dokumenty_projekty.id;
-
-
---
--- Name: verzie_isvs; Type: TABLE; Schema: metais; Owner: -
---
-
-CREATE TABLE metais.verzie_isvs (
+CREATE TABLE metais.isvs_versions (
     id bigint NOT NULL,
     isvs_id bigint NOT NULL,
     nazov character varying NOT NULL,
@@ -4247,10 +4138,10 @@ CREATE TABLE metais.verzie_isvs (
 
 
 --
--- Name: verzie_isvs_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+-- Name: isvs_versions_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
 --
 
-CREATE SEQUENCE metais.verzie_isvs_id_seq
+CREATE SEQUENCE metais.isvs_versions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4259,19 +4150,96 @@ CREATE SEQUENCE metais.verzie_isvs_id_seq
 
 
 --
--- Name: verzie_isvs_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+-- Name: isvs_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
 --
 
-ALTER SEQUENCE metais.verzie_isvs_id_seq OWNED BY metais.verzie_isvs.id;
+ALTER SEQUENCE metais.isvs_versions_id_seq OWNED BY metais.isvs_versions.id;
 
 
 --
--- Name: verzie_projekty; Type: TABLE; Schema: metais; Owner: -
+-- Name: project_document_versions; Type: TABLE; Schema: metais; Owner: -
 --
 
-CREATE TABLE metais.verzie_projekty (
+CREATE TABLE metais.project_document_versions (
     id bigint NOT NULL,
-    projekt_id bigint NOT NULL,
+    document_id bigint NOT NULL,
+    nazov character varying NOT NULL,
+    kod_metais character varying NOT NULL,
+    ref_id character varying NOT NULL,
+    mimetype character varying,
+    size character varying,
+    stav_evidencie character varying,
+    poznamka text,
+    typ character varying,
+    filename character varying,
+    metais_created_at timestamp without time zone,
+    metais_updated_at timestamp without time zone,
+    raw_data text NOT NULL,
+    raw_meta text NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: project_document_versions_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.project_document_versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: project_document_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.project_document_versions_id_seq OWNED BY metais.project_document_versions.id;
+
+
+--
+-- Name: project_documents; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.project_documents (
+    id bigint NOT NULL,
+    project_id bigint,
+    uuid character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    latest_version_id bigint
+);
+
+
+--
+-- Name: project_documents_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.project_documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: project_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.project_documents_id_seq OWNED BY metais.project_documents.id;
+
+
+--
+-- Name: project_versions; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.project_versions (
+    id bigint NOT NULL,
+    project_id bigint NOT NULL,
     nazov character varying NOT NULL,
     kod_metais character varying NOT NULL,
     typ_investicie character varying NOT NULL,
@@ -4304,10 +4272,10 @@ CREATE TABLE metais.verzie_projekty (
 
 
 --
--- Name: verzie_projekty_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+-- Name: project_versions_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
 --
 
-CREATE SEQUENCE metais.verzie_projekty_id_seq
+CREATE SEQUENCE metais.project_versions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4316,10 +4284,42 @@ CREATE SEQUENCE metais.verzie_projekty_id_seq
 
 
 --
--- Name: verzie_projekty_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+-- Name: project_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
 --
 
-ALTER SEQUENCE metais.verzie_projekty_id_seq OWNED BY metais.verzie_projekty.id;
+ALTER SEQUENCE metais.project_versions_id_seq OWNED BY metais.project_versions.id;
+
+
+--
+-- Name: projects; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.projects (
+    id bigint NOT NULL,
+    uuid character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    latest_version_id bigint
+);
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.projects_id_seq OWNED BY metais.projects.id;
 
 
 --
@@ -5178,20 +5178,6 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty ALTER COLUMN id SET DEFAULT ne
 
 
 --
--- Name: dokumenty_isvs id; Type: DEFAULT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.dokumenty_isvs ALTER COLUMN id SET DEFAULT nextval('metais.dokumenty_isvs_id_seq'::regclass);
-
-
---
--- Name: dokumenty_projekty id; Type: DEFAULT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.dokumenty_projekty ALTER COLUMN id SET DEFAULT nextval('metais.dokumenty_projekty_id_seq'::regclass);
-
-
---
 -- Name: isvs id; Type: DEFAULT; Schema: metais; Owner: -
 --
 
@@ -5199,38 +5185,52 @@ ALTER TABLE ONLY metais.isvs ALTER COLUMN id SET DEFAULT nextval('metais.isvs_id
 
 
 --
--- Name: projekty id; Type: DEFAULT; Schema: metais; Owner: -
+-- Name: isvs_document_versions id; Type: DEFAULT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.projekty ALTER COLUMN id SET DEFAULT nextval('metais.projekty_id_seq'::regclass);
-
-
---
--- Name: verzie_dokumenty_isvs id; Type: DEFAULT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.verzie_dokumenty_isvs ALTER COLUMN id SET DEFAULT nextval('metais.verzie_dokumenty_isvs_id_seq'::regclass);
+ALTER TABLE ONLY metais.isvs_document_versions ALTER COLUMN id SET DEFAULT nextval('metais.isvs_document_versions_id_seq'::regclass);
 
 
 --
--- Name: verzie_dokumenty_projekty id; Type: DEFAULT; Schema: metais; Owner: -
+-- Name: isvs_documents id; Type: DEFAULT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.verzie_dokumenty_projekty ALTER COLUMN id SET DEFAULT nextval('metais.verzie_dokumenty_projekty_id_seq'::regclass);
-
-
---
--- Name: verzie_isvs id; Type: DEFAULT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.verzie_isvs ALTER COLUMN id SET DEFAULT nextval('metais.verzie_isvs_id_seq'::regclass);
+ALTER TABLE ONLY metais.isvs_documents ALTER COLUMN id SET DEFAULT nextval('metais.isvs_documents_id_seq'::regclass);
 
 
 --
--- Name: verzie_projekty id; Type: DEFAULT; Schema: metais; Owner: -
+-- Name: isvs_versions id; Type: DEFAULT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.verzie_projekty ALTER COLUMN id SET DEFAULT nextval('metais.verzie_projekty_id_seq'::regclass);
+ALTER TABLE ONLY metais.isvs_versions ALTER COLUMN id SET DEFAULT nextval('metais.isvs_versions_id_seq'::regclass);
+
+
+--
+-- Name: project_document_versions id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_document_versions ALTER COLUMN id SET DEFAULT nextval('metais.project_document_versions_id_seq'::regclass);
+
+
+--
+-- Name: project_documents id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_documents ALTER COLUMN id SET DEFAULT nextval('metais.project_documents_id_seq'::regclass);
+
+
+--
+-- Name: project_versions id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_versions ALTER COLUMN id SET DEFAULT nextval('metais.project_versions_id_seq'::regclass);
+
+
+--
+-- Name: projects id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.projects ALTER COLUMN id SET DEFAULT nextval('metais.projects_id_seq'::regclass);
 
 
 --
@@ -6112,19 +6112,19 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
 
 
 --
--- Name: dokumenty_isvs dokumenty_isvs_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+-- Name: isvs_document_versions isvs_document_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.dokumenty_isvs
-    ADD CONSTRAINT dokumenty_isvs_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY metais.isvs_document_versions
+    ADD CONSTRAINT isvs_document_versions_pkey PRIMARY KEY (id);
 
 
 --
--- Name: dokumenty_projekty dokumenty_projekty_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+-- Name: isvs_documents isvs_documents_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.dokumenty_projekty
-    ADD CONSTRAINT dokumenty_projekty_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY metais.isvs_documents
+    ADD CONSTRAINT isvs_documents_pkey PRIMARY KEY (id);
 
 
 --
@@ -6136,43 +6136,43 @@ ALTER TABLE ONLY metais.isvs
 
 
 --
--- Name: projekty projekty_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+-- Name: isvs_versions isvs_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.projekty
-    ADD CONSTRAINT projekty_pkey PRIMARY KEY (id);
-
-
---
--- Name: verzie_dokumenty_isvs verzie_dokumenty_isvs_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.verzie_dokumenty_isvs
-    ADD CONSTRAINT verzie_dokumenty_isvs_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY metais.isvs_versions
+    ADD CONSTRAINT isvs_versions_pkey PRIMARY KEY (id);
 
 
 --
--- Name: verzie_dokumenty_projekty verzie_dokumenty_projekty_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+-- Name: project_document_versions project_document_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.verzie_dokumenty_projekty
-    ADD CONSTRAINT verzie_dokumenty_projekty_pkey PRIMARY KEY (id);
-
-
---
--- Name: verzie_isvs verzie_isvs_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.verzie_isvs
-    ADD CONSTRAINT verzie_isvs_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY metais.project_document_versions
+    ADD CONSTRAINT project_document_versions_pkey PRIMARY KEY (id);
 
 
 --
--- Name: verzie_projekty verzie_projekty_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+-- Name: project_documents project_documents_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.verzie_projekty
-    ADD CONSTRAINT verzie_projekty_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY metais.project_documents
+    ADD CONSTRAINT project_documents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: project_versions project_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_versions
+    ADD CONSTRAINT project_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projects projects_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.projects
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
 
 
 --
@@ -8406,31 +8406,24 @@ CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_zop_id" ON itms.zop_pred
 
 
 --
--- Name: index_metais.dokumenty_isvs_on_isvs_id; Type: INDEX; Schema: metais; Owner: -
+-- Name: index_metais.isvs_document_versions_on_document_id; Type: INDEX; Schema: metais; Owner: -
 --
 
-CREATE INDEX "index_metais.dokumenty_isvs_on_isvs_id" ON metais.dokumenty_isvs USING btree (isvs_id);
-
-
---
--- Name: index_metais.dokumenty_isvs_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
---
-
-CREATE INDEX "index_metais.dokumenty_isvs_on_latest_version_id" ON metais.dokumenty_isvs USING btree (latest_version_id);
+CREATE INDEX "index_metais.isvs_document_versions_on_document_id" ON metais.isvs_document_versions USING btree (document_id);
 
 
 --
--- Name: index_metais.dokumenty_projekty_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+-- Name: index_metais.isvs_documents_on_isvs_id; Type: INDEX; Schema: metais; Owner: -
 --
 
-CREATE INDEX "index_metais.dokumenty_projekty_on_latest_version_id" ON metais.dokumenty_projekty USING btree (latest_version_id);
+CREATE INDEX "index_metais.isvs_documents_on_isvs_id" ON metais.isvs_documents USING btree (isvs_id);
 
 
 --
--- Name: index_metais.dokumenty_projekty_on_projekt_id; Type: INDEX; Schema: metais; Owner: -
+-- Name: index_metais.isvs_documents_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
 --
 
-CREATE INDEX "index_metais.dokumenty_projekty_on_projekt_id" ON metais.dokumenty_projekty USING btree (projekt_id);
+CREATE INDEX "index_metais.isvs_documents_on_latest_version_id" ON metais.isvs_documents USING btree (latest_version_id);
 
 
 --
@@ -8441,45 +8434,52 @@ CREATE INDEX "index_metais.isvs_on_latest_version_id" ON metais.isvs USING btree
 
 
 --
--- Name: index_metais.isvs_on_projekt_id; Type: INDEX; Schema: metais; Owner: -
+-- Name: index_metais.isvs_on_project_id; Type: INDEX; Schema: metais; Owner: -
 --
 
-CREATE INDEX "index_metais.isvs_on_projekt_id" ON metais.isvs USING btree (projekt_id);
-
-
---
--- Name: index_metais.projekty_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
---
-
-CREATE INDEX "index_metais.projekty_on_latest_version_id" ON metais.projekty USING btree (latest_version_id);
+CREATE INDEX "index_metais.isvs_on_project_id" ON metais.isvs USING btree (project_id);
 
 
 --
--- Name: index_metais.verzie_dokumenty_isvs_on_dokument_id; Type: INDEX; Schema: metais; Owner: -
+-- Name: index_metais.isvs_versions_on_isvs_id; Type: INDEX; Schema: metais; Owner: -
 --
 
-CREATE INDEX "index_metais.verzie_dokumenty_isvs_on_dokument_id" ON metais.verzie_dokumenty_isvs USING btree (dokument_id);
-
-
---
--- Name: index_metais.verzie_dokumenty_projekty_on_dokument_id; Type: INDEX; Schema: metais; Owner: -
---
-
-CREATE INDEX "index_metais.verzie_dokumenty_projekty_on_dokument_id" ON metais.verzie_dokumenty_projekty USING btree (dokument_id);
+CREATE INDEX "index_metais.isvs_versions_on_isvs_id" ON metais.isvs_versions USING btree (isvs_id);
 
 
 --
--- Name: index_metais.verzie_isvs_on_isvs_id; Type: INDEX; Schema: metais; Owner: -
+-- Name: index_metais.project_document_versions_on_document_id; Type: INDEX; Schema: metais; Owner: -
 --
 
-CREATE INDEX "index_metais.verzie_isvs_on_isvs_id" ON metais.verzie_isvs USING btree (isvs_id);
+CREATE INDEX "index_metais.project_document_versions_on_document_id" ON metais.project_document_versions USING btree (document_id);
 
 
 --
--- Name: index_metais.verzie_projekty_on_projekt_id; Type: INDEX; Schema: metais; Owner: -
+-- Name: index_metais.project_documents_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
 --
 
-CREATE INDEX "index_metais.verzie_projekty_on_projekt_id" ON metais.verzie_projekty USING btree (projekt_id);
+CREATE INDEX "index_metais.project_documents_on_latest_version_id" ON metais.project_documents USING btree (latest_version_id);
+
+
+--
+-- Name: index_metais.project_documents_on_project_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_documents_on_project_id" ON metais.project_documents USING btree (project_id);
+
+
+--
+-- Name: index_metais.project_versions_on_project_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_versions_on_project_id" ON metais.project_versions USING btree (project_id);
+
+
+--
+-- Name: index_metais.projects_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.projects_on_latest_version_id" ON metais.projects USING btree (latest_version_id);
 
 
 --
@@ -10366,59 +10366,75 @@ ALTER TABLE ONLY itms.intenzity
 
 
 --
--- Name: verzie_projekty fk_rails_0a117670b7; Type: FK CONSTRAINT; Schema: metais; Owner: -
+-- Name: projects fk_rails_1925410d1c; Type: FK CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.verzie_projekty
-    ADD CONSTRAINT fk_rails_0a117670b7 FOREIGN KEY (projekt_id) REFERENCES metais.projekty(id);
-
-
---
--- Name: verzie_dokumenty_isvs fk_rails_2d6323661f; Type: FK CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.verzie_dokumenty_isvs
-    ADD CONSTRAINT fk_rails_2d6323661f FOREIGN KEY (dokument_id) REFERENCES metais.dokumenty_isvs(id);
+ALTER TABLE ONLY metais.projects
+    ADD CONSTRAINT fk_rails_1925410d1c FOREIGN KEY (latest_version_id) REFERENCES metais.project_versions(id);
 
 
 --
--- Name: verzie_dokumenty_projekty fk_rails_2edc6c96fc; Type: FK CONSTRAINT; Schema: metais; Owner: -
+-- Name: isvs_documents fk_rails_2926a855af; Type: FK CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.verzie_dokumenty_projekty
-    ADD CONSTRAINT fk_rails_2edc6c96fc FOREIGN KEY (dokument_id) REFERENCES metais.dokumenty_projekty(id);
-
-
---
--- Name: dokumenty_projekty fk_rails_4e4484ee51; Type: FK CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.dokumenty_projekty
-    ADD CONSTRAINT fk_rails_4e4484ee51 FOREIGN KEY (latest_version_id) REFERENCES metais.verzie_dokumenty_projekty(id);
+ALTER TABLE ONLY metais.isvs_documents
+    ADD CONSTRAINT fk_rails_2926a855af FOREIGN KEY (isvs_id) REFERENCES metais.isvs(id);
 
 
 --
--- Name: verzie_isvs fk_rails_86a574b392; Type: FK CONSTRAINT; Schema: metais; Owner: -
+-- Name: isvs_documents fk_rails_5d253a31fc; Type: FK CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.verzie_isvs
-    ADD CONSTRAINT fk_rails_86a574b392 FOREIGN KEY (isvs_id) REFERENCES metais.isvs(id);
-
-
---
--- Name: dokumenty_isvs fk_rails_878773cfeb; Type: FK CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.dokumenty_isvs
-    ADD CONSTRAINT fk_rails_878773cfeb FOREIGN KEY (isvs_id) REFERENCES metais.isvs(id);
+ALTER TABLE ONLY metais.isvs_documents
+    ADD CONSTRAINT fk_rails_5d253a31fc FOREIGN KEY (latest_version_id) REFERENCES metais.isvs_document_versions(id);
 
 
 --
--- Name: dokumenty_isvs fk_rails_aa2202ad11; Type: FK CONSTRAINT; Schema: metais; Owner: -
+-- Name: project_versions fk_rails_819be9e3a6; Type: FK CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.dokumenty_isvs
-    ADD CONSTRAINT fk_rails_aa2202ad11 FOREIGN KEY (latest_version_id) REFERENCES metais.verzie_dokumenty_isvs(id);
+ALTER TABLE ONLY metais.project_versions
+    ADD CONSTRAINT fk_rails_819be9e3a6 FOREIGN KEY (project_id) REFERENCES metais.projects(id);
+
+
+--
+-- Name: project_documents fk_rails_868923b92d; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_documents
+    ADD CONSTRAINT fk_rails_868923b92d FOREIGN KEY (project_id) REFERENCES metais.projects(id);
+
+
+--
+-- Name: isvs fk_rails_8befaa8056; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs
+    ADD CONSTRAINT fk_rails_8befaa8056 FOREIGN KEY (project_id) REFERENCES metais.projects(id);
+
+
+--
+-- Name: project_documents fk_rails_9352955d7e; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_documents
+    ADD CONSTRAINT fk_rails_9352955d7e FOREIGN KEY (latest_version_id) REFERENCES metais.project_document_versions(id);
+
+
+--
+-- Name: project_document_versions fk_rails_ae50626673; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_document_versions
+    ADD CONSTRAINT fk_rails_ae50626673 FOREIGN KEY (document_id) REFERENCES metais.project_documents(id);
+
+
+--
+-- Name: isvs_document_versions fk_rails_affcff3ef1; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_document_versions
+    ADD CONSTRAINT fk_rails_affcff3ef1 FOREIGN KEY (document_id) REFERENCES metais.isvs_documents(id);
 
 
 --
@@ -10426,31 +10442,15 @@ ALTER TABLE ONLY metais.dokumenty_isvs
 --
 
 ALTER TABLE ONLY metais.isvs
-    ADD CONSTRAINT fk_rails_be183a92d5 FOREIGN KEY (latest_version_id) REFERENCES metais.verzie_isvs(id);
+    ADD CONSTRAINT fk_rails_be183a92d5 FOREIGN KEY (latest_version_id) REFERENCES metais.isvs_versions(id);
 
 
 --
--- Name: dokumenty_projekty fk_rails_db022f144d; Type: FK CONSTRAINT; Schema: metais; Owner: -
+-- Name: isvs_versions fk_rails_ce75fc7d23; Type: FK CONSTRAINT; Schema: metais; Owner: -
 --
 
-ALTER TABLE ONLY metais.dokumenty_projekty
-    ADD CONSTRAINT fk_rails_db022f144d FOREIGN KEY (projekt_id) REFERENCES metais.projekty(id);
-
-
---
--- Name: isvs fk_rails_e9b23a9824; Type: FK CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.isvs
-    ADD CONSTRAINT fk_rails_e9b23a9824 FOREIGN KEY (projekt_id) REFERENCES metais.projekty(id);
-
-
---
--- Name: projekty fk_rails_fbefa02995; Type: FK CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.projekty
-    ADD CONSTRAINT fk_rails_fbefa02995 FOREIGN KEY (latest_version_id) REFERENCES metais.verzie_projekty(id);
+ALTER TABLE ONLY metais.isvs_versions
+    ADD CONSTRAINT fk_rails_ce75fc7d23 FOREIGN KEY (isvs_id) REFERENCES metais.isvs(id);
 
 
 --
