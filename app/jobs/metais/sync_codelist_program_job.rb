@@ -19,6 +19,7 @@ class Metais::SyncCodelistProgramJob < ApplicationJob
           program.nazov_en = get_attribute(i, 'Gen_Profil_anglicky_nazov')
           program.ref_id = get_attribute(i, 'Gen_Profil_ref_id')
           program.zdroj = get_attribute(i, 'Gen_Profil_zdroj')
+          program.raw_data = i.to_json
           program.save!
         end
       end
