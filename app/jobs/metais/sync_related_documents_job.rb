@@ -14,6 +14,7 @@ class Metais::SyncRelatedDocumentsJob < ApplicationJob
       response = conn.post(parent.uuid, RELATED_DOCUMENTS_REQUEST_TEMPLATE % {page: page_number}, 'Content-Type' => 'application/json')
       parsed_json = JSON.parse(response.body)
       documents = parsed_json['fromNodes']&.dig('neighbourPairs')
+      return unless documents
 
       documents.each do |document|
         Metais::SyncDocumentJob.perform_later(parent, document)

@@ -20,6 +20,6 @@ class Metais::SyncAllProjectsJob < ApplicationJob
       end
 
       page_number += 1
-    end while page_number <= parsed_json['pagination']['totalPages'] && page_number <= 1
+    end while page_number <= parsed_json['pagination']['totalPages']
   end
 end

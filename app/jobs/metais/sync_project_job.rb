@@ -5,7 +5,8 @@ class Metais::SyncProjectJob < ApplicationJob
     uuid = json['uuid']
     return unless uuid
 
-    process_project(uuid, json)
+    project = Metais::Project.find_or_initialize_by(uuid: uuid)
+    process_project(project, json)
 
     Metais::SyncProjectsIsvsJob.perform_later(project)
     Metais::SyncRelatedDocumentsJob.perform_later(project)
@@ -13,13 +14,13 @@ class Metais::SyncProjectJob < ApplicationJob
 
   private
 
-  def process_project(uuid, json)
+  def process_project(project, json)
     ActiveRecord::Base.transaction do
-      project = Metais::Project.find_or_initialize_by(uuid: uuid)
       return unless project.latest_version.nil? || project.latest_version.raw_data != json.to_json
 
       version = project.versions.build(raw_data: json.to_json)
       parse_project(version, json)
+      project.save!
       version.save!
       project.latest_version = version
       project.save!

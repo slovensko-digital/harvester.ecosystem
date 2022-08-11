@@ -1,5 +1,5 @@
 class Metais::IsvsDocumentVersion < ApplicationRecord
   self.table_name = 'metais.verzie_dokumenty_isvs'
 
-  belongs_to :isvs_document, class_name: 'Metais::IsvsDocument'
+  belongs_to :dokument, class_name: 'Metais::IsvsDocument', foreign_key: 'dokument_id'
 end
