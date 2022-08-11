@@ -8653,6 +8653,41 @@ CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_zop_id" ON itms.zop_pred
 
 
 --
+-- Name: index_metais.codelist_investment_type_on_code; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_investment_type_on_code" ON metais.codelist_investment_type USING btree (code);
+
+
+--
+-- Name: index_metais.codelist_program_on_kod_metais; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_program_on_kod_metais" ON metais.codelist_program USING btree (kod_metais);
+
+
+--
+-- Name: index_metais.codelist_project_phase_on_code; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_project_phase_on_code" ON metais.codelist_project_phase USING btree (code);
+
+
+--
+-- Name: index_metais.codelist_project_state_on_code; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_project_state_on_code" ON metais.codelist_project_state USING btree (code);
+
+
+--
+-- Name: index_metais.codelist_source_on_code; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_source_on_code" ON metais.codelist_source USING btree (code);
+
+
+--
 -- Name: index_metais.isvs_document_versions_on_document_id; Type: INDEX; Schema: metais; Owner: -
 --
 
@@ -8674,6 +8709,13 @@ CREATE INDEX "index_metais.isvs_documents_on_latest_version_id" ON metais.isvs_d
 
 
 --
+-- Name: index_metais.isvs_documents_on_uuid; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_documents_on_uuid" ON metais.isvs_documents USING btree (uuid);
+
+
+--
 -- Name: index_metais.isvs_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
 --
 
@@ -8685,6 +8727,13 @@ CREATE INDEX "index_metais.isvs_on_latest_version_id" ON metais.isvs USING btree
 --
 
 CREATE INDEX "index_metais.isvs_on_project_id" ON metais.isvs USING btree (project_id);
+
+
+--
+-- Name: index_metais.isvs_on_uuid; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_on_uuid" ON metais.isvs USING btree (uuid);
 
 
 --
@@ -8716,6 +8765,13 @@ CREATE INDEX "index_metais.project_documents_on_project_id" ON metais.project_do
 
 
 --
+-- Name: index_metais.project_documents_on_uuid; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_documents_on_uuid" ON metais.project_documents USING btree (uuid);
+
+
+--
 -- Name: index_metais.project_versions_on_project_id; Type: INDEX; Schema: metais; Owner: -
 --
 
@@ -8727,6 +8783,13 @@ CREATE INDEX "index_metais.project_versions_on_project_id" ON metais.project_ver
 --
 
 CREATE INDEX "index_metais.projects_on_latest_version_id" ON metais.projects USING btree (latest_version_id);
+
+
+--
+-- Name: index_metais.projects_on_uuid; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.projects_on_uuid" ON metais.projects USING btree (uuid);
 
 
 --
