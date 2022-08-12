@@ -27,5 +27,7 @@ RSpec.describe Metais::SyncDocumentJob, type: :job do
       ignored = ["id", "updated_at", "created_at", "raw_data", "document_id"]
       expect(Metais::ProjectDocumentVersion.last.attributes.except(*ignored)).to eq(document_version.attributes.except(*ignored))
     end
+
+    # TODO test for update
   end
 end

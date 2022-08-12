@@ -14,7 +14,7 @@ RSpec.describe Metais::SyncIsvsJob, type: :job do
     let(:isvs_version) { build(:metais_isvs_version) }
     let(:project) { build(:metais_project) }
 
-    it 'saves isvs and quese another jobs' do
+    it 'saves isvs and queues another jobs' do
       expect {
         subject.perform(project, JSON.parse(isvs_version.raw_data))
       }.to change(Metais::Isvs, :count).by(1)
@@ -28,5 +28,7 @@ RSpec.describe Metais::SyncIsvsJob, type: :job do
 
       expect(Metais::SyncRelatedDocumentsJob).to have_been_enqueued.exactly(1).times
     end
+
+    # TODO test for update
   end
 end

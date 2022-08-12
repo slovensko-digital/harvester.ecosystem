@@ -13,7 +13,7 @@ RSpec.describe Metais::SyncProjectJob, type: :job do
     let(:project) { build(:metais_project) }
     let(:project_version) { build(:metais_project_version) }
 
-    it 'saves project and quese another jobs' do
+    it 'saves project and queues another jobs' do
       expect {
         subject.perform(JSON.parse(project_version.raw_data))
       }.to change(Metais::Project, :count).by(1)
@@ -28,5 +28,7 @@ RSpec.describe Metais::SyncProjectJob, type: :job do
       expect(Metais::SyncProjectsIsvsJob).to have_been_enqueued.exactly(1).times
       expect(Metais::SyncRelatedDocumentsJob).to have_been_enqueued.exactly(1).times
     end
+
+    # TODO test for update
   end
 end
