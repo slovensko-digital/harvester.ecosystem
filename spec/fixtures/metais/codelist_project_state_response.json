@@ -1,0 +1,130 @@
+{
+  "id": 92,
+  "code": "STAV_PROJEKTU",
+  "name": "Stav projektu",
+  "description": "Stav projektu",
+  "valid": true,
+  "category": null,
+  "enumItems": [
+    {
+      "id": 19953,
+      "code": "c_stav_projektu_1",
+      "value": "Draft",
+      "valid": true,
+      "description": "Popis stavu projektu",
+      "orderList": 1,
+      "engValue": "Draft",
+      "engDescription": ""
+    },
+    {
+      "id": 19954,
+      "code": "c_stav_projektu_2",
+      "value": "Reported",
+      "valid": true,
+      "description": "",
+      "orderList": 1,
+      "engValue": "Reported",
+      "engDescription": ""
+    },
+    {
+      "id": 19955,
+      "code": "c_stav_projektu_3",
+      "value": "Planned",
+      "valid": true,
+      "description": "",
+      "orderList": 2,
+      "engValue": "Planned",
+      "engDescription": ""
+    },
+    {
+      "id": 19956,
+      "code": "c_stav_projektu_4",
+      "value": "Being rated",
+      "valid": true,
+      "description": "",
+      "orderList": 5,
+      "engValue": "Being rated",
+      "engDescription": ""
+    },
+    {
+      "id": 19957,
+      "code": "c_stav_projektu_5",
+      "value": "Returned",
+      "valid": true,
+      "description": "",
+      "orderList": 4,
+      "engValue": "Returned",
+      "engDescription": ""
+    },
+    {
+      "id": 19958,
+      "code": "c_stav_projektu_6",
+      "value": "Approved",
+      "valid": true,
+      "description": "",
+      "orderList": 3,
+      "engValue": "Approved",
+      "engDescription": ""
+    },
+    {
+      "id": 19959,
+      "code": "c_stav_projektu_7",
+      "value": "Canceled",
+      "valid": true,
+      "description": "",
+      "orderList": 7,
+      "engValue": "Canceled",
+      "engDescription": ""
+    },
+    {
+      "id": 19960,
+      "code": "c_stav_projektu_8",
+      "value": "Realized",
+      "valid": true,
+      "description": "",
+      "orderList": 8,
+      "engValue": "Realized",
+      "engDescription": ""
+    },
+    {
+      "id": 19961,
+      "code": "c_stav_projektu_9",
+      "value": "Finished",
+      "valid": true,
+      "description": "",
+      "orderList": 9,
+      "engValue": "Finished",
+      "engDescription": ""
+    },
+    {
+      "id": 19962,
+      "code": "c_stav_projektu_10",
+      "value": "Deployed",
+      "valid": true,
+      "description": "",
+      "orderList": 9,
+      "engValue": "Deployed",
+      "engDescription": ""
+    },
+    {
+      "id": 21807,
+      "code": "c_stav_projektu_11",
+      "value": "Reevaluated",
+      "valid": true,
+      "description": "",
+      "orderList": 11,
+      "engValue": "Reevaluated",
+      "engDescription": ""
+    },
+    {
+      "id": 21808,
+      "code": "c_stav_projektu_12",
+      "value": "Not approved",
+      "valid": true,
+      "description": "",
+      "orderList": 12,
+      "engValue": "Not approved",
+      "engDescription": ""
+    }
+  ]
+}
