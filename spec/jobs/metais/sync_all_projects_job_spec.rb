@@ -10,12 +10,10 @@ RSpec.describe Metais::SyncAllProjectsJob, type: :job do
 
     let(:project_version) { build(:metais_project_version) }
 
-    before do
+    it 'queues SyncProject job' do
       allow(Faraday).to receive(:new) { client } 
       allow(client).to receive(:post) { faraday_response }
-    end    
 
-    it 'queues SyncProject job' do
       subject.perform
 
       expect(Metais::SyncProjectJob).to have_been_enqueued.exactly(1).times

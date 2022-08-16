@@ -17,13 +17,11 @@ RSpec.describe Metais::SyncProjectsIsvsJob, type: :job do
     let(:isvs_version) { build(:metais_isvs_version) }
     let(:project) { build(:metais_project) }
 
-    before do
+    it 'queues SyncIsvs job' do
       allow(Faraday).to receive(:new) { client } 
       allow(client).to receive(:get) { faraday_response }
       project.save
-    end
 
-    it 'queues SyncIsvs job' do
       subject.perform(project)
 
       expect(Metais::SyncIsvsJob).to have_been_enqueued.exactly(2).times

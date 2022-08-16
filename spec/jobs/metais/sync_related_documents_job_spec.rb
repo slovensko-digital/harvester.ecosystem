@@ -12,13 +12,11 @@ RSpec.describe Metais::SyncRelatedDocumentsJob, type: :job do
       let(:document_version) { build(:metais_project_document_version) }
       let(:project) { build(:metais_project) }
 
-      before do
+      it 'queues SyncRelatedDocuments job' do
         allow(Faraday).to receive(:new) { client } 
         allow(client).to receive(:post) { faraday_response }
         project.save
-      end
 
-      it 'queues SyncRelatedDocuments job' do
         subject.perform(project)
 
         expect(Metais::SyncDocumentJob).to have_been_enqueued.exactly(9).times
@@ -36,13 +34,11 @@ RSpec.describe Metais::SyncRelatedDocumentsJob, type: :job do
       let(:document_version) { build(:metais_isvs_document_version) }
       let(:isvs) { build(:metais_isvs) }
 
-      before do
+      it 'queues SyncRelatedDocuments job' do
         allow(Faraday).to receive(:new) { client } 
         allow(client).to receive(:post) { faraday_response }
         isvs.save
-      end
 
-      it 'queues SyncRelatedDocuments job' do
         subject.perform(isvs)
 
         expect(Metais::SyncDocumentJob).to have_been_enqueued.exactly(18).times
