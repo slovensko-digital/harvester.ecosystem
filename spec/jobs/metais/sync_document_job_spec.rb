@@ -10,12 +10,11 @@ RSpec.describe Metais::SyncDocumentJob, type: :job do
 
     let(:document) { build(:metais_project_document) }
     let(:document_version) { build(:metais_project_document_version) }
-    let(:project) { build(:metais_project) }
+    let!(:project) { create(:metais_project) }
 
     before do
       allow(Faraday).to receive(:new) { client } 
       allow(client).to receive(:get) { faraday_response }
-      project.save
     end
 
     it 'saves project document' do

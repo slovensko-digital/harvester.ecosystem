@@ -10,12 +10,11 @@ RSpec.describe Metais::SyncRelatedDocumentsJob, type: :job do
       let(:body) { metais_json_fixture('project_documents_response.json') }
 
       let(:document_version) { build(:metais_project_document_version) }
-      let(:project) { build(:metais_project) }
+      let!(:project) { create(:metais_project) }
 
       it 'queues SyncRelatedDocuments job' do
         allow(Faraday).to receive(:new) { client } 
         allow(client).to receive(:post) { faraday_response }
-        project.save
 
         subject.perform(project)
 
@@ -32,12 +31,11 @@ RSpec.describe Metais::SyncRelatedDocumentsJob, type: :job do
       let(:body) { metais_json_fixture('project_documents_response.json') }
 
       let(:document_version) { build(:metais_isvs_document_version) }
-      let(:isvs) { build(:metais_isvs) }
+      let!(:isvs) { create(:metais_isvs) }
 
       it 'queues SyncRelatedDocuments job' do
         allow(Faraday).to receive(:new) { client } 
         allow(client).to receive(:post) { faraday_response }
-        isvs.save
 
         subject.perform(isvs)
 

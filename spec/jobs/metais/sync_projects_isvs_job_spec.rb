@@ -15,12 +15,11 @@ RSpec.describe Metais::SyncProjectsIsvsJob, type: :job do
     let(:body) { metais_json_fixture('isvs_response.json') }
 
     let(:isvs_version) { build(:metais_isvs_version) }
-    let(:project) { build(:metais_project) }
+    let!(:project) { create(:metais_project) }
 
     it 'queues SyncIsvs job' do
       allow(Faraday).to receive(:new) { client } 
       allow(client).to receive(:get) { faraday_response }
-      project.save
 
       subject.perform(project)
 
