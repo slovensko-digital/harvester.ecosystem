@@ -10,26 +10,52 @@ RSpec.describe Metais::SyncCodelistProjectStateJob, type: :job do
   describe '#perform' do
     ActiveJob::Base.queue_adapter = :test
 
-    let(:client) { instance_double(Faraday::Connection, get: faraday_response) }
-    let(:faraday_response) { instance_double(Faraday::Response, body: body) }
-    let(:body) { metais_json_fixture('codelist_project_state_response.json') }
+    context "with no previous codelist data" do
+      let(:client) { instance_double(Faraday::Connection, get: faraday_response) }
+      let(:faraday_response) { instance_double(Faraday::Response, body: body) }
+      let(:body) { metais_json_fixture('codelist_project_state_response.json') }
 
-    before do
-      allow(Faraday).to receive(:new) { client } 
-      allow(client).to receive(:get) { faraday_response }
+      it 'saves codelist_project_state' do
+        allow(Faraday).to receive(:new) { client } 
+        allow(client).to receive(:get) { faraday_response }
+
+        subject.perform
+
+        expect(Metais::CodelistProjectState.find_by(code: "c_stav_projektu_1")).to have_attributes(
+          code: "c_stav_projektu_1",
+          nazov: "Draft",
+          order_list: 1,
+          popis: "Popis stavu projektu",
+        )
+      end
     end
 
-    it 'saves codelist_project_state' do
-      subject.perform
+    context "with different values" do
+      let(:client) { instance_double(Faraday::Connection, get: faraday_response) }
+      let(:faraday_response) { instance_double(Faraday::Response, body: body) }
+      let(:body) { metais_json_fixture('codelist_project_state_update_response.json') }
 
-      expect(Metais::CodelistProjectState.find_by(code: "c_stav_projektu_1")).to have_attributes(
-        code: "c_stav_projektu_1",
-        nazov: "Draft",
-        order_list: 1,
-        popis: "Popis stavu projektu",
-      )
+      let!(:codelist_project_state) { create(:metais_codelist_project_state) }
+
+      it 'saves codelist_project_state' do
+        allow(Faraday).to receive(:new) { client } 
+        allow(client).to receive(:get) { faraday_response }
+
+        expect(Metais::CodelistProjectState.find_by(code: "c_stav_projektu_1")).to have_attributes(
+          nazov: "Draft",
+        )
+
+        expect {
+          subject.perform
+        }.to change(Metais::CodelistProjectState, :count).by(0)
+
+        expect(Metais::CodelistProjectState.find_by(code: "c_stav_projektu_1")).to have_attributes(
+          code: "c_stav_projektu_1",
+          nazov: "updated Draft",
+          order_list: 1,
+          popis: "Popis stavu projektu",
+        )
+      end
     end
-
-    # TODO test for update
   end
 end

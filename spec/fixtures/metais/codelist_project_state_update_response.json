@@ -1,0 +1,20 @@
+{
+  "id": 92,
+  "code": "STAV_PROJEKTU",
+  "name": "Stav projektu",
+  "description": "Stav projektu",
+  "valid": true,
+  "category": null,
+  "enumItems": [
+    {
+      "id": 19953,
+      "code": "c_stav_projektu_1",
+      "value": "updated Draft",
+      "valid": true,
+      "description": "Popis stavu projektu",
+      "orderList": 1,
+      "engValue": "Draft",
+      "engDescription": ""
+    }
+  ]
+}
