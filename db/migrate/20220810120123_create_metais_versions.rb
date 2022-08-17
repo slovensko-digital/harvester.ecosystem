@@ -15,14 +15,14 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.string :schvalovaci_proces
       t.string :zdroj
       t.string :financna_skupina
-      t.decimal :suma_vydavkov
-      t.decimal :rocne_naklady
+      t.decimal :suma_vydavkov, :precision => 15, :scale => 2
+      t.decimal :rocne_naklady, :precision => 15, :scale => 2
       t.string :ref_id
       t.string :stav
 
       t.datetime :zmena_stavu
-      t.decimal :schvalene_rocne_naklady
-      t.decimal :schvaleny_rozpocet
+      t.decimal :schvalene_rocne_naklady, :precision => 15, :scale => 2
+      t.decimal :schvaleny_rozpocet, :precision => 15, :scale => 2
       t.datetime :datum_nfp
       t.string :link_nfp
       t.datetime :vyhlasenie_vo
@@ -59,7 +59,7 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.string :kod_metais, null: false
       t.string :ref_id, null: false
       t.string :mimetype
-      t.string :size
+      t.integer :size
       t.string :stav_evidencie
       t.text :poznamka
       t.string :typ
@@ -79,7 +79,7 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.string :kod_metais, null: false
       t.string :ref_id, null: false
       t.string :mimetype
-      t.string :size
+      t.integer :size
       t.string :stav_evidencie
       t.text :poznamka
       t.string :typ
