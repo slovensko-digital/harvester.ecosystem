@@ -37,7 +37,7 @@ RSpec.describe Metais::SyncCodelistSourceJob, type: :job do
 
       let!(:codelist_source) { create(:metais_codelist_source) }
 
-      it 'saves codelist_source' do
+      it 'updates codelist_source' do
         allow(Faraday).to receive(:new) { client } 
         allow(client).to receive(:get) { faraday_response }
 

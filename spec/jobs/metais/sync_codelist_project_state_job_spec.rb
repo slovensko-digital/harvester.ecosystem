@@ -37,7 +37,7 @@ RSpec.describe Metais::SyncCodelistProjectStateJob, type: :job do
 
       let!(:codelist_project_state) { create(:metais_codelist_project_state) }
 
-      it 'saves codelist_project_state' do
+      it 'updates codelist_project_state' do
         allow(Faraday).to receive(:new) { client } 
         allow(client).to receive(:get) { faraday_response }
 
