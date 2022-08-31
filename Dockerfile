@@ -13,6 +13,8 @@ RUN bundle config set deployment true
 RUN bundle config set without development:test
 RUN bundle install
 
+RUN mkdir -p tmp/pids
+
 # Cache everything
 COPY . .
 
