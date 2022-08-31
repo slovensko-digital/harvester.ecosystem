@@ -4,6 +4,7 @@ class Metais::SyncDocumentJob < ApplicationJob
   queue_as :metais
 
   API_ENDPOINT = 'https://metais.vicepremier.gov.sk/dms/file/meta/'
+  NOT_FOUND_METADATA_TYPE = 'gnr404'
 
   def perform(parent, json)
     json = json['configurationItem']
@@ -17,7 +18,7 @@ class Metais::SyncDocumentJob < ApplicationJob
       return unless document.latest_version.nil? || 
         document.latest_version.raw_data != json.to_json ||
         (document.latest_version.raw_meta != meta.to_json &&
-          !(meta['type'] == 'gnr404' &&  # response for not found metadata includes unique logToken for each request, thus it is not a different version of metadata
+          !(meta['type'] == NOT_FOUND_METADATA_TYPE &&
              meta['type'] == JSON.parse(document.latest_version.raw_meta)['type'])
         )
 
