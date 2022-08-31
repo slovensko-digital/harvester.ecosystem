@@ -33,8 +33,8 @@ class Metais::SyncIsvsJob < ApplicationJob
     isvs.poznamka = get_attribute(json, 'Gen_Profil_poznamka')
     isvs.zdroj = get_attribute(json, 'Gen_Profil_zdroj')
     isvs.popis_as_is = get_attribute(json, 'EA_Profil_ISVS_popis_as_is')
-    isvs.stav = get_attribute(json, 'EA_Profil_ISVS_stav_isvs')
-    isvs.typ = get_attribute(json, 'EA_Profil_ISVS_typ_isvs')
+    isvs.stav_isvs = get_attribute(json, 'EA_Profil_ISVS_stav_isvs')
+    isvs.typ_isvs = get_attribute(json, 'EA_Profil_ISVS_typ_isvs')
   end
 
   def get_attribute(json, key)

@@ -18,7 +18,7 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.decimal :suma_vydavkov, :precision => 15, :scale => 2
       t.decimal :rocne_naklady, :precision => 15, :scale => 2
       t.string :ref_id
-      t.string :stav
+      t.string :status
 
       t.datetime :zmena_stavu
       t.decimal :schvalene_rocne_naklady, :precision => 15, :scale => 2
@@ -30,7 +30,7 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.datetime :zmluva_o_dielo
       t.string :zmluva_o_dielo_crz
   
-      t.text :raw_data, null: false
+      t.jsonb :raw_data, null: false
       t.timestamps
     end
 
@@ -45,10 +45,10 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.text :popis_as_is
       t.text :poznamka
       t.string :zdroj
-      t.string :stav
-      t.string :typ
+      t.string :stav_isvs
+      t.string :typ_isvs
 
-      t.text :raw_data, null: false
+      t.jsonb :raw_data, null: false
       t.timestamps
     end
 
@@ -58,17 +58,17 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.string :nazov, null: false
       t.string :kod_metais, null: false
       t.string :ref_id, null: false
-      t.string :mimetype
-      t.integer :size
-      t.string :stav_evidencie
+      t.string :mime_type
+      t.integer :content_length
+      t.string :status
       t.text :poznamka
-      t.string :typ
+      t.string :typ_dokumentu
       t.string :filename
       t.datetime :metais_created_at
       t.datetime :metais_updated_at
   
-      t.text :raw_data, null: false
-      t.text :raw_meta, null: false
+      t.jsonb :raw_data, null: false
+      t.jsonb :raw_meta, null: false
       t.timestamps
     end
 
@@ -78,17 +78,17 @@ class CreateMetaisVersions < ActiveRecord::Migration[6.0]
       t.string :nazov, null: false
       t.string :kod_metais, null: false
       t.string :ref_id, null: false
-      t.string :mimetype
-      t.integer :size
-      t.string :stav_evidencie
+      t.string :mime_type
+      t.integer :content_length
+      t.string :status
       t.text :poznamka
-      t.string :typ
+      t.string :typ_dokumentu
       t.string :filename
       t.datetime :metais_created_at
       t.datetime :metais_updated_at
   
-      t.text :raw_data, null: false
-      t.text :raw_meta, null: false
+      t.jsonb :raw_data, null: false
+      t.jsonb :raw_meta, null: false
       t.timestamps
     end
   end

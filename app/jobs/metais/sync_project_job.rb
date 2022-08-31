@@ -43,7 +43,7 @@ class Metais::SyncProjectJob < ApplicationJob
     p.rocne_naklady = get_projects_attribute(json, 'Financny_Profil_Projekt_rocne_naklady')
     p.ref_id = get_projects_attribute(json, 'Gen_Profil_ref_id')
     p.program = get_projects_attribute(json, 'EA_Profil_Projekt_program')
-    p.stav = get_projects_attribute(json, 'EA_Profil_Projekt_status')
+    p.status = get_projects_attribute(json, 'EA_Profil_Projekt_status')
 
     p.zmena_stavu = get_projects_attribute(json, 'EA_Profil_Projekt_zmena_stavu')
     p.schvalene_rocne_naklady = get_projects_attribute(json, 'Financny_Profil_Projekt_schvalene_rocne_naklady')
