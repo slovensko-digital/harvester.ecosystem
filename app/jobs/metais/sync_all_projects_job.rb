@@ -6,7 +6,7 @@ class Metais::SyncAllProjectsJob < ApplicationJob
   API_ENDPOINT = 'https://metais.vicepremier.gov.sk/cmdb/read/cilistfiltered'
   PROJECTS_REQUEST_TEMPLATE = '{"filter":{"type":["Projekt"],"metaAttributes":{"state":["DRAFT"]}},"page":%{page},"perpage":5}'
 
-  def perform()
+  def perform
     conn = Faraday.new(url: API_ENDPOINT)
     page_number = 1
 

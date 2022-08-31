@@ -5,7 +5,7 @@ class Metais::SyncCodelistProjectPhaseJob < ApplicationJob
 
   API_ENDPOINT = 'https://metais.vicepremier.gov.sk/enumsrepository/enums/enum/all/FAZA_PROJEKTU?lang=sk'
 
-  def perform()
+  def perform
     conn = Faraday.new(url: API_ENDPOINT)
     response = conn.get('', 'Content-Type' => 'application/json')
     parsed_json = JSON.parse(response.body)

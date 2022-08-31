@@ -4,7 +4,7 @@ class Metais::SyncCodelistProgramJob < ApplicationJob
   API_ENDPOINT = 'https://metais.vicepremier.gov.sk/cmdb/read/cilistfiltered'
   REQUEST_BODY = '{"filter":{"type":["Program"],"metaAttributes":{"state":["DRAFT"]}},"page":1,"perpage":10000,"sortBy":"Gen_Profil_nazov","sortType":"ASC"}'
 
-  def perform()
+  def perform
     conn = Faraday.new(url: API_ENDPOINT)
     page_number = 1
 

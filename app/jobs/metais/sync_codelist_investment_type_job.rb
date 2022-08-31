@@ -5,7 +5,7 @@ class Metais::SyncCodelistInvestmentTypeJob < ApplicationJob
 
   API_ENDPOINT = 'https://metais.vicepremier.gov.sk/enumsrepository/enums/enum/all/TYP_INVESTICIE?lang=sk'
 
-  def perform()
+  def perform
     conn = Faraday.new(url: API_ENDPOINT)
     response = conn.get('', 'Content-Type' => 'application/json')
     parsed_json = JSON.parse(response.body)
