@@ -1,0 +1,257 @@
+{
+  "pagination": {
+    "page": 1,
+    "perPage": 10000,
+    "totalPages": 1,
+    "totaltems": 7
+  },
+  "configurationItemSet": [
+    {
+      "type": "Program",
+      "uuid": "74c92785-4bb3-4bff-957c-e5783b2035a1",
+      "attributes": [
+        {
+          "name": "Gen_Profil_anglicky_nazov",
+          "value": "Recovery and Resilience Facility"
+        },
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "prg_36"
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "Fond obnovy a odolnosti RRF"
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/operational-program/36"
+        }
+      ],
+      "metaAttributes": {
+        "owner": "1d8a37f7-3063-46d2-b66a-c1b0c8471878-67d48d04-321e-426e-a321-e0bc6fa40437",
+        "state": "DRAFT",
+        "createdBy": "martin.bezek",
+        "createdAt": "2021-01-25T11:17:26.652Z",
+        "lastModifiedBy": "janka.rejtova",
+        "lastModifiedAt": "2021-07-07T12:59:30.835Z"
+      }
+    },
+    {
+      "type": "Program",
+      "uuid": "ab82980f-157a-4e1b-916e-0aafbca27014",
+      "attributes": [
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "prg_40"
+        },
+        {
+          "name": "Gen_Profil_popis",
+          "value": "Iné Operačné programy financované z EŠIF (napr. OP Kvalita životného prostredia a pod.)."
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "Iné Operačné programy financované z EŠIF"
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/operational-program/40"
+        }
+      ],
+      "metaAttributes": {
+        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-a26e801d-c331-408a-bb69-4ec22a6c009a",
+        "state": "DRAFT",
+        "createdBy": "jan.kulavjak",
+        "createdAt": "2021-03-18T11:42:17.026Z",
+        "lastModifiedBy": "jan.kulavjak",
+        "lastModifiedAt": "2021-03-18T11:42:17.026Z"
+      }
+    },
+    {
+      "type": "Program",
+      "uuid": "cbb58995-4588-4fec-ab49-f491ba95f223",
+      "attributes": [
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "prg_18"
+        },
+        {
+          "name": "Gen_Profil_popis",
+          "value": "Medzirezortný program vytvorený za účelom individuálneho evidovania IT projektov financovaných zo štátneho rozpočtu. Každá kapitola v štátnom rozpočte má vytvorený vlastný podprogram."
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "Medzirezortný program 0EK Informačné technológie financované zo štátneho rozpočtu"
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/operational-program/18"
+        }
+      ],
+      "metaAttributes": {
+        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-67d48d04-321e-426e-a321-e0bc6fa40437",
+        "state": "DRAFT",
+        "createdBy": "martin.bezek",
+        "createdAt": "2020-03-05T10:31:33.179Z",
+        "lastModifiedBy": "martin.bezek",
+        "lastModifiedAt": "2020-06-09T14:20:14.282Z"
+      }
+    },
+    {
+      "type": "Program",
+      "uuid": "6b80f7a6-3b2e-42ba-892f-d57070e75642",
+      "attributes": [
+        {
+          "name": "Gen_Profil_anglicky_nazov",
+          "value": "OP Slovakia"
+        },
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "prg_37"
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "OP Slovensko"
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/operational-program/37"
+        }
+      ],
+      "metaAttributes": {
+        "owner": "1d8a37f7-3063-46d2-b66a-c1b0c8471878-67d48d04-321e-426e-a321-e0bc6fa40437",
+        "state": "DRAFT",
+        "createdBy": "martin.bezek",
+        "createdAt": "2021-01-25T11:17:51.701Z",
+        "lastModifiedBy": "martin.bezek",
+        "lastModifiedAt": "2021-01-25T11:17:51.701Z"
+      }
+    },
+    {
+      "type": "Program",
+      "uuid": "c820b847-636b-41ad-83f1-5f291dbcb528",
+      "attributes": [
+        {
+          "name": "Gen_Profil_EA_skrateny_nazov",
+          "value": "OPIS"
+        },
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "prg_4"
+        },
+        {
+          "name": "Gen_Profil_EA_zoznam_referencii",
+          "value": []
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "Operačný program Informatizácia spoločnosti"
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/operational-program/4"
+        }
+      ],
+      "metaAttributes": {
+        "owner": "1d8a37f7-3063-46d2-b66a-c1b0c8471878-d5e4b6f4-f103-44f1-b588-9db280e7d850",
+        "state": "DRAFT",
+        "createdBy": "matej.kontura",
+        "createdAt": "2016-05-17T08:26:47.490Z",
+        "lastModifiedBy": "matej.kontura",
+        "lastModifiedAt": "2016-05-17T08:26:47.490Z"
+      }
+    },
+    {
+      "type": "Program",
+      "uuid": "54b978f2-b1f1-4bd0-926a-4c6ac0213417",
+      "attributes": [
+        {
+          "name": "Gen_Profil_EA_skrateny_nazov",
+          "value": "OPII"
+        },
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "prg_5"
+        },
+        {
+          "name": "Gen_Profil_EA_zoznam_referencii",
+          "value": []
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "Operačný program Integrovaná Infraštruktúra"
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/operational-program/5"
+        }
+      ],
+      "metaAttributes": {
+        "owner": "1d8a37f7-3063-46d2-b66a-c1b0c8471878-d5e4b6f4-f103-44f1-b588-9db280e7d850",
+        "state": "DRAFT",
+        "createdBy": "matej.kontura",
+        "createdAt": "2016-05-17T09:22:56.239Z",
+        "lastModifiedBy": "pavol.kopacka",
+        "lastModifiedAt": "2021-10-15T08:44:46.135Z"
+      }
+    },
+    {
+      "type": "Program",
+      "uuid": "53ffb81a-9c63-4a12-8038-90c437197e91",
+      "attributes": [
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "prg_29"
+        },
+        {
+          "name": "Gen_Profil_popis",
+          "value": "Program predstavuje zoznam projektov, ktoré sa realizujú z finančných prostriedkov mimo EŠIF - zdroje operačných programov (OPII, OPIS) alebo mimo medzirezortného programu 0EK. Pôjde predovšetkým o zdroje samosprávny, Sociálnej poisťovne a vlastné finančné prostriedky štátnych obchodných spoločností, ktoré neboli rozpočtované v štátnom rozpočte."
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "Programy mimo medzirezortného programu 0EK a EŠIF"
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/operational-program/29"
+        }
+      ],
+      "metaAttributes": {
+        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-67d48d04-321e-426e-a321-e0bc6fa40437",
+        "state": "DRAFT",
+        "createdBy": "martin.bezek",
+        "createdAt": "2020-06-09T14:19:01.601Z",
+        "lastModifiedBy": "janka.rejtova",
+        "lastModifiedAt": "2021-02-26T09:17:23.762Z"
+      }
+    }
+  ],
+  "incidentRelationshipSet": []
+}

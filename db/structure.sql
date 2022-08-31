@@ -1,5 +1,6 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -16,29 +17,22 @@ CREATE SCHEMA itms;
 
 
 --
+-- Name: metais; Type: SCHEMA; Schema: -; Owner: -
+--
+
+CREATE SCHEMA metais;
+
+
+--
 -- Name: upvs; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA upvs;
 
 
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
 
 --
 -- Name: aktivity; Type: TABLE; Schema: itms; Owner: -
@@ -66,6 +60,7 @@ CREATE TABLE itms.aktivity (
 --
 
 CREATE SEQUENCE itms.aktivity_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -99,6 +94,7 @@ CREATE TABLE itms.ciselniky (
 --
 
 CREATE SEQUENCE itms.ciselniky_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -147,6 +143,7 @@ CREATE TABLE itms.deklarovane_vydavky (
 --
 
 CREATE SEQUENCE itms.deklarovane_vydavky_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -178,6 +175,7 @@ CREATE TABLE itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie (
 --
 
 CREATE SEQUENCE itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -209,6 +207,7 @@ CREATE TABLE itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie (
 --
 
 CREATE SEQUENCE itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -254,6 +253,7 @@ CREATE TABLE itms.dodavatelia (
 --
 
 CREATE SEQUENCE itms.dodavatelia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -292,6 +292,7 @@ CREATE TABLE itms.hodnoty_ciselnikov (
 --
 
 CREATE SEQUENCE itms.hodnoty_ciselnikov_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -332,6 +333,7 @@ CREATE TABLE itms.intenzity (
 --
 
 CREATE SEQUENCE itms.intenzity_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -367,6 +369,7 @@ CREATE TABLE itms.intenzity_zdroje (
 --
 
 CREATE SEQUENCE itms.intenzity_zdroje_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -420,6 +423,7 @@ CREATE TABLE itms.konkretne_ciele_hodnoty_ciselnikov (
 --
 
 CREATE SEQUENCE itms.konkretne_ciele_hodnoty_ciselnikov_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -439,6 +443,7 @@ ALTER SEQUENCE itms.konkretne_ciele_hodnoty_ciselnikov_id_seq OWNED BY itms.konk
 --
 
 CREATE SEQUENCE itms.konkretne_ciele_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -471,6 +476,7 @@ CREATE TABLE itms.konkretne_ciele_typy_aktivit (
 --
 
 CREATE SEQUENCE itms.konkretne_ciele_typy_aktivit_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -505,6 +511,7 @@ CREATE TABLE itms.miesta_realizacie (
 --
 
 CREATE SEQUENCE itms.miesta_realizacie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -540,6 +547,7 @@ CREATE TABLE itms.monitorovacie_terminy (
 --
 
 CREATE SEQUENCE itms.monitorovacie_terminy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -608,6 +616,7 @@ CREATE TABLE itms.nezrovnalosti (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -640,6 +649,7 @@ CREATE TABLE itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -672,6 +682,7 @@ CREATE TABLE itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -704,6 +715,7 @@ CREATE TABLE itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -736,6 +748,7 @@ CREATE TABLE itms.nezrovnalosti_suvisiace_nezrovnalosti (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_suvisiace_nezrovnalosti_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -768,6 +781,7 @@ CREATE TABLE itms.nezrovnalosti_suvisiace_pohladavkove_doklady (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -800,6 +814,7 @@ CREATE TABLE itms.nezrovnalosti_suvisiace_verejne_obstaravania (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_suvisiace_verejne_obstaravania_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -832,6 +847,7 @@ CREATE TABLE itms.nezrovnalosti_suvisiace_zop (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_suvisiace_zop_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -864,6 +880,7 @@ CREATE TABLE itms.nezrovnalosti_typy_nezrovnalosti (
 --
 
 CREATE SEQUENCE itms.nezrovnalosti_typy_nezrovnalosti_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -897,6 +914,7 @@ CREATE TABLE itms.nuts_kody (
 --
 
 CREATE SEQUENCE itms.nuts_kody_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -939,6 +957,7 @@ CREATE TABLE itms.operacne_programy (
 --
 
 CREATE SEQUENCE itms.operacne_programy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -972,6 +991,7 @@ CREATE TABLE itms.organizacne_zlozky (
 --
 
 CREATE SEQUENCE itms.organizacne_zlozky_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1008,6 +1028,7 @@ CREATE TABLE itms.osoby (
 --
 
 CREATE SEQUENCE itms.osoby_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1065,6 +1086,7 @@ CREATE TABLE itms.pohladavkove_doklady (
 --
 
 CREATE SEQUENCE itms.pohladavkove_doklady_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1097,6 +1119,7 @@ CREATE TABLE itms.pohladavkove_doklady_suvisiace_verejne_obstaravania (
 --
 
 CREATE SEQUENCE itms.pohladavkove_doklady_suvisiace_verejne_obstaravania_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1129,6 +1152,7 @@ CREATE TABLE itms.pohladavkove_doklady_suvisiace_zop (
 --
 
 CREATE SEQUENCE itms.pohladavkove_doklady_suvisiace_zop_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1170,6 +1194,7 @@ CREATE TABLE itms.polozky_rozpoctu (
 --
 
 CREATE SEQUENCE itms.polozky_rozpoctu_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1210,6 +1235,7 @@ CREATE TABLE itms.prioritne_osi (
 --
 
 CREATE SEQUENCE itms.prioritne_osi_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1264,6 +1290,7 @@ CREATE TABLE itms.projektove_ukazovatele_casy_plnenia (
 --
 
 CREATE SEQUENCE itms.projektove_ukazovatele_casy_plnenia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1296,6 +1323,7 @@ CREATE TABLE itms.projektove_ukazovatele_fondy (
 --
 
 CREATE SEQUENCE itms.projektove_ukazovatele_fondy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1315,6 +1343,7 @@ ALTER SEQUENCE itms.projektove_ukazovatele_fondy_id_seq OWNED BY itms.projektove
 --
 
 CREATE SEQUENCE itms.projektove_ukazovatele_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1391,6 +1420,7 @@ CREATE TABLE itms.projekty_aktivity (
 --
 
 CREATE SEQUENCE itms.projekty_aktivity_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1423,6 +1453,7 @@ CREATE TABLE itms.projekty_formy_financovania (
 --
 
 CREATE SEQUENCE itms.projekty_formy_financovania_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1455,6 +1486,7 @@ CREATE TABLE itms.projekty_hospodarske_cinnosti (
 --
 
 CREATE SEQUENCE itms.projekty_hospodarske_cinnosti_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1474,6 +1506,7 @@ ALTER SEQUENCE itms.projekty_hospodarske_cinnosti_id_seq OWNED BY itms.projekty_
 --
 
 CREATE SEQUENCE itms.projekty_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1506,6 +1539,7 @@ CREATE TABLE itms.projekty_intenzity (
 --
 
 CREATE SEQUENCE itms.projekty_intenzity_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1540,6 +1574,7 @@ CREATE TABLE itms.projekty_meratelne_ukazovatele (
 --
 
 CREATE SEQUENCE itms.projekty_meratelne_ukazovatele_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1570,6 +1605,7 @@ CREATE TABLE itms.projekty_miesta_realizacie (
 --
 
 CREATE SEQUENCE itms.projekty_miesta_realizacie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1600,6 +1636,7 @@ CREATE TABLE itms.projekty_miesta_realizacie_mimo_uzemia_op (
 --
 
 CREATE SEQUENCE itms.projekty_miesta_realizacie_mimo_uzemia_op_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1632,6 +1669,7 @@ CREATE TABLE itms.projekty_oblasti_intervencie (
 --
 
 CREATE SEQUENCE itms.projekty_oblasti_intervencie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1664,6 +1702,7 @@ CREATE TABLE itms.projekty_organizacne_zlozky (
 --
 
 CREATE SEQUENCE itms.projekty_organizacne_zlozky_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1696,6 +1735,7 @@ CREATE TABLE itms.projekty_partneri (
 --
 
 CREATE SEQUENCE itms.projekty_partneri_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1728,6 +1768,7 @@ CREATE TABLE itms.projekty_polozky_rozpoctu (
 --
 
 CREATE SEQUENCE itms.projekty_polozky_rozpoctu_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1760,6 +1801,7 @@ CREATE TABLE itms.projekty_sekundarne_tematicke_okruhy (
 --
 
 CREATE SEQUENCE itms.projekty_sekundarne_tematicke_okruhy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1792,6 +1834,7 @@ CREATE TABLE itms.projekty_typy_uzemia (
 --
 
 CREATE SEQUENCE itms.projekty_typy_uzemia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1824,6 +1867,7 @@ CREATE TABLE itms.projekty_uzemne_mechanizmy (
 --
 
 CREATE SEQUENCE itms.projekty_uzemne_mechanizmy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1868,6 +1912,7 @@ CREATE TABLE itms.subjekty (
 --
 
 CREATE SEQUENCE itms.subjekty_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1904,6 +1949,7 @@ CREATE TABLE itms.typy_aktivit (
 --
 
 CREATE SEQUENCE itms.typy_aktivit_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1946,6 +1992,7 @@ CREATE TABLE itms.uctovne_doklady (
 --
 
 CREATE SEQUENCE itms.uctovne_doklady_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1989,6 +2036,7 @@ CREATE TABLE itms.uctovne_doklady_polozky_dokladu (
 --
 
 CREATE SEQUENCE itms.uctovne_doklady_polozky_dokladu_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2021,6 +2069,7 @@ CREATE TABLE itms.uctovne_doklady_projekty (
 --
 
 CREATE SEQUENCE itms.uctovne_doklady_projekty_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2096,6 +2145,7 @@ CREATE TABLE itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik (
 --
 
 CREATE SEQUENCE itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovn_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2128,6 +2178,7 @@ CREATE TABLE itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik (
 --
 
 CREATE SEQUENCE itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2160,6 +2211,7 @@ CREATE TABLE itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik (
 --
 
 CREATE SEQUENCE itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2179,6 +2231,7 @@ ALTER SEQUENCE itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_id_se
 --
 
 CREATE SEQUENCE itms.verejne_obstaravania_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2211,6 +2264,7 @@ CREATE TABLE itms.verejne_obstaravania_operacne_programy (
 --
 
 CREATE SEQUENCE itms.verejne_obstaravania_operacne_programy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2243,6 +2297,7 @@ CREATE TABLE itms.verejne_obstaravania_projekty (
 --
 
 CREATE SEQUENCE itms.verejne_obstaravania_projekty_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2275,6 +2330,7 @@ CREATE TABLE itms.verejne_obstaravania_uctovne_doklady (
 --
 
 CREATE SEQUENCE itms.verejne_obstaravania_uctovne_doklady_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2336,6 +2392,7 @@ CREATE TABLE itms.vyzvy_planovane_doplnujuce_info (
 --
 
 CREATE SEQUENCE itms.vyzvy_planovane_doplnujuce_info_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2355,6 +2412,7 @@ ALTER SEQUENCE itms.vyzvy_planovane_doplnujuce_info_id_seq OWNED BY itms.vyzvy_p
 --
 
 CREATE SEQUENCE itms.vyzvy_planovane_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2387,6 +2445,7 @@ CREATE TABLE itms.vyzvy_planovane_konkretne_ciele (
 --
 
 CREATE SEQUENCE itms.vyzvy_planovane_konkretne_ciele_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2419,6 +2478,7 @@ CREATE TABLE itms.vyzvy_planovane_poskytovatelia (
 --
 
 CREATE SEQUENCE itms.vyzvy_planovane_poskytovatelia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2478,6 +2538,7 @@ CREATE TABLE itms.vyzvy_vyhlasene_doplnujuce_info (
 --
 
 CREATE SEQUENCE itms.vyzvy_vyhlasene_doplnujuce_info_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2510,6 +2571,7 @@ CREATE TABLE itms.vyzvy_vyhlasene_fondy (
 --
 
 CREATE SEQUENCE itms.vyzvy_vyhlasene_fondy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2529,6 +2591,7 @@ ALTER SEQUENCE itms.vyzvy_vyhlasene_fondy_id_seq OWNED BY itms.vyzvy_vyhlasene_f
 --
 
 CREATE SEQUENCE itms.vyzvy_vyhlasene_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2562,6 +2625,7 @@ CREATE TABLE itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit (
 --
 
 CREATE SEQUENCE itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2594,6 +2658,7 @@ CREATE TABLE itms.vyzvy_vyhlasene_kontaktne_osoby (
 --
 
 CREATE SEQUENCE itms.vyzvy_vyhlasene_kontaktne_osoby_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2626,6 +2691,7 @@ CREATE TABLE itms.vyzvy_vyhlasene_poskytovatelia (
 --
 
 CREATE SEQUENCE itms.vyzvy_vyhlasene_poskytovatelia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2659,6 +2725,7 @@ CREATE TABLE itms.vyzvy_vyhlasene_posudzovane_obdobia (
 --
 
 CREATE SEQUENCE itms.vyzvy_vyhlasene_posudzovane_obdobia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2691,6 +2758,7 @@ CREATE TABLE itms.vyzvy_vyhlasene_vyzvy_planovane (
 --
 
 CREATE SEQUENCE itms.vyzvy_vyhlasene_vyzvy_planovane_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2751,6 +2819,7 @@ CREATE TABLE itms.zmluvy_verejne_obstaravania_dalsie_url (
 --
 
 CREATE SEQUENCE itms.zmluvy_verejne_obstaravania_dalsie_url_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2785,6 +2854,7 @@ CREATE TABLE itms.zmluvy_verejne_obstaravania_dodavatelia (
 --
 
 CREATE SEQUENCE itms.zmluvy_verejne_obstaravania_dodavatelia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2804,6 +2874,7 @@ ALTER SEQUENCE itms.zmluvy_verejne_obstaravania_dodavatelia_id_seq OWNED BY itms
 --
 
 CREATE SEQUENCE itms.zmluvy_verejne_obstaravania_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2843,6 +2914,7 @@ CREATE TABLE itms.zonfp_spracovane_aktivity_projekt (
 --
 
 CREATE SEQUENCE itms.zonfp_aktivity_projekt_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2875,6 +2947,7 @@ CREATE TABLE itms.zonfp_spracovane_formy_financovania (
 --
 
 CREATE SEQUENCE itms.zonfp_formy_financovania_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2907,6 +2980,7 @@ CREATE TABLE itms.zonfp_spracovane_hodnotitelia (
 --
 
 CREATE SEQUENCE itms.zonfp_hodnotitelia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2939,6 +3013,7 @@ CREATE TABLE itms.zonfp_spracovane_hospodarske_cinnosti (
 --
 
 CREATE SEQUENCE itms.zonfp_hospodarske_cinnosti_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3008,6 +3083,7 @@ CREATE TABLE itms.zonfp_spracovane (
 --
 
 CREATE SEQUENCE itms.zonfp_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3042,6 +3118,7 @@ CREATE TABLE itms.zonfp_spracovane_meratelne_ukazovatele (
 --
 
 CREATE SEQUENCE itms.zonfp_meratelne_ukazovatele_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3074,6 +3151,7 @@ CREATE TABLE itms.zonfp_spracovane_miesta_realizacie (
 --
 
 CREATE SEQUENCE itms.zonfp_miesta_realizacie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3106,6 +3184,7 @@ CREATE TABLE itms.zonfp_spracovane_miesta_realizacie_mimo_uzemia_op (
 --
 
 CREATE SEQUENCE itms.zonfp_miesta_realizacie_mimo_uzemia_op_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3138,6 +3217,7 @@ CREATE TABLE itms.zonfp_spracovane_oblasti_intervencie (
 --
 
 CREATE SEQUENCE itms.zonfp_oblasti_intervencie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3170,6 +3250,7 @@ CREATE TABLE itms.zonfp_spracovane_organizacne_zlozky (
 --
 
 CREATE SEQUENCE itms.zonfp_organizacne_zlozky_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3202,6 +3283,7 @@ CREATE TABLE itms.zonfp_spracovane_partneri (
 --
 
 CREATE SEQUENCE itms.zonfp_partneri_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3235,6 +3317,7 @@ CREATE TABLE itms.zonfp_spracovane_polozky_rozpoctu (
 --
 
 CREATE SEQUENCE itms.zonfp_polozky_rozpoctu_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3306,6 +3389,7 @@ CREATE TABLE itms.zonfp_prijate_aktivity_projekt (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_aktivity_projekt_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3338,6 +3422,7 @@ CREATE TABLE itms.zonfp_prijate_formy_financovania (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_formy_financovania_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3370,6 +3455,7 @@ CREATE TABLE itms.zonfp_prijate_hospodarske_cinnosti (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_hospodarske_cinnosti_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3389,6 +3475,7 @@ ALTER SEQUENCE itms.zonfp_prijate_hospodarske_cinnosti_id_seq OWNED BY itms.zonf
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3423,6 +3510,7 @@ CREATE TABLE itms.zonfp_prijate_meratelne_ukazovatele (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_meratelne_ukazovatele_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3455,6 +3543,7 @@ CREATE TABLE itms.zonfp_prijate_miesta_realizacie (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_miesta_realizacie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3487,6 +3576,7 @@ CREATE TABLE itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3519,6 +3609,7 @@ CREATE TABLE itms.zonfp_prijate_oblasti_intervencie (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_oblasti_intervencie_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3551,6 +3642,7 @@ CREATE TABLE itms.zonfp_prijate_organizacne_zlozky (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_organizacne_zlozky_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3583,6 +3675,7 @@ CREATE TABLE itms.zonfp_prijate_partneri (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_partneri_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3616,6 +3709,7 @@ CREATE TABLE itms.zonfp_prijate_polozky_rozpoctu (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_polozky_rozpoctu_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3648,6 +3742,7 @@ CREATE TABLE itms.zonfp_prijate_sekundarne_tematicke_okruhy (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_sekundarne_tematicke_okruhy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3680,6 +3775,7 @@ CREATE TABLE itms.zonfp_prijate_typy_uzemia (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_typy_uzemia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3712,6 +3808,7 @@ CREATE TABLE itms.zonfp_prijate_uzemne_mechanizmy (
 --
 
 CREATE SEQUENCE itms.zonfp_prijate_uzemne_mechanizmy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3744,6 +3841,7 @@ CREATE TABLE itms.zonfp_spracovane_sekundarne_tematicke_okruhy (
 --
 
 CREATE SEQUENCE itms.zonfp_sekundarne_tematicke_okruhy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3789,6 +3887,7 @@ CREATE TABLE itms.zonfp_spracovane_uzemne_mechanizmy (
 --
 
 CREATE SEQUENCE itms.zonfp_typy_uzemia_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3808,6 +3907,7 @@ ALTER SEQUENCE itms.zonfp_typy_uzemia_id_seq OWNED BY itms.zonfp_spracovane_typy
 --
 
 CREATE SEQUENCE itms.zonfp_uzemne_mechanizmy_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3857,6 +3957,7 @@ CREATE TABLE itms.zop (
 --
 
 CREATE SEQUENCE itms.zop_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3889,6 +3990,7 @@ CREATE TABLE itms.zop_predkladane_za_subjekty (
 --
 
 CREATE SEQUENCE itms.zop_predkladane_za_subjekty_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3904,14 +4006,503 @@ ALTER SEQUENCE itms.zop_predkladane_za_subjekty_id_seq OWNED BY itms.zop_predkla
 
 
 --
+-- Name: codelist_investment_type; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_investment_type (
+    id bigint NOT NULL,
+    code character varying NOT NULL,
+    nazov character varying NOT NULL,
+    order_list integer NOT NULL,
+    popis character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_investment_type_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_investment_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_investment_type_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_investment_type_id_seq OWNED BY metais.codelist_investment_type.id;
+
+
+--
+-- Name: codelist_program; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_program (
+    id bigint NOT NULL,
+    kod_metais character varying NOT NULL,
+    nazov character varying NOT NULL,
+    nazov_en character varying,
+    ref_id character varying,
+    zdroj character varying,
+    raw_data text,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_program_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_program_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_program_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_program_id_seq OWNED BY metais.codelist_program.id;
+
+
+--
+-- Name: codelist_project_phase; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_project_phase (
+    id bigint NOT NULL,
+    code character varying NOT NULL,
+    nazov character varying NOT NULL,
+    order_list integer NOT NULL,
+    popis character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_project_phase_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_project_phase_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_project_phase_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_project_phase_id_seq OWNED BY metais.codelist_project_phase.id;
+
+
+--
+-- Name: codelist_project_state; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_project_state (
+    id bigint NOT NULL,
+    code character varying NOT NULL,
+    nazov character varying NOT NULL,
+    order_list integer NOT NULL,
+    popis character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_project_state_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_project_state_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_project_state_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_project_state_id_seq OWNED BY metais.codelist_project_state.id;
+
+
+--
+-- Name: codelist_source; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.codelist_source (
+    id bigint NOT NULL,
+    code character varying NOT NULL,
+    nazov character varying NOT NULL,
+    order_list integer NOT NULL,
+    popis character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: codelist_source_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.codelist_source_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: codelist_source_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.codelist_source_id_seq OWNED BY metais.codelist_source.id;
+
+
+--
+-- Name: isvs; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.isvs (
+    id bigint NOT NULL,
+    project_id bigint,
+    uuid character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    latest_version_id bigint
+);
+
+
+--
+-- Name: isvs_document_versions; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.isvs_document_versions (
+    id bigint NOT NULL,
+    document_id bigint NOT NULL,
+    nazov character varying NOT NULL,
+    kod_metais character varying NOT NULL,
+    ref_id character varying NOT NULL,
+    mime_type character varying,
+    content_length integer,
+    status character varying,
+    poznamka text,
+    typ_dokumentu character varying,
+    filename character varying,
+    metais_created_at timestamp without time zone,
+    metais_updated_at timestamp without time zone,
+    raw_data jsonb NOT NULL,
+    raw_meta jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: isvs_document_versions_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.isvs_document_versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: isvs_document_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.isvs_document_versions_id_seq OWNED BY metais.isvs_document_versions.id;
+
+
+--
+-- Name: isvs_documents; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.isvs_documents (
+    id bigint NOT NULL,
+    isvs_id bigint,
+    uuid character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    latest_version_id bigint
+);
+
+
+--
+-- Name: isvs_documents_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.isvs_documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: isvs_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.isvs_documents_id_seq OWNED BY metais.isvs_documents.id;
+
+
+--
+-- Name: isvs_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.isvs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: isvs_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.isvs_id_seq OWNED BY metais.isvs.id;
+
+
+--
+-- Name: isvs_versions; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.isvs_versions (
+    id bigint NOT NULL,
+    isvs_id bigint NOT NULL,
+    nazov character varying NOT NULL,
+    kod_metais character varying NOT NULL,
+    ref_id character varying,
+    popis text,
+    popis_as_is text,
+    poznamka text,
+    zdroj character varying,
+    stav_isvs character varying,
+    typ_isvs character varying,
+    raw_data jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: isvs_versions_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.isvs_versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: isvs_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.isvs_versions_id_seq OWNED BY metais.isvs_versions.id;
+
+
+--
+-- Name: project_document_versions; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.project_document_versions (
+    id bigint NOT NULL,
+    document_id bigint NOT NULL,
+    nazov character varying NOT NULL,
+    kod_metais character varying NOT NULL,
+    ref_id character varying NOT NULL,
+    mime_type character varying,
+    content_length integer,
+    status character varying,
+    poznamka text,
+    typ_dokumentu character varying,
+    filename character varying,
+    metais_created_at timestamp without time zone,
+    metais_updated_at timestamp without time zone,
+    raw_data jsonb NOT NULL,
+    raw_meta jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: project_document_versions_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.project_document_versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: project_document_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.project_document_versions_id_seq OWNED BY metais.project_document_versions.id;
+
+
+--
+-- Name: project_documents; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.project_documents (
+    id bigint NOT NULL,
+    project_id bigint,
+    uuid character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    latest_version_id bigint
+);
+
+
+--
+-- Name: project_documents_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.project_documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: project_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.project_documents_id_seq OWNED BY metais.project_documents.id;
+
+
+--
+-- Name: project_versions; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.project_versions (
+    id bigint NOT NULL,
+    project_id bigint NOT NULL,
+    nazov character varying NOT NULL,
+    kod_metais character varying NOT NULL,
+    typ_investicie character varying NOT NULL,
+    prijimatel character varying,
+    faza_projektu character varying,
+    program character varying,
+    popis text,
+    datum_zacatia timestamp without time zone,
+    termin_ukoncenia timestamp without time zone,
+    schvalovaci_proces character varying,
+    zdroj character varying,
+    financna_skupina character varying,
+    suma_vydavkov numeric(15,2),
+    rocne_naklady numeric(15,2),
+    ref_id character varying,
+    status character varying,
+    zmena_stavu timestamp without time zone,
+    schvalene_rocne_naklady numeric(15,2),
+    schvaleny_rozpocet numeric(15,2),
+    datum_nfp timestamp without time zone,
+    link_nfp character varying,
+    vyhlasenie_vo timestamp without time zone,
+    vo character varying,
+    zmluva_o_dielo timestamp without time zone,
+    zmluva_o_dielo_crz character varying,
+    raw_data jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: project_versions_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.project_versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: project_versions_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.project_versions_id_seq OWNED BY metais.project_versions.id;
+
+
+--
+-- Name: projects; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.projects (
+    id bigint NOT NULL,
+    uuid character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    latest_version_id bigint
+);
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.projects_id_seq OWNED BY metais.projects.id;
+
+
+--
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -3943,6 +4534,7 @@ CREATE TABLE upvs.public_authority_edesks (
 --
 
 CREATE SEQUENCE upvs.public_authority_edesks_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3986,6 +4578,7 @@ CREATE TABLE upvs.services_with_forms (
 --
 
 CREATE SEQUENCE upvs.services_with_forms_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4001,777 +4594,868 @@ ALTER SEQUENCE upvs.services_with_forms_id_seq OWNED BY upvs.services_with_forms
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: aktivity id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.aktivity ALTER COLUMN id SET DEFAULT nextval('itms.aktivity_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: ciselniky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.ciselniky ALTER COLUMN id SET DEFAULT nextval('itms.ciselniky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky ALTER COLUMN id SET DEFAULT nextval('itms.deklarovane_vydavky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky_sumy_neschvalene_na_preplatenie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie ALTER COLUMN id SET DEFAULT nextval('itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky_sumy_neziadane_na_preplatenie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie ALTER COLUMN id SET DEFAULT nextval('itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: dodavatelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.dodavatelia ALTER COLUMN id SET DEFAULT nextval('itms.dodavatelia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: hodnoty_ciselnikov id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.hodnoty_ciselnikov ALTER COLUMN id SET DEFAULT nextval('itms.hodnoty_ciselnikov_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: intenzity id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity ALTER COLUMN id SET DEFAULT nextval('itms.intenzity_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: intenzity_zdroje id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity_zdroje ALTER COLUMN id SET DEFAULT nextval('itms.intenzity_zdroje_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: konkretne_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele ALTER COLUMN id SET DEFAULT nextval('itms.konkretne_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: konkretne_ciele_hodnoty_ciselnikov id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele_hodnoty_ciselnikov ALTER COLUMN id SET DEFAULT nextval('itms.konkretne_ciele_hodnoty_ciselnikov_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: konkretne_ciele_typy_aktivit id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele_typy_aktivit ALTER COLUMN id SET DEFAULT nextval('itms.konkretne_ciele_typy_aktivit_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('itms.miesta_realizacie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: monitorovacie_terminy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.monitorovacie_terminy ALTER COLUMN id SET DEFAULT nextval('itms.monitorovacie_terminy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_nezrovnalosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_suvisiace_nezrovnalosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_pohladavkove_doklady id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_suvisiace_pohladavkove_doklady_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_verejne_obstaravania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_suvisiace_verejne_obstaravania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_zop id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_zop ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_suvisiace_zop_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_typy_nezrovnalosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_typy_nezrovnalosti ALTER COLUMN id SET DEFAULT nextval('itms.nezrovnalosti_typy_nezrovnalosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: nuts_kody id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nuts_kody ALTER COLUMN id SET DEFAULT nextval('itms.nuts_kody_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: operacne_programy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.operacne_programy ALTER COLUMN id SET DEFAULT nextval('itms.operacne_programy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('itms.organizacne_zlozky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: osoby id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.osoby ALTER COLUMN id SET DEFAULT nextval('itms.osoby_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady ALTER COLUMN id SET DEFAULT nextval('itms.pohladavkove_doklady_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('itms.pohladavkove_doklady_suvisiace_verejne_obstaravania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady_suvisiace_zop id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_zop ALTER COLUMN id SET DEFAULT nextval('itms.pohladavkove_doklady_suvisiace_zop_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: polozky_rozpoctu id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('itms.polozky_rozpoctu_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: prioritne_osi id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.prioritne_osi ALTER COLUMN id SET DEFAULT nextval('itms.prioritne_osi_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele ALTER COLUMN id SET DEFAULT nextval('itms.projektove_ukazovatele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele_casy_plnenia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele_casy_plnenia ALTER COLUMN id SET DEFAULT nextval('itms.projektove_ukazovatele_casy_plnenia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele_fondy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele_fondy ALTER COLUMN id SET DEFAULT nextval('itms.projektove_ukazovatele_fondy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty ALTER COLUMN id SET DEFAULT nextval('itms.projekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_aktivity id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_aktivity ALTER COLUMN id SET DEFAULT nextval('itms.projekty_aktivity_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_formy_financovania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_formy_financovania ALTER COLUMN id SET DEFAULT nextval('itms.projekty_formy_financovania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_hospodarske_cinnosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('itms.projekty_hospodarske_cinnosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_intenzity id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_intenzity ALTER COLUMN id SET DEFAULT nextval('itms.projekty_intenzity_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_meratelne_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('itms.projekty_meratelne_ukazovatele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('itms.projekty_miesta_realizacie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_miesta_realizacie_mimo_uzemia_op id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_miesta_realizacie_mimo_uzemia_op ALTER COLUMN id SET DEFAULT nextval('itms.projekty_miesta_realizacie_mimo_uzemia_op_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_oblasti_intervencie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('itms.projekty_oblasti_intervencie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('itms.projekty_organizacne_zlozky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_partneri id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_partneri ALTER COLUMN id SET DEFAULT nextval('itms.projekty_partneri_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_polozky_rozpoctu id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('itms.projekty_polozky_rozpoctu_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_sekundarne_tematicke_okruhy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_sekundarne_tematicke_okruhy ALTER COLUMN id SET DEFAULT nextval('itms.projekty_sekundarne_tematicke_okruhy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_typy_uzemia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('itms.projekty_typy_uzemia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: projekty_uzemne_mechanizmy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('itms.projekty_uzemne_mechanizmy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: subjekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.subjekty ALTER COLUMN id SET DEFAULT nextval('itms.subjekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: typy_aktivit id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.typy_aktivit ALTER COLUMN id SET DEFAULT nextval('itms.typy_aktivit_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: uctovne_doklady id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady ALTER COLUMN id SET DEFAULT nextval('itms.uctovne_doklady_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: uctovne_doklady_polozky_dokladu id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady_polozky_dokladu ALTER COLUMN id SET DEFAULT nextval('itms.uctovne_doklady_polozky_dokladu_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: uctovne_doklady_projekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady_projekty ALTER COLUMN id SET DEFAULT nextval('itms.uctovne_doklady_projekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('itms.verejne_obstaravania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik ALTER COLUMN id SET DEFAULT nextval('itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovn_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik ALTER COLUMN id SET DEFAULT nextval('itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik ALTER COLUMN id SET DEFAULT nextval('itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_operacne_programy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_operacne_programy ALTER COLUMN id SET DEFAULT nextval('itms.verejne_obstaravania_operacne_programy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_projekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_projekty ALTER COLUMN id SET DEFAULT nextval('itms.verejne_obstaravania_projekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_uctovne_doklady id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_uctovne_doklady ALTER COLUMN id SET DEFAULT nextval('itms.verejne_obstaravania_uctovne_doklady_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_planovane_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_doplnujuce_info id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_doplnujuce_info ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_planovane_doplnujuce_info_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_konkretne_ciele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_konkretne_ciele ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_planovane_konkretne_ciele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_poskytovatelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_poskytovatelia ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_planovane_poskytovatelia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_vyhlasene_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_doplnujuce_info id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_doplnujuce_info ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_vyhlasene_doplnujuce_info_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_fondy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_fondy ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_vyhlasene_fondy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_kontaktne_osoby id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_kontaktne_osoby ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_vyhlasene_kontaktne_osoby_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_poskytovatelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_poskytovatelia ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_vyhlasene_poskytovatelia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_posudzovane_obdobia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_posudzovane_obdobia ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_vyhlasene_posudzovane_obdobia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_vyzvy_planovane id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_vyzvy_planovane ALTER COLUMN id SET DEFAULT nextval('itms.vyzvy_vyhlasene_vyzvy_planovane_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania ALTER COLUMN id SET DEFAULT nextval('itms.zmluvy_verejne_obstaravania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dalsie_url id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dalsie_url ALTER COLUMN id SET DEFAULT nextval('itms.zmluvy_verejne_obstaravania_dalsie_url_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia ALTER COLUMN id SET DEFAULT nextval('itms.zmluvy_verejne_obstaravania_dodavatelia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_aktivity_projekt id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_aktivity_projekt_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_formy_financovania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_formy_financovania ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_formy_financovania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_hospodarske_cinnosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_hospodarske_cinnosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_meratelne_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_meratelne_ukazovatele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_miesta_realizacie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie_mimo_uzemia_op id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_oblasti_intervencie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_oblasti_intervencie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_organizacne_zlozky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_partneri id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_partneri ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_partneri_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_polozky_rozpoctu id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_polozky_rozpoctu_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_sekundarne_tematicke_okruhy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_sekundarne_tematicke_okruhy ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_sekundarne_tematicke_okruhy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_typy_uzemia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_typy_uzemia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_uzemne_mechanizmy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_prijate_uzemne_mechanizmy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_aktivity_projekt id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_aktivity_projekt_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_formy_financovania id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_formy_financovania ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_formy_financovania_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_hodnotitelia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_hodnotitelia ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_hodnotitelia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_hospodarske_cinnosti id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_hospodarske_cinnosti ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_hospodarske_cinnosti_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_meratelne_ukazovatele id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_meratelne_ukazovatele ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_meratelne_ukazovatele_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_miesta_realizacie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie_mimo_uzemia_op id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie_mimo_uzemia_op ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_miesta_realizacie_mimo_uzemia_op_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_oblasti_intervencie id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_oblasti_intervencie ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_oblasti_intervencie_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_organizacne_zlozky id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_organizacne_zlozky ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_organizacne_zlozky_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_partneri id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_partneri ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_partneri_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_polozky_rozpoctu id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_polozky_rozpoctu ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_polozky_rozpoctu_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_sekundarne_tematicke_okruhy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_sekundarne_tematicke_okruhy ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_sekundarne_tematicke_okruhy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_typy_uzemia id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_typy_uzemia ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_typy_uzemia_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_uzemne_mechanizmy id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_uzemne_mechanizmy ALTER COLUMN id SET DEFAULT nextval('itms.zonfp_uzemne_mechanizmy_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zop id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop ALTER COLUMN id SET DEFAULT nextval('itms.zop_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: itms; Owner: -
+-- Name: zop_predkladane_za_subjekty id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop_predkladane_za_subjekty ALTER COLUMN id SET DEFAULT nextval('itms.zop_predkladane_za_subjekty_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: upvs; Owner: -
+-- Name: codelist_investment_type id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_investment_type ALTER COLUMN id SET DEFAULT nextval('metais.codelist_investment_type_id_seq'::regclass);
+
+
+--
+-- Name: codelist_program id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_program ALTER COLUMN id SET DEFAULT nextval('metais.codelist_program_id_seq'::regclass);
+
+
+--
+-- Name: codelist_project_phase id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_project_phase ALTER COLUMN id SET DEFAULT nextval('metais.codelist_project_phase_id_seq'::regclass);
+
+
+--
+-- Name: codelist_project_state id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_project_state ALTER COLUMN id SET DEFAULT nextval('metais.codelist_project_state_id_seq'::regclass);
+
+
+--
+-- Name: codelist_source id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_source ALTER COLUMN id SET DEFAULT nextval('metais.codelist_source_id_seq'::regclass);
+
+
+--
+-- Name: isvs id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs ALTER COLUMN id SET DEFAULT nextval('metais.isvs_id_seq'::regclass);
+
+
+--
+-- Name: isvs_document_versions id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_document_versions ALTER COLUMN id SET DEFAULT nextval('metais.isvs_document_versions_id_seq'::regclass);
+
+
+--
+-- Name: isvs_documents id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_documents ALTER COLUMN id SET DEFAULT nextval('metais.isvs_documents_id_seq'::regclass);
+
+
+--
+-- Name: isvs_versions id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_versions ALTER COLUMN id SET DEFAULT nextval('metais.isvs_versions_id_seq'::regclass);
+
+
+--
+-- Name: project_document_versions id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_document_versions ALTER COLUMN id SET DEFAULT nextval('metais.project_document_versions_id_seq'::regclass);
+
+
+--
+-- Name: project_documents id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_documents ALTER COLUMN id SET DEFAULT nextval('metais.project_documents_id_seq'::regclass);
+
+
+--
+-- Name: project_versions id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_versions ALTER COLUMN id SET DEFAULT nextval('metais.project_versions_id_seq'::regclass);
+
+
+--
+-- Name: projects id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.projects ALTER COLUMN id SET DEFAULT nextval('metais.projects_id_seq'::regclass);
+
+
+--
+-- Name: public_authority_edesks id; Type: DEFAULT; Schema: upvs; Owner: -
 --
 
 ALTER TABLE ONLY upvs.public_authority_edesks ALTER COLUMN id SET DEFAULT nextval('upvs.public_authority_edesks_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: upvs; Owner: -
+-- Name: services_with_forms id; Type: DEFAULT; Schema: upvs; Owner: -
 --
 
 ALTER TABLE ONLY upvs.services_with_forms ALTER COLUMN id SET DEFAULT nextval('upvs.services_with_forms_id_seq'::regclass);
 
 
 --
--- Name: aktivity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: aktivity aktivity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.aktivity
@@ -4779,7 +5463,7 @@ ALTER TABLE ONLY itms.aktivity
 
 
 --
--- Name: ciselniky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: ciselniky ciselniky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.ciselniky
@@ -4787,7 +5471,7 @@ ALTER TABLE ONLY itms.ciselniky
 
 
 --
--- Name: deklarovane_vydavky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky deklarovane_vydavky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky
@@ -4795,7 +5479,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky
 
 
 --
--- Name: deklarovane_vydavky_sumy_neschvalene_na_preplatenie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky_sumy_neschvalene_na_preplatenie deklarovane_vydavky_sumy_neschvalene_na_preplatenie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie
@@ -4803,7 +5487,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie
 
 
 --
--- Name: deklarovane_vydavky_sumy_neziadane_na_preplatenie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky_sumy_neziadane_na_preplatenie deklarovane_vydavky_sumy_neziadane_na_preplatenie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie
@@ -4811,7 +5495,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie
 
 
 --
--- Name: dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: dodavatelia dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.dodavatelia
@@ -4819,7 +5503,7 @@ ALTER TABLE ONLY itms.dodavatelia
 
 
 --
--- Name: hodnoty_ciselnikov_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: hodnoty_ciselnikov hodnoty_ciselnikov_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.hodnoty_ciselnikov
@@ -4827,7 +5511,7 @@ ALTER TABLE ONLY itms.hodnoty_ciselnikov
 
 
 --
--- Name: intenzity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity intenzity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity
@@ -4835,7 +5519,7 @@ ALTER TABLE ONLY itms.intenzity
 
 
 --
--- Name: intenzity_zdroje_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity_zdroje intenzity_zdroje_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity_zdroje
@@ -4843,7 +5527,7 @@ ALTER TABLE ONLY itms.intenzity_zdroje
 
 
 --
--- Name: konkretne_ciele_hodnoty_ciselnikov_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele_hodnoty_ciselnikov konkretne_ciele_hodnoty_ciselnikov_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele_hodnoty_ciselnikov
@@ -4851,7 +5535,7 @@ ALTER TABLE ONLY itms.konkretne_ciele_hodnoty_ciselnikov
 
 
 --
--- Name: konkretne_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele konkretne_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele
@@ -4859,7 +5543,7 @@ ALTER TABLE ONLY itms.konkretne_ciele
 
 
 --
--- Name: konkretne_ciele_typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele_typy_aktivit konkretne_ciele_typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele_typy_aktivit
@@ -4867,7 +5551,7 @@ ALTER TABLE ONLY itms.konkretne_ciele_typy_aktivit
 
 
 --
--- Name: miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: miesta_realizacie miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.miesta_realizacie
@@ -4875,7 +5559,7 @@ ALTER TABLE ONLY itms.miesta_realizacie
 
 
 --
--- Name: monitorovacie_terminy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: monitorovacie_terminy monitorovacie_terminy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.monitorovacie_terminy
@@ -4883,7 +5567,7 @@ ALTER TABLE ONLY itms.monitorovacie_terminy
 
 
 --
--- Name: nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -4891,7 +5575,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
@@ -4899,7 +5583,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
 
 
 --
--- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost nezrovnalosti_subjekty_ktore_zistili_nezrovnalost_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
@@ -4907,7 +5591,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
 
 
 --
--- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
@@ -4915,7 +5599,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
 
 
 --
--- Name: nezrovnalosti_suvisiace_nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_nezrovnalosti nezrovnalosti_suvisiace_nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_nezrovnalosti
@@ -4923,7 +5607,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_nezrovnalosti
 
 
 --
--- Name: nezrovnalosti_suvisiace_pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_pohladavkove_doklady nezrovnalosti_suvisiace_pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_pohladavkove_doklady
@@ -4931,7 +5615,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_pohladavkove_doklady
 
 
 --
--- Name: nezrovnalosti_suvisiace_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_verejne_obstaravania nezrovnalosti_suvisiace_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_verejne_obstaravania
@@ -4939,7 +5623,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_verejne_obstaravania
 
 
 --
--- Name: nezrovnalosti_suvisiace_zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_zop nezrovnalosti_suvisiace_zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_zop
@@ -4947,7 +5631,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_zop
 
 
 --
--- Name: nezrovnalosti_typy_nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_typy_nezrovnalosti nezrovnalosti_typy_nezrovnalosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_typy_nezrovnalosti
@@ -4955,7 +5639,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_typy_nezrovnalosti
 
 
 --
--- Name: nuts_kody_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: nuts_kody nuts_kody_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nuts_kody
@@ -4963,7 +5647,7 @@ ALTER TABLE ONLY itms.nuts_kody
 
 
 --
--- Name: operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: operacne_programy operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.operacne_programy
@@ -4971,7 +5655,7 @@ ALTER TABLE ONLY itms.operacne_programy
 
 
 --
--- Name: organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: organizacne_zlozky organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.organizacne_zlozky
@@ -4979,7 +5663,7 @@ ALTER TABLE ONLY itms.organizacne_zlozky
 
 
 --
--- Name: osoby_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: osoby osoby_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.osoby
@@ -4987,7 +5671,7 @@ ALTER TABLE ONLY itms.osoby
 
 
 --
--- Name: pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady pohladavkove_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady
@@ -4995,7 +5679,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 
 
 --
--- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania pohladavkove_doklady_suvisiace_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_verejne_obstaravania
@@ -5003,7 +5687,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_verejne_obstaravania
 
 
 --
--- Name: pohladavkove_doklady_suvisiace_zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady_suvisiace_zop pohladavkove_doklady_suvisiace_zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_zop
@@ -5011,7 +5695,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_zop
 
 
 --
--- Name: polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: polozky_rozpoctu polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.polozky_rozpoctu
@@ -5019,7 +5703,7 @@ ALTER TABLE ONLY itms.polozky_rozpoctu
 
 
 --
--- Name: prioritne_osi_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: prioritne_osi prioritne_osi_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.prioritne_osi
@@ -5027,7 +5711,7 @@ ALTER TABLE ONLY itms.prioritne_osi
 
 
 --
--- Name: projektove_ukazovatele_casy_plnenia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele_casy_plnenia projektove_ukazovatele_casy_plnenia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele_casy_plnenia
@@ -5035,7 +5719,7 @@ ALTER TABLE ONLY itms.projektove_ukazovatele_casy_plnenia
 
 
 --
--- Name: projektove_ukazovatele_fondy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele_fondy projektove_ukazovatele_fondy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele_fondy
@@ -5043,7 +5727,7 @@ ALTER TABLE ONLY itms.projektove_ukazovatele_fondy
 
 
 --
--- Name: projektove_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele projektove_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele
@@ -5051,7 +5735,7 @@ ALTER TABLE ONLY itms.projektove_ukazovatele
 
 
 --
--- Name: projekty_aktivity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_aktivity projekty_aktivity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_aktivity
@@ -5059,7 +5743,7 @@ ALTER TABLE ONLY itms.projekty_aktivity
 
 
 --
--- Name: projekty_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_formy_financovania projekty_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_formy_financovania
@@ -5067,7 +5751,7 @@ ALTER TABLE ONLY itms.projekty_formy_financovania
 
 
 --
--- Name: projekty_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_hospodarske_cinnosti projekty_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_hospodarske_cinnosti
@@ -5075,7 +5759,7 @@ ALTER TABLE ONLY itms.projekty_hospodarske_cinnosti
 
 
 --
--- Name: projekty_intenzity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_intenzity projekty_intenzity_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_intenzity
@@ -5083,7 +5767,7 @@ ALTER TABLE ONLY itms.projekty_intenzity
 
 
 --
--- Name: projekty_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_meratelne_ukazovatele projekty_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_meratelne_ukazovatele
@@ -5091,7 +5775,7 @@ ALTER TABLE ONLY itms.projekty_meratelne_ukazovatele
 
 
 --
--- Name: projekty_miesta_realizacie_mimo_uzemia_op_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_miesta_realizacie_mimo_uzemia_op projekty_miesta_realizacie_mimo_uzemia_op_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_miesta_realizacie_mimo_uzemia_op
@@ -5099,7 +5783,7 @@ ALTER TABLE ONLY itms.projekty_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: projekty_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_miesta_realizacie projekty_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_miesta_realizacie
@@ -5107,7 +5791,7 @@ ALTER TABLE ONLY itms.projekty_miesta_realizacie
 
 
 --
--- Name: projekty_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_oblasti_intervencie projekty_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_oblasti_intervencie
@@ -5115,7 +5799,7 @@ ALTER TABLE ONLY itms.projekty_oblasti_intervencie
 
 
 --
--- Name: projekty_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_organizacne_zlozky projekty_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_organizacne_zlozky
@@ -5123,7 +5807,7 @@ ALTER TABLE ONLY itms.projekty_organizacne_zlozky
 
 
 --
--- Name: projekty_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_partneri projekty_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_partneri
@@ -5131,7 +5815,7 @@ ALTER TABLE ONLY itms.projekty_partneri
 
 
 --
--- Name: projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty
@@ -5139,7 +5823,7 @@ ALTER TABLE ONLY itms.projekty
 
 
 --
--- Name: projekty_polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_polozky_rozpoctu projekty_polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_polozky_rozpoctu
@@ -5147,7 +5831,7 @@ ALTER TABLE ONLY itms.projekty_polozky_rozpoctu
 
 
 --
--- Name: projekty_sekundarne_tematicke_okruhy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_sekundarne_tematicke_okruhy projekty_sekundarne_tematicke_okruhy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_sekundarne_tematicke_okruhy
@@ -5155,7 +5839,7 @@ ALTER TABLE ONLY itms.projekty_sekundarne_tematicke_okruhy
 
 
 --
--- Name: projekty_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_typy_uzemia projekty_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_typy_uzemia
@@ -5163,7 +5847,7 @@ ALTER TABLE ONLY itms.projekty_typy_uzemia
 
 
 --
--- Name: projekty_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_uzemne_mechanizmy projekty_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_uzemne_mechanizmy
@@ -5171,7 +5855,7 @@ ALTER TABLE ONLY itms.projekty_uzemne_mechanizmy
 
 
 --
--- Name: subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: subjekty subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.subjekty
@@ -5179,7 +5863,7 @@ ALTER TABLE ONLY itms.subjekty
 
 
 --
--- Name: typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: typy_aktivit typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.typy_aktivit
@@ -5187,7 +5871,7 @@ ALTER TABLE ONLY itms.typy_aktivit
 
 
 --
--- Name: uctovne_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady uctovne_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady
@@ -5195,7 +5879,7 @@ ALTER TABLE ONLY itms.uctovne_doklady
 
 
 --
--- Name: uctovne_doklady_polozky_dokladu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady_polozky_dokladu uctovne_doklady_polozky_dokladu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady_polozky_dokladu
@@ -5203,7 +5887,7 @@ ALTER TABLE ONLY itms.uctovne_doklady_polozky_dokladu
 
 
 --
--- Name: uctovne_doklady_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady_projekty uctovne_doklady_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady_projekty
@@ -5211,7 +5895,7 @@ ALTER TABLE ONLY itms.uctovne_doklady_projekty
 
 
 --
--- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
@@ -5219,7 +5903,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
 
 
 --
--- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
@@ -5227,7 +5911,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
 
 
 --
--- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
@@ -5235,7 +5919,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
 
 
 --
--- Name: verejne_obstaravania_operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_operacne_programy verejne_obstaravania_operacne_programy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_operacne_programy
@@ -5243,7 +5927,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_operacne_programy
 
 
 --
--- Name: verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania
@@ -5251,7 +5935,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania
 
 
 --
--- Name: verejne_obstaravania_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_projekty verejne_obstaravania_projekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_projekty
@@ -5259,7 +5943,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_projekty
 
 
 --
--- Name: verejne_obstaravania_uctovne_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_uctovne_doklady verejne_obstaravania_uctovne_doklady_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_uctovne_doklady
@@ -5267,7 +5951,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_uctovne_doklady
 
 
 --
--- Name: vyzvy_planovane_doplnujuce_info_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_doplnujuce_info vyzvy_planovane_doplnujuce_info_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_doplnujuce_info
@@ -5275,7 +5959,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane_doplnujuce_info
 
 
 --
--- Name: vyzvy_planovane_konkretne_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_konkretne_ciele vyzvy_planovane_konkretne_ciele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_konkretne_ciele
@@ -5283,7 +5967,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane_konkretne_ciele
 
 
 --
--- Name: vyzvy_planovane_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane vyzvy_planovane_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane
@@ -5291,7 +5975,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane
 
 
 --
--- Name: vyzvy_planovane_poskytovatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_poskytovatelia vyzvy_planovane_poskytovatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_poskytovatelia
@@ -5299,7 +5983,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane_poskytovatelia
 
 
 --
--- Name: vyzvy_vyhlasene_doplnujuce_info_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_doplnujuce_info vyzvy_vyhlasene_doplnujuce_info_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_doplnujuce_info
@@ -5307,7 +5991,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_doplnujuce_info
 
 
 --
--- Name: vyzvy_vyhlasene_fondy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_fondy vyzvy_vyhlasene_fondy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_fondy
@@ -5315,7 +5999,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_fondy
 
 
 --
--- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit vyzvy_vyhlasene_konkretne_ciele_typy_aktivit_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
@@ -5323,7 +6007,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
 
 
 --
--- Name: vyzvy_vyhlasene_kontaktne_osoby_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_kontaktne_osoby vyzvy_vyhlasene_kontaktne_osoby_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_kontaktne_osoby
@@ -5331,7 +6015,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_kontaktne_osoby
 
 
 --
--- Name: vyzvy_vyhlasene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene vyzvy_vyhlasene_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene
@@ -5339,7 +6023,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene
 
 
 --
--- Name: vyzvy_vyhlasene_poskytovatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_poskytovatelia vyzvy_vyhlasene_poskytovatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_poskytovatelia
@@ -5347,7 +6031,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_poskytovatelia
 
 
 --
--- Name: vyzvy_vyhlasene_posudzovane_obdobia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_posudzovane_obdobia vyzvy_vyhlasene_posudzovane_obdobia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_posudzovane_obdobia
@@ -5355,7 +6039,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_posudzovane_obdobia
 
 
 --
--- Name: vyzvy_vyhlasene_vyzvy_planovane_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_vyzvy_planovane vyzvy_vyhlasene_vyzvy_planovane_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_vyzvy_planovane
@@ -5363,7 +6047,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_vyzvy_planovane
 
 
 --
--- Name: zmluvy_verejne_obstaravania_dalsie_url_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dalsie_url zmluvy_verejne_obstaravania_dalsie_url_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dalsie_url
@@ -5371,7 +6055,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dalsie_url
 
 
 --
--- Name: zmluvy_verejne_obstaravania_dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia zmluvy_verejne_obstaravania_dodavatelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia
@@ -5379,7 +6063,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia
 
 
 --
--- Name: zmluvy_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania zmluvy_verejne_obstaravania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania
@@ -5387,7 +6071,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania
 
 
 --
--- Name: zonfp_aktivity_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_aktivity_projekt zonfp_aktivity_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt
@@ -5395,7 +6079,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt
 
 
 --
--- Name: zonfp_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_formy_financovania zonfp_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_formy_financovania
@@ -5403,7 +6087,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_formy_financovania
 
 
 --
--- Name: zonfp_hodnotitelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_hodnotitelia zonfp_hodnotitelia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_hodnotitelia
@@ -5411,7 +6095,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_hodnotitelia
 
 
 --
--- Name: zonfp_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_hospodarske_cinnosti zonfp_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_hospodarske_cinnosti
@@ -5419,7 +6103,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_hospodarske_cinnosti
 
 
 --
--- Name: zonfp_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_meratelne_ukazovatele zonfp_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_meratelne_ukazovatele
@@ -5427,7 +6111,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_meratelne_ukazovatele
 
 
 --
--- Name: zonfp_miesta_realizacie_mimo_uzemia_op_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie_mimo_uzemia_op zonfp_miesta_realizacie_mimo_uzemia_op_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
@@ -5435,7 +6119,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: zonfp_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie zonfp_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie
@@ -5443,7 +6127,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie
 
 
 --
--- Name: zonfp_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_oblasti_intervencie zonfp_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_oblasti_intervencie
@@ -5451,7 +6135,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_oblasti_intervencie
 
 
 --
--- Name: zonfp_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_organizacne_zlozky zonfp_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_organizacne_zlozky
@@ -5459,7 +6143,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_organizacne_zlozky
 
 
 --
--- Name: zonfp_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_partneri zonfp_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_partneri
@@ -5467,7 +6151,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_partneri
 
 
 --
--- Name: zonfp_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane zonfp_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane
@@ -5475,7 +6159,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane
 
 
 --
--- Name: zonfp_polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_polozky_rozpoctu zonfp_polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_polozky_rozpoctu
@@ -5483,7 +6167,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_polozky_rozpoctu
 
 
 --
--- Name: zonfp_prijate_aktivity_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_aktivity_projekt zonfp_prijate_aktivity_projekt_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
@@ -5491,7 +6175,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
 
 
 --
--- Name: zonfp_prijate_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_formy_financovania zonfp_prijate_formy_financovania_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_formy_financovania
@@ -5499,7 +6183,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_formy_financovania
 
 
 --
--- Name: zonfp_prijate_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_hospodarske_cinnosti zonfp_prijate_hospodarske_cinnosti_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_hospodarske_cinnosti
@@ -5507,7 +6191,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_hospodarske_cinnosti
 
 
 --
--- Name: zonfp_prijate_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_meratelne_ukazovatele zonfp_prijate_meratelne_ukazovatele_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_meratelne_ukazovatele
@@ -5515,7 +6199,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_meratelne_ukazovatele
 
 
 --
--- Name: zonfp_prijate_miesta_realizacie_mimo_uzemia_op_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie_mimo_uzemia_op zonfp_prijate_miesta_realizacie_mimo_uzemia_op_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op
@@ -5523,7 +6207,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: zonfp_prijate_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie zonfp_prijate_miesta_realizacie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie
@@ -5531,7 +6215,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie
 
 
 --
--- Name: zonfp_prijate_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_oblasti_intervencie zonfp_prijate_oblasti_intervencie_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_oblasti_intervencie
@@ -5539,7 +6223,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_oblasti_intervencie
 
 
 --
--- Name: zonfp_prijate_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_organizacne_zlozky zonfp_prijate_organizacne_zlozky_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_organizacne_zlozky
@@ -5547,7 +6231,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_organizacne_zlozky
 
 
 --
--- Name: zonfp_prijate_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_partneri zonfp_prijate_partneri_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_partneri
@@ -5555,7 +6239,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_partneri
 
 
 --
--- Name: zonfp_prijate_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate zonfp_prijate_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate
@@ -5563,7 +6247,7 @@ ALTER TABLE ONLY itms.zonfp_prijate
 
 
 --
--- Name: zonfp_prijate_polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_polozky_rozpoctu zonfp_prijate_polozky_rozpoctu_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_polozky_rozpoctu
@@ -5571,7 +6255,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_polozky_rozpoctu
 
 
 --
--- Name: zonfp_prijate_sekundarne_tematicke_okruhy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_sekundarne_tematicke_okruhy zonfp_prijate_sekundarne_tematicke_okruhy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_sekundarne_tematicke_okruhy
@@ -5579,7 +6263,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_sekundarne_tematicke_okruhy
 
 
 --
--- Name: zonfp_prijate_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_typy_uzemia zonfp_prijate_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_typy_uzemia
@@ -5587,7 +6271,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_typy_uzemia
 
 
 --
--- Name: zonfp_prijate_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_uzemne_mechanizmy zonfp_prijate_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_uzemne_mechanizmy
@@ -5595,7 +6279,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_uzemne_mechanizmy
 
 
 --
--- Name: zonfp_sekundarne_tematicke_okruhy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_sekundarne_tematicke_okruhy zonfp_sekundarne_tematicke_okruhy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_sekundarne_tematicke_okruhy
@@ -5603,7 +6287,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_sekundarne_tematicke_okruhy
 
 
 --
--- Name: zonfp_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_typy_uzemia zonfp_typy_uzemia_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_typy_uzemia
@@ -5611,7 +6295,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_typy_uzemia
 
 
 --
--- Name: zonfp_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_uzemne_mechanizmy zonfp_uzemne_mechanizmy_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_uzemne_mechanizmy
@@ -5619,7 +6303,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_uzemne_mechanizmy
 
 
 --
--- Name: zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop zop_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop
@@ -5627,7 +6311,7 @@ ALTER TABLE ONLY itms.zop
 
 
 --
--- Name: zop_predkladane_za_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop_predkladane_za_subjekty zop_predkladane_za_subjekty_pkey; Type: CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
@@ -5635,7 +6319,111 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
 
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: codelist_investment_type codelist_investment_type_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_investment_type
+    ADD CONSTRAINT codelist_investment_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_program codelist_program_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_program
+    ADD CONSTRAINT codelist_program_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_project_phase codelist_project_phase_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_project_phase
+    ADD CONSTRAINT codelist_project_phase_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_project_state codelist_project_state_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_project_state
+    ADD CONSTRAINT codelist_project_state_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codelist_source codelist_source_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.codelist_source
+    ADD CONSTRAINT codelist_source_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: isvs_document_versions isvs_document_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_document_versions
+    ADD CONSTRAINT isvs_document_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: isvs_documents isvs_documents_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_documents
+    ADD CONSTRAINT isvs_documents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: isvs isvs_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs
+    ADD CONSTRAINT isvs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: isvs_versions isvs_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_versions
+    ADD CONSTRAINT isvs_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: project_document_versions project_document_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_document_versions
+    ADD CONSTRAINT project_document_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: project_documents project_documents_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_documents
+    ADD CONSTRAINT project_documents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: project_versions project_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_versions
+    ADD CONSTRAINT project_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projects projects_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.projects
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ar_internal_metadata
@@ -5643,7 +6431,7 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.schema_migrations
@@ -5651,7 +6439,7 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
--- Name: public_authority_edesks_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
+-- Name: public_authority_edesks public_authority_edesks_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
 --
 
 ALTER TABLE ONLY upvs.public_authority_edesks
@@ -5659,7 +6447,7 @@ ALTER TABLE ONLY upvs.public_authority_edesks
 
 
 --
--- Name: services_with_forms_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
+-- Name: services_with_forms services_with_forms_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
 --
 
 ALTER TABLE ONLY upvs.services_with_forms
@@ -7865,6 +8653,146 @@ CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_zop_id" ON itms.zop_pred
 
 
 --
+-- Name: index_metais.codelist_investment_type_on_code; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_investment_type_on_code" ON metais.codelist_investment_type USING btree (code);
+
+
+--
+-- Name: index_metais.codelist_program_on_kod_metais; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_program_on_kod_metais" ON metais.codelist_program USING btree (kod_metais);
+
+
+--
+-- Name: index_metais.codelist_project_phase_on_code; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_project_phase_on_code" ON metais.codelist_project_phase USING btree (code);
+
+
+--
+-- Name: index_metais.codelist_project_state_on_code; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_project_state_on_code" ON metais.codelist_project_state USING btree (code);
+
+
+--
+-- Name: index_metais.codelist_source_on_code; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.codelist_source_on_code" ON metais.codelist_source USING btree (code);
+
+
+--
+-- Name: index_metais.isvs_document_versions_on_document_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_document_versions_on_document_id" ON metais.isvs_document_versions USING btree (document_id);
+
+
+--
+-- Name: index_metais.isvs_documents_on_isvs_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_documents_on_isvs_id" ON metais.isvs_documents USING btree (isvs_id);
+
+
+--
+-- Name: index_metais.isvs_documents_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_documents_on_latest_version_id" ON metais.isvs_documents USING btree (latest_version_id);
+
+
+--
+-- Name: index_metais.isvs_documents_on_uuid; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_documents_on_uuid" ON metais.isvs_documents USING btree (uuid);
+
+
+--
+-- Name: index_metais.isvs_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_on_latest_version_id" ON metais.isvs USING btree (latest_version_id);
+
+
+--
+-- Name: index_metais.isvs_on_project_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_on_project_id" ON metais.isvs USING btree (project_id);
+
+
+--
+-- Name: index_metais.isvs_on_uuid; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_on_uuid" ON metais.isvs USING btree (uuid);
+
+
+--
+-- Name: index_metais.isvs_versions_on_isvs_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.isvs_versions_on_isvs_id" ON metais.isvs_versions USING btree (isvs_id);
+
+
+--
+-- Name: index_metais.project_document_versions_on_document_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_document_versions_on_document_id" ON metais.project_document_versions USING btree (document_id);
+
+
+--
+-- Name: index_metais.project_documents_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_documents_on_latest_version_id" ON metais.project_documents USING btree (latest_version_id);
+
+
+--
+-- Name: index_metais.project_documents_on_project_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_documents_on_project_id" ON metais.project_documents USING btree (project_id);
+
+
+--
+-- Name: index_metais.project_documents_on_uuid; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_documents_on_uuid" ON metais.project_documents USING btree (uuid);
+
+
+--
+-- Name: index_metais.project_versions_on_project_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_versions_on_project_id" ON metais.project_versions USING btree (project_id);
+
+
+--
+-- Name: index_metais.projects_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.projects_on_latest_version_id" ON metais.projects USING btree (latest_version_id);
+
+
+--
+-- Name: index_metais.projects_on_uuid; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.projects_on_uuid" ON metais.projects USING btree (uuid);
+
+
+--
 -- Name: index_upvs.public_authority_edesks_on_cin; Type: INDEX; Schema: upvs; Owner: -
 --
 
@@ -7900,7 +8828,7 @@ CREATE INDEX "index_upvs.services_with_forms_on_schema_url" ON upvs.services_wit
 
 
 --
--- Name: fk_rails_00bd9064dc; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_uzemne_mechanizmy fk_rails_00bd9064dc; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_uzemne_mechanizmy
@@ -7908,7 +8836,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_uzemne_mechanizmy
 
 
 --
--- Name: fk_rails_00be24adb6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_typy_uzemia fk_rails_00be24adb6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_typy_uzemia
@@ -7916,7 +8844,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_typy_uzemia
 
 
 --
--- Name: fk_rails_00c0160bcd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_partneri fk_rails_00c0160bcd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_partneri
@@ -7924,7 +8852,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_partneri
 
 
 --
--- Name: fk_rails_0115d1b95f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele fk_rails_0115d1b95f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele
@@ -7932,7 +8860,7 @@ ALTER TABLE ONLY itms.konkretne_ciele
 
 
 --
--- Name: fk_rails_01546df3bb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky fk_rails_01546df3bb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky
@@ -7940,7 +8868,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky
 
 
 --
--- Name: fk_rails_025ecae0ca; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_organizacne_zlozky fk_rails_025ecae0ca; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_organizacne_zlozky
@@ -7948,7 +8876,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_organizacne_zlozky
 
 
 --
--- Name: fk_rails_028b9af1eb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady_projekty fk_rails_028b9af1eb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady_projekty
@@ -7956,7 +8884,7 @@ ALTER TABLE ONLY itms.uctovne_doklady_projekty
 
 
 --
--- Name: fk_rails_03702170c9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_nezrovnalosti fk_rails_03702170c9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_nezrovnalosti
@@ -7964,7 +8892,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_nezrovnalosti
 
 
 --
--- Name: fk_rails_039600fef2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania fk_rails_039600fef2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania
@@ -7972,7 +8900,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania
 
 
 --
--- Name: fk_rails_03ced0a1cb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia fk_rails_03ced0a1cb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia
@@ -7980,7 +8908,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia
 
 
 --
--- Name: fk_rails_0496cc57e6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_miesta_realizacie_mimo_uzemia_op fk_rails_0496cc57e6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_miesta_realizacie_mimo_uzemia_op
@@ -7988,7 +8916,7 @@ ALTER TABLE ONLY itms.projekty_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: fk_rails_05b9e9ab0a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_aktivity_projekt fk_rails_05b9e9ab0a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt
@@ -7996,7 +8924,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt
 
 
 --
--- Name: fk_rails_05e66344e7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate fk_rails_05e66344e7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate
@@ -8004,7 +8932,7 @@ ALTER TABLE ONLY itms.zonfp_prijate
 
 
 --
--- Name: fk_rails_079dc61bb0; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_hospodarske_cinnosti fk_rails_079dc61bb0; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_hospodarske_cinnosti
@@ -8012,7 +8940,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_hospodarske_cinnosti
 
 
 --
--- Name: fk_rails_096daa70ed; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie_mimo_uzemia_op fk_rails_096daa70ed; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
@@ -8020,7 +8948,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: fk_rails_09e399f617; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele_fondy fk_rails_09e399f617; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele_fondy
@@ -8028,7 +8956,7 @@ ALTER TABLE ONLY itms.projektove_ukazovatele_fondy
 
 
 --
--- Name: fk_rails_0d0a4a8a13; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_sekundarne_tematicke_okruhy fk_rails_0d0a4a8a13; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_sekundarne_tematicke_okruhy
@@ -8036,7 +8964,7 @@ ALTER TABLE ONLY itms.projekty_sekundarne_tematicke_okruhy
 
 
 --
--- Name: fk_rails_0d6201496e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie_mimo_uzemia_op fk_rails_0d6201496e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op
@@ -8044,7 +8972,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: fk_rails_0e0ce5ec3c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie fk_rails_0e0ce5ec3c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie
@@ -8052,7 +8980,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie
 
 
 --
--- Name: fk_rails_0ebf095739; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_polozky_rozpoctu fk_rails_0ebf095739; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_polozky_rozpoctu
@@ -8060,7 +8988,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_polozky_rozpoctu
 
 
 --
--- Name: fk_rails_0ec85641c2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_pohladavkove_doklady fk_rails_0ec85641c2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_pohladavkove_doklady
@@ -8068,7 +8996,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_pohladavkove_doklady
 
 
 --
--- Name: fk_rails_0f2aac883b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_organizacne_zlozky fk_rails_0f2aac883b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_organizacne_zlozky
@@ -8076,7 +9004,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_organizacne_zlozky
 
 
 --
--- Name: fk_rails_0f3db1df5e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_formy_financovania fk_rails_0f3db1df5e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_formy_financovania
@@ -8084,7 +9012,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_formy_financovania
 
 
 --
--- Name: fk_rails_12b29bdafe; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop_predkladane_za_subjekty fk_rails_12b29bdafe; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
@@ -8092,7 +9020,7 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
 
 
 --
--- Name: fk_rails_136836cd96; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_typy_nezrovnalosti fk_rails_136836cd96; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_typy_nezrovnalosti
@@ -8100,7 +9028,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_typy_nezrovnalosti
 
 
 --
--- Name: fk_rails_140cb2bca8; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady fk_rails_140cb2bca8; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady
@@ -8108,7 +9036,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 
 
 --
--- Name: fk_rails_16e0085ca6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_hospodarske_cinnosti fk_rails_16e0085ca6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_hospodarske_cinnosti
@@ -8116,7 +9044,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_hospodarske_cinnosti
 
 
 --
--- Name: fk_rails_1792cc9243; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene fk_rails_1792cc9243; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene
@@ -8124,7 +9052,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene
 
 
 --
--- Name: fk_rails_17b4b919d8; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: dodavatelia fk_rails_17b4b919d8; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.dodavatelia
@@ -8132,7 +9060,7 @@ ALTER TABLE ONLY itms.dodavatelia
 
 
 --
--- Name: fk_rails_17faad18e6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost fk_rails_17faad18e6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
@@ -8140,7 +9068,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
 
 
 --
--- Name: fk_rails_18381644cd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania fk_rails_18381644cd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania
@@ -8148,7 +9076,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania
 
 
 --
--- Name: fk_rails_19863b7ff4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_poskytovatelia fk_rails_19863b7ff4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_poskytovatelia
@@ -8156,7 +9084,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_poskytovatelia
 
 
 --
--- Name: fk_rails_1aede24bdd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity_zdroje fk_rails_1aede24bdd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity_zdroje
@@ -8164,7 +9092,7 @@ ALTER TABLE ONLY itms.intenzity_zdroje
 
 
 --
--- Name: fk_rails_1c274e13bb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania fk_rails_1c274e13bb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania
@@ -8172,7 +9100,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania
 
 
 --
--- Name: fk_rails_1c418e1dd9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane fk_rails_1c418e1dd9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane
@@ -8180,7 +9108,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane
 
 
 --
--- Name: fk_rails_1d298f9f96; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_uzemne_mechanizmy fk_rails_1d298f9f96; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_uzemne_mechanizmy
@@ -8188,7 +9116,7 @@ ALTER TABLE ONLY itms.projekty_uzemne_mechanizmy
 
 
 --
--- Name: fk_rails_1e3ce0d845; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_organizacne_zlozky fk_rails_1e3ce0d845; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_organizacne_zlozky
@@ -8196,7 +9124,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_organizacne_zlozky
 
 
 --
--- Name: fk_rails_2137cdd4b6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_poskytovatelia fk_rails_2137cdd4b6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_poskytovatelia
@@ -8204,7 +9132,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_poskytovatelia
 
 
 --
--- Name: fk_rails_225a5db0b4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik fk_rails_225a5db0b4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
@@ -8212,7 +9140,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
 
 
 --
--- Name: fk_rails_226e994fc8; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_polozky_rozpoctu fk_rails_226e994fc8; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_polozky_rozpoctu
@@ -8220,7 +9148,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_polozky_rozpoctu
 
 
 --
--- Name: fk_rails_2425cf6aca; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_miesta_realizacie_mimo_uzemia_op fk_rails_2425cf6aca; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_miesta_realizacie_mimo_uzemia_op
@@ -8228,7 +9156,7 @@ ALTER TABLE ONLY itms.projekty_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: fk_rails_24965b7679; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik fk_rails_24965b7679; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
@@ -8236,7 +9164,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_hlavne_predmety_doplnkovy_slovnik
 
 
 --
--- Name: fk_rails_24f57afa2f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_partneri fk_rails_24f57afa2f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_partneri
@@ -8244,7 +9172,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_partneri
 
 
 --
--- Name: fk_rails_257a019f0e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_typy_nezrovnalosti fk_rails_257a019f0e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_typy_nezrovnalosti
@@ -8252,7 +9180,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_typy_nezrovnalosti
 
 
 --
--- Name: fk_rails_25c3a95ab7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie fk_rails_25c3a95ab7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
@@ -8260,7 +9188,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
 
 
 --
--- Name: fk_rails_25e3a0891d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_projekty fk_rails_25e3a0891d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_projekty
@@ -8268,7 +9196,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_projekty
 
 
 --
--- Name: fk_rails_262be0aab1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty fk_rails_262be0aab1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty
@@ -8276,7 +9204,7 @@ ALTER TABLE ONLY itms.projekty
 
 
 --
--- Name: fk_rails_2c548e6f82; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop_predkladane_za_subjekty fk_rails_2c548e6f82; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
@@ -8284,7 +9212,7 @@ ALTER TABLE ONLY itms.zop_predkladane_za_subjekty
 
 
 --
--- Name: fk_rails_2ce092e5a7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele_typy_aktivit fk_rails_2ce092e5a7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele_typy_aktivit
@@ -8292,7 +9220,7 @@ ALTER TABLE ONLY itms.konkretne_ciele_typy_aktivit
 
 
 --
--- Name: fk_rails_2db6d6e8da; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_uzemne_mechanizmy fk_rails_2db6d6e8da; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_uzemne_mechanizmy
@@ -8300,7 +9228,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_uzemne_mechanizmy
 
 
 --
--- Name: fk_rails_2f20a81991; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele_typy_aktivit fk_rails_2f20a81991; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele_typy_aktivit
@@ -8308,7 +9236,7 @@ ALTER TABLE ONLY itms.konkretne_ciele_typy_aktivit
 
 
 --
--- Name: fk_rails_2f656b722b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane fk_rails_2f656b722b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane
@@ -8316,7 +9244,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane
 
 
 --
--- Name: fk_rails_2f9bbaa2d6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie fk_rails_2f9bbaa2d6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie
@@ -8324,7 +9252,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie
 
 
 --
--- Name: fk_rails_2faddf5b73; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: prioritne_osi fk_rails_2faddf5b73; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.prioritne_osi
@@ -8332,7 +9260,7 @@ ALTER TABLE ONLY itms.prioritne_osi
 
 
 --
--- Name: fk_rails_327f5486ef; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_aktivity_projekt fk_rails_327f5486ef; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
@@ -8340,7 +9268,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
 
 
 --
--- Name: fk_rails_342c83d880; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity fk_rails_342c83d880; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity
@@ -8348,7 +9276,7 @@ ALTER TABLE ONLY itms.intenzity
 
 
 --
--- Name: fk_rails_350aad395f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: miesta_realizacie fk_rails_350aad395f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.miesta_realizacie
@@ -8356,7 +9284,7 @@ ALTER TABLE ONLY itms.miesta_realizacie
 
 
 --
--- Name: fk_rails_35284387ac; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty fk_rails_35284387ac; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty
@@ -8364,7 +9292,7 @@ ALTER TABLE ONLY itms.projekty
 
 
 --
--- Name: fk_rails_357176f08e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_formy_financovania fk_rails_357176f08e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_formy_financovania
@@ -8372,7 +9300,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_formy_financovania
 
 
 --
--- Name: fk_rails_382fc42473; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop fk_rails_382fc42473; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop
@@ -8380,7 +9308,7 @@ ALTER TABLE ONLY itms.zop
 
 
 --
--- Name: fk_rails_390d8ee387; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady_polozky_dokladu fk_rails_390d8ee387; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady_polozky_dokladu
@@ -8388,7 +9316,7 @@ ALTER TABLE ONLY itms.uctovne_doklady_polozky_dokladu
 
 
 --
--- Name: fk_rails_3980438432; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti fk_rails_3980438432; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -8396,7 +9324,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: fk_rails_3a22dd6f01; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky fk_rails_3a22dd6f01; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky
@@ -8404,7 +9332,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky
 
 
 --
--- Name: fk_rails_3ab8350341; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_zop fk_rails_3ab8350341; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_zop
@@ -8412,7 +9340,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_zop
 
 
 --
--- Name: fk_rails_3cad360dd7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady fk_rails_3cad360dd7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady
@@ -8420,7 +9348,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 
 
 --
--- Name: fk_rails_3d9d63d941; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_partneri fk_rails_3d9d63d941; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_partneri
@@ -8428,7 +9356,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_partneri
 
 
 --
--- Name: fk_rails_3eff3ae857; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop fk_rails_3eff3ae857; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop
@@ -8436,7 +9364,7 @@ ALTER TABLE ONLY itms.zop
 
 
 --
--- Name: fk_rails_3fb64d1f6a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky_sumy_neschvalene_na_preplatenie fk_rails_3fb64d1f6a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie
@@ -8444,7 +9372,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neschvalene_na_preplatenie
 
 
 --
--- Name: fk_rails_3ffd858a5d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_doplnujuce_info fk_rails_3ffd858a5d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_doplnujuce_info
@@ -8452,7 +9380,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane_doplnujuce_info
 
 
 --
--- Name: fk_rails_41d0028c9d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_aktivity fk_rails_41d0028c9d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_aktivity
@@ -8460,7 +9388,7 @@ ALTER TABLE ONLY itms.projekty_aktivity
 
 
 --
--- Name: fk_rails_42d321084b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_hodnotitelia fk_rails_42d321084b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_hodnotitelia
@@ -8468,7 +9396,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_hodnotitelia
 
 
 --
--- Name: fk_rails_43ac458ef5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_fondy fk_rails_43ac458ef5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_fondy
@@ -8476,7 +9404,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_fondy
 
 
 --
--- Name: fk_rails_44f150d5d8; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele fk_rails_44f150d5d8; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele
@@ -8484,7 +9412,7 @@ ALTER TABLE ONLY itms.konkretne_ciele
 
 
 --
--- Name: fk_rails_4648a655f2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_aktivity_projekt fk_rails_4648a655f2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt
@@ -8492,7 +9420,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt
 
 
 --
--- Name: fk_rails_466d6c5443; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: polozky_rozpoctu fk_rails_466d6c5443; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.polozky_rozpoctu
@@ -8500,7 +9428,7 @@ ALTER TABLE ONLY itms.polozky_rozpoctu
 
 
 --
--- Name: fk_rails_47b7955fdd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: aktivity fk_rails_47b7955fdd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.aktivity
@@ -8508,7 +9436,7 @@ ALTER TABLE ONLY itms.aktivity
 
 
 --
--- Name: fk_rails_47bdf1be19; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady_suvisiace_zop fk_rails_47bdf1be19; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_zop
@@ -8516,7 +9444,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_zop
 
 
 --
--- Name: fk_rails_47bea54338; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_konkretne_ciele fk_rails_47bea54338; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_konkretne_ciele
@@ -8524,7 +9452,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane_konkretne_ciele
 
 
 --
--- Name: fk_rails_4b2cc174c3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_poskytovatelia fk_rails_4b2cc174c3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_poskytovatelia
@@ -8532,7 +9460,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane_poskytovatelia
 
 
 --
--- Name: fk_rails_4c898ab9c7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: subjekty fk_rails_4c898ab9c7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.subjekty
@@ -8540,7 +9468,7 @@ ALTER TABLE ONLY itms.subjekty
 
 
 --
--- Name: fk_rails_4d54ad5583; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie fk_rails_4d54ad5583; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie
@@ -8548,7 +9476,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie
 
 
 --
--- Name: fk_rails_4d83be54d9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady fk_rails_4d83be54d9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady
@@ -8556,7 +9484,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 
 
 --
--- Name: fk_rails_4da1c132e1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia fk_rails_4da1c132e1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia
@@ -8564,7 +9492,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia
 
 
 --
--- Name: fk_rails_4da2ae7a20; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik fk_rails_4da2ae7a20; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
@@ -8572,7 +9500,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
 
 
 --
--- Name: fk_rails_4e304a144d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_typy_uzemia fk_rails_4e304a144d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_typy_uzemia
@@ -8580,7 +9508,7 @@ ALTER TABLE ONLY itms.projekty_typy_uzemia
 
 
 --
--- Name: fk_rails_4f0c3f949a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania fk_rails_4f0c3f949a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania
@@ -8588,7 +9516,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania
 
 
 --
--- Name: fk_rails_4f280e9b20; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_hodnotitelia fk_rails_4f280e9b20; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_hodnotitelia
@@ -8596,7 +9524,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_hodnotitelia
 
 
 --
--- Name: fk_rails_4f35e719c2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti fk_rails_4f35e719c2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -8604,7 +9532,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: fk_rails_4fc331a058; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_polozky_rozpoctu fk_rails_4fc331a058; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_polozky_rozpoctu
@@ -8612,7 +9540,7 @@ ALTER TABLE ONLY itms.projekty_polozky_rozpoctu
 
 
 --
--- Name: fk_rails_50b7fceecd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit fk_rails_50b7fceecd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
@@ -8620,7 +9548,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
 
 
 --
--- Name: fk_rails_512e4c4c1c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane fk_rails_512e4c4c1c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane
@@ -8628,7 +9556,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane
 
 
 --
--- Name: fk_rails_53091b9df9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_verejne_obstaravania fk_rails_53091b9df9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_verejne_obstaravania
@@ -8636,7 +9564,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_verejne_obstaravania
 
 
 --
--- Name: fk_rails_542918dbe1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik fk_rails_542918dbe1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
@@ -8644,7 +9572,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_hlavny_slovnik
 
 
 --
--- Name: fk_rails_546a109c63; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_meratelne_ukazovatele fk_rails_546a109c63; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_meratelne_ukazovatele
@@ -8652,7 +9580,7 @@ ALTER TABLE ONLY itms.projekty_meratelne_ukazovatele
 
 
 --
--- Name: fk_rails_548236611b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_vyzvy_planovane fk_rails_548236611b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_vyzvy_planovane
@@ -8660,7 +9588,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_vyzvy_planovane
 
 
 --
--- Name: fk_rails_56c4e15d44; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_polozky_rozpoctu fk_rails_56c4e15d44; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_polozky_rozpoctu
@@ -8668,7 +9596,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_polozky_rozpoctu
 
 
 --
--- Name: fk_rails_5827b58bb9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_hospodarske_cinnosti fk_rails_5827b58bb9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_hospodarske_cinnosti
@@ -8676,7 +9604,7 @@ ALTER TABLE ONLY itms.projekty_hospodarske_cinnosti
 
 
 --
--- Name: fk_rails_5a9038c4f3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_uzemne_mechanizmy fk_rails_5a9038c4f3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_uzemne_mechanizmy
@@ -8684,7 +9612,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_uzemne_mechanizmy
 
 
 --
--- Name: fk_rails_5bea80ee4e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: polozky_rozpoctu fk_rails_5bea80ee4e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.polozky_rozpoctu
@@ -8692,7 +9620,7 @@ ALTER TABLE ONLY itms.polozky_rozpoctu
 
 
 --
--- Name: fk_rails_5cac1f1c7e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_hospodarske_cinnosti fk_rails_5cac1f1c7e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_hospodarske_cinnosti
@@ -8700,7 +9628,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_hospodarske_cinnosti
 
 
 --
--- Name: fk_rails_5f28bffb76; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania fk_rails_5f28bffb76; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_verejne_obstaravania
@@ -8708,7 +9636,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_verejne_obstaravania
 
 
 --
--- Name: fk_rails_5f723e1acd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost fk_rails_5f723e1acd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
@@ -8716,7 +9644,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_sposobili_nezrovnalost
 
 
 --
--- Name: fk_rails_5f8bc02fae; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_fondy fk_rails_5f8bc02fae; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_fondy
@@ -8724,7 +9652,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_fondy
 
 
 --
--- Name: fk_rails_60f63bc7e2; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania fk_rails_60f63bc7e2; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania
@@ -8732,7 +9660,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania
 
 
 --
--- Name: fk_rails_6364309b83; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele_casy_plnenia fk_rails_6364309b83; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele_casy_plnenia
@@ -8740,7 +9668,7 @@ ALTER TABLE ONLY itms.projektove_ukazovatele_casy_plnenia
 
 
 --
--- Name: fk_rails_64ec721cb6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_miesta_realizacie_mimo_uzemia_op fk_rails_64ec721cb6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
@@ -8748,7 +9676,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: fk_rails_65cd02ab8f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky_sumy_neziadane_na_preplatenie fk_rails_65cd02ab8f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie
@@ -8756,7 +9684,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky_sumy_neziadane_na_preplatenie
 
 
 --
--- Name: fk_rails_666b79ae9b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_projekty fk_rails_666b79ae9b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_projekty
@@ -8764,7 +9692,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_projekty
 
 
 --
--- Name: fk_rails_677e49b6d4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop fk_rails_677e49b6d4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop
@@ -8772,7 +9700,7 @@ ALTER TABLE ONLY itms.zop
 
 
 --
--- Name: fk_rails_6837e22c76; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: polozky_rozpoctu fk_rails_6837e22c76; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.polozky_rozpoctu
@@ -8780,7 +9708,7 @@ ALTER TABLE ONLY itms.polozky_rozpoctu
 
 
 --
--- Name: fk_rails_68aa37fcce; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_oblasti_intervencie fk_rails_68aa37fcce; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_oblasti_intervencie
@@ -8788,7 +9716,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_oblasti_intervencie
 
 
 --
--- Name: fk_rails_696e7fdb11; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie fk_rails_696e7fdb11; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie
@@ -8796,7 +9724,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie
 
 
 --
--- Name: fk_rails_69da6acee6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: operacne_programy fk_rails_69da6acee6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.operacne_programy
@@ -8804,7 +9732,7 @@ ALTER TABLE ONLY itms.operacne_programy
 
 
 --
--- Name: fk_rails_6af1d0518f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky fk_rails_6af1d0518f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky
@@ -8812,7 +9740,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky
 
 
 --
--- Name: fk_rails_6c4cefed09; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_kontaktne_osoby fk_rails_6c4cefed09; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_kontaktne_osoby
@@ -8820,7 +9748,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_kontaktne_osoby
 
 
 --
--- Name: fk_rails_6d8977cc9f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nuts_kody fk_rails_6d8977cc9f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nuts_kody
@@ -8828,7 +9756,7 @@ ALTER TABLE ONLY itms.nuts_kody
 
 
 --
--- Name: fk_rails_6e331313aa; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_zop fk_rails_6e331313aa; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_zop
@@ -8836,7 +9764,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_zop
 
 
 --
--- Name: fk_rails_6e7c1b8881; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti fk_rails_6e7c1b8881; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -8844,7 +9772,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: fk_rails_721b7692f0; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_sekundarne_tematicke_okruhy fk_rails_721b7692f0; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_sekundarne_tematicke_okruhy
@@ -8852,7 +9780,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_sekundarne_tematicke_okruhy
 
 
 --
--- Name: fk_rails_735983760d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_formy_financovania fk_rails_735983760d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_formy_financovania
@@ -8860,7 +9788,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_formy_financovania
 
 
 --
--- Name: fk_rails_73b32244be; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_hospodarske_cinnosti fk_rails_73b32244be; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_hospodarske_cinnosti
@@ -8868,7 +9796,7 @@ ALTER TABLE ONLY itms.projekty_hospodarske_cinnosti
 
 
 --
--- Name: fk_rails_76bbdba8d1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_miesta_realizacie_mimo_uzemia_op fk_rails_76bbdba8d1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op
@@ -8876,7 +9804,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_miesta_realizacie_mimo_uzemia_op
 
 
 --
--- Name: fk_rails_77623d0edc; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: subjekty fk_rails_77623d0edc; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.subjekty
@@ -8884,7 +9812,7 @@ ALTER TABLE ONLY itms.subjekty
 
 
 --
--- Name: fk_rails_782031234c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady_projekty fk_rails_782031234c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady_projekty
@@ -8892,7 +9820,7 @@ ALTER TABLE ONLY itms.uctovne_doklady_projekty
 
 
 --
--- Name: fk_rails_7a7cdcf0c3; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele_hodnoty_ciselnikov fk_rails_7a7cdcf0c3; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele_hodnoty_ciselnikov
@@ -8900,7 +9828,7 @@ ALTER TABLE ONLY itms.konkretne_ciele_hodnoty_ciselnikov
 
 
 --
--- Name: fk_rails_7b6ee5736e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_formy_financovania fk_rails_7b6ee5736e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_formy_financovania
@@ -8908,7 +9836,7 @@ ALTER TABLE ONLY itms.projekty_formy_financovania
 
 
 --
--- Name: fk_rails_7c26d63282; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_intenzity fk_rails_7c26d63282; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_intenzity
@@ -8916,7 +9844,7 @@ ALTER TABLE ONLY itms.projekty_intenzity
 
 
 --
--- Name: fk_rails_7d596202b5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_intenzity fk_rails_7d596202b5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_intenzity
@@ -8924,7 +9852,7 @@ ALTER TABLE ONLY itms.projekty_intenzity
 
 
 --
--- Name: fk_rails_7e925d13d4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele fk_rails_7e925d13d4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele
@@ -8932,7 +9860,7 @@ ALTER TABLE ONLY itms.konkretne_ciele
 
 
 --
--- Name: fk_rails_80274e8d49; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_partneri fk_rails_80274e8d49; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_partneri
@@ -8940,7 +9868,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_partneri
 
 
 --
--- Name: fk_rails_803c402796; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost fk_rails_803c402796; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
@@ -8948,7 +9876,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
 
 
 --
--- Name: fk_rails_818c3c0e61; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity fk_rails_818c3c0e61; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity
@@ -8956,7 +9884,7 @@ ALTER TABLE ONLY itms.intenzity
 
 
 --
--- Name: fk_rails_83b35e71b4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: monitorovacie_terminy fk_rails_83b35e71b4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.monitorovacie_terminy
@@ -8964,7 +9892,7 @@ ALTER TABLE ONLY itms.monitorovacie_terminy
 
 
 --
--- Name: fk_rails_843603625e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_oblasti_intervencie fk_rails_843603625e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_oblasti_intervencie
@@ -8972,7 +9900,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_oblasti_intervencie
 
 
 --
--- Name: fk_rails_85d83b30d7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady fk_rails_85d83b30d7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady
@@ -8980,7 +9908,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 
 
 --
--- Name: fk_rails_88302c96ad; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_partneri fk_rails_88302c96ad; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_partneri
@@ -8988,7 +9916,7 @@ ALTER TABLE ONLY itms.projekty_partneri
 
 
 --
--- Name: fk_rails_8897be5588; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_ktore_zistili_nezrovnalost fk_rails_8897be5588; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
@@ -8996,7 +9924,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_ktore_zistili_nezrovnalost
 
 
 --
--- Name: fk_rails_899422ef35; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop fk_rails_899422ef35; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop
@@ -9004,7 +9932,7 @@ ALTER TABLE ONLY itms.zop
 
 
 --
--- Name: fk_rails_899eb09f3c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_meratelne_ukazovatele fk_rails_899eb09f3c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_meratelne_ukazovatele
@@ -9012,7 +9940,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_meratelne_ukazovatele
 
 
 --
--- Name: fk_rails_89aac1cc38; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_sekundarne_tematicke_okruhy fk_rails_89aac1cc38; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_sekundarne_tematicke_okruhy
@@ -9020,7 +9948,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_sekundarne_tematicke_okruhy
 
 
 --
--- Name: fk_rails_89fad4de08; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_uctovne_doklady fk_rails_89fad4de08; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_uctovne_doklady
@@ -9028,7 +9956,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_uctovne_doklady
 
 
 --
--- Name: fk_rails_8aa8b44f6c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_organizacne_zlozky fk_rails_8aa8b44f6c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_organizacne_zlozky
@@ -9036,7 +9964,7 @@ ALTER TABLE ONLY itms.projekty_organizacne_zlozky
 
 
 --
--- Name: fk_rails_8bb220c518; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_operacne_programy fk_rails_8bb220c518; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_operacne_programy
@@ -9044,7 +9972,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_operacne_programy
 
 
 --
--- Name: fk_rails_8d000a95b1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_pohladavkove_doklady fk_rails_8d000a95b1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_pohladavkove_doklady
@@ -9052,7 +9980,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_pohladavkove_doklady
 
 
 --
--- Name: fk_rails_8d1b1169fa; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_verejne_obstaravania fk_rails_8d1b1169fa; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_verejne_obstaravania
@@ -9060,7 +9988,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_verejne_obstaravania
 
 
 --
--- Name: fk_rails_8e51e82a4a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_uctovne_doklady fk_rails_8e51e82a4a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_uctovne_doklady
@@ -9068,7 +9996,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_uctovne_doklady
 
 
 --
--- Name: fk_rails_8ed1a0f859; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: polozky_rozpoctu fk_rails_8ed1a0f859; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.polozky_rozpoctu
@@ -9076,7 +10004,7 @@ ALTER TABLE ONLY itms.polozky_rozpoctu
 
 
 --
--- Name: fk_rails_8fb44e9504; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: hodnoty_ciselnikov fk_rails_8fb44e9504; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.hodnoty_ciselnikov
@@ -9084,7 +10012,7 @@ ALTER TABLE ONLY itms.hodnoty_ciselnikov
 
 
 --
--- Name: fk_rails_940d7db37d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit fk_rails_940d7db37d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
@@ -9092,7 +10020,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
 
 
 --
--- Name: fk_rails_94aa9b848a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_operacne_programy fk_rails_94aa9b848a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_operacne_programy
@@ -9100,7 +10028,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_operacne_programy
 
 
 --
--- Name: fk_rails_94f260648c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky fk_rails_94f260648c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky
@@ -9108,7 +10036,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky
 
 
 --
--- Name: fk_rails_97435e089d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: dodavatelia fk_rails_97435e089d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.dodavatelia
@@ -9116,7 +10044,7 @@ ALTER TABLE ONLY itms.dodavatelia
 
 
 --
--- Name: fk_rails_985f46756c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: miesta_realizacie fk_rails_985f46756c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.miesta_realizacie
@@ -9124,7 +10052,7 @@ ALTER TABLE ONLY itms.miesta_realizacie
 
 
 --
--- Name: fk_rails_9a28904f8b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_sekundarne_tematicke_okruhy fk_rails_9a28904f8b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_sekundarne_tematicke_okruhy
@@ -9132,7 +10060,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_sekundarne_tematicke_okruhy
 
 
 --
--- Name: fk_rails_9b0f2b8e98; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_meratelne_ukazovatele fk_rails_9b0f2b8e98; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_meratelne_ukazovatele
@@ -9140,7 +10068,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_meratelne_ukazovatele
 
 
 --
--- Name: fk_rails_9d8c329615; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady fk_rails_9d8c329615; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady
@@ -9148,7 +10076,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 
 
 --
--- Name: fk_rails_9dc2525b6b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_oblasti_intervencie fk_rails_9dc2525b6b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_oblasti_intervencie
@@ -9156,7 +10084,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_oblasti_intervencie
 
 
 --
--- Name: fk_rails_9ea2c85d7e; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_vyzvy_planovane fk_rails_9ea2c85d7e; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_vyzvy_planovane
@@ -9164,7 +10092,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_vyzvy_planovane
 
 
 --
--- Name: fk_rails_9ea404b7ef; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: dodavatelia fk_rails_9ea404b7ef; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.dodavatelia
@@ -9172,7 +10100,7 @@ ALTER TABLE ONLY itms.dodavatelia
 
 
 --
--- Name: fk_rails_9f12cb21f5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_miesta_realizacie fk_rails_9f12cb21f5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_miesta_realizacie
@@ -9180,7 +10108,7 @@ ALTER TABLE ONLY itms.projekty_miesta_realizacie
 
 
 --
--- Name: fk_rails_a191cf5c1f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele_fondy fk_rails_a191cf5c1f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele_fondy
@@ -9188,7 +10116,7 @@ ALTER TABLE ONLY itms.projektove_ukazovatele_fondy
 
 
 --
--- Name: fk_rails_a37f350f1b; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_aktivity_projekt fk_rails_a37f350f1b; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
@@ -9196,7 +10124,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
 
 
 --
--- Name: fk_rails_a3e6b23ab9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady fk_rails_a3e6b23ab9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady
@@ -9204,7 +10132,7 @@ ALTER TABLE ONLY itms.uctovne_doklady
 
 
 --
--- Name: fk_rails_a4796df983; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_meratelne_ukazovatele fk_rails_a4796df983; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_meratelne_ukazovatele
@@ -9212,7 +10140,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_meratelne_ukazovatele
 
 
 --
--- Name: fk_rails_a9cb13bf8d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_formy_financovania fk_rails_a9cb13bf8d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_formy_financovania
@@ -9220,7 +10148,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_formy_financovania
 
 
 --
--- Name: fk_rails_abf9fbf76a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: miesta_realizacie fk_rails_abf9fbf76a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.miesta_realizacie
@@ -9228,7 +10156,7 @@ ALTER TABLE ONLY itms.miesta_realizacie
 
 
 --
--- Name: fk_rails_aeb46e7e58; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady_suvisiace_verejne_obstaravania fk_rails_aeb46e7e58; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_verejne_obstaravania
@@ -9236,7 +10164,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_verejne_obstaravania
 
 
 --
--- Name: fk_rails_af699e32f9; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate fk_rails_af699e32f9; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate
@@ -9244,7 +10172,7 @@ ALTER TABLE ONLY itms.zonfp_prijate
 
 
 --
--- Name: fk_rails_af89f96e79; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_organizacne_zlozky fk_rails_af89f96e79; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_organizacne_zlozky
@@ -9252,7 +10180,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_organizacne_zlozky
 
 
 --
--- Name: fk_rails_b0d1bbc3a6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_doplnujuce_info fk_rails_b0d1bbc3a6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_doplnujuce_info
@@ -9260,7 +10188,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_doplnujuce_info
 
 
 --
--- Name: fk_rails_b12395dd94; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_poskytovatelia fk_rails_b12395dd94; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_poskytovatelia
@@ -9268,7 +10196,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane_poskytovatelia
 
 
 --
--- Name: fk_rails_b607ab30e5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity fk_rails_b607ab30e5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity
@@ -9276,7 +10204,7 @@ ALTER TABLE ONLY itms.intenzity
 
 
 --
--- Name: fk_rails_b88db6d3d7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti fk_rails_b88db6d3d7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -9284,7 +10212,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: fk_rails_b9aa6d8591; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_typy_uzemia fk_rails_b9aa6d8591; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_typy_uzemia
@@ -9292,7 +10220,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_typy_uzemia
 
 
 --
--- Name: fk_rails_b9ca9e7cfd; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_oblasti_intervencie fk_rails_b9ca9e7cfd; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_oblasti_intervencie
@@ -9300,7 +10228,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_oblasti_intervencie
 
 
 --
--- Name: fk_rails_ba7c143782; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_konkretne_ciele_typy_aktivit fk_rails_ba7c143782; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
@@ -9308,7 +10236,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_konkretne_ciele_typy_aktivit
 
 
 --
--- Name: fk_rails_bb3b9af5f0; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: subjekty fk_rails_bb3b9af5f0; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.subjekty
@@ -9316,7 +10244,7 @@ ALTER TABLE ONLY itms.subjekty
 
 
 --
--- Name: fk_rails_bb988a1214; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady_suvisiace_zop fk_rails_bb988a1214; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_zop
@@ -9324,7 +10252,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady_suvisiace_zop
 
 
 --
--- Name: fk_rails_bbef4e8041; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_meratelne_ukazovatele fk_rails_bbef4e8041; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_meratelne_ukazovatele
@@ -9332,7 +10260,7 @@ ALTER TABLE ONLY itms.projekty_meratelne_ukazovatele
 
 
 --
--- Name: fk_rails_bc31563b61; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_sekundarne_tematicke_okruhy fk_rails_bc31563b61; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_sekundarne_tematicke_okruhy
@@ -9340,7 +10268,7 @@ ALTER TABLE ONLY itms.projekty_sekundarne_tematicke_okruhy
 
 
 --
--- Name: fk_rails_bea5988603; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie fk_rails_bea5988603; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
@@ -9348,7 +10276,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_subjekty_zodpovedne_za_nasledne_konanie
 
 
 --
--- Name: fk_rails_c0ce7701a5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady fk_rails_c0ce7701a5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady
@@ -9356,7 +10284,7 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 
 
 --
--- Name: fk_rails_c27d7f2c80; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_polozky_rozpoctu fk_rails_c27d7f2c80; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_polozky_rozpoctu
@@ -9364,7 +10292,7 @@ ALTER TABLE ONLY itms.projekty_polozky_rozpoctu
 
 
 --
--- Name: fk_rails_c67c463462; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty fk_rails_c67c463462; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty
@@ -9372,7 +10300,7 @@ ALTER TABLE ONLY itms.projekty
 
 
 --
--- Name: fk_rails_c7d92e1dac; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zop fk_rails_c7d92e1dac; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zop
@@ -9380,7 +10308,7 @@ ALTER TABLE ONLY itms.zop
 
 
 --
--- Name: fk_rails_c88d29d579; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady fk_rails_c88d29d579; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady
@@ -9388,7 +10316,7 @@ ALTER TABLE ONLY itms.uctovne_doklady
 
 
 --
--- Name: fk_rails_ca35ba4dd4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_polozky_rozpoctu fk_rails_ca35ba4dd4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_polozky_rozpoctu
@@ -9396,7 +10324,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_polozky_rozpoctu
 
 
 --
--- Name: fk_rails_cbc060088a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania fk_rails_cbc060088a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania
@@ -9404,7 +10332,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania
 
 
 --
--- Name: fk_rails_cbe8943658; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_kontaktne_osoby fk_rails_cbe8943658; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_kontaktne_osoby
@@ -9412,7 +10340,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_kontaktne_osoby
 
 
 --
--- Name: fk_rails_cc33bd1188; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity fk_rails_cc33bd1188; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity
@@ -9420,7 +10348,7 @@ ALTER TABLE ONLY itms.intenzity
 
 
 --
--- Name: fk_rails_ccb963193d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_formy_financovania fk_rails_ccb963193d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_formy_financovania
@@ -9428,7 +10356,7 @@ ALTER TABLE ONLY itms.projekty_formy_financovania
 
 
 --
--- Name: fk_rails_cfa415d433; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_typy_uzemia fk_rails_cfa415d433; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_typy_uzemia
@@ -9436,7 +10364,7 @@ ALTER TABLE ONLY itms.projekty_typy_uzemia
 
 
 --
--- Name: fk_rails_d0de622c00; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_aktivity_projekt fk_rails_d0de622c00; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt
@@ -9444,7 +10372,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_aktivity_projekt
 
 
 --
--- Name: fk_rails_d2e0814133; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: konkretne_ciele_hodnoty_ciselnikov fk_rails_d2e0814133; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.konkretne_ciele_hodnoty_ciselnikov
@@ -9452,7 +10380,7 @@ ALTER TABLE ONLY itms.konkretne_ciele_hodnoty_ciselnikov
 
 
 --
--- Name: fk_rails_d40543fb1d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dalsie_url fk_rails_d40543fb1d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dalsie_url
@@ -9460,7 +10388,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dalsie_url
 
 
 --
--- Name: fk_rails_d6b4b75adf; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: uctovne_doklady fk_rails_d6b4b75adf; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.uctovne_doklady
@@ -9468,7 +10396,7 @@ ALTER TABLE ONLY itms.uctovne_doklady
 
 
 --
--- Name: fk_rails_d8681305e0; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania_dodavatelia fk_rails_d8681305e0; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia
@@ -9476,7 +10404,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania_dodavatelia
 
 
 --
--- Name: fk_rails_daa70d785a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: aktivity fk_rails_daa70d785a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.aktivity
@@ -9484,7 +10412,7 @@ ALTER TABLE ONLY itms.aktivity
 
 
 --
--- Name: fk_rails_dc617d6865; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_miesta_realizacie fk_rails_dc617d6865; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_miesta_realizacie
@@ -9492,7 +10420,7 @@ ALTER TABLE ONLY itms.projekty_miesta_realizacie
 
 
 --
--- Name: fk_rails_dca9598718; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti fk_rails_dca9598718; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -9500,7 +10428,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: fk_rails_dd29737b6c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania fk_rails_dd29737b6c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania
@@ -9508,7 +10436,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania
 
 
 --
--- Name: fk_rails_df9a9ead9a; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_spracovane_meratelne_ukazovatele fk_rails_df9a9ead9a; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_spracovane_meratelne_ukazovatele
@@ -9516,7 +10444,7 @@ ALTER TABLE ONLY itms.zonfp_spracovane_meratelne_ukazovatele
 
 
 --
--- Name: fk_rails_e184bf1313; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_organizacne_zlozky fk_rails_e184bf1313; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_organizacne_zlozky
@@ -9524,7 +10452,7 @@ ALTER TABLE ONLY itms.projekty_organizacne_zlozky
 
 
 --
--- Name: fk_rails_e281735595; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti fk_rails_e281735595; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -9532,7 +10460,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: fk_rails_e472fdc8b1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania fk_rails_e472fdc8b1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania
@@ -9540,7 +10468,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania
 
 
 --
--- Name: fk_rails_e51955e37c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_uzemne_mechanizmy fk_rails_e51955e37c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_uzemne_mechanizmy
@@ -9548,7 +10476,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_uzemne_mechanizmy
 
 
 --
--- Name: fk_rails_e6d4131836; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania fk_rails_e6d4131836; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania
@@ -9556,7 +10484,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania
 
 
 --
--- Name: fk_rails_e847f12883; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti fk_rails_e847f12883; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -9564,7 +10492,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: fk_rails_e8fee81bd1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_aktivity fk_rails_e8fee81bd1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_aktivity
@@ -9572,7 +10500,7 @@ ALTER TABLE ONLY itms.projekty_aktivity
 
 
 --
--- Name: fk_rails_e965354053; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity fk_rails_e965354053; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity
@@ -9580,7 +10508,7 @@ ALTER TABLE ONLY itms.intenzity
 
 
 --
--- Name: fk_rails_e96ea796f7; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik fk_rails_e96ea796f7; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
@@ -9588,7 +10516,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
 
 
 --
--- Name: fk_rails_e996acb6f4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_hospodarske_cinnosti fk_rails_e996acb6f4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_hospodarske_cinnosti
@@ -9596,7 +10524,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_hospodarske_cinnosti
 
 
 --
--- Name: fk_rails_e9e93a0924; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_aktivity_projekt fk_rails_e9e93a0924; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
@@ -9604,7 +10532,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_aktivity_projekt
 
 
 --
--- Name: fk_rails_ea79d69beb; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: miesta_realizacie fk_rails_ea79d69beb; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.miesta_realizacie
@@ -9612,7 +10540,7 @@ ALTER TABLE ONLY itms.miesta_realizacie
 
 
 --
--- Name: fk_rails_ea9eccefc6; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_uzemne_mechanizmy fk_rails_ea9eccefc6; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_uzemne_mechanizmy
@@ -9620,7 +10548,7 @@ ALTER TABLE ONLY itms.projekty_uzemne_mechanizmy
 
 
 --
--- Name: fk_rails_eb8e371c76; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_oblasti_intervencie fk_rails_eb8e371c76; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_oblasti_intervencie
@@ -9628,7 +10556,7 @@ ALTER TABLE ONLY itms.projekty_oblasti_intervencie
 
 
 --
--- Name: fk_rails_ec6c3cb4c4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projektove_ukazovatele_casy_plnenia fk_rails_ec6c3cb4c4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projektove_ukazovatele_casy_plnenia
@@ -9636,7 +10564,7 @@ ALTER TABLE ONLY itms.projektove_ukazovatele_casy_plnenia
 
 
 --
--- Name: fk_rails_efa9344803; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: deklarovane_vydavky fk_rails_efa9344803; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.deklarovane_vydavky
@@ -9644,7 +10572,7 @@ ALTER TABLE ONLY itms.deklarovane_vydavky
 
 
 --
--- Name: fk_rails_f1873062c5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_oblasti_intervencie fk_rails_f1873062c5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_oblasti_intervencie
@@ -9652,7 +10580,7 @@ ALTER TABLE ONLY itms.projekty_oblasti_intervencie
 
 
 --
--- Name: fk_rails_f44704da46; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_typy_uzemia fk_rails_f44704da46; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_typy_uzemia
@@ -9660,7 +10588,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_typy_uzemia
 
 
 --
--- Name: fk_rails_f515e5059d; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_planovane_konkretne_ciele fk_rails_f515e5059d; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_planovane_konkretne_ciele
@@ -9668,7 +10596,7 @@ ALTER TABLE ONLY itms.vyzvy_planovane_konkretne_ciele
 
 
 --
--- Name: fk_rails_f529907463; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik fk_rails_f529907463; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
@@ -9676,7 +10604,7 @@ ALTER TABLE ONLY itms.verejne_obstaravania_doplnujuce_predmety_doplnkovy_slovnik
 
 
 --
--- Name: fk_rails_f52dc2f93f; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: vyzvy_vyhlasene_posudzovane_obdobia fk_rails_f52dc2f93f; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.vyzvy_vyhlasene_posudzovane_obdobia
@@ -9684,7 +10612,7 @@ ALTER TABLE ONLY itms.vyzvy_vyhlasene_posudzovane_obdobia
 
 
 --
--- Name: fk_rails_f6565b6e80; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zmluvy_verejne_obstaravania fk_rails_f6565b6e80; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania
@@ -9692,7 +10620,7 @@ ALTER TABLE ONLY itms.zmluvy_verejne_obstaravania
 
 
 --
--- Name: fk_rails_f8a54bdaf1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti_suvisiace_nezrovnalosti fk_rails_f8a54bdaf1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_nezrovnalosti
@@ -9700,7 +10628,7 @@ ALTER TABLE ONLY itms.nezrovnalosti_suvisiace_nezrovnalosti
 
 
 --
--- Name: fk_rails_f8e90133c1; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_sekundarne_tematicke_okruhy fk_rails_f8e90133c1; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_sekundarne_tematicke_okruhy
@@ -9708,7 +10636,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_sekundarne_tematicke_okruhy
 
 
 --
--- Name: fk_rails_fb2a83b9a4; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: projekty_partneri fk_rails_fb2a83b9a4; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.projekty_partneri
@@ -9716,7 +10644,7 @@ ALTER TABLE ONLY itms.projekty_partneri
 
 
 --
--- Name: fk_rails_fb56814877; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: zonfp_prijate_typy_uzemia fk_rails_fb56814877; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.zonfp_prijate_typy_uzemia
@@ -9724,7 +10652,7 @@ ALTER TABLE ONLY itms.zonfp_prijate_typy_uzemia
 
 
 --
--- Name: fk_rails_fc1493d31c; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: nezrovnalosti fk_rails_fc1493d31c; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.nezrovnalosti
@@ -9732,7 +10660,7 @@ ALTER TABLE ONLY itms.nezrovnalosti
 
 
 --
--- Name: fk_rails_fe55c9b1f5; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: pohladavkove_doklady fk_rails_fe55c9b1f5; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.pohladavkove_doklady
@@ -9740,11 +10668,99 @@ ALTER TABLE ONLY itms.pohladavkove_doklady
 
 
 --
--- Name: fk_rails_ffc31e6216; Type: FK CONSTRAINT; Schema: itms; Owner: -
+-- Name: intenzity fk_rails_ffc31e6216; Type: FK CONSTRAINT; Schema: itms; Owner: -
 --
 
 ALTER TABLE ONLY itms.intenzity
     ADD CONSTRAINT fk_rails_ffc31e6216 FOREIGN KEY (zdroj_sr_id) REFERENCES itms.intenzity_zdroje(id) ON DELETE SET NULL;
+
+
+--
+-- Name: projects fk_rails_1925410d1c; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.projects
+    ADD CONSTRAINT fk_rails_1925410d1c FOREIGN KEY (latest_version_id) REFERENCES metais.project_versions(id);
+
+
+--
+-- Name: isvs_documents fk_rails_2926a855af; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_documents
+    ADD CONSTRAINT fk_rails_2926a855af FOREIGN KEY (isvs_id) REFERENCES metais.isvs(id);
+
+
+--
+-- Name: isvs_documents fk_rails_5d253a31fc; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_documents
+    ADD CONSTRAINT fk_rails_5d253a31fc FOREIGN KEY (latest_version_id) REFERENCES metais.isvs_document_versions(id);
+
+
+--
+-- Name: project_versions fk_rails_819be9e3a6; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_versions
+    ADD CONSTRAINT fk_rails_819be9e3a6 FOREIGN KEY (project_id) REFERENCES metais.projects(id);
+
+
+--
+-- Name: project_documents fk_rails_868923b92d; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_documents
+    ADD CONSTRAINT fk_rails_868923b92d FOREIGN KEY (project_id) REFERENCES metais.projects(id);
+
+
+--
+-- Name: isvs fk_rails_8befaa8056; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs
+    ADD CONSTRAINT fk_rails_8befaa8056 FOREIGN KEY (project_id) REFERENCES metais.projects(id);
+
+
+--
+-- Name: project_documents fk_rails_9352955d7e; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_documents
+    ADD CONSTRAINT fk_rails_9352955d7e FOREIGN KEY (latest_version_id) REFERENCES metais.project_document_versions(id);
+
+
+--
+-- Name: project_document_versions fk_rails_ae50626673; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_document_versions
+    ADD CONSTRAINT fk_rails_ae50626673 FOREIGN KEY (document_id) REFERENCES metais.project_documents(id);
+
+
+--
+-- Name: isvs_document_versions fk_rails_affcff3ef1; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_document_versions
+    ADD CONSTRAINT fk_rails_affcff3ef1 FOREIGN KEY (document_id) REFERENCES metais.isvs_documents(id);
+
+
+--
+-- Name: isvs fk_rails_be183a92d5; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs
+    ADD CONSTRAINT fk_rails_be183a92d5 FOREIGN KEY (latest_version_id) REFERENCES metais.isvs_versions(id);
+
+
+--
+-- Name: isvs_versions fk_rails_ce75fc7d23; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.isvs_versions
+    ADD CONSTRAINT fk_rails_ce75fc7d23 FOREIGN KEY (isvs_id) REFERENCES metais.isvs(id);
 
 
 --
@@ -9813,14 +10829,16 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190805192655'),
 ('20191030214642'),
 ('20191107112524'),
-('20191111093609'),
-('20200115163549'),
 ('20200424134824'),
 ('20200424153823'),
-('20200507163446'),
 ('20200518225601'),
 ('20200531222054'),
 ('20200601163242'),
-('20200716141809');
+('20200716141809'),
+('20220702123618'),
+('20220810120123'),
+('20220810120320'),
+('20220810120510'),
+('20220811192959');
 
 

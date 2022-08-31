@@ -1,0 +1,90 @@
+{
+  "id": 8,
+  "code": "ZDROJ",
+  "name": "Zdroj údaja",
+  "description": "ZDROJ",
+  "valid": true,
+  "category": null,
+  "enumItems": [
+    {
+      "id": 4,
+      "code": "c_zdroj.6",
+      "value": "System",
+      "valid": true,
+      "description": "Implicit system entity",
+      "orderList": 1,
+      "engValue": "System",
+      "engDescription": "Implicit system entity"
+    },
+    {
+      "id": 25,
+      "code": "c_zdroj.1",
+      "value": "MetaIS 2",
+      "valid": true,
+      "description": "",
+      "orderList": 2,
+      "engValue": "MetaIS 2",
+      "engDescription": ""
+    },
+    {
+      "id": 26,
+      "code": "c_zdroj.2",
+      "value": "BES",
+      "valid": true,
+      "description": "",
+      "orderList": 3,
+      "engValue": "BES",
+      "engDescription": ""
+    },
+    {
+      "id": 27,
+      "code": "c_zdroj.3",
+      "value": "RLE (through CARD)",
+      "valid": true,
+      "description": "",
+      "orderList": 4,
+      "engValue": "RLE (through CARD)",
+      "engDescription": ""
+    },
+    {
+      "id": 28,
+      "code": "c_zdroj.4",
+      "value": "MetaIS 1",
+      "valid": true,
+      "description": "Migration form MetaIS 1 system",
+      "orderList": 5,
+      "engValue": "MetaIS 1",
+      "engDescription": "Migration form MetaIS 1 system"
+    },
+    {
+      "id": 29,
+      "code": "c_zdroj.5",
+      "value": "ASPR",
+      "valid": true,
+      "description": "Migration or integration with ASPR/Clarity system",
+      "orderList": 6,
+      "engValue": "ASPR",
+      "engDescription": "Migration or integration with ASPR/Clarity system"
+    },
+    {
+      "id": 363,
+      "code": "c_zdroj.7",
+      "value": "Transformation",
+      "valid": true,
+      "description": "Transformation with migration from various sources",
+      "orderList": 7,
+      "engValue": "Transformation",
+      "engDescription": "Transformation with migration from various sources"
+    },
+    {
+      "id": 489,
+      "code": "c_zdroj.8",
+      "value": "UPVS",
+      "valid": true,
+      "description": "Transformation or migration from UPVS",
+      "orderList": 8,
+      "engValue": "UPVS",
+      "engDescription": "Transformation or migration from UPVS"
+    }
+  ]
+}

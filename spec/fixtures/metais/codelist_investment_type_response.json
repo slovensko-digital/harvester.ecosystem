@@ -1,0 +1,30 @@
+{
+  "id": 94,
+  "code": "TYP_INVESTICIE",
+  "name": "Typ investície",
+  "description": "TYP_INVESTICIE",
+  "valid": true,
+  "category": null,
+  "enumItems": [
+    {
+      "id": 21802,
+      "code": "c_projekt",
+      "value": "Project",
+      "valid": true,
+      "description": "",
+      "orderList": 1,
+      "engValue": "Project",
+      "engDescription": ""
+    },
+    {
+      "id": 21803,
+      "code": "c_zmenova_poziadavka",
+      "value": "Change request",
+      "valid": true,
+      "description": "Popis investície",
+      "orderList": 2,
+      "engValue": "Change request",
+      "engDescription": ""
+    }
+  ]
+}

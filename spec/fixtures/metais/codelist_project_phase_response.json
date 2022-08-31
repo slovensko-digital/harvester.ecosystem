@@ -1,0 +1,70 @@
+{
+  "id": 54,
+  "code": "FAZA_PROJEKTU",
+  "name": "Fáza projektu",
+  "description": "Fáza projektu",
+  "valid": true,
+  "category": null,
+  "enumItems": [
+    {
+      "id": 49,
+      "code": "c_faza_projektu.5",
+      "value": "Completed project",
+      "valid": true,
+      "description": "Completed and implemented project.",
+      "orderList": 5,
+      "engValue": "Completed project",
+      "engDescription": "Completed and implemented project."
+    },
+    {
+      "id": 241,
+      "code": "c_faza_projektu.1",
+      "value": "Preparation",
+      "valid": true,
+      "description": "Project preparation",
+      "orderList": 1,
+      "engValue": "Preparation",
+      "engDescription": "Project preparation"
+    },
+    {
+      "id": 242,
+      "code": "c_faza_projektu.2",
+      "value": "Initiation",
+      "valid": true,
+      "description": "Creation and aproving of basic project documents",
+      "orderList": 2,
+      "engValue": "Initiation",
+      "engDescription": "Creation and aproving of basic project documents"
+    },
+    {
+      "id": 243,
+      "code": "c_faza_projektu.3",
+      "value": "Realization",
+      "valid": true,
+      "description": "Project realization.",
+      "orderList": 3,
+      "engValue": "Realization",
+      "engDescription": "Project realization."
+    },
+    {
+      "id": 244,
+      "code": "c_faza_projektu.4",
+      "value": "finishing phase",
+      "valid": true,
+      "description": "Project evaluation and finishing",
+      "orderList": 4,
+      "engValue": "finishing phase",
+      "engDescription": "Project evaluation and finishing"
+    },
+    {
+      "id": 250,
+      "code": "c_faza_projektu.6",
+      "value": "Stopped project",
+      "valid": true,
+      "description": "Project was stopped without finishing.",
+      "orderList": 6,
+      "engValue": "Stopped project",
+      "engDescription": "Project was stopped without finishing."
+    }
+  ]
+}

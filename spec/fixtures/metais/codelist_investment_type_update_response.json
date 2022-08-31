@@ -1,0 +1,20 @@
+{
+  "id": 94,
+  "code": "TYP_INVESTICIE",
+  "name": "Typ investície",
+  "description": "TYP_INVESTICIE",
+  "valid": true,
+  "category": null,
+  "enumItems": [
+    {
+      "id": 21803,
+      "code": "c_zmenova_poziadavka",
+      "value": "updated Change request",
+      "valid": true,
+      "description": "Popis investície",
+      "orderList": 2,
+      "engValue": "Change request",
+      "engDescription": ""
+    }
+  ]
+}
