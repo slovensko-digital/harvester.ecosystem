@@ -13,4 +13,7 @@ module Clockwork
 
   every(1.day, 'itms:sync', at: '5:00')
   every(1.day, 'itms:detect_api_changes', at: '9:00')
+
+  every(1.day, 'metais:sync_codelists', at: '5:30')
+  every(1.day, 'metais:sync', at: '6:00')
 end

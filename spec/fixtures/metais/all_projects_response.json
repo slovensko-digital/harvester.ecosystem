@@ -1,0 +1,124 @@
+{
+  "pagination": {
+    "page": 1,
+    "perPage": 10000,
+    "totalPages": 1,
+    "totaltems": 1
+  },
+  "configurationItemSet": [
+    {
+      "type": "Projekt",
+      "uuid": "372a7fe0-b8a8-42c8-b4c2-b2c77151ff49",
+      "attributes": [
+        {
+          "name": "EA_Profil_Projekt_schvalovaci_proces",
+          "value": "OPTIONAL_APPROVAL"
+        },
+        {
+          "name": "EA_Profil_Projekt_zmena_stavu",
+          "value": "2022-05-30T00:00:00.000+02:00"
+        },
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "projekt_1800"
+        },
+        {
+          "name": "EA_Profil_Projekt_termin_ukoncenia",
+          "value": "2022-12-31T00:00:00.000+01:00"
+        },
+        {
+          "name": "EA_Profil_Projekt_typ_investicie",
+          "value": "c_projekt"
+        },
+        {
+          "name": "EA_Profil_Projekt_datum_zacatia",
+          "value": "2022-07-01T00:00:00.000+02:00"
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "Centrálny ekonomický systém - HW a SW infraštruktúra - 2.fáza"
+        },
+        {
+          "name": "Gen_Profil_popis",
+          "value": "Projekt nadväzuje na projekt \"Centrálny ekonomický systém - HW a SW infraštruktúra - 1.fáza\" - projekt rozvoja ID projekt_1731. Jedná sa informačno-komunikačnú infraštruktúru pre druhú lokalitu v režime ACTIVE-ACTIVE prevádzkovanú v dátovom centre Kopčianska.\n\nSplnenie projektových požiadaviek na infraštruktúru pred nasadením do produkcie informačného systému - Centrálny ekonomický systém (CES). Jedná sa o hardvérové a softvérové komponenty pre realizáciu a nasadenie infraštruktúry pre prvú fázu systému CES. Organizácie zapojené do IS CES získajú centrálne spravovaný, aktuálny a metodicky správne implementovaný ekonomický informačný systém pokrývajúci najdôležitejšie ekonomické procesy. Zároveň budú odbremenené od správy vlastného ekonomického informačného systému a ich oddelenia pre informačné technológie sa budú môcť zamerať na správu a prevádzku agendových informačných systémov. Infraštruktúra pre prevádzku prostredí IS CES bude lokalizovaná v jednom výpočtovom centre, konkrétne vo výpočtovom centre Kopčianska ul., DataCentrum. V rámci tohto výpočtového centra bude taktiež zabezpečená vysoká dostupnosť služieb podľa štandardov DataCentra."
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Financny_Profil_Projekt_financna_skupina",
+          "value": "c_financna_skupina.2"
+        },
+        {
+          "name": "EA_Profil_Projekt_prijimatel",
+          "value": "DataCentrum"
+        },
+        {
+          "name": "EA_Profil_Projekt_faza_projektu",
+          "value": "c_faza_projektu.3"
+        },
+        {
+          "name": "Financny_Profil_Projekt_suma_vydavkov",
+          "value": 993648.0
+        },
+        {
+          "name": "Financny_Profil_Projekt_rocne_naklady",
+          "value": 0.0
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/project/1800"
+        },
+        {
+          "name": "EA_Profil_Projekt_program",
+          "value": "cbb58995-4588-4fec-ab49-f491ba95f223"
+        },
+        {
+          "name": "EA_Profil_Projekt_status",
+          "value": "c_stav_projektu_8"
+        },
+        {
+          "name": "Financny_Profil_Projekt_schvalene_rocne_naklady",
+          "value": 1000.0
+        },
+        {
+          "name": "Financny_Profil_Projekt_schvaleny_rozpocet",
+          "value": 400000.0
+        },
+        {
+          "name": "status_projetku_status_projektu_Datum_NFP",
+          "value": "2019-10-12T00:00:00.000+02:00"
+        },
+        {
+          "name": "status_projetku_status_projektu_zmluva_o_dielo_CRZ",
+          "value": "https://www.crz.gov.sk/zmluva/5784936/"
+        },
+        {
+          "name": "status_projetku_status_projektu_vyhlasenie_VO",
+          "value": "2021-06-17T00:00:00.000+02:00"
+        },
+        {
+          "name": "status_projetku_status_projektu_zmluva_o_dielo",
+          "value": "2021-08-27T00:00:00.000+02:00"
+        },
+        {
+          "name": "status_projetku_status_projektu_link_NFP",
+          "value": "https://www.crz.gov.sk/4255936/"
+        },
+        {
+          "name": "status_projetku_status_projektu_VO",
+          "value": "https://www.uvo.gov.sk/vestnik/oznamenie/detail/505402?page=1&limit=20&sort=datumZverejnenia&sort-dir=DESC&ext=0&cisloOznamenia=&text=%C3%9Arad+pre+regul%C3%A1ciu+elektronick%C3%BDch&year=0&dzOd=&dzDo=&cvestnik=&doznamenia=-1&dzakazky=-1&dpostupu=-1&mdodania=&kcpv=&opb=&szfeu=&flimit=-1&nobstaravatel=&ndodavatel=&nzakazky="
+        }
+      ],
+      "metaAttributes": {
+        "owner": "1d8a37f7-3063-46d2-b66a-c1b0c8471878-e2583d93-19e7-4f9f-95fe-45f6a9529e73",
+        "state": "DRAFT",
+        "createdBy": "marian.spisiak2",
+        "createdAt": "2022-05-16T11:41:41.985Z",
+        "lastModifiedBy": "marian.spisiak2",
+        "lastModifiedAt": "2022-05-30T09:08:30.513Z"
+      }
+    }
+  ]
+}

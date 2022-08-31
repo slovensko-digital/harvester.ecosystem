@@ -1,0 +1,20 @@
+{
+  "id": 8,
+  "code": "ZDROJ",
+  "name": "Zdroj údaja",
+  "description": "ZDROJ",
+  "valid": true,
+  "category": null,
+  "enumItems": [
+    {
+      "id": 4,
+      "code": "c_zdroj.6",
+      "value": "updated System",
+      "valid": true,
+      "description": "Implicit system entity",
+      "orderList": 1,
+      "engValue": "System",
+      "engDescription": "Implicit system entity"
+    }
+  ]
+}

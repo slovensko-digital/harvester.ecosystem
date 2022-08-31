@@ -1,0 +1,45 @@
+{
+  "pagination": {
+    "page": 1,
+    "perPage": 10000,
+    "totalPages": 1,
+    "totaltems": 7
+  },
+  "configurationItemSet": [
+    {
+      "type": "Program",
+      "uuid": "74c92785-4bb3-4bff-957c-e5783b2035a1",
+      "attributes": [
+        {
+          "name": "Gen_Profil_anglicky_nazov",
+          "value": "Recovery and Resilience Facility"
+        },
+        {
+          "name": "Gen_Profil_kod_metais",
+          "value": "prg_36"
+        },
+        {
+          "name": "Gen_Profil_nazov",
+          "value": "updated Fond obnovy a odolnosti RRF"
+        },
+        {
+          "name": "Gen_Profil_zdroj",
+          "value": "c_zdroj.1"
+        },
+        {
+          "name": "Gen_Profil_ref_id",
+          "value": "https://data.gov.sk/id/egov/operational-program/36"
+        }
+      ],
+      "metaAttributes": {
+        "owner": "1d8a37f7-3063-46d2-b66a-c1b0c8471878-67d48d04-321e-426e-a321-e0bc6fa40437",
+        "state": "DRAFT",
+        "createdBy": "martin.bezek",
+        "createdAt": "2021-01-25T11:17:26.652Z",
+        "lastModifiedBy": "janka.rejtova",
+        "lastModifiedAt": "2021-07-07T12:59:30.835Z"
+      }
+    }
+  ],
+  "incidentRelationshipSet": []
+}

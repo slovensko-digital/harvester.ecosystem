@@ -1,0 +1,484 @@
+{
+    "fromNodes": {
+        "pagination": {
+            "page": 1,
+            "perPage": 100,
+            "totalPages": 1,
+            "totaltems": 9
+        },
+        "neighbourPairs": [
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "c2eadb75-7803-d9fa-7101-590f6dc8d022",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "ac9aeb96-0ba1-248c-a65c-a397edddc037",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "1d8a37f7-3063-46d2-b66a-c1b0c8471878-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.saraka1",
+                        "createdAt": "2021-09-28T14:21:08.860Z",
+                        "lastModifiedBy": "peter.saraka1",
+                        "lastModifiedAt": "2021-09-28T14:21:08.860Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "ac9aeb96-0ba1-248c-a65c-a397edddc037",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4308"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "Hodnotenie projektu"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "hodnotenie_projektu"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4308"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "1d8a37f7-3063-46d2-b66a-c1b0c8471878-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.saraka1",
+                        "createdAt": "2021-09-28T14:21:08.833Z",
+                        "lastModifiedBy": "peter.saraka1",
+                        "lastModifiedAt": "2021-09-28T14:21:08.833Z"
+                    }
+                }
+            },
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "4a6c2dcc-06bc-3784-2b77-4cc1c44fcc56",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "48c971b2-3c3d-eec2-4aa1-7d7b2e4caf8c",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-09-01T09:13:39.246Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-09-01T09:13:39.246Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "48c971b2-3c3d-eec2-4aa1-7d7b2e4caf8c",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4184"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "Zoznam rizík detailný"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "zoznam_rizik_detailny"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4184"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-09-01T09:13:39.178Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-09-01T09:13:39.178Z"
+                    }
+                }
+            },
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "d7921fa1-5346-5bb5-ac22-3d62a23e9420",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "ae281f73-09f1-bb4e-197f-4c4fc9fed32e",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:23:15.336Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:23:15.336Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "ae281f73-09f1-bb4e-197f-4c4fc9fed32e",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4151"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "I-03 Prístup k projektu – detailný"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "pristup_k_projektu_detailny"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4151"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:23:15.304Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-09-22T10:12:55.577Z"
+                    }
+                }
+            },
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "6c540e49-e257-fbb8-768c-ed651c5bb865",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "55801a94-522e-1fe6-f619-395f5f964fe7",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:20:17.545Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:20:17.545Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "55801a94-522e-1fe6-f619-395f5f964fe7",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4150"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "I-01 Projektový zámer – detailný"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "projektovy_zamer_detailny"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4150"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:20:17.519Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-09-22T16:09:09.290Z"
+                    }
+                }
+            },
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "7b80ecb6-f450-d086-2abe-d34f72ff2395",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "a8f870bf-20f9-e32d-469b-1425083d226f",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:18:02.820Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:18:02.820Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "a8f870bf-20f9-e32d-469b-1425083d226f",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4149"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "I_01_PRILOHA_1_REGISTER_RIZIK-a-ZAVISLOSTI_Projekt_RPOD_SUSR_18082021_v_1.00.xlsx"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "zoznam_rizik_detailny"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4149"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:18:02.791Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-09-20T08:55:37.858Z"
+                    }
+                }
+            },
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "0c8a6124-eabd-4cb1-36ee-96a8519f6624",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "56ae5794-fcaa-a138-b6a4-df7a4e194f69",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:17:49.580Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:17:49.580Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "56ae5794-fcaa-a138-b6a4-df7a4e194f69",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_poznamka",
+                            "value": "Aktualna CBA/TCO projektu"
+                        },
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4148"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "I_02_BC_CBA_PRILOHA_Projekt_RPOD_SUSR_180821_v_1.05.xlsx"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "bc_cba_detailne"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4148"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:17:49.554Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-09-23T06:59:21.502Z"
+                    }
+                }
+            },
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "5de58524-fff8-af84-cc2a-333b0151efd9",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "562208dc-d572-aff0-9d6d-e443b6e5f326",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:17:12.739Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:17:12.739Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "562208dc-d572-aff0-9d6d-e443b6e5f326",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4147"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "P-03 Prístup k projektu – rámcový"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "pristup_k_projektu_ramcovy"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4147"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:17:12.712Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:17:02.177Z"
+                    }
+                }
+            },
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "a11e1fcb-6154-cc1e-dece-0bb559667a92",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "295e11e9-8860-12c0-345e-57619db16005",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:14:40.535Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:14:40.535Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "295e11e9-8860-12c0-345e-57619db16005",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4146"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "P-01 Projektový zámer – rámcový"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "projektovy_zamer_ramcovy"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4146"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:14:40.509Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:14:31.810Z"
+                    }
+                }
+            },
+            {
+                "relationship": {
+                    "type": "PROJECT_HAS_DOCUMENT",
+                    "uuid": "7a5b98fd-85d6-000d-034e-544229ef020c",
+                    "startUuid": "a1423370-99ca-4cff-bc7a-61075d96e3bb",
+                    "endUuid": "2f180d69-f5e1-f5fc-b534-b39480e8ebf3",
+                    "attributes": [],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:11:38.907Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:11:38.907Z"
+                    }
+                },
+                "configurationItem": {
+                    "type": "Dokument",
+                    "uuid": "2f180d69-f5e1-f5fc-b534-b39480e8ebf3",
+                    "attributes": [
+                        {
+                            "name": "Gen_Profil_kod_metais",
+                            "value": "dokument_4145"
+                        },
+                        {
+                            "name": "Gen_Profil_nazov",
+                            "value": "Zoznam rizík rámcový"
+                        },
+                        {
+                            "name": "Gen_Profil_zdroj",
+                            "value": "c_zdroj.1"
+                        },
+                        {
+                            "name": "Profil_Dokument_Projekt_typ_dokumentu",
+                            "value": "zoznam_rizik_ramcovy"
+                        },
+                        {
+                            "name": "Gen_Profil_ref_id",
+                            "value": "https://data.gov.sk/doc/metais-attached-document/4145"
+                        }
+                    ],
+                    "metaAttributes": {
+                        "owner": "c9c6dd44-2bc0-4d85-b5a1-c70ab05a7975-88027af4-7459-44fa-922a-317ac7dccdfb",
+                        "state": "DRAFT",
+                        "createdBy": "peter.duris",
+                        "createdAt": "2021-08-21T16:11:38.872Z",
+                        "lastModifiedBy": "peter.duris",
+                        "lastModifiedAt": "2021-08-21T16:11:38.872Z"
+                    }
+                }
+            }
+        ]
+    },
+    "toNodes": {
+        "pagination": {
+            "page": 1,
+            "perPage": 100,
+            "totalPages": 1,
+            "totaltems": 0
+        },
+        "neighbourPairs": []
+    }
+}
