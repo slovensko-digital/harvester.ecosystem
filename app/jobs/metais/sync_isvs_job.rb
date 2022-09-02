@@ -16,9 +16,9 @@ class Metais::SyncIsvsJob < ApplicationJob
     ActiveRecord::Base.transaction do
       return unless isvs.latest_version.nil? || isvs.latest_version.raw_data != json.to_json
       
+      isvs.save!
       version = isvs.versions.build(raw_data: json.to_json)
       parse_isvs(version, json)
-      isvs.save!
       version.save!
       isvs.latest_version = version
       isvs.save!
