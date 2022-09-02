@@ -22,9 +22,9 @@ class Metais::SyncDocumentJob < ApplicationJob
              meta['type'] == JSON.parse(document.latest_version.raw_meta)['type'])
         )
 
+      document.save!
       version = document.versions.build(raw_data: json.to_json, raw_meta: meta.to_json)
       parse_document(version, json, meta)
-      document.save!
       version.save!
       document.latest_version = version
       document.save!
