@@ -18,9 +18,9 @@ class Metais::SyncProjectJob < ApplicationJob
     ActiveRecord::Base.transaction do
       return unless project.latest_version.nil? || project.latest_version.raw_data != json.to_json
 
+      project.save!
       version = project.versions.build(raw_data: json.to_json)
       parse_project(version, json)
-      project.save!
       version.save!
       project.latest_version = version
       project.save!
