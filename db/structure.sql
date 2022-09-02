@@ -4052,7 +4052,8 @@ CREATE TABLE metais.codelist_program (
     zdroj character varying,
     raw_data text,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    uuid character varying
 );
 
 
@@ -10839,6 +10840,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220810120123'),
 ('20220810120320'),
 ('20220810120510'),
-('20220811192959');
+('20220811192959'),
+('20220902164827');
 
 

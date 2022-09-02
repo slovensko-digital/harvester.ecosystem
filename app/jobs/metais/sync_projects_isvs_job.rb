@@ -11,7 +11,7 @@ class Metais::SyncProjectsIsvsJob < ApplicationJob
     page_number = 1
 
     begin
-      response = conn.get(RELATED_ISVS_REQUEST_TEMPLATE % {uuid: project.uuid}, 'Content-Type' => 'application/json')
+      response = conn.get(RELATED_ISVS_REQUEST_TEMPLATE % {uuid: project.uuid}, nil, 'Content-Type' => 'application/json')
       parsed_json = JSON.parse(response.body)
       isvs = parsed_json&.dig('ciWithRels')
       return unless isvs
