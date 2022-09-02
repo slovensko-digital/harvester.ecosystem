@@ -15,6 +15,7 @@ class Metais::SyncCodelistProgramJob < ApplicationJob
       ActiveRecord::Base.transaction do
         parsed_json['configurationItemSet'].each do |i|
           program = Metais::CodelistProgram.find_or_initialize_by(kod_metais: get_attribute(i, 'Gen_Profil_kod_metais'))
+          program.uuid = i&.dig('uuid')
           program.nazov = get_attribute(i, 'Gen_Profil_nazov')
           program.nazov_en = get_attribute(i, 'Gen_Profil_anglicky_nazov')
           program.ref_id = get_attribute(i, 'Gen_Profil_ref_id')
