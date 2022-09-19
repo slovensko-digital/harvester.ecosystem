@@ -24,6 +24,8 @@ class Metais::SyncProjectJob < ApplicationJob
       version.save!
       project.latest_version = version
       project.save!
+
+      Metais::DiffConsecutiveVersionsJob.perform_later(version)
     end
   end
 

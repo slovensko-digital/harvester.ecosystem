@@ -4331,6 +4331,40 @@ ALTER SEQUENCE metais.isvs_versions_id_seq OWNED BY metais.isvs_versions.id;
 
 
 --
+-- Name: project_changes; Type: TABLE; Schema: metais; Owner: -
+--
+
+CREATE TABLE metais.project_changes (
+    id bigint NOT NULL,
+    project_version_id bigint NOT NULL,
+    atribut character varying,
+    predchadzajuca_hodnota character varying,
+    nova_hodnota character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: project_changes_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
+--
+
+CREATE SEQUENCE metais.project_changes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: project_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
+--
+
+ALTER SEQUENCE metais.project_changes_id_seq OWNED BY metais.project_changes.id;
+
+
+--
 -- Name: project_document_versions; Type: TABLE; Schema: metais; Owner: -
 --
 
@@ -4476,40 +4510,6 @@ CREATE TABLE metais.projects (
     updated_at timestamp(6) without time zone NOT NULL,
     latest_version_id bigint
 );
-
-
---
--- Name: projects_changelists; Type: TABLE; Schema: metais; Owner: -
---
-
-CREATE TABLE metais.projects_changelists (
-    id bigint NOT NULL,
-    project_version_id bigint NOT NULL,
-    atribut character varying,
-    predchadzajuca_hodnota character varying,
-    nova_hodnota character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: projects_changelists_id_seq; Type: SEQUENCE; Schema: metais; Owner: -
---
-
-CREATE SEQUENCE metais.projects_changelists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: projects_changelists_id_seq; Type: SEQUENCE OWNED BY; Schema: metais; Owner: -
---
-
-ALTER SEQUENCE metais.projects_changelists_id_seq OWNED BY metais.projects_changelists.id;
 
 
 --
@@ -5450,6 +5450,13 @@ ALTER TABLE ONLY metais.isvs_versions ALTER COLUMN id SET DEFAULT nextval('metai
 
 
 --
+-- Name: project_changes id; Type: DEFAULT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_changes ALTER COLUMN id SET DEFAULT nextval('metais.project_changes_id_seq'::regclass);
+
+
+--
 -- Name: project_document_versions id; Type: DEFAULT; Schema: metais; Owner: -
 --
 
@@ -5475,13 +5482,6 @@ ALTER TABLE ONLY metais.project_versions ALTER COLUMN id SET DEFAULT nextval('me
 --
 
 ALTER TABLE ONLY metais.projects ALTER COLUMN id SET DEFAULT nextval('metais.projects_id_seq'::regclass);
-
-
---
--- Name: projects_changelists id; Type: DEFAULT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.projects_changelists ALTER COLUMN id SET DEFAULT nextval('metais.projects_changelists_id_seq'::regclass);
 
 
 --
@@ -6435,6 +6435,14 @@ ALTER TABLE ONLY metais.isvs_versions
 
 
 --
+-- Name: project_changes project_changes_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_changes
+    ADD CONSTRAINT project_changes_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: project_document_versions project_document_versions_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
 --
 
@@ -6456,14 +6464,6 @@ ALTER TABLE ONLY metais.project_documents
 
 ALTER TABLE ONLY metais.project_versions
     ADD CONSTRAINT project_versions_pkey PRIMARY KEY (id);
-
-
---
--- Name: projects_changelists projects_changelists_pkey; Type: CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.projects_changelists
-    ADD CONSTRAINT projects_changelists_pkey PRIMARY KEY (id);
 
 
 --
@@ -8796,6 +8796,13 @@ CREATE INDEX "index_metais.isvs_versions_on_isvs_id" ON metais.isvs_versions USI
 
 
 --
+-- Name: index_metais.project_changes_on_project_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX "index_metais.project_changes_on_project_version_id" ON metais.project_changes USING btree (project_version_id);
+
+
+--
 -- Name: index_metais.project_document_versions_on_document_id; Type: INDEX; Schema: metais; Owner: -
 --
 
@@ -8828,13 +8835,6 @@ CREATE INDEX "index_metais.project_documents_on_uuid" ON metais.project_document
 --
 
 CREATE INDEX "index_metais.project_versions_on_project_id" ON metais.project_versions USING btree (project_id);
-
-
---
--- Name: index_metais.projects_changelists_on_project_version_id; Type: INDEX; Schema: metais; Owner: -
---
-
-CREATE INDEX "index_metais.projects_changelists_on_project_version_id" ON metais.projects_changelists USING btree (project_version_id);
 
 
 --
@@ -10751,14 +10751,6 @@ ALTER TABLE ONLY metais.isvs_documents
 
 
 --
--- Name: projects_changelists fk_rails_40fa60da58; Type: FK CONSTRAINT; Schema: metais; Owner: -
---
-
-ALTER TABLE ONLY metais.projects_changelists
-    ADD CONSTRAINT fk_rails_40fa60da58 FOREIGN KEY (project_version_id) REFERENCES metais.project_versions(id);
-
-
---
 -- Name: isvs_documents fk_rails_5d253a31fc; Type: FK CONSTRAINT; Schema: metais; Owner: -
 --
 
@@ -10796,6 +10788,14 @@ ALTER TABLE ONLY metais.isvs
 
 ALTER TABLE ONLY metais.project_documents
     ADD CONSTRAINT fk_rails_9352955d7e FOREIGN KEY (latest_version_id) REFERENCES metais.project_document_versions(id);
+
+
+--
+-- Name: project_changes fk_rails_a57192e308; Type: FK CONSTRAINT; Schema: metais; Owner: -
+--
+
+ALTER TABLE ONLY metais.project_changes
+    ADD CONSTRAINT fk_rails_a57192e308 FOREIGN KEY (project_version_id) REFERENCES metais.project_versions(id);
 
 
 --
