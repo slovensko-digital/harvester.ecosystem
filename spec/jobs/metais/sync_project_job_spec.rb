@@ -56,6 +56,7 @@ RSpec.describe Metais::SyncProjectJob, type: :job do
 
         expect(Metais::SyncProjectsIsvsJob).to have_been_enqueued.exactly(1).times
         expect(Metais::SyncRelatedDocumentsJob).to have_been_enqueued.exactly(1).times
+        expect(Metais::DiffConsecutiveVersionsJob).to have_been_enqueued.exactly(1).times
       end
     end
 
@@ -117,6 +118,7 @@ RSpec.describe Metais::SyncProjectJob, type: :job do
 
         expect(Metais::SyncProjectsIsvsJob).to have_been_enqueued.exactly(1).times
         expect(Metais::SyncRelatedDocumentsJob).to have_been_enqueued.exactly(1).times
+        expect(Metais::DiffConsecutiveVersionsJob).to have_been_enqueued.exactly(1).times
       end
     end
   end
