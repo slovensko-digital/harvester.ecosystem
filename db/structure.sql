@@ -4337,9 +4337,9 @@ ALTER SEQUENCE metais.isvs_versions_id_seq OWNED BY metais.isvs_versions.id;
 CREATE TABLE metais.project_changes (
     id bigint NOT NULL,
     project_version_id bigint NOT NULL,
-    atribut character varying,
-    predchadzajuca_hodnota character varying,
-    nova_hodnota character varying,
+    field character varying,
+    old_value character varying,
+    new_value character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );

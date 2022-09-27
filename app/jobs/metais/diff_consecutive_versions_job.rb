@@ -5,16 +5,15 @@ class Metais::DiffConsecutiveVersionsJob < ApplicationJob
 
   def perform(version)
     ActiveRecord::Base.transaction do
-      result = Metais::ProjectVersion.previous(version)
-      return if result.blank?
-      previous = result.first
+      previous = version.previous
+      return unless previous
 
       OBSERVED_ATTRIBUTES.each do |key|
         Metais::ProjectChange.create(
           project_version: version,
-          atribut: key,
-          predchadzajuca_hodnota: previous[key].to_s,
-          nova_hodnota: version[key].to_s
+          field: key,
+          old_value: previous[key].to_s,
+          new_value: version[key].to_s
         ).save! if version[key] != previous[key]
       end
     end
