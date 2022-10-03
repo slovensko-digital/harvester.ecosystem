@@ -24,6 +24,8 @@ class Metais::SyncProjectJob < ApplicationJob
       version.save!
       project.latest_version = version
       project.save!
+
+      Metais::DiffConsecutiveVersionsJob.perform_later(version)
     end
   end
 
@@ -54,6 +56,8 @@ class Metais::SyncProjectJob < ApplicationJob
     p.vo = get_projects_attribute(json, 'status_projetku_status_projektu_VO')
     p.zmluva_o_dielo = get_projects_attribute(json, 'status_projetku_status_projektu_zmluva_o_dielo')
     p.zmluva_o_dielo_crz = get_projects_attribute(json, 'status_projetku_status_projektu_zmluva_o_dielo_CRZ')
+
+    p.metais_created_at = json&.dig('metaAttributes')&.dig('createdAt')
   end
 
   def get_projects_attribute(json, key)

@@ -35,6 +35,8 @@ class Metais::SyncIsvsJob < ApplicationJob
     isvs.popis_as_is = get_attribute(json, 'EA_Profil_ISVS_popis_as_is')
     isvs.stav_isvs = get_attribute(json, 'EA_Profil_ISVS_stav_isvs')
     isvs.typ_isvs = get_attribute(json, 'EA_Profil_ISVS_typ_isvs')
+
+    isvs.metais_created_at = json&.dig('metaAttributes')&.dig('createdAt')
   end
 
   def get_attribute(json, key)
