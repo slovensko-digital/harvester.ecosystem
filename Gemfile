@@ -11,7 +11,7 @@ gem 'foreman'
 
 gem 'clockwork'
 gem 'dotenv'
-gem 'sidekiq', '~> 5.2.9' # Unlock when we migrate to Redis 4+
+gem 'sidekiq', '~> 5.2.10' # Unlock when we migrate to Redis 4+
 gem 'faraday'
 
 gem 'newrelic_rpm'
