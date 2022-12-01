@@ -1,0 +1,20 @@
+{
+  "id": 54,
+  "code": "FAZA_PROJEKTU",
+  "name": "Fáza projektu",
+  "description": "Fáza projektu",
+  "valid": true,
+  "category": null,
+  "enumItems": [
+    {
+      "id": 49,
+      "code": "c_faza_projektu.5",
+      "value": "updated Completed project",
+      "valid": true,
+      "description": "Completed and implemented project.",
+      "orderList": 5,
+      "engValue": "Completed project",
+      "engDescription": "Completed and implemented project."
+    }
+  ]
+}

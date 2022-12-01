@@ -16,6 +16,10 @@ module FixtureMacros
   def itms_json_fixture(file_name)
     JSON.parse(itms_file_fixture(file_name))
   end
+
+  def metais_json_fixture(file_name)
+    JSON.parse(file_fixture(File.join('metais', file_name))).to_json
+  end
 end
 
 RSpec.configure do |config|

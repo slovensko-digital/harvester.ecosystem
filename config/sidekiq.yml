@@ -6,3 +6,4 @@ production:
 :queues:
   - [upvs, 1]
   - [itms, 1]
+  - [metais, 1]

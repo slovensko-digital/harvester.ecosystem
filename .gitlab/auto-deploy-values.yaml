@@ -1,0 +1,47 @@
+service:
+  externalPort: 5000
+  internalPort: 5000
+livenessProbe:
+  initialDelaySeconds: 20
+  probeType: "exec"
+  command:
+  - "true"
+readinessProbe:
+  initialDelaySeconds: 20 
+  probeType: "exec"
+  command:
+  - "true"
+application.migrateCommand: ["bundle", "exec", "rails", "db:migrate"]
+workers:
+  clock:
+    replicaCount: "1"
+    command: ["bundle", "exec", "clockwork", "config/clock.rb"]
+    terminationGracePeriodSeconds:  60
+    livenessProbe:
+      initialDelaySeconds: 5
+      timeoutSeconds: 10
+      probeType: "exec"
+      command:
+        - "pgrep"
+        - "bundle"
+    readinessProbe:
+      probeType: "exec"
+      command:
+        - "pgrep"
+        - "bundle"
+  worker:
+    replicaCount: "1"
+    command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
+    terminationGracePeriodSeconds:  60
+    livenessProbe:
+      initialDelaySeconds: 5
+      timeoutSeconds: 10
+      probeType: "exec"
+      command:
+        - "pgrep"
+        - "bundle"
+    readinessProbe:
+      probeType: "exec"
+      command:
+        - "pgrep"
+        - "bundle"
