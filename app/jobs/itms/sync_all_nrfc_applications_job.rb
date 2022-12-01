@@ -5,6 +5,6 @@ class Itms::SyncAllNrfcApplicationsJob < ItmsJob
   end
 
   def latest_nrfc_application_timestamp
-    [Itms::NrfcApplicationReceived.latest&.updated_at, Itms::NrfcApplicationProcessed.latest&.updated_at].min&.to_i
+    [Itms::NrfcApplicationReceived.latest&.itms_updated_at, Itms::NrfcApplicationProcessed.latest&.itms_updated_at].min&.to_i
   end
 end
