@@ -18,5 +18,21 @@ RSpec.describe Itms::SyncAllNrfcApplicationsJob, type: :job do
       expect(Itms::SyncNrfcApplicationJob).to have_been_enqueued.with('/v2/zonfp/prijate/2')
       expect(Itms::SyncNrfcApplicationJob).to have_been_enqueued.with('/v2/zonfp/prijate/3')
     end
+
+    it 'takes latest nrfc application timestamp according to ITMS' do
+      Itms::NrfcApplicationReceived.create!(
+        itms_id: 1,
+        itms_updated_at: 2.week.from_now.change(hour: 5),
+        updated_at: 2.week.from_now.change(hour: 8)
+      )
+
+      Itms::NrfcApplicationProcessed.create!(
+        itms_id: 1,
+        itms_updated_at: 1.week.from_now.change(hour: 6),
+        updated_at: 1.week.from_now.change(hour: 9)
+      )
+
+      expect(subject.latest_nrfc_application_timestamp).to eq(1.week.from_now.change(hour: 6).to_i)
+    end
   end
 end
