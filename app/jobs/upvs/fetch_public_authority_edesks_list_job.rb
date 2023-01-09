@@ -56,5 +56,6 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
     repository = TemporaryPublicAuthorityEdesk
     repository.find_by!(uri: 'ico://sk/00151513', cin: '151513', name: 'Úrad vlády Slovenskej republiky')
     repository.find_by!(uri: 'ico://sk/00151513_10003', cin: '151513', name: 'Úrad vlády Slovenskej republiky - Petície')
+    repository.find_by!(uri: 'ico://sk/00164381', cin: '164381', name: 'Ministerstvo školstva, vedy, výskumu a športu Slovenskej republiky')
   end
 end
