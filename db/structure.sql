@@ -10,6 +10,13 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Name: eid22; Type: SCHEMA; Schema: -; Owner: -
+--
+
+CREATE SCHEMA eid22;
+
+
+--
 -- Name: itms; Type: SCHEMA; Schema: -; Owner: -
 --
 
@@ -33,6 +40,59 @@ CREATE SCHEMA upvs;
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
+
+--
+-- Name: JednotnePracoviska; Type: TABLE; Schema: eid22; Owner: -
+--
+
+CREATE TABLE eid22."JednotnePracoviska" (
+    id character varying NOT NULL,
+    name character varying NOT NULL
+);
+
+
+--
+-- Name: eIdClaims; Type: TABLE; Schema: eid22; Owner: -
+--
+
+CREATE TABLE eid22."eIdClaims" (
+    jp character varying NOT NULL,
+    "claimNo" integer NOT NULL,
+    "dateClaimed" date NOT NULL,
+    "dateReady" date,
+    "dateTaken" date
+);
+
+
+--
+-- Name: workLog; Type: TABLE; Schema: eid22; Owner: -
+--
+
+CREATE TABLE eid22."workLog" (
+    id bigint NOT NULL,
+    ts timestamp without time zone NOT NULL,
+    text text NOT NULL
+);
+
+
+--
+-- Name: workLog_id_seq; Type: SEQUENCE; Schema: eid22; Owner: -
+--
+
+CREATE SEQUENCE eid22."workLog_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: workLog_id_seq; Type: SEQUENCE OWNED BY; Schema: eid22; Owner: -
+--
+
+ALTER SEQUENCE eid22."workLog_id_seq" OWNED BY eid22."workLog".id;
+
 
 --
 -- Name: aktivity; Type: TABLE; Schema: itms; Owner: -
@@ -4631,6 +4691,13 @@ ALTER SEQUENCE upvs.services_with_forms_id_seq OWNED BY upvs.services_with_forms
 
 
 --
+-- Name: workLog id; Type: DEFAULT; Schema: eid22; Owner: -
+--
+
+ALTER TABLE ONLY eid22."workLog" ALTER COLUMN id SET DEFAULT nextval('eid22."workLog_id_seq"'::regclass);
+
+
+--
 -- Name: aktivity id; Type: DEFAULT; Schema: itms; Owner: -
 --
 
@@ -5496,6 +5563,30 @@ ALTER TABLE ONLY upvs.public_authority_edesks ALTER COLUMN id SET DEFAULT nextva
 --
 
 ALTER TABLE ONLY upvs.services_with_forms ALTER COLUMN id SET DEFAULT nextval('upvs.services_with_forms_id_seq'::regclass);
+
+
+--
+-- Name: JednotnePracoviska JednotnePracoviska_pkey; Type: CONSTRAINT; Schema: eid22; Owner: -
+--
+
+ALTER TABLE ONLY eid22."JednotnePracoviska"
+    ADD CONSTRAINT "JednotnePracoviska_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: eIdClaims eIdClaims_pkey; Type: CONSTRAINT; Schema: eid22; Owner: -
+--
+
+ALTER TABLE ONLY eid22."eIdClaims"
+    ADD CONSTRAINT "eIdClaims_pkey" PRIMARY KEY (jp, "claimNo", "dateClaimed");
+
+
+--
+-- Name: workLog workLog_pkey; Type: CONSTRAINT; Schema: eid22; Owner: -
+--
+
+ALTER TABLE ONLY eid22."workLog"
+    ADD CONSTRAINT "workLog_pkey" PRIMARY KEY (id);
 
 
 --
@@ -10909,6 +11000,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220811192959'),
 ('20220902164827'),
 ('20220919080112'),
-('20220919084308');
+('20220919084308'),
+('20221219105855');
 
 
