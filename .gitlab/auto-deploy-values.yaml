@@ -1,6 +1,9 @@
 service:
   externalPort: 5000
   internalPort: 5000
+image:
+  secrets:
+  - name: skdigital-bonet-registry
 livenessProbe:
   initialDelaySeconds: 20
   probeType: "exec"
