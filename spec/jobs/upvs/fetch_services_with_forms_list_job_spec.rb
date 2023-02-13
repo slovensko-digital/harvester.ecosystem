@@ -44,7 +44,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
           schema_url: nil
         )
 
-        expect(Upvs::ServiceWithForm.count).to eq(12)
+        expect(Upvs::ServiceWithForm.count).to eq(11)
       end
     end
 
