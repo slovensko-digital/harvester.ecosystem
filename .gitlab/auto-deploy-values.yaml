@@ -18,7 +18,6 @@ readinessProbe:
     - "pgrep"
     - "bundle"
 application:
-  tier: clock
   migrateCommand: ["bundle", "exec", "rails", "db:migrate"]
   command: ["bundle", "exec", "clockwork", "config/clock.rb"]
 resources:
