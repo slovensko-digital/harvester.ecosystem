@@ -1,41 +1,36 @@
 service:
-  externalPort: 5000
-  internalPort: 5000
+  enabled: false
+ingress:
+  enabled: false
 image:
   secrets:
   - name: skdigital-bonet-registry
 livenessProbe:
-  initialDelaySeconds: 20
+  initialDelaySeconds: 5
+  timeoutSeconds: 10
   probeType: "exec"
   command:
-  - "true"
+    - "pgrep"
+    - "bundle"
 readinessProbe:
-  initialDelaySeconds: 20 
   probeType: "exec"
   command:
-  - "true"
-application.migrateCommand: ["bundle", "exec", "rails", "db:migrate"]
+    - "pgrep"
+    - "bundle"
+application:
+  migrateCommand: ["bundle", "exec", "rails", "db:migrate"]
+  command: ["bundle", "exec", "clockwork", "config/clock.rb"]
+resources:
+  requests:
+    cpu: 10m
+    memory: 100Mi
+  limits:
+    memory: 200Mi
 workers:
-  clock:
-    replicaCount: "1"
-    command: ["bundle", "exec", "clockwork", "config/clock.rb"]
-    terminationGracePeriodSeconds:  60
-    livenessProbe:
-      initialDelaySeconds: 5
-      timeoutSeconds: 10
-      probeType: "exec"
-      command:
-        - "pgrep"
-        - "bundle"
-    readinessProbe:
-      probeType: "exec"
-      command:
-        - "pgrep"
-        - "bundle"
   worker:
     replicaCount: "1"
     command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
-    terminationGracePeriodSeconds:  60
+    terminationGracePeriodSeconds: 60
     livenessProbe:
       initialDelaySeconds: 5
       timeoutSeconds: 10
@@ -48,3 +43,9 @@ workers:
       command:
         - "pgrep"
         - "bundle"
+    resources:
+      requests:
+        cpu: 1
+        memory: 2.5Gi
+      limits:
+        memory: 2.5Gi
