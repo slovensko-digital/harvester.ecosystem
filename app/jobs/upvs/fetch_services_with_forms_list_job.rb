@@ -21,6 +21,8 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       TemporaryServiceWithForm.truncate_source_table!
       TemporaryServiceWithForm.insert_to_source_table!
     end
+
+    BetterUptimeApi.ping_heartbeat('UPVS_FETCH_SERVICES')
   end
 
   class TemporaryServiceWithForm < TemporaryRecord
