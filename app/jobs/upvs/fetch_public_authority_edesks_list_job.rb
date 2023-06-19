@@ -18,6 +18,8 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
       TemporaryPublicAuthorityEdesk.truncate_source_table!
       TemporaryPublicAuthorityEdesk.insert_to_source_table!
     end
+
+    BetterUptimeApi.ping_heartbeat('UPVS_FETCH_EDESKS')
   end
 
   class TemporaryPublicAuthorityEdesk < TemporaryRecord

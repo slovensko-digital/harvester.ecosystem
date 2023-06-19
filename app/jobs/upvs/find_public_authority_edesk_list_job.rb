@@ -19,6 +19,8 @@ module Upvs
       else
         raise ResourceNotFoundError
       end
+
+      BetterUptimeApi.ping_heartbeat('UPVS_FIND_EDESKS')
     end
   end
 end
