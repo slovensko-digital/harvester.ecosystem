@@ -32,12 +32,18 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
 
   def each_row_as_attributes(csv_file, csv_options)
     CSV.foreach(csv_file, csv_options) do |row|
-      row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}/, '') }
+      row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
+
+      row[row.keys.first].sub!(/\A"/, '')
+      row[row.keys.last].sub!(/"\z/, '')
+
+      row = row.to_h.transform_keys { |k| k.to_s }
+      row = row.transform_values { |v| v == 'NULL' ? nil : v }
 
       yield(
         cin: row.fetch('ICO'),
         uri: row.fetch('URI'),
-        name: row.fetch('Nazov')
+        name: row.fetch('NAZOV')
       )
     end
   end
