@@ -18,7 +18,8 @@ module HarvesterUtils
     end
 
     def self.download_file(url)
-      response = Faraday.get(url)
+      conn = Faraday.new(request: { timeout: 100 })
+      response = conn.get(url)
       raise DownloadError, "Unexpected response status: #{response.status} for url: #{url}" if response.status != 200
       file = Tempfile.new(rand(1_000_000).to_s)
       file.binmode
