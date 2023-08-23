@@ -21,7 +21,7 @@ module HarvesterUtils
 
     def self.download_file(url)
       conn = Faraday.new(request: { timeout: 300 }) do |faraday|
-        faraday.adapter :typhoeus, http_version: :httpv2_0
+        faraday.adapter :net_http
       end
       response = conn.get(url)
       raise DownloadError, "Unexpected response status: #{response.status} for url: #{url}" if response.status != 200
