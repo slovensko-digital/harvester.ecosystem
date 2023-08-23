@@ -20,7 +20,7 @@ module HarvesterUtils
     end
 
     def self.download_file(url)
-      conn = Faraday.new(request: { timeout: 200 }) do |faraday|
+      conn = Faraday.new(request: { timeout: 300 }) do |faraday|
         faraday.adapter :typhoeus, http_version: :httpv2_0
       end
       response = conn.get(url)
