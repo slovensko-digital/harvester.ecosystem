@@ -14,6 +14,9 @@ gem 'dotenv'
 gem 'sidekiq', '~> 5.2.9' # Unlock when we migrate to Redis 4+
 gem 'faraday'
 
+gem 'typhoeus', '~> 1.4'
+gem 'faraday-typhoeus'
+
 gem 'newrelic_rpm'
 gem 'rollbar'
 
