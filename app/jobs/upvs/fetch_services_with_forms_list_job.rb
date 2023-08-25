@@ -37,13 +37,13 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
 
     CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
-
-      row[row.keys.first].gsub!(/\A"/, '')
-      row[row.keys.last].gsub!(/"\z/, '')
+      binding.irb
 
       row = row.to_h.transform_keys { |k| k.to_s }
       row = row.transform_values { |v| v == 'NULL' ? nil : v }
       row = row.transform_values { |value| value.gsub!(/[\\"]/,'') }
+
+      binding.irb
 
       row["IdServiceInstance"], row["ExternalCode"] = row["IdServiceInstance,ExternalCode"].split(',')
       row.delete("IdServiceInstance,ExternalCode")
@@ -51,6 +51,8 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       row["FormURL;;"] = row["FormURL;;"].gsub!(";;", "")
       row["FormURL"] = row.delete("FormURL;;")
 
+      binding.irb
+      
       yield(
         instance_id: row.fetch('IdServiceInstance'),
         external_code: row.fetch('ExternalCode').presence,
