@@ -36,11 +36,11 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   def each_row_as_attributes(csv_file, csv_options)
 
     CSV.foreach(csv_file, csv_options) do |row|
-      row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
-
+      row = row.to_h.transform_keys { |k| k.to_s.gsub!(/\p{Cf}|"/, '') }
       row = row.to_h.transform_keys { |k| k.to_s }
-      row = row.transform_values { |v| v == 'NULL' ? nil : v }
+
       row = row.transform_values { |value| value.gsub!(/[\\"]/,'') }
+      row = row.transform_values { |v| v == 'NULL' ? nil : v }
 
       row["IdServiceInstance"], row["ExternalCode"] = row["IdServiceInstance,ExternalCode"].split(',')
       row.delete("IdServiceInstance,ExternalCode")
