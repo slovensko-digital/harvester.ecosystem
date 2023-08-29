@@ -6,6 +6,26 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
 
     let(:downloader) { double }
 
+    it 'downloads and imports ServicesWithForms list in V3 format' do
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v3.csv'))
+      subject.perform(url, downloader: downloader)
+
+      expect(Upvs::ServiceWithForm.first).to have_attributes(
+        instance_id: 2082,
+        external_code: 'App.GeneralAgenda',
+        meta_is_code: nil,
+        name: 'VĹˇeobecnĂˇ agenda',
+        type: 'FormulĂˇrovĂ© sluĹľby',
+        institution_uri: 'ico://sk/42156424',
+        institution_name: 'NĂˇrodnĂˇ agentĂşra pre sieĹĄovĂ© a elektronickĂ© sluĹľby',
+        url: 'https://schranka.slovensko.sk/FormConstructor/Default.aspx?IdService=2082',
+        info_url: nil,
+        schema_url: 'http://schemas.gov.sk/form/App.GeneralAgenda/1.9'
+      )
+
+      expect(Upvs::ServiceWithForm.count).to eq(20)
+    end
+
     it 'downloads and imports ServicesWithForms list in V2 format' do
       expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v2.csv'))
       subject.perform(url, downloader: downloader)
