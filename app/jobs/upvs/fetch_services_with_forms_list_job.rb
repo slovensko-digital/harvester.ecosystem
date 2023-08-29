@@ -41,15 +41,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       row = row.transform_values { |value| value&.gsub(/[\\"]/,'') }
       row = row.transform_values { |v| v == 'NULL' ? nil : v }
 
-      if row.has_key?("IdServiceInstance,ExternalCode")
-        row["IdServiceInstance"], row["ExternalCode"] = row["IdServiceInstance,ExternalCode"].split(',')
-        row.delete("IdServiceInstance,ExternalCode")
-      end
-
-      if row.has_key?("FormURL;;")
-        row["FormURL"] = row.delete("FormURL;;")
-        row["FormURL"] = row["FormURL"].gsub(";;", "") if row["FormURL"]
-      end
+      check_row_attributes(row)
 
       yield(
         instance_id: row.fetch('IdServiceInstance'),
@@ -68,4 +60,17 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       )
     end
   end
+
+  def check_row_attributes(row)
+    if row.has_key?("IdServiceInstance,ExternalCode")
+      row["IdServiceInstance"], row["ExternalCode"] = row["IdServiceInstance,ExternalCode"].split(',')
+      row.delete("IdServiceInstance,ExternalCode")
+    end
+
+    if row.has_key?("FormURL;;")
+      row["FormURL"] = row.delete("FormURL;;")
+      row["FormURL"] = row["FormURL"].gsub(";;", "") if row["FormURL"]
+    end
+  end
+
 end
