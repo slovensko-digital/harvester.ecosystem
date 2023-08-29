@@ -16,9 +16,6 @@ gem 'faraday'
 
 gem 'faraday-httpclient', '~> 2.0', '>= 2.0.1'
 
-gem 'typhoeus', '~> 1.4'
-gem 'faraday-typhoeus'
-
 gem 'newrelic_rpm'
 gem 'rollbar'
 
