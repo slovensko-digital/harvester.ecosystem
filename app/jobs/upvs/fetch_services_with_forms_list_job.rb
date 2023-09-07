@@ -41,8 +41,6 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       row = row.transform_values { |value| value&.gsub(/[\\"]/,'') }
       row = row.transform_values { |v| v == 'NULL' ? nil : v }
 
-      check_row_attributes(row)
-
       yield(
         instance_id: row.fetch('IdServiceInstance'),
         external_code: row.fetch('ExternalCode').presence,

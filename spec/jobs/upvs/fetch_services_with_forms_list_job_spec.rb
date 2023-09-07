@@ -14,10 +14,10 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         instance_id: 2082,
         external_code: 'App.GeneralAgenda',
         meta_is_code: nil,
-        name: 'VĹˇeobecnĂˇ agenda',
-        type: 'FormulĂˇrovĂ© sluĹľby',
+        name: 'Všeobecná agenda',
+        type: 'Formulárové služby',
         institution_uri: 'ico://sk/42156424',
-        institution_name: 'NĂˇrodnĂˇ agentĂşra pre sieĹĄovĂ© a elektronickĂ© sluĹľby',
+        institution_name: 'Národná agentúra pre sieťové a elektronické služby',
         url: 'https://schranka.slovensko.sk/FormConstructor/Default.aspx?IdService=2082',
         info_url: nil,
         schema_url: 'http://schemas.gov.sk/form/App.GeneralAgenda/1.9'
