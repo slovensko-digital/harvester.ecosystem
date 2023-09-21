@@ -37,11 +37,21 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
     CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
 
-      row[row.keys.first].sub!(/\A"/, '')
-      row[row.keys.last].sub!(/"\z/, '')
+      row[row.keys.first]&.sub!(/\A"/, '')
+      row[row.keys.last]&.sub!(/"\z/, '')
 
       row = row.to_h.transform_keys { |k| k.to_s }
+
+      row = row.transform_values { |value| value&.gsub(/[\\"]/,'') }
       row = row.transform_values { |v| v == 'NULL' ? nil : v }
+
+      row.keys.first&.split(',').each_with_index do |key, index|
+        row[key] = row.values.first&.split(',')[index]&.gsub(/[\\"]/,'')
+        row[key] = nil if row[key] == 'NULL'
+      end
+
+      row.delete(row.keys.first) if row.keys.first&.include?(',')
+
       yield(
         instance_id: row.fetch('IdServiceInstance'),
         external_code: row.fetch('ExternalCode').presence,
@@ -59,17 +69,4 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       )
     end
   end
-
-  def check_row_attributes(row)
-    if row.has_key?("IdServiceInstance,ExternalCode")
-      row["IdServiceInstance"], row["ExternalCode"] = row["IdServiceInstance,ExternalCode"].split(',')
-      row.delete("IdServiceInstance,ExternalCode")
-    end
-
-    if row.has_key?("FormURL;;")
-      row["FormURL"] = row.delete("FormURL;;")
-      row["FormURL"] = row["FormURL"].gsub(";;", "") if row["FormURL"]
-    end
-  end
-
 end

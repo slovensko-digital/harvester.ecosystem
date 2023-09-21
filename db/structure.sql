@@ -4657,7 +4657,7 @@ CREATE TABLE upvs.services_with_forms (
     meta_is_code character varying,
     name character varying,
     type character varying,
-    institution_uri character varying NOT NULL,
+    institution_uri character varying,
     institution_name character varying,
     valid_from timestamp without time zone,
     valid_to timestamp without time zone,
