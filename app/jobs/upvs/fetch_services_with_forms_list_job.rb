@@ -47,10 +47,10 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
 
       row.keys.first&.split(',').each_with_index do |key, index|
         row[key] = row.values.first&.split(',')[index]&.gsub(/[\\"]/,'')
-        row[key] = nil if row[key] == 'NULL'
       end
 
       row.delete(row.keys.first) if row.keys.first&.include?(',')
+
 
       yield(
         instance_id: row.fetch('IdServiceInstance'),
