@@ -44,10 +44,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       row = row.transform_values { |value| value&.gsub(/[\\"]/,'') }
       row = row.transform_values { |v| v == 'NULL' ? nil : v }
 
-      row.keys.first&.split(',').each_with_index do |key, index|
-        row[key] = row.values.first&.split(',')[index]&.gsub(/[\\"]/,'')
-      end
-      row.delete(row.keys.first) if row.keys.first&.include?(',')
+      check_for_row_formatting(row)
 
       yield(
         instance_id: row.fetch('IdServiceInstance'),
@@ -65,5 +62,12 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
         changed_at: row.fetch('LastUpdated').presence
       )
     end
+  end
+
+  def check_for_row_formatting(row)
+    row.keys.first&.split(',').each_with_index do |key, index|
+      row[key] = row.values.first&.split(',')[index]&.gsub(/[\\"]/,'')
+    end
+    row.delete(row.keys.first) if row.keys.first&.include?(',')
   end
 end
