@@ -36,11 +36,10 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   def each_row_as_attributes(csv_file, csv_options)
     CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
+      row = row.to_h.transform_keys { |k| k.to_s }
 
       row[row.keys.first]&.sub!(/\A"/, '')
       row[row.keys.last]&.sub!(/"\z/, '')
-
-      row = row.to_h.transform_keys { |k| k.to_s }
 
       row = row.transform_values { |value| value&.gsub(/[\\"]/,'') }
       row = row.transform_values { |v| v == 'NULL' ? nil : v }
@@ -48,9 +47,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
       row.keys.first&.split(',').each_with_index do |key, index|
         row[key] = row.values.first&.split(',')[index]&.gsub(/[\\"]/,'')
       end
-
       row.delete(row.keys.first) if row.keys.first&.include?(',')
-
 
       yield(
         instance_id: row.fetch('IdServiceInstance'),
