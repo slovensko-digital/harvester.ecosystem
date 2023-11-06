@@ -5,7 +5,7 @@ module Upvs
   class FindPublicAuthorityEdeskListJob < ApplicationJob
     queue_as :upvs
 
-    DATASET_URL = 'https://data.gov.sk/dataset/zoznam-ovm-s-aktivovanou-elektronickou-schrankou'
+    DATASET_URL = 'https://data.gov.sk/dataset/zoznam-vsetkych-elektronickych-schranok-ovm'
 
     def perform(downloader: HarvesterUtils::Downloader, fetch_job: Upvs::FetchPublicAuthorityEdesksListJob)
       html = downloader.download(DATASET_URL)

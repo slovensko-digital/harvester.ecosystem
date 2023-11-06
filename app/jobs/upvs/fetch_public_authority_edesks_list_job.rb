@@ -43,7 +43,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
       yield(
         cin: row.fetch('ICO'),
         uri: row.fetch('URI'),
-        name: row.fetch('NAZOV')
+        name: row.fetch('Nazov')
       )
     end
   end

@@ -1,11 +1,11 @@
 FactoryBot.define do
-  factory :upvs_all_public_authority_edesk, class: Upvs::AllPublicAuthorityEdesk do
+  factory :upvs_public_authority_edesk, class: Upvs::PublicAuthorityEdesk do
     sequence(:cin) { |n| 10_000_000 + n }
     sequence(:uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
     sequence(:name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }
   end
 
-  factory :upvs_public_authority_edesk, class: Upvs::PublicAuthorityEdesk do
+  factory :upvs_public_authority_active_edesk, class: Upvs::PublicAuthorityActiveEdesk do
     sequence(:cin) { |n| 10_000_000 + n }
     sequence(:uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
     sequence(:name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }

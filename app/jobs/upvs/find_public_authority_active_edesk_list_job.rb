@@ -2,12 +2,12 @@ module Upvs
   class ResourceNotFoundError < RuntimeError
   end
 
-  class FindAllPublicAuthorityEdeskListJob < ApplicationJob
+  class FindPublicAuthorityActiveEdeskListJob < ApplicationJob
     queue_as :upvs
 
-    DATASET_URL = 'https://data.gov.sk/dataset/zoznam-vsetkych-elektronickych-schranok-ovm'
+    DATASET_URL = 'https://data.gov.sk/dataset/zoznam-ovm-s-aktivovanou-elektronickou-schrankou'
 
-    def perform(downloader: HarvesterUtils::Downloader, fetch_job: Upvs::FetchAllPublicAuthorityEdesksListJob)
+    def perform(downloader: HarvesterUtils::Downloader, fetch_job: Upvs::FetchPublicAuthorityActiveEdesksListJob)
       html = downloader.download(DATASET_URL)
       doc = Nokogiri::HTML.parse(html)
       resource_link = doc.search('.resource-item .dropdown-menu a').detect do |a|
@@ -20,8 +20,8 @@ module Upvs
         raise ResourceNotFoundError
       end
 
-      # TODO add hearbeat
-      BetterUptimeApi.ping_heartbeat('UPVS_FIND_ALL_EDESKS')
+      # TODO add heartbeat
+      BetterUptimeApi.ping_heartbeat('UPVS_FIND_ACTIVE_EDESKS')
     end
   end
 end

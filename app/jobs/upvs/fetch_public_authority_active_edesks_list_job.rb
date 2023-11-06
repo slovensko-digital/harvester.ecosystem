@@ -1,30 +1,30 @@
-class Upvs::FetchAllPublicAuthorityEdesksListJob < ApplicationJob
+class Upvs::FetchPublicAuthorityActiveEdesksListJob < ApplicationJob
   queue_as :upvs
 
   def perform(url, downloader: HarvesterUtils::Downloader)
     csv_file = downloader.download_file(url)
     csv_options = { col_sep: File.open(csv_file) { |f| f.readline }.include?(';') ? ';' : ',', headers: true }
 
-    TemporaryAllPublicAuthorityEdesk.transaction do
-      TemporaryAllPublicAuthorityEdesk.create_table!
+    TemporaryPublicAuthorityActiveEdesk.transaction do
+      TemporaryPublicAuthorityActiveEdesk.create_table!
 
       each_row_as_attributes(csv_file, csv_options) do |attributes|
         check_row_attributes(attributes)
-        TemporaryAllPublicAuthorityEdesk.find_or_initialize_by(uri: attributes[:uri]).update!(attributes)
+        TemporaryPublicAuthorityActiveEdesk.find_or_initialize_by(uri: attributes[:uri]).update!(attributes)
       end
 
       assert_known_edesks_existence!
 
-      TemporaryAllPublicAuthorityEdesk.truncate_source_table!
-      TemporaryAllPublicAuthorityEdesk.insert_to_source_table!
+      TemporaryPublicAuthorityActiveEdesk.truncate_source_table!
+      TemporaryPublicAuthorityActiveEdesk.insert_to_source_table!
     end
 
-    BetterUptimeApi.ping_heartbeat('UPVS_FETCH_ALL_EDESKS')
+    BetterUptimeApi.ping_heartbeat('UPVS_FETCH_EDESKS')
   end
 
-  class TemporaryAllPublicAuthorityEdesk < TemporaryRecord
+  class TemporaryPublicAuthorityActiveEdesk < TemporaryRecord
     def self.source
-      Upvs::AllPublicAuthorityEdesk
+      Upvs::PublicAuthorityActiveEdesk
     end
   end
 
@@ -43,7 +43,7 @@ class Upvs::FetchAllPublicAuthorityEdesksListJob < ApplicationJob
       yield(
         cin: row.fetch('ICO'),
         uri: row.fetch('URI'),
-        name: row.fetch('Nazov')
+        name: row.fetch('NAZOV')
       )
     end
   end
@@ -61,7 +61,7 @@ class Upvs::FetchAllPublicAuthorityEdesksListJob < ApplicationJob
   end
 
   def assert_known_edesks_existence!
-    repository = TemporaryAllPublicAuthorityEdesk
+    repository = TemporaryPublicAuthorityActiveEdesk
     repository.find_by!(uri: 'ico://sk/00151513', cin: '151513', name: 'Úrad vlády Slovenskej republiky')
     repository.find_by!(uri: 'ico://sk/00151513_10003', cin: '151513', name: 'Úrad vlády Slovenskej republiky - Petície')
     repository.find_by!(uri: 'ico://sk/00164381', cin: '164381', name: 'Ministerstvo školstva, vedy, výskumu a športu Slovenskej republiky')
