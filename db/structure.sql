@@ -4613,6 +4613,39 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: public_authority_active_edesks; Type: TABLE; Schema: upvs; Owner: -
+--
+
+CREATE TABLE upvs.public_authority_active_edesks (
+    id bigint NOT NULL,
+    cin bigint NOT NULL,
+    uri character varying NOT NULL,
+    name character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: public_authority_active_edesks_id_seq; Type: SEQUENCE; Schema: upvs; Owner: -
+--
+
+CREATE SEQUENCE upvs.public_authority_active_edesks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: public_authority_active_edesks_id_seq; Type: SEQUENCE OWNED BY; Schema: upvs; Owner: -
+--
+
+ALTER SEQUENCE upvs.public_authority_active_edesks_id_seq OWNED BY upvs.public_authority_active_edesks.id;
+
+
+--
 -- Name: public_authority_edesks; Type: TABLE; Schema: upvs; Owner: -
 --
 
@@ -5549,6 +5582,13 @@ ALTER TABLE ONLY metais.project_versions ALTER COLUMN id SET DEFAULT nextval('me
 --
 
 ALTER TABLE ONLY metais.projects ALTER COLUMN id SET DEFAULT nextval('metais.projects_id_seq'::regclass);
+
+
+--
+-- Name: public_authority_active_edesks id; Type: DEFAULT; Schema: upvs; Owner: -
+--
+
+ALTER TABLE ONLY upvs.public_authority_active_edesks ALTER COLUMN id SET DEFAULT nextval('upvs.public_authority_active_edesks_id_seq'::regclass);
 
 
 --
@@ -6579,6 +6619,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: public_authority_active_edesks public_authority_active_edesks_pkey; Type: CONSTRAINT; Schema: upvs; Owner: -
+--
+
+ALTER TABLE ONLY upvs.public_authority_active_edesks
+    ADD CONSTRAINT public_authority_active_edesks_pkey PRIMARY KEY (id);
 
 
 --
@@ -8943,6 +8991,20 @@ CREATE INDEX "index_metais.projects_on_uuid" ON metais.projects USING btree (uui
 
 
 --
+-- Name: index_upvs.public_authority_active_edesks_on_cin; Type: INDEX; Schema: upvs; Owner: -
+--
+
+CREATE INDEX "index_upvs.public_authority_active_edesks_on_cin" ON upvs.public_authority_active_edesks USING btree (cin);
+
+
+--
+-- Name: index_upvs.public_authority_active_edesks_on_uri; Type: INDEX; Schema: upvs; Owner: -
+--
+
+CREATE UNIQUE INDEX "index_upvs.public_authority_active_edesks_on_uri" ON upvs.public_authority_active_edesks USING btree (uri);
+
+
+--
 -- Name: index_upvs.public_authority_edesks_on_cin; Type: INDEX; Schema: upvs; Owner: -
 --
 
@@ -11001,6 +11063,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220902164827'),
 ('20220919080112'),
 ('20220919084308'),
-('20221219105855');
+('20221219105855'),
+('20231106173059');
 
 
