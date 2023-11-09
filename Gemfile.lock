@@ -170,6 +170,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
+    rubyzip (2.3.2)
     safe_yaml (1.0.5)
     sidekiq (5.2.9)
       connection_pool (~> 2.2, >= 2.2.2)
@@ -209,7 +210,7 @@ DEPENDENCIES
   dotenv
   factory_bot_rails
   faraday
-  faraday-httpclient (~> 2.0, >= 2.0.1)
+  faraday-httpclient
   foreman
   newrelic_rpm
   pg (~> 0.20)
@@ -219,6 +220,7 @@ DEPENDENCIES
   rails (~> 6.0.3.2)
   rollbar
   rspec-rails
+  rubyzip
   sidekiq (~> 5.2.9)
   simplecov (~> 0.10, < 0.18)
   webmock

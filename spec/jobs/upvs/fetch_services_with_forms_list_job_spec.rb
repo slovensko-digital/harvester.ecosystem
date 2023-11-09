@@ -7,7 +7,8 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
     let(:downloader) { double }
 
     it 'downloads and imports ServicesWithForms list in V4 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v4.csv'))
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v4.zip'))
+      expect(downloader).to receive(:extract_csv).with(fixture_filepath('upvs/services-v4.zip')).and_return(fixture_filepath('upvs/services-v4.csv'))
       subject.perform(url, downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
@@ -27,7 +28,8 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
     end
 
     it 'downloads and imports ServicesWithForms list in V3 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v3.csv'))
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v3.zip'))
+      expect(downloader).to receive(:extract_csv).with(fixture_filepath('upvs/services-v3.zip')).and_return(fixture_filepath('upvs/services-v3.csv'))
       subject.perform(url, downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
@@ -47,7 +49,8 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
     end
 
     it 'downloads and imports ServicesWithForms list in V2 format' do
-      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v2.csv'))
+      expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v2.zip'))
+      expect(downloader).to receive(:extract_csv).with(fixture_filepath('upvs/services-v2.zip')).and_return(fixture_filepath('upvs/services-v2.csv'))
       subject.perform(url, downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
@@ -68,7 +71,8 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
 
     context 'meta_is_code and info_url attributes not nil' do
       it 'downloads and imports ServicesWithForms list in V1 format' do
-        expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v1.csv'))
+        expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v1.zip'))
+        expect(downloader).to receive(:extract_csv).with(fixture_filepath('upvs/services-v1.zip')).and_return(fixture_filepath('upvs/services-v1.csv'))
         subject.perform(url, downloader: downloader)
 
         expect(Upvs::ServiceWithForm.first).to have_attributes(
@@ -93,7 +97,8 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         create_list(:upvs_service_with_form, 10)
 
         expect(Upvs::ServiceWithForm.count).to eq(10)
-        expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v2.csv'))
+        expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/services-v2.zip'))
+        expect(downloader).to receive(:extract_csv).with(fixture_filepath('upvs/services-v2.zip')).and_return(fixture_filepath('upvs/services-v2.csv'))
 
         subject.perform(url, downloader: downloader)
 

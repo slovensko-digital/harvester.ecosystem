@@ -11,7 +11,7 @@ module Upvs
       html = downloader.download(DATASET_URL)
       doc = Nokogiri::HTML.parse(html)
       resource_link = doc.search('.resource-item .dropdown-menu a').detect do |a|
-        a['href'].include?('.csv')
+        a['href'].include?('.zip')
       end
 
       if resource_link

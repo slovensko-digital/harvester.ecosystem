@@ -1,11 +1,13 @@
 require 'faraday'
 require 'tempfile'
 require 'faraday/httpclient'
+require 'zip'
 
 module HarvesterUtils
   class Downloader
 
     DownloadError = Class.new(StandardError)
+    NoCSVError = Class.new(StandardError)
 
     def self.url_exists?(url)
       status = Faraday.head(url).status
@@ -29,6 +31,19 @@ module HarvesterUtils
       file.write(response.body)
       file.close
       file
+    end
+
+    def self.extract_csv(zip_file)
+      Zip::File.open(zip_file) do |zip|
+        csv_file = zip.glob('*.csv')
+        raise NoCSVError, "No CSV file found in the provided zip_file: #{zip_file}" if csv_file.nil?
+
+        file = Tempfile.new(rand(1_000_000).to_s)
+        file.binmode
+        file.write(csv_file.first.get_input_stream.read)
+        file.close
+        file
+      end
     end
 
     def self.download(url)

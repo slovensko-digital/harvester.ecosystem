@@ -2,7 +2,8 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   queue_as :upvs
 
   def perform(url, downloader: HarvesterUtils::Downloader)
-    csv_file = downloader.download_file(url)
+    zip_file = downloader.download_file(url)
+    csv_file = downloader.extract_csv(zip_file)
 
     csv_options = {
       encoding: 'UTF-8',
@@ -36,15 +37,12 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   def each_row_as_attributes(csv_file, csv_options)
     CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
-      row = row.to_h.transform_keys { |k| k.to_s }
 
       row[row.keys.first]&.sub!(/\A"/, '')
       row[row.keys.last]&.sub!(/"\z/, '')
 
       row = row.transform_values { |value| value&.gsub(/[\\"]/,'') }
       row = row.transform_values { |v| v == 'NULL' ? nil : v }
-
-      check_for_row_formatting(row)
 
       yield(
         instance_id: row.fetch('IdServiceInstance'),
@@ -62,12 +60,5 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
         changed_at: row.fetch('LastUpdated').presence
       )
     end
-  end
-
-  def check_for_row_formatting(row)
-    row.keys.first&.split(',').each_with_index do |key, index|
-      row[key] = row.values.first&.split(',')[index]&.gsub(/[\\"]/,'')
-    end
-    row.delete(row.keys.first) if row.keys.first&.include?(',')
   end
 end
