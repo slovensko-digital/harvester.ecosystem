@@ -2,7 +2,7 @@
   "swagger":"2.0",
   "info":{
     "title":"ITMS 2014+ Open Data API, verzia: 2",
-    "description":"REST API rozhranie sytému ITMS2014+",
+    "description":"REST API rozhranie sytému ITMS2014+.\nUpdate: vybrané zoznamy sú limitované na 1000000 záznamov.",
     "version":"2.0"
   },
   "consumes":[
@@ -27,7 +27,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -221,7 +221,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -438,7 +438,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -709,7 +709,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -992,7 +992,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -1123,7 +1123,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -1352,7 +1352,7 @@
           {
             "name":"cisloDokladu",
             "in":"query",
-            "description":"Získa iba záznamy s číslom dokladu obsahujúcim substring cisloDokladu ",
+            "description":"Získa iba záznamy s číslom dokladu obsahujúcim subd.String cisloDokladu ",
             "required":false,
             "type":"string"
           },
@@ -1366,7 +1366,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -1464,14 +1464,14 @@
           {
             "name":"cisloZverejneniaVoVestniku",
             "in":"query",
-            "description":"Získa iba záznamy s číslom zverejnenia vo vestníku obsahujúce substring cisloZverejneniaVoVestniku",
+            "description":"Získa iba záznamy s číslom zverejnenia vo vestníku obsahujúce subd.String cisloZverejneniaVoVestniku",
             "required":false,
             "type":"string"
           },
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -1636,7 +1636,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -1734,7 +1734,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -1955,7 +1955,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -2086,7 +2086,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -2217,7 +2217,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -2347,7 +2347,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -2474,7 +2474,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -2601,7 +2601,7 @@
           {
             "name":"limit",
             "in":"query",
-            "description":"Vráti maximálne limit záznamov",
+            "description":"Vráti najviac zadaný počet záznamov, maximálne však 1000000",
             "required":false,
             "type":"integer"
           },
@@ -2887,10 +2887,6 @@
         {
           "href":"Rerum voluptatem in voluptate unde.",
           "id":9183419050491418739
-        },
-        {
-          "href":"Rerum voluptatem in voluptate unde.",
-          "id":9183419050491418739
         }
       ]
     },
@@ -2965,9 +2961,9 @@
       "title":"Mediatype identifier: application/vnd.appversion+json; view=default",
       "type":"object",
       "properties":{
-        "buildNumber":{
+        "build.Number":{
           "type":"string",
-          "description":"Build number",
+          "description":"Build d.Number",
           "example":"Aut cumque blanditiis qui."
         },
         "commitTime":{
@@ -2988,7 +2984,7 @@
       },
       "description":"ITMS2014+ API version (default view)",
       "example":{
-        "buildNumber":"Aut cumque blanditiis qui.",
+        "build.Number":"Aut cumque blanditiis qui.",
         "commitTime":"Impedit ut.",
         "gitSha":"Mollitia vel culpa nulla et.",
         "version":"Corrupti quam."
@@ -2997,7 +2993,7 @@
         "version",
         "commitTime",
         "gitSha",
-        "buildNumber"
+        "build.Number"
       ]
     },
     "Ciselnik":{
@@ -3259,43 +3255,6 @@
       },
       "description":"DeklarovanyvydavokPredlozenyCollection is the media type for an array of DeklarovanyvydavokPredlozeny (default view)",
       "example":[
-        {
-          "datumUhrady":"Sed consectetur blanditiis aperiam corrupti maiores magnam.",
-          "dph":0.7147398862400323,
-          "druhVydavku":"Aut delectus.",
-          "ekonomickaKlasifikacia":"Officiis possimus velit.",
-          "funkcnaKlasifikacia":"Sunt provident sed nobis mollitia quos iste.",
-          "id":5497559947126553053,
-          "idPolozkyDokladu":4199896384308849374,
-          "investicnaAkciaPrijimatela":"Voluptatem distinctio aliquam ab et quibusdam.",
-          "nazov":"Aut cupiditate aut alias dolor mollitia.",
-          "polozkaRozpoctu":{
-            "href":"Nostrum est aliquam provident fugit consequatur.",
-            "id":5329379767187667470
-          },
-          "poradoveCislo":6840001547418011421,
-          "sumaNeziadanaNaPreplatenie":[
-            {
-              "druhNeziadanejSumy":"Dicta ut soluta est explicabo ratione sed.",
-              "sumaNeziadana":0.6594478253499572
-            }
-          ],
-          "sumaZiadanaNaPreplatenie":0.995007449332601,
-          "typVydavku":"Ipsum saepe voluptates consequatur delectus placeat.",
-          "uctovnyDoklad":{
-            "href":"Debitis aut ut aut totam id.",
-            "id":1997745965281481085
-          },
-          "verejneObstaravanie":{
-            "href":"Ducimus consectetur voluptatibus voluptatum beatae repellendus distinctio.",
-            "id":5580392907548114927
-          },
-          "vyskaBezDph":0.8211990201791476,
-          "zmluvaVerejneObstaravanie":{
-            "href":"Quia minima cumque.",
-            "id":5465468489807869777
-          }
-        },
         {
           "datumUhrady":"Sed consectetur blanditiis aperiam corrupti maiores magnam.",
           "dph":0.7147398862400323,
@@ -4070,6 +4029,11 @@
           "ciselnikKod":7949455998574789969,
           "href":"Ut repudiandae a quo aspernatur.",
           "id":5576782537149179661
+        },
+        {
+          "ciselnikKod":7949455998574789969,
+          "href":"Ut repudiandae a quo aspernatur.",
+          "id":5576782537149179661
         }
       ]
     },
@@ -4284,14 +4248,6 @@
       },
       "description":"IntenzitaLinkCollection is the media type for an array of IntenzitaLink (default view)",
       "example":[
-        {
-          "href":"Pariatur nemo reiciendis officia.",
-          "id":2215469509307209910
-        },
-        {
-          "href":"Pariatur nemo reiciendis officia.",
-          "id":2215469509307209910
-        },
         {
           "href":"Pariatur nemo reiciendis officia.",
           "id":2215469509307209910
@@ -4536,6 +4492,35 @@
             }
           ],
           "updatedAt":"1994-03-21T09:04:45Z"
+        },
+        {
+          "createdAt":"2002-08-06T11:29:15Z",
+          "fond":{
+            "ciselnikKod":7949455998574789969,
+            "href":"Ut repudiandae a quo aspernatur.",
+            "id":5576782537149179661
+          },
+          "href":"Quo accusantium ad dolore omnis.",
+          "id":361724940323061113,
+          "kategoriaRegionov":{
+            "ciselnikKod":7949455998574789969,
+            "href":"Ut repudiandae a quo aspernatur.",
+            "id":5576782537149179661
+          },
+          "kod":"Eveniet vero fuga.",
+          "nazov":"Cum necessitatibus.",
+          "prioritnaOs":{
+            "href":"Voluptatem nemo hic nesciunt illo voluptas sit.",
+            "id":3381240247618723128
+          },
+          "technickaAsistencia":true,
+          "typyAktivit":[
+            {
+              "href":"Nesciunt voluptate quidem.",
+              "id":672472513606076641
+            }
+          ],
+          "updatedAt":"1994-03-21T09:04:45Z"
         }
       ]
     },
@@ -4573,10 +4558,6 @@
       },
       "description":"KonkretnycielLinkCollection is the media type for an array of KonkretnycielLink (default view)",
       "example":[
-        {
-          "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
-          "id":9222099972168833811
-        },
         {
           "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
           "id":9222099972168833811
@@ -5297,10 +5278,6 @@
         {
           "href":"Vero id magnam accusamus dolorem.",
           "id":5517671197188267987
-        },
-        {
-          "href":"Vero id magnam accusamus dolorem.",
-          "id":5517671197188267987
         }
       ]
     },
@@ -5430,6 +5407,33 @@
       },
       "description":"NezrovnalostListCollection is the media type for an array of NezrovnalostList (default view)",
       "example":[
+        {
+          "celkovaSumaNezrovnalosti":0.1553281604169805,
+          "createdAt":"1985-11-12T12:08:50Z",
+          "datumZistenia":"Reprehenderit quas sit magnam distinctio.",
+          "dlznik":{
+            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+            "href":"Omnis eius quos iure possimus sed.",
+            "ico":"Quisquam accusamus.",
+            "id":874173353018889961,
+            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+          },
+          "dopadNaRozpocetEU":"Ipsam ullam consequuntur.",
+          "druhNezrovnalosti":"Voluptatum recusandae sit et sit quia aliquid.",
+          "hlavnyTypNezrovnalosti":{
+            "ciselnikKod":7949455998574789969,
+            "href":"Ut repudiandae a quo aspernatur.",
+            "id":5576782537149179661
+          },
+          "href":"Vero id magnam accusamus dolorem.",
+          "id":5517671197188267987,
+          "jeSystemova":false,
+          "kod":"Tenetur quo nihil dolorem.",
+          "stav":"Nam recusandae dolores nobis.",
+          "sumaNaVymahanie":0.5309132560785422,
+          "updatedAt":"1973-05-21T16:50:06Z",
+          "vratenaSuma":0.20505840904640646
+        },
         {
           "celkovaSumaNezrovnalosti":0.1553281604169805,
           "createdAt":"1985-11-12T12:08:50Z",
@@ -5600,6 +5604,26 @@
       },
       "description":"OperacnyprogramCollection is the media type for an array of Operacnyprogram (default view)",
       "example":[
+        {
+          "celkovaFinancnaAlokacia":0.6775727651517883,
+          "createdAt":"2013-08-11T20:08:03Z",
+          "hlavnaAlokacia":0.7215949898823102,
+          "href":"Aliquid illum.",
+          "id":860708291351316802,
+          "kod":"Culpa aspernatur.",
+          "kodCCI":"Exercitationem esse.",
+          "nazov":"Exercitationem fugiat iure minima quis quia.",
+          "skratka":"Alias aut a cupiditate.",
+          "subjekt":{
+            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+            "href":"Omnis eius quos iure possimus sed.",
+            "ico":"Quisquam accusamus.",
+            "id":874173353018889961,
+            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+          },
+          "updatedAt":"2001-03-30T03:54:49Z",
+          "vykonnostnaRezerva":0.14507931442052477
+        },
         {
           "celkovaFinancnaAlokacia":0.6775727651517883,
           "createdAt":"2013-08-11T20:08:03Z",
@@ -6071,6 +6095,14 @@
           {
             "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
             "id":9222099972168833811
+          },
+          {
+            "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
+            "id":9222099972168833811
+          },
+          {
+            "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
+            "id":9222099972168833811
           }
         ],
         "nazov":"Fugiat labore optio adipisci dolores.",
@@ -6120,61 +6152,11 @@
             {
               "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
               "id":9222099972168833811
-            }
-          ],
-          "nazov":"Fugiat labore optio adipisci dolores.",
-          "stav":"Et praesentium ut.",
-          "updatedAt":"2006-07-25T15:23:27Z",
-          "vyhlasovatel":{
-            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
-            "href":"Omnis eius quos iure possimus sed.",
-            "ico":"Quisquam accusamus.",
-            "id":874173353018889961,
-            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
-          }
-        },
-        {
-          "alokaciaEU":0.33791669666851254,
-          "alokaciaSR":0.567133464103955,
-          "createdAt":"1986-02-03T09:35:23Z",
-          "datumUzavretia1Kolo":"1991-12-15T05:02:20Z",
-          "datumUzavretia2Kolo":"2003-02-06T01:28:10Z",
-          "datumVyhlasenia1Kolo":"1993-02-05T07:50:47Z",
-          "datumVyhlasenia2Kolo":"1974-02-06T08:43:35Z",
-          "druh":"Labore voluptas qui omnis sapiente et.",
-          "href":"Commodi assumenda voluptatem aut et.",
-          "id":9149218752909371268,
-          "kod":"Totam eligendi.",
-          "konkretneCiele":[
+            },
             {
               "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
               "id":9222099972168833811
-            }
-          ],
-          "nazov":"Fugiat labore optio adipisci dolores.",
-          "stav":"Et praesentium ut.",
-          "updatedAt":"2006-07-25T15:23:27Z",
-          "vyhlasovatel":{
-            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
-            "href":"Omnis eius quos iure possimus sed.",
-            "ico":"Quisquam accusamus.",
-            "id":874173353018889961,
-            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
-          }
-        },
-        {
-          "alokaciaEU":0.33791669666851254,
-          "alokaciaSR":0.567133464103955,
-          "createdAt":"1986-02-03T09:35:23Z",
-          "datumUzavretia1Kolo":"1991-12-15T05:02:20Z",
-          "datumUzavretia2Kolo":"2003-02-06T01:28:10Z",
-          "datumVyhlasenia1Kolo":"1993-02-05T07:50:47Z",
-          "datumVyhlasenia2Kolo":"1974-02-06T08:43:35Z",
-          "druh":"Labore voluptas qui omnis sapiente et.",
-          "href":"Commodi assumenda voluptatem aut et.",
-          "id":9149218752909371268,
-          "kod":"Totam eligendi.",
-          "konkretneCiele":[
+            },
             {
               "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
               "id":9222099972168833811
@@ -6608,10 +6590,6 @@
         {
           "href":"Et est ab qui quos magnam iure.",
           "id":5962909677893543137
-        },
-        {
-          "href":"Et est ab qui quos magnam iure.",
-          "id":5962909677893543137
         }
       ]
     },
@@ -6761,6 +6739,84 @@
       },
       "description":"PohladavkovydokladListCollection is the media type for an array of PohladavkovydokladList (default view)",
       "example":[
+        {
+          "createdAt":"1980-12-26T07:50:45Z",
+          "datumSplatnosti":"Nobis commodi.",
+          "datumVzniku":"Repudiandae odio ut quaerat quo.",
+          "dlznik":{
+            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+            "href":"Omnis eius quos iure possimus sed.",
+            "ico":"Quisquam accusamus.",
+            "id":874173353018889961,
+            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+          },
+          "dopadNaRozpocetEU":"Maiores aperiam necessitatibus minus odio.",
+          "dovodVratenia":{
+            "ciselnikKod":7949455998574789969,
+            "href":"Ut repudiandae a quo aspernatur.",
+            "id":5576782537149179661
+          },
+          "druh":"Ullam quo quae temporibus ut quo.",
+          "href":"Non minima.",
+          "id":2465435947490667535,
+          "kod":"Reiciendis molestiae quo.",
+          "konkretnyCiel":{
+            "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
+            "id":9222099972168833811
+          },
+          "prioritnaOs":{
+            "href":"Voluptatem nemo hic nesciunt illo voluptas sit.",
+            "id":3381240247618723128
+          },
+          "projekt":{
+            "href":"Numquam placeat pariatur officiis veritatis.",
+            "id":4052499471168471994
+          },
+          "stav":"Repellat ut ipsum autem.",
+          "sumaNaVratenie":0.8803520488672951,
+          "typ":"Non dolor molestias.",
+          "updatedAt":"1997-07-27T20:57:53Z",
+          "vratenaSuma":0.33755028860396985
+        },
+        {
+          "createdAt":"1980-12-26T07:50:45Z",
+          "datumSplatnosti":"Nobis commodi.",
+          "datumVzniku":"Repudiandae odio ut quaerat quo.",
+          "dlznik":{
+            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+            "href":"Omnis eius quos iure possimus sed.",
+            "ico":"Quisquam accusamus.",
+            "id":874173353018889961,
+            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+          },
+          "dopadNaRozpocetEU":"Maiores aperiam necessitatibus minus odio.",
+          "dovodVratenia":{
+            "ciselnikKod":7949455998574789969,
+            "href":"Ut repudiandae a quo aspernatur.",
+            "id":5576782537149179661
+          },
+          "druh":"Ullam quo quae temporibus ut quo.",
+          "href":"Non minima.",
+          "id":2465435947490667535,
+          "kod":"Reiciendis molestiae quo.",
+          "konkretnyCiel":{
+            "href":"Dignissimos repudiandae corrupti dolor qui veritatis.",
+            "id":9222099972168833811
+          },
+          "prioritnaOs":{
+            "href":"Voluptatem nemo hic nesciunt illo voluptas sit.",
+            "id":3381240247618723128
+          },
+          "projekt":{
+            "href":"Numquam placeat pariatur officiis veritatis.",
+            "id":4052499471168471994
+          },
+          "stav":"Repellat ut ipsum autem.",
+          "sumaNaVratenie":0.8803520488672951,
+          "typ":"Non dolor molestias.",
+          "updatedAt":"1997-07-27T20:57:53Z",
+          "vratenaSuma":0.33755028860396985
+        },
         {
           "createdAt":"1980-12-26T07:50:45Z",
           "datumSplatnosti":"Nobis commodi.",
@@ -7048,6 +7104,10 @@
       },
       "description":"PolozkarozpoctuLinkCollection is the media type for an array of PolozkarozpoctuLink (default view)",
       "example":[
+        {
+          "href":"Nostrum est aliquam provident fugit consequatur.",
+          "id":5329379767187667470
+        },
         {
           "href":"Nostrum est aliquam provident fugit consequatur.",
           "id":5329379767187667470
@@ -8429,6 +8489,44 @@
       },
       "description":"PrijatazonfpListCollection is the media type for an array of PrijatazonfpList (default view)",
       "example":[
+        {
+          "createdAt":"2012-02-01T13:41:44Z",
+          "datumPredlozenia":"1986-06-05T01:55:09Z",
+          "href":"Perspiciatis laudantium aut.",
+          "id":641312183945165007,
+          "kod":"Alias deserunt accusamus repellat.",
+          "nazov":"Cum vel et quasi.",
+          "sumaZiadanaCelkova":0.20798606789240406,
+          "sumaZiadanaNFP":0.9376770013269029,
+          "updatedAt":"1993-08-24T23:31:05Z",
+          "vyzva":{
+            "href":"Dolores sit et.",
+            "id":3329704085726701000
+          },
+          "zameranieProjektu":"Laudantium sint.",
+          "ziadatel":{
+            "predchodcovia":[
+              {
+                "id":4424079348239597121,
+                "platnostPredchodcuDo":"Dicta sint.",
+                "subjekt":{
+                  "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+                  "href":"Omnis eius quos iure possimus sed.",
+                  "ico":"Quisquam accusamus.",
+                  "id":874173353018889961,
+                  "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+                }
+              }
+            ],
+            "subjekt":{
+              "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+              "href":"Omnis eius quos iure possimus sed.",
+              "ico":"Quisquam accusamus.",
+              "id":874173353018889961,
+              "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+            }
+          }
+        },
         {
           "createdAt":"2012-02-01T13:41:44Z",
           "datumPredlozenia":"1986-06-05T01:55:09Z",
@@ -12182,13 +12280,6 @@
           "ico":"Quisquam accusamus.",
           "id":874173353018889961,
           "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
-        },
-        {
-          "dic":"Ut voluptatem illum quod earum asperiores sequi.",
-          "href":"Omnis eius quos iure possimus sed.",
-          "ico":"Quisquam accusamus.",
-          "id":874173353018889961,
-          "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
         }
       ]
     },
@@ -12293,28 +12384,6 @@
       },
       "description":"SubjektnazonfpCollection is the media type for an array of Subjektnazonfp (default view)",
       "example":[
-        {
-          "predchodcovia":[
-            {
-              "id":4424079348239597121,
-              "platnostPredchodcuDo":"Dicta sint.",
-              "subjekt":{
-                "dic":"Ut voluptatem illum quod earum asperiores sequi.",
-                "href":"Omnis eius quos iure possimus sed.",
-                "ico":"Quisquam accusamus.",
-                "id":874173353018889961,
-                "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
-              }
-            }
-          ],
-          "subjekt":{
-            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
-            "href":"Omnis eius quos iure possimus sed.",
-            "ico":"Quisquam accusamus.",
-            "id":874173353018889961,
-            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
-          }
-        },
         {
           "predchodcovia":[
             {
@@ -12468,6 +12537,94 @@
       },
       "description":"SubjektprojektCollection is the media type for an array of Subjektprojekt (default view)",
       "example":[
+        {
+          "predchodcovia":[
+            {
+              "id":7978623990685396411,
+              "platnostPredchodcuDo":"Sunt quod repudiandae.",
+              "subjekt":{
+                "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+                "href":"Omnis eius quos iure possimus sed.",
+                "ico":"Quisquam accusamus.",
+                "id":874173353018889961,
+                "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+              }
+            },
+            {
+              "id":7978623990685396411,
+              "platnostPredchodcuDo":"Sunt quod repudiandae.",
+              "subjekt":{
+                "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+                "href":"Omnis eius quos iure possimus sed.",
+                "ico":"Quisquam accusamus.",
+                "id":874173353018889961,
+                "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+              }
+            },
+            {
+              "id":7978623990685396411,
+              "platnostPredchodcuDo":"Sunt quod repudiandae.",
+              "subjekt":{
+                "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+                "href":"Omnis eius quos iure possimus sed.",
+                "ico":"Quisquam accusamus.",
+                "id":874173353018889961,
+                "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+              }
+            }
+          ],
+          "subjekt":{
+            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+            "href":"Omnis eius quos iure possimus sed.",
+            "ico":"Quisquam accusamus.",
+            "id":874173353018889961,
+            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+          }
+        },
+        {
+          "predchodcovia":[
+            {
+              "id":7978623990685396411,
+              "platnostPredchodcuDo":"Sunt quod repudiandae.",
+              "subjekt":{
+                "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+                "href":"Omnis eius quos iure possimus sed.",
+                "ico":"Quisquam accusamus.",
+                "id":874173353018889961,
+                "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+              }
+            },
+            {
+              "id":7978623990685396411,
+              "platnostPredchodcuDo":"Sunt quod repudiandae.",
+              "subjekt":{
+                "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+                "href":"Omnis eius quos iure possimus sed.",
+                "ico":"Quisquam accusamus.",
+                "id":874173353018889961,
+                "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+              }
+            },
+            {
+              "id":7978623990685396411,
+              "platnostPredchodcuDo":"Sunt quod repudiandae.",
+              "subjekt":{
+                "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+                "href":"Omnis eius quos iure possimus sed.",
+                "ico":"Quisquam accusamus.",
+                "id":874173353018889961,
+                "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+              }
+            }
+          ],
+          "subjekt":{
+            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
+            "href":"Omnis eius quos iure possimus sed.",
+            "ico":"Quisquam accusamus.",
+            "id":874173353018889961,
+            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
+          }
+        },
         {
           "predchodcovia":[
             {
@@ -12770,10 +12927,6 @@
       },
       "description":"TypaktivityLinkCollection is the media type for an array of TypaktivityLink (default view)",
       "example":[
-        {
-          "href":"Nesciunt voluptate quidem.",
-          "id":672472513606076641
-        },
         {
           "href":"Nesciunt voluptate quidem.",
           "id":672472513606076641
@@ -17047,6 +17200,43 @@
               "href":"Quia minima cumque.",
               "id":5465468489807869777
             }
+          },
+          {
+            "datumUhrady":"Sed consectetur blanditiis aperiam corrupti maiores magnam.",
+            "dph":0.7147398862400323,
+            "druhVydavku":"Aut delectus.",
+            "ekonomickaKlasifikacia":"Officiis possimus velit.",
+            "funkcnaKlasifikacia":"Sunt provident sed nobis mollitia quos iste.",
+            "id":5497559947126553053,
+            "idPolozkyDokladu":4199896384308849374,
+            "investicnaAkciaPrijimatela":"Voluptatem distinctio aliquam ab et quibusdam.",
+            "nazov":"Aut cupiditate aut alias dolor mollitia.",
+            "polozkaRozpoctu":{
+              "href":"Nostrum est aliquam provident fugit consequatur.",
+              "id":5329379767187667470
+            },
+            "poradoveCislo":6840001547418011421,
+            "sumaNeziadanaNaPreplatenie":[
+              {
+                "druhNeziadanejSumy":"Dicta ut soluta est explicabo ratione sed.",
+                "sumaNeziadana":0.6594478253499572
+              }
+            ],
+            "sumaZiadanaNaPreplatenie":0.995007449332601,
+            "typVydavku":"Ipsum saepe voluptates consequatur delectus placeat.",
+            "uctovnyDoklad":{
+              "href":"Debitis aut ut aut totam id.",
+              "id":1997745965281481085
+            },
+            "verejneObstaravanie":{
+              "href":"Ducimus consectetur voluptatibus voluptatum beatae repellendus distinctio.",
+              "id":5580392907548114927
+            },
+            "vyskaBezDph":0.8211990201791476,
+            "zmluvaVerejneObstaravanie":{
+              "href":"Quia minima cumque.",
+              "id":5465468489807869777
+            }
           }
         ],
         "prijimatel":{
@@ -17198,42 +17388,6 @@
       },
       "description":"ZopPredlozenaListCollection is the media type for an array of ZopPredlozenaList (default view)",
       "example":[
-        {
-          "createdAt":"2007-06-04T11:16:40Z",
-          "datumPrijatia":"1983-12-02T22:12:44Z",
-          "hlavnyCehranicnyPartner":{
-            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
-            "href":"Omnis eius quos iure possimus sed.",
-            "ico":"Quisquam accusamus.",
-            "id":874173353018889961,
-            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
-          },
-          "href":"Sed magnam voluptatem voluptas.",
-          "id":1473675451203150252,
-          "kod":"Qui architecto consequatur et expedita.",
-          "narokovanaSuma":0.5207514888242524,
-          "predkladanaZa":{
-            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
-            "href":"Omnis eius quos iure possimus sed.",
-            "ico":"Quisquam accusamus.",
-            "id":874173353018889961,
-            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
-          },
-          "prijimatel":{
-            "dic":"Ut voluptatem illum quod earum asperiores sequi.",
-            "href":"Omnis eius quos iure possimus sed.",
-            "ico":"Quisquam accusamus.",
-            "id":874173353018889961,
-            "ineIdentifikacneCislo":"Perspiciatis perferendis ducimus unde unde architecto."
-          },
-          "projekt":{
-            "href":"Numquam placeat pariatur officiis veritatis.",
-            "id":4052499471168471994
-          },
-          "typ":"Aut accusamus quam earum.",
-          "updatedAt":"1996-02-07T13:11:04Z",
-          "zopPredlozenaZaViacSubjektov":true
-        },
         {
           "createdAt":"2007-06-04T11:16:40Z",
           "datumPrijatia":"1983-12-02T22:12:44Z",
