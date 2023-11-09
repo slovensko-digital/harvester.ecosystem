@@ -5,6 +5,12 @@ FactoryBot.define do
     sequence(:name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }
   end
 
+  factory :upvs_public_authority_active_edesk, class: Upvs::PublicAuthorityActiveEdesk do
+    sequence(:cin) { |n| 10_000_000 + n }
+    sequence(:uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
+    sequence(:name) { |n| "Súkromná materská škola #{n}, Starozagorská 8, Košice" }
+  end
+
   factory :upvs_service_with_form, class: Upvs::ServiceWithForm do
     sequence(:instance_id) { |n| 10_000_000 + n }
     sequence(:institution_uri) { |n| "ico://sk/#{10_000_000 + n}_90000" }
