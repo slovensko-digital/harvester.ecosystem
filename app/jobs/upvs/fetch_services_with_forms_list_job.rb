@@ -2,8 +2,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   queue_as :upvs
 
   def perform(url, downloader: HarvesterUtils::Downloader)
-    zip_file = downloader.download_file(url)
-    csv_file = downloader.extract_csv(zip_file)
+    csv_file = downloader.download_file(url)
 
     csv_options = {
       encoding: 'UTF-8',

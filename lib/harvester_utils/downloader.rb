@@ -1,6 +1,5 @@
 require 'faraday'
 require 'tempfile'
-require 'faraday/httpclient'
 require 'zip'
 
 module HarvesterUtils
@@ -21,16 +20,19 @@ module HarvesterUtils
     end
 
     def self.download_file(url)
-      conn = Faraday.new(request: { timeout: 300 }) do |faraday|
-        faraday.adapter :httpclient
-      end
+      conn = Faraday.new(request: { timeout: 300 })
       response = conn.get(url)
+
       raise DownloadError, "Unexpected response status: #{response.status} for url: #{url}" if response.status != 200
-      file = Tempfile.new(rand(1_000_000).to_s)
-      file.binmode
-      file.write(response.body)
-      file.close
-      file
+
+      zip_file = nil
+      Tempfile.open do |file|
+        file.binmode
+        file.write(response.body)
+        zip_file = file
+      end
+
+      self.extract_csv(zip_file)
     end
 
     def self.extract_csv(zip_file)
@@ -38,11 +40,11 @@ module HarvesterUtils
         csv_file = zip.glob('*.csv')
         raise NoCSVError, "No CSV file found in the provided zip_file: #{zip_file}" if csv_file.nil?
 
-        file = Tempfile.new(rand(1_000_000).to_s)
-        file.binmode
-        file.write(csv_file.first.get_input_stream.read)
-        file.close
-        file
+        Tempfile.open do |file|
+          file.binmode
+          file.write(csv_file.first.get_input_stream.read)
+          file
+        end
       end
     end
 
