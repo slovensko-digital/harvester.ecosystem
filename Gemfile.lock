@@ -79,7 +79,6 @@ GEM
       railties (>= 5.0.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
-    faraday-httpclient (2.0.1)
       httpclient (>= 2.2)
     foreman (0.87.1)
     globalid (0.4.2)
@@ -210,7 +209,6 @@ DEPENDENCIES
   dotenv
   factory_bot_rails
   faraday
-  faraday-httpclient
   foreman
   newrelic_rpm
   pg (~> 0.20)

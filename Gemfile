@@ -14,7 +14,6 @@ gem 'dotenv'
 gem 'sidekiq', '~> 5.2.9' # Unlock when we migrate to Redis 4+
 gem 'faraday'
 
-gem 'faraday-httpclient'
 gem 'rubyzip'
 
 gem 'newrelic_rpm'

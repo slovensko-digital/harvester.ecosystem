@@ -25,14 +25,11 @@ module HarvesterUtils
 
       raise DownloadError, "Unexpected response status: #{response.status} for url: #{url}" if response.status != 200
 
-      zip_file = nil
-      Tempfile.open do |file|
-        file.binmode
-        file.write(response.body)
-        zip_file = file
-      end
-
-      self.extract_csv(zip_file)
+      file = Tempfile.new
+      file.binmode
+      file.write(response.body)
+      file.close
+      file
     end
 
     def self.extract_csv(zip_file)
@@ -40,11 +37,11 @@ module HarvesterUtils
         csv_file = zip.glob('*.csv')
         raise NoCSVError, "No CSV file found in the provided zip_file: #{zip_file}" if csv_file.nil?
 
-        Tempfile.open do |file|
-          file.binmode
-          file.write(csv_file.first.get_input_stream.read)
-          file
-        end
+        file = Tempfile.new
+        file.binmode
+        file.write(csv_file.first.get_input_stream.read)
+        file.close
+        file
       end
     end
 
