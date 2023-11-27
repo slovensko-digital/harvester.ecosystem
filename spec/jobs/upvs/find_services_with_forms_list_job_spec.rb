@@ -11,7 +11,7 @@ RSpec.describe Upvs::FindServicesWithFormsListJob, type: :job do
 
       subject.perform(downloader: downloader, fetch_job: fetch_job)
 
-      expect(fetch_job).to have_received(:perform_later).with('https://data.gov.sk/dataset/3cf33f24-f763-4fdf-b34f-3833a051d03f/resource/e4de2c28-15a0-4f22-aa70-b27f65cb3f1b/download/datasetlsprod0120190901.csv')
+      expect(fetch_job).to have_received(:perform_later).with('https://data.gov.sk/dataset/3cf33f24-f763-4fdf-b34f-3833a051d03f/resource/d03e64e8-da32-4f21-a893-fcad5942a42a/download/zoznamesaf.zip')
     end
 
     it 'throws error when there is no csv file detected' do

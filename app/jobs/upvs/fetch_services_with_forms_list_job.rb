@@ -2,7 +2,8 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   queue_as :upvs
 
   def perform(url, downloader: HarvesterUtils::Downloader)
-    csv_file = downloader.download_file(url)
+    zip_file = downloader.download_file(url)
+    csv_file = downloader.extract_csv(zip_file)
 
     csv_options = {
       encoding: 'UTF-8',
@@ -37,10 +38,10 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
     CSV.foreach(csv_file, csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
 
-      row[row.keys.first].sub!(/\A"/, '')
-      row[row.keys.last].sub!(/"\z/, '')
+      row[row.keys.first]&.sub!(/\A"/, '')
+      row[row.keys.last]&.sub!(/"\z/, '')
 
-      row = row.to_h.transform_keys { |k| k.to_s }
+      row = row.transform_values { |value| value&.gsub(/[\\"]/,'') }
       row = row.transform_values { |v| v == 'NULL' ? nil : v }
 
       yield(
