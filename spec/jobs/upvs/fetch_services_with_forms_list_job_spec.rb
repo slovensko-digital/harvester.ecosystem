@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
   describe '#perform' do
-    let(:url) { 'https://example.com' }
+    let(:url) { 'https://data.slovensko.sk/download?id=13b52968-e3d5-4d75-b8f1-fa9f25789033' }
 
     let(:downloader) { double }
 
@@ -12,7 +12,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         HarvesterUtils::Downloader.extract_csv(zip_file)
       end
 
-      subject.perform(url, downloader: downloader)
+      subject.perform(downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
         instance_id: 2083,
@@ -36,7 +36,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         HarvesterUtils::Downloader.extract_csv(zip_file)
       end
 
-      subject.perform(url, downloader: downloader)
+      subject.perform(downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
         instance_id: 2082,
@@ -60,7 +60,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         HarvesterUtils::Downloader.extract_csv(zip_file)
       end
 
-      subject.perform(url, downloader: downloader)
+      subject.perform(downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
         instance_id: 2088,
@@ -85,7 +85,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
           HarvesterUtils::Downloader.extract_csv(zip_file)
         end
 
-        subject.perform(url, downloader: downloader)
+        subject.perform(downloader: downloader)
 
         expect(Upvs::ServiceWithForm.first).to have_attributes(
           instance_id: 29644,
@@ -114,7 +114,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
           HarvesterUtils::Downloader.extract_csv(zip_file)
         end
 
-        subject.perform(url, downloader: downloader)
+        subject.perform(downloader: downloader)
 
         expect(Upvs::ServiceWithForm.count).to eq(20)
       end
