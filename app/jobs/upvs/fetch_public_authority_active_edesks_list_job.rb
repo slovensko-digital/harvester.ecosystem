@@ -1,7 +1,7 @@
 class Upvs::FetchPublicAuthorityActiveEdesksListJob < ApplicationJob
   queue_as :upvs
 
-  DATASET_URL = 'https://data.slovensko.sk/download?id=c67849ad-bd97-4c43-90d4-42f00f450c56'
+  DATASET_URL = 'https://data.slovensko.sk/download?id=fa54d032-c8ec-4c92-8fbe-2b2730a9d202'
 
   def perform(downloader: HarvesterUtils::Downloader)
     csv_file = downloader.download_file(DATASET_URL)
