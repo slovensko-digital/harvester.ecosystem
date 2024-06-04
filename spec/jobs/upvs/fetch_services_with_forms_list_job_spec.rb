@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
   describe '#perform' do
-    let(:url) { 'https://data.slovensko.sk/download?id=49212a67-5002-409d-bfad-82a69c8fa153' }
+    let(:url) { 'https://data.slovensko.sk/download?id=c78de203-caa5-4d1d-9496-975f0e2567d1' }
 
     let(:downloader) { double }
 

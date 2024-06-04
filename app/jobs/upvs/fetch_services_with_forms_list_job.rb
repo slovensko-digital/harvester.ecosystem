@@ -1,7 +1,7 @@
 class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   queue_as :upvs
 
-  DATASET_URL = 'https://data.slovensko.sk/download?id=49212a67-5002-409d-bfad-82a69c8fa153'
+  DATASET_URL = 'https://data.slovensko.sk/download?id=c78de203-caa5-4d1d-9496-975f0e2567d1'
 
   def perform(downloader: HarvesterUtils::Downloader)
     zip_file = downloader.download_file(DATASET_URL)
