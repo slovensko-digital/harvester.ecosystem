@@ -12,7 +12,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         HarvesterUtils::Downloader.extract_csv(zip_file)
       end
 
-      subject.perform(downloader: downloader)
+      subject.perform(url, downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
         instance_id: 2083,
@@ -36,7 +36,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         HarvesterUtils::Downloader.extract_csv(zip_file)
       end
 
-      subject.perform(downloader: downloader)
+      subject.perform(url, downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
         instance_id: 2082,
@@ -60,7 +60,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
         HarvesterUtils::Downloader.extract_csv(zip_file)
       end
 
-      subject.perform(downloader: downloader)
+      subject.perform(url, downloader: downloader)
 
       expect(Upvs::ServiceWithForm.first).to have_attributes(
         instance_id: 2088,
@@ -85,7 +85,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
           HarvesterUtils::Downloader.extract_csv(zip_file)
         end
 
-        subject.perform(downloader: downloader)
+        subject.perform(url, downloader: downloader)
 
         expect(Upvs::ServiceWithForm.first).to have_attributes(
           instance_id: 29644,
@@ -114,7 +114,7 @@ RSpec.describe Upvs::FetchServicesWithFormsListJob, type: :job do
           HarvesterUtils::Downloader.extract_csv(zip_file)
         end
 
-        subject.perform(downloader: downloader)
+        subject.perform(url, downloader: downloader)
 
         expect(Upvs::ServiceWithForm.count).to eq(20)
       end
