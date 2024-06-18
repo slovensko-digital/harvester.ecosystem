@@ -5,6 +5,7 @@ class Upvs::FindPublicAuthorityEdesksListJob < ApplicationJob
 
   SET_URL = 'https://data.gov.sk/set/8572f288-0186-4bc2-8d12-9eb324ff47bd'
   BASE_URL = 'https://data.slovensko.sk/api/sparql'
+  NUMBER_OF_DATASET_FORMATS = 1
 
   def perform
     query = "
@@ -20,14 +21,16 @@ class Upvs::FindPublicAuthorityEdesksListJob < ApplicationJob
         ?distribution dcat:downloadURL ?downloadURL .
       }
       ORDER BY DESC(?modified)
-      LIMIT 1
+      LIMIT #{NUMBER_OF_DATASET_FORMATS}
     "
 
     response = Faraday.get(BASE_URL, {query: query})
 
     if response.success?
-      dataset_url = response.body.split("\n")[1].strip
-      Upvs::FetchPublicAuthorityEdesksListJob.perform_now(dataset_url)
+      dataset_url = response.body.split("\n")[1..].map(&:strip)
+                                                  .find { |url| Faraday.get(url).headers['Content-Disposition']&.include?('.csv') }
+
+      Upvs::FetchPublicAuthorityEdesksListJob.perform_now(dataset_url) if dataset_url
     else
       raise "Request to find latest dataset URL for set: #{SET_URL} failed with status code #{response.status}"
     end

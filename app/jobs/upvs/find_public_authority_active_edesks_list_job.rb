@@ -5,6 +5,7 @@ class Upvs::FindPublicAuthorityActiveEdesksListJob < ApplicationJob
 
   SET_URL = 'https://data.gov.sk/set/28c2c7ee-6a43-4746-9e3f-35e977f6f03d'
   BASE_URL = 'https://data.slovensko.sk/api/sparql'
+  NUMBER_OF_DATASET_FORMATS = 2
 
   def perform
     query = "
@@ -20,14 +21,14 @@ class Upvs::FindPublicAuthorityActiveEdesksListJob < ApplicationJob
         ?distribution dcat:downloadURL ?downloadURL .
       }
       ORDER BY DESC(?modified)
-      LIMIT 2
+      LIMIT #{NUMBER_OF_DATASET_FORMATS}
     "
 
     response = Faraday.get(BASE_URL, {query: query})
 
     if response.success?
       csv_dataset_url = response.body.split("\n")[1..].map(&:strip)
-                          .find { |url| Faraday.get(url).headers['Content-Disposition']&.include?('.csv') }
+                                                      .find { |url| Faraday.get(url).headers['Content-Disposition']&.include?('.csv') }
 
       Upvs::FetchPublicAuthorityActiveEdesksListJob.perform_now(csv_dataset_url) if csv_dataset_url
     else

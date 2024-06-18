@@ -14,6 +14,8 @@ RSpec.describe Upvs::FindPublicAuthorityEdesksListJob, type: :job do
       stub_request(:get, "https://data.slovensko.sk/api/sparql")
         .with(query: hash_including({"query": kind_of(String)}))
         .to_return(status: 200, body: "downloadURL\n#{url}\n")
+
+      stub_request(:get, url).to_return(headers: {'Content-Disposition': 'filename.csv'})
     end
 
     it 'calls FetchPublicAuthorityEdesksListJob with correct dataset url' do
