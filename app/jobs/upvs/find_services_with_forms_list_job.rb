@@ -30,7 +30,9 @@ class Upvs::FindServicesWithFormsListJob < ApplicationJob
       dataset_url = response.body.split("\n")[1..].map(&:strip)
                                                   .find { |url| Faraday.get(url).headers['Content-Disposition']&.include?('.zip') }
 
-      Upvs::FetchServicesWithFormsListJob.perform_now(dataset_url) if dataset_url
+      raise "Dataset URL not found in response. Job: Upvs::FindServicesWithFormsListJob" if dataset_url.nil?
+
+      Upvs::FetchServicesWithFormsListJob.perform_now(dataset_url)
     else
       raise "Request to find latest dataset URL for set: #{SET_URL} failed with status code #{response.status}"
     end
