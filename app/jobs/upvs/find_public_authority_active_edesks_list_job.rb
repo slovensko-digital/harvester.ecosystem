@@ -27,10 +27,12 @@ class Upvs::FindPublicAuthorityActiveEdesksListJob < ApplicationJob
     response = Faraday.get(BASE_URL, {query: query})
 
     if response.success?
-      csv_dataset_url = response.body.split("\n")[1..].map(&:strip)
+      dataset_url = response.body.split("\n")[1..].map(&:strip)
                                                       .find { |url| Faraday.get(url).headers['Content-Disposition']&.include?('.csv') }
 
-      Upvs::FetchPublicAuthorityActiveEdesksListJob.perform_now(csv_dataset_url) if csv_dataset_url
+      raise "Dataset URL not found in response. Job: Upvs::FindPublicAuthorityActiveEdesksListJob" if dataset_url.nil?
+
+      Upvs::FetchPublicAuthorityActiveEdesksListJob.perform_now(dataset_url)
     else
       raise "Request to find latest dataset URL for set: #{SET_URL} failed with status code #{response.status}"
     end
