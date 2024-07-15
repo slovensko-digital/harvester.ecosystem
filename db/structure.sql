@@ -4510,7 +4510,7 @@ CREATE TABLE metais.project_versions (
     project_id bigint NOT NULL,
     nazov character varying NOT NULL,
     kod_metais character varying NOT NULL,
-    typ_investicie character varying NOT NULL,
+    typ_investicie character varying,
     prijimatel character varying,
     faza_projektu character varying,
     program character varying,
@@ -11065,6 +11065,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220919084308'),
 ('20221219105855'),
 ('20231106173059'),
-('20231107130000');
+('20231107130000'),
+('20240709105101');
 
 
