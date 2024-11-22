@@ -1,7 +1,7 @@
 class Metais::SyncCodelistProgramJob < ApplicationJob
   queue_as :metais
 
-  API_ENDPOINT = 'https://metais.vicepremier.gov.sk/cmdb/read/cilistfiltered'
+  API_ENDPOINT = 'https://metais.slovensko.sk/api/cmdb/read/cilistfiltered'
   REQUEST_BODY = '{"filter":{"type":["Program"],"metaAttributes":{"state":["DRAFT"]}},"page":1,"perpage":10000,"sortBy":"Gen_Profil_nazov","sortType":"ASC"}'
 
   def perform

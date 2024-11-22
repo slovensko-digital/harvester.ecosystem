@@ -3,7 +3,7 @@ require 'faraday'
 class Metais::SyncAllProjectsJob < ApplicationJob
   queue_as :metais
 
-  API_ENDPOINT = 'https://metais.vicepremier.gov.sk/cmdb/read/cilistfiltered'
+  API_ENDPOINT = 'https://metais.slovensko.sk/api/cmdb/read/cilistfiltered'
   PROJECTS_REQUEST_TEMPLATE = '{"filter":{"type":["Projekt"],"metaAttributes":{"state":["DRAFT"]}},"page":%{page},"perpage":5}'
 
   def perform

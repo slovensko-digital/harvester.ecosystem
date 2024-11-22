@@ -3,7 +3,7 @@ require 'faraday'
 class Metais::SyncRelatedDocumentsJob < ApplicationJob
   queue_as :metais
 
-  API_ENDPOINT = 'https://metais.vicepremier.gov.sk/cmdb/read/relations/neighbours/'
+  API_ENDPOINT = 'https://metais.slovensko.sk/api/cmdb/read/relations/neighbours/'
   RELATED_DOCUMENTS_REQUEST_TEMPLATE = '{"neighboursFilter":{"usageType":["system","application"],"metaAttributes":{"state":["DRAFT"]},"relType":["CI_HAS_DOCUMENT","Dokument_sa_tyka_KRIS","CONTROL_HAS_DOCUMENT","PROJECT_HAS_DOCUMENT"],"ciType":["Dokument"]},"page":%{page},"perpage":100}'
   
   def perform(parent)

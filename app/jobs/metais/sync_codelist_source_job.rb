@@ -3,7 +3,7 @@ require 'faraday'
 class Metais::SyncCodelistSourceJob < ApplicationJob
   queue_as :metais
   
-  API_ENDPOINT = 'https://metais.vicepremier.gov.sk/enumsrepository/enums/enum/all/ZDROJ?lang=sk'
+  API_ENDPOINT = 'https://metais.slovensko.sk/api/enums-repo/enums/enum/valid/ZDROJ?lang=sk'
   
   def perform
     conn = Faraday.new(url: API_ENDPOINT)

@@ -3,7 +3,7 @@ require 'faraday'
 class Metais::SyncDocumentJob < ApplicationJob
   queue_as :metais
 
-  API_ENDPOINT = 'https://metais.vicepremier.gov.sk/dms/file/meta/'
+  API_ENDPOINT = 'https://metais.slovensko.sk/api/dms/file/meta/'
   NOT_FOUND_METADATA_TYPE = 'gnr404'
 
   def perform(parent, json)
