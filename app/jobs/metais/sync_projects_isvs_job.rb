@@ -3,7 +3,7 @@ require 'faraday'
 class Metais::SyncProjectsIsvsJob < ApplicationJob
   queue_as :metais
 
-  API_ENDPOINT = 'https://metais.vicepremier.gov.sk/cmdb/read/relations/neighbourswithallrels/'
+  API_ENDPOINT = 'https://metais.slovensko.sk/api/cmdb/read/relations/neighbourswithallrels/'
   RELATED_ISVS_REQUEST_TEMPLATE = '%{uuid}?ciTypes=ISVS&page=1&perPage=5'
 
   def perform(project)
