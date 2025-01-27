@@ -19,7 +19,7 @@ class Upvs::FetchPublicAuthorityActiveEdesksListJob < ApplicationJob
       TemporaryPublicAuthorityActiveEdesk.insert_to_source_table!
     end
 
-    BetterUptimeApi.ping_heartbeat('UPVS_FETCH_EDESKS')
+    BetterUptimeApi.ping_heartbeat('UPVS_FETCH_ACTIVE_EDESKS')
   end
 
   class TemporaryPublicAuthorityActiveEdesk < TemporaryRecord
