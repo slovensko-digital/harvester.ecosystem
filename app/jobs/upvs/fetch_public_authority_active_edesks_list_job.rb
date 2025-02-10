@@ -63,7 +63,7 @@ class Upvs::FetchPublicAuthorityActiveEdesksListJob < ApplicationJob
   def assert_known_edesks_existence!
     repository = TemporaryPublicAuthorityActiveEdesk
     repository.find_by!(uri: 'ico://sk/00151513', cin: '151513', name: 'Úrad vlády Slovenskej republiky')
-    repository.find_by!(uri: 'ico://sk/00151513_10003', cin: '151513', name: 'Úrad vlády Slovenskej republiky - Petície')
+    repository.find_by!(uri: 'ico://sk/00151513_10003', cin: '151513', name: 'Úrad vlády Slovenskej republiky – Petície')
     repository.find_by!(uri: 'ico://sk/00164381', cin: '164381', name: 'Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky')
   end
 end
