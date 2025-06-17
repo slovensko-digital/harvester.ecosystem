@@ -27,6 +27,8 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   end
 
   class TemporaryServiceWithForm < TemporaryRecord
+    self.inheritance_column = nil
+
     def self.source
       Upvs::ServiceWithForm
     end
