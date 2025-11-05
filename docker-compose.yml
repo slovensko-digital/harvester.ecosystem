@@ -1,23 +1,20 @@
 version: '2'
 
 services:
-  postgres_data:
-    image: busybox
-    volumes:
-      - /var/lib/postgresql/data
-
   postgres:
-    image: postgres:12
+    image: postgres:14
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: datahub
       POSTGRES_USER: datahub
-      POSTGRES_DB: datahub_development
-    volumes_from:
-      - postgres_data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   redis:
     image: redis
     ports:
       - "6379:6379"
+
+volumes:
+  postgres_data:
