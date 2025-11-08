@@ -79,6 +79,8 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     base64 (0.3.0)
     bigdecimal (3.3.1)
+    bootsnap (1.18.6)
+      msgpack (~> 1.2)
     builder (3.3.0)
     clockwork (3.0.2)
       activesupport
@@ -137,6 +139,7 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (5.26.0)
+    msgpack (1.8.0)
     net-http (0.7.0)
       uri
     net-imap (0.5.12)
@@ -157,6 +160,10 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
+    propshaft (1.3.1)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -270,6 +277,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootsnap (~> 1.18)
   clockwork
   csv (~> 3.3)
   dotenv
@@ -278,6 +286,7 @@ DEPENDENCIES
   foreman
   newrelic_rpm
   pg (~> 1.1)
+  propshaft (~> 1.3)
   pry
   pry-rails
   puma
