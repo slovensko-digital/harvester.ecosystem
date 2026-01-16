@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
   describe '#perform' do
-    let(:url) { 'https://data.slovensko.sk/download?id=7c70f6c9-1777-4d8a-8711-f1dfd2359620' }
+    let(:url) { 'https://slovensko.sk/static/zoznam-ovm/zoznam-ovm.csv' }
 
     let(:downloader) { double }
 
