@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
   describe '#perform' do
+    let(:url) { 'https://slovensko.sk/static/zoznam-ovm/zoznam-ovm.csv' }
+
     let(:downloader) { double }
 
     it 'downloads and imports all public authority eDesks' do
