@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
   describe '#perform' do
-    let(:url) { 'https://data.slovensko.sk/download?id=7c70f6c9-1777-4d8a-8711-f1dfd2359620' }
+    let(:url) { 'https://slovensko.sk/static/zoznam-ovm/zoznam-ovm.csv' }
 
     let(:downloader) { double }
 
     it 'downloads and imports all public authority eDesks' do
       expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks.csv'))
 
-      subject.perform(url, downloader: downloader)
+      subject.perform(downloader: downloader)
 
       expect(Upvs::PublicAuthorityEdesk.first).to have_attributes(
         uri: 'ico://sk/00332674',
@@ -27,7 +27,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
         expect(Upvs::PublicAuthorityEdesk.count).to eq(10)
         expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks.csv'))
 
-        subject.perform(url, downloader: downloader)
+        subject.perform(downloader: downloader)
 
         expect(Upvs::PublicAuthorityEdesk.count).to eq(7)
       end
@@ -37,7 +37,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
       it 'does not import public authority eDesks' do
         expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-not-matching.csv'))
 
-        expect { subject.perform(url, downloader: downloader) }.to raise_error(RuntimeError)
+        expect { subject.perform(downloader: downloader) }.to raise_error(RuntimeError)
 
         expect(Upvs::PublicAuthorityEdesk.count).to eq(0)
       end
@@ -48,7 +48,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
         expect(Upvs::PublicAuthorityEdesk.count).to eq(10)
         expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-not-matching.csv'))
 
-        expect { subject.perform(url, downloader: downloader) }.to raise_error(RuntimeError)
+        expect { subject.perform(downloader: downloader) }.to raise_error(RuntimeError)
 
         expect(Upvs::PublicAuthorityEdesk.count).to eq(10)
       end
@@ -56,13 +56,13 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
       it 'raises custom error' do
         expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-not-matching.csv'))
 
-        expect { subject.perform(url, downloader: downloader) }.to raise_error('ico://sk/99166260 does not match 166260')
+        expect { subject.perform(downloader: downloader) }.to raise_error('ico://sk/99166260 does not match 166260')
       end
 
       it 'does not raise custom error if only leading zeros difference' do
         expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-missing-leading-zeros.csv'))
 
-        expect { subject.perform(url, downloader: downloader) }.not_to raise_error
+        expect { subject.perform(downloader: downloader) }.not_to raise_error
 
         expect(Upvs::PublicAuthorityEdesk.last).to have_attributes(
           uri: 'ico://sk/214973_10001',
@@ -76,7 +76,7 @@ RSpec.describe Upvs::FetchPublicAuthorityEdesksListJob, type: :job do
       it 'raises custom error' do
         expect(downloader).to receive(:download_file).with(url).and_return(fixture_filepath('upvs/edesks-incorrect-encoding.csv'))
 
-        expect { subject.perform(url, downloader: downloader) }.to raise_error('Incorrect encoding')
+        expect { subject.perform(downloader: downloader) }.to raise_error('Incorrect encoding')
       end
     end
   end

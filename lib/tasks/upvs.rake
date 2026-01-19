@@ -1,7 +1,7 @@
 namespace :upvs do
   desc 'Sync all public authority eDesks'
   task 'public_authority_edesks:sync' => :environment do
-    Upvs::FindPublicAuthorityEdesksListJob.perform_later
+    Upvs::FetchPublicAuthorityEdesksListJob.perform_later
   end
 
   desc 'Sync public authority eDesks'
