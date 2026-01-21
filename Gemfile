@@ -33,3 +33,5 @@ group :test do
   gem 'simplecov', '~> 0.10', '< 0.18'
   gem 'webmock'
 end
+
+gem 'faraday-follow_redirects'

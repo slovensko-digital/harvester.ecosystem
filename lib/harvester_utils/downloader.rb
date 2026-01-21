@@ -1,4 +1,5 @@
 require 'faraday'
+require 'faraday/follow_redirects'
 require 'tempfile'
 require 'zip'
 
@@ -22,6 +23,7 @@ module HarvesterUtils
     def self.download_file(url)
       conn = Faraday.new(request: { timeout: 300 }) do |f|
         f.response :follow_redirects
+        f.adapter Faraday.default_adapter
       end
       response = conn.get(url)
 

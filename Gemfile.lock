@@ -78,8 +78,10 @@ GEM
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
     faraday (1.0.1)
-      multipart-post (>= 1.2, < 3)
       httpclient (>= 2.2)
+      multipart-post (>= 1.2, < 3)
+    faraday-follow_redirects (0.5.0)
+      faraday (>= 1, < 3)
     foreman (0.87.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -209,6 +211,7 @@ DEPENDENCIES
   dotenv
   factory_bot_rails
   faraday
+  faraday-follow_redirects
   foreman
   newrelic_rpm
   pg (~> 0.20)
