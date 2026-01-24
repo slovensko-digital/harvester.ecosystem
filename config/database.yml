@@ -9,10 +9,12 @@ default: &default
 
 development:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: datahub_development
 
 test:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: datahub_test
 
 staging:

@@ -1,17 +1,19 @@
 source 'https://rubygems.org'
 
-ruby '2.7.2'
+ruby '3.4.7'
 
-gem 'rails', '~> 6.0.3.2'
+gem 'rails', '~> 8.1.1'
+gem "propshaft", "~> 1.3"
+gem 'pg', '~> 1.1'
 
-gem 'pg', '~> 0.20'
+gem "bootsnap", "~> 1.18"
 
 gem 'puma'
 gem 'foreman'
 
 gem 'clockwork'
 gem 'dotenv'
-gem 'sidekiq', '~> 5.2.9' # Unlock when we migrate to Redis 4+
+gem 'sidekiq', '~> 8.0.3' # Unlock when we migrate to Redis 4+
 gem 'faraday'
 
 gem 'rubyzip'
@@ -33,3 +35,5 @@ group :test do
   gem 'simplecov', '~> 0.10', '< 0.18'
   gem 'webmock'
 end
+
+gem "csv", "~> 3.3"

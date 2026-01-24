@@ -2,7 +2,7 @@ class CreateEidStats < ActiveRecord::Migration[6.0]
   def up
     execute 'CREATE SCHEMA eid22'
 
-    create_table 'eid22.eIdClaims', {:id => false} do |t|
+    create_table 'eid22.eIdClaims', id: false do |t|
       t.string :jp, foreign_key: { to_table: 'eid22.JednotnePracoviska' }
       t.integer :claimNo, null: false
       t.date :dateClaimed
