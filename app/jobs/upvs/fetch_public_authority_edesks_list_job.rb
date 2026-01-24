@@ -1,8 +1,10 @@
 class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
   queue_as :upvs
 
-  def perform(dataset_url, downloader: HarvesterUtils::Downloader)
-    csv_file = downloader.download_file(dataset_url)
+  DATASET_URL = 'https://slovensko.sk/static/zoznam-ovm/zoznam-ovm.csv'
+
+  def perform(downloader: HarvesterUtils::Downloader)
+    csv_file = downloader.download_file(DATASET_URL)
     csv_options = { col_sep: File.open(csv_file) { |f| f.readline }.include?(';') ? ';' : ',', headers: true }
 
     TemporaryPublicAuthorityEdesk.transaction do
