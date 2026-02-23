@@ -37,3 +37,4 @@ group :test do
 end
 
 gem "csv", "~> 3.3"
+gem 'faraday-follow_redirects'
