@@ -5,13 +5,13 @@ class Metais::SyncRelatedDocumentsJob < ApplicationJob
 
   API_ENDPOINT = 'https://metais.slovensko.sk/api/cmdb/read/relations/neighbours/'
   RELATED_DOCUMENTS_REQUEST_TEMPLATE = '{"neighboursFilter":{"usageType":["system","application"],"metaAttributes":{"state":["DRAFT"]},"relType":["CI_HAS_DOCUMENT","Dokument_sa_tyka_KRIS","CONTROL_HAS_DOCUMENT","PROJECT_HAS_DOCUMENT"],"ciType":["Dokument"]},"page":%{page},"perpage":100}'
-  
+
   def perform(parent)
     conn = Faraday.new(url: API_ENDPOINT)
     page_number = 1
 
     begin
-      response = conn.post(parent.uuid, RELATED_DOCUMENTS_REQUEST_TEMPLATE % {page: page_number}, 'Content-Type' => 'application/json')
+      response = conn.post(parent.uuid, RELATED_DOCUMENTS_REQUEST_TEMPLATE % {page: page_number}, {'Content-Type' => 'application/json', 'User-Agent' => 'Mozilla/5.0 (compatible; Harvester/1.0)'})
       parsed_json = JSON.parse(response.body)
       documents = parsed_json['fromNodes']&.dig('neighbourPairs')
       return unless documents
