@@ -11,7 +11,7 @@ class Metais::SyncAllProjectsJob < ApplicationJob
     page_number = 1
 
     begin
-      response = conn.post('', PROJECTS_REQUEST_TEMPLATE % {page: page_number}, 'Content-Type' => 'application/json')
+      response = conn.post('', PROJECTS_REQUEST_TEMPLATE % {page: page_number}, {'Content-Type' => 'application/json', 'User-Agent' => 'Mozilla/5.0 (compatible; Harvester/1.0)'})
       parsed_json = JSON.parse(response.body)
       projects = parsed_json&.dig('configurationItemSet')
       return unless projects

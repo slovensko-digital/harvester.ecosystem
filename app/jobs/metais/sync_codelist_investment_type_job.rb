@@ -7,7 +7,7 @@ class Metais::SyncCodelistInvestmentTypeJob < ApplicationJob
 
   def perform
     conn = Faraday.new(url: API_ENDPOINT)
-    response = conn.get('', nil, {'Content-Type' => 'application/json', 'Accept-Language' => 'sk-SK,sk;q=0.8'})
+    response = conn.get('', nil, {'Content-Type' => 'application/json', 'Accept-Language' => 'sk-SK,sk;q=0.8', 'User-Agent' => 'Mozilla/5.0 (compatible; Harvester/1.0)'})
     parsed_json = JSON.parse(response.body)
 
     ActiveRecord::Base.transaction do
@@ -20,4 +20,4 @@ class Metais::SyncCodelistInvestmentTypeJob < ApplicationJob
       end
     end
   end
-end    
+end

@@ -8,14 +8,14 @@ class Metais::SyncDocumentJob < ApplicationJob
 
   def perform(parent, json)
     json = json['configurationItem']
-    
+
     conn = Faraday.new(url: API_ENDPOINT)
-    response = conn.get(json['uuid'], 'Content-Type' => 'application/json')
+    response = conn.get(json['uuid'], {'Content-Type' => 'application/json', 'User-Agent' => 'Mozilla/5.0 (compatible; Harvester/1.0)'})
     meta = JSON.parse(response.body)
 
     ActiveRecord::Base.transaction do
       document = parent.documents.find_or_initialize_by(uuid: json['uuid'])
-      return unless document.latest_version.nil? || 
+      return unless document.latest_version.nil? ||
         document.latest_version.raw_data != json.to_json ||
         (document.latest_version.raw_meta != meta.to_json &&
           !(meta['type'] == NOT_FOUND_METADATA_TYPE &&
