@@ -10,7 +10,7 @@ class Metais::SyncDocumentJob < ApplicationJob
     json = json['configurationItem']
 
     conn = Faraday.new(url: API_ENDPOINT)
-    response = conn.get(json['uuid'], {'Content-Type' => 'application/json', 'User-Agent' => 'Mozilla/5.0 (compatible; Harvester/1.0)'})
+    response = conn.get(json['uuid'], nil, {'Content-Type' => 'application/json', 'User-Agent' => 'Mozilla/5.0 (compatible; Harvester/1.0)'})
     meta = JSON.parse(response.body)
 
     ActiveRecord::Base.transaction do
