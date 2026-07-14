@@ -31,6 +31,13 @@ CREATE SCHEMA metais;
 
 
 --
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
+--
+
+-- *not* creating schema, since initdb creates it
+
+
+--
 -- Name: upvs; Type: SCHEMA; Schema: -; Owner: -
 --
 
@@ -8844,6 +8851,20 @@ CREATE INDEX "index_itms.zop_predkladane_za_subjekty_on_zop_id" ON itms.zop_pred
 
 
 --
+-- Name: index_isvs_documents_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX index_isvs_documents_on_latest_version_id ON metais.isvs_documents USING btree (latest_version_id);
+
+
+--
+-- Name: index_isvs_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX index_isvs_on_latest_version_id ON metais.isvs USING btree (latest_version_id);
+
+
+--
 -- Name: index_metais.codelist_investment_type_on_code; Type: INDEX; Schema: metais; Owner: -
 --
 
@@ -8893,24 +8914,10 @@ CREATE INDEX "index_metais.isvs_documents_on_isvs_id" ON metais.isvs_documents U
 
 
 --
--- Name: index_metais.isvs_documents_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
---
-
-CREATE INDEX "index_metais.isvs_documents_on_latest_version_id" ON metais.isvs_documents USING btree (latest_version_id);
-
-
---
 -- Name: index_metais.isvs_documents_on_uuid; Type: INDEX; Schema: metais; Owner: -
 --
 
 CREATE INDEX "index_metais.isvs_documents_on_uuid" ON metais.isvs_documents USING btree (uuid);
-
-
---
--- Name: index_metais.isvs_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
---
-
-CREATE INDEX "index_metais.isvs_on_latest_version_id" ON metais.isvs USING btree (latest_version_id);
 
 
 --
@@ -8949,13 +8956,6 @@ CREATE INDEX "index_metais.project_document_versions_on_document_id" ON metais.p
 
 
 --
--- Name: index_metais.project_documents_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
---
-
-CREATE INDEX "index_metais.project_documents_on_latest_version_id" ON metais.project_documents USING btree (latest_version_id);
-
-
---
 -- Name: index_metais.project_documents_on_project_id; Type: INDEX; Schema: metais; Owner: -
 --
 
@@ -8977,17 +8977,24 @@ CREATE INDEX "index_metais.project_versions_on_project_id" ON metais.project_ver
 
 
 --
--- Name: index_metais.projects_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
---
-
-CREATE INDEX "index_metais.projects_on_latest_version_id" ON metais.projects USING btree (latest_version_id);
-
-
---
 -- Name: index_metais.projects_on_uuid; Type: INDEX; Schema: metais; Owner: -
 --
 
 CREATE INDEX "index_metais.projects_on_uuid" ON metais.projects USING btree (uuid);
+
+
+--
+-- Name: index_project_documents_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX index_project_documents_on_latest_version_id ON metais.project_documents USING btree (latest_version_id);
+
+
+--
+-- Name: index_projects_on_latest_version_id; Type: INDEX; Schema: metais; Owner: -
+--
+
+CREATE INDEX index_projects_on_latest_version_id ON metais.projects USING btree (latest_version_id);
 
 
 --
@@ -10990,82 +10997,81 @@ ALTER TABLE ONLY metais.isvs_versions
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20170222131821'),
-('20170223074140'),
-('20170424171314'),
-('20170503084111'),
-('20170503142604'),
-('20170503160605'),
-('20170503162251'),
-('20170503165125'),
-('20170503173221'),
-('20170503194931'),
-('20170503212442'),
-('20170504134508'),
-('20170504182810'),
-('20170504192725'),
-('20170612194706'),
-('20170621103205'),
-('20170718063739'),
-('20170718083436'),
-('20171005080348'),
-('20171005094049'),
-('20171005104049'),
-('20171005104149'),
-('20171005104249'),
-('20171005105044'),
-('20171005110144'),
-('20171005115835'),
-('20171005115935'),
-('20171005173414'),
-('20171007133948'),
-('20171008150412'),
-('20171008150512'),
-('20171009080951'),
-('20171009115759'),
-('20171012201924'),
-('20171013180259'),
-('20171017111719'),
-('20171017171650'),
-('20171017175318'),
-('20171017175408'),
-('20171017175418'),
-('20171017175518'),
-('20171017182731'),
-('20171017182931'),
-('20171113145824'),
-('20171114124735'),
-('20171114143548'),
-('20171115092048'),
-('20171117102940'),
-('20171120133917'),
-('20171214142454'),
-('20171214151327'),
-('20171221180201'),
-('20171221215154'),
-('20171221222028'),
-('20171221222608'),
-('20171222121456'),
-('20190805192655'),
-('20191030214642'),
-('20191107112524'),
-('20200424134824'),
-('20200424153823'),
-('20200518225601'),
-('20200531222054'),
-('20200601163242'),
-('20200716141809'),
-('20220702123618'),
-('20220810120123'),
-('20220810120320'),
-('20220810120510'),
-('20220811192959'),
-('20220902164827'),
-('20220919080112'),
-('20220919084308'),
-('20221219105855'),
-('20231106173059'),
+('20240709105101'),
 ('20231107130000'),
-('20240709105101');
-
+('20231106173059'),
+('20221219105855'),
+('20220919084308'),
+('20220919080112'),
+('20220902164827'),
+('20220811192959'),
+('20220810120510'),
+('20220810120320'),
+('20220810120123'),
+('20220702123618'),
+('20200716141809'),
+('20200601163242'),
+('20200531222054'),
+('20200518225601'),
+('20200424153823'),
+('20200424134824'),
+('20191107112524'),
+('20191030214642'),
+('20190805192655'),
+('20171222121456'),
+('20171221222608'),
+('20171221222028'),
+('20171221215154'),
+('20171221180201'),
+('20171214151327'),
+('20171214142454'),
+('20171120133917'),
+('20171117102940'),
+('20171115092048'),
+('20171114143548'),
+('20171114124735'),
+('20171113145824'),
+('20171017182931'),
+('20171017182731'),
+('20171017175518'),
+('20171017175418'),
+('20171017175408'),
+('20171017175318'),
+('20171017171650'),
+('20171017111719'),
+('20171013180259'),
+('20171012201924'),
+('20171009115759'),
+('20171009080951'),
+('20171008150512'),
+('20171008150412'),
+('20171007133948'),
+('20171005173414'),
+('20171005115935'),
+('20171005115835'),
+('20171005110144'),
+('20171005105044'),
+('20171005104249'),
+('20171005104149'),
+('20171005104049'),
+('20171005094049'),
+('20171005080348'),
+('20170718083436'),
+('20170718063739'),
+('20170621103205'),
+('20170612194706'),
+('20170504192725'),
+('20170504182810'),
+('20170504134508'),
+('20170503212442'),
+('20170503194931'),
+('20170503173221'),
+('20170503165125'),
+('20170503162251'),
+('20170503160605'),
+('20170503142604'),
+('20170503084111'),
+('20170424171314'),
+('20170223074140'),
+('20170222131821');
 

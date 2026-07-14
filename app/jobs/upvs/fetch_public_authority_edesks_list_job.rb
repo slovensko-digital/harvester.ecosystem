@@ -33,7 +33,7 @@ class Upvs::FetchPublicAuthorityEdesksListJob < ApplicationJob
   private
 
   def each_row_as_attributes(csv_file, csv_options)
-    CSV.foreach(csv_file, csv_options) do |row|
+    CSV.foreach(csv_file, **csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
 
       row[row.keys.first].sub!(/\A"/, '')

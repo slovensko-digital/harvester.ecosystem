@@ -7,8 +7,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
 
     csv_options = {
       encoding: 'UTF-8',
-      col_sep: '","',
-      quote_char: "\x00",
+      liberal_parsing: true,
       headers: true
     }
 
@@ -37,7 +36,7 @@ class Upvs::FetchServicesWithFormsListJob < ApplicationJob
   private
 
   def each_row_as_attributes(csv_file, csv_options)
-    CSV.foreach(csv_file, csv_options) do |row|
+    CSV.foreach(csv_file, **csv_options) do |row|
       row = row.to_h.transform_keys { |k| k.to_s.gsub(/\p{Cf}|"/, '') }
 
       row[row.keys.first]&.sub!(/\A"/, '')
