@@ -1,0 +1,59 @@
+service: harvester-ecosystem
+
+image: sd/harvester-ecosystem
+
+# This app has no web process. The Procfile is clock + worker only and the k8s
+# chart sets service.enabled: false / ingress.enabled: false, so there is
+# nothing to proxy to: no proxy block, no app_port, no healthcheck.
+primary_role: clock
+
+servers:
+  clock:
+    cmd: bundle exec clockwork config/clock.rb
+    options:
+      "add-host": host.docker.internal:host-gateway
+  worker:
+    stop_timeout: 60
+    cmd: bundle exec sidekiq -C config/sidekiq.yml
+    options:
+      "add-host": host.docker.internal:host-gateway
+
+deploy_timeout: 200
+
+env:
+  secret:
+    - SECRET_KEY_BASE
+    - DATABASE_URL
+    - ROLLBAR_ACCESS_TOKEN
+    - NEWRELIC_LICENSE_KEY
+
+accessories:
+  redis:
+    image: redis:7.0
+    options:
+      memory: 256m
+    roles:
+      - clock
+      - worker
+    directories:
+      - data:/data
+
+aliases:
+  console: app exec --roles clock --interactive --reuse "bin/rails console"
+  shell: app exec --roles clock --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --roles clock --interactive --reuse "bin/rails dbconsole"
+
+registry:
+  server: registry.dev.slovensko.digital
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+  remote: ssh://kamal@dev.slovensko.digital
+  cache:
+    type: registry
+    options: mode=max,image-manifest=true,oci-mediatypes=true
