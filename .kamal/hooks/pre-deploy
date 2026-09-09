@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Production still deploys via GitLab k8s
+if [ "${KAMAL_DESTINATION:-}" != "staging" ]; then
+  echo "pre-deploy: destination '${KAMAL_DESTINATION:-none}' is not staging, skipping migrations"
+  exit 0
+fi
+
+# A rollback targets an image that was already migrated.
+if [ "${KAMAL_COMMAND:-}" = "rollback" ]; then
+  echo "pre-deploy: rollback, skipping migrations"
+  exit 0
+fi
+
+echo "pre-deploy: migrating database for version ${KAMAL_VERSION}"
+
+# --roles keeps this to one container (app exec otherwise fans out per role), --version pins the deployed image, -d is required for a nested call.
+kamal app exec \
+  --primary \
+  --roles clock \
+  --destination "${KAMAL_DESTINATION}" \
+  --version "${KAMAL_VERSION}" \
+  "bundle exec rake db:migrate"
+
+echo "pre-deploy: migrations finished"
