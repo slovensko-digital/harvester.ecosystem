@@ -1,0 +1,23 @@
+servers:
+  clock:
+    hosts:
+      - dev.slovensko.digital
+    options:
+      memory: 250m
+  worker:
+    hosts:
+      - dev.slovensko.digital
+    options:
+      memory: 2g
+
+env:
+  clear:
+    RAILS_ENV: staging
+    RACK_ENV: staging
+    RAILS_LOG_TO_STDOUT: "true"
+    ROLLBAR_ENV: staging
+    RAILS_MAX_THREADS: "10"
+    REDIS_URL: redis://harvester-ecosystem-redis:6379
+
+ssh:
+  user: kamal

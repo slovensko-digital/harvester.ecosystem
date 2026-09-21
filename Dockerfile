@@ -19,4 +19,5 @@ RUN mkdir -p tmp/pids
 COPY . .
 
 # Run application by default
+ENTRYPOINT ["/app/bin/docker-entrypoint"]
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

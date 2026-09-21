@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+# Staging clock role only - production still migrates from the GitLab k8s release step.
+if [ "${RAILS_ENV}" = "staging" ] && [ "$1" = "bundle" ] && [ "$2" = "exec" ] && [ "$3" = "clockwork" ]; then
+  bundle exec rake db:migrate
+fi
+
+exec "${@}"
