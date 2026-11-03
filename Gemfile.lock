@@ -105,7 +105,6 @@ GEM
     mini_portile2 (2.5.1)
     minitest (5.14.1)
     multipart-post (2.1.1)
-    newrelic_rpm (6.12.0.367)
     nio4r (2.5.7)
     nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
@@ -213,7 +212,6 @@ DEPENDENCIES
   faraday
   faraday-follow_redirects
   foreman
-  newrelic_rpm
   pg (~> 0.20)
   pry
   pry-rails

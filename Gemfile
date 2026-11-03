@@ -16,7 +16,6 @@ gem 'faraday'
 
 gem 'rubyzip'
 
-gem 'newrelic_rpm'
 gem 'rollbar'
 
 group :development, :test do
