@@ -39,7 +39,7 @@ RSpec.describe Metais::SyncRelatedDocumentsJob, type: :job do
 
         subject.perform(isvs)
 
-        expect(Metais::SyncDocumentJob).to have_been_enqueued.exactly(18).times
+        expect(Metais::SyncDocumentJob).to have_been_enqueued.exactly(9).times
         expect(Metais::SyncDocumentJob).to have_been_enqueued.with(isvs, JSON.parse(document_version.raw_data))
       end
     end
