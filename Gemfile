@@ -1,22 +1,26 @@
 source 'https://rubygems.org'
 
-ruby '2.7.2'
+ruby '4.0.9'
 
-gem 'rails', '~> 6.0.3.2'
+gem 'rails', '~> 8.1.4'
 
-gem 'pg', '~> 0.20'
+gem 'pg', '~> 1.1'
 
-gem 'puma'
+gem 'puma', '>= 6.0'
 gem 'foreman'
 
 gem 'clockwork'
 gem 'dotenv'
-gem 'sidekiq', '~> 5.2.9' # Unlock when we migrate to Redis 4+
+gem 'sidekiq', '~> 8.0'
 gem 'faraday'
+gem 'faraday-follow_redirects'
 
 gem 'rubyzip'
 
 gem 'rollbar'
+
+gem 'csv'
+gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'factory_bot_rails'
@@ -26,11 +30,6 @@ group :development, :test do
 end
 
 group :test do
-  # Workaround for cc-test-reporter with SimpleCov 0.18.
-  # Stop upgrading SimpleCov until the following issue will be resolved.
-  # https://github.com/codeclimate/test-reporter/issues/418
-  gem 'simplecov', '~> 0.10', '< 0.18'
+  gem 'simplecov'
   gem 'webmock'
 end
-
-gem 'faraday-follow_redirects'

@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+# If running the app server then create or migrate existing database
+if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
+  ./bin/rails db:prepare
+elif [ "${1}" == "bundle" ]; then
+  ./bin/rails db:prepare
+fi
+
+exec "${@}"
