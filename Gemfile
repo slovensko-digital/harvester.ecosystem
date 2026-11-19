@@ -11,7 +11,8 @@ gem 'foreman'
 
 gem 'clockwork'
 gem 'dotenv'
-gem 'sidekiq', '~> 8.0'
+# Staging Redis is 6.2; Sidekiq 8 requires Redis 7.
+gem 'sidekiq', '~> 7.3.10'
 gem 'faraday'
 gem 'faraday-follow_redirects'
 
