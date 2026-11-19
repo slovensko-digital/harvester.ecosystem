@@ -1,0 +1,14 @@
+.git
+.bundle
+.env*
+log/*
+tmp/*
+storage/*
+public/assets*
+vendor/bundle
+.github
+.gitlab
+kamal
+.dockerignore
+Dockerfile*
+docker-compose*
