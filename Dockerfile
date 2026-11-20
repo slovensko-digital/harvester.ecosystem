@@ -6,7 +6,7 @@
 # Run:   docker run -d -p 3000:3000 -e DATABASE_URL=postgresql://... --name harvester harvester
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=4.0.9
+ARG RUBY_VERSION=4.0.10
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
